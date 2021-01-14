@@ -1,0 +1,105 @@
+/* create a new purple color */
+$font-family-sans-serif: "Prompt", sans-serif;
+$font-weight-normal: 500;
+$font-weight-bold: 700;
+$headings-font-weight: 600;
+$headings-font-family: "Prompt", sans-serif;
+$input-btn-padding-y: 0.5rem;
+
+$input-btn-padding-y-sm: 0.35rem;
+$input-btn-padding-x-sm: 0.6rem;
+
+/*Color Pallete*/
+$mainPurple-dark: #32325d;
+$mainPurple: #5870cb;
+$mainPurple-light: #020203;
+$mainGreen: #3ecf8e;
+
+$text-muted: #92949c;
+
+$btn-font-weight: 600;
+
+$font-size-base: 0.95rem;
+
+$theme-colors: (
+    "primary": $mainPurple,
+    "secondary": $mainGreen,
+);
+
+$border-radius: 4px;
+.btn-primary,
+.btn-secondary {
+    color: #fff !important;
+}
+
+.btn {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn-link {
+    box-shadow: none;
+}
+.btn-light {
+    color: $mainPurple !important;
+}
+
+.mainPurple-light {
+    color: $mainPurple-light;
+}
+.mainPurple-dark {
+    color: $mainPurple-dark;
+}
+
+.menu {
+    .dropdown-item {
+        padding-left: 14px;
+        color: $mainPurple;
+        transition: 0.25s;
+        border-radius: 4px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        color: $mainPurple-dark;
+    }
+    .selected {
+        background-color: white !important;
+        color: $mainPurple;
+        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .dropdown-item:hover {
+        color: $mainPurple;
+        //background-color: transparent;
+    }
+    .dropdown-item:focus {
+        color: $mainPurple;
+        background-color: transparent;
+        outline: none !important;
+    }
+    .dropdown-item:active {
+        //color: $mainGreen;
+        background-color: transparent;
+    }
+}
+.alert {
+    border: none !important;
+}
+
+button:disabled {
+    cursor: default;
+    pointer-events: all !important;
+}
+
+.modal-content {
+    border: none !important;
+}
+
+$link-color: rgba(255, 255, 255, 0.65); //red
+$link-hover-color: #fff;
+
+a:hover{
+    transition: 0.25s;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";

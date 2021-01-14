@@ -14,3 +14,30 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.visx-annotationlabel{
+  font-weight: 300;
+  font-family: 'Prompt';
+}
+
+.mapContainer{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.dark-theme{
+  background-color: #242424;
+  color: white;
+}
+
+.infoBox{
+  color: black;
+  z-index: 2;
+  position: absolute;
+  top:16px;
+  left: 16px;
+  background-color: white;
+  padding: 1em;
+}

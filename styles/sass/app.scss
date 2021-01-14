@@ -1,0 +1,131 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+        Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.visx-annotationlabel {
+    font-weight: 300;
+    font-family: "Prompt";
+}
+
+.mapContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.dark-theme {
+    background-color: #242424;
+    color: white;
+}
+
+.infoBox {
+    font-family: "Prompt";
+    font-size: 1.4em;
+    line-height: 1.5em;
+    color: black;
+    z-index: 2;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: white;
+    padding: 1em;
+}
+.text-end {
+    text-align: end;
+}
+.table-theme-light {
+    thead {
+        th {
+            border: none;
+        }
+    }
+    tbody {
+        tr {
+            border-color: #343434;
+            td {
+                text-align: end;
+            }
+        }
+    }
+}
+
+.text-sec {
+    color: #cfd8dc;
+}
+
+.alert-black{
+    color:white;
+    background-color: #3c3c3c;
+}
+
+.bar-legend {
+    opacity: 0.6;
+    height: 15px;
+    .bar {
+        flex: 1;
+        padding-bottom: 5px;
+        border-right: 1px solid #d9d9d9;
+    }
+    .level {
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+}
+
+.reset-button {
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    z-index: 2;
+}
+.btn-icon {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.visx-tooltip:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    top: 100%;
+    border-color: white transparent transparent transparent;
+    left: 45%;
+    transform: translate(-50%, 0%);
+}
+
+span{
+    line-height: 1.4em;
+}
+
+.province-graph{
+    width:100%;
+    padding-top: 75%;
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+hr {
+    border-color: white;
+}
