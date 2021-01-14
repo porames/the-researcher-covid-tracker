@@ -7,7 +7,7 @@ import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
 import Graph from './provinceCurve'
 
-mapboxgl.accessToken = process.env.mapBoxKey
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
 
 class Map extends React.Component {
     constructor(props) {
