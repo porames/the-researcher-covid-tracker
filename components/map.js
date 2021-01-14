@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
 
-import provincesData from './gis/data/provinces-data-14days.json'
+import provincesData from './gis/data/provinces-data-30days.json'
 import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
 import Graph from './provinceCurve'
@@ -251,11 +251,18 @@ class Map extends React.Component {
                                     <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount} ราย</b></span>
                                 </div>
                                 {this.state.hoveredData.caseCount > 5 &&
-                                    <Graph data={this.state.hoveredData.cases} caseCount={this.state.hoveredData.caseCount} />
+                                    <div className='mt-3'>
+                                        <Graph data={this.state.hoveredData.cases} caseCount={this.state.hoveredData.caseCount} />
+                                        <div>
+                                            <small className='text-muted'>เส้นแนวโน้มในช่วง 14 วัน</small>
+                                        </div>
+                                    </div>
                                 }
                                 {this.state.hoveredData.caseCount <= 5 &&
                                     <span className='text-muted'>ข้อมูลไม่เพียงพอ</span>
+
                                 }
+
                             </div>
                         }
                         {!this.state.hoveredData &&

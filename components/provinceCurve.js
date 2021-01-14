@@ -3,26 +3,48 @@ import { extent, max } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
 import moment from 'moment'
-import { scaleTime, scaleLinear } from '@visx/scale'
+import { scaleTime, scaleLinear, scaleBand } from '@visx/scale'
 import { curveLinear } from '@visx/curve'
-import { LinePath } from '@visx/shape'
+import { Bar, LinePath, AreaClosed } from '@visx/shape'
+
+
+function movingAvg(ts) {
+    ts = ts.reverse()
+    var moving_aves = []
+    var ys = []
+    for (var i = 0; i < ts.length; i++) {
+        ys.push(ts[i]['caseCount'])
+    }
+
+    for (var i = 0; i < ys.length; i++) {
+        if (i >= 7) {
+            const cosum = ys.slice(i - 7, i)
+            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
+        }
+        else {
+            moving_aves.push(0)
+        }
+    }
+    return moving_aves
+}
 
 function Graph(props) {
     var f = _.countBy(props.data)
     var keys = Object.keys(f)
     const today = moment()
     var ts = []
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 30; i++) {
         const time = new Date(today.subtract(1, 'd').startOf('day'))
         ts.push({ 'date': time, 'caseCount': 0 })
     }
+
     function colorMap(caseCount) {
-        const palette = ['#fafafa', '#f2df91', '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
+        const palette = ['#fafafa', '#fce468', '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
         var step
         if (caseCount < 5) {
             step = 0
         }
-        else if (caseCount < 30) {
+        else if (caseCount < 15) {
             step = 1
         }
         else if (caseCount < 50) {
@@ -39,6 +61,7 @@ function Graph(props) {
         }
         return palette[step]
     }
+
     keys.forEach((date) => {
         if (date !== 'null') {
             //ts2.push({ 'date': date, 'caseCount': f[date] })
@@ -48,44 +71,48 @@ function Graph(props) {
             }
         }
     })
-    // Define the graph dimensions and margins
-    const width = 150;
-    const height = 80;
-
-    // Then we'll create some bounds
-    const xMax = width
-    const yMax = height
-    // We'll make some helpers to get at the data we want
+    const avgs = movingAvg(ts)
+    avgs.map((avg, i) => {
+        ts[i]['movingAvg'] = avg
+    })
+    
+    
+    const height = 75;
+    const width = height*1.5;
+    
     const x = d => new Date(d.date);
-    const y = d => d.caseCount;
-
+    const y = d => d['movingAvg'];
+    const recent = ts.slice(16, 31)
     // And then scale the graph by our data
     const xScale = scaleTime({
         range: [0, width],
-        domain: extent(ts, x),
+        domain: extent(recent, x),
     })
+    
     const yScale = scaleLinear({
         range: [height - 10, 10],
-        domain: max(ts, y) === 0 ? [0, 1] : [0, max(ts, y)],
+        domain: max(recent, y) === 0 ? [0, 1] : [0, max(ts, y)],
     })
-
+    
     return (
         <svg width={width} height={height}>
-            {[ts].map((lineData, i) => {
-                return (
-                    <Group key={`bar-${i}`}>
-                        <LinePath
-                            curve={curveLinear}
-                            data={lineData}
-                            x={d => xScale(new Date(d.date)) ?? 0}
-                            y={d => yScale(d.caseCount) ?? 0}
-                            stroke={colorMap(props.caseCount)}
-                            strokeWidth={2}
-                            shapeRendering="geometricPrecision"
-                        />
-                    </Group>
-                );
-            })}
+            <Group>               
+                {[recent].map((lineData, i) => {
+                    return (
+                        <Group>
+                            <LinePath
+                                curve={curveLinear}
+                                data={lineData}
+                                x={d => xScale(new Date(d.date)) ?? 0}
+                                y={d => yScale(d['movingAvg']) ?? 0}
+                                stroke={colorMap(props.caseCount)}
+                                strokeWidth={2}
+                                shapeRendering="geometricPrecision"
+                            />
+                        </Group>
+                    );
+                })}
+            </Group>
         </svg>
     );
 }

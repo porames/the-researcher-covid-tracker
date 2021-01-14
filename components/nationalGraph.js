@@ -10,8 +10,28 @@ import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
 import { curveLinear } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from './gis/data/national-timeseries-10-1-2021.json'
+import data from './gis/data/national-timeseries-14-1-2021.json'
 import { AxisBottom } from '@visx/axis'
+
+
+function movingAvg(ts) {
+    var moving_aves = []
+    var ys = []
+    for (var i = 0; i < ts.length; i++) {
+        ys.push(ts[i]['NewConfirmed'])
+    }
+    for (var i = 0; i < ys.length; i++) {
+        if (i >= 7) {
+            const cosum = ys.slice(i - 7, i)
+            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
+        }
+        else{
+            moving_aves.push(0)
+        }
+    }
+    return moving_aves
+}
+
 function NationalCurve(props) {
     const timeSeries = data['Data']
 
@@ -21,8 +41,10 @@ function NationalCurve(props) {
     // We'll make some helpers to get at the data we want
     const x = d => new Date(d['Date']);
     const y = d => d['NewConfirmed'];
-
-
+    const avgs = movingAvg(timeSeries)
+    avgs.map((avg, i) => {
+        timeSeries[i]['movingAvg'] = avg
+    })
     const xScale = scaleBand({
         range: [10, width - 10],
         domain: timeSeries.map(x),
@@ -49,7 +71,7 @@ function NationalCurve(props) {
         tooltipData: null,
     });
     const bisectDate = bisector(d => new Date(d['Date'])).left;
-    return(
+    return (
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
@@ -69,14 +91,25 @@ function NationalCurve(props) {
                             );
                         })}
                     </Group>
-
+                    {[timeSeries].map((lineData, index) => {
+                        return (
+                            <LinePath
+                                curve={curveLinear}
+                                data={lineData}
+                                x={d => xScale(x(d))}
+                                y={d => yScale(d['movingAvg']) - 30}
+                                stroke='#dc3545'
+                                strokeWidth={2}
+                            />
+                        )
+                    })}
                     {tooltipData &&
                         <Bar
                             x={xScale(x(tooltipData))}
                             y={yScale(y(tooltipData)) - 30}
                             width={xScale.bandwidth()}
                             height={height - yScale(y(tooltipData))}
-                            fill='#dc3545'
+                            fill='#ff5e6f'
                         />
                     }
                     <AxisBottom
@@ -122,7 +155,7 @@ function NationalCurve(props) {
                     left={tooltipLeft}
                     style={{
                         ...defaultStyles,
-                        minWidth: 150,
+                        minWidth: 160,
                         textAlign: 'start',
                         transform: 'translate(-50%, -50%)',
                         padding: 12,

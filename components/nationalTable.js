@@ -1,5 +1,6 @@
 import React from 'react'
-import data from './gis/data/national-timeseries-10-1-2021.json'
+import data from './gis/data/national-timeseries-14-1-2021.json'
+
 
 function NationalTable(props) {
     const ts = data['Data']
@@ -34,7 +35,7 @@ function NationalTable(props) {
                     <th scope="row">เสียชีวิต</th>
                     <td>{ts[ts.length - 1]['Deaths']}</td>
                     <td>{ts[ts.length - 1]['NewDeaths']}</td>
-                    <td>คงที่</td>
+                    <td></td>
                 </tr>
                 <tr className='text-sec'>
                     <th scope="row">รักษาตัวในโรงพยาบาล</th>
