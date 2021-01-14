@@ -35,9 +35,8 @@ fs.createReadStream('./gis/data/dataset-1-of-2.csv')
             else if (amphoe == 'เมือง') {
                 amphoe = 'เมือง' + row['province_of_onset']
             }
-
-            if (amphoe)
-                var query = _.findIndex(amphoes, { 'name': amphoe })
+            
+            var query = _.findIndex(amphoes, { 'name': amphoe })
             if (query >= 0) {
                 var date = row['announce_date'].split('/')
                 date = new Date(date)

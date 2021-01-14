@@ -6,28 +6,37 @@ import time
 import numpy as np
 import json
 from matplotlib.dates import DateFormatter
-data=pd.read_csv('data-9-jan-2021.csv')
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+data=pd.read_csv('dataset.csv')
 pdata=[]
-with open('th-provinces-centroids.json') as json_file:
+with open('../components/gis/geo/th-provinces-centroids.json', encoding='utf-8') as json_file:
     jsondata = json.load(json_file)
     for province in jsondata['features']:
         pdata.append(province['properties']['PROV_NAMT'])        
 start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
-end = datetime.datetime.strptime("2021-01-11", "%Y-%m-%d")
+end = datetime.datetime.strptime("2021-01-14", "%Y-%m-%d")
 date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 fulldate=[]
 for date in date_generated:
-    fulldate.append(date)        
+    fulldate.append(date)    
+
 provinces={}
 for row in data.iterrows():
     row = dict(row[1])
     province = row['province_of_isolation']
     date = row['announce_date']
     if province in provinces:
-        if(isinstance(date, str)):
-            date=datetime.datetime.strptime(date,'%m/%d/%Y %H:%M')
-            if(date>=start):
-                provinces[province].append(date)    
+        try:
+            if(isinstance(date, str)):
+                parsedDate=datetime.datetime.strptime(date.strip(),'%m/%d/%y %H:%M')                
+                if(parsedDate>=start):
+                    provinces[province].append(parsedDate)    
+        except:
+            if(isinstance(date, str)):
+                parsedDate=datetime.datetime.strptime(date.strip(),'%d/%m/%y')                
+                if(parsedDate>=start):
+                    provinces[province].append(parsedDate)    
     else:
         provinces[province]=[]
         
@@ -56,9 +65,7 @@ for name in provinces.keys():
         ys=[]
         for day in names:
             ys.append(province[day])
-
         moving_aves=movingAve(ys)
-
         fig = plt.gcf()        
         plt.cla()
         #fig.set_size_inches(10,8)
@@ -79,7 +86,7 @@ for name in provinces.keys():
         plt.xticks([])
         plt.gca().xaxis.set_major_formatter(DateFormatter('%d %b'))
         plt.yticks([max(ys)],fontsize=24, color='#e0e0e0')
-        plt.savefig('export/'+str(pdata.index(name)+1)+'.svg',bbox_inches=0, transparent=True)        
+        plt.savefig('../public/graphs-build/'+str(pdata.index(name)+1)+'.svg',bbox_inches=0, transparent=True)        
         #plt.show()
         print(time.time()-start, name)
 
@@ -106,10 +113,10 @@ for name in provinces.keys():
             'change': change,
             'total-14days': sum(ys[-14:]),
             'max': max(ys),
-            'province': name
+            'province': name,
         })
 
-with open('export/built_images.json', 'w') as f:
+with open('../components/built_images.json', 'w') as f:
     json.dump(images, f)
     f.close()
 print('done')        

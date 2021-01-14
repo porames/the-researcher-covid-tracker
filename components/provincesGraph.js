@@ -12,7 +12,7 @@ export default function Province(props) {
                             return (
                                 <div className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
-                                    <div className='province-graph' style={{ backgroundImage: `url(/provinces_graphs/${img.name})` }} />
+                                    <div className='province-graph' style={{ backgroundImage: `url(/graphs-build/${img.name})` }} />
                                 </div>
                             )
                         }
@@ -28,7 +28,7 @@ export default function Province(props) {
                             return (
                                 <div className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
-                                    <div className='province-graph' style={{ backgroundImage: `url(/provinces_graphs/${img.name})` }} />
+                                    <div className='province-graph' style={{ backgroundImage: `url(/graphs-build/${img.name})` }} />
                                 </div>
                             )
                         }
