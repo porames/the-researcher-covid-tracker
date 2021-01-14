@@ -6,7 +6,8 @@
 .pnp.js
 
 next.config.js
-/styles/css/
+/styles/css
+/components/gis/geo/mapbox_exports
 # testing
 /coverage
 
