@@ -240,7 +240,7 @@ class Map extends React.Component {
                 </Head>
                 <div ref={el => this.mapContainer = el} className='mapContainer'>
                     <div onClick={() => this.resetMap()} className='reset-button'>
-                        <button className='btn-icon'><img src={require('../images/fullscreen_exit-black.svg')} alt='reset zoom' /></button>
+                        <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
                     <div className='infoBox rounded shadow-sm'>
                         {

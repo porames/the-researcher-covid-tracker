@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn gulp build && next build",
+    "build": "gulp build && next build",
     "start": "next start"
   },
   "dependencies": {
