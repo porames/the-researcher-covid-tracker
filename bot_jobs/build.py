@@ -80,12 +80,13 @@ for name in provinces.keys():
         
         
         plt.box(False)
-        plt.tick_params(axis='y',length=16, width=2,direction='in',color='#e0e0e0',pad=10)        
+        #plt.tick_params(axis='y',length=16, width=2,direction='in',color='#e0e0e0',pad=10)        
         #plt.tick_params(axis='x',length=0, pad=10)
         #plt.xticks([min(names), max(names)],fontsize=24, color='#e0e0e0')        
+        #plt.gca().xaxis.set_major_formatter(DateFormatter('%d %b'))
+
         plt.xticks([])
-        plt.gca().xaxis.set_major_formatter(DateFormatter('%d %b'))
-        plt.yticks([max(ys)],fontsize=24, color='#e0e0e0')
+        plt.yticks([])
         plt.savefig('../public/graphs-build/'+str(pdata.index(name)+1)+'.svg',bbox_inches=0, transparent=True)        
         #plt.show()
         print(time.time()-start, name)

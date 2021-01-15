@@ -146,6 +146,7 @@ function NationalTable(props) {
     const delta = ((currentPeriod - prevPeriod) / prevPeriod) * 100
     const deltaH = ((HcurrentPeriod - HprevPeriod) / HprevPeriod) * 100
     return (
+        <div className='table-responsive'>
         <table className="table table-theme-light mt-4 text-white">
             <thead>
                 <tr>
@@ -160,7 +161,25 @@ function NationalTable(props) {
                     <th scope="row">ผู้ติดเชื้อสะสม</th>
                     <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                     <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
-                    <td>{delta > 0 ? '+' : ''}{parseInt(delta)}% <TrendCurveInfectionRate data={ts} /></td>
+                    <td className='d-flex justify-content-end'>
+                        <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
+                        <div>
+                        <TrendCurveInfectionRate data={ts} />
+                        </div>
+                        
+                        </td>
+                </tr>
+
+                <tr className='text-sec'>
+                    <th scope="row">รักษาตัวในโรงพยาบาล</th>
+                    <td></td>
+                    <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
+                    <td className='d-flex justify-content-end'>
+                        <div>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}%</div>
+                        <div>
+                            <TrendCurveHospitalization data={ts} />
+                        </div>
+                    </td>
                 </tr>
                 <tr className='text-sec'>
                     <th scope="row">เสียชีวิต</th>
@@ -168,15 +187,10 @@ function NationalTable(props) {
                     <td>{ts[ts.length - 1]['NewDeaths']}</td>
                     <td></td>
                 </tr>
-                <tr className='text-sec'>
-                    <th scope="row">รักษาตัวในโรงพยาบาล</th>
-                    <td></td>
-                    <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
-                    <td>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}% <TrendCurveHospitalization data={ts} /></td>
-                </tr>
 
             </tbody>
         </table>
+        </div>
     )
 }
 export default NationalTable

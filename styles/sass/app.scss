@@ -1,14 +1,7 @@
-html,
-body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-        Helvetica Neue, sans-serif;
-}
-
 a {
     color: inherit;
     text-decoration: none;
+    font-weight: bold;
 }
 
 * {
@@ -33,7 +26,7 @@ a {
 }
 
 .infoBox {
-    font-family: "Prompt";
+    font-family: "Sarabun";
     font-size: 1.4em;
     line-height: 1.5em;
     color: black;
@@ -70,6 +63,15 @@ a {
 .alert-black{
     color:white;
     background-color: #3c3c3c;
+}
+.bar-label{
+    .label{
+        flex: 1;
+        text-align: center;
+        transform: translateX(50%);
+
+
+    }
 }
 
 .bar-legend {
@@ -121,11 +123,20 @@ span{
 .province-graph{
     width:100%;
     padding-top: 75%;
-    background-size: contain;
-    background-position: bottom;
+    background-size: 125%;
+    position: relative;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
 hr {
     border-color: white;
+}
+
+.tick{
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.5;
 }

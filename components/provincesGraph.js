@@ -12,7 +12,9 @@ export default function Province(props) {
                             return (
                                 <div className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
-                                    <div className='province-graph' style={{ backgroundImage: `url(/graphs-build/${img.name})` }} />
+                                    <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
+                                        <div className='tick'>{img['max']} -</div>
+                                    </div>
                                 </div>
                             )
                         }
@@ -24,11 +26,13 @@ export default function Province(props) {
             <div className='row mt-4'>
                 {
                     sortedImages.map((img, index) => {
-                        if (img['total-14days'] <= 5 ) {
+                        if (img['total-14days'] <= 5) {
                             return (
                                 <div className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
-                                    <div className='province-graph' style={{ backgroundImage: `url(/graphs-build/${img.name})` }} />
+                                    <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
+                                        <div className='tick'>{img['max']} -</div>
+                                    </div>
                                 </div>
                             )
                         }
