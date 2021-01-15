@@ -56,9 +56,16 @@ export default function Home() {
     <div className='dark-theme pt-5 pb-3'>
       <Head>
         <title>รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher</title>
-
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-V6Q0C8MG7Q');`}} />
+
       </Head>
       <div className='container mb-4' style={{ maxWidth: 700 }}>
         <div className='text-center'>
