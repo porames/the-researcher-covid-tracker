@@ -15,13 +15,21 @@ with open('../components/gis/geo/th-provinces-centroids.json', encoding='utf-8')
     for province in jsondata['features']:
         pdata.append(province['properties']['PROV_NAMT'])        
 start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
-end = datetime.datetime.strptime("2021-01-14", "%Y-%m-%d")
+end = datetime.datetime.today()
 date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 fulldate=[]
 for date in date_generated:
     fulldate.append(date)    
 
 provinces={}
+lastRow=data.tail(1)
+date=list(lastRow['announce_date'])[0].strip()
+
+try:        
+    datasetUpdatedOn=datetime.datetime.strptime(date,'%m/%d/%y %H:%M')                
+except:    
+    datasetUpdatedOn=datetime.datetime.strptime(date,'%d/%m/%y')                
+
 for row in data.iterrows():
     row = dict(row[1])
     province = row['province_of_isolation']
@@ -117,7 +125,11 @@ for name in provinces.keys():
             'province': name,
         })
 
-with open('../components/built_images.json', 'w') as f:
-    json.dump(images, f)
+with open('../components/build_job.json', 'w', encoding='utf-8') as f:
+    data={'images': images, 'job': {
+        'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
+        'dataset_updated_on': datasetUpdatedOn.strftime("%m/%d/%Y %H:%M")
+    }}
+    json.dump(data, f)
     f.close()
 print('done')        
