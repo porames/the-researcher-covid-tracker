@@ -12,7 +12,8 @@ import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from './gis/data/national-timeseries.json'
 import { AxisBottom } from '@visx/axis'
-
+import { Brush } from '@visx/brush';
+import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush';
 
 function movingAvg(ts) {
     var moving_aves = []

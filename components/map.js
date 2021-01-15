@@ -7,7 +7,7 @@ import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
 import Graph from './provinceCurve'
 
-
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 class Map extends React.Component {
     constructor(props) {
@@ -32,7 +32,6 @@ class Map extends React.Component {
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
             minZoom: 3,
-            dragPan: false
         });
         this.map.scrollZoom.disable()
         this.map.dragRotate.disable()
@@ -232,7 +231,13 @@ class Map extends React.Component {
             })
         });
     }
-
+    skipMap() {
+        scroller.scrollTo('skipMap', {
+            smooth: true,
+            duration: 400,
+            offset: -100
+        })
+    }
     render() {
         return (
             <div>
@@ -243,32 +248,36 @@ class Map extends React.Component {
                     <div onClick={() => this.resetMap()} className='reset-button'>
                         <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
-                    <div className='infoBox rounded shadow-sm'>
-                        {
-                            this.state.hoveredData &&
-                            <div>
+
+                    <div className='d-flex flex-column jusitfy-content-center' style={{ position: 'absolute', top: 16, left: 16, zIndex: 2 }}>
+                        <div className='infoBox rounded shadow-sm'>
+                            {
+                                this.state.hoveredData &&
                                 <div>
-                                    <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
-                                    <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount} ราย</b></span>
-                                </div>
-                                {this.state.hoveredData.caseCount > 5 &&
-                                    <div className='mt-3'>
-                                        <Graph data={this.state.hoveredData.cases} caseCount={this.state.hoveredData.caseCount} />
-                                        <div>
-                                            <small className='text-muted'>เส้นแนวโน้มในช่วง 14 วัน</small>
-                                        </div>
+                                    <div>
+                                        <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
+                                        <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount} ราย</b></span>
                                     </div>
-                                }
-                                {this.state.hoveredData.caseCount <= 5 &&
-                                    <span className='text-muted'>ข้อมูลไม่เพียงพอ</span>
+                                    {this.state.hoveredData.caseCount > 5 &&
+                                        <div className='mt-3'>
+                                            <Graph data={this.state.hoveredData.cases} caseCount={this.state.hoveredData.caseCount} />
+                                            <div>
+                                                <small className='text-muted'>เส้นแนวโน้มในช่วง 14 วัน</small>
+                                            </div>
+                                        </div>
+                                    }
+                                    {this.state.hoveredData.caseCount <= 5 &&
+                                        <span className='text-muted'>ข้อมูลไม่เพียงพอ</span>
 
-                                }
+                                    }
 
-                            </div>
-                        }
-                        {!this.state.hoveredData &&
-                            <span className='text-muted'>เลือกจังหวัดเพื่อดูข้อมูลเพิ่มเติม</span>
-                        }
+                                </div>
+                            }
+                            {!this.state.hoveredData &&
+                                <span className='text-muted'>เลือกจังหวัดเพื่อดูข้อมูลเพิ่มเติม</span>
+                            }
+                        </div>
+                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link'><img className='mr-2' src='/expand_more-white.svg' />ดูสถานการณ์รายจังหวัด</button>
                     </div>
                 </div>
             </div>

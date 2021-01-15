@@ -30,10 +30,6 @@ a {
     font-size: 1.4em;
     line-height: 1.5em;
     color: black;
-    z-index: 2;
-    position: absolute;
-    top: 16px;
-    left: 16px;
     background-color: white;
     padding: 1em;
 }
@@ -141,4 +137,12 @@ hr {
     top: 0px;
     left: 0px;
     opacity: 0.5;
+}
+
+.skip-map{
+    position: absolute;
+    top: 12px;
+    left:50%;
+    transform: translate(-50%,0);
+    z-index:2;
 }
