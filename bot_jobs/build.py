@@ -82,8 +82,9 @@ for name in provinces.keys():
         else:
             plt.ylim(0,max(ys))
         plt.fill_between(names[-14:],0,moving_aves[-14:], alpha=0.5, color='#dc3545', zorder=2)
-        plt.plot(names[6:],moving_aves, color='#dc3545',linewidth=2, alpha=0.6)
-        plt.bar(names, ys, width=0.9,color='#fa9ba4', alpha=0.6)
+        plt.fill_between(names[6:len(names)-13],0,moving_aves[:len(moving_aves)-13], alpha=0.3, color='#fa9ba4', zorder=2)
+        plt.plot(names[6:],moving_aves, color='#fa9ba4',linewidth=2)
+        plt.bar(names, ys, width=0.9,color='#fa9ba4', alpha=0.2)
         plt.plot(names[-14:],moving_aves[-14:], color='#dc3545',linewidth=2)         
         
         
