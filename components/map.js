@@ -32,6 +32,7 @@ class Map extends React.Component {
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
             minZoom: 3,
+            dragPan: false
         });
         this.map.scrollZoom.disable()
         this.map.dragRotate.disable()
