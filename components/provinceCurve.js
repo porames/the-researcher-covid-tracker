@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { Group } from '@visx/group'
 import moment from 'moment'
 import { scaleTime, scaleLinear, scaleBand } from '@visx/scale'
+import { MarkerArrow } from '@visx/marker'
 import { curveLinear } from '@visx/curve'
 import { Bar, LinePath, AreaClosed } from '@visx/shape'
 
@@ -75,31 +76,34 @@ function Graph(props) {
     avgs.map((avg, i) => {
         ts[i]['movingAvg'] = avg
     })
-    
-    
+
+
     const height = 75;
-    const width = height*1.5;
-    
+    const width = height * 1.5;
+
     const x = d => new Date(d.date);
     const y = d => d['movingAvg'];
     const recent = ts.slice(16, 31)
     // And then scale the graph by our data
     const xScale = scaleTime({
-        range: [0, width],
+        range: [0, width - 10],
         domain: extent(recent, x),
     })
-    
+
     const yScale = scaleLinear({
         range: [height - 10, 10],
         domain: max(recent, y) === 0 ? [0, 1] : [0, max(ts, y)],
     })
-    
+
     return (
         <svg width={width} height={height}>
-            <Group>               
+            <Group>
+                <MarkerArrow id="marker-arrow-province" fill={colorMap(props.caseCount)} refX={2} size={5} />
                 {[recent].map((lineData, i) => {
+                    const markerEnd = 'url(#marker-arrow-province)';
                     return (
                         <Group>
+
                             <LinePath
                                 curve={curveLinear}
                                 data={lineData}
@@ -108,6 +112,7 @@ function Graph(props) {
                                 stroke={colorMap(props.caseCount)}
                                 strokeWidth={2}
                                 shapeRendering="geometricPrecision"
+                                markerEnd={markerEnd}
                             />
                         </Group>
                     );

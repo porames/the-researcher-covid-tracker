@@ -3,6 +3,8 @@ import Map from '../../components/map'
 import NationalCurve from '../../components/nationalGraph'
 import NationalTable from '../../components/nationalTable.js'
 import Province from '../../components/provincesGraph'
+import React, { useEffect, useState } from 'react'
+
 const BarLegend = () => {
   const palette = ["#FFFA6C", '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
   return (
@@ -26,6 +28,7 @@ const BarLegend = () => {
   )
 }
 export default function Home() {
+ 
   return (
     <div className='dark-theme pt-5 pb-3'>
       <Head>
@@ -39,12 +42,10 @@ export default function Home() {
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
           <small style={{ opacity: 0.6 }}>อัพเดท 14 มกราคม 2564</small>
         </div>
-
-        <NationalCurve />
-        
-        <NationalTable />
+        <NationalCurve/>
+        <NationalTable/>
         <div className='mt-5 mb-4 text-center alert alert-black text-white'>
-          เนื่องจากข้อมูลที่ได้รับรายงานยังไม่ครบถ้วน จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
+          เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
           ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
         </div>
         <h2 className='text-center mt-5 mb-4'>ตำแหน่งที่มีการระบาด</h2>

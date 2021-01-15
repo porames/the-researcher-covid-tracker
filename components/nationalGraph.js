@@ -7,7 +7,7 @@ import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
-import { curveLinear } from '@visx/curve'
+import { curveLinear, curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from './gis/data/national-timeseries-14-1-2021.json'
@@ -42,6 +42,7 @@ function NationalCurve(props) {
     const x = d => new Date(d['Date']);
     const y = d => d['NewConfirmed'];
     const avgs = movingAvg(timeSeries)
+    
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
@@ -94,11 +95,11 @@ function NationalCurve(props) {
                     {[timeSeries].map((lineData, index) => {
                         return (
                             <LinePath
-                                curve={curveLinear}
+                                curve={curveBasis}
                                 data={lineData}
                                 x={d => xScale(x(d))}
                                 y={d => yScale(d['movingAvg']) - 30}
-                                stroke='#dc3545'
+                                stroke='#cf1111'
                                 strokeWidth={2}
                             />
                         )

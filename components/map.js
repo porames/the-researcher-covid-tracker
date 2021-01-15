@@ -7,7 +7,7 @@ import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
 import Graph from './provinceCurve'
 
-mapboxgl.accessToken = process.env.mapboxKey
+
 
 class Map extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Map extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
     }
     componentDidMount() {
-
+        mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/townhall-th/ckjp7wsca4inq19pbfpm6leov',
