@@ -1,11 +1,13 @@
 import React from 'react'
-import data from './gis/data/national-timeseries-14-1-2021.json'
-import { extent, max, bisector } from 'd3-array'
+import data from './gis/data/national-timeseries.json'
+import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
-import { curveLinear, curveBasis } from '@visx/curve'
+import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { Group } from '@visx/group'
 import { MarkerArrow } from '@visx/marker'
+import moment from 'moment'
+import 'moment/locale/th'
 function movingAvg(ts, hospitalization) {
     var moving_aves = []
     var ys = []
@@ -152,18 +154,18 @@ function NationalTable(props) {
                 <tr>
                     <th scope="col"></th>
                     <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                    <th className='text-end' scope="col">วันนี้</th>
+                    <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('DD MMM')}</th>
                     <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
                 </tr>
             </thead>
             <tbody>
                 <tr className='text-danger'>
-                    <th scope="row">ผู้ติดเชื้อสะสม</th>
+                    <th scope="row">ผู้ติดเชื้อ</th>
                     <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                     <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
                     <td className='d-flex justify-content-end'>
                         <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
-                        <div>
+                        <div className='ml-1'>
                         <TrendCurveInfectionRate data={ts} />
                         </div>
                         
@@ -176,7 +178,7 @@ function NationalTable(props) {
                     <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
                     <td className='d-flex justify-content-end'>
                         <div>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}%</div>
-                        <div>
+                        <div className='ml-1'>
                             <TrendCurveHospitalization data={ts} />
                         </div>
                     </td>

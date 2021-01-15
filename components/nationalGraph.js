@@ -10,7 +10,7 @@ import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
 import { curveLinear, curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from './gis/data/national-timeseries-14-1-2021.json'
+import data from './gis/data/national-timeseries.json'
 import { AxisBottom } from '@visx/axis'
 
 

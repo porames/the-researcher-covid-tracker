@@ -1,6 +1,7 @@
 import React from 'react'
-import images from './built_images.json'
+import build from './build_job.json'
 import _ from 'lodash'
+const images = build['images']
 export default function Province(props) {
     const sortedImages = _.sortBy(images, 'total-14days').reverse()
     return (

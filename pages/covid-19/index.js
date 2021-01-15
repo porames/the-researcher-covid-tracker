@@ -4,7 +4,9 @@ import NationalCurve from '../../components/nationalGraph'
 import NationalTable from '../../components/nationalTable.js'
 import Province from '../../components/provincesGraph'
 import React, { useEffect, useState } from 'react'
-
+import build from '../../components/build_job.json'
+import moment from 'moment'
+import 'moment/locale/th'
 const BarLegend = () => {
   const palette = ["#FFFA6C", '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
   return (
@@ -61,7 +63,7 @@ export default function Home() {
       <div className='container mb-4' style={{ maxWidth: 700 }}>
         <div className='text-center'>
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
-          <small style={{ opacity: 0.6 }}>อัพเดท 14 มกราคม 2564</small>
+          <small style={{ opacity: 0.6 }}>อัพเดท {moment(build['job']['dataset_updated_on']).format('LL')}</small>
         </div>
         <NationalCurve />
         <NationalTable />
@@ -77,7 +79,7 @@ export default function Home() {
 
       <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
         <h2 className='text-center mt-5 mb-3'>สถานการณ์รายจังหวัด</h2>
-        <div className='text-center text-muted mb-5'>แนวโน้มจำนวนผู้ป่วยใหม่ตั้งแต่การระบาดรอบใหม่ 15 ธันวาคม 2563 - 14 มกราคม 2564</div>
+        <div className='text-center text-muted mb-5'>แนวโน้มจำนวนผู้ป่วยใหม่ตั้งแต่การระบาดรอบใหม่ 15 ธันวาคม 2020 - {moment(build['job']['dataset_updated_on']).format('LL')}</div>
         <Province />
         <div className='my-4 alert alert-black text-white'>
           จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
