@@ -44,7 +44,6 @@ function TrendCurveInfectionRate(props) {
     avgs.map((avg, i) => {
         ts[i]['movingAvg'] = avg
     })
-    console.log(ts)
 
     const x = d => new Date(d['Date']);
     const y = d => d['movingAvg'];
