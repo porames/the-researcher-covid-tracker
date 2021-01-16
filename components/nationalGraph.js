@@ -14,6 +14,7 @@ import data from './gis/data/national-timeseries.json'
 import { AxisBottom } from '@visx/axis'
 import { Brush } from '@visx/brush';
 import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush';
+import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
 function movingAvg(ts) {
     var moving_aves = []
@@ -26,7 +27,7 @@ function movingAvg(ts) {
             const cosum = ys.slice(i - 7, i)
             moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
         }
-        else{
+        else {
             moving_aves.push(0)
         }
     }
@@ -43,7 +44,7 @@ function NationalCurve(props) {
     const x = d => new Date(d['Date']);
     const y = d => d['NewConfirmed'];
     const avgs = movingAvg(timeSeries)
-    
+
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
@@ -77,6 +78,49 @@ function NationalCurve(props) {
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
+                    <Annotation
+                        x={xScale(x(timeSeries[353]))}
+                        y={yScale(timeSeries[353]['NewConfirmed']) - 30}
+                        dx={-40}
+                        dy={0}
+                        width={100}
+                        height={200}
+                    >
+                        <Connector stroke='#e0e0e0' type='line' />
+                        <Label
+                            className='text-center'
+                            title='ผู้ป่วยใหม่รายวัน'
+                            fontColor='#e0e0e0'
+                            horizontalAnchor='end'
+                            backgroundFill="transparent"
+                            backgroundPadding={0}
+                            titleFontWeight={600}
+                            labelAnchor='middle'
+                            width={90}
+                            titleFontSize={12}
+                        />
+                    </Annotation>
+                    <Annotation
+                        x={xScale(x(timeSeries[90]))}
+                        y={yScale(timeSeries[90]['movingAvg']) - 30}
+                        dx={0}
+                        dy={-40}
+                        width={200}
+                        height={200}
+                    >
+                        <Connector stroke='#e0e0e0' type='line' />
+                        <Label
+                            className='text-center'
+                            title='ค่าเฉลี่ย 7 วัน'
+                            fontColor='#e0e0e0'
+                            horizontalAnchor='middle'
+                            backgroundFill="transparent"
+                            backgroundPadding={0}
+                            titleFontWeight={600}
+                            labelAnchor='middle'
+                            titleFontSize={12}
+                        />
+                    </Annotation>
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
@@ -96,6 +140,7 @@ function NationalCurve(props) {
                     {[timeSeries].map((lineData, index) => {
                         return (
                             <LinePath
+                                key={index}
                                 curve={curveBasis}
                                 data={lineData}
                                 x={d => xScale(x(d))}

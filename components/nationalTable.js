@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import data from './gis/data/national-timeseries.json'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
@@ -64,6 +64,7 @@ function TrendCurveInfectionRate(props) {
                 {[ts].map((lineData, i) => {
                     return (
                         <LinePath
+                            key={i}
                             curve={curveBasis}
                             data={lineData}
                             x={d => xScale(x(d))}
@@ -110,6 +111,7 @@ function TrendCurveHospitalization(props) {
                 {[ts].map((lineData, i) => {
                     return (
                         <LinePath
+                            key={i}
                             curve={curveBasis}
                             data={lineData}
                             x={d => xScale(x(d))}
@@ -146,51 +148,55 @@ function NationalTable(props) {
     }
     const delta = ((currentPeriod - prevPeriod) / prevPeriod) * 100
     const deltaH = ((HcurrentPeriod - HprevPeriod) / HprevPeriod) * 100
+    useEffect(()=>{
+        props.updatedAt(data['UpdateDate'])
+    },[])
+    
     return (
         <div className='table-responsive'>
-        <table className="table table-theme-light mt-4 text-white">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                    <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('DD MMM')}</th>
-                    <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr className='text-danger'>
-                    <th scope="row">ผู้ติดเชื้อ</th>
-                    <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
-                    <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
-                    <td className='d-flex justify-content-end'>
-                        <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
-                        <div className='ml-1'>
-                        <TrendCurveInfectionRate data={ts} />
-                        </div>
-                        
+            <table className="table table-theme-light mt-4 text-white">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
+                        <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('DD MMM')}</th>
+                        <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className='text-danger'>
+                        <th scope="row">ผู้ติดเชื้อ</th>
+                        <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
+                        <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
+                        <td className='d-flex justify-content-end'>
+                            <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
+                            <div className='ml-1'>
+                                <TrendCurveInfectionRate data={ts} />
+                            </div>
+
                         </td>
-                </tr>
+                    </tr>
 
-                <tr className='text-sec'>
-                    <th scope="row">รักษาตัวในโรงพยาบาล</th>
-                    <td></td>
-                    <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
-                    <td className='d-flex justify-content-end'>
-                        <div>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}%</div>
-                        <div className='ml-1'>
-                            <TrendCurveHospitalization data={ts} />
-                        </div>
-                    </td>
-                </tr>
-                <tr className='text-sec'>
-                    <th scope="row">เสียชีวิต</th>
-                    <td>{ts[ts.length - 1]['Deaths']}</td>
-                    <td>{ts[ts.length - 1]['NewDeaths']}</td>
-                    <td></td>
-                </tr>
+                    <tr className='text-sec'>
+                        <th scope="row">รักษาตัวในโรงพยาบาล</th>
+                        <td></td>
+                        <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
+                        <td className='d-flex justify-content-end'>
+                            <div>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}%</div>
+                            <div className='ml-1'>
+                                <TrendCurveHospitalization data={ts} />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr className='text-sec'>
+                        <th scope="row">เสียชีวิต</th>
+                        <td>{ts[ts.length - 1]['Deaths']}</td>
+                        <td>{ts[ts.length - 1]['NewDeaths']}</td>
+                        <td></td>
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         </div>
     )
 }

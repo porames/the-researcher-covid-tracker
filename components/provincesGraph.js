@@ -11,7 +11,7 @@ export default function Province(props) {
                     sortedImages.map((img, index) => {
                         if (img['total-14days'] > 5) {
                             return (
-                                <div className='col-4 col-md-3 mb-4'>
+                                <div key={index} className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
                                         <div className='tick'>{img['max']} -</div>
@@ -29,7 +29,7 @@ export default function Province(props) {
                     sortedImages.map((img, index) => {
                         if (img['total-14days'] <= 5) {
                             return (
-                                <div className='col-4 col-md-3 mb-4'>
+                                <div key={index} className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
                                         <div className='tick'>{img['max']} -</div>

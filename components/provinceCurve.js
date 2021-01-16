@@ -99,12 +99,14 @@ function Graph(props) {
         <svg width={width} height={height}>
             <Group>
                 <MarkerArrow id="marker-arrow-province" fill={colorMap(props.caseCount)} refX={2} size={5} />
+                
                 {[recent].map((lineData, i) => {
                     const markerEnd = 'url(#marker-arrow-province)';
                     return (
                         <Group>
 
                             <LinePath
+                                key={i}
                                 curve={curveLinear}
                                 data={lineData}
                                 x={d => xScale(new Date(d.date)) ?? 0}

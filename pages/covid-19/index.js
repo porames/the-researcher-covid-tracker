@@ -5,6 +5,7 @@ import NationalTable from '../../components/nationalTable.js'
 import Province from '../../components/provincesGraph'
 import React, { useEffect, useState } from 'react'
 import build from '../../components/build_job.json'
+import nationalTs from '../../components/gis/data/national-timeseries.json'
 import moment from 'moment'
 import 'moment/locale/th'
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
@@ -52,6 +53,38 @@ const BarLegend = () => {
     </div>
   )
 }
+
+class NationalCurveSection extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      updatedDate: undefined
+    }
+  }
+  
+  render() {
+    return (
+      <div className='container mb-4' style={{ maxWidth: 700 }}>
+        <div className='text-center'>
+          <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
+          {this.state.updatedDate &&
+            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').format('LL')}</small>
+          }
+        </div>
+        <NationalCurve />
+        <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
+        <div className='mt-5 mb-4 text-center alert alert-black text-white'>
+          เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
+          ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
+        </div>
+        <h2 className='text-center mt-5 mb-4'>ตำแหน่งที่มีการระบาด</h2>
+        <div className='text-center mb-3 text-sec'><b>จำนวนผู้ติดเชื้อในรอบ 14 วัน</b></div>
+        <BarLegend />
+      </div>
+    )
+  }
+}
+
 export default function Home() {
 
   return (
@@ -79,21 +112,7 @@ export default function Home() {
         <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
         <meta property="twitter:image" content="/cover.png" />
       </Head>
-      <div className='container mb-4' style={{ maxWidth: 700 }}>
-        <div className='text-center'>
-          <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
-          <small style={{ opacity: 0.6 }}>อัพเดท {moment(build['job']['dataset_updated_on']).format('LL')}</small>
-        </div>
-        <NationalCurve />
-        <NationalTable />
-        <div className='mt-5 mb-4 text-center alert alert-black text-white'>
-          เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
-          ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
-        </div>
-        <h2 className='text-center mt-5 mb-4'>ตำแหน่งที่มีการระบาด</h2>
-        <div className='text-center mb-3 text-sec'><b>จำนวนผู้ติดเชื้อในรอบ 14 วัน</b></div>
-        <BarLegend />
-      </div>
+      <NationalCurveSection />
       <Map />
       <Element name='skipMap'>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>

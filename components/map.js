@@ -277,7 +277,9 @@ class Map extends React.Component {
                                 <span className='text-muted'>เลือกจังหวัดเพื่อดูข้อมูลเพิ่มเติม</span>
                             }
                         </div>
-                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link'><img className='mr-2' src='/expand_more-white.svg' />ดูสถานการณ์รายจังหวัด</button>
+                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link' style={{paddingLeft: 2}}>
+                            <img className='mr-2' src='/expand_more-white.svg' />ดูสถานการณ์รายจังหวัด
+                        </button>
                     </div>
                 </div>
             </div>
