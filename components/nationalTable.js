@@ -168,7 +168,7 @@ function NationalTable(props) {
                         <th scope="row">ผู้ติดเชื้อ</th>
                         <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
+                        <td className='d-flex justify-content-end' style={{borderTop: 'none'}}>
                             <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
                             <div className='ml-1'>
                                 <TrendCurveInfectionRate data={ts} />

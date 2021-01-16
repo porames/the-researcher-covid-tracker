@@ -14,7 +14,7 @@ export default function Province(props) {
                                 <div key={index} className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
-                                        <div className='tick'>{img['max']} -</div>
+                                        <div className='tick'>{img['max'] <10 ? '10': img['max']} -</div>
                                     </div>
                                 </div>
                             )
@@ -32,7 +32,7 @@ export default function Province(props) {
                                 <div key={index} className='col-4 col-md-3 mb-4'>
                                     <span className='text-sec'>{img['province']}</span>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
-                                        <div className='tick'>{img['max']} -</div>
+                                    <div className='tick'>{img['max'] <10 ? '10': img['max']} -</div>
                                     </div>
                                 </div>
                             )
