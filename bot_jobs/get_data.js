@@ -14,6 +14,7 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
             combine = combine.replace(/อ\./g, '')
             combine = combine.replace(/\/2020/g, '/20')
             combine = combine.replace(/\/2021/g, '/21')
+            combine = combine.replace(/กทม/g, 'กรุงเทพมหานคร')
 
             fs.writeFileSync('dataset.csv', combine);
             console.log('done')
