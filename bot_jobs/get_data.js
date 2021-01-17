@@ -3,23 +3,14 @@ const csv = require('csv-parser')
 const fs = require('fs')
 request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/329f684b-994d-476b-91a4-62b2ea00f29f/download/dataset.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
-        var part2 = body
-        part2 = part2.split('\n')
-        part2.splice(0, 1)
-        fs.readFile('dataset-1-of-2.csv', 'utf-8', (err, data) => {
-            var part1 = data.split('\n')
-            var combine = part1.concat(part2)
-            combine = combine.join('\n')
-            combine = combine.replace(/ุุ/g, 'ุ')
-            combine = combine.replace(/อ\./g, '')
-            combine = combine.replace(/\/2020/g, '/20')
-            combine = combine.replace(/\/2021/g, '/21')
-            combine = combine.replace(/กทม/g, 'กรุงเทพมหานคร')
-
-            fs.writeFileSync('dataset.csv', combine);
-            console.log('done')
-        })
-
+        var dataset = body
+        dataset = dataset.replace(/ุุ/g, 'ุ')
+        dataset = dataset.replace(/อ\./g, '')
+        dataset = dataset.replace(/\/2020/g, '/20')
+        dataset = dataset.replace(/\/2021/g, '/21')
+        dataset = dataset.replace(/กทม/g, 'กรุงเทพมหานคร')
+        fs.writeFileSync('dataset.csv', dataset);
+        console.log('provincial dataset downloaded')
     }
     else {
         console.log(err)
@@ -28,7 +19,7 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
 request('https://covid19.th-stat.com/api/open/timeline', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         fs.writeFileSync('../components/gis/data/national-timeseries.json', body);
-        console.log('done')
+        console.log('national stats downloaded')
     }
     else {
         console.log(err)

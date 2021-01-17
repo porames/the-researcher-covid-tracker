@@ -37,7 +37,7 @@ function TrendCurveInfectionRate(props) {
     var ts = props.data
     ts = ts.slice(ts.length - 30, ts.length)
     const width = 50
-    const height = 18
+    const height = 20
     var avgs = movingAvg(ts)
     avgs = avgs.slice(avgs.length - 14, avgs.length)
     ts = ts.slice(ts.length - 14, ts.length)
@@ -53,7 +53,7 @@ function TrendCurveInfectionRate(props) {
 
     })
     const yScale = scaleLinear({
-        range: [height, 2],
+        range: [height-2, 2],
         domain: extent(ts, y)
     })
 
@@ -84,7 +84,7 @@ function TrendCurveHospitalization(props) {
     var ts = props.data
     ts = ts.slice(ts.length - 30, ts.length)
     const width = 50
-    const height = 18
+    const height = 20
     var avgs = movingAvg(ts, true)
     avgs = avgs.slice(avgs.length - 14, avgs.length)
     ts = ts.slice(ts.length - 14, ts.length)
@@ -100,7 +100,7 @@ function TrendCurveHospitalization(props) {
 
     })
     const yScale = scaleLinear({
-        range: [height, 2],
+        range: [height-2, 2],
         domain: extent(ts, y)
     })
 
