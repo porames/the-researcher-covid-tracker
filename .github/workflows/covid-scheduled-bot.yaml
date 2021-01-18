@@ -1,0 +1,32 @@
+
+name: bot-taks-scheduler
+on:
+  push:
+    branches:
+    - dev
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest    
+    steps:
+      - name: Check Repo
+        uses: actions/checkout@v2.3.4        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Setup Python Environment
+        uses: actions/setup-python@v2.2.1
+      - name: Get Latest Data From The Government Database
+        run: node /bot_jobs/get_data.js
+      - name: Process Data Received
+        run: node /bot_jobs/process_data.js
+      - name: Build Province Graphs in svg using Python
+        run: python /bot_jobs/build.py
+      - name: Push Changes to Git Repo
+        run: |
+          git config --global user.name "$(github.actor)"
+          git config --global user.email "$(github.actor)@localhost"
+          git add -A
+          git commit -m "[Bot 🤖] build data from today's dataset $(date)"
+          git push
