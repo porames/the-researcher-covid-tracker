@@ -1,9 +1,8 @@
 
 name: bot-taks-scheduler
 on:
-  push:
-    branches:
-    - dev
+  schedule:
+  - cron: '0 6 * * *' #06 Hour UTC = 13 Hour GMT+7
 
 jobs:
   cron:
