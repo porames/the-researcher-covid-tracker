@@ -15,6 +15,10 @@ jobs:
         uses: actions/setup-node@v2.1.4
       - name: Install Node.js dependencies
         run: npm install
+      - name: Python Dependency Installation
+        uses: py-actions/py-dependency-install@v2.1.0
+        with:
+          path: "bot_jobs/requirements.txt"
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Get Latest Data From The Government Database
