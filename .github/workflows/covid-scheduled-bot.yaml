@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
       - name: Set TimeZone for JS environment
-        uses: actions/set-timezone-action@v1.1
+        uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: "Asia/Bangkok"
       - name: Install Node.js dependencies
