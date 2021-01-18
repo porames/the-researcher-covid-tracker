@@ -15,16 +15,17 @@ jobs:
         uses: actions/setup-node@v2.1.4
       - name: Install Node.js dependencies
         run: npm install
-      - name: show directory path
-        run: ls -la
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Get Latest Data From The Government Database
-        run: node bot_jobs/get_data.js
+        working-directory: bot_jobs
+        run: node get_data.js
       - name: Process Data Received
-        run: node bot_jobs/process_data.js
+        working-directory: bot_jobs
+        run: node process_data.js
       - name: Build Province Graphs in svg using Python
-        run: python bot_jobs/build.py
+        working-directory: bot_jobs
+        run: python build.py
       - name: Push Changes to Git Repo
         run: |
           git config --global user.name "$(github.actor)"
