@@ -45,10 +45,14 @@ fs.createReadStream('dataset.csv')
             var query = _.findIndex(provinces, { 'name': province })
             if (query >= 0) {
                 var date = row['announce_date']
-
+                const d = date.split('/')
+                if(d[0]>12){
+                    date = new Date(`${d[1]}/${d[0]}/${d[2]}`)
+                }
+                else{
+                    date = new Date(date)
+                }
                 
-                date = new Date(date)
-
                 if (date >= startDate) {
                     var caseCount = provinces[query]['caseCount']
                     caseCount++
@@ -72,8 +76,13 @@ fs.createReadStream('dataset.csv')
             var query = _.findIndex(amphoes, { 'name': amphoe })
             if (query >= 0) {
                 var date = row['announce_date']
-
-                date = new Date(date)
+                const d = date.split('/')
+                if(d[0]>12){
+                    date = new Date(`${d[1]}/${d[0]}/${d[2]}`)
+                }
+                else{
+                    date = new Date(date)
+                }
 
                 if (date >= startDate) {
                     var cases = amphoes[query]['cases']

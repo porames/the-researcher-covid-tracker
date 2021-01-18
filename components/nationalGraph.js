@@ -35,7 +35,7 @@ function movingAvg(ts) {
 }
 
 function NationalCurve(props) {
-    var timeSeries = data['Data']    
+    var timeSeries = data['Data']
     const width = props.width
     const height = props.height
     const x = d => new Date(d['Date'])
@@ -160,7 +160,7 @@ function NationalCurve(props) {
 
                     <Group>
                         <AxisBottom
-                            
+
                             top={height - 30}
                             scale={dateScale}
                             tickFormat={d => moment(d).format('MMM')}
@@ -179,12 +179,16 @@ function NationalCurve(props) {
                                     const x0 = dateScale.invert(x)
                                     const index = bisectDate(timeSeries, x0, 1)
                                     const d = timeSeries[index]
-                                    const barHeight = height - yScale(y(d))
-                                    showTooltip({
-                                        tooltipData: d,
-                                        tooltipLeft: x,
-                                        tooltipTop: height - barHeight - 100
-                                    })
+                                    if (d) {
+                                        const barHeight = (height - yScale(y(d)) ?? 0)
+
+
+                                        showTooltip({
+                                            tooltipData: d,
+                                            tooltipLeft: x,
+                                            tooltipTop: height - barHeight - 100
+                                        })
+                                    }
                                 }
                             }}
                             onMouseLeave={() => hideTooltip()}
@@ -197,7 +201,7 @@ function NationalCurve(props) {
                     </Group>
                 </Group>
             </svg>
-            
+
             {tooltipData &&
                 <Tooltip
                     top={tooltipTop}
