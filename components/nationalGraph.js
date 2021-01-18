@@ -1,5 +1,5 @@
-import React from 'react';
-import { extent, max, bisector } from 'd3-array'
+import React, { useState, useRef } from 'react';
+import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
@@ -7,13 +7,13 @@ import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
-import { curveLinear, curveBasis } from '@visx/curve'
+import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from './gis/data/national-timeseries.json'
 import { AxisBottom } from '@visx/axis'
-import { Brush } from '@visx/brush';
-import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush';
+import { Brush } from '@visx/brush'
+import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush'
 import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
 function movingAvg(ts) {
@@ -35,26 +35,22 @@ function movingAvg(ts) {
 }
 
 function NationalCurve(props) {
-    const timeSeries = data['Data']
-
-    // Then we'll create some bounds
+    var timeSeries = data['Data']    
     const width = props.width
     const height = props.height
-    // We'll make some helpers to get at the data we want
-    const x = d => new Date(d['Date']);
-    const y = d => d['NewConfirmed'];
+    const x = d => new Date(d['Date'])
+    const y = d => d['NewConfirmed']
     const avgs = movingAvg(timeSeries)
-
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
     const xScale = scaleBand({
-        range: [10, width - 10],
+        range: [20, width - 20],
         domain: timeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [10, width - 10],
+        range: [20, width - 20],
         domain: extent(timeSeries, x),
         padding: 0.07
     })
@@ -62,6 +58,7 @@ function NationalCurve(props) {
         range: [height, 50],
         domain: [0, max(timeSeries, y)],
     })
+
     const {
         showTooltip,
         hideTooltip,
@@ -78,49 +75,53 @@ function NationalCurve(props) {
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <Annotation
-                        x={xScale(x(timeSeries[353]))}
-                        y={yScale(timeSeries[353]['NewConfirmed']) - 30}
-                        dx={-40}
-                        dy={0}
-                        width={100}
-                        height={200}
-                    >
-                        <Connector stroke='#e0e0e0' type='line' />
-                        <Label
-                            className='text-center'
-                            title='ผู้ป่วยใหม่รายวัน'
-                            fontColor='#e0e0e0'
-                            horizontalAnchor='end'
-                            backgroundFill="transparent"
-                            backgroundPadding={0}
-                            titleFontWeight={600}
-                            labelAnchor='middle'
-                            width={90}
-                            titleFontSize={12}
-                        />
-                    </Annotation>
-                    <Annotation
-                        x={xScale(x(timeSeries[90]))}
-                        y={yScale(timeSeries[90]['movingAvg']) - 30}
-                        dx={0}
-                        dy={-40}
-                        width={200}
-                        height={200}
-                    >
-                        <Connector stroke='#e0e0e0' type='line' />
-                        <Label
-                            className='text-center'
-                            title='ค่าเฉลี่ย 7 วัน'
-                            fontColor='#e0e0e0'
-                            horizontalAnchor='middle'
-                            backgroundFill="transparent"
-                            backgroundPadding={0}
-                            titleFontWeight={600}
-                            labelAnchor='middle'
-                            titleFontSize={12}
-                        />
-                    </Annotation>
+
+                    <Group>
+                        <Annotation
+                            x={xScale(x(timeSeries[353]))}
+                            y={yScale(timeSeries[353]['NewConfirmed']) - 30}
+                            dx={-40}
+                            dy={0}
+                            width={100}
+                            height={200}
+                        >
+                            <Connector stroke='#e0e0e0' type='line' />
+                            <Label
+                                className='text-center'
+                                title='ผู้ป่วยใหม่รายวัน'
+                                fontColor='#e0e0e0'
+                                horizontalAnchor='end'
+                                backgroundFill="transparent"
+                                backgroundPadding={0}
+                                titleFontWeight={600}
+                                labelAnchor='middle'
+                                width={90}
+                                titleFontSize={12}
+                            />
+                        </Annotation>
+                        <Annotation
+                            x={xScale(x(timeSeries[90]))}
+                            y={yScale(timeSeries[90]['movingAvg']) - 30}
+                            dx={0}
+                            dy={-40}
+                            width={200}
+                            height={200}
+                        >
+                            <Connector stroke='#e0e0e0' type='line' />
+                            <Label
+                                className='text-center'
+                                title='ค่าเฉลี่ย 7 วัน'
+                                fontColor='#e0e0e0'
+                                horizontalAnchor='middle'
+                                backgroundFill="transparent"
+                                backgroundPadding={0}
+                                titleFontWeight={600}
+                                labelAnchor='middle'
+                                titleFontSize={12}
+                            />
+                        </Annotation>
+                    </Group>
+
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
@@ -137,19 +138,16 @@ function NationalCurve(props) {
                             );
                         })}
                     </Group>
-                    {[timeSeries].map((lineData, index) => {
-                        return (
-                            <LinePath
-                                key={index}
-                                curve={curveBasis}
-                                data={lineData}
-                                x={d => xScale(x(d))}
-                                y={d => yScale(d['movingAvg']) - 30}
-                                stroke='#cf1111'
-                                strokeWidth={2}
-                            />
-                        )
-                    })}
+
+                    <LinePath
+                        curve={curveBasis}
+                        data={timeSeries}
+                        x={d => xScale(x(d))}
+                        y={d => yScale(d['movingAvg']) - 30}
+                        stroke='#cf1111'
+                        strokeWidth={2}
+                    />
+
                     {tooltipData &&
                         <Bar
                             x={xScale(x(tooltipData))}
@@ -159,43 +157,47 @@ function NationalCurve(props) {
                             fill='#ff5e6f'
                         />
                     }
-                    <AxisBottom
-                        top={height - 30}
-                        scale={xScale}
-                        tickFormat={d => moment(d).format('MMM')}
-                        tickStroke='#bfbfbf'
-                        stroke='#bfbfbf'
-                        tickLabelProps={() => ({
-                            fill: '#bfbfbf',
-                            fontSize: 11,
-                            textAnchor: 'middle',
-                        })}
-                    />
-                    <Bar
-                        onMouseMove={(e) => {
-                            const x = localPoint(e)['x']
-                            if (x) {
-                                const x0 = dateScale.invert(x)
-                                const index = bisectDate(timeSeries, x0, 1)
-                                const d = timeSeries[index]
-                                const barHeight = height - yScale(y(d))
-                                showTooltip({
-                                    tooltipData: d,
-                                    tooltipLeft: x,
-                                    tooltipTop: height - barHeight - 100
-                                })
-                            }
-                        }}
-                        onMouseLeave={() => hideTooltip()}
-                        x={10}
-                        y={0}
-                        width={width - 20}
-                        height={height - 30}
-                        fill="transparent"
-                    />
-                </Group>
 
+                    <Group>
+                        <AxisBottom
+                            
+                            top={height - 30}
+                            scale={dateScale}
+                            tickFormat={d => moment(d).format('MMM')}
+                            tickStroke='#bfbfbf'
+                            stroke='#bfbfbf'
+                            tickLabelProps={() => ({
+                                fill: '#bfbfbf',
+                                fontSize: 11,
+                                textAnchor: 'middle'
+                            })}
+                        />
+                        <Bar
+                            onMouseMove={(e) => {
+                                const x = localPoint(e)['x']
+                                if (x) {
+                                    const x0 = dateScale.invert(x)
+                                    const index = bisectDate(timeSeries, x0, 1)
+                                    const d = timeSeries[index]
+                                    const barHeight = height - yScale(y(d))
+                                    showTooltip({
+                                        tooltipData: d,
+                                        tooltipLeft: x,
+                                        tooltipTop: height - barHeight - 100
+                                    })
+                                }
+                            }}
+                            onMouseLeave={() => hideTooltip()}
+                            x={10}
+                            y={0}
+                            width={width - 20}
+                            height={height - 30}
+                            fill="transparent"
+                        />
+                    </Group>
+                </Group>
             </svg>
+            
             {tooltipData &&
                 <Tooltip
                     top={tooltipTop}
@@ -218,14 +220,12 @@ function NationalCurve(props) {
     )
 }
 
-function Container(props) {
-    return (
-        <ParentSize>
-            {({ width, height }) => (
-                <NationalCurve width={width} height={300} />
-            )}
-        </ParentSize>
+const Container = () => (
+    <ParentSize>
+        {({ width, height }) => (
+            <NationalCurve width={width} height={300} />
+        )}
+    </ParentSize>
+)
 
-    )
-}
 export default Container

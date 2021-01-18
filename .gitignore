@@ -8,6 +8,8 @@
 next.config.js
 /styles/css
 /components/gis/geo/mapbox_exports
+/bot_jobs/*.ipynb
+/bot_jobs/.ipynb_checkpoints
 # testing
 /coverage
 
