@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-node@v2.1.4
       - name: Install Node.js dependencies
         run: npm install
+      - name: show directory path
+        run: ls -la
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Get Latest Data From The Government Database
