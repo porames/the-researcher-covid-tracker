@@ -29,10 +29,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python build.py
-      - name: Push Changes to Git Repo
+      - name: Commit Changes to Git Repo
         run: |
-          git config --global user.name "$(github.actor)"
-          git config --global user.email "$(github.actor)@localhost"
+          git config --global user.name "porames"
+          git config --global user.email "porames@users.noreply.github.com"
           git add -A
           git commit -m "[Bot 🤖] build data from today's dataset $(date)"
           git push
