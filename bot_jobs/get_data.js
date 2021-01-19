@@ -18,7 +18,11 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
 })
 request('https://covid19.th-stat.com/api/open/timeline', (err, response, body) => {
     if (!err && response.statusCode == 200) {
-        fs.writeFileSync('../components/gis/data/national-timeseries.json', body);
+        body = JSON.parse(body)
+        body['Data'] = body['Data'].filter(s=>{
+            return new Date(s['Date']) >= new Date('3/1/2020')
+        })
+        fs.writeFileSync('../components/gis/data/national-timeseries.json', JSON.stringify(body));
         console.log('national stats downloaded')
     }
     else {

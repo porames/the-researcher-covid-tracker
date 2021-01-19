@@ -16,6 +16,7 @@ import { Brush } from '@visx/brush'
 import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush'
 import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
+
 function movingAvg(ts) {
     var moving_aves = []
     var ys = []
@@ -44,6 +45,7 @@ function NationalCurve(props) {
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
+
     const xScale = scaleBand({
         range: [20, width - 20],
         domain: timeSeries.map(x),
@@ -78,8 +80,8 @@ function NationalCurve(props) {
 
                     <Group>
                         <Annotation
-                            x={xScale(x(timeSeries[353]))}
-                            y={yScale(timeSeries[353]['NewConfirmed']) - 30}
+                            x={xScale(x(timeSeries[293]))}
+                            y={yScale(timeSeries[293]['NewConfirmed']) - 30}
                             dx={-40}
                             dy={0}
                             width={100}
@@ -100,8 +102,8 @@ function NationalCurve(props) {
                             />
                         </Annotation>
                         <Annotation
-                            x={xScale(x(timeSeries[90]))}
-                            y={yScale(timeSeries[90]['movingAvg']) - 30}
+                            x={xScale(x(timeSeries[30]))}
+                            y={yScale(timeSeries[30]['movingAvg']) - 30}
                             dx={0}
                             dy={-40}
                             width={200}
@@ -160,7 +162,6 @@ function NationalCurve(props) {
 
                     <Group>
                         <AxisBottom
-
                             top={height - 30}
                             scale={dateScale}
                             tickFormat={d => moment(d).format('MMM')}

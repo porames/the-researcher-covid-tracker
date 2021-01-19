@@ -131,9 +131,17 @@ hr {
 }
 
 .tick{
-    font-size: 10px;
+    font-size: 11px;
     position: absolute;
     top: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+
+.flat-line{
+    font-size: 11px;
+    position: absolute;
+    bottom: 0px;
     left: 0px;
     opacity: 0.5;
 }
@@ -144,4 +152,13 @@ hr {
     left:50%;
     transform: translate(-50%,0);
     z-index:2;
+}
+
+.annotation {
+    position: absolute;
+    line-height: 8px;
+    span {
+        font-size: 10px;
+        color: #999;
+    }
 }
