@@ -182,7 +182,7 @@ function NationalTable(props) {
                         <td></td>
                         <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
                         <td className='d-flex justify-content-end'>
-                            <div>{deltaH > 0 ? '+' : '-'}{parseInt(deltaH).toLocaleString()}%</div>
+                            <div>{deltaH > 0 ? '+' : ''}{parseInt(deltaH).toLocaleString()}%</div>
                             <div className='ml-1'>
                                 <TrendCurveHospitalization data={ts} />
                             </div>
