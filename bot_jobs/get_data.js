@@ -8,6 +8,7 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
         dataset = dataset.replace(/อ\./g, '')
         dataset = dataset.replace(/\/2020/g, '/20')
         dataset = dataset.replace(/\/2021/g, '/21')
+        dataset = dataset.replace(/\/0202/g, '/21')
         dataset = dataset.replace(/กทม/g, 'กรุงเทพมหานคร')
         fs.writeFileSync('dataset.csv', dataset);
         console.log('provincial dataset downloaded')
