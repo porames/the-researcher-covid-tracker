@@ -134,16 +134,16 @@ function NationalTable(props) {
     var prevPeriod = 0
     var HcurrentPeriod = 0
     var HprevPeriod = 0
-    for (var i = ts.length - 1; i >= ts.length - 15; i--) {
+    for (var i = ts.length - 1; i >= ts.length - 8; i--) {
         currentPeriod += ts[i]['NewConfirmed']
     }
-    for (var i = (ts.length - 1) - 14; i >= (ts.length - 15) - 14; i--) {
+    for (var i = (ts.length - 1) - 7; i >= (ts.length - 8) - 7; i--) {
         prevPeriod += ts[i]['NewConfirmed']
     }
-    for (var i = ts.length - 1; i >= ts.length - 15; i--) {
+    for (var i = ts.length - 1; i >= ts.length - 8; i--) {
         HcurrentPeriod += ts[i]['Hospitalized']
     }
-    for (var i = (ts.length - 1) - 14; i >= (ts.length - 15) - 14; i--) {
+    for (var i = (ts.length - 1) - 7; i >= (ts.length - 8) - 7; i--) {
         HprevPeriod += ts[i]['Hospitalized']
     }
     const delta = ((currentPeriod - prevPeriod) / prevPeriod) * 100
