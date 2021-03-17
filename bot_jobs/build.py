@@ -24,10 +24,7 @@ for date in date_generated:
 provinces={}
 lastRow=data.tail(1)
 date=list(lastRow['announce_date'])[0].strip()
-try:
-    datasetUpdatedOn=datetime.datetime.strptime(date,'%m/%d/%y')                
-except:
-    datasetUpdatedOn=datetime.datetime.strptime(date,'%d/%m/%y')
+datasetUpdatedOn=datetime.datetime.strptime(date,'%d/%m/%y')
 
 for row in data.iterrows():
     row = dict(row[1])
@@ -35,10 +32,7 @@ for row in data.iterrows():
     date = row['announce_date']
     if province in provinces:    
         if(isinstance(date, str)):
-            try:
-                parsedDate=datetime.datetime.strptime(date.strip(),'%m/%d/%y')                
-            except:
-                parsedDate=datetime.datetime.strptime(date.strip(),'%d/%m/%y')                
+            parsedDate=datetime.datetime.strptime(date.strip(),'%d/%m/%y')                
             if(parsedDate>=start):
                 provinces[province].append(parsedDate)            
     else:
