@@ -11,7 +11,8 @@ var provinces = []
 const today = moment().startOf('day')
 const startDate = new Date(today.subtract(14, 'd').startOf('day'))
 const startCollect = new Date(today.subtract(30, 'd').startOf('day'))
-
+console.log(startDate)
+console.log(startCollect)
 for (var i = 0; i < features.length; i++) {
     //console.log((i+1),features[i]['properties']['A_NAME_T'],features[i]['properties']['P_NAME_T'])
     province = {}
@@ -46,12 +47,15 @@ fs.createReadStream('dataset.csv')
             if (query >= 0) {
                 var date = row['announce_date']
                 const d = date.split('/')
+                date = new Date(`${d[1]}/${d[0]}/20${d[2]}`)
+                /*
                 if(d[0]>12){
                     date = new Date(`${d[1]}/${d[0]}/${d[2]}`)
                 }
                 else{
                     date = new Date(date)
                 }
+                */
                 
                 if (date >= startDate) {
                     var caseCount = provinces[query]['caseCount']
@@ -77,13 +81,8 @@ fs.createReadStream('dataset.csv')
             if (query >= 0) {
                 var date = row['announce_date']
                 const d = date.split('/')
-                if(d[0]>12){
-                    date = new Date(`${d[1]}/${d[0]}/${d[2]}`)
-                }
-                else{
-                    date = new Date(date)
-                }
-
+                date = new Date(`${d[1]}/${d[0]}/20${d[2]}`)
+                //console.log(date)
                 if (date >= startDate) {
                     var cases = amphoes[query]['cases']
                     var caseCount = amphoes[query]['caseCount']

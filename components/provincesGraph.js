@@ -17,12 +17,12 @@ export default function Province(props) {
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/graphs-build/${img.name})` }}>
                                         <div className='tick'>{img['max'] >= 10 ? img['max'] : 10} -</div>
                                         {index == 0 &&
-                                            <div className='annotation' style={{ bottom: '45%', left: '20%' }}>
+                                            <div className='annotation' style={{ bottom: '10%', left: '20%' }}>
                                                 <span>ค่าเฉลี่ย 7 วัน</span>
                                             </div>
                                         }
                                         {index == 0 &&
-                                            <div className='annotation text-end' style={{ bottom: '45%', right: '0%' }}>
+                                            <div className='annotation text-end' style={{ bottom: '45%', right: '10%' }}>
                                                 <span>ข้อมูล 14 วัน<br />ล่าสุด</span>
                                             </div>
                                         }

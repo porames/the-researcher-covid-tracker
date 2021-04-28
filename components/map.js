@@ -132,7 +132,11 @@ class Map extends React.Component {
                         9,
                         3
                     ],
-                    'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.7, 13, 1],
+                    'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 
+                        2, 0,
+                        5, 0,
+                        8, 0.7,
+                        13, 0.9],
                     'heatmap-radius': [
                         'interpolate',
                         ['linear'],
@@ -195,7 +199,6 @@ class Map extends React.Component {
             this.map.on('mousemove', 'province-fills', (e) => {
                 if (e.features.length > 0) {
                     if (hoveredStateId) {
-
                         this.map.setFeatureState(
                             { source: 'provinces', sourceLayer: 'thmapprovinceswithcentroidsid', id: hoveredStateId },
                             { hover: false }
@@ -209,10 +212,12 @@ class Map extends React.Component {
                     if (!this.state.hoveredData) {
                         const data = _.find(provincesData, { id: Number(e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
+                        console.log(data)
                     }
                     else if (this.state.hoveredData['id'] !== Number(e.features[0].properties['PROV_CODE'])) {
                         const data = _.find(provincesData, { id: Number(e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
+                        console.log(data)
                     }
 
                 }
@@ -277,7 +282,7 @@ class Map extends React.Component {
                                 <span className='text-muted'>เลือกจังหวัดเพื่อดูข้อมูลเพิ่มเติม</span>
                             }
                         </div>
-                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link' style={{paddingLeft: 2}}>
+                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link' style={{ paddingLeft: 2 }}>
                             <img className='mr-2' src='/expand_more-white.svg' />ดูสถานการณ์รายจังหวัด
                         </button>
                     </div>

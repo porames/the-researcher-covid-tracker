@@ -1,7 +1,8 @@
 const request = require('request')
 const csv = require('csv-parser')
 const fs = require('fs')
-request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/329f684b-994d-476b-91a4-62b2ea00f29f/download/dataset.csv', (err, response, body) => {
+
+request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/dataset.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         var dataset = body
         dataset = dataset.replace(/ุุ/g, 'ุ')
