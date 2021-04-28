@@ -45,6 +45,7 @@ class Map extends React.Component {
             });
         });
         this.map.on('load', () => {
+            console.log('load')
             // Add a geojson point source.
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
