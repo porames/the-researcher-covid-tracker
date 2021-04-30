@@ -1,10 +1,9 @@
 
 name: bot-taks-scheduler
 on:
-  workflow_dispatch
-  schedule: 
-    - cron:  '0 6 * * *'
-
+  schedule:
+  - cron: '0 6 * * *' #06 Hour UTC = 13 Hour GMT+7
+  workflow_dispatch:
 jobs:
   cron:
     runs-on: ubuntu-latest    
