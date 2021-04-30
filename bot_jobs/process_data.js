@@ -4,7 +4,7 @@ const csv = require('csv-parser')
 const fs = require('fs')
 const _ = require('lodash')
 const moment = require('moment')
-/*
+
 var features = geo['features']
 var provinces = []
 
@@ -57,7 +57,7 @@ fs.createReadStream('dataset.csv')
                     date = new Date(date)
                 }
                 */
-/*
+
                 if (date >= startDate) {
                     var caseCount = provinces[query]['caseCount']
                     caseCount++
@@ -101,21 +101,23 @@ fs.createReadStream('dataset.csv')
         fs.writeFileSync('../components/gis/data/amphoes-data-14days.json', JSON.stringify(amphoes), 'utf-8');
         console.log('done')
     })
-*/
+    
 
 var testData = []
 fs.createReadStream('testing_data.csv')
-    .pipe((csv({headers: false})))
+    .pipe((csv({ headers: false })))
     .on('data', (data) => {
         const row = data
         const date = row[0]
-        const positive = row[1]
-        const tests = row[2]
-        testData.push({
-            date: String(date),
-            positive: Number(positive),
-            tests: Number(tests)
-        })
+        if (new Date(date) >= new Date('3/1/2020')) {
+            const positive = row[1]
+            const tests = row[2]
+            testData.push({
+                date: String(date),
+                positive: Number(positive),
+                tests: Number(tests)
+            })
+        }
     })
     .on('end', () => {
         fs.writeFileSync('../components/gis/data/testing-data.json', JSON.stringify(testData), 'utf-8')
