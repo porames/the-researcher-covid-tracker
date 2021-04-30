@@ -121,7 +121,7 @@ function TestingTable(props) {
                         <th scope="row">การตรวจเชื้อ</th>                        
                         <td>{Number(prevWeek).toLocaleString()}</td>
                         <td>{Number(latestWeek).toLocaleString()}</td>
-                        <td className='d-flex justify-content-end border-0'>
+                        <td className='d-flex justify-content-end'>
                             <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
                             <div className='ml-1'>
                                 <TrendCurveTestingRate data={ts}/>

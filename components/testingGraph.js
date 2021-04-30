@@ -77,8 +77,8 @@ function TestingCurve(props) {
 
                     <Group>
                         <Annotation
-                            x={xScale(x(timeSeries[365]))}
-                            y={yScale(timeSeries[365]['tests']) - 30}
+                            x={xScale(x(timeSeries[300]))}
+                            y={yScale(timeSeries[300]['tests']) - 30}
                             dx={-40}
                             dy={0}
                             width={100}
