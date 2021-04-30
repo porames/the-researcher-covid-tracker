@@ -159,7 +159,7 @@ function NationalTable(props) {
                     <tr>
                         <th scope="col"></th>
                         <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                        <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('DD MMM')}</th>
+                        <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('D MMM')}</th>
                         <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
                     </tr>
                 </thead>
@@ -168,7 +168,7 @@ function NationalTable(props) {
                         <th scope="row">ผู้ติดเชื้อ</th>
                         <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
+                        <td className='d-flex justify-content-end border-0'>
                             <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
                             <div className='ml-1'>
                                 <TrendCurveInfectionRate data={ts} />

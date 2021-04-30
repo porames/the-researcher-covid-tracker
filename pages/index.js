@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Map from '../components/map'
 import NationalCurve from '../components/nationalGraph'
+import TestingGraph from '../components/testingGraph'
+import TestingTable from '../components/testingTable'
 import NationalTable from '../components/nationalTable.js'
 import Province from '../components/provincesGraph'
 import React, { useEffect, useState } from 'react'
 import build from '../components/build_job.json'
-import nationalTs from '../components/gis/data/national-timeseries.json'
 import moment from 'moment'
 import 'moment/locale/th'
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
@@ -71,8 +72,12 @@ class NationalCurveSection extends React.Component {
             <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').format('LL')}</small>
           }
         </div>
-        <NationalCurve />
+        <NationalCurve />        
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
+        <hr/>
+        <h3 className='mt-4'>สถิติการตรวจเชื้อ</h3>
+        <TestingGraph />
+        <TestingTable/>
         <div className='mt-5 mb-4 text-center alert alert-black text-white'>
           เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
           ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
@@ -113,6 +118,7 @@ export default function Home() {
         <meta property="twitter:image" content="/cover.png" />
       </Head>
       <NationalCurveSection />
+      
       <Map />
       <Element name='skipMap'>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
