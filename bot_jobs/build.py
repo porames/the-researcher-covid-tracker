@@ -32,7 +32,7 @@ for row in data.iterrows():
     date = row['announce_date']
     if province in provinces:    
         if(isinstance(date, str)):
-            parsedDate=datetime.datetime.strptime(date.strip(),'%d/%m/%y')                
+            parsedDate=datetime.datetime.strptime(date.strip(),'%d/%m/%y')                            
             if(parsedDate>=start):
                 provinces[province].append(parsedDate)            
     else:
