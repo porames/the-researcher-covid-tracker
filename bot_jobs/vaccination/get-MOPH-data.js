@@ -1,4 +1,4 @@
-const geo = require('../../components/gis/geo/th-provinces-centroids.json')
+const geo = require('./th-census-data.json')
 
 const axios = require('axios')
 const csv = require('csv-parser')
@@ -268,11 +268,14 @@ async function getProvince(id) {
     })
     const data = JSON.parse(res.data.substring(5))
     //console.log(data['default']['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column'][0]['dateColumn']['values'])
-    const dates = data['default']['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column'][0]['dateColumn']['values']
-    const doses = data['default']['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column'][1]['longColumn']['values']
+    var dates = data['default']['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column'][0]['dateColumn']['values']
+    var doses = data['default']['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column'][1]['longColumn']['values']
+    doses = doses.map(x => Number(x))
+    const administered = doses.reduce((a, b) => a + b, 0)
     var province = {
         'doses': doses,
-        'dates': dates
+        'dates': dates,
+        'administered': administered
     }
     return province
 }
@@ -280,14 +283,16 @@ async function getProvince(id) {
 (async () => {
     try {
         var db = []
-        for (const i in geo['features']) {
-            const prov_code = geo['features'][i]['properties']['PROV_CODE']
-            const prov_name = geo['features'][i]['properties']['PROV_NAMT']
-            var province = await getProvince(prov_code)
-            province['name'] = prov_name
-            province['id'] = Number(prov_code)
-            console.log(prov_name)
-            db.push(province)
+        for (const i in geo) {
+            if (geo[i]['PROV_CODE']) {
+                var province = await getProvince(geo[i]['PROV_CODE'])
+                province['name'] = geo[i]['province']
+                province['id'] = geo[i]['PROV_CODE']
+                province['population'] = Number(geo[i]['population'])
+                province['coverage'] = (province['administered']/2) / geo[i]['population']
+                console.log(i)
+                db.push(province)
+            }
         }
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('done')
