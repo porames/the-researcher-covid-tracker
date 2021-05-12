@@ -122,7 +122,7 @@ class Map extends React.Component {
                     "text-halo-width": 0.8,
                     'text-halo-blur': 1,
                     'text-halo-color': '#424242',
-                    'text-opacity': ['interpolate', ['linear'], ['zoom'], 7.8, 1, 8, 0],
+                    'text-opacity': ['interpolate', ['linear'], ['zoom'], 7.8, 1],
                 }
             })
             this.map.addLayer({

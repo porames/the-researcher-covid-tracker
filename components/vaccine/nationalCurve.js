@@ -5,6 +5,7 @@ import { Group } from '@visx/group'
 import { GridRows, GridColumns } from '@visx/grid'
 import { Bar } from '@visx/shape'
 import moment from 'moment'
+import 'moment/locale/th'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
@@ -47,6 +48,9 @@ function NationalCurve(props) {
     deltaAvgs.map((avg, i) => {
         timeSeries[i]['deltaAvg'] = avg
     })
+    useEffect(()=>{
+        props.setUpdateDate(timeSeries[timeSeries.length-1]['date'])
+    },[])
 
 
     const xScale = scaleBand({
@@ -192,7 +196,8 @@ function generateExtension(ts) {
         predictions.push({
             vaccinatedAvg: predict,
             date: startDate.add(1, 'd').format('YYYY-MM-DD'),
-            estimation: true
+            estimation: true,
+            deltaAvg: delta
         })
         i += 1
     }
@@ -205,10 +210,11 @@ const EstimateCurve = (props) => {
     const extension = generateExtension(timeSeries)
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
+    useEffect(()=>{
+        props.setEstimation(merged[merged.length-1])
+    },[])
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
-    console.log(dividedData)
-    console.log(merged)
     const xScale = scaleBand({
         range: [20, width - 20],
         domain: merged.map(x),
@@ -296,21 +302,21 @@ const EstimateCurve = (props) => {
     )
 }
 
-export const National = () => (
+export const National = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <NationalCurve width={width} height={300} />
+                <NationalCurve setUpdateDate={props.setUpdateDate} width={width} height={300} />
             )}
         </ParentSize>
     </div>
 )
 
-export const Estimate = () => (
+export const Estimate = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <EstimateCurve width={width} height={300} />
+                <EstimateCurve setEstimation={props.setEstimation} width={width} height={300} />
             )}
         </ParentSize>
     </div>
