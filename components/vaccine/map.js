@@ -217,7 +217,7 @@ class Map extends React.Component {
                                 <div>
                                     <div>
                                         <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
-                                        <span>ฉีดไปแล้ว {this.state.hoveredData.administered.toLocaleString()} โดส</span><br/>
+                                        <span>ฉีดไปแล้ว {this.state.hoveredData['total-doses'].toLocaleString()} โดส</span><br/>
                                         <span>ครอบคลุมประชากร {(this.state.hoveredData.coverage*100).toFixed(2)}%</span><br/>
 
                                     </div>

@@ -23,6 +23,10 @@ jobs:
       - name: Get Latest Data From The Government Database
         working-directory: bot_jobs
         run: node get_data.js
+      - name: Get vaccination datasets
+        working-directory: bot_jobs/vaccination
+        run: node get-national-data.js
+        run: node get-MOPH-data.js
       - name: Process Data Received
         working-directory: bot_jobs
         run: node process_data.js

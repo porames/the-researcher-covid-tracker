@@ -11,17 +11,19 @@ export default function Province(props) {
                     sortedImages.map((img, index) => {
                             return (
                                 <div key={index} className='col-4 col-md-3 mb-4 px-1'>
-                                    <span className='text-sec'>{img['province']}</span>
-
+                                    <div className='d-flex align-items-center justify-content-between'>
+                                    <div className='text-sec'>{img['province']}</div>
+                                    <div className='badge badge-dark mr-3'>{img['coverage']}%</div>
+                                    </div>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/vaccine-graphs-build/${img.name})` }}>
                                         
                                         {index == 0 &&
-                                            <div className='annotation' style={{ bottom: '10%', left: '20%' }}>
+                                            <div className='annotation' style={{ bottom: '14%', left: '10%' }}>
                                                 <span>วัคซีนสะสม</span>
                                             </div>
                                         }
                                         {index == 0 &&
-                                            <div className='annotation text-end' style={{ bottom: '45%', right: '10%' }}>
+                                            <div className='annotation text-end' style={{ bottom: '35%', right: '5%' }}>
                                                 <span>ข้อมูล 14 วัน<br />ล่าสุด</span>
                                             </div>
                                         }
