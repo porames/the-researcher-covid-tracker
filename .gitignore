@@ -3,8 +3,10 @@
 # dependencies
 /node_modules
 /.pnp
+/.ipynb_checkpoints
+.vscode
 .pnp.js
-
+.ipynb_checkpoints
 next.config.js
 /styles/css
 /components/gis/geo/mapbox_exports
