@@ -5,15 +5,6 @@ const _ = require('lodash')
 const fs = require('fs').promises;
 (async () => {
     try {
-        [{
-            "doses": [],
-            "dates": [],
-            "administered": 229623,
-            "name": "กรุงเทพมหานคร",
-            "id": "10",
-            "population": 5588222,
-            "coverage": 0.020545264665576993
-        }]
         var db = []
         const req = await axios.get('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.csv')
         const row = req.data.split('\n')
@@ -41,7 +32,7 @@ const fs = require('fs').promises;
                         else{
                             db[checkDb]['dates'].push(cols[0])
                             db[checkDb]['1st-dose-cum'].push(Number(cols[7]))
-                            db[checkDb]['2nd-dose-cum'].push(Number(cols[8]))
+                            db[checkDb]['2nd-dose-cum'].push(Number(cols[9]))
                             db[checkDb]['doses-cum'].push(Number(cols[7]) + Number(cols[9]))
                         }
                     }
