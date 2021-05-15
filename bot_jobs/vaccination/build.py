@@ -38,16 +38,16 @@ with open('../../components/gis/data/provincial-vaccination-data.json', encoding
         index=0
         dates=[datetime.datetime.strptime(x, "%Y-%m-%d") for x in date_strings]
         for date in dates:
-            timeseries[date] = province['doses'][index]
+            timeseries[date] = province['doses-cum'][index]
             index+=1
-        for date in fulldate:
-            if date not in timeseries:
-                timeseries[date] = 0
+        index=0
         xs=list(timeseries.keys())
         ys=list(timeseries.values())
         xs,ys=zip(*sorted(zip(xs, ys)))
-        accum=[sum(ys[:y])*100/province['population'] for y in range(1, len(ys) + 1)]
-        moving_aves=movingAve(accum)
+        coverages = []
+        for i in range(len(ys)):
+            coverages.append((ys[i]*100/province['population'])/2)
+        moving_aves=movingAve(coverages)
         #fig.set_size_inches(10,8)
         plt.ylim(0,100)
         plt.fill_between(xs[-14:],0,moving_aves[-14:], alpha=0.5, color='#7ea297', zorder=2)
@@ -67,15 +67,16 @@ with open('../../components/gis/data/provincial-vaccination-data.json', encoding
         plt.yticks([])
         plt.savefig('../../public/vaccine-graphs-build/'+province['id']+'.svg',bbox_inches=0, transparent=True)        
         #plt.show()
-        print(time.time()-start,province['name'],province['administered']/province['population']*100)        
+        print(time.time()-start,province['name'],(province['total-doses']/2)/province['population']*100)        
         moving_aves=movingAve(ys)
         change = moving_aves[-1]-movingAve(ys)[-14]
         images.append({
             'name':province['id']+'.svg',
             'change': change,
-            'coverage': province['coverage'],
+            'coverage': round(province['coverage']*100,2),
             'province': province['name'],
         })
+
 with open('../../components/vaccine/build_job.json', 'w', encoding='utf-8') as f:
     data={'images': images, 'job': {
         'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
