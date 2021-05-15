@@ -8,7 +8,7 @@ import moment from 'moment'
 import 'moment/locale/th'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
-import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
+import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
@@ -123,7 +123,8 @@ function NationalCurve(props) {
                         <AxisBottom
                             top={height - 30}
                             scale={dateScale}
-                            tickFormat={d => moment(d).format('DD MMM')}
+                            numTicks={4}
+                            tickFormat={d => moment(d).format('MMM')}
                             tickStroke='#bfbfbf'
                             stroke='#bfbfbf'
                             tickLabelProps={() => ({
@@ -161,16 +162,15 @@ function NationalCurve(props) {
                     </Group>
                 </Group>
             </svg>
-
+            <div>
             {tooltipData &&
-                <Tooltip
+                <TooltipWithBounds
                     top={tooltipTop}
                     left={tooltipLeft}
                     style={{
                         ...defaultStyles,
                         minWidth: 160,
                         textAlign: 'start',
-                        transform: 'translate(-50%, -50%)',
                         padding: 12,
                     }}
                 >
@@ -178,8 +178,9 @@ function NationalCurve(props) {
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                     ฉีดวัคซีนสะสม {tooltipData['vaccinated'].toLocaleString()} ราย
                 </span>
-                </Tooltip>
+                </TooltipWithBounds>
             }
+            </div>
         </div>
     )
 }

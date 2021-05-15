@@ -99,19 +99,6 @@ a {
     padding: 6px;
 }
 
-.visx-tooltip:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-style: solid;
-    top: 100%;
-    border-color: white transparent transparent transparent;
-    left: 45%;
-    transform: translate(-50%, 0%);
-}
-
 span{
     line-height: 1.4em;
 }

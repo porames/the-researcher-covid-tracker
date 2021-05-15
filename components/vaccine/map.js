@@ -232,8 +232,8 @@ class Map extends React.Component {
                         </button>
                     </div>
                 </div>
-                <div className='container' style={{maxWidth: 700, opacity: 0.7}}>
-                    ข้อมูลจาก COVID-19 Vaccines Track and Traceability Platform กระทรวงสาธารณสุข, รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                <div className='container mt-3' style={{maxWidth: 700, opacity: 0.7}}>
+                    รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )
