@@ -27,7 +27,7 @@ jobs:
         working-directory: bot_jobs/vaccination
         run: node get-national-data.js
         run: node get-MOPH-data.js
-      - name: Process Data Received
+      - name: Process Data Received (Infection data)
         working-directory: bot_jobs
         run: node process_data.js
       - name: Build Province Graphs in svg using Python
@@ -36,6 +36,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python build.py
+      - name: Build Vaccination graphs in svg using python
+        working-directory: bot_jbos/vaccination
+        run: python build.py
       - name: Commit Changes to Git Repo
         run: |
           git config --global user.name "porames"
