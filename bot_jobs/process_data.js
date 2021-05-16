@@ -27,7 +27,6 @@ for (var i = 0; i < amphoesGeo['features'].length; i++) {
     district['province'] = features[i]['properties']['P_NAME_T']
     district['id'] = i + 1
     district['caseCount'] = 0
-    district['cases'] = []
     amphoes.push(district)
 }
 var allDates = []
@@ -40,14 +39,13 @@ fs.createReadStream('dataset.csv')
         var today = allDates[allDates.length-1].split('/')
         console.log(today)
         today = moment(new Date(`${today[1]}/${today[0]}/20${today[2]}`))
-
-        const startDate = new Date(today.subtract(14, 'd').startOf('day'))
-        const startCollect = new Date(today.subtract(14, 'd').startOf('day'))
+        const startDate = new Date(today.subtract(13, 'd').startOf('day'))
+        console.log(startDate)
         fs.createReadStream('dataset.csv')
             .pipe(csv())
             .on('data', (data) => {
                 const row = data
-                var province = row['province_of_onset']
+                var province = row['province_of_isolation']
                 if (province) {
                     var query = _.findIndex(provinces, { 'name': province })
                     if (query >= 0) {
@@ -67,8 +65,6 @@ fs.createReadStream('dataset.csv')
                             var caseCount = provinces[query]['caseCount']
                             caseCount++
                             provinces[query]['caseCount'] = caseCount
-                        }
-                        if (date >= startCollect) {
                             var cases = provinces[query]['cases']
                             cases.push(date)
                             provinces[query]['cases'] = cases
@@ -90,18 +86,18 @@ fs.createReadStream('dataset.csv')
                         date = new Date(`${d[1]}/${d[0]}/20${d[2]}`)
                         //console.log(date)
                         if (date >= startDate) {
-                            var cases = amphoes[query]['cases']
                             var caseCount = amphoes[query]['caseCount']
                             caseCount++
                             amphoes[query]['caseCount'] = caseCount
-                            cases.push(date)
-                            amphoes[query]['cases'] = cases
                         }
-
                     }
                 }
                 i = i + 1
             }).on('end', () => {
+                for (const i in provinces){
+                    const province = provinces[i]
+                    province['cases'] =_.countBy(province['cases'])
+                }
                 fs.writeFileSync('../components/gis/data/provinces-data-14days.json', JSON.stringify(provinces), 'utf-8')
                 fs.writeFileSync('../components/gis/data/amphoes-data-14days.json', JSON.stringify(amphoes), 'utf-8');
                 console.log('done')
