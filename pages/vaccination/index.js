@@ -60,6 +60,10 @@ const HeadSection = (props) => {
       <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).format('DD MMMM YYYY')}</span>
       <National setUpdateDate={setUpdateDate} />
       <NationalTable updateDate={updateDate} />
+      <div className='alert alert-black mt-4 mb-5 py-4'>
+        <h2 className='mb-3'>สถานะการเข้าถึงวัคซีน</h2>
+        <p className='mb-0'>จำกัดเฉพาะกลุ่มเสี่ยง ได้แก่ ผู้สูงอายุ ผู้มีโรคประจำตัว บุคลากรทางการแพทย์ และผู้ที่อาศัยอยู่ในพื้นที่ความเสี่ยงสูง</p>
+      </div>
       <div className='my-4'>
         <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
         <Estimate setEstimation={setEstimation} />

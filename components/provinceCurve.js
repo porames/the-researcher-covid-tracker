@@ -30,7 +30,7 @@ function movingAvg(ts) {
 }
 
 function Graph(props) {
-    var f = _.countBy(props.data)
+    var f = props.data
     var keys = Object.keys(f)
     const today = moment()
     var ts = []

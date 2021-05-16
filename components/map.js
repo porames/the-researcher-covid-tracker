@@ -24,6 +24,7 @@ class Map extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
     }
     componentDidMount() {
+        console.log(provincesData)
         mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
@@ -259,7 +260,7 @@ class Map extends React.Component {
                                 <div>
                                     <div>
                                         <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
-                                        <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount} ราย</b></span>
+                                        <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount.toLocaleString()} ราย</b></span>
                                     </div>
                                     {this.state.hoveredData.caseCount > 5 &&
                                         <div className='mt-3'>
