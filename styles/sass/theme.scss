@@ -102,5 +102,7 @@ $link-hover-color: #fff;
 a:hover{
     transition: 0.25s;
 }
-
+.table th, .table td {
+    vertical-align: middle !important;
+}
 @import "node_modules/bootstrap/scss/bootstrap";

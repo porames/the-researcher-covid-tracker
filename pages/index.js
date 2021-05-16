@@ -120,8 +120,7 @@ export default function Home() {
       <Map />
       <Element name='skipMap'>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5 mb-3'>สถานการณ์รายจังหวัด</h2>
-          <div className='text-center text-muted mb-5'>แนวโน้มจำนวนผู้ป่วยใหม่ตั้งแต่การระบาดรอบใหม่ 15 ธันวาคม 2020 - {moment(build['job']['dataset_updated_on']).format('LL')}</div>
+          <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />
           <div className='my-4 alert alert-black text-white'>
             จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />

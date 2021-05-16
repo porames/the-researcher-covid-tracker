@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
 
-import provincesData from './gis/data/provinces-data-30days.json'
+import provincesData from './gis/data/provinces-data-14days.json'
 import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
 import Graph from './provinceCurve'
@@ -45,7 +45,6 @@ class Map extends React.Component {
             });
         });
         this.map.on('load', () => {
-            console.log('load')
             // Add a geojson point source.
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
@@ -213,12 +212,10 @@ class Map extends React.Component {
                     if (!this.state.hoveredData) {
                         const data = _.find(provincesData, { id: Number(e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
-                        console.log(data)
                     }
                     else if (this.state.hoveredData['id'] !== Number(e.features[0].properties['PROV_CODE'])) {
                         const data = _.find(provincesData, { id: Number(e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
-                        console.log(data)
                     }
 
                 }
