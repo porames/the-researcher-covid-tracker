@@ -6,13 +6,12 @@ import { Bar } from '@visx/shape'
 import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
-import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
+import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 const data = require('../components/gis/data/testing-data.json')
 import { AxisBottom } from '@visx/axis'
-import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
 
 function movingAvg(ts) {
@@ -74,53 +73,6 @@ function TestingCurve(props) {
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-
-                    <Group>
-                        <Annotation
-                            x={xScale(x(timeSeries[300]))}
-                            y={yScale(timeSeries[300]['tests']) - 30}
-                            dx={-40}
-                            dy={0}
-                            width={100}
-                            height={200}
-                        >
-                            <Connector stroke='#e0e0e0' type='line' />
-                            <Label
-                                className='text-center'
-                                title='จำนวนการตรวจเชื้อ'
-                                fontColor='#e0e0e0'
-                                horizontalAnchor='end'
-                                backgroundFill="transparent"
-                                backgroundPadding={0}
-                                titleFontWeight={600}
-                                labelAnchor='middle'
-                                width={108}
-                                titleFontSize={12}
-                            />
-                        </Annotation>
-                        <Annotation
-                            x={xScale(x(timeSeries[130]))}
-                            y={yScale(timeSeries[130]['movingAvg']) - 30}
-                            dx={0}
-                            dy={-40}
-                            width={200}
-                            height={200}
-                        >
-                            <Connector stroke='#e0e0e0' type='line' />
-                            <Label
-                                className='text-center'
-                                title='ค่าเฉลี่ย 7 วัน'
-                                fontColor='#e0e0e0'
-                                horizontalAnchor='middle'
-                                backgroundFill="transparent"
-                                backgroundPadding={0}
-                                titleFontWeight={600}
-                                labelAnchor='middle'
-                                titleFontSize={12}
-                            />
-                        </Annotation>
-                    </Group>
-
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
@@ -162,6 +114,7 @@ function TestingCurve(props) {
                             top={height - 30}
                             scale={dateScale}
                             tickFormat={d => moment(d).format('MMM')}
+                            numTicks={width < 500 ? 6 : 12}
                             tickStroke='#bfbfbf'
                             stroke='#bfbfbf'
                             tickLabelProps={() => ({
@@ -201,14 +154,12 @@ function TestingCurve(props) {
             </svg>
 
             {tooltipData &&
-                <Tooltip
+                <TooltipWithBounds
                     top={tooltipTop}
                     left={tooltipLeft}
                     style={{
                         ...defaultStyles,
                         minWidth: 160,
-                        textAlign: 'start',
-                        transform: 'translate(-50%, -50%)',
                         padding: 12,
                     }}
                 >
@@ -216,7 +167,7 @@ function TestingCurve(props) {
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                     จำนวนการตรวจเชื้อ {Number(tooltipData['tests']).toLocaleString()} ราย
                 </span>
-                </Tooltip>
+                </TooltipWithBounds>
             }
         </div>
     )

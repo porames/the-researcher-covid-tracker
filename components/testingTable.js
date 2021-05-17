@@ -82,7 +82,7 @@ function TestingTable(props) {
     const [latestWeek, setLatestWeek] = useState()
     const [prevWeek, setPrevWeek] = useState()
     const [lastUpdate, setLastUpdate] = useState()
-    useEffect(() => {    
+    useEffect(() => {
         var currentPeriod = 0
         var prevPeriod = 0
         for (var i = ts.length - 1; i >= ts.length - 8; i--) {
@@ -93,11 +93,11 @@ function TestingTable(props) {
         }
         setDelta(((currentPeriod - prevPeriod) / prevPeriod) * 100)
         const thisWeek = ts.slice(ts.length - 7, ts.length).reduce((a, b) => a + b['tests'], 0)
-        const previousWeek = ts.slice(ts.length - 14, ts.length-8).reduce((a, b) => a + b['tests'], 0)
+        const previousWeek = ts.slice(ts.length - 14, ts.length - 8).reduce((a, b) => a + b['tests'], 0)
         setLatestWeek(thisWeek)
         setPrevWeek(previousWeek)
         setLastUpdate(ts.pop()['date'])
-    },[])
+    }, [])
 
     return (
         <div className='table-responsive'>
@@ -118,13 +118,15 @@ function TestingTable(props) {
                 </thead>
                 <tbody>
                     <tr className='text-sec'>
-                        <th scope="row">การตรวจเชื้อ</th>                        
+                        <th scope="row">การตรวจเชื้อ</th>
                         <td>{Number(prevWeek).toLocaleString()}</td>
                         <td>{Number(latestWeek).toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
-                            <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
-                            <div className='ml-1'>
-                                <TrendCurveTestingRate data={ts}/>
+                        <td>
+                            <div className='d-flex justify-content-end'>
+                                <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
+                                <div className='ml-1'>
+                                    <TrendCurveTestingRate data={ts} />
+                                </div>
                             </div>
                         </td>
                     </tr>

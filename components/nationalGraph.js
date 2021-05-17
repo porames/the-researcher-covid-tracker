@@ -6,7 +6,7 @@ import { Bar } from '@visx/shape'
 import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
-import { useTooltip, Tooltip, defaultStyles, } from '@visx/tooltip'
+import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
@@ -47,12 +47,12 @@ function NationalCurve(props) {
     })
 
     const xScale = scaleBand({
-        range: [20, width - 20],
+        range: [0, width],
         domain: timeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [20, width - 20],
+        range: [0, width],
         domain: extent(timeSeries, x),
         padding: 0.07
     })
@@ -111,14 +111,13 @@ function NationalCurve(props) {
                         >
                             <Connector stroke='#e0e0e0' type='line' />
                             <Label
-                                className='text-center'
                                 title='ค่าเฉลี่ย 7 วัน'
                                 fontColor='#e0e0e0'
-                                horizontalAnchor='middle'
+                                horizontalAnchor='start'
                                 backgroundFill="transparent"
                                 backgroundPadding={0}
                                 titleFontWeight={600}
-                                labelAnchor='middle'
+                                labelAnchor='start'
                                 titleFontSize={12}
                             />
                         </Annotation>
@@ -165,12 +164,13 @@ function NationalCurve(props) {
                             top={height - 30}
                             scale={dateScale}
                             tickFormat={d => moment(d).format('MMM')}
+                            numTicks={width < 500 ? 6 : 12}
                             tickStroke='#bfbfbf'
                             stroke='#bfbfbf'
                             tickLabelProps={() => ({
                                 fill: '#bfbfbf',
                                 fontSize: 11,
-                                textAnchor: 'middle'
+                                textAnchor: 'start'
                             })}
                         />
                         <Bar
@@ -195,7 +195,7 @@ function NationalCurve(props) {
                             onMouseLeave={() => hideTooltip()}
                             x={10}
                             y={0}
-                            width={width - 20}
+                            width={width}
                             height={height - 30}
                             fill="transparent"
                         />
@@ -204,14 +204,13 @@ function NationalCurve(props) {
             </svg>
 
             {tooltipData &&
-                <Tooltip
+                <TooltipWithBounds
                     top={tooltipTop}
                     left={tooltipLeft}
                     style={{
                         ...defaultStyles,
                         minWidth: 160,
                         textAlign: 'start',
-                        transform: 'translate(-50%, -50%)',
                         padding: 12,
                     }}
                 >
@@ -219,7 +218,7 @@ function NationalCurve(props) {
                         <b>{moment(tooltipData['Date']).format('DD MMM')}</b><br />
                     ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed']} ราย
                 </span>
-                </Tooltip>
+                </TooltipWithBounds>
             }
         </div>
     )

@@ -23,7 +23,11 @@ export default function Province(props) {
                                     return (
                                         <tr key={index}>
                                             <th scope="row">{img['province']}</th>
-                                            <td><img height='30px' src={`/infection-graphs-build/${img.name}`} /> {img['change'] > 0 ? '+' : ''}{parseInt(img['change'])}%</td>
+                                            <td>
+                                                <div className='d-flex justify-content-center align-items-center'>
+                                                    <img height='30px' src={`/infection-graphs-build/${img.name}`} /> {img['change'] > 0 ? '+' : ''}{parseInt(img['change'])}%
+                                                </div>
+                                            </td>
                                             <td>{img['total-14days'].toLocaleString()}</td>
                                             <td>{img['vax-coverage']}%</td>
                                         </tr>
@@ -33,7 +37,11 @@ export default function Province(props) {
                                     return (
                                         <tr key={index}>
                                             <th scope="row">{img['province']}</th>
-                                            <td><img height='30px' src={`/infection-graphs-build/${img.name}`} /> คงที่</td>
+                                            <td>
+                                                <div className='d-flex justify-content-center align-items-center'>
+                                                    <img height='30px' src={`/infection-graphs-build/${img.name}`} /> คงที่
+                                                </div>
+                                            </td>
                                             <td>{img['total-14days'].toLocaleString()}</td>
                                             <td>{img['vax-coverage']}%</td>
                                         </tr>
