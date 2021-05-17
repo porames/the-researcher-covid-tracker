@@ -168,12 +168,14 @@ function NationalTable(props) {
                         <th scope="row">ผู้ติดเชื้อ</th>
                         <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
+                        <td>
+                        <div className='d-flex justify-content-end'>
                             <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
                             <div className='ml-1'>
                                 <TrendCurveInfectionRate data={ts} />
                             </div>
 
+                        </div>
                         </td>
                     </tr>
 
@@ -181,11 +183,13 @@ function NationalTable(props) {
                         <th scope="row">รักษาตัวในโรงพยาบาล</th>
                         <td></td>
                         <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
+                        <td>
+                        <div className='d-flex justify-content-end'>
                             <div>{deltaH > 0 ? '+' : ''}{parseInt(deltaH).toLocaleString()}%</div>
                             <div className='ml-1'>
                                 <TrendCurveHospitalization data={ts} />
                             </div>
+                        </div>
                         </td>
                     </tr>
                     <tr className='text-sec'>
