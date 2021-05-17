@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-05-17T10:41:11.935138</dc:date>
+    <dc:date>2021-05-17T13:25:19.457298</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -64,10 +64,10 @@ L 337.614545 -45.194
 L 332.541818 -44.990839 
 L 317.323636 -44.778559 
 z
-" id="m0cd27a7609" style="stroke:#7ea297;stroke-opacity:0.5;"/>
+" id="m0460483475" style="stroke:#7ea297;stroke-opacity:0.5;"/>
     </defs>
-    <g clip-path="url(#p20df945810)">
-     <use style="fill:#7ea297;fill-opacity:0.5;stroke:#7ea297;stroke-opacity:0.5;" x="0" xlink:href="#m0cd27a7609" y="345.6"/>
+    <g clip-path="url(#pbe3ff5410f)">
+     <use style="fill:#7ea297;fill-opacity:0.5;stroke:#7ea297;stroke-opacity:0.5;" x="0" xlink:href="#m0460483475" y="345.6"/>
     </g>
    </g>
    <g id="PolyCollection_2">
@@ -169,14 +169,14 @@ L 83.978182 -38.113618
 L 78.905455 -38.107485 
 L 73.832727 -38.101403 
 z
-" id="m36ac450ffd" style="stroke:#7ea297;stroke-opacity:0.3;"/>
+" id="mec215ce4de" style="stroke:#7ea297;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p20df945810)">
-     <use style="fill:#7ea297;fill-opacity:0.3;stroke:#7ea297;stroke-opacity:0.3;" x="0" xlink:href="#m36ac450ffd" y="345.6"/>
+    <g clip-path="url(#pbe3ff5410f)">
+     <use style="fill:#7ea297;fill-opacity:0.3;stroke:#7ea297;stroke-opacity:0.3;" x="0" xlink:href="#mec215ce4de" y="345.6"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p20df945810)" d="M 73.832727 307.498597 
+    <path clip-path="url(#pbe3ff5410f)" d="M 73.832727 307.498597 
 L 78.905455 307.492515 
 L 83.978182 307.486382 
 L 89.050909 307.480943 
@@ -239,7 +239,7 @@ L 398.487273 296.999434
 " style="fill:none;stroke:#60897e;stroke-linecap:square;stroke-width:2;"/>
    </g>
    <g id="line2d_2">
-    <path clip-path="url(#p20df945810)" d="M 317.323636 300.821441 
+    <path clip-path="url(#pbe3ff5410f)" d="M 317.323636 300.821441 
 L 332.541818 300.609161 
 L 337.614545 300.406 
 L 342.687273 300.136895 
@@ -258,7 +258,7 @@ L 398.487273 296.999434
   </g>
  </g>
  <defs>
-  <clipPath id="p20df945810">
+  <clipPath id="pbe3ff5410f">
    <rect height="266.112" width="357.12" x="57.6" y="41.472"/>
   </clipPath>
  </defs>
