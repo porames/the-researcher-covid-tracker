@@ -1,151 +1,179 @@
 a {
-    color: inherit;
-    text-decoration: none;
-    font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .visx-annotationlabel {
-    font-weight: 300;
-    font-family: "Prompt";
+  font-weight: 300;
+  font-family: "Prompt";
 }
 
-.mapContainer {
+.dark-theme {
+  background-color: #242424;
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .mapContainer {
     position: relative;
     width: 100%;
     height: 100vh;
     z-index: 1;
+  }
+  .infoBox-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+  }
 }
 
-.dark-theme {
-    background-color: #242424;
-    color: white;
+@media only screen and (max-width: 768px) {
+  .mapContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 80%;
+    z-index: 1;
+  }
+  .infoBox-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 3;
+  }
 }
 
 .infoBox {
-    font-family: "Sarabun";
-    font-size: 1.4em;
-    line-height: 1.5em;
-    color: black;
-    background-color: white;
-    padding: 1em;
+  font-family: "Sarabun";
+  font-size: 1.2em;
+  line-height: 1.2em;
+  color: black;
+  background-color: white;
+  padding: 1em;
 }
 .text-end {
-    text-align: end;
+  text-align: end;
 }
 .table-theme-light {
-    thead {
-        th {
-            border: none;
-        }
+  thead {
+    th {
+      border: none;
     }
-    tbody {
-        tr {
-            border-color: #343434;
-            td {
-                text-align: end;
-            }
-        }
+  }
+  tbody {
+    tr {
+      border-color: #343434;
+      td {
+        text-align: end;
+      }
     }
+  }
 }
 
 .text-sec {
-    color: #cfd8dc;
+  color: #cfd8dc;
 }
 
-.alert-black{
-    color:white;
-    background-color: #3c3c3c;
+.alert-black {
+  color: white;
+  background-color: #3c3c3c;
 }
-.bar-label{
-    .label{
-        flex: 1;
-        text-align: center;
-        transform: translateX(50%);
-
-
-    }
+.bar-label {
+  .label {
+    flex: 1;
+    text-align: center;
+    transform: translateX(50%);
+  }
 }
 
 .bar-legend {
-    opacity: 0.6;
-    height: 15px;
-    .bar {
-        flex: 1;
-        padding-bottom: 5px;
-        border-right: 1px solid #d9d9d9;
-    }
-    .level {
-        width: 100%;
-        height: 100%;
-        background-color: red;
-    }
+  opacity: 0.6;
+  height: 15px;
+  .bar {
+    flex: 1;
+    padding-bottom: 5px;
+    border-right: 1px solid #d9d9d9;
+  }
+  .level {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+  }
 }
 
 .reset-button {
-    position: absolute;
-    right: 10px;
-    top: 80px;
-    z-index: 2;
+  position: absolute;
+  right: 10px;
+  top: 80px;
+  z-index: 2;
 }
 .btn-icon {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
-    background-color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
 }
 
-span{
-    line-height: 1.4em;
+span {
+  line-height: 1.4em;
 }
 
-.province-graph{
-    width:100%;
-    padding-top: 75%;
-    background-size: 125%;
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
+.province-graph {
+  width: 100%;
+  padding-top: 75%;
+  background-size: 125%;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 hr {
-    opacity: 0.2 !important;
-    border-top: 1px solid white !important;
+  opacity: 0.2 !important;
+  border-top: 1px solid white !important;
 }
 
-.tick{
-    font-size: 11px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    opacity: 0.5;
+.tick {
+  font-size: 11px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
 }
 
-.flat-line{
-    font-size: 11px;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.5;
+.flat-line {
+  font-size: 11px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
 }
 
-.skip-map{
-    position: absolute;
-    top: 12px;
-    left:50%;
-    transform: translate(-50%,0);
-    z-index:2;
+.skip-map {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
 }
 
 .annotation {
-    position: absolute;
-    line-height: 8px;
-    span {
-        font-size: 10px;
-        color: #999;
-    }
+  position: absolute;
+  line-height: 8px;
+  span {
+    font-size: 10px;
+    color: #999;
+  }
 }
