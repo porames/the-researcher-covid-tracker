@@ -1,4 +1,4 @@
-const geo = require('../../components/gis/geo/th-provinces-centroids.json')
+const geo = require('../components/gis/geo/th-provinces-centroids.json')
 const csv = require('csv-parser')
 const fs = require('fs')
 const { parse } = require('json2csv')

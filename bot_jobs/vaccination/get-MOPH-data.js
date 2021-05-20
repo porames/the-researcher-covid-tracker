@@ -1,4 +1,4 @@
-const census = require('./th-census-data.json')
+const census = require('../th-census-data.json')
 const axios = require('axios')
 const csv = require('csv-parser')
 const _ = require('lodash')
