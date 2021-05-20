@@ -22,10 +22,9 @@ class CasesMap extends React.Component {
         this.map
     }
     resetMap() {
-        this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
+        this.map.flyTo({ center: [101.10, 13.12], zoom: 4 })
     }
     componentDidMount() {
-        console.log(provincesData)
         mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
@@ -74,7 +73,7 @@ class CasesMap extends React.Component {
                 'source-layer': 'thmapprovinceswithcentroidsid',
                 'layout': {},
                 'paint': {
-                    'fill-opacity': 0.6,
+                    'fill-opacity': 0.5,
                     'fill-color': '#fafafa'
                 }
             })
@@ -100,10 +99,24 @@ class CasesMap extends React.Component {
                 'source-layer': 'amphoes-1z6vx7',
                 'paint': {
                     'circle-radius': [
-                        'interpolate', ['linear'], matchExpression,
-                        1, 1,
-                        10, 5,
-                        100,25
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        2, [
+                            'interpolate', ['linear'], matchExpression,
+                            1, 1,
+                            10, 2,
+                            100, 4,
+                            1000, 8
+                        ],
+                        10,
+                        [
+                            'interpolate', ['linear'], matchExpression,
+                            1, 1,
+                            10, 5,
+                            100, 25,
+                            1000, 125
+                        ]
                     ],
                     'circle-color': 'rgba(255,0,0,.2)',
                     "circle-stroke-width": 0.3,
@@ -154,9 +167,9 @@ class CasesMap extends React.Component {
             })
 
             var hoveredStateId = null
-            this.map.on('click', 'province-fills', (e) => {
-                const centroid = JSON.parse(e.features[0].properties['centroid'])
-                this.map.flyTo({ center: centroid, zoom: 7 })
+            this.map.on('click', 'cases-heat', (e) => {
+                //const centroid = JSON.parse(e.features[0].properties['centroid'])
+                this.map.flyTo({ center: e.lngLat, zoom: 10 })
             })
             this.map.on('mouseleave', 'province-fills', (e) => {
                 if (this.state.hoveredData) {
@@ -169,7 +182,6 @@ class CasesMap extends React.Component {
                     if (!this.state.hoveredData) {
                         const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid']) })
                         this.setState({ hoveredData: data })
-                        console.log(data)
                     }
                     else if (this.state.hoveredData['id'] !== Number(e.features[0].properties['fid'])) {
                         const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid']) })
@@ -198,7 +210,8 @@ class CasesMap extends React.Component {
                 <Head>
                     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
                 </Head>
-                <div ref={el => this.mapContainer = el} className='mapContainer'>
+                <div className='mapContainer'>
+                    <div ref={el => this.mapContainer = el} style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}></div>
                     <div onClick={() => this.resetMap()} className='reset-button'>
                         <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
@@ -207,10 +220,10 @@ class CasesMap extends React.Component {
                             <div className='infoBox rounded shadow-sm'>
 
                                 <div>
-                                    <div>                                        
+                                    <div>
                                         <span>
                                             <b>อ.{this.state.hoveredData['name']}, {this.state.hoveredData['province']}</b></span><br />
-                                        <span>ผู้ติดเชื้อในรอบ 14 วัน <b>{this.state.hoveredData.caseCount.toLocaleString()} ราย</b></span>
+                                        <span>ผู้ติดเชื้อในรอบ 14 วัน <b className='text-danger'>{this.state.hoveredData.caseCount.toLocaleString()} ราย</b></span>
                                     </div>
 
                                 </div>
@@ -238,7 +251,6 @@ class HotspotMap extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
     }
     componentDidMount() {
-        console.log(provincesData)
         mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
@@ -274,11 +286,6 @@ class HotspotMap extends React.Component {
                 type: 'vector',
                 url: 'mapbox://townhall-th.7ozyo5pa'
             })
-            var matchExpression = ['match', ['get', 'fid']]
-            amphoesData.forEach((row) => {
-                matchExpression.push(row['id'], row['caseCount'])
-            })
-            matchExpression.push(0)
 
             var provinceMatch = ['match', ['get', 'PROV_CODE']]
             provincesData.forEach((row) => {
@@ -432,8 +439,8 @@ class HotspotMap extends React.Component {
                 <Head>
                     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
                 </Head>
-                <HotspotLegend />
-                <div ref={el => this.mapContainer = el} className='mapContainer'>
+                <div className='mapContainer'>
+                    <div ref={el => this.mapContainer = el} style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}></div>
                     <div onClick={() => this.resetMap()} className='reset-button'>
                         <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
@@ -474,12 +481,25 @@ function Map() {
     const [mapType, setMapType] = useState('hotspot')
     return (
         <div>
-            <div className='container mb-4 d-flex justify-content-center align-items-center'>
-                <button onClick={()=>setMapType('hotspot')} className='btn btn-dark'>การระบาดในจังหวัด</button>
-                <button onClick={()=>setMapType('cases')} className='btn btn-dark'>ตำแหน่งการระบาด</button>
+            <div className='container mb-3 mb-md-0 row mx-auto'>
+                <div className='col-md-6 mb-3' style={{ display: 'flex', alignItems: 'flex-end' }}>
+                    <HotspotLegend />
+                </div>
+                <div className='col-md-6 mb-3 d-flex justify-content-center'>
+                    <button onClick={() => setMapType('hotspot')} className='btn btn-dark px-3 mr-4' style={{ height: 120, width: 200, backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(/hotspots-map.png)' }}>
+                        <div className='d-flex h-100 align-items-end'>
+                            <span>การระบาดในจังหวัด</span>
+                        </div>
+                    </button>
+                    <button onClick={() => setMapType('cases')} className='btn btn-dark px-3' style={{ height: 120, width: 200, backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(/cases-map.png)' }}>
+                        <div className='d-flex h-100 align-items-end'>
+                            <span>ตำแหน่งการระบาด</span>
+                        </div>
+                    </button>
+                </div>
             </div>
-            {mapType === 'hotspot' && <HotspotMap/>}
-            {mapType === 'cases' && <CasesMap/>}
+            {mapType === 'hotspot' && <HotspotMap />}
+            {mapType === 'cases' && <CasesMap />}
         </div>
     )
 }

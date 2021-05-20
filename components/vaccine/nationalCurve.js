@@ -39,8 +39,8 @@ function NationalCurve(props) {
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['vaccinated']
-    const avgs = movingAvg(timeSeries, 'vaccinated')
+    const y = d => d['total_doses']
+    const avgs = movingAvg(timeSeries, 'total_doses')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
@@ -48,18 +48,18 @@ function NationalCurve(props) {
     deltaAvgs.map((avg, i) => {
         timeSeries[i]['deltaAvg'] = avg
     })
-    useEffect(()=>{
-        props.setUpdateDate(timeSeries[timeSeries.length-1]['date'])
-    },[])
+    useEffect(() => {
+        props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
+    }, [])
 
 
     const xScale = scaleBand({
-        range: [20, width - 20],
+        range: [0, width],
         domain: timeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [20, width - 20],
+        range: [0, width],
         domain: extent(timeSeries, x),
         padding: 0.07
     })
@@ -142,8 +142,6 @@ function NationalCurve(props) {
                                     const d = timeSeries[index]
                                     if (d) {
                                         const barHeight = (height - yScale(y(d)) ?? 0)
-
-
                                         showTooltip({
                                             tooltipData: d,
                                             tooltipLeft: x,
@@ -163,23 +161,23 @@ function NationalCurve(props) {
                 </Group>
             </svg>
             <div>
-            {tooltipData &&
-                <TooltipWithBounds
-                    top={tooltipTop}
-                    left={tooltipLeft}
-                    style={{
-                        ...defaultStyles,
-                        minWidth: 160,
-                        textAlign: 'start',
-                        padding: 12,
-                    }}
-                >
-                    <span>
-                        <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                    ฉีดวัคซีนสะสม {tooltipData['vaccinated'].toLocaleString()} ราย
+                {tooltipData &&
+                    <TooltipWithBounds
+                        top={tooltipTop}
+                        left={tooltipLeft}
+                        style={{
+                            ...defaultStyles,
+                            minWidth: 160,
+                            textAlign: 'start',
+                            padding: 12,
+                        }}
+                    >
+                        <span>
+                            <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
+                    ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
                 </span>
-                </TooltipWithBounds>
-            }
+                    </TooltipWithBounds>
+                }
             </div>
         </div>
     )
@@ -188,7 +186,7 @@ function NationalCurve(props) {
 function generateExtension(ts) {
     const delta = ts[ts.length - 1]['deltaAvg']
     const startDate = moment(ts[ts.length - 1]['date'])
-    const initVaccinated = ts[ts.length - 1]['vaccinated']
+    const initVaccinated = ts[ts.length - 1]['total_doses']
     var predictions = []
     var i = 0
     var predict = 0
@@ -211,9 +209,9 @@ const EstimateCurve = (props) => {
     const extension = generateExtension(timeSeries)
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
-    useEffect(()=>{
-        props.setEstimation(merged[merged.length-1])
-    },[])
+    useEffect(() => {
+        props.setEstimation(merged[merged.length - 1])
+    }, [])
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
@@ -233,7 +231,7 @@ const EstimateCurve = (props) => {
     return (
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
-               
+
                 <Group>
                     <SplitLinePath
                         segments={dividedData}
@@ -259,7 +257,7 @@ const EstimateCurve = (props) => {
                 <Group>
                     <GridRows
                         scale={yScale}
-                        width={width-40}
+                        width={width - 40}
                         top={-30}
                         left={20}
                         strokeDasharray="1,5"
@@ -270,7 +268,7 @@ const EstimateCurve = (props) => {
                     />
                 </Group>
                 <Group>
-                    <AxisLeft 
+                    <AxisLeft
                         scale={yScale}
                         tickLabelProps={() => ({
                             fill: '#bfbfbf',
@@ -278,7 +276,7 @@ const EstimateCurve = (props) => {
                             textAnchor: 'left',
                             opacity: 0.7
                         })}
-                        tickFormat={d=>(`${parseInt(d*100/population)}%`)}
+                        tickFormat={d => (`${parseInt(d * 100 / population)}%`)}
                         numTicks={4}
                         top={-35}
                         left={20}

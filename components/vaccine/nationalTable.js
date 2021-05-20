@@ -93,8 +93,9 @@ function NationalTable(props) {
                 <tbody>
                     <tr className='text-sec'>
                         <th className='text-left' scope="row">จำนวนผู้ได้รับวัคซีน</th>
-                        <td>{data[data.length - 1]['vaccinated'].toLocaleString()}</td>
-                        <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
+                        <td>{data[data.length - 1]['total_doses'].toLocaleString()}</td>
+                        {/*<td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>*/}
+                        <td></td>
                         <td className='d-flex justify-content-end'>
                             <div style={{color: '#60897e'}}>{delta}</div>
                             <div className='ml-1'>

@@ -22,7 +22,7 @@ class NationalCurveSection extends React.Component {
 
   render() {
     return (
-      <div className='container mb-4' style={{ maxWidth: 700 }}>
+      <div className='container mb-4' style={{ maxWidth: 810 }}>
         <div className='text-center'>
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
           {this.state.updatedDate &&
@@ -32,9 +32,7 @@ class NationalCurveSection extends React.Component {
         <NationalCurve />
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
-        <h3 className='mt-4'>สถิติการตรวจเชื้อ</h3>
-        <TestingGraph />
-        <TestingTable />
+        <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
         <div className='mt-5 mb-4 text-center alert alert-black text-white'>
           เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
           ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
@@ -75,7 +73,7 @@ export default function Home() {
         
       <Map />
       <Element name='skipMap'>
-        <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
+        <div className='container mt-4 mb-4' style={{ maxWidth: 700 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />
           <div className='my-4 alert alert-black text-white'>

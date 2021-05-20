@@ -18,6 +18,14 @@ a {
   color: white;
 }
 @media only screen and (min-width: 768px) {
+  .infoBox {
+    font-family: "Sarabun";
+    font-size: 1.1em;
+    line-height: 1.2em;
+    color: black;
+    background-color: white;
+    padding: 1em;
+  }
   .mapContainer {
     position: relative;
     width: 100%;
@@ -36,6 +44,14 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+  .infoBox {
+    font-family: "Sarabun";
+    font-size: 1em;
+    line-height: 1.3em;
+    color: black;
+    background-color: white;
+    padding: 1em;
+  }
   .mapContainer {
     position: relative;
     width: 100%;
@@ -55,14 +71,6 @@ a {
   }
 }
 
-.infoBox {
-  font-family: "Sarabun";
-  font-size: 1.2em;
-  line-height: 1.2em;
-  color: black;
-  background-color: white;
-  padding: 1em;
-}
 .text-end {
   text-align: end;
 }
