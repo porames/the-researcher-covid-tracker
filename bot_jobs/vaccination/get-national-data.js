@@ -1,34 +1,30 @@
 const request = require('request')
-const csv = require('csv-parser')
+const parse = require('csv-parse/lib/sync')
 const fs = require('fs')
 var jsonData = []
-request('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv', (err,response,body) =>{
+request('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/country_data/Thailand.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
-        var dataset = body.split('\n')
-        for (const i in dataset){
-            if(dataset[i].split(',')[1] === 'THA'){
-                const date = dataset[i].split(',')[2]
-                const vaccinated = dataset[i].split(',')[4]
-                const daily_vaccinations = dataset[i].split(',')[7]
-                jsonData.push({
-                    'date': date,
-                    'vaccinated': Number(vaccinated),
-                    'daily_vaccinations': Number(daily_vaccinations)
-                })
-
+        const dataset = parse(body, {
+            columns: true,
+            skip_empty_lines: true
+        })
+        for (const i in dataset) {
+            jsonData.push({
+                'date': dataset[i]['date'],
+                'total_doses': Number(dataset[i]['total_vaccinations']),
+                'first_dose': Number(dataset[i]['people_vaccinated']),
+                'second_dose': Number(dataset[i]['people_fully_vaccinated'])
+            })
+        }
+        for (const i in jsonData) {
+            if (i > 0) {
+                jsonData[i]['daily_vaccinations'] = jsonData[i]['total_doses'] - jsonData[i - 1]['total_doses']
+            }
+            else {
+                jsonData[i]['daily_vaccinations'] = 0
             }
         }
-        for(const i in jsonData){
-            if(i>=1){
-                if(jsonData[i]['vaccinated'] === 0){
-                    jsonData[i]['vaccinated'] = jsonData[i-1]['vaccinated']
-                }
-                if(jsonData[i]['daily_vaccinations'] === 0){
-                    jsonData[i]['daily_vaccinations'] = jsonData[i-1]['daily_vaccinations']
-                }
-            }
-        }
-        fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json',JSON.stringify(jsonData),'utf-8')
+        fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(jsonData), 'utf-8')
         console.log('done')
     }
     else {
