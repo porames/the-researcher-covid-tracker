@@ -121,6 +121,18 @@ a {
   }
 }
 
+.doses-progress {
+  background-color: #999;
+  width: 100%;
+  height: 10px;
+  .doses-bar {
+    height: 100%;
+    background-color: #60897e;
+  }
+}
+.vaccine-theme{
+  color: #60897e;
+}
 .reset-button {
   position: absolute;
   right: 10px;

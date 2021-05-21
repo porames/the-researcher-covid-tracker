@@ -5,73 +5,44 @@ import Province from '../../components/vaccine/provincesGraph'
 import { Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import { National, Estimate } from '../../components/vaccine/nationalCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
+import NationalBars from '../../components/vaccine/nationalBars'
 import moment from 'moment'
 import 'moment/locale/th'
-const BarLegend = (props) => {
-  const palette = ['#bdd5cd', '#9dbbb2', '#7ea297', '#60897e', '#427165']
-  return (
-    <div className='px-sm-3 px-md-5 px-0 d-flex flex-column' >
-      <div className='w-100 d-flex flex-row'>
-        <div className='d-flex bar-legend' style={{ flex: 4 }}>
-          {palette.map((color, i) => {
-            return (
-              <div key={i} className='bar'>
-                <div className='level' style={{ backgroundColor: color }}></div>
-              </div>
-            )
-          })}
-
-        </div>
-        <div className='d-flex bar-legend' style={{ flex: 1, justifyContent: 'center' }} >
-          <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-            <div className='level' style={{ backgroundColor: '#fafafa' }} />
-          </div>
-        </div>
-      </div>
-      <div className='w-100 d-flex flex-row'>
-        <div className='d-flex bar-label' style={{ flex: 4 }}>
-          {[`${parseInt(props.maxCoverage * 20)}%`, `${parseInt(props.maxCoverage * 40)}%`, `${parseInt(props.maxCoverage * 60)}%`, `${parseInt(props.maxCoverage * 80)}%`, `${parseInt(props.maxCoverage * 100)}%`].map((label, i) => {
-            return (
-              <div key={i} className='label'>
-                <small>{label}</small>
-              </div>
-            )
-          })}
-
-        </div>
-        <div className='d-flex bar-label' style={{ flex: 1, justifyContent: 'center' }} >
-          <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-            <div className='text-center'>
-              <small>ข้อมูลไม่พอ</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 const HeadSection = (props) => {
   const [estimation, setEstimation] = useState(undefined)
   const [updateDate, setUpdateDate] = useState(undefined)
+  const [todayData, setTodayData] = useState(undefined)
   return (
-    <div className='container text-center mb-4' style={{ maxWidth: 700 }}>
+    <div className='container text-center mb-4'>
       <h1>ความคืบหน้าการฉีดวัคซีน COVID-19 ในประเทศไทย</h1>
       <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).format('DD MMMM YYYY')}</span>
-      <National setUpdateDate={setUpdateDate} />
-      <NationalTable updateDate={updateDate} />
-      <div className='alert alert-black mt-4 mb-5 py-4'>
-        <h2 className='mb-3'>สถานะการเข้าถึงวัคซีน</h2>
-        <p className='mb-0'>จำกัดเฉพาะกลุ่มเสี่ยง ได้แก่ ผู้สูงอายุ ผู้มีโรคประจำตัว บุคลากรทางการแพทย์ และผู้ที่อาศัยอยู่ในพื้นที่ความเสี่ยงสูง</p>
+
+      <div className='row mt-4' >
+        <div className='col-md-8'>
+          <National setTodayData={setTodayData} setUpdateDate={setUpdateDate} />
+          <NationalTable updateDate={updateDate} />
+        </div>
+        <div className='col-md-4 '>
+          <NationalBars todayData={todayData} />
+          <hr className='my-4' />
+          <div className='text-left mb-4'>
+            <h2 className='mb-3'>สถานะการเข้าถึงวัคซีน</h2>
+            <p className='mb-0'>จำกัดเฉพาะกลุ่มเสี่ยง ได้แก่ ผู้สูงอายุ ผู้มีโรคประจำตัว บุคลากรทางการแพทย์ และผู้ที่อาศัยอยู่ในพื้นที่ความเสี่ยงสูง</p>
+          </div>
+        </div>
+        <div className='col-12'>
+          <hr />
+        </div>
       </div>
-      <div className='my-4'>
-        <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
-        <Estimate setEstimation={setEstimation} />
-        <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
+      <div className='mx-auto' style={{ maxWidth: 700 }}>
+        <div className='my-4'>
+          <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
+          <Estimate setEstimation={setEstimation} />
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
+        </div>
+
       </div>
-      <h2 className='text-center mt-5 mb-4'>แผนที่ความครอบคลุมวัคซีน</h2>
-      <div className='text-center mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
-      <BarLegend maxCoverage={props.maxCoverage} />
     </div>
   )
 }

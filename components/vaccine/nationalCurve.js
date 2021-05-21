@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
@@ -14,7 +14,6 @@ import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
 
 function movingAvg(ts, id) {
@@ -34,7 +33,7 @@ function movingAvg(ts, id) {
     }
     return moving_aves
 }
-function NationalCurve(props) {
+export function NationalCurve(props) {
     var timeSeries = data
     const width = props.width
     const height = props.height
@@ -50,6 +49,7 @@ function NationalCurve(props) {
     })
     useEffect(() => {
         props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
+        props.setTodayData(timeSeries[timeSeries.length-1])
     }, [])
 
 
@@ -79,7 +79,8 @@ function NationalCurve(props) {
         tooltipOpen: true,
         tooltipData: null,
     });
-    const bisectDate = bisector(d => new Date(d['date'])).left;
+    
+    const bisectDate = bisector(d => new Date(d['date'])).center;
     return (
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
@@ -161,7 +162,9 @@ function NationalCurve(props) {
                 </Group>
             </svg>
             <div>
+                
                 {tooltipData &&
+                
                     <TooltipWithBounds
                         top={tooltipTop}
                         left={tooltipLeft}
@@ -174,7 +177,7 @@ function NationalCurve(props) {
                     >
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                    ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
+                            ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
                 </span>
                     </TooltipWithBounds>
                 }
@@ -190,7 +193,7 @@ function generateExtension(ts) {
     var predictions = []
     var i = 0
     var predict = 0
-    while (predict < 66186727) {
+    while (predict < 66186727*2) {
         predict = parseInt(initVaccinated + (delta * i))
         predictions.push({
             vaccinatedAvg: predict,
@@ -203,7 +206,7 @@ function generateExtension(ts) {
     return predictions
 }
 const EstimateCurve = (props) => {
-    const population = 66186727
+    const population = 66186727*2
     const { width, height } = props
     const timeSeries = data
     const extension = generateExtension(timeSeries)
@@ -305,7 +308,7 @@ export const National = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <NationalCurve setUpdateDate={props.setUpdateDate} width={width} height={300} />
+                <NationalCurve setTodayData={props.setTodayData} setUpdateDate={props.setUpdateDate} width={width} height={300} />
             )}
         </ParentSize>
     </div>

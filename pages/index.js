@@ -1,15 +1,14 @@
 import Head from 'next/head'
 import Map from '../components/map'
 import NationalCurve from '../components/nationalGraph'
-import TestingGraph from '../components/testingGraph'
-import TestingTable from '../components/testingTable'
+import VaccinePreview from '../components/vaccinePreview'
 import NationalTable from '../components/nationalTable.js'
 import Province from '../components/provincesGraph'
 import React, { useEffect, useState } from 'react'
 import { HotspotLegend } from '../components/mapLegends'
 import moment from 'moment'
 import 'moment/locale/th'
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import Link from 'next/link'
 
 
 class NationalCurveSection extends React.Component {
@@ -33,12 +32,13 @@ class NationalCurveSection extends React.Component {
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
         <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
-        <div className='mt-5 mb-4 text-center alert alert-black text-white'>
+        <Link href='/vaccination'>ติดตามการฉีดวัคซีน</Link>
+        <VaccinePreview />
+        <div className='my-4 text-center alert alert-black text-white'>
           เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
           ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
         </div>
         <h2 className='text-center mt-5 mb-4'>แผนที่การระบาด</h2>
-        
       </div>
     )
   }
@@ -70,18 +70,18 @@ export default function Home() {
         <meta property="twitter:image" content="/cover.png" />
       </Head>
       <NationalCurveSection />
-        
+
       <Map />
-      <Element name='skipMap'>
-        <div className='container mt-4 mb-4' style={{ maxWidth: 700 }}>
-          <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
-          <Province />
-          <div className='my-4 alert alert-black text-white'>
-            จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
+
+      <div className='container mt-4 mb-4' style={{ maxWidth: 700 }}>
+        <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
+        <Province />
+        <div className='my-4 alert alert-black text-white'>
+          จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
           ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a>
-          </div>
         </div>
-      </Element>
+      </div>
+
     </div>
   )
 }
