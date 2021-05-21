@@ -32,7 +32,11 @@ class NationalCurveSection extends React.Component {
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
         <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
-        <Link href='/vaccination'>ติดตามการฉีดวัคซีน</Link>
+        <Link href='/vaccination'>
+          <a className='d-flex align-items-center'>
+            ติดตามการฉีดวัคซีน <img src='/chevron_right_white_24dp.svg'/>
+          </a>
+        </Link>
         <VaccinePreview />
         <div className='my-4 text-center alert alert-black text-white'>
           เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด

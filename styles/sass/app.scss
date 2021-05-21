@@ -37,9 +37,8 @@ a {
     justify-content: center;
     flex-direction: column;
     position: absolute;
-    top: 16px;
-    left: 16px;
     z-index: 2;
+    transform: translate(-50%,0);
   }
 }
 
@@ -158,6 +157,11 @@ span {
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
+}
+.case-circle-legend{
+  border: rgb(255,0,0) 1px solid;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 50%;
 }
 
 hr {

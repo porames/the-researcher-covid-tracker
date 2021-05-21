@@ -1,5 +1,28 @@
 import React from 'react'
 
+const CaseCircle = (props) => (
+    <div className='case-circle-legend mr-3' style={{ width: props.size, height: props.size }} ></div>
+)
+
+export const CasesLegend = (props) => {
+    const circleSizes = [1, 4, 16, 64]
+    return (
+        <div>
+            <div><b>จำนวนผู้ติดเชื้อใหม่ในช่วง 14 วัน</b></div>
+            <div className='mt-3 d-flex w-100 align-items-center text-sec'>
+                <div className='mr-3'>1</div>
+                <div className='d-flex align-items-center'>
+                    {circleSizes.map((diameter, i) => {
+                        return (
+                            <CaseCircle size={diameter} key={i} />
+                        )
+                    })}
+                </div>
+                <div>1,000</div>
+            </div>
+        </div>
+    )
+}
 
 export const HotspotLegend = (props) => {
     const palette = ["#FFFA6C", '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
