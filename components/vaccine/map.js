@@ -1,7 +1,7 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
-
+import { VaxCoverageLegend } from './mapLegends'
 import provincesData from '../gis/data/provincial-vaccination-data.json'
 import _ from 'lodash'
 
@@ -54,14 +54,14 @@ class Map extends React.Component {
                 type: 'vector',
                 url: 'mapbox://townhall-th.72khtg8y'
             })
-            var coverages=[]
+            var coverages = []
             var provinceMatch = ['match', ['get', 'PROV_CODE']]
             provincesData.forEach((row) => {
                 provinceMatch.push(String(row['id']), row['coverage'])
                 coverages.push(row['coverage'])
             })
-            const maxCoverage= Math.max(...coverages)
-            this.props.setMaxCoverage(maxCoverage)
+            const maxCoverage = Math.max(...coverages)
+            this.setState({ maxCoverage: maxCoverage })
             provinceMatch.push(0)
 
             this.map.addLayer({
@@ -78,11 +78,11 @@ class Map extends React.Component {
                         provinceMatch,
                         0,
                         '#bdd5cd',
-                        maxCoverage*0.3,
+                        maxCoverage * 0.3,
                         '#9dbbb2',
-                        maxCoverage*0.5,
+                        maxCoverage * 0.5,
                         '#7ea297',
-                        maxCoverage*0.7,
+                        maxCoverage * 0.7,
                         '#60897e',
                         maxCoverage,
                         '#427165',
@@ -166,14 +166,14 @@ class Map extends React.Component {
                         { hover: true }
                     )
                     if (!this.state.hoveredData) {
-                        const data = _.find(provincesData, { id: e.features[0].properties['PROV_CODE']})
+                        const data = _.find(provincesData, { id: e.features[0].properties['PROV_CODE'] })
                         this.setState({ hoveredData: data })
-                        
+
                     }
                     else if (this.state.hoveredData['id'] !== (e.features[0].properties['PROV_CODE'])) {
                         const data = _.find(provincesData, { id: (e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
-                       
+
                     }
 
                 }
@@ -205,6 +205,11 @@ class Map extends React.Component {
                 <Head>
                     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
                 </Head>
+                <div className='container' style={{ maxWidth: 700 }}>
+                    <h2 className='text-center mt-5 mb-4'>แผนที่ความครอบคลุมวัคซีน</h2>
+                    <div className='text-center mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
+                    {this.state.maxCoverage && <VaxCoverageLegend maxCoverage={this.state.maxCoverage} />}
+                </div>
                 <div ref={el => this.mapContainer = el} className='mapContainer'>
                     <div onClick={() => this.resetMap()} className='reset-button'>
                         <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
@@ -217,8 +222,8 @@ class Map extends React.Component {
                                 <div>
                                     <div>
                                         <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
-                                        <span>ฉีดไปแล้ว {this.state.hoveredData['total-doses'].toLocaleString()} โดส</span><br/>
-                                        <span>ครอบคลุมประชากร {(this.state.hoveredData.coverage*100).toFixed(2)}%</span><br/>
+                                        <span>ฉีดไปแล้ว {this.state.hoveredData['total-doses'].toLocaleString()} โดส</span><br />
+                                        <span>ครอบคลุมประชากร {(this.state.hoveredData.coverage * 100).toFixed(2)}%</span><br />
 
                                     </div>
                                 </div>
@@ -232,7 +237,7 @@ class Map extends React.Component {
                         </button>
                     </div>
                 </div>
-                <div className='container mt-3' style={{maxWidth: 700, opacity: 0.7}}>
+                <div className='container mt-3' style={{ maxWidth: 700, opacity: 0.7 }}>
                     รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>

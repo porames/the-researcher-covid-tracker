@@ -30,14 +30,14 @@ function TrendCurveVaccination(props) {
     var ts = data.slice(data.length - 14, data.length)
     const width = 50
     const height = 20
-    useEffect(()=>{
+    useEffect(() => {
         const i = ts[0]['deltaAvg']
-        const f = ts[ts.length-1]['deltaAvg']
-        var delta = parseInt(((f-i)/i)*100)
-        if(delta > 0){
+        const f = ts[ts.length - 1]['deltaAvg']
+        var delta = parseInt(((f - i) / i) * 100)
+        if (delta > 0) {
             delta = `+${delta}%`
         }
-        else{
+        else {
             delta = `${delta}%`
         }
         props.setDelta(delta)
@@ -50,7 +50,7 @@ function TrendCurveVaccination(props) {
 
     })
     const yScale = scaleLinear({
-        range: [height-2, 2],
+        range: [height - 2, 2],
         domain: extent(ts, y)
     })
 
@@ -92,13 +92,15 @@ function NationalTable(props) {
                 </thead>
                 <tbody>
                     <tr className='text-sec'>
-                        <th className='text-left' scope="row">จำนวนผู้ได้รับวัคซีน</th>
-                        <td>{data[data.length - 1]['vaccinated'].toLocaleString()}</td>
-                        <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
-                        <td className='d-flex justify-content-end'>
-                            <div style={{color: '#60897e'}}>{delta}</div>
-                            <div className='ml-1'>
-                                <TrendCurveVaccination setDelta={setDelta} />
+                        <th className='text-left' scope="row">จำนวนวัคซีนที่ฉีด</th>
+                        <td>{data[data.length - 1]['total_doses'].toLocaleString()}</td>
+                        <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>                        
+                        <td>
+                            <div className='d-flex justify-content-end'>
+                                <div style={{ color: '#60897e' }}>{delta}</div>
+                                <div className='ml-1'>
+                                    <TrendCurveVaccination setDelta={setDelta} />
+                                </div>
                             </div>
                         </td>
                     </tr>

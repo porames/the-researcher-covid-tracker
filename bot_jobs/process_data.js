@@ -1,3 +1,4 @@
+const census = require('./th-census-data.json')
 const geo = require('../components/gis/geo/th-provinces-centroids.json')
 const amphoesGeo = require('../components/gis/geo/th-map-amphoes.json')
 
@@ -10,10 +11,11 @@ var features = geo['features']
 var provinces = []
 
 for (var i = 0; i < features.length; i++) {
-    //console.log((i+1),features[i]['properties']['A_NAME_T'],features[i]['properties']['P_NAME_T'])
+    const queryPopulation =  _.find(census, {"PROV_CODE": features[i]['properties']['PROV_CODE']})
     province = {}
     province['name'] = features[i]['properties']['PROV_NAMT']
     province['id'] = Number(features[i]['properties']['PROV_CODE'])
+    province['population'] = Number(queryPopulation['population'])
     province['cases'] = []
     province['caseCount'] = 0
     provinces.push(province)
@@ -97,6 +99,7 @@ fs.createReadStream('dataset.csv')
                 for (const i in provinces){
                     const province = provinces[i]
                     province['cases'] =_.countBy(province['cases'])
+                    province['cases-per-100k']=(province['caseCount']*100000 / province['population'])
                 }
                 fs.writeFileSync('../components/gis/data/provinces-data-14days.json', JSON.stringify(provinces), 'utf-8')
                 fs.writeFileSync('../components/gis/data/amphoes-data-14days.json', JSON.stringify(amphoes), 'utf-8');

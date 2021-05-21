@@ -43,12 +43,12 @@ function TestingCurve(props) {
         timeSeries[i]['movingAvg'] = avg
     })
     const xScale = scaleBand({
-        range: [20, width - 20],
+        range: [0, width],
         domain: timeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [20, width - 20],
+        range: [0, width],
         domain: extent(timeSeries, x),
         padding: 0.07
     })
@@ -120,7 +120,7 @@ function TestingCurve(props) {
                             tickLabelProps={() => ({
                                 fill: '#bfbfbf',
                                 fontSize: 11,
-                                textAnchor: 'middle'
+                                textAnchor: 'left'
                             })}
                         />
                         <Bar

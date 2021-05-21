@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
@@ -14,7 +14,6 @@ import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
 
 
 function movingAvg(ts, id) {
@@ -34,13 +33,13 @@ function movingAvg(ts, id) {
     }
     return moving_aves
 }
-function NationalCurve(props) {
+export function NationalCurve(props) {
     var timeSeries = data
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['vaccinated']
-    const avgs = movingAvg(timeSeries, 'vaccinated')
+    const y = d => d['total_doses']
+    const avgs = movingAvg(timeSeries, 'total_doses')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
@@ -48,18 +47,19 @@ function NationalCurve(props) {
     deltaAvgs.map((avg, i) => {
         timeSeries[i]['deltaAvg'] = avg
     })
-    useEffect(()=>{
-        props.setUpdateDate(timeSeries[timeSeries.length-1]['date'])
-    },[])
+    useEffect(() => {
+        props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
+        props.setTodayData(timeSeries[timeSeries.length-1])
+    }, [])
 
 
     const xScale = scaleBand({
-        range: [20, width - 20],
+        range: [0, width],
         domain: timeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [20, width - 20],
+        range: [0, width],
         domain: extent(timeSeries, x),
         padding: 0.07
     })
@@ -79,7 +79,8 @@ function NationalCurve(props) {
         tooltipOpen: true,
         tooltipData: null,
     });
-    const bisectDate = bisector(d => new Date(d['date'])).left;
+    
+    const bisectDate = bisector(d => new Date(d['date'])).center;
     return (
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
@@ -142,8 +143,6 @@ function NationalCurve(props) {
                                     const d = timeSeries[index]
                                     if (d) {
                                         const barHeight = (height - yScale(y(d)) ?? 0)
-
-
                                         showTooltip({
                                             tooltipData: d,
                                             tooltipLeft: x,
@@ -163,23 +162,25 @@ function NationalCurve(props) {
                 </Group>
             </svg>
             <div>
-            {tooltipData &&
-                <TooltipWithBounds
-                    top={tooltipTop}
-                    left={tooltipLeft}
-                    style={{
-                        ...defaultStyles,
-                        minWidth: 160,
-                        textAlign: 'start',
-                        padding: 12,
-                    }}
-                >
-                    <span>
-                        <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                    ฉีดวัคซีนสะสม {tooltipData['vaccinated'].toLocaleString()} ราย
+                
+                {tooltipData &&
+                
+                    <TooltipWithBounds
+                        top={tooltipTop}
+                        left={tooltipLeft}
+                        style={{
+                            ...defaultStyles,
+                            minWidth: 160,
+                            textAlign: 'start',
+                            padding: 12,
+                        }}
+                    >
+                        <span>
+                            <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
+                            ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
                 </span>
-                </TooltipWithBounds>
-            }
+                    </TooltipWithBounds>
+                }
             </div>
         </div>
     )
@@ -188,11 +189,11 @@ function NationalCurve(props) {
 function generateExtension(ts) {
     const delta = ts[ts.length - 1]['deltaAvg']
     const startDate = moment(ts[ts.length - 1]['date'])
-    const initVaccinated = ts[ts.length - 1]['vaccinated']
+    const initVaccinated = ts[ts.length - 1]['total_doses']
     var predictions = []
     var i = 0
     var predict = 0
-    while (predict < 66186727) {
+    while (predict < 66186727*2) {
         predict = parseInt(initVaccinated + (delta * i))
         predictions.push({
             vaccinatedAvg: predict,
@@ -205,15 +206,15 @@ function generateExtension(ts) {
     return predictions
 }
 const EstimateCurve = (props) => {
-    const population = 66186727
+    const population = 66186727*2
     const { width, height } = props
     const timeSeries = data
     const extension = generateExtension(timeSeries)
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
-    useEffect(()=>{
-        props.setEstimation(merged[merged.length-1])
-    },[])
+    useEffect(() => {
+        props.setEstimation(merged[merged.length - 1])
+    }, [])
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
@@ -233,7 +234,7 @@ const EstimateCurve = (props) => {
     return (
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
-               
+
                 <Group>
                     <SplitLinePath
                         segments={dividedData}
@@ -259,7 +260,7 @@ const EstimateCurve = (props) => {
                 <Group>
                     <GridRows
                         scale={yScale}
-                        width={width-40}
+                        width={width - 40}
                         top={-30}
                         left={20}
                         strokeDasharray="1,5"
@@ -270,7 +271,7 @@ const EstimateCurve = (props) => {
                     />
                 </Group>
                 <Group>
-                    <AxisLeft 
+                    <AxisLeft
                         scale={yScale}
                         tickLabelProps={() => ({
                             fill: '#bfbfbf',
@@ -278,7 +279,7 @@ const EstimateCurve = (props) => {
                             textAnchor: 'left',
                             opacity: 0.7
                         })}
-                        tickFormat={d=>(`${parseInt(d*100/population)}%`)}
+                        tickFormat={d => (`${parseInt(d * 100 / population)}%`)}
                         numTicks={4}
                         top={-35}
                         left={20}
@@ -307,7 +308,7 @@ export const National = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <NationalCurve setUpdateDate={props.setUpdateDate} width={width} height={300} />
+                <NationalCurve setTodayData={props.setTodayData} setUpdateDate={props.setUpdateDate} width={width} height={300} />
             )}
         </ParentSize>
     </div>
