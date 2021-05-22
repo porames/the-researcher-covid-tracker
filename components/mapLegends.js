@@ -7,7 +7,7 @@ const CaseCircle = (props) => (
 export const CasesLegend = (props) => {
     const circleSizes = [1, 4, 16, 64]
     return (
-        <div>
+        <div className='mx-auto mx-md-0'>
             <div><b>จำนวนผู้ติดเชื้อใหม่ในช่วง 14 วัน</b></div>
             <div className='mt-3 d-flex w-100 align-items-center text-sec'>
                 <div className='mr-3'>1</div>

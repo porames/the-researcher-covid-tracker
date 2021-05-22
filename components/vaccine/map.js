@@ -7,6 +7,43 @@ import _ from 'lodash'
 
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
+const InfoBox = (props) => (
+    <div className='infoBox rounded shadow-sm' style={{ width: 300 }}>
+        {
+            props.hoveredData &&
+            <div>
+                <div>
+                    <span><b>จังหวัด{props.hoveredData['name']}</b></span><br />
+                    <div className='row' style={{ fontSize: '90%' }}>
+                        <div className='col-7 pr-0'>
+                            <div>ได้รับวัคซีนครบแล้ว</div>
+                        </div>
+                        <div className='col-5 d-flex justify-content-center align-items-center'>
+                            <div>
+                                <b>{(props.hoveredData['total-2nd-dose'] * 100 / props.hoveredData['population']).toFixed(1)}%</b>
+                            </div>
+                            <div className='ml-2 doses-progress-map'>
+                                <div className='doses-bar' style={{ width: `${(props.hoveredData['total-2nd-dose'] * 100 / props.hoveredData['population'])}%` }}></div>
+                            </div>
+                        </div>
+                        <div className='col-7 pr-0'>
+                            <div>ได้รับวัคซีนอย่างน้อย 1 โดส</div>
+                        </div>
+                        <div className='col-5 d-flex justify-content-center align-items-center'>
+                            <div>
+                                <b>{(props.hoveredData['total-1st-dose'] * 100 / props.hoveredData['population']).toFixed(1)}%</b>
+                            </div>
+                            <div className='ml-2 doses-progress-map'>
+                                <div className='doses-bar' style={{ width: `${(props.hoveredData['total-1st-dose'] * 100 / props.hoveredData['population'])}%` }}></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+)
+
 class Map extends React.Component {
     constructor(props) {
         super(props);
@@ -153,6 +190,7 @@ class Map extends React.Component {
                 this.map.flyTo({ center: centroid, zoom: 7 })
             })
             this.map.on('mousemove', 'province-fills', (e) => {
+                this.setState({ infoBoxPosition: e.point })
                 if (e.features.length > 0) {
                     if (hoveredStateId) {
                         this.map.setFeatureState(
@@ -183,10 +221,10 @@ class Map extends React.Component {
                     this.map.setFeatureState(
                         { source: 'provinces', sourceLayer: 'thmapprovinceswithcentroidsid', id: hoveredStateId },
                         { hover: false }
-                    );
+                    )
                 }
                 if (this.state.hoveredData) {
-                    //this.setState({ hoveredData: null })
+                    this.setState({ hoveredData: null })
                 }
                 hoveredStateId = null;
             })
@@ -210,32 +248,22 @@ class Map extends React.Component {
                     <div className='text-center mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
                     {this.state.maxCoverage && <VaxCoverageLegend maxCoverage={this.state.maxCoverage} />}
                 </div>
-                <div ref={el => this.mapContainer = el} className='mapContainer'>
+                <div className='mapContainer'>
+                    <div ref={el => this.mapContainer = el} style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}></div>
                     <div onClick={() => this.resetMap()} className='reset-button'>
                         <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
-
-                    <div className='d-flex flex-column jusitfy-content-center' style={{ position: 'absolute', top: 16, left: 16, zIndex: 2 }}>
-                        <div className='infoBox rounded shadow-sm'>
-                            {
-                                this.state.hoveredData &&
-                                <div>
-                                    <div>
-                                        <span><b>จังหวัด{this.state.hoveredData.name}</b></span><br />
-                                        <span>ฉีดไปแล้ว {this.state.hoveredData['total-doses'].toLocaleString()} โดส</span><br />
-                                        <span>ครอบคลุมประชากร {(this.state.hoveredData.coverage * 100).toFixed(2)}%</span><br />
-
-                                    </div>
-                                </div>
-                            }
-                            {!this.state.hoveredData &&
-                                <span className='text-muted'>เลือกจังหวัดเพื่อดูข้อมูลเพิ่มเติม</span>
-                            }
+                    {this.state.hoveredData &&
+                        <div className='infoBox-container d-md-block d-none' style={{ top: this.state.infoBoxPosition.y + 20, left: this.state.infoBoxPosition.x }}>
+                            <InfoBox hoveredData={this.state.hoveredData} />
                         </div>
-                        <button onClick={() => this.skipMap()} className='mt-2 btn btn-link' style={{ paddingLeft: 2 }}>
-                            <img className='mr-2' src='/expand_more-white.svg' />ดูสถานการณ์รายจังหวัด
-                        </button>
-                    </div>
+                    }
+                    {this.state.hoveredData &&
+                        <div className='infoBox-container d-md-none d-block' >
+                            <InfoBox hoveredData={this.state.hoveredData} />
+                        </div>
+                    }
+
                 </div>
                 <div className='container mt-3' style={{ maxWidth: 700, opacity: 0.7 }}>
                     รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
