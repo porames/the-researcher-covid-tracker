@@ -63,6 +63,14 @@ const fs = require('fs').promises;
             db[i]['total-1st-dose'] = firstDoses[firstDoses.length - 1]
             db[i]['total-2nd-dose'] = secondDoses[secondDoses.length - 1]
             db[i]['coverage'] = ((doses[doses.length - 1] / 2) / province['population'])
+
+            db[i]['>60-total-doses'] = province['>60-doses-cum'][province['>60-doses-cum'].length - 1]
+            db[i]['>60-total-1st-dose'] = province['>60-1st-dose-cum'][province['>60-1st-dose-cum'].length - 1]
+            db[i]['>60-total-2nd-dose'] = province['>60-2nd-dose-cum'][province['>60-2nd-dose-cum'].length - 1]
+            delete db[i]['>60-doses-cum']
+            delete db[i]['>60-1st-dose-cum']
+            delete db[i]['>60-2nd-dose-cum']
+
         }
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('done')        
