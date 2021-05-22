@@ -20,8 +20,6 @@ a {
 @media only screen and (min-width: 768px) {
   .infoBox {
     font-family: "Sarabun";
-    font-size: 1.1em;
-    line-height: 1.2em;
     color: black;
     background-color: white;
     padding: 1em;
@@ -123,6 +121,15 @@ a {
 .doses-progress {
   background-color: #999;
   width: 100%;
+  height: 10px;
+  .doses-bar {
+    height: 100%;
+    background-color: #60897e;
+  }
+}
+.doses-progress-map {
+  background-color: #dbdbdb;
+  width: 50px;
   height: 10px;
   .doses-bar {
     height: 100%;
