@@ -27,7 +27,7 @@ a {
   .mapContainer {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     z-index: 1;
   }
   .infoBox-container {
@@ -119,12 +119,12 @@ a {
 }
 
 .doses-progress {
-  background-color: #999;
+  background-color: rgb(173, 173, 173);
   width: 100%;
   height: 10px;
   .doses-bar {
     height: 100%;
-    background-color: #60897e;
+    background-color: #2e7265;
   }
 }
 .doses-progress-map {

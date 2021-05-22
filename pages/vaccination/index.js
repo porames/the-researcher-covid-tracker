@@ -1,7 +1,7 @@
 import Map from '../../components/vaccine/map'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import Province from '../../components/vaccine/provincesGraph'
+import Province from '../../components/vaccine/provincesTable'
 import { Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import { National, Estimate } from '../../components/vaccine/nationalCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
@@ -76,7 +76,7 @@ export default function Vaccine(props) {
       <Map setMaxCoverage={setMaxCoverage} />
       <Element name='skipMap'>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5 mb-3'>ความคืบหน้ารายจังหวัด</h2>
+          <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
           <Province />
           <div className='my-4 alert alert-black text-white'>
             จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />

@@ -12,8 +12,10 @@ export default function Province(props) {
                             return (
                                 <div key={index} className='col-4 col-md-3 mb-4 px-1'>
                                     <div className='d-flex align-items-center justify-content-between'>
-                                    <div className='text-sec'>{img['province']}</div>
-                                    <div className='badge badge-dark mr-3'>{img['coverage']}%</div>
+                                <div className='text-sec'>
+                                        <small>{img['province']}</small>
+                                        </div>
+                                    <div className='badge badge-dark'>{img['coverage']}%</div>
                                     </div>
                                     <div className='province-graph mt-2' style={{ backgroundImage: `url(/vaccine-graphs-build/${img.name})` }}>
                                         
