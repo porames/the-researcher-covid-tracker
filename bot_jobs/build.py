@@ -87,13 +87,15 @@ for name in provinces.keys():
         #plt.tick_params(axis='x',length=0, pad=10)
         #plt.xticks([min(names), max(names)],fontsize=24, color='#e0e0e0')        
         #plt.gca().xaxis.set_major_formatter(DateFormatter('%d %b'))
-        print(ys)
         plt.xticks([])
         plt.yticks([])
         plt.savefig('../public/infection-graphs-build/'+str(pdata.index(name)+1)+'.svg',bbox_inches=0, transparent=True)        
         #plt.show()
         print(time.time()-start, name)
-        change = int((moving_aves[-1]-moving_aves[-14])*100/(moving_aves[-14]))
+        if(moving_aves[-14]>0):
+            change = int((moving_aves[-1]-moving_aves[-14])*100/(moving_aves[-14]))
+        else:
+            change = 0
         images.append({
             "name": str(pdata.index(name)+1)+".svg",
             "change": change,
