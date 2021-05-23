@@ -2,7 +2,6 @@ import React from 'react'
 import _ from 'lodash'
 import provincesData from '../gis/data/provincial-vaccination-data.json'
 export default function Province(props) {
-    console.log(provincesData)
     return (
         <div class="table-responsive">
             <table className="table text-white w-100" style={{minWidth: 400}}>

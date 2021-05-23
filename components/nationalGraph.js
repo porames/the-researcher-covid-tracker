@@ -74,7 +74,7 @@ function NationalCurve(props) {
     });
     const bisectDate = bisector(d => new Date(d['Date'])).left;
     return (
-        <div style={{ position: 'relative' }}>
+        <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
 
