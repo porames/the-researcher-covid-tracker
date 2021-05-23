@@ -37,9 +37,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python build.py
-      - name: Build Vaccination graphs in svg using python
-        working-directory: bot_jobs/vaccination
-        run: python build.py
+      
+      #- name: Build Vaccination graphs in svg using python
+      #  working-directory: bot_jobs/vaccination
+      #  run: python build.py
       - name: Commit Changes to Git Repo
         run: |
           git config --global user.name "porames"
