@@ -82,7 +82,7 @@ export function NationalCurve(props) {
     
     const bisectDate = bisector(d => new Date(d['date'])).center;
     return (
-        <div style={{ position: 'relative' }}>
+        <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
                     <Group>
@@ -154,7 +154,7 @@ export function NationalCurve(props) {
                             onMouseLeave={() => hideTooltip()}
                             x={10}
                             y={0}
-                            width={width - 20}
+                            width={width}
                             height={height - 30}
                             fill="transparent"
                         />
