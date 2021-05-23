@@ -52,7 +52,7 @@ export default function Vaccine(props) {
   return (
     <div className='dark-theme pt-5 pb-5'>
       <Head>
-        <title>รายงานสถานการณ์วัคซีน COVID-19 ในประเทศไทย - The Researcher</title>
+        <title>รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
@@ -61,16 +61,10 @@ export default function Vaccine(props) {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-V6Q0C8MG7Q');`}} />
-        <meta name="title" content="รายงานสถานการณ์วัคซีน COVID-19 ในประเทศไทย - The Researcher" />
-        <meta name="description" content="สถานการณ์วัคซีน COVID-19 ในประเทศไทย" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher" />
-        <meta property="og:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
-        <meta property="og:image" content="/cover.png" />
+        <meta property="og:image" content="/cover-vaccination.png" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher" />
-        <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
-        <meta property="twitter:image" content="/cover.png" />
+        <meta property="twitter:image" content="/cover-vaccination.png" />
       </Head>
       <HeadSection maxCoverage={maxCoverage} />
       <Map setMaxCoverage={setMaxCoverage} />
