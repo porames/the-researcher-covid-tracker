@@ -51,9 +51,10 @@ class CasesMap extends React.Component {
                 type: 'vector',
                 url: 'mapbox://townhall-th.72khtg8y'
             })
-            this.map.addSource('cases', {
+            this.map.addSource('amphoes', {
+                promoteId: {"th-map-amphoes-points-with-ce-8a2auc": "fid"},
                 type: 'vector',
-                url: 'mapbox://townhall-th.7ozyo5pa'
+                url: 'mapbox://townhall-th.1fyjidjy'
             })
             var matchExpression = ['match', ['get', 'fid']]
             amphoesData.forEach((row) => {
@@ -90,8 +91,8 @@ class CasesMap extends React.Component {
             this.map.addLayer({
                 'id': 'cases-heat',
                 'type': 'circle',
-                'source': 'cases',
-                'source-layer': 'amphoes-1z6vx7',
+                'source': 'amphoes',
+                'source-layer': 'th-map-amphoes-points-with-ce-8a2auc',
                 'paint': {
                     'circle-radius': [
                         "interpolate",
@@ -152,8 +153,8 @@ class CasesMap extends React.Component {
             this.map.addLayer({
                 'id': 'amphoe-label',
                 'type': 'symbol',
-                'source': 'cases',
-                'source-layer': 'amphoes-1z6vx7',
+                'source': 'amphoes',
+                'source-layer': 'th-map-amphoes-points-with-ce-8a2auc',
                 'minzoom': 8,
                 'layout': {
                     'text-field': ['get', 'A_NAME_T'],
@@ -174,7 +175,14 @@ class CasesMap extends React.Component {
             var hoveredStateId = null
             this.map.on('click', 'cases-heat', (e) => {
                 //const centroid = JSON.parse(e.features[0].properties['centroid'])
-                this.map.flyTo({ center: e.lngLat, zoom: 10 })
+                if(e.features[0]){
+                    const centroid = JSON.parse(e.features[0].properties.centroid)
+                    this.map.flyTo({ center: {
+                        lat: centroid[1],
+                        lng: centroid[0]
+                    }, zoom: 10 })
+                }
+                
             })
             this.map.on('mouseleave', 'province-fills', (e) => {
                 if (this.state.hoveredData) {
@@ -187,13 +195,13 @@ class CasesMap extends React.Component {
 
                     if (hoveredStateId) {
                         this.map.setFeatureState(
-                            { source: 'cases', sourceLayer: 'amphoes-1z6vx7', id: hoveredStateId },
+                            { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
                             { hover: false }
                         )
                     }
-                    hoveredStateId = e.features[0].id
+                    hoveredStateId = e.features[0].properties.fid
                     this.map.setFeatureState(
-                        { source: 'cases', sourceLayer: 'amphoes-1z6vx7', id: hoveredStateId },
+                        { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
                         { hover: true }
                     )
 
@@ -213,7 +221,7 @@ class CasesMap extends React.Component {
                     //this.setState({ hoveredData: null })
                 }
                 this.map.setFeatureState(
-                    { source: 'cases', sourceLayer: 'amphoes-1z6vx7', id: hoveredStateId },
+                    { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
                     { hover: false }
                 )
                 hoveredStateId = null;
