@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 const NavHead = () => {
     return (
         <div className='navbar navbar-dark text-white py-2 shadow' style={{backgroundColor: '#3c3c3c'}}>
