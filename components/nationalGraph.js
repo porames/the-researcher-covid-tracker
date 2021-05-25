@@ -216,7 +216,7 @@ function NationalCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['Date']).format('DD MMM')}</b><br />
-                    ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed']} ราย
+                    ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed'].toLocaleString()} ราย
                 </span>
                 </TooltipWithBounds>
             }

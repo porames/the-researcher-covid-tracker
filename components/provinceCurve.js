@@ -39,30 +39,6 @@ function Graph(props) {
         ts.push({ 'date': time, 'caseCount': 0 })
     }
 
-    function colorMap(caseCount) {
-        const palette = ['#fafafa', '#fce468', '#FFB14D', '#FF682D', '#a2322c', '#460c39', '#29010e']
-        var step
-        if (caseCount < 5) {
-            step = 0
-        }
-        else if (caseCount < 15) {
-            step = 1
-        }
-        else if (caseCount < 50) {
-            step = 2
-        }
-        else if (caseCount < 100) {
-            step = 3
-        }
-        else if (caseCount < 250) {
-            step = 4
-        }
-        else {
-            step = 5
-        }
-        return palette[step]
-    }
-
     keys.forEach((date) => {
         if (date !== 'null') {
             //ts2.push({ 'date': date, 'caseCount': f[date] })
@@ -98,7 +74,7 @@ function Graph(props) {
     return (
         <svg width={width} height={height}>
             <Group>
-                <MarkerArrow id="marker-arrow-province" fill={colorMap(props.caseCount)} refX={2} size={5} />
+                <MarkerArrow id="marker-arrow-province" fill='#cf1111' refX={2} size={5} />
                 
                 {[recent].map((lineData, i) => {
                     const markerEnd = 'url(#marker-arrow-province)';
@@ -111,7 +87,7 @@ function Graph(props) {
                                 data={lineData}
                                 x={d => xScale(new Date(d.date)) ?? 0}
                                 y={d => yScale(d['movingAvg']) ?? 0}
-                                stroke={colorMap(props.caseCount)}
+                                stroke='#cf1111'
                                 strokeWidth={2}
                                 shapeRendering="geometricPrecision"
                                 markerEnd={markerEnd}

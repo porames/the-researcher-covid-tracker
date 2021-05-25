@@ -244,8 +244,8 @@ class Map extends React.Component {
                     }
 
                 </div>
-                <div className='container mt-3' style={{ maxWidth: 700, opacity: 0.7 }}>
-                    รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
+                    ที่มาข้อมูล: รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข ข้อมูลรวบรวมและประมวลผลโดย <a href='https://github.com/djay/covidthailand'>djay/covidthailand</a>, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )

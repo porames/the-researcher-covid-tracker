@@ -36,11 +36,18 @@ a {
     flex-direction: column;
     position: absolute;
     z-index: 2;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
+  }
+
+  .credit {
+    font-size: 13px;
   }
 }
 
 @media only screen and (max-width: 768px) {
+  .credit {
+    font-size: 13px;
+  }
   .infoBox {
     font-family: "Sarabun";
     font-size: 1em;
@@ -136,7 +143,7 @@ a {
     background-color: #60897e;
   }
 }
-.vaccine-theme{
+.vaccine-theme {
   color: #60897e;
 }
 .reset-button {
@@ -165,8 +172,8 @@ span {
   background-position: center;
   background-repeat: no-repeat;
 }
-.case-circle-legend{
-  border: rgb(255,0,0) 1px solid;
+.case-circle-legend {
+  border: rgb(255, 0, 0) 1px solid;
   background-color: rgba(255, 0, 0, 0.1);
   border-radius: 50%;
 }
@@ -209,15 +216,41 @@ hr {
   }
 }
 
-.badge-vaccination-scale{
+.badge-vaccination-scale {
   font-size: 90% !important;
 }
 
 .no-select {
-  -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-     -khtml-user-select: none; 
-       -moz-user-select: none; 
-        -ms-user-select: none; 
-            user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.table-toggle {
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  border: none;
+  background-color: #3c3c3c;
+  color: white;
+  font-weight: bold;
+}
+.logo {
+  opacity: 1 !important;
+}
+
+.social-logo{
+  width: 20px;
+  height: 20px;
+}
+
+.aspect-ratio-16-9{
+  width: 100%;
+  padding-top: 56.25%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }

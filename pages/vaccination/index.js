@@ -2,10 +2,12 @@ import Map from '../../components/vaccine/map'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'
-import { Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 import { National, Estimate } from '../../components/vaccine/nationalCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
+import NavHead from '../../components/navHead'
+import Link from 'next/link'
 import moment from 'moment'
 import 'moment/locale/th'
 
@@ -50,34 +52,60 @@ const HeadSection = (props) => {
 export default function Vaccine(props) {
   const [maxCoverage, setMaxCoverage] = useState(undefined)
   return (
-    <div className='dark-theme pt-5 pb-5'>
-      <Head>
-        <title>รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];
+    <>
+      <NavHead />
+      <div className='dark-theme py-5'>
+        <Head>
+          <title>รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher</title>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
+          <script dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-V6Q0C8MG7Q');`}} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="/cover-vaccination.png" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:image" content="/cover-vaccination.png" />
-      </Head>
-      <HeadSection maxCoverage={maxCoverage} />
-      <Map setMaxCoverage={setMaxCoverage} />
-      <Element name='skipMap'>
-        <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
-          <Province />
-          <div className='my-4 alert alert-black text-white'>
-            จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
-              ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a>
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="/cover-vaccination.png" />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:image" content="/cover-vaccination.png" />
+        </Head>
+        <HeadSection maxCoverage={maxCoverage} />
+        <Map setMaxCoverage={setMaxCoverage} />
+        
+          <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
+            <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
+            <Province />
+            <div className='row mt-5'>
+              <div className='col-12'>
+                <hr/>
+              </div>
+              <div className='col-md-6'>
+                <Link href='/'>
+                  <a>
+                  <div className='aspect-ratio-16-9' style={{ backgroundImage: 'url(/cases-map.png)'}}></div>
+                  </a>
+                </Link>
+              </div>
+              <div className='col-md-6 d-flex align-items-center'>
+                <Link href='/'>
+                  <a>
+                    <h5 className='mb-0 d-flex align-items-center'>ติดตามสถานการณ์การระบาด COVID-19 <img src='chevron_right_white_24dp.svg' /></h5>
+                  </a>
+                </Link>
+              </div>
+              <div className='col-12'>
+                <hr/>
+              </div>
+            </div>
+            <div className='mt-5 alert alert-black text-white'>
+              จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
+            ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a><br />
+            ข้อมูลรวบรวมและประมวลผลโดยคุณ <a href='https://github.com/djay/covidthailand' target='_blank'>Dylan Jay</a>
+            </div>
           </div>
-        </div>
-      </Element>
-    </div>
+        
+      </div>
+    </>
   )
 }
