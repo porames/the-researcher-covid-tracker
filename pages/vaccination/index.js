@@ -43,7 +43,6 @@ const HeadSection = (props) => {
           <Estimate setEstimation={setEstimation} />
           <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
         </div>
-
       </div>
     </div>
   )
@@ -72,7 +71,6 @@ export default function Vaccine(props) {
         </Head>
         <HeadSection maxCoverage={maxCoverage} />
         <Map setMaxCoverage={setMaxCoverage} />
-        
           <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
             <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
             <Province />

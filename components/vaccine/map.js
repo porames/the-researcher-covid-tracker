@@ -223,7 +223,11 @@ class Map extends React.Component {
                     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
                 </Head>
                 <div className='container' style={{ maxWidth: 700 }}>
-                    <h2 className='text-center mt-5 mb-4'>แผนที่ความครอบคลุมวัคซีน</h2>
+                    <h2 className='text-center mt-5'>แผนที่ความครอบคลุมวัคซีน</h2>
+                    <div className='alert alert-warning text-center my-4'>
+                        ขณะนี้กรมควบคุมโรคหยุดรายงานจำนวนการฉีดวัคซีนรายจังหวัด ข้อมูลการฉีดวัคซีนรายจังหวัดจึงไม่สามารถอัพเดทให้เป็นปัจจุบันได้
+                        <b> ค่าที่แสดงอัพเดทล่าสุดเมื่อ 23 พฤษภาคม 2021</b> ระบบจะกลับมาอัพเดทอีกครั้งเมื่อมีข้อมูลใหม่จากกรมควบคุมโรค
+                    </div>
                     <div className='text-center mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
                     {this.state.maxCoverage && <VaxCoverageLegend maxCoverage={this.state.maxCoverage} />}
                 </div>
