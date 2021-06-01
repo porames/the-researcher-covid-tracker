@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-05-31T14:27:32.187931</dc:date>
+    <dc:date>2021-06-01T14:53:34.547331</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -316.8 
+     <path d="M 115.363636 -241.2 
 L 115.363636 -39.6 
 L 154.384615 -39.6 
 L 193.405594 -39.6 
@@ -48,49 +48,49 @@ L 505.573427 -39.6
 L 544.594406 -39.6 
 L 583.615385 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -155.1 
-L 622.636364 -155.1 
-L 583.615385 -108.9 
-L 544.594406 -201.3 
-L 505.573427 -293.7 
-L 466.552448 -270.6 
-L 427.531469 -247.5 
-L 388.51049 -247.5 
-L 349.48951 -247.5 
-L 310.468531 -224.4 
-L 271.447552 -132 
-L 232.426573 -108.9 
-L 193.405594 -108.9 
-L 154.384615 -224.4 
-L 115.363636 -316.8 
+L 622.636364 -165.6 
+L 622.636364 -165.6 
+L 583.615385 -165.6 
+L 544.594406 -115.2 
+L 505.573427 -216 
+L 466.552448 -316.8 
+L 427.531469 -291.6 
+L 388.51049 -266.4 
+L 349.48951 -266.4 
+L 310.468531 -266.4 
+L 271.447552 -241.2 
+L 232.426573 -140.4 
+L 193.405594 -115.2 
+L 154.384615 -115.2 
+L 115.363636 -241.2 
 z
-" id="ma3dfa5e766" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="me6c1d151ff" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#pb732139b71)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#ma3dfa5e766" y="360"/>
+    <g clip-path="url(#pc700e1f9d3)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#me6c1d151ff" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#pb732139b71)" d="M 115.363636 43.2 
-L 154.384615 135.6 
-L 193.405594 251.1 
-L 232.426573 251.1 
-L 271.447552 228 
-L 310.468531 135.6 
-L 349.48951 112.5 
-L 388.51049 112.5 
-L 427.531469 112.5 
-L 466.552448 89.4 
-L 505.573427 66.3 
-L 544.594406 158.7 
-L 583.615385 251.1 
-L 622.636364 204.9 
+    <path clip-path="url(#pc700e1f9d3)" d="M 115.363636 118.8 
+L 154.384615 244.8 
+L 193.405594 244.8 
+L 232.426573 219.6 
+L 271.447552 118.8 
+L 310.468531 93.6 
+L 349.48951 93.6 
+L 388.51049 93.6 
+L 427.531469 68.4 
+L 466.552448 43.2 
+L 505.573427 144 
+L 544.594406 244.8 
+L 583.615385 194.4 
+L 622.636364 194.4 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pb732139b71">
+  <clipPath id="pc700e1f9d3">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
