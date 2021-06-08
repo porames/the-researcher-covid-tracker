@@ -1351,8 +1351,9 @@ async function getProvince(provinceName) {
 
 (async () => {
     try {
-        //var hostpial = await getHospital()
-        //await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hostpial), 'utf-8')
+        var hostpial = await getHospital()
+        await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hostpial), 'utf-8')
+        console.log('hospital supply data download completed')
         var db = []
         for (const i in geo) {
             if (geo[i]['PROV_CODE']) {
@@ -1368,7 +1369,7 @@ async function getProvince(provinceName) {
 
         }
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data-dashboard.json', JSON.stringify(db), 'utf-8')
-        console.log('done')
+        console.log('provinces vaccine supply data download completed')
 
     } catch (e) {
         console.log(e)
