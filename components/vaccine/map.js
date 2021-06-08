@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
 import { VaxCoverageLegend } from './mapLegends'
-import provincesData from '../gis/data/provincial-vaccination-data.json'
+import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
 import _ from 'lodash'
 
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
@@ -224,10 +224,12 @@ class Map extends React.Component {
                 </Head>
                 <div className='container' style={{ maxWidth: 700 }}>
                     <h2 className='text-center mt-5'>แผนที่ความครอบคลุมวัคซีน</h2>
+                    {/* 
                     <div className='alert alert-warning text-center my-4'>
                         ขณะนี้กรมควบคุมโรคหยุดรายงานจำนวนการฉีดวัคซีนรายจังหวัด ข้อมูลการฉีดวัคซีนรายจังหวัดจึงไม่สามารถอัพเดทให้เป็นปัจจุบันได้
                         <b> ค่าที่แสดงอัพเดทล่าสุดเมื่อ 23 พฤษภาคม 2021</b> ระบบจะกลับมาอัพเดทอีกครั้งเมื่อมีข้อมูลใหม่จากกรมควบคุมโรค
                     </div>
+                    */}
                     <div className='text-center mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
                     {this.state.maxCoverage && <VaxCoverageLegend maxCoverage={this.state.maxCoverage} />}
                 </div>
