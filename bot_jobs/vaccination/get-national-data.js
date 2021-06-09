@@ -66,7 +66,6 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                 }
             }
         }
-        console.log(sortedData)
         for (const i in sortedData) {
             if (i > 0) {
                 sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses'] - sortedData[i - 1]['total_doses']
