@@ -187,6 +187,7 @@ export function NationalCurve(props) {
 }
 
 function generateExtension(ts) {
+    
     const delta = ts[ts.length - 1]['deltaAvg']
     const startDate = moment(ts[ts.length - 1]['date'])
     const initVaccinated = ts[ts.length - 1]['total_doses']
