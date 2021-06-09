@@ -1,4 +1,4 @@
-import SupplyMap from '../../components/vaccine/supply_map'
+
 import Map from '../../components/vaccine/map'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
@@ -70,6 +70,7 @@ export default function Vaccine(props) {
           <meta property="twitter:image" content="/cover-vaccination.png" />
         </Head>
         <HeadSection maxCoverage={maxCoverage} />
+        <h2 className='text-center mt-5 mb-4'>แผนที่สถานการณ์วัคซีน</h2>
         <Map setMaxCoverage={setMaxCoverage} />
           <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
             <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>

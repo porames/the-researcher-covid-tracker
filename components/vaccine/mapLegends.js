@@ -3,7 +3,8 @@ import React from 'react'
 export const VaxCoverageLegend = (props) => {
     const palette = ['#bdd5cd', '#9dbbb2', '#7ea297', '#60897e', '#427165']
     return (
-      <div className='d-flex flex-column' >
+      <div className='d-flex flex-column w-100' >
+        <div className='text-left mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
         <div className='w-100 d-flex flex-row'>
           <div className='d-flex bar-legend' style={{ flex: 4 }}>
             {palette.map((color, i) => {
@@ -14,11 +15,6 @@ export const VaxCoverageLegend = (props) => {
               )
             })}
   
-          </div>
-          <div className='d-flex bar-legend' style={{ flex: 1, justifyContent: 'center' }} >
-            <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-              <div className='level' style={{ backgroundColor: '#fafafa' }} />
-            </div>
           </div>
         </div>
         <div className='w-100 d-flex flex-row'>
@@ -31,13 +27,6 @@ export const VaxCoverageLegend = (props) => {
               )
             })}
   
-          </div>
-          <div className='d-flex bar-label' style={{ flex: 1, justifyContent: 'center' }} >
-            <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-              <div className='text-center'>
-                <small>ข้อมูลไม่พอ</small>
-              </div>
-            </div>
           </div>
         </div>
       </div>
