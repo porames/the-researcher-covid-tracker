@@ -1,8 +1,8 @@
+import SupplyMap from '../../components/vaccine/supply_map'
 import Map from '../../components/vaccine/map'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'
-
 import { National, Estimate } from '../../components/vaccine/nationalCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
@@ -30,7 +30,7 @@ const HeadSection = (props) => {
           <hr className='my-4' />
           <div className='text-left mb-4'>
             <h2 className='mb-3'>สถานะการเข้าถึงวัคซีน</h2>
-            <p className='mb-0'>จำกัดเฉพาะกลุ่มเสี่ยง ได้แก่ ผู้สูงอายุ ผู้มีโรคประจำตัว บุคลากรทางการแพทย์ และผู้ที่อาศัยอยู่ในพื้นที่ความเสี่ยงสูง</p>
+            <p className='mb-0'>บุคคลทั่วไปสามารถลงทะเบียนจองวัคซีนได้แล้ว โปรดตรวจสอบการลงทะเบียนตามช่องทางประชาสัมพันธ์จังหวัดของท่าน</p>
           </div>
         </div>
         <div className='col-12'>

@@ -251,7 +251,7 @@ class Map extends React.Component {
 
                 </div>
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข ข้อมูลรวบรวมและประมวลผลโดย <a href='https://github.com/djay/covidthailand'>djay/covidthailand</a>, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                    ที่มาข้อมูล: รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข, ข้อมูลการฉีดวัคซีนประจำวันรวบรวมและประมวลผลโดย <a href='https://github.com/djay/covidthailand'>djay/covidthailand</a>, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )

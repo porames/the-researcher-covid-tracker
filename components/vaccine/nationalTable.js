@@ -28,7 +28,6 @@ function movingAvg(ts) {
 
 function TrendCurveVaccination(props) {
     var ts = data.slice(data.length - 14, data.length)
-    console.log(ts)
     const width = 50
     const height = 20
     useEffect(() => {

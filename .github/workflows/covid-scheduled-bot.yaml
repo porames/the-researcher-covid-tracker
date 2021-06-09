@@ -27,7 +27,7 @@ jobs:
         working-directory: bot_jobs/vaccination
         run: |
           node get-national-data.js
-          node get-MOPH-data.js
+          node fetch-MOPH-dashboard.js
       - name: Process Data Received (Infection data)
         working-directory: bot_jobs
         run: node process_data.js
