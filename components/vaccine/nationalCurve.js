@@ -287,7 +287,7 @@ const EstimateCurve = (props) => {
                         tickLength={0}
                     />
                     <AxisBottom
-                        numTicks={6}
+                        numTicks={4}
                         top={height - 30}
                         scale={dateScale}
                         tickFormat={d => moment(d).format('YYYY')}
