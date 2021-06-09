@@ -1,3 +1,5 @@
+//No longer use. DDC no longer publish detailed vaccination data at this endpoint.
+
 const census = require('../th-census-age-group.json')
 const axios = require('axios')
 const parse = require('csv-parse/lib/sync')
