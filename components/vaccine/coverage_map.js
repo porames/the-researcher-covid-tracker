@@ -96,7 +96,7 @@ class Map extends React.Component {
                 coverages.push(row['coverage'])
             })
             const maxCoverage = Math.max(...coverages)
-            this.setState({ maxCoverage: maxCoverage })
+            this.props.setMaxCoverage(maxCoverage)
             provinceMatch.push(0)
 
             this.map.addLayer({

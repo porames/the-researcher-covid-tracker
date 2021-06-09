@@ -8,13 +8,13 @@ import SupplyMap from './supply_map'
 
 function Map() {
     const [mapType, setMapType] = useState('coverage')
+    const [maxCoverage, setMaxCoverage] = useState(undefined)
     return (
         <div>
             <div className='container mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row'>
                 
                 <div className='col-md-6 mb-3' style={{ display: 'flex', alignItems: 'flex-end' }}>
-                    
-                    <VaxCoverageLegend maxCoverage={0.39} />
+                    {mapType === 'coverage' && <VaxCoverageLegend maxCoverage={maxCoverage} />}                    
                 </div>
 
                 <div className='col-md-6 mb-3 d-flex justify-content-center'>
@@ -30,7 +30,7 @@ function Map() {
                     </button>
                 </div>
             </div>
-            {mapType === 'coverage' && <CoverageMap />}
+            {mapType === 'coverage' && <CoverageMap setMaxCoverage={setMaxCoverage} />}
             {mapType === 'supply' && <SupplyMap />}
         </div>
     )
