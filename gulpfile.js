@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')
 const del = require('del')
-
+sass.compiler = require('sass')
 gulp.task('styles', () => {
     return gulp.src('styles/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
