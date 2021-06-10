@@ -3,7 +3,8 @@ import Map from '../../components/vaccine/map'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'
-import { National, Estimate } from '../../components/vaccine/nationalCurve'
+import { National } from '../../components/vaccine/nationalCurve'
+import { Projection } from '../../components/vaccine/projectionCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
 import NavHead from '../../components/navHead'
@@ -40,8 +41,8 @@ const HeadSection = (props) => {
       <div className='mx-auto' style={{ maxWidth: 700 }}>
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
-          <Estimate setEstimation={setEstimation} />
-          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
+          <Projection setEstimation={setEstimation} />
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && (estimation['m50_date']/365).toFixed(1)} ปี</p>
         </div>
       </div>
     </div>
