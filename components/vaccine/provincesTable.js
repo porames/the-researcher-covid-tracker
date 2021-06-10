@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
+import moment from 'moment'
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     
     return (
         <div className="table-responsive">
+            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData['update_at']).format('LL')}</div>
             <table className="table text-white w-100" style={{ minWidth: 400 }}>
                 <thead>
                     <tr>
@@ -15,8 +17,8 @@ export default function Province(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {_.sortBy(provincesData,'coverage').reverse().map((province, index) => {
-                        if (index < (showAll ? provincesData.length : 10)) {
+                    {_.sortBy(provincesData['data'],'coverage').reverse().map((province, index) => {
+                        if (index < (showAll ? provincesData['data'].length : 10)) {
                             return (
                                 <tr key={index} className='text-sec'>
                                     <td><b>{province['name']}</b></td>

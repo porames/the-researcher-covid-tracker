@@ -172,6 +172,12 @@ span {
   background-position: center;
   background-repeat: no-repeat;
 }
+.supply-circle-legend {
+  border:white 1px solid;
+  background-color: #427165;
+  border-radius: 50%;
+}
+
 .case-circle-legend {
   border: rgb(255, 0, 0) 1px solid;
   background-color: rgba(255, 0, 0, 0.1);

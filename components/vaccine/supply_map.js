@@ -3,6 +3,8 @@ import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
 import hospital_supply from '../gis/data/hospital-supply.json'
 //import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
+import moment from 'moment'
+import 'moment/locale/th'
 import _ from 'lodash'
 
 const InfoBox = (props) => (
@@ -10,9 +12,9 @@ const InfoBox = (props) => (
         {
             props.hoveredData &&
             <div>
-                <div >
+                <div>
                     <div><b>{props.hoveredData['h_name']}</b></div>
-                    <div className='row mt-2' >
+                    <div className='row my-2' >
                         <div className='col-7 pr-0'>
                             <div>วัคซีนที่ได้รับทั้งหมด</div>
                         </div>
@@ -26,6 +28,9 @@ const InfoBox = (props) => (
                             {parseInt(props.hoveredData['percentage']*100)}%
                         </div>
                     </div>
+                </div>                
+                <div>
+                    <span className='text-muted'>ข้อมูลเมื่อ {moment(hospital_supply['update_at']).fromNow()}</span>
                 </div>
             </div>
         }
@@ -53,7 +58,7 @@ class Map extends React.Component {
         if (visible_features.length > 0) {
             visible_features.forEach((feature, index) => {
                 const h_code = feature['properties']['h_code']
-                const query = _.find(hospital_supply, { "h_code": h_code })
+                const query = _.find(hospital_supply['data'], { "h_code": h_code })
                 features.push({
                     ...query,
                     coordinates: JSON.parse(feature['properties']['coordinates'])
@@ -96,9 +101,10 @@ class Map extends React.Component {
             })
             var colorMatch = ['match', ['get', 'h_code']]
             var sizeMatch = ['match', ['get', 'h_code']]
-            hospital_supply.forEach((row) => {
-                colorMatch.push(row['h_code'], row['percentage'])
-                sizeMatch.push(row['h_code'], row['doses_delivered'])
+
+            hospital_supply['data'].forEach((row) => {
+                colorMatch.push(row['h_code'], row['percentage'] !== null ? row['percentage'] : 0 )
+                sizeMatch.push(row['h_code'], row['doses_delivered'] !== null ? row['doses_delivered']  : 0)
             })
             colorMatch.push(0)
             sizeMatch.push(0)
@@ -115,20 +121,18 @@ class Map extends React.Component {
                         ["zoom"],
                         2, [
                             'interpolate', ['linear'], sizeMatch,
-                            100, 2,
-                            1000, 4,
-                            10000, 6,
+                            1000, 2,
+                            10000, 4,
                             100000, 8,
-                            1000000, 10
+                            1000000, 16,
                         ],
-                        16,
+                        10,
                         [
                             'interpolate', ['linear'], sizeMatch,
-                            100, 5,
-                            1000, 10,
-                            10000, 15,
+                            1000, 5,
+                            10000, 10,
                             100000, 20,
-                            1000000, 25
+                            1000000, 40,
                         ]
                     ],
                     'circle-color': [
@@ -177,11 +181,11 @@ class Map extends React.Component {
                     )
 
                     if (!this.state.hoveredData) {
-                        const data = _.find(hospital_supply, { 'h_code': hoveredId })
+                        const data = _.find(hospital_supply['data'], { 'h_code': hoveredId })
                         this.setState({ hoveredData: data })
                     }
                     else if (this.state.hoveredData['h_code'] !== hoveredId) {
-                        const data = _.find(hospital_supply, { 'h_code': hoveredId })
+                        const data = _.find(hospital_supply['data'], { 'h_code': hoveredId })
                         this.setState({ hoveredData: data })
                     }
                 }
@@ -227,7 +231,7 @@ class Map extends React.Component {
                                 {this.state.visible_features.map((item, index) => {
                                     if (index < 20) {
                                         return (
-                                            <tr>
+                                            <tr key={index}>
                                                 <td>{item.h_name}</td>
                                                 <td>{item.doses_delivered.toLocaleString()}</td>
                                                 <td>{parseInt(item.percentage * 100)}%</td>
@@ -260,7 +264,7 @@ class Map extends React.Component {
                 </div>
 
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข
+                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข (อัพเดทล่าสุดเมื่อ {moment(hospital_supply['update_at']).format('LL')})
                 </div>
             </div>
         )

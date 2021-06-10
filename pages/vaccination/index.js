@@ -18,7 +18,7 @@ const HeadSection = (props) => {
   return (
     <div className='container text-center mb-4'>
       <h1>ความคืบหน้าการฉีดวัคซีน COVID-19 ในประเทศไทย</h1>
-      <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).format('DD MMMM YYYY')}</span>
+      <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).format('LL')}</span>
 
       <div className='row mt-4' >
         <div className='col-md-8'>
@@ -41,7 +41,7 @@ const HeadSection = (props) => {
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
           <Estimate setEstimation={setEstimation} />
-          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากรส่วนใหญ่ในประเทศไทยจะได้รับวัคซีนใน{estimation && moment(estimation['date']).fromNow()}</p>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@ export default function Vaccine(props) {
         <h2 className='text-center mt-5 mb-4'>แผนที่สถานการณ์วัคซีน</h2>
         <Map setMaxCoverage={setMaxCoverage} />
           <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-            <h2 className='text-center mt-5 mb-4'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
+            <h2 className='text-center mt-5'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
             <Province />
             <div className='row mt-5'>
               <div className='col-12'>

@@ -1,5 +1,29 @@
 import React from 'react'
 
+const SupplyCircle = (props) => (
+  <div className='supply-circle-legend mr-3' style={{ width: props.size*2, height: props.size*2 }} ></div>
+)
+
+export const SupplyLegend = (props) => {
+  const circleSizes = [5, 10, 20, 40]
+  return (
+      <div className='mx-auto mx-md-0'>
+          <div><b>จำนวนวัคซีนที่ได้รับทั้งหมด</b></div>
+          <div className='mt-3 d-flex w-100 align-items-center text-sec'>
+              <div className='mr-3'>1,000</div>
+              <div className='d-flex align-items-center'>
+                  {circleSizes.map((diameter, i) => {
+                      return (
+                          <SupplyCircle size={diameter} key={i} />
+                      )
+                  })}
+              </div>
+              <div>1,000,000</div>
+          </div>
+      </div>
+  )
+}
+
 export const VaxCoverageLegend = (props) => {
     const palette = ['#bdd5cd', '#9dbbb2', '#7ea297', '#60897e', '#427165']
     return (

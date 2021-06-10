@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
 import _ from 'lodash'
+import moment from 'moment'
 
 const InfoBox = (props) => (
     <div className='infoBox rounded shadow-sm' style={{ width: 300 }}>
@@ -91,7 +92,7 @@ class Map extends React.Component {
             })
             var coverages = []
             var provinceMatch = ['match', ['get', 'PROV_CODE']]
-            provincesData.forEach((row) => {
+            provincesData['data'].forEach((row) => {
                 provinceMatch.push(String(row['id']), row['coverage'])
                 coverages.push(row['coverage'])
             })
@@ -181,12 +182,12 @@ class Map extends React.Component {
                         { hover: true }
                     )
                     if (!this.state.hoveredData) {
-                        const data = _.find(provincesData, { id: e.features[0].properties['PROV_CODE'] })
+                        const data = _.find(provincesData['data'], { id: e.features[0].properties['PROV_CODE'] })
                         this.setState({ hoveredData: data })
 
                     }
                     else if (this.state.hoveredData['id'] !== (e.features[0].properties['PROV_CODE'])) {
-                        const data = _.find(provincesData, { id: (e.features[0].properties['PROV_CODE']) })
+                        const data = _.find(provincesData['data'], { id: (e.features[0].properties['PROV_CODE']) })
                         this.setState({ hoveredData: data })
 
                     }
@@ -238,7 +239,7 @@ class Map extends React.Component {
 
                 </div>
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: รายงานการฉีดวัคซีนประจำวันโดยกรมควบคุมโรค กระทรวงสาธารณสุข, ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข, ข้อมูลการฉีดวัคซีนประจำวันรวบรวมและประมวลผลโดย <a href='https://github.com/djay/covidthailand'>djay/covidthailand</a>, สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข (อัพเดทล่าสุดเมื่อ {moment(provincesData['update_at']).format('LL')}), สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )

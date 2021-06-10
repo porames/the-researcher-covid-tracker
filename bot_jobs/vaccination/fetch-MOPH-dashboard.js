@@ -1,15 +1,348 @@
 const geo = require('../th-census-age-group.json')
-
+const hospital_db = require('./hospital_db.json')
 const axios = require('axios')
 const csv = require('csv-parser')
 const fs = require('fs').promises
+const _ = require('lodash')
 
-async function getHospital() {
-    const res = await axios.post('https://datastudio.google.com/batchedDataV2?appVersion=20210506_00020034',
-        { "dataRequest": [{ "requestContext": { "reportContext": { "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6", "pageId": "31081301", "mode": "VIEW", "componentId": "cd-vipnb1bcjc", "displayType": "simple-table" } }, "datasetSpec": { "dataset": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "revisionNumber": 0, "parameterOverrides": [] }], "queryFields": [{ "name": "qt_wipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_code_" } }, { "name": "qt_xipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_name_" } }, { "name": "qt_7lf7mdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_zone_" } }, { "name": "qt_k6rcrdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_province_" } }, { "name": "qt_yipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_quantity_", "aggregation": 6 } }, { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }], "sortData": [{ "sortColumn": { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }, "sortDir": 1 }], "includeRowsCount": true, "paginateInfo": { "startRow": 1, "rowsCount": 500 }, "blendConfig": { "blockDatasource": { "datasourceBlock": { "id": "block_l17h6ouhkc", "type": 1, "inputBlockIds": [], "outputBlockIds": [], "fields": [] }, "blocks": [{ "id": "block_m17h6ouhkc", "type": 5, "inputBlockIds": [], "outputBlockIds": [], "fields": [], "queryBlockConfig": { "joinQueryConfig": { "joinKeys": [], "queries": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "concepts": [] }] } } }], "delegatedAccessEnabled": true, "isUnlocked": true, "isCacheable": false } }, "filters": [{ "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_kh0bqwzbjc" }, "filterConditionType": "NU", "stringValues": ["20210501150000"], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_arrive_at_hospital_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "or": { "filterDefinitions": [{ "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_d5ctq5hdjc" }, "filterConditionType": "GT", "stringValues": [], "numberValues": [0], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }, { "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_z3xgq9hdjc" }, "filterConditionType": "NU", "stringValues": [], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }] } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_lolah1gcjc" }, "filterConditionType": "NU", "stringValues": [""], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_hospital_name_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }], "features": [], "dateRanges": [], "contextNsCount": 1, "calculatedField": [{ "calculatedFieldId": "adhoc_qt_nca2m2bcjc", "ns": "t0", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "dataType": 0 }], "needGeocoding": false, "geoFieldMask": [], "geoVertices": 100000 }, "useDataColumn": true }] }
+async function getMetadata() {
+    const res = await axios.post('https://datastudio.google.com/batchedDataV2?appVersion=20210506_00020034', {
+        "dataRequest": [
+            {
+                "requestContext": {
+                    "reportContext": {
+                        "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                        "pageId": "28035045",
+                        "mode": "VIEW",
+                        "componentId": "cd-2ag9zl1cjc",
+                        "displayType": "simple-table"
+                    }
+                },
+                "datasetSpec": {
+                    "dataset": [
+                        {
+                            "datasourceId": "50c2982f-fe23-4f68-bdb1-4261120c30c2",
+                            "revisionNumber": 0,
+                            "parameterOverrides": []
+                        }
+                    ],
+                    "queryFields": [
+                        {
+                            "name": "qt_gwnsus1cjc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "_title_"
+                            }
+                        },
+                        {
+                            "name": "qt_3fym1s1cjc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "_last_updated_",
+                                "transformationConfig": {
+                                    "transformationType": 5
+                                }
+                            }
+                        }
+                    ],
+                    "sortData": [
+                        {
+                            "sortColumn": {
+                                "name": "qt_3fym1s1cjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_last_updated_",
+                                    "transformationConfig": {
+                                        "transformationType": 5
+                                    }
+                                }
+                            },
+                            "sortDir": 0
+                        }
+                    ],
+                    "includeRowsCount": true,
+                    "paginateInfo": {
+                        "startRow": 1,
+                        "rowsCount": 100
+                    },
+                    "filters": [],
+                    "features": [],
+                    "dateRanges": [],
+                    "contextNsCount": 1,
+                    "calculatedField": [],
+                    "needGeocoding": false,
+                    "geoFieldMask": [],
+                    "geoVertices": 100000
+                },
+                "useDataColumn": true
+            }
+        ]
+    }
     )
     const data = JSON.parse(res.data.substring(5))
-    return data
+    const columns = data['dataResponse'][0]['dataSubset'][0]['dataset']['tableDataset']['column']
+    const vaxIndex = columns[0]['stringColumn']['values'].indexOf('Vaccination')
+    const hospitalIndex = columns[0]['stringColumn']['values'].indexOf('Hospital')
+    const meta = {
+        provincial_vaccination_update_at: columns[1]['dateColumn']['values'][vaxIndex],
+        hospital_supply_update_at: columns[1]['dateColumn']['values'][hospitalIndex]
+    }
+    return meta
+}
+
+async function getHospital(meta) {
+    const res = await axios.post('https://datastudio.google.com/batchedDataV2?appVersion=20210506_00020034',
+        //{ "dataRequest": [{ "requestContext": { "reportContext": { "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6", "pageId": "31081301", "mode": "VIEW", "componentId": "cd-vipnb1bcjc", "displayType": "simple-table" } }, "datasetSpec": { "dataset": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "revisionNumber": 0, "parameterOverrides": [] }], "queryFields": [{ "name": "qt_wipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_code_" } }, { "name": "qt_xipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_name_" } }, { "name": "qt_7lf7mdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_zone_" } }, { "name": "qt_k6rcrdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_province_" } }, { "name": "qt_yipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_quantity_", "aggregation": 6 } }, { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }], "sortData": [{ "sortColumn": { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }, "sortDir": 1 }], "includeRowsCount": true, "paginateInfo": { "startRow": 1, "rowsCount": 500 }, "blendConfig": { "blockDatasource": { "datasourceBlock": { "id": "block_l17h6ouhkc", "type": 1, "inputBlockIds": [], "outputBlockIds": [], "fields": [] }, "blocks": [{ "id": "block_m17h6ouhkc", "type": 5, "inputBlockIds": [], "outputBlockIds": [], "fields": [], "queryBlockConfig": { "joinQueryConfig": { "joinKeys": [], "queries": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "concepts": [] }] } } }], "delegatedAccessEnabled": true, "isUnlocked": true, "isCacheable": false } }, "filters": [{ "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_kh0bqwzbjc" }, "filterConditionType": "NU", "stringValues": ["20210501150000"], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_arrive_at_hospital_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "or": { "filterDefinitions": [{ "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_d5ctq5hdjc" }, "filterConditionType": "GT", "stringValues": [], "numberValues": [0], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }, { "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_z3xgq9hdjc" }, "filterConditionType": "NU", "stringValues": [], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }] } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_lolah1gcjc" }, "filterConditionType": "NU", "stringValues": [""], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_hospital_name_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }], "features": [], "dateRanges": [], "contextNsCount": 1, "calculatedField": [{ "calculatedFieldId": "adhoc_qt_nca2m2bcjc", "ns": "t0", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "dataType": 0 }], "needGeocoding": false, "geoFieldMask": [], "geoVertices": 100000 }, "useDataColumn": true }] }
+        {
+            "dataRequest": [
+                {
+                    "requestContext": {
+                        "reportContext": {
+                            "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                            "pageId": "31081301",
+                            "mode": "VIEW",
+                            "componentId": "cd-vipnb1bcjc",
+                            "displayType": "simple-table"
+                        }
+                    },
+                    "datasetSpec": {
+                        "dataset": [
+                            {
+                                "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357",
+                                "revisionNumber": 0,
+                                "parameterOverrides": []
+                            }
+                        ],
+                        "queryFields": [
+                            {
+                                "name": "qt_wipnb1bcjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_code_"
+                                }
+                            },
+                            {
+                                "name": "qt_xipnb1bcjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_name_"
+                                }
+                            },
+                            {
+                                "name": "qt_7lf7mdidjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_zone_"
+                                }
+                            },
+                            {
+                                "name": "qt_k6rcrdidjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_province_"
+                                }
+                            },
+                            {
+                                "name": "qt_yipnb1bcjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_quantity_",
+                                    "aggregation": 6
+                                }
+                            },
+                            {
+                                "name": "qt_nca2m2bcjc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceType": 1,
+                                    "sourceFieldName": "qt_nca2m2bcjc",
+                                    "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)",
+                                    "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)",
+                                    "formulaOutputDataType": 1,
+                                    "aggregation": 7
+                                }
+                            }
+                        ],
+                        "sortData": [
+                            {
+                                "sortColumn": {
+                                    "name": "qt_yipnb1bcjc",
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "dataTransformation": {
+                                        "sourceFieldName": "_quantity_",
+                                        "aggregation": 6
+                                    }
+                                },
+                                "sortDir": 1
+                            }
+                        ],
+                        "includeRowsCount": true,
+                        "paginateInfo": {
+                            "startRow": 1,
+                            "rowsCount": 500
+                        },
+                        "filters": [
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": false,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "ns": "t0",
+                                            "name": "qt_kh0bqwzbjc"
+                                        },
+                                        "filterConditionType": "NU",
+                                        "stringValues": [
+                                            "20210501150000"
+                                        ],
+                                        "numberValues": [],
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_arrive_at_hospital_"
+                                            }
+                                        }
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            },
+                            {
+                                "filterDefinition": {
+                                    "or": {
+                                        "filterDefinitions": [
+                                            {
+                                                "filterExpression": {
+                                                    "include": true,
+                                                    "conceptType": 0,
+                                                    "concept": {
+                                                        "ns": "t0",
+                                                        "name": "qt_d5ctq5hdjc"
+                                                    },
+                                                    "filterConditionType": "GT",
+                                                    "stringValues": [],
+                                                    "numberValues": [
+                                                        0
+                                                    ],
+                                                    "queryTimeTransformation": {
+                                                        "dataTransformation": {
+                                                            "sourceFieldName": "quantity_available"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "filterExpression": {
+                                                    "include": true,
+                                                    "conceptType": 0,
+                                                    "concept": {
+                                                        "ns": "t0",
+                                                        "name": "qt_z3xgq9hdjc"
+                                                    },
+                                                    "filterConditionType": "NU",
+                                                    "stringValues": [],
+                                                    "numberValues": [],
+                                                    "queryTimeTransformation": {
+                                                        "dataTransformation": {
+                                                            "sourceFieldName": "quantity_available"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            },
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": false,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "ns": "t0",
+                                            "name": "qt_lolah1gcjc"
+                                        },
+                                        "filterConditionType": "NU",
+                                        "stringValues": [
+                                            ""
+                                        ],
+                                        "numberValues": [],
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_hospital_name_"
+                                            }
+                                        }
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            }
+                        ],
+                        "features": [],
+                        "dateRanges": [],
+                        "contextNsCount": 1,
+                        "calculatedField": [],
+                        "needGeocoding": false,
+                        "geoFieldMask": [],
+                        "geoVertices": 100000
+                    },
+                    "useDataColumn": true
+                }
+            ]
+        }
+    )
+    const data = JSON.parse(res.data.substring(5))
+    console.log(data)
+    const constructTable = data['dataResponse'][0]['dataSubset'][0]['dataset']
+    const hCodes = constructTable['tableDataset']['column'][0]['stringColumn']['values']
+    const hNames = constructTable['tableDataset']['column'][1]['stringColumn']['values']
+    const supplies = constructTable['tableDataset']['column'][4]['doubleColumn']['values']
+    const nullIndex = constructTable['tableDataset']['column'][5]['nullIndex']
+    const doses_remaining = constructTable['tableDataset']['column'][5]['doubleColumn']['values']
+    for (const i in nullIndex) {
+        doses_remaining[nullIndex[i]] = null
+    }
+    var hospital_supply = {
+        'update_at': meta['hospital_supply_update_at'],
+        'data': []
+    }
+    console.log('building hospital supply data in JSON')
+    for (const i in hCodes) {
+        const hospital = {
+            "h_code": String(hCodes[i]),
+            "h_name": String(hNames[i]),
+            "doses_delivered": Number(supplies[i]),
+            "doses_remaining": Number(doses_remaining[i]),
+            "percentage": Number(doses_remaining[i]) / Number(supplies[i])
+        }
+        hospital_supply['data'].push(hospital)
+    }
+    
+    await fs.writeFile('../../components/gis/data/hospital-supply.json', JSON.stringify(hospital_supply), 'utf-8')
+    return true
 }
 
 async function getProvinceTimeseries(id) {
@@ -1349,12 +1682,17 @@ async function getProvince(provinceName) {
 
 }
 
+
+
 (async () => {
     try {
-        var hostpial = await getHospital()
-        await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hostpial), 'utf-8')
+        const meta = await getMetadata()
+        await getHospital(meta)
         console.log('hospital supply data download completed')
-        var db = []
+        var db = {
+            'update_at': meta['provincial_vaccination_update_at'],
+            'data': []
+        }
         for (const i in geo) {
             if (geo[i]['PROV_CODE']) {
                 var province = await getProvince(geo[i]['province'])
@@ -1363,13 +1701,14 @@ async function getProvince(provinceName) {
                 province['population'] = Number(geo[i]['total'])
                 province['>60-population'] = Number(geo[i]['>60'])
                 province['coverage'] = (province['total_doses'] / 2) / geo[i]['total']
-                db.push(province)
+                db['data'].push(province)
                 console.log(geo[i]['PROV_CODE'])
             }
 
         }
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data-dashboard.json', JSON.stringify(db), 'utf-8')
         console.log('provinces vaccine supply data download completed')
+        
 
     } catch (e) {
         console.log(e)
