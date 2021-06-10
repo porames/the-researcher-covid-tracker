@@ -9,8 +9,9 @@ from matplotlib.dates import DateFormatter
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 vaccines={}
-with open('../components/gis/data/provincial-vaccination-data.json', encoding='utf-8') as json_file:
+with open('../components/gis/data/provincial-vaccination-data-dashboard.json', encoding='utf-8') as json_file:
     jsondata=json.load(json_file)
+    jsondata=jsondata['data']
     for province in jsondata:
         vaccines[province['name']]=round(province['coverage']*100,2)
 data=pd.read_csv('dataset.csv')

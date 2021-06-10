@@ -216,7 +216,7 @@ class CasesMap extends React.Component {
             });
             this.map.on('mouseleave', 'cases-heat', (e) => {
                 if (this.state.hoveredData) {
-                    //this.setState({ hoveredData: null })
+                    this.setState({ hoveredData: null })
                 }
                 this.map.setFeatureState(
                     { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
