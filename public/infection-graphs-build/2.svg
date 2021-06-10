@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-06-10T14:02:04.801231</dc:date>
+    <dc:date>2021-06-10T14:25:46.749870</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -65,14 +64,14 @@ L 193.405594 -215.914741
 L 154.384615 -199.703432 
 L 115.363636 -230.518318 
 z
-" id="m0d4692b0d2" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mea2a97fa77" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p8405c2fccb)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m0d4692b0d2" y="360"/>
+    <g clip-path="url(#pf3289c18d4)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mea2a97fa77" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p8405c2fccb)" d="M 115.363636 129.481682 
+    <path clip-path="url(#pf3289c18d4)" d="M 115.363636 129.481682 
 L 154.384615 160.296568 
 L 193.405594 144.085259 
 L 232.426573 132.965104 
@@ -91,7 +90,7 @@ L 622.636364 81.115708
   </g>
  </g>
  <defs>
-  <clipPath id="p8405c2fccb">
+  <clipPath id="pf3289c18d4">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
