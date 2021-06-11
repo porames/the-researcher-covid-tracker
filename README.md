@@ -4,6 +4,12 @@
 ตัวเว็บไซต์พัฒนาโดย JavaScript โดยใช้ Framework NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [visx](https://github.com/airbnb/visx/), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com)
 ตัวประมวลผลข้อมูลใช้ NodeJS และ Python
 
+### ดาวน์โหลดชุดข้อมูล (Beta)
+เนื่องจากเว็บไซต์อยู่ระหว่างการพัฒนา รูปแบบชุดข้อมูลจึงอาจมีการเปลี่ยนแปลงได้ในอนาคต
+- [ข้อมูลการฉีดวัคซีนของประเทศรายวัน](https://github.com/porames/the-researcher-covid-bot/blob/master/components/gis/data/national-vaccination-timeseries.json)
+- [ข้อมูลการฉีดวัคซีนรายจังหวัด](https://github.com/porames/the-researcher-covid-bot/blob/master/components/gis/data/provincial-vaccination-data.json)
+- [ข้อมูล Supply วัคซีนแต่ละศูนย์บริการวัคซีน](https://github.com/porames/the-researcher-covid-bot/blob/master/components/gis/data/hospital-supply.json)
+
 ### ที่มาข้อมูล
 
 - ข้อมูลตำแหน่งที่พบผู้ป่วยประจำวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://data.go.th/dataset/covid-19-daily)
