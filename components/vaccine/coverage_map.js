@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import Head from 'next/head'
 
-import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
+import provincesData from '../gis/data/provincial-vaccination-data.json'
 import _ from 'lodash'
 import moment from 'moment'
 

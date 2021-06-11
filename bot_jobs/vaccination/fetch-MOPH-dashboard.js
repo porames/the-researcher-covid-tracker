@@ -1706,7 +1706,7 @@ async function getProvince(provinceName) {
             }
 
         }
-        await fs.writeFile('../../components/gis/data/provincial-vaccination-data-dashboard.json', JSON.stringify(db), 'utf-8')
+        await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('provinces vaccine supply data download completed')
         
 

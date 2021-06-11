@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
-import provincesData from '../gis/data/provincial-vaccination-data-dashboard.json'
+import provincesData from '../gis/data/provincial-vaccination-data.json'
 import moment from 'moment'
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
