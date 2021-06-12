@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'maplibre-gl'
 import Head from 'next/head'
 import amphoesData from './gis/data/amphoes-data-14days.json'
 import _ from 'lodash'
@@ -20,10 +20,10 @@ class CasesMap extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4 })
     }
     componentDidMount() {
-        mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
+        mapboxgl.accessToken = "mapbox"
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/townhall-th/ckjp7wsca4inq19pbfpm6leov',
+            style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c50d5df718be41ee8b7785?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
@@ -45,18 +45,22 @@ class CasesMap extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
                 type: 'vector',
-                url: 'mapbox://townhall-th.c5vzwe91'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c42bdb1499452793d179a3?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('provinces-label', {
                 type: 'vector',
-                url: 'mapbox://townhall-th.72khtg8y'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c4515b1499452793d179a7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('amphoes', {
-                promoteId: {"th-map-amphoes-points-with-ce-8a2auc": "fid"},
+                promoteId: {"60c452f21499452793d179a8": "fid_"},
                 type: 'vector',
-                url: 'mapbox://townhall-th.1fyjidjy'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c452f21499452793d179a8?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
-            var matchExpression = ['match', ['get', 'fid']]
+            this.map.addSource('amphoe', {
+                type: 'vector',
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c42abbf718be41ee8b64f7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
+            })
+            var matchExpression = ['match', ['get', 'fid_']]
             amphoesData.forEach((row) => {
                 matchExpression.push(row['id'], row['caseCount'])
             })
@@ -66,7 +70,7 @@ class CasesMap extends React.Component {
                 'id': 'province-fills',
                 'type': 'fill',
                 'source': 'provinces',
-                'source-layer': 'thmapprovinceswithcentroidsid',
+                'source-layer': '60c42bdb1499452793d179a3',
                 'layout': {},
                 'paint': {
                     'fill-opacity': 0.5,
@@ -77,7 +81,7 @@ class CasesMap extends React.Component {
                 'id': 'provinces-outline',
                 'type': 'line',
                 'source': 'provinces',
-                'source-layer': 'thmapprovinceswithcentroidsid',
+                'source-layer': '60c42bdb1499452793d179a3',
                 'paint': {
                     'line-color': [
                         'case',
@@ -92,7 +96,7 @@ class CasesMap extends React.Component {
                 'id': 'cases-heat',
                 'type': 'circle',
                 'source': 'amphoes',
-                'source-layer': 'th-map-amphoes-points-with-ce-8a2auc',
+                'source-layer': '60c452f21499452793d179a8',
                 'paint': {
                     'circle-radius': [
                         "interpolate",
@@ -131,34 +135,63 @@ class CasesMap extends React.Component {
                 }
             })
             this.map.addLayer({
-                'id': 'province-label',
-                'type': 'symbol',
-                'source': 'provinces-label',
-                'source-layer': 'provinces_centroids-ac2kba',
-                'minzoom': 5,
-                'layout': {
-                    'text-field': ['get', 'PROV_NAMT'],
-                    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-                    'text-justify': 'center',
-                    'text-size': 12
-                },
+                'id': 'amphoe-outline',
+                'type': 'line',
+                'source': 'amphoe',
+                'source-layer': '60c42abbf718be41ee8b64f7',
                 'paint': {
+                    'line-color': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        '#212121',
+                        'rgba(255,255,255,0.2)'
+                    ],
+                    'line-width': 1,
+                    'line-opacity':0.5
+                }
+            });
+            this.map.addLayer({
+                "id": "provinces-label",
+                "type": "symbol",
+                "source": "provinces-label",
+                "source-layer": "60c4515b1499452793d179a7",
+                "layout": {
+                    "text-field": ["get", "PROV_NAMT"],
+                    "text-font": ["Kanit"],
+                    "text-variable-anchor": [
+                        "top",
+                        "bottom",
+                        "left",
+                        "right"
+                    ],
+                    "text-justify": "center",
+                    "text-size": 12
+                },
+                "paint": {
                     "text-color": "#ffffff",
                     "text-halo-width": 0.8,
-                    'text-halo-blur': 1,
-                    'text-halo-color': '#424242',
-                    'text-opacity': ['interpolate', ['linear'], ['zoom'], 7.8, 1, 8, 0],
+                    "text-halo-blur": 1,
+                    "text-halo-color": "#424242",
+                    "text-opacity": ["interpolate", ["linear"],
+                        ["zoom"], 7.8, 1
+                    ]
                 }
             })
             this.map.addLayer({
                 'id': 'amphoe-label',
                 'type': 'symbol',
                 'source': 'amphoes',
-                'source-layer': 'th-map-amphoes-points-with-ce-8a2auc',
+                'source-layer': '60c452f21499452793d179a8',
                 'minzoom': 8,
                 'layout': {
                     'text-field': ['get', 'A_NAME_T'],
-                    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+                    "text-font": ["Kanit"],
+                    "text-variable-anchor": [
+                        "top",
+                        "bottom",
+                        "left",
+                        "right"
+                    ],
                     'text-radial-offset': 1,
                     'text-justify': 'auto',
                     'text-size': 14,
@@ -176,11 +209,9 @@ class CasesMap extends React.Component {
             this.map.on('click', 'cases-heat', (e) => {
                 //const centroid = JSON.parse(e.features[0].properties['centroid'])
                 if(e.features[0]){
-                    const centroid = JSON.parse(e.features[0].properties.centroid)
-                    this.map.flyTo({ center: {
-                        lat: centroid[1],
-                        lng: centroid[0]
-                    }, zoom: 10 })
+                    var centroid_x = e.features[0].properties['centroid'].split(":")[1].split(",")[0]
+                    var centroid_y = e.features[0].properties['centroid'].split(":")[1].split(",")[1].split(")")[0]
+                    this.map.flyTo({ center: [centroid_x,centroid_y], zoom: 10 })
                 }
                 
             })
@@ -194,22 +225,22 @@ class CasesMap extends React.Component {
                 if (e.features.length > 0) {
                     if (hoveredStateId) {
                         this.map.setFeatureState(
-                            { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
+                            { source: 'amphoes', sourceLayer: '60c452f21499452793d179a8', id: hoveredStateId },
                             { hover: false }
                         )
                     }
-                    hoveredStateId = e.features[0].properties.fid
+                    hoveredStateId = e.features[0].properties.fid_
                     this.map.setFeatureState(
-                        { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
+                        { source: 'amphoes', sourceLayer: '60c452f21499452793d179a8', id: hoveredStateId },
                         { hover: true }
                     )
 
                     if (!this.state.hoveredData) {
-                        const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid']) })
+                        const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid_']) })
                         this.setState({ hoveredData: data })
                     }
-                    else if (this.state.hoveredData['id'] !== Number(e.features[0].properties['fid'])) {
-                        const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid']) })
+                    else if (this.state.hoveredData['id'] !== Number(e.features[0].properties['fid_'])) {
+                        const data = _.find(amphoesData, { id: Number(e.features[0].properties['fid_']) })
                         this.setState({ hoveredData: data })
                     }
                 }
@@ -219,7 +250,7 @@ class CasesMap extends React.Component {
                     this.setState({ hoveredData: null })
                 }
                 this.map.setFeatureState(
-                    { source: 'amphoes', sourceLayer: 'th-map-amphoes-points-with-ce-8a2auc', id: hoveredStateId },
+                    { source: 'amphoes', sourceLayer: '60c452f21499452793d179a8', id: hoveredStateId },
                     { hover: false }
                 )
                 hoveredStateId = null;

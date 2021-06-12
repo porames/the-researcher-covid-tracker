@@ -1,5 +1,5 @@
 import React from 'react'
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'maplibre-gl'
 import Head from 'next/head'
 import hospital_supply from '../gis/data/hospital-supply.json'
 import moment from 'moment'
@@ -68,10 +68,9 @@ class Map extends React.Component {
         return features
     }
     componentDidMount() {
-        mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/dark-v10',
+            style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c430935b11251fea89e087?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
@@ -94,8 +93,8 @@ class Map extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('hospitals', {
                 type: 'vector',
-                promoteId: {'hospital_db': 'h_code'},
-                url: 'mapbox://townhall-th.ckpow2myg018v27ozt62t3gtc-6v8ig'
+                promoteId: {'60c4fa27ceacf1b5ea19ae99': 'h_code'},
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c4fa27ceacf1b5ea19ae99?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
 
             })
             var colorMatch = ['match', ['get', 'h_code']]
@@ -112,7 +111,7 @@ class Map extends React.Component {
                 'id': 'hospital-point',
                 'type': 'circle',
                 'source': 'hospitals',
-                'source-layer': 'hospital_db',
+                'source-layer': '60c4fa27ceacf1b5ea19ae99',
                 'paint': {
                     'circle-radius': [
                         "interpolate",
@@ -169,13 +168,13 @@ class Map extends React.Component {
                 if (e.features.length > 0) {
                     if (hoveredId) {
                         this.map.setFeatureState(
-                            { source: 'hospitals', sourceLayer: 'hospital_db', id: hoveredId },
+                            { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
                             { hover: false }
                         )
                     }
                     hoveredId = e.features[0].properties['h_code']
                     this.map.setFeatureState(
-                        { source: 'hospitals', sourceLayer: 'hospital_db', id: hoveredId },
+                        { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
                         { hover: true }
                     )
 
@@ -195,7 +194,7 @@ class Map extends React.Component {
                     this.setState({ hoveredData: null })
                 }
                 this.map.setFeatureState(
-                    { source: 'hospitals', sourceLayer: 'hospital_db', id: hoveredId },
+                    { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
                     { hover: false }
                 )
                 hoveredId = null;
