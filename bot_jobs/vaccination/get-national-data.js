@@ -5,6 +5,7 @@ const fs = require('fs')
 const _ = require('lodash')
 var jsonData = []
 const startDate = new Date('2021-03-06')
+//todo: check if newer data is already existed locally.
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         const dataset = parse(body, {

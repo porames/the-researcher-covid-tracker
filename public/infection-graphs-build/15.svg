@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-06-12T13:22:06.628181</dc:date>
+    <dc:date>2021-06-12T17:57:29.311137</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -64,14 +65,14 @@ L 193.405594 -292.480742
 L 154.384615 -140.831384 
 L 115.363636 -148.146933 
 z
-" id="m72b8ef722c" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="md78a056f93" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p3d4f7cb639)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m72b8ef722c" y="360"/>
+    <g clip-path="url(#p64b7d8d3b9)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#md78a056f93" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p3d4f7cb639)" d="M 115.363636 211.853067 
+    <path clip-path="url(#p64b7d8d3b9)" d="M 115.363636 211.853067 
 L 154.384615 219.168616 
 L 193.405594 67.519258 
 L 232.426573 70.287304 
@@ -90,7 +91,7 @@ L 622.636364 172.90271
   </g>
  </g>
  <defs>
-  <clipPath id="p3d4f7cb639">
+  <clipPath id="p64b7d8d3b9">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>

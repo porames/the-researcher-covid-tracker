@@ -74,8 +74,8 @@ for name in provinces.keys():
         fig = plt.gcf()        
         plt.cla()
         fig.set_size_inches(10,5)
-        if(max(moving_aves[-14:])==0):
-            plt.ylim(0,1)
+        if(max(moving_aves[-14:])<10):
+            plt.ylim(0,10)
         else:
             plt.ylim(0,max(moving_aves[-14:]))
         plt.fill_between(names[-14:],0,moving_aves[-14:], alpha=0.3, color='#dc3545', zorder=2)
