@@ -1,7 +1,7 @@
 ## รายงานข้อมูล COVID-19 ในประเทศไทย  
   
 ![bot-taks-scheduler](https://github.com/porames/the-researcher-covid-bot/workflows/bot-taks-scheduler/badge.svg)  
-ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น.  
+ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. [Github Actions](https://github.com/porames/the-researcher-covid-bot/blob/master/.github/workflows/covid-scheduled-bot.yaml)  
 
 ตัวเว็บไซต์พัฒนาโดย JavaScript โดยใช้ Framework NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [visx](https://github.com/airbnb/visx/) และ [Matplotlib](https://matplotlib.org), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com)
 ตัวประมวลผลข้อมูลใช้ NodeJS และ Python
