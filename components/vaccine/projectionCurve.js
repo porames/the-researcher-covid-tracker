@@ -187,10 +187,10 @@ const EstimateCurve = (props) => {
                         tickLength={0}
                     />
                     <AxisBottom
-                        numTicks={4}
+                        numTicks={3}
                         top={height - 30}
                         scale={dateScale}
-                        tickFormat={d => moment(d).format('YYYY')}
+                        tickFormat={d => moment(d).format('MMM YY')}
                         tickStroke='#bfbfbf'
                         stroke='#bfbfbf'
                         tickLabelProps={() => ({
