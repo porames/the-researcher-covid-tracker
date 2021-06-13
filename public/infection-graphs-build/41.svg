@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-06-12T17:57:29.778587</dc:date>
+    <dc:date>2021-06-13T13:23:40.076696</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -57,28 +56,28 @@ L 505.573427 -39.6
 L 466.552448 -39.6 
 L 427.531469 -39.6 
 L 388.51049 -39.6 
-L 349.48951 -43.56 
-L 310.468531 -55.44 
-L 271.447552 -59.4 
-L 232.426573 -63.36 
+L 349.48951 -39.6 
+L 310.468531 -43.56 
+L 271.447552 -55.44 
+L 232.426573 -59.4 
 L 193.405594 -63.36 
 L 154.384615 -63.36 
 L 115.363636 -63.36 
 z
-" id="m7e9786350a" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m532080c96d" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p5886dd0ffa)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m7e9786350a" y="360"/>
+    <g clip-path="url(#p89258766f7)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m532080c96d" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p5886dd0ffa)" d="M 115.363636 296.64 
+    <path clip-path="url(#p89258766f7)" d="M 115.363636 296.64 
 L 154.384615 296.64 
 L 193.405594 296.64 
-L 232.426573 296.64 
-L 271.447552 300.6 
-L 310.468531 304.56 
-L 349.48951 316.44 
+L 232.426573 300.6 
+L 271.447552 304.56 
+L 310.468531 316.44 
+L 349.48951 320.4 
 L 388.51049 320.4 
 L 427.531469 320.4 
 L 466.552448 320.4 
@@ -91,7 +90,7 @@ L 622.636364 320.4
   </g>
  </g>
  <defs>
-  <clipPath id="p5886dd0ffa">
+  <clipPath id="p89258766f7">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
