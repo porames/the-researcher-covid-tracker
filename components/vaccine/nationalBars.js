@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react'
 
 const NationalBars = (props) => {
     const population = 66186727
-    const remainingSupply = (100-(props.todayData['total_doses'] * 100 / props.todayData['total_supply'])).toFixed(1)
-
+    const [remainingSupply, setRemainingSupply] = useState(0)
+    useEffect(()=>{
+        if(props.todayData){
+            setRemainingSupply((100-(props.todayData['total_doses'] * 100 / props.todayData['total_supply'])).toFixed(1))
+            console.log(remainingSupply)
+        }
+    },[props.todayData])
+    
     return (
         <>
             {props.todayData && (
