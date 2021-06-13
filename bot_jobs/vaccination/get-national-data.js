@@ -19,7 +19,10 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     'date': dataset[i]['Date'],
                     'total_doses': Number(dataset[i]['Vac Given 1 Cum']) + Number(dataset[i]['Vac Given 2 Cum']),
                     'first_dose': Number(dataset[i]['Vac Given 1 Cum']),
-                    'second_dose': Number(dataset[i]['Vac Given 2 Cum'])
+                    'second_dose': Number(dataset[i]['Vac Given 2 Cum']),
+                    'sinovac_supply': Number(dataset[i]['Vac Allocated Sinovac']),
+                    'astrazeneca_supply': Number(dataset[i]['Vac Allocated AstraZeneca']),
+                    'total_supply': Number(dataset[i]['Vac Allocated AstraZeneca']) + Number(dataset[i]['Vac Allocated Sinovac'])
                 })
             }
         }  
@@ -63,7 +66,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     ...sortedData[i],
                     'total_doses': sortedData[i - 1]['total_doses'],
                     'first_dose': sortedData[i - 1]['first_dose'],
-                    'second_dose': sortedData[i - 1]['second_dose']
+                    'second_dose': sortedData[i - 1]['second_dose'],
                 }
             }
         }
