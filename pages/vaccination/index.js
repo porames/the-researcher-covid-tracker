@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'
 import { National } from '../../components/vaccine/nationalCurve'
 import { Projection } from '../../components/vaccine/projectionCurve'
+import SupplyChart from '../../components/vaccine/supplyChart'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
 import NavHead from '../../components/navHead'
@@ -27,12 +28,7 @@ const HeadSection = (props) => {
           <NationalTable updateDate={updateDate} />
         </div>
         <div className='col-md-4 '>
-          <NationalBars todayData={todayData} />
-          <hr className='my-4' />
-          <div className='text-left mb-4'>
-            <h2 className='mb-3'>สถานะการเข้าถึงวัคซีน</h2>
-            <p className='mb-0'>บุคคลทั่วไปสามารถลงทะเบียนจองวัคซีนได้แล้ว โปรดตรวจสอบการลงทะเบียนตามช่องทางประชาสัมพันธ์จังหวัดของท่าน</p>
-          </div>
+          <NationalBars todayData={todayData} />          
         </div>
         <div className='col-12'>
           <hr />
@@ -42,7 +38,7 @@ const HeadSection = (props) => {
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
           <Projection setEstimation={setEstimation} />
-          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && (estimation['m50_date']/365).toFixed(1)} ปี</p>
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && (estimation['m50_date'] / 365).toFixed(1)} ปี</p>
         </div>
       </div>
     </div>
@@ -73,38 +69,38 @@ export default function Vaccine(props) {
         <HeadSection maxCoverage={maxCoverage} />
         <h2 className='text-center mt-5 mb-4'>แผนที่สถานการณ์วัคซีน</h2>
         <Map setMaxCoverage={setMaxCoverage} />
-          <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-            <h2 className='text-center mt-5'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
-            <Province />
-            <div className='row mt-5'>
-              <div className='col-12'>
-                <hr/>
-              </div>
-              <div className='col-md-6'>
-                <Link href='/'>
-                  <a>
-                  <div className='aspect-ratio-16-9' style={{ backgroundImage: 'url(/cases-map.png)'}}></div>
-                  </a>
-                </Link>
-              </div>
-              <div className='col-md-6 d-flex align-items-center'>
-                <Link href='/'>
-                  <a>
-                    <h5 className='mb-0 d-flex align-items-center'>ติดตามสถานการณ์การระบาด COVID-19 <img src='chevron_right_white_24dp.svg' /></h5>
-                  </a>
-                </Link>
-              </div>
-              <div className='col-12'>
-                <hr/>
-              </div>
+        <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
+          <h2 className='text-center mt-5'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
+          <Province />
+          <div className='row mt-5'>
+            <div className='col-12'>
+              <hr />
             </div>
-            <div className='mt-5 alert alert-black text-white'>
-              จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
-            ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a><br />
-            ข้อมูลรวบรวมและประมวลผลโดยคุณ <a href='https://github.com/djay/covidthailand' target='_blank'>Dylan Jay</a>
+            <div className='col-md-6'>
+              <Link href='/'>
+                <a>
+                  <div className='aspect-ratio-16-9' style={{ backgroundImage: 'url(/cases-map.png)' }}></div>
+                </a>
+              </Link>
+            </div>
+            <div className='col-md-6 d-flex align-items-center'>
+              <Link href='/'>
+                <a>
+                  <h5 className='mb-0 d-flex align-items-center'>ติดตามสถานการณ์การระบาด COVID-19 <img src='chevron_right_white_24dp.svg' /></h5>
+                </a>
+              </Link>
+            </div>
+            <div className='col-12'>
+              <hr />
             </div>
           </div>
-        
+          <div className='mt-5 alert alert-black text-white'>
+            จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
+            ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a><br />
+            ข้อมูลรวบรวมและประมวลผลโดยคุณ <a href='https://github.com/djay/covidthailand' target='_blank'>Dylan Jay</a>
+          </div>
+        </div>
+
       </div>
     </>
   )

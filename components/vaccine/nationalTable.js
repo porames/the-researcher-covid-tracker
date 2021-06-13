@@ -81,18 +81,18 @@ function NationalTable(props) {
     const [delta, setDelta] = useState(undefined)
     return (
         <div className='table-responsive'>
-            <table className="table table-theme-light mt-4 text-white">
+            <table className="table table-theme-light mt-4 text-white table-grey">
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th className='text-end' scope="col">ทั้งประเทศ</th>
+                        <th className='text-end' scope="col">ตั้งแต่เริ่มฉีด</th>
                         <th className='text-end' scope='col'>{moment(props.updateDate).format('DD MMM')}</th>
                         <th className='text-end' scope="col">อัตราเร็ว 14 วัน</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr className='text-sec'>
-                        <th className='text-left' scope="row">จำนวนวัคซีนที่ฉีด</th>
+                        <td className='text-left' scope="row">จำนวนวัคซีนที่ฉีด</td>
                         <td>{data[data.length - 1]['total_doses'].toLocaleString()}</td>
                         <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>                        
                         <td>
@@ -103,6 +103,12 @@ function NationalTable(props) {
                                 </div>
                             </div>
                         </td>
+                    </tr>
+                    <tr className='text-sec'>
+                        <td className='text-left'>จำนวนวัคซีนคงเหลือ</td>
+                        <td></td>
+                        <td>{(data[data.length-1]['total_supply'] - data[data.length - 1]['total_doses']).toLocaleString()}</td>
+                        <td></td>
                     </tr>
 
 

@@ -95,7 +95,7 @@ export function NationalCurve(props) {
                                     y={height - barHeight - 30}
                                     width={xScale.bandwidth()}
                                     height={barHeight}
-                                    fill='#9dbbb2'
+                                    fill={timeSeries[i]['missing_data'] ? '#c7b800':'#9dbbb2'}
                                 />
 
                             );
@@ -178,6 +178,9 @@ export function NationalCurve(props) {
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                             ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
+                            {tooltipData['missing_data'] && 
+                                <div className='text-danger mt-1 credit'><b>*วันที่ไม่มีรายงานข้อมูล</b></div>
+                            }
                 </span>
                     </TooltipWithBounds>
                 }
