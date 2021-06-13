@@ -94,7 +94,6 @@ export default function Vaccine(props) {
             </div>
           </div>
           <div id='footer'>
-
             <div className='alert my-4 alert-black text-white'>
               จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
               ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a><br />
