@@ -97,7 +97,7 @@ export default function Vaccine(props) {
             <div className='alert my-4 alert-black text-white'>
               จัดทำโดย <a href='https://facebook.com/researcher.th' target='_blank'>The Researcher</a><br />
               ศึกษาเพิ่มเติมเกี่ยวกับวิธีการประมวลผลข้อมูลและช่วยพัฒนาระบบได้ที่ <a href='https://github.com/porames/the-researcher-covid-bot' target='_blank'>GitHub</a><br />
-              ข้อมูลรวบรวมและประมวลผลโดยคุณ <a href='https://github.com/djay/covidthailand' target='_blank'>Dylan Jay</a>
+              ข้อมูลส่วนหนึ่งรวบรวมและประมวลผลโดยคุณ <a href='https://github.com/djay/covidthailand' target='_blank'>Dylan Jay</a>
             </div>
             <a href='https://vallaris.space' target='_blank'>
             <div className='d-flex pt-4 justify-content-center align-items-center'>
