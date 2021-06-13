@@ -40,7 +40,6 @@ export default class HotspotMap extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
     }
     componentDidMount() {
-        mapboxgl.accessToken = "mapbox"
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c50d5df718be41ee8b7785?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
