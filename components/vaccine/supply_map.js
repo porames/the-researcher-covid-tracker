@@ -207,8 +207,8 @@ class Map extends React.Component {
                         <table className='table text-white credit table-grey'>
                             <thead>
                                 <tr>
-                                    <th>สถานที่ให้บริการวัคซีน</th>
-                                    <th>วัคซีนที่ได้รับ</th>
+                                    <th style={{width: '60%'}}>สถานที่ให้บริการวัคซีน</th>
+                                    <th>จำนวนวัคซีนที่ฉีด (โดส)</th>
                                 </tr>
                             </thead>
                             <tbody style={{ height: 300, overflow: 'auto' }}>
