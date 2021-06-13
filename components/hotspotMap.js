@@ -1,5 +1,5 @@
 
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'maplibre-gl'
 import provincesData from './gis/data/provinces-data-14days.json'
 import Graph from './provinceCurve'
 import Head from 'next/head'
@@ -40,10 +40,9 @@ export default class HotspotMap extends React.Component {
         this.map.flyTo({ center: [101.10, 13.12], zoom: 4.5 })
     }
     componentDidMount() {
-        mapboxgl.accessToken = process.env.NEXT_PUBLIC_mapboxKey
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/townhall-th/ckjp7wsca4inq19pbfpm6leov',
+            style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c50d5df718be41ee8b7785?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
@@ -65,15 +64,19 @@ export default class HotspotMap extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
                 type: 'vector',
-                url: 'mapbox://townhall-th.c5vzwe91'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c4fbfcceacf1b5ea19ae9a?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('provinces-label', {
                 type: 'vector',
-                url: 'mapbox://townhall-th.72khtg8y'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c4515b1499452793d179a7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('cases', {
                 type: 'vector',
-                url: 'mapbox://townhall-th.7ozyo5pa'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c452f21499452793d179a8?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
+            })
+            this.map.addSource('amphoe', {
+                type: 'vector',
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c42abbf718be41ee8b64f7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
 
             var provinceMatch = ['match', ['get', 'PROV_CODE']]
@@ -86,7 +89,7 @@ export default class HotspotMap extends React.Component {
                 'id': 'province-fills',
                 'type': 'fill',
                 'source': 'provinces',
-                'source-layer': 'thmapprovinceswithcentroidsid',
+                'source-layer': '60c4fbfcceacf1b5ea19ae9a',
                 'layout': {},
                 'paint': {
                     'fill-opacity': 0.6,
@@ -115,7 +118,7 @@ export default class HotspotMap extends React.Component {
                 'id': 'provinces-outline',
                 'type': 'line',
                 'source': 'provinces',
-                'source-layer': 'thmapprovinceswithcentroidsid',
+                'source-layer': '60c4fbfcceacf1b5ea19ae9a',
                 'paint': {
                     'line-color': [
                         'case',
@@ -126,35 +129,66 @@ export default class HotspotMap extends React.Component {
                     'line-width': 1
                 }
             });
+
             this.map.addLayer({
-                'id': 'province-label',
+                'id': 'amphoe-outline',
+                'type': 'line',
+                'source': 'amphoe',
+                'source-layer': '60c42abbf718be41ee8b64f7',
+                'paint': {
+                    'line-color': [
+                        'case',
+                        ['boolean', ['feature-state', 'hover'], false],
+                        '#212121',
+                        'rgba(255,255,255,0.2)'
+                    ],
+                    'line-width': 0.5,
+                    'line-opacity':0.5
+                }
+            });
+
+            this.map.addLayer({
+                'id': 'provinces-label',
                 'type': 'symbol',
                 'source': 'provinces-label',
-                'source-layer': 'provinces_centroids-ac2kba',
-                'minzoom': 5,
+                'source-layer': '60c4515b1499452793d179a7',
                 'layout': {
                     'text-field': ['get', 'PROV_NAMT'],
-                    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+                    'text-font': ['Kanit'],
+                    'text-variable-anchor': [
+                        'top',
+                        'bottom',
+                        'left',
+                        'right'
+                    ],
                     'text-justify': 'center',
                     'text-size': 12
                 },
                 'paint': {
-                    "text-color": "#ffffff",
-                    "text-halo-width": 0.8,
+                    'text-color': '#ffffff',
+                    'text-halo-width': 0.8,
                     'text-halo-blur': 1,
                     'text-halo-color': '#424242',
-                    'text-opacity': ['interpolate', ['linear'], ['zoom'], 7.8, 1, 8, 0],
+                    'text-opacity': ['interpolate', ['linear'],
+                        ['zoom'], 7.8, 1
+                    ]
                 }
             })
             this.map.addLayer({
                 'id': 'amphoe-label',
                 'type': 'symbol',
                 'source': 'cases',
-                'source-layer': 'amphoes-1z6vx7',
+                'source-layer': '60c452f21499452793d179a8',
                 'minzoom': 8,
                 'layout': {
                     'text-field': ['get', 'A_NAME_T'],
-                    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+                    "text-font": ["Kanit"],
+                    "text-variable-anchor": [
+                        "top",
+                        "bottom",
+                        "left",
+                        "right"
+                    ],
                     'text-radial-offset': 1,
                     'text-justify': 'auto',
                     'text-size': 14,
@@ -170,8 +204,9 @@ export default class HotspotMap extends React.Component {
 
             var hoveredStateId = null
             this.map.on('click', 'province-fills', (e) => {
-                const centroid = JSON.parse(e.features[0].properties['centroid'])
-                this.map.flyTo({ center: centroid, zoom: 7 })
+                var centroid_x = e.features[0].properties['centroid'].split(":")[1].split(",")[0]
+                var centroid_y = e.features[0].properties['centroid'].split(":")[1].split(",")[1].split(")")[0]
+                this.map.flyTo({ center: [centroid_x,centroid_y], zoom: 7 })
             })
             this.map.on('mouseleave', 'province-fills', (e) => {
                 if (this.state.hoveredData) {
@@ -183,13 +218,13 @@ export default class HotspotMap extends React.Component {
                 if (e.features.length > 0) {
                     if (hoveredStateId) {
                         this.map.setFeatureState(
-                            { source: 'provinces', sourceLayer: 'thmapprovinceswithcentroidsid', id: hoveredStateId },
+                            { source: 'provinces', sourceLayer: '60c4fbfcceacf1b5ea19ae9a', id: hoveredStateId },
                             { hover: false }
                         );
                     }
                     hoveredStateId = e.features[0].id;
                     this.map.setFeatureState(
-                        { source: 'provinces', sourceLayer: 'thmapprovinceswithcentroidsid', id: hoveredStateId },
+                        { source: 'provinces', sourceLayer: '60c4fbfcceacf1b5ea19ae9a', id: hoveredStateId },
                         { hover: true }
                     )
                     if (!this.state.hoveredData) {
@@ -205,7 +240,7 @@ export default class HotspotMap extends React.Component {
             this.map.on('mouseleave', 'province-fills', (e) => {
                 if (hoveredStateId) {
                     this.map.setFeatureState(
-                        { source: 'provinces', sourceLayer: 'thmapprovinceswithcentroidsid', id: hoveredStateId },
+                        { source: 'provinces', sourceLayer: '60c4fbfcceacf1b5ea19ae9a', id: hoveredStateId },
                         { hover: false }
                     );
                 }
