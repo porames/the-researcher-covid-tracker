@@ -81,7 +81,7 @@ function NationalTable(props) {
     const [delta, setDelta] = useState(undefined)
     return (
         <div className='table-responsive'>
-            <table className="table table-theme-light mt-4 text-white table-grey">
+            <table className="table table-theme-light mt-4 text-white">
                 <thead>
                     <tr>
                         <th scope="col"></th>
