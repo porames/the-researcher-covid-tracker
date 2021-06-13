@@ -1,7 +1,7 @@
 import React from 'react'
 import mapboxgl from 'maplibre-gl'
 import Head from 'next/head'
-import hospital_supply from '../gis/data/hospital-supply.json'
+import hospital_supply from '../gis/data/hospital-vaccination-data.json'
 import moment from 'moment'
 import 'moment/locale/th'
 import _ from 'lodash'
@@ -18,13 +18,10 @@ const InfoBox = (props) => (
                             <div>วัคซีนที่ได้รับทั้งหมด</div>
                         </div>
                         <div className='col-5'>                            
-                            {props.hoveredData['doses_delivered'].toLocaleString()}  โดส
-                        </div>
-                        <div className='col-7 pr-0'>
-                            <div>วัคซีนคงเหลือ</div>
+                            {props.hoveredData['total_doses'].toLocaleString()}  โดส
                         </div>
                         <div className='col-5 d-flex'>                            
-                            {parseInt(props.hoveredData['percentage']*100)}%
+                            
                         </div>
                     </div>
                 </div>                
@@ -58,13 +55,10 @@ class Map extends React.Component {
             visible_features.forEach((feature, index) => {
                 const h_code = feature['properties']['h_code']
                 const query = _.find(hospital_supply['data'], { "h_code": h_code })
-                features.push({
-                    ...query,
-                    coordinates: JSON.parse(feature['properties']['coordinates'])
-                })
+                features.push(query)
             })
         }
-        features = _.orderBy(features, ['doses_delivered'], ['desc'])
+        features = _.orderBy(features, ['total_doses'], ['desc'])
         return features
     }
     componentDidMount() {
@@ -93,16 +87,15 @@ class Map extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('hospitals', {
                 type: 'vector',
-                promoteId: {'60c4fa27ceacf1b5ea19ae99': 'h_code'},
-                url: 'https://v2k.vallarismaps.com/core/tiles/60c4fa27ceacf1b5ea19ae99?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
+                promoteId: {'60c61099f718be41ee8b7e16': 'h_code'},
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c61099f718be41ee8b7e16?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
 
             })
             var colorMatch = ['match', ['get', 'h_code']]
             var sizeMatch = ['match', ['get', 'h_code']]
 
             hospital_supply['data'].forEach((row) => {
-                colorMatch.push(row['h_code'], row['percentage'] !== null ? row['percentage'] : 0 )
-                sizeMatch.push(row['h_code'], row['doses_delivered'] !== null ? row['doses_delivered']  : 0)
+                sizeMatch.push(row['h_code'], row['total_doses'] !== null ? row['total_doses']  : 0)
             })
             colorMatch.push(0)
             sizeMatch.push(0)
@@ -111,7 +104,7 @@ class Map extends React.Component {
                 'id': 'hospital-point',
                 'type': 'circle',
                 'source': 'hospitals',
-                'source-layer': '60c4fa27ceacf1b5ea19ae99',
+                'source-layer': '60c61099f718be41ee8b7e16',
                 'paint': {
                     'circle-radius': [
                         "interpolate",
@@ -133,13 +126,7 @@ class Map extends React.Component {
                             1000000, 40,
                         ]
                     ],
-                    'circle-color': [
-                        'interpolate', ['linear'], colorMatch,
-                        0, '#bdd5cd',
-                        0.3, '#9dbbb2',
-                        0.5, '#7ea297',
-                        1, '#427165'
-                    ],
+                    'circle-color': '#427165',
                     "circle-stroke-width":
                         ['case',
                             ['boolean', ['feature-state', 'hover'], false],
@@ -158,7 +145,7 @@ class Map extends React.Component {
             this.map.on('render', () => {
                 var visible_features = this.map.queryRenderedFeatures({
                     layers: ['hospital-point']
-                })
+                })                
                 visible_features = this.generateTable(visible_features)
                 this.setState({ visible_features: visible_features })
             })
@@ -168,13 +155,13 @@ class Map extends React.Component {
                 if (e.features.length > 0) {
                     if (hoveredId) {
                         this.map.setFeatureState(
-                            { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
+                            { source: 'hospitals', sourceLayer: '60c61099f718be41ee8b7e16', id: hoveredId },
                             { hover: false }
                         )
                     }
                     hoveredId = e.features[0].properties['h_code']
                     this.map.setFeatureState(
-                        { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
+                        { source: 'hospitals', sourceLayer: '60c61099f718be41ee8b7e16', id: hoveredId },
                         { hover: true }
                     )
 
@@ -194,7 +181,7 @@ class Map extends React.Component {
                     this.setState({ hoveredData: null })
                 }
                 this.map.setFeatureState(
-                    { source: 'hospitals', sourceLayer: '60c4fa27ceacf1b5ea19ae99', id: hoveredId },
+                    { source: 'hospitals', sourceLayer: '60c61099f718be41ee8b7e16', id: hoveredId },
                     { hover: false }
                 )
                 hoveredId = null;
@@ -220,9 +207,8 @@ class Map extends React.Component {
                         <table className='table text-white credit table-grey'>
                             <thead>
                                 <tr>
-                                    <th style={{ width: '40%' }}>ที่ฉีดวัคซีน</th>
-                                    <th>วัคซีนทั้งหมด</th>
-                                    <th>คงเหลือ</th>
+                                    <th>สถานที่ให้บริการวัคซีน</th>
+                                    <th>วัคซีนที่ได้รับ</th>
                                 </tr>
                             </thead>
                             <tbody style={{ height: 300, overflow: 'auto' }}>
@@ -231,8 +217,7 @@ class Map extends React.Component {
                                         return (
                                             <tr key={index}>
                                                 <td>{item.h_name}</td>
-                                                <td>{item.doses_delivered.toLocaleString()}</td>
-                                                <td>{parseInt(item.percentage * 100)}%</td>
+                                                <td>{item.total_doses.toLocaleString()}</td>
                                             </tr>
                                         )
                                     }
@@ -262,7 +247,7 @@ class Map extends React.Component {
                 </div>
 
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข (อัพเดทล่าสุดเมื่อ {moment(hospital_supply['update_at']).format('LL')})
+                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน มหาวิทยาลัยมหิดล (อัพเดทล่าสุดเมื่อ {moment(hospital_supply['update_at']).format('LL')})
                 </div>
             </div>
         )

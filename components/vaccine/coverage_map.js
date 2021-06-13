@@ -36,7 +36,11 @@ const InfoBox = (props) => (
                                 <div className='doses-bar' style={{ width: `${(props.hoveredData['total-1st-dose'] * 100 / props.hoveredData['population'])}%` }}></div>
                             </div>
                         </div>
+                        <div className='col-12'>
+                            <span className='text-muted mt-2'>ข้อมูลเมื่อ {moment(provincesData['update_at']).fromNow()}</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         }
@@ -149,6 +153,7 @@ class Map extends React.Component {
                 "type": "symbol",
                 "source": "provinces-label",
                 "source-layer": "60c4515b1499452793d179a7",
+                "minzoom": 6,
                 "layout": {
                     "text-field": ["get", "PROV_NAMT"],
                     "text-font": ["Kanit"],
@@ -184,7 +189,7 @@ class Map extends React.Component {
                         'rgba(255,255,255,0.2)'
                     ],
                     'line-width': 0.5,
-                    'line-opacity':0.6
+                    'line-opacity': 0.6
                 }
             });
 
@@ -192,7 +197,7 @@ class Map extends React.Component {
             this.map.on('click', 'province-fills', (e) => {
                 var centroid_x = e.features[0].properties['centroid'].split(":")[1].split(",")[0]
                 var centroid_y = e.features[0].properties['centroid'].split(":")[1].split(",")[1].split(")")[0]
-                this.map.flyTo({ center: [centroid_x,centroid_y], zoom: 7 })
+                this.map.flyTo({ center: [centroid_x, centroid_y], zoom: 7 })
             })
             this.map.on('mousemove', 'province-fills', (e) => {
                 this.setState({ infoBoxPosition: e.point })
@@ -266,7 +271,7 @@ class Map extends React.Component {
 
                 </div>
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน กระทรวงสาธารณสุข (อัพเดทล่าสุดเมื่อ {moment(provincesData['update_at']).format('LL')}), สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน มหาวิทยาลัยมหิดล (อัพเดทล่าสุดเมื่อ {moment(provincesData['update_at']).format('LL')}), สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )

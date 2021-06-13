@@ -72,7 +72,7 @@ class CasesMap extends React.Component {
                 'source-layer': '60c42bdb1499452793d179a3',
                 'layout': {},
                 'paint': {
-                    'fill-opacity': 0.5,
+                    'fill-opacity': 0.4,
                     'fill-color': '#fafafa'
                 }
             })
@@ -154,6 +154,8 @@ class CasesMap extends React.Component {
                 "type": "symbol",
                 "source": "provinces-label",
                 "source-layer": "60c4515b1499452793d179a7",
+                "minzoom": 6,
+                "maxzoom":8,
                 "layout": {
                     "text-field": ["get", "PROV_NAMT"],
                     "text-font": ["Kanit"],
