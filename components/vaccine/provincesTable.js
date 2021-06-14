@@ -15,7 +15,7 @@ const InfoTooltip = (props) => {
     return (
         <div className='ml-2'>
             <button className='p-0 btn btn-icon' type="button" ref={setTriggerRef}>
-                <img style={{opacity: 0.8}} src='/info_white_24dp.svg' height={16} width={16} />
+                <img style={{ opacity: 0.8 }} src='/info_white_24dp.svg' height={16} width={16} />
             </button>
             {visible && (
                 <div
@@ -48,11 +48,13 @@ export default function Province(props) {
                         if (index < (showAll ? provincesData['data'].length : 10)) {
                             return (
                                 <tr key={index} className='text-sec'>
-                                    <td className='d-flex align-items-center'>
-                                        <b>{province['name']}</b>
-                                        {province['population'] > province['registered_population'] &&
-                                            <InfoTooltip excessPop={province['population']-province['registered_population']} />
-                                        }
+                                    <td>
+                                        <div className='d-flex align-items-center'>
+                                            <b>{province['name']}</b>
+                                            {province['population'] > province['registered_population'] &&
+                                                <InfoTooltip excessPop={province['population'] - province['registered_population']} />
+                                            }
+                                        </div>
                                     </td>
                                     <td style={{ width: '30%' }}>
                                         <div className='d-flex align-items-center'>
