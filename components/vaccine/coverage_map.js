@@ -37,7 +37,7 @@ const InfoBox = (props) => (
                             </div>
                         </div>
                         <div className='col-12 text-muted mt-2'>
-                            <div className='font-weight-bold'>{props.hoveredData['population']>props.hoveredData['registered_population'] && `มีประชากรแฝงประมาณ ${(props.hoveredData['population']-props.hoveredData['registered_population']).toLocaleString()} คน`}</div>
+                            <div className='font-weight-bold'>{props.hoveredData['population'] > props.hoveredData['registered_population'] && `มีประชากรแฝงประมาณ ${(props.hoveredData['population'] - props.hoveredData['registered_population']).toLocaleString()} คน`}</div>
                             <div>ข้อมูลเมื่อ {moment(provincesData['update_at']).fromNow()}</div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ class Map extends React.Component {
             const maxCoverage = Math.max(...coverages)
             this.props.setMaxCoverage(maxCoverage)
             provinceMatch.push(0)
-            
+
             this.map.addLayer({
                 'id': 'province-fills',
                 'type': 'fill',
@@ -115,14 +115,15 @@ class Map extends React.Component {
                 'paint': {
                     'fill-opacity': 0.6,
                     'fill-color': [
-                        'step',
+                        'interpolate', ['linear'],
                         provinceMatch,
-                        '#fafafa', 2/100,
-                        '#bdd5cd', maxCoverage * 0.3,
-                        '#9dbbb2', maxCoverage * 0.5,
-                        '#7ea297', maxCoverage * 0.7,
-                        '#60897e', maxCoverage,
-                        '#427165',
+                        0, '#fafafa',
+                        2/100, '#fafafa',
+                        2.1/ 100, '#bdd5cd',
+                        maxCoverage * 0.3, '#bdd5cd',
+                        maxCoverage * 0.5, '#9dbbb2',
+                        maxCoverage * 0.7, '#7ea297',
+                        maxCoverage, '#427165',
                     ],
                 }
             })
