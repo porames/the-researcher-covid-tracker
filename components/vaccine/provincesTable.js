@@ -2,9 +2,36 @@ import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import provincesData from '../gis/data/provincial-vaccination-data.json'
 import moment from 'moment'
+import { usePopperTooltip } from 'react-popper-tooltip';
+import 'react-popper-tooltip/dist/styles.css';
+const InfoTooltip = (props) => {
+    const {
+        getArrowProps,
+        getTooltipProps,
+        setTooltipRef,
+        setTriggerRef,
+        visible,
+    } = usePopperTooltip()
+    return (
+        <div className='ml-2'>
+            <button className='p-0 btn btn-icon' type="button" ref={setTriggerRef}>
+                <img style={{opacity: 0.8}} src='/info_white_24dp.svg' height={16} width={16} />
+            </button>
+            {visible && (
+                <div
+                    ref={setTooltipRef}
+                    {...getTooltipProps({ className: 'tooltip-container p-2' })}
+                >
+                    <div {...getArrowProps({ className: 'tooltip-arrow' })} />
+                    มีประชากรแฝงประมาณ {props.excessPop.toLocaleString()} คน
+                </div>
+            )}
+        </div>
+    );
+};
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
-    
+
     return (
         <div className="table-responsive">
             <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData['update_at']).format('LL')}</div>
@@ -17,11 +44,16 @@ export default function Province(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {_.sortBy(provincesData['data'],'coverage').reverse().map((province, index) => {
+                    {_.sortBy(provincesData['data'], 'coverage').reverse().map((province, index) => {
                         if (index < (showAll ? provincesData['data'].length : 10)) {
                             return (
                                 <tr key={index} className='text-sec'>
-                                    <td><b>{province['name']}</b></td>
+                                    <td className='d-flex align-items-center'>
+                                        <b>{province['name']}</b>
+                                        {province['population'] > province['registered_population'] &&
+                                            <InfoTooltip excessPop={province['population']-province['registered_population']} />
+                                        }
+                                    </td>
                                     <td style={{ width: '30%' }}>
                                         <div className='d-flex align-items-center'>
                                             <span style={{ direction: 'rtl', width: 50 }}>{(province['total_doses'] * 100 / (province['population'] * 2)).toFixed(1)}%</span>

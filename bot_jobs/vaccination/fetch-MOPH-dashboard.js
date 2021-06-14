@@ -1,4 +1,5 @@
 const geo = require('../th-census-age-group.json')
+const estimated_pop = require('../th-census-with-hidden-pop.json')
 const hospital_db = require('./hospital_db.json')
 const axios = require('axios')
 const csv = require('csv-parser')
@@ -1611,8 +1612,6 @@ async function getProvince(provinceName) {
 (async () => {
     try {
         const meta = await getMetadata()
-        //await getHospital(meta)
-        console.log('hospital supply data download completed')
         var db = {
             'update_at': meta['provincial_vaccination_update_at'],
             'data': []
@@ -1622,20 +1621,31 @@ async function getProvince(provinceName) {
             'update_at': meta['provincial_vaccination_update_at'],
             'data': []
         }
+        var count_progress=0
         for (const i in geo) {
             if (geo[i]['PROV_CODE']) {
                 var province = await getProvince(geo[i]['province'])
-                db['data'].push({
+                var population
+                const findPop = _.findIndex(estimated_pop,{"PROV_CODE": geo[i]['PROV_CODE']})
+                if(estimated_pop[findPop]['estimated_living_population']){
+                    population = estimated_pop[findPop]['estimated_living_population']
+                }
+                else{
+                    population = estimated_pop[findPop]['population']
+                }
+                province_data = {
                     "name": geo[i]['province'],
                     "id": geo[i]['PROV_CODE'],
-                    "population":  Number(geo[i]['total']),
+                    "population":  population,
+                    "registered_population": geo[i]['total'],
                     ">60-population": Number(geo[i]['>60']),
-                    "coverage": (province['total_doses'] / 2) / geo[i]['total'],
+                    "coverage": (province['total_doses'] / 2) / population,
                     "total_doses": province['total_doses'],
                     "total-1st-dose": province['total-1st-dose'],
                     "total-2nd-dose": province['total-2nd-dose'],
                     ">60-total-doses": province['>60-total-doses']
-                })
+                }
+                db['data'].push(province_data)
                 province['by_hospitals']['h_codes'].map((h_code, index) => {
                     hospital_doses['data'].push({
                         h_code: h_code,
@@ -1644,11 +1654,12 @@ async function getProvince(provinceName) {
                         province: geo[i]['province']
                     })
                 })
-                console.log(`${i}/77`)
+                count_progress+=1
+                console.log(`${count_progress}/77, Population: ${population}`)
             }
 
         }
-        await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
+        //await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('provinces vaccine supply data download completed')
 

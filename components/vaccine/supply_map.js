@@ -15,7 +15,7 @@ const InfoBox = (props) => (
                     <div><b>{props.hoveredData['h_name']}</b></div>
                     <div className='row my-2' >
                         <div className='col-7 pr-0'>
-                            <div>วัคซีนที่ได้รับทั้งหมด</div>
+                            <div>จำนวนวัคซีนที่ฉีด</div>
                         </div>
                         <div className='col-5'>                            
                             {props.hoveredData['total_doses'].toLocaleString()}  โดส

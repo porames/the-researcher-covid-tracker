@@ -36,8 +36,9 @@ const InfoBox = (props) => (
                                 <div className='doses-bar' style={{ width: `${(props.hoveredData['total-1st-dose'] * 100 / props.hoveredData['population'])}%` }}></div>
                             </div>
                         </div>
-                        <div className='col-12'>
-                            <span className='text-muted mt-2'>ข้อมูลเมื่อ {moment(provincesData['update_at']).fromNow()}</span>
+                        <div className='col-12 text-muted mt-2'>
+                            <div className='font-weight-bold'>{props.hoveredData['population']>props.hoveredData['registered_population'] && `มีประชากรแฝงประมาณ ${(props.hoveredData['population']-props.hoveredData['registered_population']).toLocaleString()} คน`}</div>
+                            <div>ข้อมูลเมื่อ {moment(provincesData['update_at']).fromNow()}</div>
                         </div>
                     </div>
 
@@ -106,7 +107,7 @@ class Map extends React.Component {
             const maxCoverage = Math.max(...coverages)
             this.props.setMaxCoverage(maxCoverage)
             provinceMatch.push(0)
-
+            
             this.map.addLayer({
                 'id': 'province-fills',
                 'type': 'fill',
@@ -116,18 +117,13 @@ class Map extends React.Component {
                 'paint': {
                     'fill-opacity': 0.6,
                     'fill-color': [
-                        'interpolate',
-                        ['linear'],
+                        'step',
                         provinceMatch,
-                        0,
-                        '#bdd5cd',
-                        maxCoverage * 0.3,
-                        '#9dbbb2',
-                        maxCoverage * 0.5,
-                        '#7ea297',
-                        maxCoverage * 0.7,
-                        '#60897e',
-                        maxCoverage,
+                        '#fafafa', 2/100,
+                        '#bdd5cd', maxCoverage * 0.3,
+                        '#9dbbb2', maxCoverage * 0.5,
+                        '#7ea297', maxCoverage * 0.7,
+                        '#60897e', maxCoverage,
                         '#427165',
                     ],
                 }
@@ -271,7 +267,7 @@ class Map extends React.Component {
 
                 </div>
                 <div className='container text-sec mt-3 credit' style={{ maxWidth: 810 }}>
-                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน มหาวิทยาลัยมหิดล (อัพเดทล่าสุดเมื่อ {moment(provincesData['update_at']).format('LL')}), สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ
+                    ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน มหาวิทยาลัยมหิดล (อัพเดทล่าสุดเมื่อ {moment(provincesData['update_at']).format('LL')}), สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ, รายงานประชากรแฝง สำนักงานสถิติแห่งชาติ
                 </div>
             </div>
         )
