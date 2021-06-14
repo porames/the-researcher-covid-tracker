@@ -84,8 +84,6 @@ class Map extends React.Component {
         });
         this.map.on('load', () => {
             console.log('Map Loaded')
-            // Add a geojson point source.
-            // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
                 type: 'vector',
                 url: 'https://v2k.vallarismaps.com/core/tiles/60c4fbfcceacf1b5ea19ae9a?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'

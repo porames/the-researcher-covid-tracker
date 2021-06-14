@@ -18,7 +18,7 @@ const VaccinePreview = (props) => {
                 </ParentSize>
             </div>
             <div className='col-md-4 '>
-                <NationalBars todayData={todayData} />
+                <NationalBars hideSupply={true} todayData={todayData} />
             </div>
             <div className='col-12'>
                 <hr className='mt-5' />

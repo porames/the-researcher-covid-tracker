@@ -17,14 +17,14 @@ const InfoBox = (props) => (
                         <div className='col-7 pr-0'>
                             <div>จำนวนวัคซีนที่ฉีด</div>
                         </div>
-                        <div className='col-5'>                            
+                        <div className='col-5'>
                             {props.hoveredData['total_doses'].toLocaleString()}  โดส
                         </div>
-                        <div className='col-5 d-flex'>                            
-                            
+                        <div className='col-5 d-flex'>
+
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div>
                     <span className='text-muted'>ข้อมูลเมื่อ {moment(hospital_supply['update_at']).fromNow()}</span>
                 </div>
@@ -42,7 +42,8 @@ class Map extends React.Component {
             zoom: 12,
             hoveredData: null,
             visible_features: [],
-            infoBoxPosition: null
+            infoBoxPosition: null,
+            page: 1
         };
         this.map
     }
@@ -87,7 +88,7 @@ class Map extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('hospitals', {
                 type: 'vector',
-                promoteId: {'60c61099f718be41ee8b7e16': 'h_code'},
+                promoteId: { '60c61099f718be41ee8b7e16': 'h_code' },
                 url: 'https://v2k.vallarismaps.com/core/tiles/60c61099f718be41ee8b7e16?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
 
             })
@@ -95,7 +96,7 @@ class Map extends React.Component {
             var sizeMatch = ['match', ['get', 'h_code']]
 
             hospital_supply['data'].forEach((row) => {
-                sizeMatch.push(row['h_code'], row['total_doses'] !== null ? row['total_doses']  : 0)
+                sizeMatch.push(row['h_code'], row['total_doses'] !== null ? row['total_doses'] : 0)
             })
             colorMatch.push(0)
             sizeMatch.push(0)
@@ -145,13 +146,13 @@ class Map extends React.Component {
             this.map.on('render', () => {
                 var visible_features = this.map.queryRenderedFeatures({
                     layers: ['hospital-point']
-                })                
+                })
                 visible_features = this.generateTable(visible_features)
-                this.setState({ visible_features: visible_features })
+                this.setState({ visible_features: visible_features, page: 1 })
             })
             this.map.on('mousemove', 'hospital-point', (e) => {
                 this.setState({ infoBoxPosition: e.point })
-                
+
                 if (e.features.length > 0) {
                     if (hoveredId) {
                         this.map.setFeatureState(
@@ -191,7 +192,7 @@ class Map extends React.Component {
                     layers: ['hospital-point']
                 })
                 visible_features = this.generateTable(visible_features)
-                this.setState({ visible_features: visible_features })
+                this.setState({ visible_features: visible_features, page: 1 })
             })
         })
     }
@@ -204,27 +205,34 @@ class Map extends React.Component {
 
                 <div className='row mt-4 flex-column-reverse flex-md-row'>
                     <div className='col-md-5 p-0 mt-md-0 mt-4' style={{ overflowY: 'auto', maxHeight: '90vh' }}>
-                        <table className='table text-white credit table-grey'>
-                            <thead>
-                                <tr>
-                                    <th style={{width: '60%'}}>สถานที่ให้บริการวัคซีน</th>
-                                    <th>จำนวนวัคซีนที่ฉีด (โดส)</th>
-                                </tr>
-                            </thead>
-                            <tbody style={{ height: 300, overflow: 'auto' }}>
-                                {this.state.visible_features.map((item, index) => {
-                                    if (index < 20) {
-                                        return (
-                                            <tr key={index}>
-                                                <td>{item.h_name}</td>
-                                                <td>{item.total_doses.toLocaleString()}</td>
-                                            </tr>
-                                        )
-                                    }
-                                })}
-                            </tbody>
-                        </table>
-
+                        <div className='table-responsive'>
+                            <table className='table text-white credit table-grey'>
+                                <thead>
+                                    <tr>
+                                        <th style={{ width: '60%' }}>สถานที่ให้บริการวัคซีน</th>
+                                        <th>จำนวนวัคซีนที่ฉีด (โดส)</th>
+                                    </tr>
+                                </thead>
+                                <tbody style={{ maxHeight: 300, overflow: 'auto' }}>
+                                    {this.state.visible_features.map((item, index) => {
+                                        if (index < 20 * this.state.page) {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{item.h_name}</td>
+                                                    <td>{item.total_doses.toLocaleString()}</td>
+                                                </tr>
+                                            )
+                                        }
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className='pb-2 px-2'>
+                            {this.state.visible_features.length >= this.state.page*20 &&
+                            <button onClick={() => this.setState({ page: this.state.page + 1 })} className='rounded table-toggle'>โหลดเพิ่ม</button>
+                            }
+                            
+                        </div>
                     </div>
                     <div className='col-md-7 p-0'>
                         <div className='mapContainer'>

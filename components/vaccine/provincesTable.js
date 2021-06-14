@@ -33,8 +33,9 @@ export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
 
     return (
-        <div className="table-responsive">
+        <div>
             <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData['update_at']).format('LL')}</div>
+            <div className='table-responsive'>
             <table className="table text-white w-100" style={{ minWidth: 400 }}>
                 <thead>
                     <tr>
@@ -79,6 +80,7 @@ export default function Province(props) {
 
                 </tbody>
             </table>
+            </div>
             <button onClick={() => setShowAll(!showAll)} className='rounded table-toggle'>{showAll ? 'ย่อข้อมูล' : 'ดูทั้งหมด'}</button>
         </div>
     )
