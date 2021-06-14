@@ -252,7 +252,7 @@ class Map extends React.Component {
                 <div className='mapContainer'>
                     <div ref={el => this.mapContainer = el} style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}></div>
                     <div onClick={() => this.resetMap()} className='reset-button'>
-                        <button className='btn-icon'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
+                        <button className='btn-icon bg-white'><img src='/fullscreen_exit-black.svg' alt='reset zoom' /></button>
                     </div>
                     {this.state.hoveredData &&
                         <div className='infoBox-container d-md-block d-none' style={{ top: this.state.infoBoxPosition.y + 20, left: this.state.infoBoxPosition.x }}>
