@@ -9,51 +9,14 @@ from pandas.plotting import register_matplotlib_converters
 
 register_matplotlib_converters()
 
-vaccines = {}
-with open('../components/gis/data/provincial-vaccination-data.json', encoding='utf-8') as json_file:
-    jsondata = json.load(json_file)
-    jsondata = jsondata['data']
-    for province in jsondata:
-        vaccines[province['name']] = round(province['coverage'] * 100, 2)
+from util import *
 
+vaccines = get_vaccines()
 data = pd.read_csv('dataset.csv')
-pdata = []
-with open('../components/gis/geo/th-provinces-centroids.json', encoding='utf-8') as json_file:
-    jsondata = json.load(json_file)
-    for province in jsondata['features']:
-        pdata.append(province['properties']['PROV_NAMT'])
-
-lastRow = data.tail(1)
-date = list(lastRow['announce_date'])[0].strip()
-end = datetime.datetime.strptime(date, '%d/%m/%y')
-start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
-
+pdata = get_pdata()
+start, end = get_start_end(data)
 fulldate = [start + datetime.timedelta(days=x) for x in range((end - start).days)]
-
-provinces = {}
-for row in data.iterrows():
-    row = dict(row[1])
-    province = row['province_of_isolation']
-    date = row['announce_date']
-    if province in provinces:
-        if isinstance(date, str):
-            parsedDate = datetime.datetime.strptime(date.strip(), '%d/%m/%y')
-            if parsedDate >= start:
-                provinces[province].append(parsedDate)
-    else:
-        provinces[province] = []
-
-
-def movingAve(ys, N=7):
-    cumsum, moving_aves = [0], []
-    for i, x in enumerate(ys, 1):
-        cumsum.append(cumsum[i - 1] + x)
-        if i >= N:
-            moving_ave = (cumsum[i] - cumsum[i - N]) / N
-            # can do stuff with moving_ave here
-            moving_aves.append(moving_ave)
-    return moving_aves
-
+provinces = get_provinces(data, start)
 
 images = []
 i = 1
@@ -66,7 +29,7 @@ for name in provinces:
                 province[day] = 0
         names = sorted(province)
         ys = [province[day] for day in names]
-        moving_aves = movingAve(ys)
+        moving_aves = moving_average(ys)
         fig = plt.gcf()
         plt.cla()
         fig.set_size_inches(10, 5)
@@ -93,7 +56,6 @@ for name in provinces:
             "total-14days": sum(ys[-14:]),
             "province": name,
             "vax-coverage": vaccines[name]
-
         })
         i += 1
 
