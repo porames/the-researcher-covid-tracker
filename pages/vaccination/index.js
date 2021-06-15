@@ -7,6 +7,7 @@ import { National } from '../../components/vaccine/nationalCurve'
 import { Projection } from '../../components/vaccine/projectionCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
+import Manufacturer from '../../components/vaccine/manufacturer'
 import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import Link from 'next/link'
@@ -34,11 +35,17 @@ const HeadSection = (props) => {
           <hr />
         </div>
       </div>
+
       <div className='mx-auto' style={{ maxWidth: 700 }}>
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
           <Projection setEstimation={setEstimation} />
           <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && (estimation['m50_date'] / 365).toFixed(1)} ปี</p>
+        </div>
+        <div className='my-5'>
+          <h2 className='mb-1'>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>
+          <p className='text-muted mb-3'>เส้นแสดงจำนวนค่าเฉลี่ย 7 วันของวัคซีนยี่ห้อต่าง ๆ ที่ฉีดทั่วประเทศ</p>
+          <Manufacturer />
         </div>
       </div>
     </div>

@@ -1608,35 +1608,265 @@ async function getProvince(provinceName) {
 
 }
 
+async function getManufacturer() {
+    const res = await axios.post('https://datastudio.google.com/batchedDataV2', {
+        "dataRequest": [
+            {
+                "requestContext": {
+                    "reportContext": {
+                        "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                        "pageId": "33037739",
+                        "mode": "VIEW",
+                        "componentId": "cd-8me2cc9kkc",
+                        "displayType": "simple-barchart"
+                    }
+                },
+                "datasetSpec": {
+                    "dataset": [
+                        {
+                            "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                            "revisionNumber": 0,
+                            "parameterOverrides": []
+                        }
+                    ],
+                    "queryFields": [
+                        {
+                            "name": "qt_3g0rrc9kkc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "_vaccinated_on_",
+                                "transformationConfig": {
+                                    "transformationType": 5
+                                }
+                            }
+                        },
+                        {
+                            "name": "qt_09asrc9kkc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "_manuf_name_"
+                            }
+                        },
+                        {
+                            "name": "qt_wg0rrc9kkc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "datastudio_record_count_system_field_id_98323387"
+                            }
+                        }
+                    ],
+                    "sortData": [
+                        {
+                            "sortColumn": {
+                                "name": "qt_3g0rrc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_vaccinated_on_",
+                                    "transformationConfig": {
+                                        "transformationType": 5
+                                    }
+                                }
+                            },
+                            "sortDir": 0
+                        }
+                    ],
+                    "includeRowsCount": false,
+                    "blendConfig": {
+                        "blockDatasource": {
+                            "datasourceBlock": {
+                                "id": "block_8feppxfpkc",
+                                "type": 1,
+                                "inputBlockIds": [],
+                                "outputBlockIds": [],
+                                "fields": []
+                            },
+                            "blocks": [
+                                {
+                                    "id": "block_9feppxfpkc",
+                                    "type": 5,
+                                    "inputBlockIds": [],
+                                    "outputBlockIds": [],
+                                    "fields": [],
+                                    "queryBlockConfig": {
+                                        "joinQueryConfig": {
+                                            "joinKeys": [],
+                                            "queries": [
+                                                {
+                                                    "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                                                    "concepts": []
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ],
+                            "delegatedAccessEnabled": true,
+                            "isUnlocked": true,
+                            "isCacheable": false
+                        }
+                    },
+                    "filters": [
+                        {
+                            "filterDefinition": {
+                                "filterExpression": {
+                                    "include": true,
+                                    "conceptType": 0,
+                                    "concept": {
+                                        "ns": "t0",
+                                        "name": "qt_kraj088kkc"
+                                    },
+                                    "filterConditionType": "IN",
+                                    "stringValues": [
+                                        "Sinovac Life Sciences",
+                                        "AstraZeneca"
+                                    ],
+                                    "numberValues": [],
+                                    "queryTimeTransformation": {
+                                        "dataTransformation": {
+                                            "sourceFieldName": "_manuf_name_"
+                                        }
+                                    }
+                                }
+                            },
+                            "dataSubsetNs": {
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "contextNs": "c0"
+                            },
+                            "version": 3
+                        },
+                        {
+                            "filterDefinition": {
+                                "filterExpression": {
+                                    "include": true,
+                                    "conceptType": 0,
+                                    "concept": {
+                                        "name": "qt_3g0rrc9kkc",
+                                        "ns": "t0"
+                                    },
+                                    "queryTimeTransformation": {
+                                        "dataTransformation": {
+                                            "sourceFieldName": "_vaccinated_on_",
+                                            "transformationConfig": {
+                                                "transformationType": 5
+                                            }
+                                        }
+                                    },
+                                    "filterConditionType": "IN",
+                                    "stringValues": []
+                                }
+                            },
+                            "dataSubsetNs": {
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "contextNs": "c0"
+                            },
+                            "version": 3
+                        },
+                        {
+                            "filterDefinition": {
+                                "filterExpression": {
+                                    "include": true,
+                                    "conceptType": 0,
+                                    "concept": {
+                                        "name": "qt_09asrc9kkc",
+                                        "ns": "t0"
+                                    },
+                                    "queryTimeTransformation": {
+                                        "dataTransformation": {
+                                            "sourceFieldName": "_manuf_name_"
+                                        }
+                                    },
+                                    "filterConditionType": "IN",
+                                    "stringValues": [
+                                        "Sinovac Life Sciences",
+                                        "AstraZeneca"
+                                    ]
+                                }
+                            },
+                            "dataSubsetNs": {
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "contextNs": "c0"
+                            },
+                            "version": 3
+                        }
+                    ],
+                    "features": [],
+                    "dateRanges": [],
+                    "contextNsCount": 1,
+                    "dateRangeDimensions": [
+                        {
+                            "name": "qt_0tcsrc9kkc",
+                            "datasetNs": "d0",
+                            "tableNs": "t0",
+                            "dataTransformation": {
+                                "sourceFieldName": "_vaccinated_on_"
+                            }
+                        }
+                    ],
+                    "calculatedField": [],
+                    "needGeocoding": false,
+                    "geoFieldMask": [],
+                    "geoVertices": 100000
+                },
+                "useDataColumn": true
+            }
+        ]
+    })
+    const data = JSON.parse(res.data.substring(5))
+    const dates = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[0].dateColumn.values
+    const manufacturer = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[1].stringColumn.values
+    const doses_administered = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[2].longColumn.values
+    const db = []
+    dates.map((date, index)=>{
+        if(new Date(date) >= new Date('2021-03-01')){
+            db.push({
+                date:dates[index],
+                manufacturer: manufacturer[index],
+                doses_administered: Number(doses_administered[index])
+            })
+        }
+    })
+    return db
+}
 
 (async () => {
-    try {
+    try {        
         const meta = await getMetadata()
         var db = {
             'update_at': meta['provincial_vaccination_update_at'],
             'data': []
         }
+        console.log('Getting meta data completed. Downloading manufacturer data.')
+        const manufacturer = await getManufacturer()
+        await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer), 'utf-8')
+        console.log('Downloading provincial vaccination data.')
         //todo: parallel for a faster speed?
         var hospital_doses = {
             'update_at': meta['provincial_vaccination_update_at'],
             'data': []
         }
-        var count_progress=0
+        var count_progress = 0
         for (const i in geo) {
             if (geo[i]['PROV_CODE']) {
                 var province = await getProvince(geo[i]['province'])
                 var population
-                const findPop = _.findIndex(estimated_pop,{"PROV_CODE": geo[i]['PROV_CODE']})
-                if(estimated_pop[findPop]['estimated_living_population']){
+                const findPop = _.findIndex(estimated_pop, { "PROV_CODE": geo[i]['PROV_CODE'] })
+                if (estimated_pop[findPop]['estimated_living_population']) {
                     population = estimated_pop[findPop]['estimated_living_population']
                 }
-                else{
+                else {
                     population = estimated_pop[findPop]['population']
                 }
                 province_data = {
                     "name": geo[i]['province'],
                     "id": geo[i]['PROV_CODE'],
-                    "population":  population,
+                    "population": population,
                     "registered_population": geo[i]['total'],
                     ">60-population": Number(geo[i]['>60']),
                     "coverage": (province['total_doses'] / 2) / population,
@@ -1654,7 +1884,7 @@ async function getProvince(provinceName) {
                         province: geo[i]['province']
                     })
                 })
-                count_progress+=1
+                count_progress += 1
                 console.log(`${count_progress}/77, Population: ${population}`)
             }
 
@@ -1662,7 +1892,7 @@ async function getProvince(provinceName) {
         //await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('provinces vaccine supply data download completed')
-
+        
 
     } catch (e) {
         console.log(e)
