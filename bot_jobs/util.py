@@ -2,18 +2,18 @@ import datetime
 import json
 import pandas as pd
 
-def get_vaccines():
+def get_vaccines(fname='../components/gis/data/provincial-vaccination-data.json'):
     vaccines = {}
-    with open('../components/gis/data/provincial-vaccination-data.json', encoding='utf-8') as json_file:
+    with open(fname, encoding='utf-8') as json_file:
         jsondata = json.load(json_file)
         jsondata = jsondata['data']
         for province in jsondata:
             vaccines[province['name']] = round(province['coverage'] * 100, 2)
     return vaccines
 
-def get_pdata():
+def get_pdata(fname='../components/gis/geo/th-provinces-centroids.json'):
     pdata = []
-    with open('../components/gis/geo/th-provinces-centroids.json', encoding='utf-8') as json_file:
+    with open(fname, encoding='utf-8') as json_file:
         jsondata = json.load(json_file)
         for province in jsondata['features']:
             pdata.append(province['properties']['PROV_NAMT'])
