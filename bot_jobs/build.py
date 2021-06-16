@@ -6,6 +6,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 import pandas as pd
 from pandas.plotting import register_matplotlib_converters
+import numpy as np
 
 register_matplotlib_converters()
 
@@ -23,7 +24,7 @@ i = 1
 for name in provinces:
     if name in pdata:
         start = time.time()
-        province = dict(Counter(provinces[name]))
+        province = provinces[name]
         for day in fulldate:
             if day not in province:
                 province[day] = 0

@@ -1,5 +1,6 @@
 import datetime
 import json
+import pandas as pd
 
 def get_vaccines():
     vaccines = {}
@@ -23,22 +24,13 @@ def get_start_end(data):
     date = list(lastRow['announce_date'])[0].strip()
     start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
     end = datetime.datetime.strptime(date, '%d/%m/%y')
-    return (start, end)
+    return start, end
 
 def get_provinces(data, start):
-    provinces = {}
-    for row in data.iterrows():
-        row = dict(row[1])
-        province = row['province_of_isolation']
-        date = row['announce_date']
-        if province in provinces:
-            if isinstance(date, str):
-                parsedDate = datetime.datetime.strptime(date.strip(), '%d/%m/%y')
-                if parsedDate >= start:
-                    provinces[province].append(parsedDate)
-        else:
-            provinces[province] = []
-    return provinces
+    data["announce_date"] = data["announce_date"].map(lambda date : datetime.datetime.strptime(date.strip(), "%d/%m/%y"))
+    data_filtered = data[data["announce_date"] >= start]
+    return pd.crosstab(data_filtered.announce_date, data_filtered.province_of_isolation).to_dict()
+
 
 def moving_average(ys, N=7):
     cumulative_sum = [0]
