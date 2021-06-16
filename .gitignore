@@ -3,15 +3,12 @@
 # dependencies
 /node_modules
 /.pnp
-/.ipynb_checkpoints
-.vscode
 .pnp.js
-.ipynb_checkpoints
 next.config.js
 /styles/css
 /components/gis/geo/mapbox_exports
 /bot_jobs/*.ipynb
-/bot_jobs/.ipynb_checkpoints
+
 # testing
 /coverage
 
@@ -40,3 +37,15 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.vscode
+.idea
+.ipynb_checkpoints
+/.ipynb_checkpoints
+/bot_jobs/.ipynb_checkpoints
