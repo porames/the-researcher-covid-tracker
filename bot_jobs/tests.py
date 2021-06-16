@@ -34,8 +34,9 @@ class TestUtils(unittest.TestCase):
     def test_provinces(self):
         start, end = get_start_end(self.data)
         provinces = get_provinces(self.data, start)
+        provinces_parsed = {k: {t.strftime("%y/%m/%d"): v for (t, v) in provinces[k].items()} for k in provinces}
         with open('tests/provinces-current.json', 'w') as f:
-            json.dump(provinces, f, default=str)
+            json.dump(provinces_parsed, f, default=str)
         with open('tests/provinces-template.json') as template:
             template_obj = json.load(template)
         with open('tests/provinces-current.json') as current:
