@@ -83,13 +83,17 @@ class Map extends React.Component {
             });
         });
         this.map.on('load', () => {
+            
             console.log('Map Loaded')
-            // Add a geojson point source.
-            // Heatmap layers also work with a vector tile source.
             this.map.addSource('hospitals', {
                 type: 'vector',
                 promoteId: { '60c61099f718be41ee8b7e16': 'h_code' },
                 url: 'https://v2k.vallarismaps.com/core/tiles/60c61099f718be41ee8b7e16?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
+
+            })
+            this.map.addSource('boundary', {
+                type: 'vector',
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c9ad63c92e6b76b6c22874?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
 
             })
             var colorMatch = ['match', ['get', 'h_code']]
@@ -100,7 +104,16 @@ class Map extends React.Component {
             })
             colorMatch.push(0)
             sizeMatch.push(0)
-
+            this.map.addLayer({
+                'id': 'state-boundary',
+                'type': 'fill',
+                'source': 'boundary',
+                'source-layer': '60c9ad63c92e6b76b6c22874',
+                'paint': {
+                    'fill-opacity': 0.8,
+                    'fill-color': '#212121'
+                }
+            })
             this.map.addLayer({
                 'id': 'hospital-point',
                 'type': 'circle',
@@ -228,10 +241,10 @@ class Map extends React.Component {
                             </table>
                         </div>
                         <div className='pb-2 px-2'>
-                            {this.state.visible_features.length >= this.state.page*20 &&
-                            <button onClick={() => this.setState({ page: this.state.page + 1 })} className='rounded table-toggle'>โหลดเพิ่ม</button>
+                            {this.state.visible_features.length >= this.state.page * 20 &&
+                                <button onClick={() => this.setState({ page: this.state.page + 1 })} className='rounded table-toggle'>โหลดเพิ่ม</button>
                             }
-                            
+
                         </div>
                     </div>
                     <div className='col-md-7 p-0'>
