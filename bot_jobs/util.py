@@ -34,3 +34,4 @@ def get_provinces(data, start):
 def moving_average(ys, N=7):
     if len(ys) < N : return []
     return np.convolve(np.array(ys), np.ones(N), "valid") / N
+
