@@ -94,7 +94,7 @@ async function getMetadata() {
     return meta
 }
 
-async function getHospital(meta) {
+async function getHospital(update_at) {
     const res = await axios.post('https://datastudio.google.com/batchedDataV2?appVersion=20210506_00020034',
         //{ "dataRequest": [{ "requestContext": { "reportContext": { "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6", "pageId": "31081301", "mode": "VIEW", "componentId": "cd-vipnb1bcjc", "displayType": "simple-table" } }, "datasetSpec": { "dataset": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "revisionNumber": 0, "parameterOverrides": [] }], "queryFields": [{ "name": "qt_wipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_code_" } }, { "name": "qt_xipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_name_" } }, { "name": "qt_7lf7mdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_zone_" } }, { "name": "qt_k6rcrdidjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_hospital_province_" } }, { "name": "qt_yipnb1bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceFieldName": "_quantity_", "aggregation": 6 } }, { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }], "sortData": [{ "sortColumn": { "name": "qt_nca2m2bcjc", "datasetNs": "d0", "tableNs": "t0", "dataTransformation": { "sourceType": 1, "sourceFieldName": "adhoc_qt_nca2m2bcjc", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "frontendTextFormula": "SUM(t0._quantity_)-SUM(t0._quantity_vaccinated_)", "formulaOutputDataType": 1, "aggregation": 7 } }, "sortDir": 1 }], "includeRowsCount": true, "paginateInfo": { "startRow": 1, "rowsCount": 500 }, "blendConfig": { "blockDatasource": { "datasourceBlock": { "id": "block_l17h6ouhkc", "type": 1, "inputBlockIds": [], "outputBlockIds": [], "fields": [] }, "blocks": [{ "id": "block_m17h6ouhkc", "type": 5, "inputBlockIds": [], "outputBlockIds": [], "fields": [], "queryBlockConfig": { "joinQueryConfig": { "joinKeys": [], "queries": [{ "datasourceId": "05bbf5e6-7c84-45c4-9028-e8fe8de09357", "concepts": [] }] } } }], "delegatedAccessEnabled": true, "isUnlocked": true, "isCacheable": false } }, "filters": [{ "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_kh0bqwzbjc" }, "filterConditionType": "NU", "stringValues": ["20210501150000"], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_arrive_at_hospital_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "or": { "filterDefinitions": [{ "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_d5ctq5hdjc" }, "filterConditionType": "GT", "stringValues": [], "numberValues": [0], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }, { "filterExpression": { "include": true, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_z3xgq9hdjc" }, "filterConditionType": "NU", "stringValues": [], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "quantity_available" } } } }] } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }, { "filterDefinition": { "filterExpression": { "include": false, "conceptType": 0, "concept": { "ns": "t0", "name": "qt_lolah1gcjc" }, "filterConditionType": "NU", "stringValues": [""], "numberValues": [], "queryTimeTransformation": { "dataTransformation": { "sourceFieldName": "_hospital_name_" } } } }, "dataSubsetNs": { "datasetNs": "d0", "tableNs": "t0", "contextNs": "c0" }, "version": 3 }], "features": [], "dateRanges": [], "contextNsCount": 1, "calculatedField": [{ "calculatedFieldId": "adhoc_qt_nca2m2bcjc", "ns": "t0", "textFormula": "SUM(t0._quantity_) - SUM(t0._quantity_vaccinated_)", "dataType": 0 }], "needGeocoding": false, "geoFieldMask": [], "geoVertices": 100000 }, "useDataColumn": true }] }
         {
@@ -327,7 +327,7 @@ async function getHospital(meta) {
         doses_remaining[nullIndex[i]] = null
     }
     var hospital_supply = {
-        'update_at': meta['hospital_supply_update_at'],
+        'update_at': update_at,
         'data': []
     }
     console.log('building hospital supply data in JSON')
@@ -1832,25 +1832,29 @@ async function getManufacturer() {
             })
         }
     })
-    return db
+    return {
+        data: db,
+        latest_date: dates[dates.length-1]
+    }
 }
 
 (async () => {
     try {        
-        const meta = await getMetadata()
+        
+        console.log('Downloading manufacturer data.')
+        const manufacturer = await getManufacturer()
+        await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer.data), 'utf-8')
         var db = {
-            'update_at': meta['provincial_vaccination_update_at'],
+            'update_at': manufacturer.latest_date,
             'data': []
         }
-        console.log('Getting meta data completed. Downloading manufacturer data.')
-        const manufacturer = await getManufacturer()
-        await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer), 'utf-8')
         console.log('Downloading provincial vaccination data.')
         //todo: parallel for a faster speed?
         var hospital_doses = {
-            'update_at': meta['provincial_vaccination_update_at'],
+            'update_at': manufacturer.latest_date,
             'data': []
         }
+        console.log(manufacturer.latest_date)
         var count_progress = 0
         for (const i in geo) {
             if (geo[i]['PROV_CODE']) {
@@ -1889,7 +1893,7 @@ async function getManufacturer() {
             }
 
         }
-        //await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
+        await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
         await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
         console.log('provinces vaccine supply data download completed')
         
