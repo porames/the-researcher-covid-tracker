@@ -1,26 +1,22 @@
-import datetime
-import json
-import time
+from util import *
 
+import time
 import matplotlib.pyplot as plt
-import pandas as pd
 from pandas.plotting import register_matplotlib_converters
-import numpy as np
+import datetime
 
 register_matplotlib_converters()
 
-from util import *
-
-vaccines = get_vaccines()
 data = pd.read_csv('dataset.csv')
-pdata = get_pdata()
 start, end = get_start_end(data)
 provinces = get_provinces(data, start)
+provinces_name = get_provinces_name('../components/gis/geo/th-provinces-centroids.json')
+vaccines = get_vaccines('../components/gis/data/provincial-vaccination-data.json')
 
 images = []
 i = 1
 for name in provinces:
-    if name in pdata:
+    if name in provinces_name:
         start = time.time()
         province = provinces[name]
         names = sorted(province)
@@ -38,16 +34,15 @@ for name in provinces:
         plt.box(False)
         plt.xticks([])
         plt.yticks([])
-        plt.savefig('../public/infection-graphs-build/' + str(pdata.index(name) + 1) + '.svg', bbox_inches=0,
+        plt.savefig('../public/infection-graphs-build/' + str(provinces_name.index(name) + 1) + '.svg', bbox_inches=0,
                     transparent=True)
-        # plt.show()
         print(time.time() - start, name)
         if moving_aves[-14] > 0:
             change = int((moving_aves[-1] - moving_aves[-14]) * 100 / (moving_aves[-14]))
         else:
             change = 0
         images.append({
-            "name": str(pdata.index(name) + 1) + ".svg",
+            "name": str(provinces_name.index(name) + 1) + ".svg",
             "change": change,
             "total-14days": sum(ys[-14:]),
             "province": name,
