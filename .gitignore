@@ -42,6 +42,7 @@ yarn-error.log*
 __pycache__/
 *.py[cod]
 *$py.class
+./bot_jobs/__pycache__
 
 # IDE
 .vscode

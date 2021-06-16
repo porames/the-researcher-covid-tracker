@@ -1,6 +1,7 @@
 import datetime
 import json
 import pandas as pd
+import numpy as np
 
 
 def get_vaccines(fname):
@@ -31,12 +32,5 @@ def get_provinces(data, start):
 
 
 def moving_average(ys, N=7):
-    cumulative_sum = [0]
-    moving_aves = []
-    for i, x in enumerate(ys, 1):
-        cumulative_sum.append(cumulative_sum[i - 1] + x)
-        if i >= N:
-            moving_ave = (cumulative_sum[i] - cumulative_sum[i - N]) / N
-            # can do stuff with moving_ave here
-            moving_aves.append(moving_ave)
-    return moving_aves
+    if len(ys) < N : return []
+    return np.convolve(np.array(ys), np.ones(N), "valid") / N
