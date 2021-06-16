@@ -1,7 +1,6 @@
 import datetime
 import json
 import time
-from collections import Counter
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -16,7 +15,6 @@ vaccines = get_vaccines()
 data = pd.read_csv('dataset.csv')
 pdata = get_pdata()
 start, end = get_start_end(data)
-fulldate = [start + datetime.timedelta(days=x) for x in range((end - start).days)]
 provinces = get_provinces(data, start)
 
 images = []
@@ -25,9 +23,6 @@ for name in provinces:
     if name in pdata:
         start = time.time()
         province = provinces[name]
-        for day in fulldate:
-            if day not in province:
-                province[day] = 0
         names = sorted(province)
         ys = [province[day] for day in names]
         moving_aves = moving_average(ys)
