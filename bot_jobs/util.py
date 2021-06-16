@@ -20,9 +20,8 @@ def get_pdata(fname='../components/gis/geo/th-provinces-centroids.json'):
     return pdata
 
 def get_start_end(data):
-    lastRow = data.tail(1)
-    date = list(lastRow['announce_date'])[0].strip()
     start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
+    date = data.tail(1)['announce_date'].iloc[0].strip()
     end = datetime.datetime.strptime(date, '%d/%m/%y')
     return start, end
 
@@ -31,7 +30,6 @@ def get_provinces(data, start):
     data_ymd["announce_date"] = data_ymd["announce_date"].map(lambda date : datetime.datetime.strptime(date.strip(), "%d/%m/%y"))
     data_filtered = data_ymd[data_ymd["announce_date"] >= start]
     return pd.crosstab(data_filtered.announce_date, data_filtered.province_of_isolation).to_dict()
-
 
 def moving_average(ys, N=7):
     cumulative_sum = [0]
