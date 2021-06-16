@@ -1,22 +1,46 @@
 import unittest
 from util import *
+import pandas as pd
+import datetime
 
 class TestUtils(unittest.TestCase):
+    data = pd.read_csv('tests/dataset.csv')
+
     def test_vaccines(self):
-        # TODO: test
-        pass
+        vaccines = get_vaccines('tests/provincial-vaccination-data.json')
+        with open('tests/vaccines-current.json', 'w') as f:
+            json.dump(vaccines, f, default=str)
+        with open('tests/vaccines-template.json') as template:
+            template_obj = json.load(template)
+        with open('tests/vaccines-current.json') as current:
+            current_obj = json.load(current)
+        self.assertDictEqual(template_obj, current_obj)
     
     def test_pdata(self):
-        # TODO: test
-        pass
+        pdata = get_pdata('tests/th-provinces-centroids.json')
+        with open('tests/pdata-current.json', 'w') as f:
+            json.dump(pdata, f, default=str)
+        with open('tests/pdata-template.json') as template:
+            template_obj = json.load(template)
+        with open('tests/pdata-current.json') as current:
+            current_obj = json.load(current)
+        self.assertSequenceEqual(template_obj, current_obj)
     
     def test_start_end(self):
-        # TODO: test
-        pass
+        start, end = get_start_end(self.data)
+        self.assertEqual(start, datetime.datetime(2020, 12, 15, 0, 0))
+        self.assertEqual(end, datetime.datetime(2021, 6, 14, 0, 0))
     
     def test_provinces(self):
-        # TODO: test
-        pass
+        start, end = get_start_end(self.data)
+        provinces = get_provinces(self.data, start)
+        with open('tests/provinces-current.json', 'w') as f:
+            json.dump(provinces, f, default=str)
+        with open('tests/provinces-template.json') as template:
+            template_obj = json.load(template)
+        with open('tests/provinces-current.json') as current:
+            current_obj = json.load(current)
+        self.assertDictEqual(template_obj, current_obj)
     
     def test_moving_average(self):
         a = [6, 3, 5, 7, 1, 4, 8, 12, 3, 95, 4, 23, 12, 38, 1, 5, 4, 17]
