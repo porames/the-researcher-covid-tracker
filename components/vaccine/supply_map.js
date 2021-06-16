@@ -39,7 +39,7 @@ class Map extends React.Component {
         this.state = {
             lng: 100.5018,
             lat: 13.7563,
-            zoom: 12,
+            zoom: 11,
             hoveredData: null,
             visible_features: [],
             infoBoxPosition: null,
@@ -65,7 +65,7 @@ class Map extends React.Component {
     componentDidMount() {
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c430935b11251fea89e087?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
+            style: 'https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c9f2a0c92e6b76b6c22875?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6',
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom,
             maxBounds: [[83.271483, 4], [117, 22]],
@@ -91,11 +91,6 @@ class Map extends React.Component {
                 url: 'https://v2k.vallarismaps.com/core/tiles/60c61099f718be41ee8b7e16?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
 
             })
-            this.map.addSource('boundary', {
-                type: 'vector',
-                url: 'https://v2k.vallarismaps.com/core/tiles/60c9ad63c92e6b76b6c22874?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
-
-            })
             var colorMatch = ['match', ['get', 'h_code']]
             var sizeMatch = ['match', ['get', 'h_code']]
 
@@ -104,16 +99,6 @@ class Map extends React.Component {
             })
             colorMatch.push(0)
             sizeMatch.push(0)
-            this.map.addLayer({
-                'id': 'state-boundary',
-                'type': 'fill',
-                'source': 'boundary',
-                'source-layer': '60c9ad63c92e6b76b6c22874',
-                'paint': {
-                    'fill-opacity': 0.8,
-                    'fill-color': '#212121'
-                }
-            })
             this.map.addLayer({
                 'id': 'hospital-point',
                 'type': 'circle',
@@ -140,18 +125,18 @@ class Map extends React.Component {
                             1000000, 40,
                         ]
                     ],
-                    'circle-color': '#427165',
+                    'circle-color': 'rgba(rgb(66, 113, 101,0.35)',
                     "circle-stroke-width":
                         ['case',
                             ['boolean', ['feature-state', 'hover'], false],
-                            1.5,
-                            0.5
+                            1.7,
+                            1.2
                         ],
                     'circle-stroke-color': [
                         'case',
                         ['boolean', ['feature-state', 'hover'], false],
                         '#000000',
-                        '#fafafa'
+                        'rgb(66, 113, 101)'
                     ]
                 }
             })
@@ -242,7 +227,12 @@ class Map extends React.Component {
                         </div>
                         <div className='pb-2 px-2'>
                             {this.state.visible_features.length >= this.state.page * 20 &&
-                                <button onClick={() => this.setState({ page: this.state.page + 1 })} className='rounded table-toggle'>โหลดเพิ่ม</button>
+                                <button
+                                    style={{fontSize: '90%'}}
+                                    onClick={() => this.setState({ page: this.state.page + 1 })}
+                                    className='rounded table-toggle text-sm'>
+                                        โหลดเพิ่ม
+                                </button>
                             }
 
                         </div>
