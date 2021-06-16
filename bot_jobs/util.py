@@ -27,8 +27,9 @@ def get_start_end(data):
     return start, end
 
 def get_provinces(data, start):
-    data["announce_date"] = data["announce_date"].map(lambda date : datetime.datetime.strptime(date.strip(), "%d/%m/%y"))
-    data_filtered = data[data["announce_date"] >= start]
+    data_ymd = data.copy()
+    data_ymd["announce_date"] = data_ymd["announce_date"].map(lambda date : datetime.datetime.strptime(date.strip(), "%d/%m/%y"))
+    data_filtered = data_ymd[data_ymd["announce_date"] >= start]
     return pd.crosstab(data_filtered.announce_date, data_filtered.province_of_isolation).to_dict()
 
 
