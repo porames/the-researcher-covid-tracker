@@ -28,7 +28,7 @@ interface IMapProps {
   }[];
 }
 
-export default ({
+const BaseMap = ({
   onLoad,
   onMove,
   onMousemove,
@@ -41,6 +41,7 @@ export default ({
   const [zoom, setZoom] = useState<number>(4.5);
   const [map, setMap] = useState<mapboxgl.Map>(undefined);
   const mapContainer = useRef<HTMLDivElement>(undefined);
+  const [loaded, setLoaded] = useState<boolean>(false);
   useEffect(() => {
     if (!mapContainer.current) return;
     if (map) return;
@@ -69,39 +70,53 @@ export default ({
       onMove.map((cb) => cb(currentMap));
     };
     currentMap.on("move", moveCallback);
-    const loadCallback = () => onLoad(currentMap);
-    currentMap.on("load", loadCallback);
-
-    const mousemoveCallbacks = onMousemove.map(({ cb, layer }) => {
-      const callback = (e) => cb(currentMap, e);
-      currentMap.on("mousemove", layer, callback);
-      return { cb: callback, layer };
-    });
-
-    const mouseleaveCallbacks = onMouseleave.map(({ cb, layer }) => {
-      const callback = (e) => cb(currentMap, e);
-      currentMap.on("mouseleave", layer, callback);
-      return { cb: callback, layer };
-    });
-
-    const clickCallbacks = onClick.map(({ cb, layer }) => {
-      const callback = (e) => cb(currentMap, e);
-      currentMap.on("click", layer, callback);
-      return { cb: callback, layer };
+    currentMap.once("load", () => {
+      onLoad(currentMap);
+      setLoaded(true);
     });
     setMap(currentMap);
-    return () => {
-      currentMap.off("move", moveCallback);
-      currentMap.off("load", loadCallback);
+    return () => currentMap.off("move", moveCallback);
+  }, [mapContainer.current, map]);
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    if (!map) return;
+    if (!loaded) return;
+    const mousemoveCallbacks = onMousemove.map(({ cb, layer }) => {
+      const callback = (e) => cb(map, e);
+      map.on("mousemove", layer, callback);
+      return { cb: callback, layer };
+    });
+    return () =>
       mousemoveCallbacks.map(({ cb, layer }) =>
-        currentMap.off("mousemove", layer, cb)
+        map.off("mousemove", layer, cb)
       );
+  }, [mapContainer.current, map, loaded, onMousemove]);
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    if (!map) return;
+    if (!loaded) return;
+    const mouseleaveCallbacks = onMouseleave.map(({ cb, layer }) => {
+      const callback = (e) => cb(map, e);
+      map.on("mouseleave", layer, callback);
+      return { cb: callback, layer };
+    });
+    return () =>
       mouseleaveCallbacks.map(({ cb, layer }) =>
-        currentMap.off("mouseleave", layer, cb)
+        map.off("mouseleave", layer, cb)
       );
-      clickCallbacks.map(({ cb, layer }) => currentMap.off("click", layer, cb));
-    };
-  });
+  }, [mapContainer.current, map, loaded, onMouseleave]);
+  useEffect(() => {
+    if (!mapContainer.current) return;
+    if (!map) return;
+    if (!loaded) return;
+    const clickCallbacks = onClick.map(({ cb, layer }) => {
+      const callback = (e) => cb(map, e);
+      map.on("click", layer, callback);
+      return { cb: callback, layer };
+    });
+    return () =>
+      clickCallbacks.map(({ cb, layer }) => map.off("click", layer, cb));
+  }, [mapContainer.current, map, loaded, onClick]);
   return (
     <div>
       <Head>
@@ -128,3 +143,5 @@ export default ({
     </div>
   );
 };
+
+export default BaseMap;
