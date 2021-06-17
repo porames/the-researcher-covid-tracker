@@ -80,8 +80,8 @@ function NationalCurve(props) {
 
                     <Group>
                         <Annotation
-                            x={xScale(x(timeSeries[293]))}
-                            y={yScale(timeSeries[293]['NewConfirmed']) - 30}
+                            x={xScale(x(timeSeries[290]))}
+                            y={yScale(timeSeries[290]['NewConfirmed']) - 30}
                             dx={-40}
                             dy={0}
                             width={100}
@@ -102,8 +102,8 @@ function NationalCurve(props) {
                             />
                         </Annotation>
                         <Annotation
-                            x={xScale(x(timeSeries[30]))}
-                            y={yScale(timeSeries[30]['movingAvg']) - 30}
+                            x={xScale(x(timeSeries[169]))}
+                            y={yScale(timeSeries[169]['movingAvg']) - 30}
                             dx={0}
                             dy={-40}
                             width={200}
