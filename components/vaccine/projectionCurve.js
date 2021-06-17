@@ -87,12 +87,12 @@ const EstimateCurve = (props) => {
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
-        range: [20, width - 20],
+        range: [0, width],
         domain: merged.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [20, width - 20],
+        range: [0, width -0],
         domain: extent(merged, x),
         padding: 0.07
     })
@@ -161,9 +161,9 @@ const EstimateCurve = (props) => {
                 <Group>
                     <GridRows
                         scale={yScale}
-                        width={width - 40}
+                        width={width}
                         top={-30}
-                        left={20}
+                        left={0}
                         strokeDasharray="1,5"
                         stroke={"#fff"}
                         strokeOpacity={0.3}
@@ -183,7 +183,7 @@ const EstimateCurve = (props) => {
                         tickFormat={d => (`${parseInt(d * 100 / population)}%`)}
                         numTicks={4}
                         top={-35}
-                        left={20}
+                        left={0}
                         tickLength={0}
                     />
                     <AxisBottom
