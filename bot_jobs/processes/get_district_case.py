@@ -11,7 +11,9 @@ df["announce_date"] = df["announce_date"].map(lambda date : datetime.strptime(da
 
 
 # Filter from start date
-df = df[df['announce_date'] >= "2021-06-02"]
+start = "2021-06-02"
+end = "2021-06-17"
+df = df[(df['announce_date'] >= start) & (df['announce_date'] <= end)]
 
 
 # Change อำเภอ เมือง -> อำเภอ เมือง + จังหวัด
