@@ -80,7 +80,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses']
                 }
             }
-            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData), 'utf-8')
+            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 4), 'utf-8')
         }
         else{
             console.log('New data already existed')
