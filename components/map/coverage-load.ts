@@ -1,4 +1,6 @@
 import provincesData from "../gis/data/provincial-vaccination-data.json";
+import mapboxgl from "maplibre-gl";
+
 const loader = (map: mapboxgl.Map) => {
   console.log("Map Loaded");
   map.addSource("provinces", {

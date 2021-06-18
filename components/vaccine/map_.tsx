@@ -3,7 +3,7 @@ import provincesData from "../gis/data/provincial-vaccination-data.json";
 import _ from "lodash";
 import { VaxCoverageLegend, SupplyLegend } from "./mapLegends";
 import CoverageMap from "../map/CoverageMap";
-import SupplyMap from "./supply_map";
+import SupplyMap from "../map/SupplyMap";
 
 function Map() {
   const [mapType, setMapType] = useState("coverage");
