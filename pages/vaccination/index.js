@@ -1,5 +1,5 @@
 
-import Map from '../../components/vaccine/map'
+import Map from '../../components/vaccine/map_'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'

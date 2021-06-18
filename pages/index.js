@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Map from '../components/map'
+import Map from '../components/map_'
 import NationalCurve from '../components/nationalGraph'
 import VaccinePreview from '../components/vaccinePreview'
 import NationalTable from '../components/nationalTable.js'
