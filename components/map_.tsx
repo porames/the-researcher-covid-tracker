@@ -7,7 +7,7 @@ import { HotspotLegend, CasesLegend } from "./mapLegends";
 function Map() {
   const [mapType, setMapType] = useState("hotspot");
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <div className="container mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row">
         <div
           className="col-md-6 mb-3"
