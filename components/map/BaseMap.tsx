@@ -64,9 +64,9 @@ const BaseMap = ({
       new mapboxgl.NavigationControl({ showCompass: false, showZoom: true })
     );
     const moveCallback = () => {
-      setLng(currentMap.getCenter().lng);
-      setLat(currentMap.getCenter().lat);
-      setZoom(currentMap.getZoom());
+      setLng(Number(currentMap.getCenter().lng.toFixed(2)));
+      setLat(Number(currentMap.getCenter().lat.toFixed(2)));
+      setZoom(Number(currentMap.getZoom().toFixed(2)));
       onMove.map((cb) => cb(currentMap));
     };
     currentMap.on("move", moveCallback);
@@ -86,11 +86,7 @@ const BaseMap = ({
       map.on("mousemove", layer, callback);
       return { cb: callback, layer };
     });
-    return () =>
-      mousemoveCallbacks.map(({ cb, layer }) =>
-        map.off("mousemove", layer, cb)
-      );
-  }, [mapContainer.current, map, loaded, onMousemove]);
+  }, [mapContainer.current, map, loaded]);
   useEffect(() => {
     if (!mapContainer.current) return;
     if (!map) return;
@@ -100,11 +96,7 @@ const BaseMap = ({
       map.on("mouseleave", layer, callback);
       return { cb: callback, layer };
     });
-    return () =>
-      mouseleaveCallbacks.map(({ cb, layer }) =>
-        map.off("mouseleave", layer, cb)
-      );
-  }, [mapContainer.current, map, loaded, onMouseleave]);
+  }, [mapContainer.current, map, loaded]);
   useEffect(() => {
     if (!mapContainer.current) return;
     if (!map) return;
@@ -114,9 +106,7 @@ const BaseMap = ({
       map.on("click", layer, callback);
       return { cb: callback, layer };
     });
-    return () =>
-      clickCallbacks.map(({ cb, layer }) => map.off("click", layer, cb));
-  }, [mapContainer.current, map, loaded, onClick]);
+  }, [mapContainer.current, map, loaded]);
   return (
     <div>
       <Head>

@@ -1,9 +1,9 @@
 import mapboxgl from "maplibre-gl";
 import provincesData from "../gis/data/provinces-data-14days.json";
 import Graph from "../provinceCurve";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
-import { createCallbackWithLayer } from "./util";
+import { createCallbackWithLayer, MapWindow } from "./util";
 import _ from "lodash";
 
 const HotspotInfoBox = (props) => (
@@ -175,7 +175,13 @@ const HotspotMap = () => {
   const [hoveredData, setHoveredData] = useState<any>();
   const [infoBoxPosition, setInfoBoxPosition] =
     useState<{ x: number; y: number }>();
-  const [hoveredStateId, setHoveredStateId] = useState<number>(0);
+  const [linkedWindow, setLinkedWindow] = useState<MapWindow>({
+    hoveredStateId: 0,
+  } as MapWindow);
+  useEffect(() => {
+    (window as MapWindow).hoveredStateId = 0;
+    setLinkedWindow(window as MapWindow);
+  }, []);
   const onClicks = useMemo(
     () => [
       createCallbackWithLayer("province-fills", (map: mapboxgl.Map, e) => {
@@ -195,37 +201,37 @@ const HotspotMap = () => {
     () => [
       createCallbackWithLayer("province-fills", () => setHoveredData(null)),
       createCallbackWithLayer("province-fills", (map, e) => {
-        if (hoveredStateId) {
+        if (linkedWindow.hoveredStateId) {
           map.setFeatureState(
             {
               source: "provinces",
               sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
-              id: hoveredStateId,
+              id: linkedWindow.hoveredStateId,
             },
             { hover: false }
           );
         }
-        setHoveredStateId(null);
+        linkedWindow.hoveredStateId = null;
       }),
     ],
-    [hoveredStateId]
+    []
   );
   const onMousemoves = useMemo(
     () => [
       createCallbackWithLayer("province-fills", (map, e) => {
         setInfoBoxPosition(e.point);
         if (e.features.length <= 0) return;
-        if (hoveredStateId) {
+        if (linkedWindow.hoveredStateId) {
           map.setFeatureState(
             {
               source: "provinces",
               sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
-              id: hoveredStateId,
+              id: linkedWindow.hoveredStateId,
             },
             { hover: false }
           );
         }
-        setHoveredStateId(e.features[0].id);
+        linkedWindow.hoveredStateId = e.features[0].id;
         map.setFeatureState(
           {
             source: "provinces",
@@ -249,7 +255,7 @@ const HotspotMap = () => {
         }
       }),
     ],
-    [hoveredStateId]
+    []
   );
   return (
     <BaseMap

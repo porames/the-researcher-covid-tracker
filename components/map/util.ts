@@ -12,3 +12,5 @@ export const createCallbackWithLayer = (
     layer,
   };
 };
+
+export type MapWindow = Window & typeof globalThis & { hoveredStateId: number };
