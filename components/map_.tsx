@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import _ from "lodash";
 import HotspotMap from "./map/HotspotMap";
-import CasesMap from "./casesMap";
+import CasesMap from "./map/CasesMap";
 import { HotspotLegend, CasesLegend } from "./mapLegends";
 
 function Map() {
