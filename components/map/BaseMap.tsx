@@ -26,6 +26,7 @@ interface IMapProps {
     ) => void;
     layer: string;
   }[];
+  credits?: React.ReactNode;
 }
 
 const BaseMap = ({
@@ -35,6 +36,7 @@ const BaseMap = ({
   onMouseleave,
   onClick,
   children,
+  credits,
 }: React.PropsWithChildren<IMapProps>) => {
   const [lng, setLng] = useState<number>(101.1);
   const [lat, setLat] = useState<number>(13.12);
@@ -130,6 +132,7 @@ const BaseMap = ({
         </div>
         {children}
       </div>
+      {credits}
     </div>
   );
 };

@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import provincesData from "../gis/data/provincial-vaccination-data.json";
 import _ from "lodash";
 import { VaxCoverageLegend, SupplyLegend } from "./mapLegends";
-import CoverageMap from "./coverage_map";
+import CoverageMap from "../map/CoverageMap";
 import SupplyMap from "./supply_map";
 
 function Map() {
   const [mapType, setMapType] = useState("coverage");
-  const [maxCoverage, setMaxCoverage] = useState(undefined);
+  const maxCoverage = useMemo(() => {
+    const coverages = [];
+    provincesData["data"].forEach((row) => {
+      coverages.push(row["coverage"]);
+    });
+    return Math.max(...coverages);
+  }, []);
   return (
     <div>
       <div className="container mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row">
@@ -57,9 +64,7 @@ function Map() {
           </button>
         </div>
       </div>
-      {mapType === "coverage" && (
-        <CoverageMap setMaxCoverage={setMaxCoverage} />
-      )}
+      {mapType === "coverage" && <CoverageMap />}
       {mapType === "supply" && <SupplyMap />}
     </div>
   );
