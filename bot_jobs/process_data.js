@@ -106,26 +106,6 @@ fs.createReadStream('dataset.csv')
                 console.log('done')
             })
 
-
-        var testData = []
-        fs.createReadStream('testing_data.csv')
-            .pipe((csv({ headers: false })))
-            .on('data', (data) => {
-                const row = data
-                const date = row[0]
-                if (new Date(date) >= new Date('3/1/2020')) {
-                    const positive = row[1]
-                    const tests = row[2]
-                    testData.push({
-                        date: String(date),
-                        positive: Number(positive),
-                        tests: Number(tests)
-                    })
-                }
-            })
-            .on('end', () => {
-                fs.writeFileSync('../components/gis/data/testing-data.json', JSON.stringify(testData), 'utf-8')
-            })
     })
 
 

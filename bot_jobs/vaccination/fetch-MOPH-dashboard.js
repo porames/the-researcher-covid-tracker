@@ -1,8 +1,6 @@
 const geo = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
-const hospital_db = require('./hospital_db.json')
 const axios = require('axios')
-const csv = require('csv-parser')
 const fs = require('fs').promises
 const _ = require('lodash')
 
@@ -1843,7 +1841,7 @@ async function getManufacturer() {
         
         console.log('Downloading manufacturer data.')
         const manufacturer = await getManufacturer()
-        await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer.data), 'utf-8')
+        await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer.data, null, 2), 'utf-8')
         var db = {
             'update_at': manufacturer.latest_date,
             'data': []
@@ -1894,7 +1892,7 @@ async function getManufacturer() {
 
         }
         await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
-        await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db), 'utf-8')
+        await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db,null,2), 'utf-8')
         console.log('provinces vaccine supply data download completed')
         
 

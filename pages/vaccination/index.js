@@ -1,5 +1,5 @@
 
-import Map from '../../components/vaccine/map'
+import Map from '../../components/vaccine/map_'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import Province from '../../components/vaccine/provincesTable'
@@ -40,7 +40,7 @@ const HeadSection = (props) => {
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
           <Projection setEstimation={setEstimation} />
-          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && (estimation['m50_date'] / 365).toFixed(1)} ปี</p>
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && parseInt(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
         </div>
         <div className='my-5'>
           <h2 className='mb-1'>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>
