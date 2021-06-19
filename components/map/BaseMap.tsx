@@ -34,6 +34,125 @@ interface IMapProps {
   visibleFeatures?: any;
 }
 
+const LoadingScreen = (props) => (
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: (props.loaded ? -1 : 3),
+      transition: "background-color 1s",
+      backgroundColor: (props.loaded ? "transparent" : "#383838")
+    }}
+  >
+  </div>
+)
+
+const TableLayout = (props) => {
+  const { visibleFeatures, page, mapContainer, map, children, setPage, loaded } = props
+  return (
+    <div className="container-fluid w-100">
+
+      <div className="row mt-4 flex-column-reverse flex-md-row">
+        <div
+          className="col-md-5 p-0 mt-md-0 mt-4"
+          style={{ overflowY: "auto", maxHeight: "90vh" }}
+        >
+          <div className="table-responsive">
+            <table className="table text-white credit table-grey">
+              <thead>
+                <tr>
+                  <th style={{ width: "60%" }}>สถานที่ให้บริการวัคซีน</th>
+                  <th>จำนวนวัคซีนที่ฉีด (โดส)</th>
+                </tr>
+              </thead>
+              <tbody style={{ maxHeight: 300, overflow: "auto" }}>
+                {visibleFeatures.map((item, index) => {
+                  if (index < 20 * page) {
+                    return (
+                      <tr key={index}>
+                        <td>{item.h_name}</td>
+                        <td>{item.total_doses.toLocaleString()}</td>
+                      </tr>
+                    );
+                  }
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="pb-2 px-2">
+            {visibleFeatures.length >= page * 20 && (
+              <button
+                style={{ fontSize: "90%" }}
+                onClick={() => setPage(page + 1)}
+                className="rounded table-toggle text-sm"
+              >
+                โหลดเพิ่ม
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="col-md-7 p-0">
+          <div className="mapContainer">
+            <LoadingScreen loaded={loaded} />
+            <div
+              ref={mapContainer}
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+              }}
+            ></div>
+            <div
+              onClick={() =>
+                map.flyTo({ center: [101.1, 13.12], zoom: 4.5 })
+              }
+              className="reset-button"
+            >
+              <button className="btn-icon bg-white">
+                <img src="/fullscreen_exit-black.svg" alt="reset zoom" />
+              </button>
+            </div>
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const MapLayout = (props) => {
+  const { mapContainer, children, map, loaded } = props
+  return (
+    <div className="mapContainer">
+      <LoadingScreen loaded={loaded} />
+      <div
+        ref={mapContainer}
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+        }}
+      ></div>
+      <div
+        onClick={() => map.flyTo({ center: [101.1, 13.12], zoom: 4.5 })}
+        className="reset-button"
+      >
+        <button className="btn-icon bg-white">
+          <img src="/fullscreen_exit-black.svg" alt="reset zoom" />
+        </button>
+      </div>
+      {children}
+    </div>
+  )
+}
+
 const BaseMap = ({
   onLoad,
   onMove = [],
@@ -144,128 +263,35 @@ const BaseMap = ({
     setPage(1);
   }, [visibleFeatures]);
   return (
-    <>
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-        className={loaded ? "pulse-loaded" : "pulse-unloaded"}
-      >
-        <Pulse />
-        <br />
-        <Pulse style={{ animationDelay: "1s" }} />
-        <br />
-        <Pulse style={{ animationDelay: "2s" }} />
-      </div>
-      <div
-        className={
-          (useTable ? "container-fluid w-100" : "") +
-          (loaded ? " map-loaded" : " map-unloaded")
-        }
-      >
-        <Head>
-          <link
-            href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
-            rel="stylesheet"
+    <div>
+      <Head>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
+      </Head>
+      <div>
+        {useTable ?
+          <TableLayout
+            visibleFeatures={visibleFeatures}
+            map={map}
+            mapContainer={mapContainer}
+            page={page}
+            children={children}
+            setPage={setPage}
+            loaded={loaded}
           />
-        </Head>
-        <div className="mapContainer">
-          {useTable ? (
-            <div className="row mt-4 flex-column-reverse flex-md-row">
-              <div
-                className="col-md-5 p-0 mt-md-0 mt-4"
-                style={{ overflowY: "auto", maxHeight: "90vh" }}
-              >
-                <div className="table-responsive">
-                  <table className="table text-white credit table-grey">
-                    <thead>
-                      <tr>
-                        <th style={{ width: "60%" }}>สถานที่ให้บริการวัคซีน</th>
-                        <th>จำนวนวัคซีนที่ฉีด (โดส)</th>
-                      </tr>
-                    </thead>
-                    <tbody style={{ maxHeight: 300, overflow: "auto" }}>
-                      {visibleFeatures.map((item, index) => {
-                        if (index < 20 * page) {
-                          return (
-                            <tr key={index}>
-                              <td>{item.h_name}</td>
-                              <td>{item.total_doses.toLocaleString()}</td>
-                            </tr>
-                          );
-                        }
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="pb-2 px-2">
-                  {visibleFeatures.length >= page * 20 && (
-                    <button
-                      style={{ fontSize: "90%" }}
-                      onClick={() => setPage(page + 1)}
-                      className="rounded table-toggle text-sm"
-                    >
-                      โหลดเพิ่ม
-                    </button>
-                  )}
-                </div>
-              </div>
-              <div className="col-md-7 p-0">
-                <div className="mapContainer">
-                  <div
-                    ref={mapContainer}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                    }}
-                  ></div>
-                  <div
-                    onClick={() =>
-                      map.flyTo({ center: [101.1, 13.12], zoom: 4.5 })
-                    }
-                    className="reset-button"
-                  >
-                    <button className="btn-icon bg-white">
-                      <img src="/fullscreen_exit-black.svg" alt="reset zoom" />
-                    </button>
-                  </div>
-                </div>
-                {children}
-              </div>
-            </div>
-          ) : (
-            <>
-              <div
-                ref={mapContainer}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                }}
-              ></div>
-              <div
-                onClick={() => map.flyTo({ center: [101.1, 13.12], zoom: 4.5 })}
-                className="reset-button"
-              >
-                <button className="btn-icon bg-white">
-                  <img src="/fullscreen_exit-black.svg" alt="reset zoom" />
-                </button>
-              </div>
-              {children}
-            </>
-          )}
-        </div>
-        {credits}
+          :
+          <MapLayout
+            map={map}
+            mapContainer={mapContainer}
+            children={children}
+            loaded={loaded}
+          />
+        }
       </div>
-    </>
+      {credits}
+    </div>
   );
 };
 
