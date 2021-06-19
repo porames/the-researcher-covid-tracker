@@ -291,16 +291,16 @@ hr {
   }
 }
 
+.mapContainer {
+  transition: background-color 1s ;
+}
+
 .map-unloaded {
-  opacity: 0;
+  background-color: #383838;
 }
 
 .map-loaded {
-  opacity: 1;
-  -webkit-animation-name: fade-in;
-  -webkit-animation-duration: 2s;
-  animation-name: fade-in;
-  animation-duration: 2s;
+  background-color: transparent;
 }
 
 .pulse-blob {
@@ -338,6 +338,7 @@ hr {
     opacity: 0;
   }
 }
+
 
 .pulse-unloaded {
   opacity: 1;
