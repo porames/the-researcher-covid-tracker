@@ -16,7 +16,8 @@ function Map() {
   }, []);
   return (
     <div style={{ position: "relative" }}>
-      <div className="container mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row">
+      <h2 className='text-center'>แผนที่สถานการณ์วัคซีน</h2>
+      <div className="container mt-4 mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row">
         <div
           className="col-md-6 mb-3"
           style={{ display: "flex", alignItems: "flex-end" }}

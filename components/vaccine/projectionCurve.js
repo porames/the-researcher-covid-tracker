@@ -80,7 +80,8 @@ const EstimateCurve = (props) => {
     useEffect(() => {
         props.setEstimation({
             m50_date: generatedData['m50_date'],
-            deltaAvg: extension[extension.length-1]['deltaAvg']
+            deltaAvg: extension[extension.length-1]['deltaAvg'],
+            required_rate: parseInt(goal["required_rate"])
         })
     }, [])
     

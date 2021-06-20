@@ -179,7 +179,7 @@ function ManufacturerCurve(props) {
         tooltipData: null,
     });
 
-    const bisectDate = bisector(d => new Date(d['date'])).center;
+    
     return (
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
