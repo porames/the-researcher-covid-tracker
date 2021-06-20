@@ -8,6 +8,7 @@ import { Projection } from '../../components/vaccine/projectionCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
 import Manufacturer from '../../components/vaccine/manufacturer'
+import VaccinationRace from '../../components/vaccine/VaccinationRace'
 import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import Link from 'next/link'
@@ -79,6 +80,9 @@ export default function Vaccine(props) {
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
           <h2 className='text-center mt-5'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
           <Province />
+        </div>
+        <VaccinationRace />
+        <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
           <div className='row mt-5'>
             <div className='col-12'>
               <hr />

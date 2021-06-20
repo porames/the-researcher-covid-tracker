@@ -267,52 +267,8 @@ hr {
   }
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .mapContainer {
-  transition: background-color 1s ;
-}
-
-.map-unloaded {
-  background-color: #383838;
-}
-
-.map-loaded {
-  background-color: transparent;
-}
-
-.pulse-blob {
-  background: rgba(255, 0, 0, 1);
-  border-radius: 50%;
-  margin: 10px;
-  height: 20px;
-  width: 20px;
-
-  box-shadow: 0 0 0 0 rgba(255, 0, 0, 1);
-  transform: scale(1);
-  animation: pulse 2s infinite;
+  transition: background-color 1s;
 }
 
 @keyframes fade-out {
@@ -338,7 +294,6 @@ hr {
     opacity: 0;
   }
 }
-
 
 .pulse-unloaded {
   opacity: 1;
@@ -366,5 +321,17 @@ hr {
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+#vaccination-race-chart {
+  .grid line {
+    stroke: lightgrey;
+    stroke-opacity: 1;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 5 5;
+  }
+
+  .grid path {
+    stroke-width: 0;
   }
 }
