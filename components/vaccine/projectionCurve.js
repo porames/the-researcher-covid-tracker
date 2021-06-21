@@ -12,7 +12,6 @@ import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Text } from '@visx/text'
-
 const population = 66186727 * 2 //doses roequired to cover all population (children included)
 
 function generateExtension(ts) {
@@ -68,7 +67,6 @@ function plannedRollout(ts) {
 }
 
 const EstimateCurve = (props) => {
-
     const { width, height } = props
     const timeSeries = data
     const generatedData = generateExtension(timeSeries)
@@ -131,7 +129,8 @@ const EstimateCurve = (props) => {
                             dy={10}
                             width={150}
                             lineHeight={18}
-                            fontFamily='Prompt'
+                            fontFamily="Sarabun"
+                            fontWeight="bold"
                             fontSize={12}
 
                         >

@@ -20,7 +20,7 @@ const MetaHead = () => (
   <Head>
     <title>รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet" />
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
     <script dangerouslySetInnerHTML={{
       __html: `window.dataLayer = window.dataLayer || [];
@@ -77,16 +77,17 @@ interface EstimationProps {
 
 const DetailGraphs = (props) => {
   const [estimation, setEstimation] = useState<EstimationProps>(undefined)
+  const [todayRate, setTodayRate] = useState(undefined)
   return (
     <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
       <div className='my-4'>
         <h2 className='mb-3'>เรากำลังฉีดวัคซีนฉีดได้เร็วแค่ไหน ?</h2>
-        <VaccinationRate estimation={estimation} />
+        <VaccinationRate setTodayRate={setTodayRate} estimation={estimation} />
       </div>
       <div className='my-4'>
         <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
         <Projection setEstimation={setEstimation} />
-        <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน ณ ปัจจุบันที่ {estimation && Math.floor(estimation['deltaAvg']).toLocaleString()} โดส/วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
+        <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
       </div>
       <div className='my-4'>
         <h2 className='mb-1'>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>

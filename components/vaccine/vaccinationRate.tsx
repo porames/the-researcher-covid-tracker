@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
@@ -38,7 +38,8 @@ function movingAvg(ts, id) {
 function Curve(props) {
     const { width, height } = props
     var vaxRate = []
-    const dateRange = d3.timeDays(new Date(2021, 3, 1), new Date());
+
+    const dateRange = d3.timeDays(new Date(2021, 3, 1), new Date(data[data.length - 1]["date"]));
 
     dateRange.map((date, index) => {
         const supply = _.filter(data, { "date": moment(date).format("YYYY-MM-DD") })
@@ -47,7 +48,7 @@ function Curve(props) {
             total = supply.reduce((a, b) => a["doses_administered"] + b["doses_administered"])
         }
         else {
-            total = supply.doses_administered
+            total = supply["doses_administered"]
         }
         vaxRate.push({
             date: date,
@@ -63,21 +64,22 @@ function Curve(props) {
     })
     const dateScale = scaleTime({
         range: [0, width],
-        domain: extent(vaxRate, x),
-        padding: 0.07
+        domain: extent(vaxRate, x)
     })
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(vaxRate, y)],
+        domain: [0, props.estimation["required_rate"] > max(vaxRate, y) ? props.estimation["required_rate"] : max(vaxRate, y)],
     })
     var avgs = movingAvg(vaxRate, "doses_administered")
     avgs.map((avg, i) => {
         vaxRate[i]['moving_avg'] = avg
     })
+    useEffect(() => {
+        props.setTodayRate(vaxRate[vaxRate.length - 1])
+    }, [])
     const {
         showTooltip,
         hideTooltip,
-        tooltipOpen,
         tooltipData,
         tooltipLeft = 0,
         tooltipTop = 0,
@@ -108,9 +110,18 @@ function Curve(props) {
                         })}
                     </Group>
                     <Group>
+                        {tooltipData &&
+                            <Bar
+                                x={xScale(x(tooltipData))}
+                                y={yScale(y(tooltipData)) - 30}
+                                width={xScale.bandwidth()}
+                                height={height - yScale(y(tooltipData))}
+                                fill='#7ea297'
+                            />
+                        }
                         <LinePath
                             curve={curveStepAfter}
-                            data={vaxRate}
+                            data={vaxRate.slice(7, vaxRate.length)}
                             x={d => xScale(x(d))}
                             y={d => (yScale(d["moving_avg"]) - 30)}
                             stroke='#427165'
@@ -123,15 +134,6 @@ function Curve(props) {
                             fill='#427165'
                         />
                     </Group>
-                    {tooltipData &&
-                        <Bar
-                            x={xScale(x(tooltipData))}
-                            y={yScale(y(tooltipData)) - 30}
-                            width={xScale.bandwidth()}
-                            height={height - yScale(y(tooltipData))}
-                            fill='#7ea297'
-                        />
-                    }
                     <Bar
                         onMouseMove={(e) => {
                             const x = localPoint(e)['x']
@@ -158,26 +160,25 @@ function Curve(props) {
                     />
                 </Group>
                 {props.estimation &&
-
                     <Group>
                         <Text
-                            x={width - 160}
+                            x={width - (width < 500 ? 70 : 140)}
                             y={yScale(parseInt(props.estimation["required_rate"])) - 30}
                             fill='#bdbdbd'
-                            dx={10}
-                            dy={14}
-                            width={300}
+                            dx={-10}
+                            dy={22}
+                            width={200}
                             lineHeight={18}
                             textAnchor="end"
                             fontFamily="Sarabun"
                             fontWeight="bold"
-                            fontSize={14}
+                            fontSize={12}
                         >
                             {`เพื่อให้ตามเป้าหมาย ต่อไปนี้ต้องฉีดวัคซีนให้ได้ ${parseInt(props.estimation["required_rate"]).toLocaleString()} โดส/วัน`}
                         </Text>
                         <Line
                             from={{
-                                x: width - 140,
+                                x: width - (width < 500 ? 70 : 140),
                                 y: yScale(parseInt(props.estimation["required_rate"])) - 30
                             }}
                             to={{
@@ -204,11 +205,11 @@ function Curve(props) {
                         numTicks={4}
                     />
                     <AxisLeft
-                        scale={yScale}
+                        scale={yScale} ด
                         tickLabelProps={() => ({
-                            fill: '#bfbfbf',
+                            fill: "#bfbfbf",
                             fontSize: 11,
-                            textAnchor: 'left',
+                            textAnchor: "start",
                             opacity: 0.7
                         })}
                         tickFormat={d => d > 0 ? d.toLocaleString() : ""}
@@ -235,7 +236,6 @@ function Curve(props) {
             </svg>
             <div>
                 {tooltipData &&
-
                     <TooltipWithBounds
                         top={tooltipTop}
                         left={tooltipLeft}
@@ -250,7 +250,6 @@ function Curve(props) {
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                             ฉีดวัคซีนไป {tooltipData['doses_administered'].toLocaleString()} โดส<br />
                             {tooltipData["moving_avg"] ? `ค่าเฉลี่ย 7 วัน ${Math.floor(tooltipData["moving_avg"]).toLocaleString()} โดส` : ""}
-
                         </span>
                     </TooltipWithBounds>
                 }
@@ -260,14 +259,39 @@ function Curve(props) {
 
 }
 
-const VaccinationRate = (props) => (
-    <div>
-        <ParentSize>
-            {({ width, height }) => (
-                <Curve estimation={props.estimation} width={width} height={350} />
-            )}
-        </ParentSize>
-    </div>
+interface VaccinationRateProps {
+    date: string;
+    manufacturer: string;
+    doses_administered: number;
+    moving_avg: number;
+}
 
-)
+const VaccinationRate = (props) => {
+    const [todayRate, setTodayRate] = useState<VaccinationRateProps>(undefined)
+    const [percentage, setPercentage] = useState<number>(undefined)
+    useEffect(() => {
+        if (todayRate) {
+            const percent = 100 - Math.ceil((todayRate["moving_avg"] / props.estimation["required_rate"]) * 100)
+            setPercentage(percent)
+        }
+    }, [todayRate])
+    return (
+        <div>
+            {props.estimation &&
+                <div>
+                    <ParentSize>
+                        {({ width, height }) => (
+                            <Curve setTodayRate={setTodayRate} estimation={props.estimation} width={width} height={350} />
+                        )}
+                    </ParentSize>
+                    {todayRate &&
+                        <div>ค่าเฉลี่ย 7 วันอยู่ที่ {Math.ceil(todayRate["moving_avg"]).toLocaleString()} โดส/วัน ซึ่งต่ำกว่าความเร็วเป้าหมายเพื่อให้ครบประชากร 50 ล้านคน (100 ล้านโดส) ภายในสิ้นปีอยู่ {percentage} %</div>
+                    }
+                </div>
+            }
+
+
+        </div>
+    )
+}
 export default VaccinationRate
