@@ -259,16 +259,9 @@ function Curve(props) {
 
 }
 
-interface VaccinationRateProps {
-    date: string;
-    manufacturer: string;
-    doses_administered: number;
-    moving_avg: number;
-}
-
 const VaccinationRate = (props) => {
-    const [todayRate, setTodayRate] = useState<VaccinationRateProps>(undefined)
-    const [percentage, setPercentage] = useState<number>(undefined)
+    const [todayRate, setTodayRate] = useState(undefined)
+    const [percentage, setPercentage] = useState(undefined)
     useEffect(() => {
         if (todayRate) {
             const percent = 100 - Math.ceil((todayRate["moving_avg"] / props.estimation["required_rate"]) * 100)
