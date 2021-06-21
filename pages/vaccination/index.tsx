@@ -78,7 +78,7 @@ interface EstimationProps {
 const DetailGraphs = (props) => {
   const [estimation, setEstimation] = useState<EstimationProps>(undefined)
   return (
-    <div className='mx-auto text-center' style={{ maxWidth: 700 }}>
+    <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
       <div className='my-4'>
         <h2 className='mb-3'>เรากำลังฉีดวัคซีนฉีดได้เร็วแค่ไหน ?</h2>
         <VaccinationRate estimation={estimation} />
