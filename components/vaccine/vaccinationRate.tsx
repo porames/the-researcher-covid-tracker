@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { extent, max, bisector, min } from 'd3-array'
+import { extent, max, bisector } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
 import { GridRows, GridColumns } from '@visx/grid'
@@ -15,10 +15,10 @@ import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../gis/data/manufacturer-vaccination-data.json'
 import { Text } from '@visx/text'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import * as d3 from 'd3';
+import { timeDays } from 'd3';
 
 function movingAvg(ts, id) {
-    var moving_aves = []
+    var moving_aves: number[] = []
     var ys = []
     for (var i = 0; i < ts.length; i++) {
         ys.push(ts[i][id])
@@ -35,17 +35,28 @@ function movingAvg(ts, id) {
     return moving_aves
 }
 
+interface ManufacturerDataProps {
+    date: string;
+    manufacturer: string;
+    doses_administered: number;
+}
+
+interface VaxRateProps {
+    date: string;
+    doses_administered: number;
+}
+
 function Curve(props) {
     const { width, height } = props
-    var vaxRate = []
+    var vaxRate: VaxRateProps[] = []
 
-    const dateRange = d3.timeDays(new Date(2021, 3, 1), new Date(data[data.length - 1]["date"]));
+    const dateRange = timeDays(new Date(2021, 3, 1), new Date(data[data.length - 1]["date"]));
 
     dateRange.map((date, index) => {
         const supply = _.filter(data, { "date": moment(date).format("YYYY-MM-DD") })
-        var total
+        var total: number
         if (supply.length > 1) {
-            total = supply.reduce((a, b) => a["doses_administered"] + b["doses_administered"])
+            total = supply.reduce((a: number, b: ManufacturerDataProps) => (a + b["doses_administered"]), 0)
         }
         else {
             total = supply["doses_administered"]
@@ -205,7 +216,7 @@ function Curve(props) {
                         numTicks={4}
                     />
                     <AxisLeft
-                        scale={yScale} ด
+                        scale={yScale}
                         tickLabelProps={() => ({
                             fill: "#bfbfbf",
                             fontSize: 11,
@@ -223,7 +234,7 @@ function Curve(props) {
                         numTicks={3}
                         top={height - 30}
                         scale={dateScale}
-                        tickFormat={d => moment(d).format('MMM')}
+                        tickFormat={d => moment(String(d)).format('MMM')}
                         tickStroke='#bfbfbf'
                         stroke='#bfbfbf'
                         tickLabelProps={() => ({
