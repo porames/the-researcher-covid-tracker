@@ -6,22 +6,22 @@ import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { Group } from '@visx/group'
 import { MarkerArrow } from '@visx/marker'
+import { NationalVaccinationDataProps } from './types'
 import moment from 'moment'
 import 'moment/locale/th'
 
-
 function TrendCurveVaccination(props) {
-    var ts = data.slice(data.length - 14, data.length)
+    var ts: NationalVaccinationDataProps[] = data.slice(data.length - 14, data.length)
     const width = 50
     const height = 20
     useEffect(() => {
-        const i = ts[0]['deltaAvg']
-        const f = ts[ts.length - 1]['deltaAvg']
+        const i = ts[0].deltaAvg
+        const f = ts[ts.length - 1].deltaAvg
         var delta = Math.floor(((f - i) / i) * 100)
         props.setDelta(delta)
     })
-    const x = d => new Date(d['date']);
-    const y = d => d['deltaAvg'];
+    const x = d => new Date(d.date);
+    const y = d => d.deltaAvg;
     const xScale = scaleTime({
         range: [5, width - 5],
         domain: extent(ts, x)
@@ -35,20 +35,16 @@ function TrendCurveVaccination(props) {
         <svg width={width} height={height}>
             <Group>
                 <MarkerArrow id="marker-arrow-vaccine" fill={'#60897e'} refX={2} size={4} />
-                {[ts].map((lineData, i) => {
-                    return (
-                        <LinePath
-                            key={i}
-                            curve={curveBasis}
-                            data={lineData}
-                            x={d => xScale(x(d))}
-                            y={d => yScale(y(d))}
-                            stroke='#60897e'
-                            strokeWidth={2}
-                            markerEnd='url(#marker-arrow-vaccine)'
-                        />
-                    )
-                })}
+                <LinePath
+                    curve={curveBasis}
+                    data={ts}
+                    x={d => xScale(x(d))}
+                    y={d => yScale(y(d))}
+                    stroke='#60897e'
+                    strokeWidth={2}
+                    markerEnd='url(#marker-arrow-vaccine)'
+                />
+                )
             </Group>
         </svg>
     )
@@ -61,10 +57,10 @@ function NationalTable(props) {
             <table className="table table-theme-light mt-4 text-white">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
+                        <th style={{ minWidth: 150 }} scope="col"></th>
                         <th className='text-end' scope="col">ตั้งแต่เริ่มฉีด</th>
                         <th className='text-end' scope='col'>{moment(props.updateDate).format('DD MMM')}</th>
-                        <th className='text-end' scope="col">อัตราเร็ว 14 วัน</th>
+                        <th style={{ minWidth: 140 }} className='text-end' scope="col">อัตราเร็ว 14 วัน</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +68,7 @@ function NationalTable(props) {
                         <td className='text-left' scope="row">จำนวนวัคซีนที่ฉีด</td>
                         <td>{data[data.length - 1]['total_doses'].toLocaleString()}</td>
                         <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
-                        <td>
+                        <td >
                             <div className='d-flex justify-content-end'>
                                 <div style={{ color: '#60897e' }}>{delta > 0 ? "+" : "-"}{delta} %</div>
                                 <div className='ml-1'>
@@ -87,8 +83,6 @@ function NationalTable(props) {
                         <td>{(data[data.length - 1]['total_supply'] - data[data.length - 1]['total_doses']).toLocaleString()}</td>
                         <td></td>
                     </tr>
-
-
                 </tbody>
             </table>
         </div>

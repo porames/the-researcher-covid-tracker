@@ -1,34 +1,45 @@
 import React, { useEffect } from 'react';
-import { extent, max, bisector, min } from 'd3-array'
+import { extent, max } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
-import { GridRows, GridColumns } from '@visx/grid'
+import { GridRows } from '@visx/grid'
 import moment from 'moment'
 import 'moment/locale/th'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
-import { ParentSize, withParentSize } from '@visx/responsive'
+import { ParentSize } from '@visx/responsive'
 import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Text } from '@visx/text'
+import { NationalVaccinationDataProps } from './types'
+import { movingAvg } from './util'
 const population = 66186727 * 2 //doses roequired to cover all population (children included)
 
-function generateExtension(ts) {
-    const delta = ts[ts.length - 1]['deltaAvg'] //latest 7-day average vaccination rate
+interface PredictionProps {
+    vaccinatedAvg?: number;
+    date: string;
+    estimation: boolean;
+    deltaAvg?: number;
+    total_doses: number;
+}
+
+function generateExtension(ts: PredictionProps[]) {
+    const delta = Math.floor(ts[ts.length - 1]['deltaAvg']) //latest 7-day average vaccination rate
     const startDate = moment(ts[ts.length - 1]['date'])
-    const initVaccinated = ts[ts.length - 1]['total_doses']
-    var predictions = []
+    const initVaccinated: number = ts[ts.length - 1]['total_doses']
+    var predictions: PredictionProps[] = []
     var i = 0
     var predict = 0
     var m50_date = 0
     while (predict < population) {
-        predict = parseInt(initVaccinated + (delta * i))
+        predict = initVaccinated + (delta * i)
         if (predict < 50 * 1000 * 1000 * 2) {
             m50_date += 1
         }
         predictions.push({
             vaccinatedAvg: predict,
+            total_doses: predict,
             date: startDate.add(1, 'd').format('YYYY-MM-DD'),
             estimation: true,
             deltaAvg: delta
@@ -39,27 +50,28 @@ function generateExtension(ts) {
 }
 
 
-function plannedRollout(ts) {
+function plannedRollout(ts: PredictionProps[]) {
     const startDate = moment(ts[ts.length - 1]['date'])
     const goalDate = moment('2021-12-31')
     const eta = goalDate.diff(startDate, 'days')
     const initVaccinated = ts[ts.length - 1]['total_doses']
     const requiredRate = ((50 * 1000 * 1000 * 2) - initVaccinated) / eta
-    var planned = []
+    var planned: PredictionProps[] = []
     var i = 0
     var predict = 0
     var m50_date = 0
 
     while (predict < population) {
-        predict = parseInt(initVaccinated + (requiredRate * i))
+        predict = Math.floor(initVaccinated + (requiredRate * i))
         if (predict < 50 * 1000 * 1000 * 2) {
             m50_date += 1
         }
         planned.push({
             vaccinatedAvg: predict,
+            total_doses: predict,
             date: startDate.add(1, 'd').format('YYYY-MM-DD'),
             estimation: true,
-            deltaAvg: requiredRate
+            deltaAvg: requiredRate,
         })
         i += 1
     }
@@ -68,32 +80,43 @@ function plannedRollout(ts) {
 
 const EstimateCurve = (props) => {
     const { width, height } = props
-    const timeSeries = data
+    let timeSeries: PredictionProps[] = []
+    const vaccinatedAvgs = movingAvg(data, 'total_doses')
+    const deltaAvgs = movingAvg(data, 'daily_vaccinations')
+    data.map((item: NationalVaccinationDataProps, index: number) => {
+        timeSeries.push({
+            date: item.date,
+            estimation: false,
+            total_doses: item.total_doses,
+            vaccinatedAvg: vaccinatedAvgs[index],
+            deltaAvg: deltaAvgs[index]
+        })
+    })
+
     const generatedData = generateExtension(timeSeries)
-    const extension = generatedData['predictions']
+    const extension = generatedData.predictions
     const goal = plannedRollout(timeSeries)
 
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
     useEffect(() => {
         props.setEstimation({
-            m50_date: generatedData['m50_date'],
-            deltaAvg: extension[extension.length-1]['deltaAvg'],
-            required_rate: parseInt(goal["required_rate"])
+            m50_date: generatedData.m50_date,
+            deltaAvg: extension[extension.length - 1].deltaAvg,
+            required_rate: Math.floor(goal.required_rate)
         })
     }, [])
-    
-    const x = d => new Date(d['date'])
-    const y = d => d['vaccinatedAvg']
+
+    const x = d => new Date(d.date)
+    const y = d => d.vaccinatedAvg
     const xScale = scaleBand({
         range: [0, width],
         domain: merged.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
-        range: [0, width -0],
+        range: [0, width - 0],
         domain: extent(merged, x),
-        padding: 0.07
     })
     const yScale = scaleLinear({
         range: [height, 50],
@@ -134,7 +157,7 @@ const EstimateCurve = (props) => {
                             fontSize={12}
 
                         >
-                            {`${parseInt(goal['required_rate']).toLocaleString()} โดส/วัน เพื่อให้ครบ 50 ล้านคน ในสิ้นปี`}
+                            {`${Math.floor(goal['required_rate']).toLocaleString()} โดส/วัน เพื่อให้ครบ 50 ล้านคน ในสิ้นปี`}
                         </Text>
                     </Group>
                     <SplitLinePath
@@ -177,10 +200,10 @@ const EstimateCurve = (props) => {
                         tickLabelProps={() => ({
                             fill: '#bfbfbf',
                             fontSize: 11,
-                            textAnchor: 'left',
+                            textAnchor: "start",
                             opacity: 0.7
                         })}
-                        tickFormat={d => (`${parseInt(d * 100 / population)}%`)}
+                        tickFormat={d => (`${Math.floor(Number(d) * 100 / population)}%`)}
                         numTicks={4}
                         top={-35}
                         left={0}
@@ -190,7 +213,7 @@ const EstimateCurve = (props) => {
                         numTicks={3}
                         top={height - 30}
                         scale={dateScale}
-                        tickFormat={d => moment(d).format('MMM YY')}
+                        tickFormat={d => moment(String(d)).format('MMM YY')}
                         tickStroke='#bfbfbf'
                         stroke='#bfbfbf'
                         tickLabelProps={() => ({
@@ -209,7 +232,7 @@ export const Projection = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <EstimateCurve setEstimation={props.setEstimation} width={width} height={width > 768 ? 350 : 300} />
+                <EstimateCurve setEstimation={props.setEstimation} width={width} height={width > 768 ? 350 : 300} />            
             )}
         </ParentSize>
     </div>
