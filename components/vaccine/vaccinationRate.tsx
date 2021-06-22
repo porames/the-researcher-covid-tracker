@@ -49,7 +49,6 @@ interface VaxRateProps {
 function Curve(props) {
     const { width, height } = props
     var vaxRate: VaxRateProps[] = []
-
     const dateRange = timeDays(new Date(2021, 3, 1), new Date(data[data.length - 1]["date"]));
 
     dateRange.map((date, index) => {

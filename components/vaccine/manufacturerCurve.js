@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
-import { extent, max, bisector, min } from 'd3-array'
+import { extent, max } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
 import { GridRows, GridColumns } from '@visx/grid'
-import { Bar } from '@visx/shape'
 import moment from 'moment'
 import 'moment/locale/th'
 import { Text } from '@visx/text'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
-import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
-import { ParentSize, withParentSize } from '@visx/responsive'
+import { ParentSize } from '@visx/responsive'
 import data from '../gis/data/manufacturer-vaccination-data.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 
@@ -166,19 +164,6 @@ function ManufacturerCurve(props) {
         domain: extent(timeSeries, x),
         padding: 0.07
     })
-
-    const {
-        showTooltip,
-        hideTooltip,
-        tooltipOpen,
-        tooltipData,
-        tooltipLeft = 0,
-        tooltipTop = 0,
-    } = useTooltip({
-        tooltipOpen: true,
-        tooltipData: null,
-    });
-
     
     return (
         <div className='no-select' style={{ position: 'relative' }}>
