@@ -30,11 +30,11 @@ const InfoTooltip = (props) => {
     );
 };
 export default function Province(props) {
-    const [showAll, setShowAll] = useState(false)
+    const [showAll, setShowAll] = useState<boolean>(false)
 
     return (
         <div>
-            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData['update_at']).format('LL')}</div>
+            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData.update_at).format('LL')}</div>
             <div className='table-responsive'>
             <table className="table text-white w-100" style={{ minWidth: 400 }}>
                 <thead>
@@ -45,23 +45,23 @@ export default function Province(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {_.sortBy(provincesData['data'], 'coverage').reverse().map((province, index) => {
-                        if (index < (showAll ? provincesData['data'].length : 10)) {
+                    {_.sortBy(provincesData.data, 'coverage').reverse().map((province, index) => {
+                        if (index < (showAll ? provincesData.data.length : 10)) {
                             return (
                                 <tr key={index} className='text-sec'>
                                     <td>
                                         <div className='d-flex align-items-center'>
-                                            <b>{province['name']}</b>
-                                            {province['population'] > province['registered_population'] &&
-                                                <InfoTooltip excessPop={province['population'] - province['registered_population']} />
+                                            <b>{province.name}</b>
+                                            {province['population'] > province.registered_population &&
+                                                <InfoTooltip excessPop={province.population - province.registered_population} />
                                             }
                                         </div>
                                     </td>
                                     <td style={{ width: '30%' }}>
                                         <div className='d-flex align-items-center'>
-                                            <span style={{ direction: 'rtl', width: 50 }}>{(province['total_doses'] * 100 / (province['population'] * 2)).toFixed(1)}%</span>
+                                            <span style={{ direction: 'rtl', width: 50 }}>{(province.total_doses * 100 / (province.population * 2)).toFixed(1)}%</span>
                                             <div className='ml-2 doses-progress' style={{ maxWidth: 100 }}>
-                                                <div className='doses-bar' style={{ width: `${(province['total_doses'] * 100 / (province['population'] * 2))}%` }}></div>
+                                                <div className='doses-bar' style={{ width: `${(province.total_doses * 100 / (province.population * 2))}%` }}></div>
                                             </div>
                                         </div>
                                     </td>

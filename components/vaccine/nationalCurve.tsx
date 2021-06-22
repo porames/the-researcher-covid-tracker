@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
-import { GridRows, GridColumns } from '@visx/grid'
 import { Bar } from '@visx/shape'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -10,29 +9,12 @@ import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
-import { LinePath, SplitLinePath } from '@visx/shape'
+import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../gis/data/national-vaccination-timeseries.json'
-import { AxisBottom, AxisLeft } from '@visx/axis'
+import { AxisBottom } from '@visx/axis'
+import { movingAvg } from './util'
 
-
-function movingAvg(ts, id) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i][id])
-    }
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
 export function NationalCurve(props) {
     var timeSeries = data
     const width = props.width
@@ -49,7 +31,7 @@ export function NationalCurve(props) {
     })
     useEffect(() => {
         props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
-        props.setTodayData(timeSeries[timeSeries.length-1])
+        props.setTodayData(timeSeries[timeSeries.length - 1])
     }, [])
 
 
@@ -60,12 +42,11 @@ export function NationalCurve(props) {
     })
     const dateScale = scaleTime({
         range: [0, width],
-        domain: extent(timeSeries, x),
-        padding: 0.07
+        domain: extent(timeSeries, x)
     })
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(timeSeries, y)],
+        domain: [0, max(timeSeries, y)]
     })
 
     const {
@@ -79,8 +60,8 @@ export function NationalCurve(props) {
         tooltipOpen: true,
         tooltipData: null,
     });
-    
-    const bisectDate = bisector(d => new Date(d['date'])).center;
+
+    const bisectDate = bisector(d => new Date(d.date)).center;
     return (
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
@@ -95,7 +76,7 @@ export function NationalCurve(props) {
                                     y={height - barHeight - 30}
                                     width={xScale.bandwidth()}
                                     height={barHeight}
-                                    fill={timeSeries[i]['missing_data'] ? '#bdd5cd':'#9dbbb2'}
+                                    fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#9dbbb2'}
                                 />
 
                             );
@@ -105,7 +86,7 @@ export function NationalCurve(props) {
                         curve={curveBasis}
                         data={timeSeries}
                         x={d => xScale(x(d))}
-                        y={d => yScale(d['vaccinatedAvg']) - 30}
+                        y={d => yScale(d["vaccinatedAvg"]) - 30}
                         stroke='#427165'
                         strokeWidth={2}
                     />
@@ -125,7 +106,7 @@ export function NationalCurve(props) {
                             top={height - 30}
                             scale={dateScale}
                             numTicks={4}
-                            tickFormat={d => moment(d).format('MMM')}
+                            tickFormat={d => moment(String(d)).format('MMM')}
                             tickStroke='#bfbfbf'
                             stroke='#bfbfbf'
                             tickLabelProps={() => ({
@@ -162,9 +143,9 @@ export function NationalCurve(props) {
                 </Group>
             </svg>
             <div>
-                
+
                 {tooltipData &&
-                
+
                     <TooltipWithBounds
                         top={tooltipTop}
                         left={tooltipLeft}
@@ -178,10 +159,10 @@ export function NationalCurve(props) {
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                             ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
-                            {tooltipData['missing_data'] && 
+                            {tooltipData['missing_data'] &&
                                 <div className='text-danger mt-1 credit'><b>*วันที่ไม่มีรายงานข้อมูล</b></div>
                             }
-                </span>
+                        </span>
                     </TooltipWithBounds>
                 }
             </div>
