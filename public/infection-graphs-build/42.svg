@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-06-22T13:24:48.593199</dc:date>
+    <dc:date>2021-06-22T20:56:53.059985</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -50,47 +50,47 @@ L 583.615385 -39.6
 L 622.636364 -39.6 
 L 622.636364 -71.28 
 L 622.636364 -71.28 
-L 583.615385 -95.04 
+L 583.615385 -71.28 
 L 544.594406 -95.04 
 L 505.573427 -95.04 
-L 466.552448 -87.12 
-L 427.531469 -71.28 
-L 388.51049 -67.32 
+L 466.552448 -95.04 
+L 427.531469 -87.12 
+L 388.51049 -71.28 
 L 349.48951 -67.32 
-L 310.468531 -43.56 
+L 310.468531 -67.32 
 L 271.447552 -43.56 
 L 232.426573 -43.56 
-L 193.405594 -51.48 
-L 154.384615 -47.52 
+L 193.405594 -43.56 
+L 154.384615 -51.48 
 L 115.363636 -47.52 
 z
-" id="m407e0e36de" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="ma6d5a473d4" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p71e286e9ab)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m407e0e36de" y="360"/>
+    <g clip-path="url(#pdb6fe6df9c)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#ma6d5a473d4" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p71e286e9ab)" d="M 115.363636 312.48 
-L 154.384615 312.48 
-L 193.405594 308.52 
+    <path clip-path="url(#pdb6fe6df9c)" d="M 115.363636 312.48 
+L 154.384615 308.52 
+L 193.405594 316.44 
 L 232.426573 316.44 
 L 271.447552 316.44 
-L 310.468531 316.44 
+L 310.468531 292.68 
 L 349.48951 292.68 
-L 388.51049 292.68 
-L 427.531469 288.72 
-L 466.552448 272.88 
+L 388.51049 288.72 
+L 427.531469 272.88 
+L 466.552448 264.96 
 L 505.573427 264.96 
 L 544.594406 264.96 
-L 583.615385 264.96 
+L 583.615385 288.72 
 L 622.636364 288.72 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p71e286e9ab">
+  <clipPath id="pdb6fe6df9c">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
