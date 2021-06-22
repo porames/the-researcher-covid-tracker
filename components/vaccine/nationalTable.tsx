@@ -8,23 +8,7 @@ import { Group } from '@visx/group'
 import { MarkerArrow } from '@visx/marker'
 import moment from 'moment'
 import 'moment/locale/th'
-function movingAvg(ts) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i]['daily_vaccinations'])
-    }
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
+
 
 function TrendCurveVaccination(props) {
     var ts = data.slice(data.length - 14, data.length)
@@ -33,13 +17,7 @@ function TrendCurveVaccination(props) {
     useEffect(() => {
         const i = ts[0]['deltaAvg']
         const f = ts[ts.length - 1]['deltaAvg']
-        var delta = parseInt(((f - i) / i) * 100)
-        if (delta > 0) {
-            delta = `+${delta}%`
-        }
-        else {
-            delta = `${delta}%`
-        }
+        var delta = Math.floor(((f - i) / i) * 100)
         props.setDelta(delta)
     })
     const x = d => new Date(d['date']);
@@ -47,7 +25,6 @@ function TrendCurveVaccination(props) {
     const xScale = scaleTime({
         range: [5, width - 5],
         domain: extent(ts, x)
-
     })
     const yScale = scaleLinear({
         range: [height - 2, 2],
@@ -78,7 +55,7 @@ function TrendCurveVaccination(props) {
 }
 
 function NationalTable(props) {
-    const [delta, setDelta] = useState(undefined)
+    const [delta, setDelta] = useState<number>(undefined)
     return (
         <div className='table-responsive'>
             <table className="table table-theme-light mt-4 text-white">
@@ -94,10 +71,10 @@ function NationalTable(props) {
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">จำนวนวัคซีนที่ฉีด</td>
                         <td>{data[data.length - 1]['total_doses'].toLocaleString()}</td>
-                        <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>                        
+                        <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
                         <td>
                             <div className='d-flex justify-content-end'>
-                                <div style={{ color: '#60897e' }}>{delta}</div>
+                                <div style={{ color: '#60897e' }}>{delta > 0 ? "+" : "-"}{delta} %</div>
                                 <div className='ml-1'>
                                     <TrendCurveVaccination setDelta={setDelta} />
                                 </div>
@@ -107,7 +84,7 @@ function NationalTable(props) {
                     <tr className='text-sec'>
                         <td className='text-left'>จำนวนวัคซีนคงเหลือ</td>
                         <td></td>
-                        <td>{(data[data.length-1]['total_supply'] - data[data.length - 1]['total_doses']).toLocaleString()}</td>
+                        <td>{(data[data.length - 1]['total_supply'] - data[data.length - 1]['total_doses']).toLocaleString()}</td>
                         <td></td>
                     </tr>
 
