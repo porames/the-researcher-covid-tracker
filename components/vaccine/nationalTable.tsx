@@ -9,21 +9,9 @@ import { MarkerArrow } from '@visx/marker'
 import moment from 'moment'
 import 'moment/locale/th'
 
-interface NationalVaccinationDataProps {
-    date?: string;
-    total_doses?: number;
-    first_dose?: number;
-    second_dose?: number;
-    sinovac_supply?: number;
-    astrazeneca_supply?: number;
-    total_supply?: number;
-    daily_vaccinations?: number;
-    missing_data?: undefined;
-}[]
 
 function TrendCurveVaccination(props) {
-    //var ts = data.slice(data.length - 14, data.length)
-    var ts : NationalVaccinationDataProps = data
+    var ts = data.slice(data.length - 14, data.length)
     const width = 50
     const height = 20
     useEffect(() => {
@@ -37,7 +25,6 @@ function TrendCurveVaccination(props) {
     const xScale = scaleTime({
         range: [5, width - 5],
         domain: extent(ts, x)
-
     })
     const yScale = scaleLinear({
         range: [height - 2, 2],

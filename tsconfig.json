@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/vaccine/vaccinationRate.js"  ],
   "exclude": [
     "node_modules"
   ]
