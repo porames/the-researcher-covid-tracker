@@ -3,7 +3,7 @@ import { NationalVaccinationDataProps } from './types'
 
 interface NationalBarsProps {
     todayData: NationalVaccinationDataProps,
-    hideSupply: boolean
+    hideSupply?: boolean
 }
 
 const NationalBars = ({
