@@ -1,5 +1,5 @@
 {
-  "UpdateDate": "16/06/2021 06:58",
+  "UpdateDate": "21/06/2021 12:14",
   "DevBy": "https://www.kidkarnmai.com/",
   "Data": [
     {
@@ -3490,7 +3490,7 @@
       "Deaths": 1012
     },
     {
-      "Date": "06/01/2021",
+      "Date": "05/31/2021",
       "NewConfirmed": 5485,
       "NewRecovered": 3101,
       "NewHospitalized": 2365,
@@ -3501,7 +3501,7 @@
       "Deaths": 1031
     },
     {
-      "Date": "06/02/2021",
+      "Date": "06/01/2021",
       "NewConfirmed": 2230,
       "NewRecovered": 3390,
       "NewHospitalized": -1198,
@@ -3512,7 +3512,7 @@
       "Deaths": 1069
     },
     {
-      "Date": "06/03/2021",
+      "Date": "06/02/2021",
       "NewConfirmed": 3440,
       "NewRecovered": 2843,
       "NewHospitalized": 559,
@@ -3523,7 +3523,7 @@
       "Deaths": 1107
     },
     {
-      "Date": "06/04/2021",
+      "Date": "06/03/2021",
       "NewConfirmed": 3886,
       "NewRecovered": 3626,
       "NewHospitalized": 221,
@@ -3534,7 +3534,7 @@
       "Deaths": 1146
     },
     {
-      "Date": "06/05/2021",
+      "Date": "06/04/2021",
       "NewConfirmed": 2631,
       "NewRecovered": 2493,
       "NewHospitalized": 107,
@@ -3545,7 +3545,7 @@
       "Deaths": 1177
     },
     {
-      "Date": "06/06/2021",
+      "Date": "06/05/2021",
       "NewConfirmed": 2817,
       "NewRecovered": 3396,
       "NewHospitalized": -615,
@@ -3556,7 +3556,7 @@
       "Deaths": 1213
     },
     {
-      "Date": "06/07/2021",
+      "Date": "06/06/2021",
       "NewConfirmed": 2671,
       "NewRecovered": 2424,
       "NewHospitalized": 224,
@@ -3567,7 +3567,7 @@
       "Deaths": 1236
     },
     {
-      "Date": "06/08/2021",
+      "Date": "06/07/2021",
       "NewConfirmed": 2419,
       "NewRecovered": 2999,
       "NewHospitalized": -613,
@@ -3578,7 +3578,7 @@
       "Deaths": 1269
     },
     {
-      "Date": "06/09/2021",
+      "Date": "06/08/2021",
       "NewConfirmed": 2662,
       "NewRecovered": 2483,
       "NewHospitalized": 151,
@@ -3589,7 +3589,7 @@
       "Deaths": 1297
     },
     {
-      "Date": "06/10/2021",
+      "Date": "06/09/2021",
       "NewConfirmed": 2680,
       "NewRecovered": 4253,
       "NewHospitalized": -1608,
@@ -3600,7 +3600,7 @@
       "Deaths": 1332
     },
     {
-      "Date": "06/11/2021",
+      "Date": "06/10/2021",
       "NewConfirmed": 2310,
       "NewRecovered": 3035,
       "NewHospitalized": -768,
@@ -3611,7 +3611,7 @@
       "Deaths": 1375
     },
     {
-      "Date": "06/12/2021",
+      "Date": "06/11/2021",
       "NewConfirmed": 2290,
       "NewRecovered": 5711,
       "NewHospitalized": -3448,
@@ -3622,7 +3622,7 @@
       "Deaths": 1402
     },
     {
-      "Date": "06/13/2021",
+      "Date": "06/12/2021",
       "NewConfirmed": 3277,
       "NewRecovered": 5273,
       "NewHospitalized": -2025,
@@ -3633,7 +3633,7 @@
       "Deaths": 1431
     },
     {
-      "Date": "06/14/2021",
+      "Date": "06/13/2021",
       "NewConfirmed": 2804,
       "NewRecovered": 4143,
       "NewHospitalized": -1357,
@@ -3644,11 +3644,22 @@
       "Deaths": 1449
     },
     {
+      "Date": "06/14/2021",
+      "NewConfirmed": 3355,
+      "NewRecovered": 3530,
+      "NewHospitalized": -192,
+      "NewDeaths": 17,
+      "Confirmed": 199264,
+      "Recovered": 157944,
+      "Hospitalized": 39854,
+      "Deaths": 1466
+    },
+    {
       "Date": "06/15/2021",
-      "NewConfirmed": 6355,
-      "NewRecovered": 8304,
-      "NewHospitalized": -1985,
-      "NewDeaths": 36,
+      "NewConfirmed": 3000,
+      "NewRecovered": 4774,
+      "NewHospitalized": -1793,
+      "NewDeaths": 19,
       "Confirmed": 202264,
       "Recovered": 162718,
       "Hospitalized": 38061,
@@ -3664,6 +3675,61 @@
       "Recovered": 167665,
       "Hospitalized": 35405,
       "Deaths": 1525
+    },
+    {
+      "Date": "06/17/2021",
+      "NewConfirmed": 3129,
+      "NewRecovered": 4651,
+      "NewHospitalized": -1552,
+      "NewDeaths": 30,
+      "Confirmed": 207724,
+      "Recovered": 172316,
+      "Hospitalized": 33853,
+      "Deaths": 1555
+    },
+    {
+      "Date": "06/18/2021",
+      "NewConfirmed": 3058,
+      "NewRecovered": 4094,
+      "NewHospitalized": -1058,
+      "NewDeaths": 22,
+      "Confirmed": 210782,
+      "Recovered": 176410,
+      "Hospitalized": 32795,
+      "Deaths": 1577
+    },
+    {
+      "Date": "06/19/2021",
+      "NewConfirmed": 3667,
+      "NewRecovered": 4948,
+      "NewHospitalized": -1313,
+      "NewDeaths": 32,
+      "Confirmed": 214449,
+      "Recovered": 181358,
+      "Hospitalized": 31482,
+      "Deaths": 1609
+    },
+    {
+      "Date": "06/20/2021",
+      "NewConfirmed": 3682,
+      "NewRecovered": 2401,
+      "NewHospitalized": 1261,
+      "NewDeaths": 20,
+      "Confirmed": 218131,
+      "Recovered": 183759,
+      "Hospitalized": 32743,
+      "Deaths": 1629
+    },
+    {
+      "Date": "06/21/2021",
+      "NewConfirmed": 3175,
+      "NewRecovered": 2030,
+      "NewHospitalized": 1116,
+      "NewDeaths": 29,
+      "Confirmed": 221306,
+      "Recovered": 185789,
+      "Hospitalized": 33859,
+      "Deaths": 1658
     }
   ]
 }

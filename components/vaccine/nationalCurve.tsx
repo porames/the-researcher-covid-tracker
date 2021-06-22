@@ -90,7 +90,6 @@ export function NationalCurve(props) {
                         stroke='#427165'
                         strokeWidth={2}
                     />
-
                     {tooltipData &&
                         <Bar
                             x={xScale(x(tooltipData))}

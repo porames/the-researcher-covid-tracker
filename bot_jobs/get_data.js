@@ -15,7 +15,7 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
         console.log('provincial dataset downloaded')
     }
     else {
-        console.log(err)
+        console.log("Error ",err)
     }
 })
 
@@ -29,6 +29,6 @@ request('https://covid19.th-stat.com/json/covid19v2/getTimeline.json', (err, res
         console.log('national stats downloaded')
     }
     else {
-        console.log(err)
+        console.log("Error", err)
     }
 })
