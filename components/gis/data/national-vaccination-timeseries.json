@@ -1074,5 +1074,16 @@
         "astrazeneca_supply": 2099640,
         "total_supply": 7509094,
         "daily_vaccinations": 227639
+    },
+    {
+        "date": "2021-06-22",
+        "total_doses": 8148355,
+        "first_dose": 5844521,
+        "second_dose": 2303814,
+        "sinovac_supply": 5437797,
+        "astrazeneca_supply": 2128240,
+        "unknown_supply": 1000000,
+        "total_supply": 8566037,
+        "daily_vaccinations": 241639
     }
 ]

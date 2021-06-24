@@ -24,7 +24,7 @@ class NationalCurveSection extends React.Component {
         <div className='text-center'>
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
           {this.state.updatedDate &&
-            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').format('LL')}</small>
+            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').add(1,"day").format('LL')}</small>
           }
         </div>
         <NationalCurve />
