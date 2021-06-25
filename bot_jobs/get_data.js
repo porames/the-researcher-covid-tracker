@@ -1,4 +1,5 @@
 const request = require('request')
+const axios = require('axios')
 const csv = require('csv-parser')
 const fs = require('fs')
 
@@ -19,16 +20,14 @@ request('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resourc
     }
 })
 
-request('https://covid19.th-stat.com/json/covid19v2/getTimeline.json', (err, response, body) => {
-    if (!err && response.statusCode == 200) {
-        body = JSON.parse(body)
-        body['Data'] = body['Data'].filter(s=>{
-            return new Date(s['Date']) >= new Date('7/1/2020')
-        })
-        fs.writeFileSync('../components/gis/data/national-timeseries.json', JSON.stringify(body,null,2));
-        console.log('national stats downloaded')
-    }
-    else {
-        console.log("Error", err)
-    }
+axios.get('https://covid19.th-stat.com/json/covid19v2/getTimeline.json')
+.then((response)=>{
+    response=response.data
+    response['Data'] = response['Data'].filter(s=>{
+        return new Date(s['Date']) >= new Date('7/1/2020')
+    })
+    fs.writeFileSync('../components/gis/data/national-timeseries.json', JSON.stringify(response,null,2));
+    console.log('national stats downloaded')
+}).catch((err)=>{
+    console.log(err)
 })
