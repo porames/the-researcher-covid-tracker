@@ -6,7 +6,7 @@ const images = build['images']
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     const sortedImages = _.sortBy(images, 'total-14days').reverse()
-    const scale = chroma.scale(['#bdd5cd', '#427165'])
+    const scale = chroma.scale(['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46'])
     const maxCoverage = _.maxBy(sortedImages, 'vax-coverage')['vax-coverage']
     function parseChange(change) {
         if (change > 0) {
