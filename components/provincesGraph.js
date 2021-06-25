@@ -52,7 +52,7 @@ export default function Province(props) {
                                                     }}
                                                     className='badge badge-vaccination-scale'>
                                                     {img['vax-coverage']}%
-                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     )

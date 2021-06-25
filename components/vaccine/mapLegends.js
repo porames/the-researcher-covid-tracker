@@ -25,7 +25,7 @@ export const SupplyLegend = (props) => {
 }
 
 export const VaxCoverageLegend = (props) => {
-  const palette = ['#bdd5cd', '#9dbbb2', '#7ea297', '#60897e', '#427165']
+  const palette =['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46']
   return (
     <div className='d-flex flex-column w-100' >
       <div className='text-left mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>

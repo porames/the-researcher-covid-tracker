@@ -1,6 +1,5 @@
 import mapboxgl from "maplibre-gl";
 import provincesData from "../gis/data/provincial-vaccination-data.json";
-import Graph from "../provinceCurve";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";
@@ -8,85 +7,82 @@ import _ from "lodash";
 import onLoadHandler from "./coverage-load";
 import moment from "moment";
 
-const InfoBox = (props) => (
-  <div className="infoBox rounded shadow-sm" style={{ width: 300 }}>
-    {props.hoveredData && (
-      <div>
+const InfoBox = (props) => {
+  return (
+    <div className="infoBox rounded shadow-sm" style={{ width: 300 }}>
+      {props.hoveredData && (
         <div>
-          <span>
-            <b>จังหวัด{props.hoveredData["name"]}</b>
-          </span>
-          <br />
-          <div className="row" style={{ fontSize: "90%" }}>
-            <div className="col-7 pr-0">
-              <div>ได้รับวัคซีนครบแล้ว</div>
-            </div>
-            <div className="col-5 d-flex justify-content-center align-items-center">
-              <div>
-                <b>
-                  {(
-                    (props.hoveredData["total-2nd-dose"] * 100) /
-                    props.hoveredData["population"]
-                  ).toFixed(1)}
-                  %
-                </b>
+          <div>
+            <b>จังหวัด{props.hoveredData.name}</b><br />
+            <div className="row" style={{ fontSize: "90%" }}>
+              <div className="col-7 pr-0">
+                <div>ได้รับวัคซีนครบแล้ว</div>
               </div>
-              <div className="ml-2 doses-progress-map">
-                <div
-                  className="doses-bar"
-                  style={{
-                    width: `${
+              <div className="col-5 d-flex justify-content-center align-items-center">
+                <div>
+                  <b>
+                    {(
                       (props.hoveredData["total-2nd-dose"] * 100) /
                       props.hoveredData["population"]
-                    }%`,
-                  }}
-                ></div>
+                    ).toFixed(1)}
+                    %
+                  </b>
+                </div>
+                <div className="ml-2 doses-progress-map">
+                  <div
+                    className="doses-bar"
+                    style={{
+                      width: `${(props.hoveredData["total-2nd-dose"] * 100) /
+                        props.hoveredData["population"]
+                        }%`,
+                    }}
+                  ></div>
+                </div>
               </div>
-            </div>
-            <div className="col-7 pr-0">
-              <div>ได้รับวัคซีนอย่างน้อย 1 โดส</div>
-            </div>
-            <div className="col-5 d-flex justify-content-center align-items-center">
-              <div>
-                <b>
-                  {(
-                    (props.hoveredData["total-1st-dose"] * 100) /
-                    props.hoveredData["population"]
-                  ).toFixed(1)}
-                  %
-                </b>
+              <div className="col-7 pr-0">
+                <div>ได้รับวัคซีนอย่างน้อย 1 โดส</div>
               </div>
-              <div className="ml-2 doses-progress-map">
-                <div
-                  className="doses-bar"
-                  style={{
-                    width: `${
+              <div className="col-5 d-flex justify-content-center align-items-center">
+                <div>
+                  <b>
+                    {(
                       (props.hoveredData["total-1st-dose"] * 100) /
                       props.hoveredData["population"]
-                    }%`,
-                  }}
-                ></div>
+                    ).toFixed(1)}
+                    %
+                  </b>
+                </div>
+                <div className="ml-2 doses-progress-map">
+                  <div
+                    className="doses-bar"
+                    style={{
+                      width: `${(props.hoveredData["total-1st-dose"] * 100) /
+                        props.hoveredData["population"]
+                        }%`,
+                    }}
+                  ></div>
+                </div>
               </div>
-            </div>
-            <div className="col-12 text-muted mt-2">
-              <div className="font-weight-bold">
-                {props.hoveredData["population"] >
-                  props.hoveredData["registered_population"] &&
-                  `มีประชากรแฝงประมาณ ${(
-                    props.hoveredData["population"] -
-                    props.hoveredData["registered_population"]
-                  ).toLocaleString()} คน`}
-              </div>
-              <div>
-                ข้อมูลเมื่อ {moment(provincesData["update_at"]).fromNow()}
+              <div className="col-12 text-muted mt-2">
+                <div className="font-weight-bold">
+                  {props.hoveredData["population"] >
+                    props.hoveredData["registered_population"] &&
+                    `มีประชากรแฝงประมาณ ${(
+                      props.hoveredData["population"] -
+                      props.hoveredData["registered_population"]
+                    ).toLocaleString()} คน`}
+                </div>
+                <div>
+                  ข้อมูลเมื่อ {moment(provincesData["update_at"]).fromNow()}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )}
-  </div>
-);
+      )}
+    </div>
+  )
+};
 
 const CoverageMap = () => {
   const [hoveredData, setHoveredData] = useState<any>();
