@@ -12,7 +12,7 @@ import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize } from '@visx/responsive'
 import data from '../gis/data/manufacturer-vaccination-data.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-
+import { ManufacturerDataProps } from './types'
 
 function movingAvg(ts, id) {
     var moving_aves = []
@@ -32,11 +32,54 @@ function movingAvg(ts, id) {
     return moving_aves
 }
 
+function SinopharmCurve(props) {
+    var timeSeries = _.filter(data, { manufacturer: 'Sinopharm' })
+    const width = props.width
+    const height = props.height
+    const avgs = movingAvg(timeSeries, 'doses_administered')
+    avgs.map((avg, i) => {
+        timeSeries[i]['vaccinatedAvg'] = avg
+    })
+
+    const x = d => new Date(d['date'])
+    const y = d => d['vaccinatedAvg']
+    const xScale = scaleBand({
+        range: [0, width],
+        domain: timeSeries.map(x),
+        padding: 0.07
+    })
+    const yScale = scaleLinear({
+        range: [height, 50],
+        domain: [0, max(data, y)],
+    })
+    return (
+        <Group>
+            <Group>
+                <LinePath
+                    curve={curveBasis}
+                    data={timeSeries}
+                    x={d => xScale(x(d))}
+                    y={d => yScale(d['vaccinatedAvg']) - 30}
+                    stroke='green'
+                    strokeWidth={2}
+                />
+            </Group>
+            <LinePath
+                curve={curveBasis}
+                data={timeSeries}
+                x={d => xScale(x(d))}
+                y={d => yScale(d['vaccinatedAvg']) - 30}
+                stroke='green'
+                strokeWidth={2}
+            />
+        </Group>
+    )
+}
+
 function AstraZenecaCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'AstraZeneca' })
     const width = props.width
     const height = props.height
-
     const avgs = movingAvg(timeSeries, 'doses_administered')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
@@ -105,11 +148,6 @@ function SinovacCurve(props) {
         domain: timeSeries.map(x),
         padding: 0.07
     })
-    const dateScale = scaleTime({
-        range: [0, width],
-        domain: extent(timeSeries, x),
-        padding: 0.07
-    })
     const yScale = scaleLinear({
         range: [height, 50],
         domain: [0, max(data, y)],
@@ -143,16 +181,9 @@ function SinovacCurve(props) {
 }
 
 function ManufacturerCurve(props) {
-    var timeSeries = data
+    var timeSeries: ManufacturerDataProps[] = data
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered')
-    avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
-    })
-    useEffect(() => {
-
-    }, [])
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const yScale = scaleLinear({
@@ -162,22 +193,21 @@ function ManufacturerCurve(props) {
     const dateScale = scaleTime({
         range: [0, width],
         domain: extent(timeSeries, x),
-        padding: 0.07
     })
-    
     return (
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
                     <AstraZenecaCurve width={width} height={height} />
                     <SinovacCurve width={width} height={height} />
+                    {/*<SinopharmCurve width={width} height={height} />*/}
                     <Group>
                         <AxisLeft
                             scale={yScale}
                             tickLabelProps={() => ({
                                 fill: '#bfbfbf',
                                 fontSize: 11,
-                                textAnchor: 'left',
+                                textAnchor: 'start',
                                 opacity: 0.7
                             })}
                             tickFormat={d => (d > 0 ? `${d.toLocaleString()}` : '')}
@@ -190,7 +220,7 @@ function ManufacturerCurve(props) {
                             top={height - 30}
                             scale={dateScale}
                             numTicks={4}
-                            tickFormat={d => moment(d).format('MMM')}
+                            tickFormat={d => moment(String(d)).format('MMM')}
                             tickStroke='#bfbfbf'
                             stroke='#bfbfbf'
                             tickLabelProps={() => ({

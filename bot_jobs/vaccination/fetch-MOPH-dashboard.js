@@ -1718,10 +1718,7 @@ async function getManufacturer() {
                                         "name": "qt_kraj088kkc"
                                     },
                                     "filterConditionType": "IN",
-                                    "stringValues": [
-                                        "Sinovac Life Sciences",
-                                        "AstraZeneca"
-                                    ],
+                                    "stringValues": [],
                                     "numberValues": [],
                                     "queryTimeTransformation": {
                                         "dataTransformation": {
@@ -1780,10 +1777,7 @@ async function getManufacturer() {
                                         }
                                     },
                                     "filterConditionType": "IN",
-                                    "stringValues": [
-                                        "Sinovac Life Sciences",
-                                        "AstraZeneca"
-                                    ]
+                                    "stringValues": []
                                 }
                             },
                             "dataSubsetNs": {
@@ -1821,10 +1815,10 @@ async function getManufacturer() {
     const manufacturer = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[1].stringColumn.values
     const doses_administered = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[2].longColumn.values
     const db = []
-    dates.map((date, index)=>{
-        if(new Date(date) >= new Date('2021-03-01')){
+    dates.map((date, index) => {
+        if (new Date(date) >= new Date('2021-03-01')) {
             db.push({
-                date:dates[index],
+                date: dates[index],
                 manufacturer: manufacturer[index],
                 doses_administered: Number(doses_administered[index])
             })
@@ -1832,13 +1826,13 @@ async function getManufacturer() {
     })
     return {
         data: db,
-        latest_date: dates[dates.length-1]
+        latest_date: dates[dates.length - 1]
     }
 }
 
 (async () => {
-    try {        
-        
+    try {
+
         console.log('Downloading manufacturer data.')
         const manufacturer = await getManufacturer()
         await fs.writeFile('../../components/gis/data/manufacturer-vaccination-data.json', JSON.stringify(manufacturer.data, null, 2), 'utf-8')
@@ -1892,9 +1886,9 @@ async function getManufacturer() {
 
         }
         await fs.writeFile('../../components/gis/data/hospital-vaccination-data.json', JSON.stringify(hospital_doses), 'utf-8')
-        await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db,null,2), 'utf-8')
+        await fs.writeFile('../../components/gis/data/provincial-vaccination-data.json', JSON.stringify(db, null, 2), 'utf-8')
         console.log('provinces vaccine supply data download completed')
-        
+
 
     } catch (e) {
         console.log(e)

@@ -24,7 +24,7 @@ class NationalCurveSection extends React.Component {
         <div className='text-center'>
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
           {this.state.updatedDate &&
-            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').add(1,"day").format('LL')}</small>
+            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate, 'DD/MM/YYYY').add(1, "day").format('LL')}</small>
           }
         </div>
         <NationalCurve />
@@ -83,28 +83,28 @@ export default function Home() {
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />
           <div className='row mt-5'>
-              <div className='col-12'>
-                <hr/>
-              </div>
-              <div className='col-md-6'>
-                <Link href='/vaccination'>
-                  <a>
-                  <div className='aspect-ratio-16-9' style={{ backgroundImage: 'url(/vaccination-map.png)'}}></div>
-                  </a>
-                </Link>
-              </div>
-              <div className='col-md-6 d-flex align-items-center'>
-                <Link href='/vaccination'>
-                  <a>
-                    <h5 className='mb-0 d-flex align-items-center'>ติดตามความคืบหน้าการฉีดวัคซีน <img src='chevron_right_white_24dp.svg' /></h5>
-                  </a>
-                </Link>
-              </div>
-              <div className='col-12'>
-                <hr/>
-              </div>
+            <div className='col-12'>
+              <hr />
             </div>
-          <Footer/>
+            <div className='col-md-6'>
+              <Link href='/vaccination'>
+                <a>
+                  <div className='aspect-ratio-16-9' style={{ backgroundImage: 'url(/vax-coverage-map.png)' }}></div>
+                </a>
+              </Link>
+            </div>
+            <div className='col-md-6 d-flex align-items-center'>
+              <Link href='/vaccination'>
+                <a>
+                  <h5 className='mb-0 d-flex align-items-center'>ติดตามความคืบหน้าการฉีดวัคซีน <img src='chevron_right_white_24dp.svg' /></h5>
+                </a>
+              </Link>
+            </div>
+            <div className='col-12'>
+              <hr />
+            </div>
+          </div>
+          <Footer />
         </div>
 
       </div>

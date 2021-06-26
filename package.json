@@ -50,6 +50,7 @@
     "rebuild": "^0.1.2"
   },
   "devDependencies": {
+    "@types/d3": "^6.7.3",
     "@types/node": "^15.12.2",
     "sass": "^1.34.1",
     "typescript": "^4.3.4"

@@ -23,6 +23,6 @@ fs.createReadStream('th-census-data.csv')
             }
         }
         const csv = await parse(census)
-        fs.writeFileSync('th-census-data.json', JSON.stringify(census), 'utf-8')
+        fs.writeFileSync("th-census-data.json", JSON.stringify(census), 'utf-8')
         //fs.writeFileSync('th-census-data.csv',csv,'utf-8')
     })

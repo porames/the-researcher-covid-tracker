@@ -1,16 +1,15 @@
-
 name: bot-taks-scheduler
 on:
   schedule:
-  - cron: '0 6 * * *' #06 Hour UTC = 13 Hour GMT+7
-  - cron: '0 12 * * *' #06 Hour UTC = 19 Hour GMT+7
+    - cron: "0 6 * * *" #06 Hour UTC = 13 Hour GMT+7
+    - cron: "0 12 * * *" #06 Hour UTC = 19 Hour GMT+7
   workflow_dispatch:
 jobs:
   cron:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     steps:
       - name: Check Repo
-        uses: actions/checkout@v2.3.4        
+        uses: actions/checkout@v2.3.4
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
       - name: Set TimeZone for JS environment
@@ -18,7 +17,7 @@ jobs:
         with:
           timezoneLinux: "Asia/Bangkok"
       - name: Install Node.js dependencies
-        run: npm install      
+        run: npm install
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Get Latest Data From The Government Database
@@ -38,7 +37,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python build.py
-      
+
       #- name: Build Vaccination graphs in svg using python
       #  working-directory: bot_jobs/vaccination
       #  run: python build.py

@@ -40,8 +40,7 @@ function VaccinationRace() {
     const [mousePosition, setMousePosition] = useState({ x: null, y: null })
     const svgContainer = useRef(null)
     const d3Container = useRef(null)
-
-    var data = vaccination["data"]
+    var data = _.cloneDeep(vaccination["data"])
     const doses_sum = d3.sum(data, (d) => d["total_doses"])
     const population = d3.sum(data, (d) => d["registered_population"])
     const national_avg = doses_sum / (population * 2)
@@ -136,7 +135,8 @@ function VaccinationRace() {
                 d3.select(this).attr("stroke", "#999")
                 setToolTipData(null)
             })
-        let forceSimulation = d3.forceSimulation(data)
+
+        d3.forceSimulation(data)
             .force("x", d3.forceX((d) => {
                 return xScale(d["coverage"]);
             }).strength(1))
@@ -152,6 +152,7 @@ function VaccinationRace() {
                 .attr("cx", (d) => d.x)
                 .attr("cy", (d) => d.y);
         }
+
     }
 
     useEffect(() => {

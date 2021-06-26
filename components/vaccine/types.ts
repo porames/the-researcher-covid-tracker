@@ -11,6 +11,12 @@ export declare interface NationalVaccinationDataProps {
     deltaAvg?: number;
 }
 
+export declare interface ManufacturerDataProps {
+    "date": string,
+    "manufacturer": string,
+    "doses_administered": number
+}
+
 export declare interface ProvincialVaccinationDataProps {
     update_at: string;
     data: {
