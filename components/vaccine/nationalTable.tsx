@@ -70,7 +70,7 @@ function NationalTable(props) {
                         <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
                         <td >
                             <div className='d-flex justify-content-end'>
-                                <div style={{ color: '#60897e' }}>{delta > 0 ? "+" : "-"}{delta} %</div>
+                                <div style={{ color: '#60897e' }}>{delta > 0 ? "+" : ""}{delta} %</div>
                                 <div className='ml-1'>
                                     <TrendCurveVaccination setDelta={setDelta} />
                                 </div>

@@ -65,7 +65,7 @@ function Curve(props) {
             doses_administered: total ? total : 0
         })
     })
-    const x = d => d['date']
+    const x = d => new Date(d['date'])
     const y = d => d["doses_administered"]
     const xScale = scaleBand({
         range: [0, width],
@@ -97,7 +97,7 @@ function Curve(props) {
         tooltipOpen: true,
         tooltipData: null,
     });
-    const bisectDate = bisector(d => new Date(d['date'])).center;
+    const bisectDate = bisector((d: any) => new Date(d.date)).center;
 
     return (
         <div className='no-select' style={{ position: 'relative' }}>
