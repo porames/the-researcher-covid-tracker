@@ -61,7 +61,7 @@ function Curve(props) {
             total = supply["doses_administered"]
         }
         vaxRate.push({
-            date: date,
+            date: String(date),
             doses_administered: total ? total : 0
         })
     })
