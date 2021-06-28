@@ -181,7 +181,7 @@ function SinovacCurve(props) {
 }
 
 function ManufacturerCurve(props) {
-    var timeSeries: ManufacturerDataProps[] = data
+    var timeSeries: ManufacturerDataProps[] = _.cloneDeep(data)
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
