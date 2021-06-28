@@ -1105,7 +1105,7 @@
         "sinovac_supply": 5536364,
         "astrazeneca_supply": 2266030,
         "unknown_supply": 2800000,
-        "total_supply": 10602394,
+        "total_supply": 10600000,
         "daily_vaccinations": 257103
     },
     {
@@ -1116,7 +1116,29 @@
         "sinovac_supply": 5576641,
         "astrazeneca_supply": 2546170,
         "unknown_supply": 2800000,
-        "total_supply": 10922811,
+        "total_supply": 10600000,
         "daily_vaccinations": 324055
+    },
+    {
+        "date": "2021-06-26",
+        "total_doses": 9055141,
+        "first_dose": 6475826,
+        "second_dose": 2579315,
+        "sinovac_supply": 5604641,
+        "astrazeneca_supply": 2281370,
+        "unknown_supply": 2700000,
+        "total_supply": 10600000,
+        "daily_vaccinations": 74075
+    },
+    {
+        "date": "2021-06-27",
+        "total_doses": 9147513,
+        "first_dose": 6537851,
+        "second_dose": 2609662,
+        "sinovac_supply": 5606641,
+        "astrazeneca_supply": 2298370,
+        "unknown_supply": 2700000,
+        "total_supply": 10600000,
+        "daily_vaccinations": 93577
     }
 ]
