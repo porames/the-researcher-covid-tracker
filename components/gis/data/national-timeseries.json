@@ -1,5 +1,5 @@
 {
-  "UpdateDate": "27/06/2021 14:45",
+  "UpdateDate": "29/06/2021 12:13",
   "DevBy": "https://www.kidkarnmai.com/",
   "Data": [
     {
@@ -3796,6 +3796,28 @@
       "Recovered": 198928,
       "Hospitalized": 43607,
       "Deaths": 1912
+    },
+    {
+      "Date": "06/28/2021",
+      "NewConfirmed": 5406,
+      "NewRecovered": 3343,
+      "NewHospitalized": 2041,
+      "NewDeaths": 22,
+      "Confirmed": 249853,
+      "Recovered": 202271,
+      "Hospitalized": 45648,
+      "Deaths": 1934
+    },
+    {
+      "Date": "06/29/2021",
+      "NewConfirmed": 4662,
+      "NewRecovered": 2793,
+      "NewHospitalized": 1833,
+      "NewDeaths": 36,
+      "Confirmed": 254515,
+      "Recovered": 205064,
+      "Hospitalized": 47481,
+      "Deaths": 1970
     }
   ]
 }
