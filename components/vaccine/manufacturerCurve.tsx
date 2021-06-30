@@ -37,10 +37,11 @@ function SinopharmCurve(props) {
     const width = props.width
     const height = props.height
     const avgs = movingAvg(timeSeries, 'doses_administered')
+
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
-
+    console.log(timeSeries)
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({

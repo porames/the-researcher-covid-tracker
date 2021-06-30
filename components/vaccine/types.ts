@@ -6,7 +6,7 @@ export declare interface NationalVaccinationDataProps {
     sinovac_supply?: number;
     astrazeneca_supply?: number;
     total_supply?: number;
-    daily_vaccinations: number;
+    daily_vaccinations?: number;
     missing_data?: boolean;
     deltaAvg?: number;
 }
