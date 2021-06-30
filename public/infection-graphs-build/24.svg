@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-06-30T10:36:44.338672</dc:date>
+    <dc:date>2021-06-30T13:26:16.269556</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -65,14 +64,14 @@ L 193.405594 -47.52
 L 154.384615 -47.52 
 L 115.363636 -43.56 
 z
-" id="m3ea0a95a30" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mb43d91e129" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p0f3447a86e)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m3ea0a95a30" y="360"/>
+    <g clip-path="url(#p31af3a481a)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mb43d91e129" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p0f3447a86e)" d="M 115.363636 316.44 
+    <path clip-path="url(#p31af3a481a)" d="M 115.363636 316.44 
 L 154.384615 312.48 
 L 193.405594 312.48 
 L 232.426573 308.52 
@@ -91,7 +90,7 @@ L 622.636364 288.72
   </g>
  </g>
  <defs>
-  <clipPath id="p0f3447a86e">
+  <clipPath id="p31af3a481a">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
