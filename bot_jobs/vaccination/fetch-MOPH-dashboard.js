@@ -345,7 +345,7 @@ async function getHospital(update_at) {
 }
 
 async function getByGroup(provinceName) {
-    const res = await axios.post('https://datastudio.google.com/batchedDataV2?appVersion=20210506_00020034',
+    const res = await axios.post('https://datastudio.google.com/batchedDataV2',
         {
             "dataRequest": [
                 {
@@ -353,7 +353,7 @@ async function getByGroup(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-gne2cc9kkc",
                             "displayType": "simple-barchart"
                         }
@@ -401,40 +401,6 @@ async function getByGroup(provinceName) {
                         "paginateInfo": {
                             "startRow": 1,
                             "rowsCount": 10
-                        },
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_axzew0fnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_bxzew0fnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
                         },
                         "filters": [
                             {
@@ -503,7 +469,8 @@ async function getByGroup(provinceName) {
                                         "filterConditionType": "IN",
                                         "stringValues": [
                                             "Sinovac Life Sciences",
-                                            "AstraZeneca"
+                                            "AstraZeneca",
+                                            "Sinopharm"
                                         ],
                                         "numberValues": [],
                                         "queryTimeTransformation": {
@@ -587,7 +554,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-jnnv3b9kkc",
                             "displayType": "dimension-filter"
                         }
@@ -636,70 +603,7 @@ async function getProvince(provinceName) {
                             "startRow": 1,
                             "rowsCount": 5001
                         },
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_abfkipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_bbfkipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
-                            {
-                                "filterDefinition": {
-                                    "filterExpression": {
-                                        "include": true,
-                                        "conceptType": 0,
-                                        "concept": {
-                                            "ns": "t0",
-                                            "name": "qt_kraj088kkc"
-                                        },
-                                        "filterConditionType": "IN",
-                                        "stringValues": [
-                                            "Sinovac Life Sciences",
-                                            "AstraZeneca"
-                                        ],
-                                        "numberValues": [],
-                                        "queryTimeTransformation": {
-                                            "dataTransformation": {
-                                                "sourceFieldName": "_manuf_name_"
-                                            }
-                                        }
-                                    }
-                                },
-                                "dataSubsetNs": {
-                                    "datasetNs": "d0",
-                                    "tableNs": "t0",
-                                    "contextNs": "c0"
-                                },
-                                "version": 3
-                            },
                             {
                                 "filterDefinition": {
                                     "filterExpression": {
@@ -756,7 +660,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-c2rf6b9kkc",
                             "displayType": "dimension-filter"
                         }
@@ -806,40 +710,6 @@ async function getProvince(provinceName) {
                             "startRow": 1,
                             "rowsCount": 5001
                         },
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_4mhkipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_5mhkipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
                             {
                                 "filterDefinition": {
@@ -853,7 +723,8 @@ async function getProvince(provinceName) {
                                         "filterConditionType": "IN",
                                         "stringValues": [
                                             "Sinovac Life Sciences",
-                                            "AstraZeneca"
+                                            "AstraZeneca",
+                                            "Sinopharm"
                                         ],
                                         "numberValues": [],
                                         "queryTimeTransformation": {
@@ -926,7 +797,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-cusf6b9kkc",
                             "displayType": "dimension-filter"
                         }
@@ -975,40 +846,6 @@ async function getProvince(provinceName) {
                             "startRow": 1,
                             "rowsCount": 5001
                         },
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_86ikipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_96ikipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
                             {
                                 "filterDefinition": {
@@ -1022,7 +859,8 @@ async function getProvince(provinceName) {
                                         "filterConditionType": "IN",
                                         "stringValues": [
                                             "Sinovac Life Sciences",
-                                            "AstraZeneca"
+                                            "AstraZeneca",
+                                            "Sinopharm"
                                         ],
                                         "numberValues": [],
                                         "queryTimeTransformation": {
@@ -1095,7 +933,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-gusf6b9kkc",
                             "displayType": "dimension-filter"
                         }
@@ -1145,40 +983,6 @@ async function getProvince(provinceName) {
                             "startRow": 1,
                             "rowsCount": 5001
                         },
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_izjkipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_jzjkipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
                             {
                                 "filterDefinition": {
@@ -1192,7 +996,8 @@ async function getProvince(provinceName) {
                                         "filterConditionType": "IN",
                                         "stringValues": [
                                             "Sinovac Life Sciences",
-                                            "AstraZeneca"
+                                            "AstraZeneca",
+                                            "Sinopharm"
                                         ],
                                         "numberValues": [],
                                         "queryTimeTransformation": {
@@ -1265,7 +1070,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-houi9b9kkc",
                             "displayType": "kpi-metric"
                         }
@@ -1290,70 +1095,7 @@ async function getProvince(provinceName) {
                         ],
                         "sortData": [],
                         "includeRowsCount": false,
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_0zjkipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_1zjkipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
-                            {
-                                "filterDefinition": {
-                                    "filterExpression": {
-                                        "include": true,
-                                        "conceptType": 0,
-                                        "concept": {
-                                            "ns": "t0",
-                                            "name": "qt_kraj088kkc"
-                                        },
-                                        "filterConditionType": "IN",
-                                        "stringValues": [
-                                            "Sinovac Life Sciences",
-                                            "AstraZeneca"
-                                        ],
-                                        "numberValues": [],
-                                        "queryTimeTransformation": {
-                                            "dataTransformation": {
-                                                "sourceFieldName": "_manuf_name_"
-                                            }
-                                        }
-                                    }
-                                },
-                                "dataSubsetNs": {
-                                    "datasetNs": "d0",
-                                    "tableNs": "t0",
-                                    "contextNs": "c0"
-                                },
-                                "version": 3
-                            },
                             {
                                 "filterDefinition": {
                                     "filterExpression": {
@@ -1410,7 +1152,7 @@ async function getProvince(provinceName) {
                         "reportContext": {
                             "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
                             "pageId": "33037739",
-                            "mode": "VIEW",
+                            "mode": 1,
                             "componentId": "cd-joui9b9kkc",
                             "displayType": "kpi-metric"
                         }
@@ -1435,40 +1177,6 @@ async function getProvince(provinceName) {
                         ],
                         "sortData": [],
                         "includeRowsCount": false,
-                        "blendConfig": {
-                            "blockDatasource": {
-                                "datasourceBlock": {
-                                    "id": "block_askkipfnkc",
-                                    "type": 1,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": []
-                                },
-                                "blocks": [
-                                    {
-                                        "id": "block_bskkipfnkc",
-                                        "type": 5,
-                                        "inputBlockIds": [],
-                                        "outputBlockIds": [],
-                                        "fields": [],
-                                        "queryBlockConfig": {
-                                            "joinQueryConfig": {
-                                                "joinKeys": [],
-                                                "queries": [
-                                                    {
-                                                        "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                        "concepts": []
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
-                                ],
-                                "delegatedAccessEnabled": true,
-                                "isUnlocked": true,
-                                "isCacheable": false
-                            }
-                        },
                         "filters": [
                             {
                                 "filterDefinition": {
@@ -1488,35 +1196,6 @@ async function getProvince(provinceName) {
                                             "dataTransformation": {
                                                 "sourceFieldName": "_dose_no_",
                                                 "aggregation": 0
-                                            }
-                                        }
-                                    }
-                                },
-                                "dataSubsetNs": {
-                                    "datasetNs": "d0",
-                                    "tableNs": "t0",
-                                    "contextNs": "c0"
-                                },
-                                "version": 3
-                            },
-                            {
-                                "filterDefinition": {
-                                    "filterExpression": {
-                                        "include": true,
-                                        "conceptType": 0,
-                                        "concept": {
-                                            "ns": "t0",
-                                            "name": "qt_kraj088kkc"
-                                        },
-                                        "filterConditionType": "IN",
-                                        "stringValues": [
-                                            "Sinovac Life Sciences",
-                                            "AstraZeneca"
-                                        ],
-                                        "numberValues": [],
-                                        "queryTimeTransformation": {
-                                            "dataTransformation": {
-                                                "sourceFieldName": "_manuf_name_"
                                             }
                                         }
                                     }
@@ -1578,17 +1257,295 @@ async function getProvince(provinceName) {
                         "geoVertices": 100000
                     },
                     "useDataColumn": true
+                },
+                {
+                    "requestContext": {
+                        "reportContext": {
+                            "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                            "pageId": "33037739",
+                            "mode": 1,
+                            "componentId": "cd-loui9b9kkc",
+                            "displayType": "kpi-metric"
+                        }
+                    },
+                    "datasetSpec": {
+                        "dataset": [
+                            {
+                                "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                                "revisionNumber": 0,
+                                "parameterOverrides": []
+                            }
+                        ],
+                        "queryFields": [
+                            {
+                                "name": "qt_0emumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "datastudio_record_count_system_field_id_98323387"
+                                }
+                            }
+                        ],
+                        "sortData": [],
+                        "includeRowsCount": false,
+                        "filters": [
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": false,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "ns": "t0",
+                                            "name": "qt_ehkx79fbjc"
+                                        },
+                                        "filterConditionType": "EQ",
+                                        "stringValues": [],
+                                        "numberValues": [
+                                            1
+                                        ],
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_dose_no_",
+                                                "aggregation": 0
+                                            }
+                                        }
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            },
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "name": "qt_tf5sjc9kkc",
+                                            "ns": "t0"
+                                        },
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_hospital_province_"
+                                            },
+                                            "displayTransformation": {
+                                                "displayName": "Province"
+                                            }
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": [
+                                            provinceName
+                                        ]
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            }
+                        ],
+                        "features": [],
+                        "dateRanges": [],
+                        "contextNsCount": 1,
+                        "dateRangeDimensions": [
+                            {
+                                "name": "qt_76mumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_vaccinated_on_"
+                                }
+                            }
+                        ],
+                        "calculatedField": [],
+                        "needGeocoding": false,
+                        "geoFieldMask": [],
+                        "geoVertices": 100000
+                    },
+                    "useDataColumn": true
+                },
+                {
+                    "requestContext": {
+                        "reportContext": {
+                            "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                            "pageId": "33037739",
+                            "mode": 1,
+                            "componentId": "cd-noui9b9kkc",
+                            "displayType": "kpi-metric"
+                        }
+                    },
+                    "datasetSpec": {
+                        "dataset": [
+                            {
+                                "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                                "revisionNumber": 0,
+                                "parameterOverrides": []
+                            }
+                        ],
+                        "queryFields": [
+                            {
+                                "name": "qt_g7mumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_code_",
+                                    "aggregation": 3
+                                }
+                            }
+                        ],
+                        "sortData": [],
+                        "includeRowsCount": false,
+                        "filters": [
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "name": "qt_tf5sjc9kkc",
+                                            "ns": "t0"
+                                        },
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_hospital_province_"
+                                            },
+                                            "displayTransformation": {
+                                                "displayName": "Province"
+                                            }
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": [
+                                            provinceName
+                                        ]
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            }
+                        ],
+                        "features": [],
+                        "dateRanges": [],
+                        "contextNsCount": 1,
+                        "dateRangeDimensions": [
+                            {
+                                "name": "qt_nznumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_vaccinated_on_"
+                                }
+                            }
+                        ],
+                        "calculatedField": [],
+                        "needGeocoding": false,
+                        "geoFieldMask": [],
+                        "geoVertices": 100000
+                    },
+                    "useDataColumn": true
+                },
+                {
+                    "requestContext": {
+                        "reportContext": {
+                            "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                            "pageId": "33037739",
+                            "mode": 1,
+                            "componentId": "cd-poui9b9kkc",
+                            "displayType": "kpi-metric"
+                        }
+                    },
+                    "datasetSpec": {
+                        "dataset": [
+                            {
+                                "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                                "revisionNumber": 0,
+                                "parameterOverrides": []
+                            }
+                        ],
+                        "queryFields": [
+                            {
+                                "name": "qt_wznumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_hospital_province_",
+                                    "aggregation": 3
+                                }
+                            }
+                        ],
+                        "sortData": [],
+                        "includeRowsCount": false,
+                        "filters": [
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "name": "qt_tf5sjc9kkc",
+                                            "ns": "t0"
+                                        },
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_hospital_province_"
+                                            },
+                                            "displayTransformation": {
+                                                "displayName": "Province"
+                                            }
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": [
+                                            provinceName
+                                        ]
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
+                            }
+                        ],
+                        "features": [],
+                        "dateRanges": [],
+                        "contextNsCount": 1,
+                        "dateRangeDimensions": [
+                            {
+                                "name": "qt_3roumc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_vaccinated_on_"
+                                }
+                            }
+                        ],
+                        "calculatedField": [],
+                        "needGeocoding": false,
+                        "geoFieldMask": [],
+                        "geoVertices": 100000
+                    },
+                    "useDataColumn": true
                 }
             ]
         }
     )
     const data = JSON.parse(res.data.substring(5))
-    data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[1].longColumn.values // supply separated by manufactures
+    //data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[1].longColumn.values // supply separated by manufactures
+
     const hospitals_names = data.dataResponse[2].dataSubset[0].dataset.tableDataset.column[0].stringColumn.values
     const hospitals_codes = data.dataResponse[3].dataSubset[0].dataset.tableDataset.column[0].stringColumn.values
     const hospitals_doses = data.dataResponse[3].dataSubset[0].dataset.tableDataset.column[1].longColumn.values
-    const total_doses = Number(data.dataResponse[4].dataSubset[0].dataset.tableDataset.column[0].longColumn.values) // total doses
-    const first_doses = Number(data.dataResponse[5].dataSubset[0].dataset.tableDataset.column[0].longColumn.values) // first doses
+    const total_doses = Number(data.dataResponse[4].dataSubset[0].dataset.tableDataset.column[0].longColumn.values[0]) // total doses
+    const first_doses = Number(data.dataResponse[5].dataSubset[0].dataset.tableDataset.column[0].longColumn.values[0]) // first doses
     const second_doses = total_doses - first_doses
     const over_60_doses = await getByGroup(provinceName)
 
@@ -1607,58 +1564,29 @@ async function getProvince(provinceName) {
 }
 
 async function getManufacturer() {
-    const res = await axios.post('https://datastudio.google.com/batchedDataV2', {
-        "dataRequest": [
-            {
-                "requestContext": {
-                    "reportContext": {
-                        "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
-                        "pageId": "33037739",
-                        "mode": "VIEW",
-                        "componentId": "cd-8me2cc9kkc",
-                        "displayType": "simple-barchart"
-                    }
-                },
-                "datasetSpec": {
-                    "dataset": [
-                        {
-                            "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                            "revisionNumber": 0,
-                            "parameterOverrides": []
+    const res = await axios.post('https://datastudio.google.com/batchedDataV2',
+        {
+            "dataRequest": [
+                {
+                    "requestContext": {
+                        "reportContext": {
+                            "reportId": "731713b6-a3c4-4766-ab9d-a6502a4e7dd6",
+                            "pageId": "33037739",
+                            "mode": 1,
+                            "componentId": "cd-8me2cc9kkc",
+                            "displayType": "simple-barchart"
                         }
-                    ],
-                    "queryFields": [
-                        {
-                            "name": "qt_3g0rrc9kkc",
-                            "datasetNs": "d0",
-                            "tableNs": "t0",
-                            "dataTransformation": {
-                                "sourceFieldName": "_vaccinated_on_",
-                                "transformationConfig": {
-                                    "transformationType": 5
-                                }
+                    },
+                    "datasetSpec": {
+                        "dataset": [
+                            {
+                                "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
+                                "revisionNumber": 0,
+                                "parameterOverrides": []
                             }
-                        },
-                        {
-                            "name": "qt_09asrc9kkc",
-                            "datasetNs": "d0",
-                            "tableNs": "t0",
-                            "dataTransformation": {
-                                "sourceFieldName": "_manuf_name_"
-                            }
-                        },
-                        {
-                            "name": "qt_wg0rrc9kkc",
-                            "datasetNs": "d0",
-                            "tableNs": "t0",
-                            "dataTransformation": {
-                                "sourceFieldName": "datastudio_record_count_system_field_id_98323387"
-                            }
-                        }
-                    ],
-                    "sortData": [
-                        {
-                            "sortColumn": {
+                        ],
+                        "queryFields": [
+                            {
                                 "name": "qt_3g0rrc9kkc",
                                 "datasetNs": "d0",
                                 "tableNs": "t0",
@@ -1669,147 +1597,152 @@ async function getManufacturer() {
                                     }
                                 }
                             },
-                            "sortDir": 0
-                        }
-                    ],
-                    "includeRowsCount": false,
-                    "blendConfig": {
-                        "blockDatasource": {
-                            "datasourceBlock": {
-                                "id": "block_8feppxfpkc",
-                                "type": 1,
-                                "inputBlockIds": [],
-                                "outputBlockIds": [],
-                                "fields": []
-                            },
-                            "blocks": [
-                                {
-                                    "id": "block_9feppxfpkc",
-                                    "type": 5,
-                                    "inputBlockIds": [],
-                                    "outputBlockIds": [],
-                                    "fields": [],
-                                    "queryBlockConfig": {
-                                        "joinQueryConfig": {
-                                            "joinKeys": [],
-                                            "queries": [
-                                                {
-                                                    "datasourceId": "be20cc44-8f07-40e9-a197-6803fe40ce87",
-                                                    "concepts": []
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
-                            ],
-                            "delegatedAccessEnabled": true,
-                            "isUnlocked": true,
-                            "isCacheable": false
-                        }
-                    },
-                    "filters": [
-                        {
-                            "filterDefinition": {
-                                "filterExpression": {
-                                    "include": true,
-                                    "conceptType": 0,
-                                    "concept": {
-                                        "ns": "t0",
-                                        "name": "qt_kraj088kkc"
-                                    },
-                                    "filterConditionType": "IN",
-                                    "stringValues": [],
-                                    "numberValues": [],
-                                    "queryTimeTransformation": {
-                                        "dataTransformation": {
-                                            "sourceFieldName": "_manuf_name_"
-                                        }
-                                    }
-                                }
-                            },
-                            "dataSubsetNs": {
+                            {
+                                "name": "qt_09asrc9kkc",
                                 "datasetNs": "d0",
                                 "tableNs": "t0",
-                                "contextNs": "c0"
+                                "dataTransformation": {
+                                    "sourceFieldName": "_manuf_name_"
+                                }
                             },
-                            "version": 3
-                        },
-                        {
-                            "filterDefinition": {
-                                "filterExpression": {
-                                    "include": true,
-                                    "conceptType": 0,
-                                    "concept": {
-                                        "name": "qt_3g0rrc9kkc",
-                                        "ns": "t0"
-                                    },
-                                    "queryTimeTransformation": {
-                                        "dataTransformation": {
-                                            "sourceFieldName": "_vaccinated_on_",
-                                            "transformationConfig": {
-                                                "transformationType": 5
+                            {
+                                "name": "qt_wg0rrc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "datastudio_record_count_system_field_id_98323387"
+                                }
+                            }
+                        ],
+                        "sortData": [
+                            {
+                                "sortColumn": {
+                                    "name": "qt_3g0rrc9kkc",
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "dataTransformation": {
+                                        "sourceFieldName": "_vaccinated_on_",
+                                        "transformationConfig": {
+                                            "transformationType": 5
+                                        }
+                                    }
+                                },
+                                "sortDir": 0
+                            }
+                        ],
+                        "includeRowsCount": false,
+                        "filters": [
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "ns": "t0",
+                                            "name": "qt_kraj088kkc"
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": [
+                                            "Sinovac Life Sciences",
+                                            "AstraZeneca",
+                                            "Sinopharm"
+                                        ],
+                                        "numberValues": [],
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_manuf_name_"
                                             }
                                         }
-                                    },
-                                    "filterConditionType": "IN",
-                                    "stringValues": []
-                                }
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
                             },
-                            "dataSubsetNs": {
-                                "datasetNs": "d0",
-                                "tableNs": "t0",
-                                "contextNs": "c0"
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "name": "qt_3g0rrc9kkc",
+                                            "ns": "t0"
+                                        },
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_vaccinated_on_",
+                                                "transformationConfig": {
+                                                    "transformationType": 5
+                                                }
+                                            }
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": []
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
                             },
-                            "version": 3
-                        },
-                        {
-                            "filterDefinition": {
-                                "filterExpression": {
-                                    "include": true,
-                                    "conceptType": 0,
-                                    "concept": {
-                                        "name": "qt_09asrc9kkc",
-                                        "ns": "t0"
-                                    },
-                                    "queryTimeTransformation": {
-                                        "dataTransformation": {
-                                            "sourceFieldName": "_manuf_name_"
-                                        }
-                                    },
-                                    "filterConditionType": "IN",
-                                    "stringValues": []
-                                }
-                            },
-                            "dataSubsetNs": {
-                                "datasetNs": "d0",
-                                "tableNs": "t0",
-                                "contextNs": "c0"
-                            },
-                            "version": 3
-                        }
-                    ],
-                    "features": [],
-                    "dateRanges": [],
-                    "contextNsCount": 1,
-                    "dateRangeDimensions": [
-                        {
-                            "name": "qt_0tcsrc9kkc",
-                            "datasetNs": "d0",
-                            "tableNs": "t0",
-                            "dataTransformation": {
-                                "sourceFieldName": "_vaccinated_on_"
+                            {
+                                "filterDefinition": {
+                                    "filterExpression": {
+                                        "include": true,
+                                        "conceptType": 0,
+                                        "concept": {
+                                            "name": "qt_09asrc9kkc",
+                                            "ns": "t0"
+                                        },
+                                        "queryTimeTransformation": {
+                                            "dataTransformation": {
+                                                "sourceFieldName": "_manuf_name_"
+                                            }
+                                        },
+                                        "filterConditionType": "IN",
+                                        "stringValues": [
+                                            "Sinovac Life Sciences",
+                                            "AstraZeneca",
+                                            "Sinopharm"
+                                        ]
+                                    }
+                                },
+                                "dataSubsetNs": {
+                                    "datasetNs": "d0",
+                                    "tableNs": "t0",
+                                    "contextNs": "c0"
+                                },
+                                "version": 3
                             }
-                        }
-                    ],
-                    "calculatedField": [],
-                    "needGeocoding": false,
-                    "geoFieldMask": [],
-                    "geoVertices": 100000
-                },
-                "useDataColumn": true
-            }
-        ]
-    })
+                        ],
+                        "features": [],
+                        "dateRanges": [],
+                        "contextNsCount": 1,
+                        "dateRangeDimensions": [
+                            {
+                                "name": "qt_0tcsrc9kkc",
+                                "datasetNs": "d0",
+                                "tableNs": "t0",
+                                "dataTransformation": {
+                                    "sourceFieldName": "_vaccinated_on_"
+                                }
+                            }
+                        ],
+                        "calculatedField": [],
+                        "needGeocoding": false,
+                        "geoFieldMask": [],
+                        "geoVertices": 100000
+                    },
+                    "useDataColumn": true
+                }
+            ]
+        }
+    )
     const data = JSON.parse(res.data.substring(5))
     const dates = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[0].dateColumn.values
     const manufacturer = data.dataResponse[0].dataSubset[0].dataset.tableDataset.column[1].stringColumn.values
