@@ -41,7 +41,6 @@ function SinopharmCurve(props) {
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
-    console.log(timeSeries)
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
@@ -65,6 +64,20 @@ function SinopharmCurve(props) {
                     strokeWidth={2}
                 />
             </Group>
+            <Text
+                x={xScale(x(timeSeries[5]))}
+                y={yScale(y(timeSeries[5])) - 30}
+                fill='green'
+                dx={-10}
+                dy={0}
+                width={150}
+                lineHeight={18}
+                textAnchor='end'
+                fontFamily='Prompt'
+                fontSize={12}
+            >
+                Sinopharm
+            </Text>
             <LinePath
                 curve={curveBasis}
                 data={timeSeries}
