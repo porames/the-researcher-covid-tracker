@@ -1,7 +1,5 @@
 import mapboxgl from "maplibre-gl";
-import provincesData from "../gis/data/provincial-vaccination-data.json";
 import hospital_supply from "../gis/data/hospital-vaccination-data.json";
-import Graph from "../provinceCurve";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";

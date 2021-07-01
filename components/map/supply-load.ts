@@ -23,6 +23,7 @@ const loader = (map: mapboxgl.Map) => {
     type: "circle",
     source: "hospitals",
     "source-layer": "60c61099f718be41ee8b7e16",
+    minzoom: 7,
     paint: {
       "circle-radius": [
         "interpolate",
@@ -71,6 +72,63 @@ const loader = (map: mapboxgl.Map) => {
         "rgb(66, 113, 101)",
       ],
     },
+  });
+  map.addLayer({
+    id: "hospital-heat",
+    type: "heatmap",
+    source: "hospitals",
+    "source-layer": "60c61099f718be41ee8b7e16",
+    maxzoom: 7,
+    paint: {
+      'heatmap-weight': [
+        'interpolate',
+        ['linear'],
+        sizeMatch,
+        1000,
+        0.2,
+        10000,
+        0.4,
+        50000,
+        0.6,
+        100000,
+        0.8,
+        1000000,
+        1,
+      ],
+      'heatmap-radius': [
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        0,
+        4,
+        7,
+        15
+      ],
+      'heatmap-intensity': [
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        0,
+        1,
+        9,
+        3
+      ],
+      'heatmap-color': [
+        'interpolate',
+        ['linear'],
+        ['heatmap-density'],
+        0,
+        'rgba(33,102,172,0)',
+        0.3,
+        'rgba(176, 206, 195,0.7)',
+        0.6,
+        '#7ba797',
+        0.8,
+        '#47816e',
+        1,
+        '#005c46'
+      ]
+    }
   });
 };
 
