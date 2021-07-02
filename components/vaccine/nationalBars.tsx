@@ -30,6 +30,9 @@ const NationalBars = ({
                         <div className='doses-progress'>
                             <div className='doses-bar' style={{ width: `${(todayData.second_dose * 100 / population)}%` }}></div>
                         </div>
+                        <div className='w-100 text-left mt-1'>
+                            <span className='small text-muted'>คิดเป็น {(todayData.second_dose.toLocaleString())} คน</span>
+                        </div>
                     </div>
                     <div className='w-100 text-left'>
                         <b>ได้รับวัคซีนอย่างน้อย 1 โดส</b>
@@ -38,6 +41,9 @@ const NationalBars = ({
                         </h1>
                         <div className='doses-progress'>
                             <div className='doses-bar' style={{ width: `${(todayData.first_dose * 100 / population)}%` }}></div>
+                        </div>
+                        <div className='w-100 text-left mt-1'>
+                            <span className='small text-muted'>คิดเป็น {(todayData.first_dose.toLocaleString())} คน</span>
                         </div>
                     </div>
                     {!hideSupply &&
