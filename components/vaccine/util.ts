@@ -29,11 +29,9 @@ function fillEmptyDates(ts: TsProps[]) {
         (pre, cur) => (compareDate(pre, cur.date) ? cur.date : pre),
         '2000-01-01'
     );
-    console.log('minDate', minDate);
-    console.log('maxDate', maxDate);
     for (
         let date = minDate;
-        compareDate(date, maxDate);
+        !compareDate(maxDate, date);
         date = incrementDate(date)
     ) {
         if (!_.has(morphObject, date)) {
@@ -65,5 +63,5 @@ export function movingAvg(ts: TsProps[], id: string, type?: 'rate' | 'cum') {
             moving_aves.push(0);
         }
     }
-    return moving_aves;
+    return { moving_aves, timeSeries: ts };
 }
