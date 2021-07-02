@@ -3,17 +3,17 @@ import _ from 'lodash';
 import moment from 'moment';
 
 type TsProps = {
-    [key: string]: number | undefined;
+    [key: string]: any;
 } & { date: string };
 
 function compareDate(date1: string, date2: string) {
-    const date1Value = moment(date1, 'DD-MM-YYYY').valueOf();
-    const date2Value = moment(date2, 'DD-MM-YYYY').valueOf();
-    return date1Value < date2Value ? date1 : date2;
+    const date1Value = moment(date1, 'YYYY-MM-DD').valueOf();
+    const date2Value = moment(date2, 'YYYY-MM-DD').valueOf();
+    return date1Value < date2Value;
 }
 
 function incrementDate(date: string) {
-    return moment(date, 'DD-MM-YYYY').add(1, 'days').format('DD-MM-YYYY');
+    return moment(date, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
 }
 
 function fillEmptyDates(ts: TsProps[]) {
@@ -23,13 +23,19 @@ function fillEmptyDates(ts: TsProps[]) {
     );
     const minDate = ts.reduce(
         (pre, cur) => (compareDate(pre, cur.date) ? pre : cur.date),
-        '01-01-3000'
+        '2030-01-01'
     );
     const maxDate = ts.reduce(
         (pre, cur) => (compareDate(pre, cur.date) ? cur.date : pre),
-        '01-01-2000'
+        '2000-01-01'
     );
-    for (let date = minDate; compareDate(date, maxDate); incrementDate(date)) {
+    console.log('minDate', minDate);
+    console.log('maxDate', maxDate);
+    for (
+        let date = minDate;
+        compareDate(date, maxDate);
+        date = incrementDate(date)
+    ) {
         if (!_.has(morphObject, date)) {
             morphObject[date] = { date } as TsProps;
         }
