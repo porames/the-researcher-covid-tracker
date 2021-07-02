@@ -1,8 +1,14 @@
+import { timeDays } from 'd3';
+import _ from 'lodash'
+import moment from 'moment';
 interface TsProps {
+    date: string,
     [key: string]: any
 }
 
-export function movingAvg(ts: TsProps[], id:string) {
+
+
+export function movingAvg(ts: TsProps[], id: string, type?: 'rate' | 'cum') {
     var moving_aves = []
     var ys = []
     for (var i = 0; i < ts.length; i++) {

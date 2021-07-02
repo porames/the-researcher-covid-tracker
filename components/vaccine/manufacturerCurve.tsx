@@ -13,30 +13,13 @@ import { ParentSize } from '@visx/responsive'
 import data from '../gis/data/manufacturer-vaccination-data.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { ManufacturerDataProps } from './types'
-
-function movingAvg(ts, id) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i][id])
-    }
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
+import { movingAvg } from './util'
 
 function SinopharmCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'Sinopharm' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered')
+    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
 
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
@@ -94,7 +77,7 @@ function AstraZenecaCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'AstraZeneca' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered')
+    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
@@ -151,7 +134,7 @@ function SinovacCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'Sinovac Life Sciences' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered')
+    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
@@ -214,7 +197,7 @@ function ManufacturerCurve(props) {
                 <Group>
                     <AstraZenecaCurve width={width} height={height} />
                     <SinovacCurve width={width} height={height} />
-                    {/*<SinopharmCurve width={width} height={height} />*/}
+                    <SinopharmCurve width={width} height={height} />
                     <Group>
                         <AxisLeft
                             scale={yScale}
