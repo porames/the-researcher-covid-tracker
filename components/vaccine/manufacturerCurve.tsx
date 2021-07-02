@@ -197,7 +197,7 @@ function ManufacturerCurve(props) {
                 <Group>
                     <AstraZenecaCurve width={width} height={height} />
                     <SinovacCurve width={width} height={height} />
-                    <SinopharmCurve width={width} height={height} />
+                    {/*<SinopharmCurve width={width} height={height} />*/}
                     <Group>
                         <AxisLeft
                             scale={yScale}
