@@ -81,8 +81,9 @@ function plannedRollout(ts: PredictionProps[]) {
 const EstimateCurve = (props) => {
     const { width, height } = props
     let timeSeries: PredictionProps[] = []
-    const vaccinatedAvgs = movingAvg(data, 'total_doses')
-    const deltaAvgs = movingAvg(data, 'daily_vaccinations')
+    const { moving_aves: vaccinatedAvgs } = movingAvg(data, 'total_doses')
+    const { moving_aves: deltaAvgs } = movingAvg(data, 'daily_vaccinations')
+    // not sure if data should be updated?
     data.map((item: NationalVaccinationDataProps, index: number) => {
         timeSeries.push({
             date: item.date,

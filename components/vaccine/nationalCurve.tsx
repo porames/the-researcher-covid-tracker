@@ -21,17 +21,17 @@ export function NationalCurve(props) {
     const height = props.height
     const x = d => new Date(d['date'])
     const y = d => d['total_doses']
-    const avgs = movingAvg(timeSeries, 'total_doses')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'total_doses')
     avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
+        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
-    const deltaAvgs = movingAvg(timeSeries, 'daily_vaccinations')
+    const { moving_aves: deltaAvgs } = movingAvg(timeSeriesWithEmptyDates, 'daily_vaccinations')
     deltaAvgs.map((avg, i) => {
-        timeSeries[i]['deltaAvg'] = avg
+        timeSeriesWithEmptyDates[i]['deltaAvg'] = avg
     })
     useEffect(() => {
-        props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
-        props.setTodayData(timeSeries[timeSeries.length - 1])
+        props.setUpdateDate(timeSeriesWithEmptyDates[timeSeriesWithEmptyDates.length - 1]['date'])
+        props.setTodayData(timeSeriesWithEmptyDates[timeSeriesWithEmptyDates.length - 1])
     }, [])
 
 

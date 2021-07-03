@@ -19,16 +19,15 @@ function SinopharmCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'Sinopharm' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
-
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
+        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
         range: [0, width],
-        domain: timeSeries.map(x),
+        domain: timeSeriesWithEmptyDates.map(x),
         padding: 0.07
     })
     const yScale = scaleLinear({
@@ -40,7 +39,7 @@ function SinopharmCurve(props) {
             <Group>
                 <LinePath
                     curve={curveBasis}
-                    data={timeSeries}
+                    data={timeSeriesWithEmptyDates}
                     x={d => xScale(x(d))}
                     y={d => yScale(d['vaccinatedAvg']) - 30}
                     stroke='green'
@@ -48,8 +47,8 @@ function SinopharmCurve(props) {
                 />
             </Group>
             <Text
-                x={xScale(x(timeSeries[5]))}
-                y={yScale(y(timeSeries[5])) - 30}
+                x={xScale(x(timeSeriesWithEmptyDates[5]))}
+                y={yScale(y(timeSeriesWithEmptyDates[5])) - 30}
                 fill='green'
                 dx={-10}
                 dy={0}
@@ -63,7 +62,7 @@ function SinopharmCurve(props) {
             </Text>
             <LinePath
                 curve={curveBasis}
-                data={timeSeries}
+                data={timeSeriesWithEmptyDates}
                 x={d => xScale(x(d))}
                 y={d => yScale(d['vaccinatedAvg']) - 30}
                 stroke='green'
@@ -77,15 +76,15 @@ function AstraZenecaCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'AstraZeneca' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
+        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
         range: [0, width],
-        domain: timeSeries.map(x),
+        domain: timeSeriesWithEmptyDates.map(x),
         padding: 0.07
     })
     const yScale = scaleLinear({
@@ -96,8 +95,8 @@ function AstraZenecaCurve(props) {
         <Group>
             <Group>
                 <Text
-                    x={xScale(x(timeSeries[88]))}
-                    y={yScale(y(timeSeries[88])) - 30}
+                    x={xScale(x(timeSeriesWithEmptyDates[88]))}
+                    y={yScale(y(timeSeriesWithEmptyDates[88])) - 30}
                     fill='#F29F05'
                     dx={-10}
                     dy={0}
@@ -111,7 +110,7 @@ function AstraZenecaCurve(props) {
                 </Text>
                 <LinePath
                     curve={curveBasis}
-                    data={timeSeries}
+                    data={timeSeriesWithEmptyDates}
                     x={d => xScale(x(d))}
                     y={d => yScale(d['vaccinatedAvg']) - 30}
                     stroke='#F29F05'
@@ -120,7 +119,7 @@ function AstraZenecaCurve(props) {
             </Group>
             <LinePath
                 curve={curveBasis}
-                data={timeSeries}
+                data={timeSeriesWithEmptyDates}
                 x={d => xScale(x(d))}
                 y={d => yScale(d['vaccinatedAvg']) - 30}
                 stroke='#F29F05'
@@ -134,15 +133,15 @@ function SinovacCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'Sinovac Life Sciences' })
     const width = props.width
     const height = props.height
-    const avgs = movingAvg(timeSeries, 'doses_administered', 'rate')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
+        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
     const xScale = scaleBand({
         range: [0, width],
-        domain: timeSeries.map(x),
+        domain: timeSeriesWithEmptyDates.map(x),
         padding: 0.07
     })
     const yScale = scaleLinear({
@@ -152,8 +151,8 @@ function SinovacCurve(props) {
     return (
         <Group>
             <Text
-                x={xScale(x(timeSeries[85]))}
-                y={yScale(y(timeSeries[85])) - 30}
+                x={xScale(x(timeSeriesWithEmptyDates[85]))}
+                y={yScale(y(timeSeriesWithEmptyDates[85])) - 30}
                 fill='#ff5722'
                 dx={0}
                 dy={-20}
@@ -167,7 +166,7 @@ function SinovacCurve(props) {
             </Text>
             <LinePath
                 curve={curveBasis}
-                data={timeSeries}
+                data={timeSeriesWithEmptyDates}
                 x={d => xScale(x(d))}
                 y={d => yScale(d['vaccinatedAvg']) - 30}
                 stroke='#ff5722'
