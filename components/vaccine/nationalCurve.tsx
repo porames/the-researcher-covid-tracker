@@ -21,20 +21,10 @@ export function NationalCurve(props) {
     const height = props.height
     const x = d => new Date(d['date'])
     const y = d => d['total_doses']
-    const avgs = movingAvg(timeSeries, 'total_doses')
-    avgs.map((avg, i) => {
-        timeSeries[i]['vaccinatedAvg'] = avg
-    })
-    const deltaAvgs = movingAvg(timeSeries, 'daily_vaccinations')
-    deltaAvgs.map((avg, i) => {
-        timeSeries[i]['deltaAvg'] = avg
-    })
     useEffect(() => {
         props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
         props.setTodayData(timeSeries[timeSeries.length - 1])
     }, [])
-
-
     const xScale = scaleBand({
         range: [0, width],
         domain: timeSeries.map(x),
@@ -69,27 +59,27 @@ export function NationalCurve(props) {
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
+                            const fullyVaxHeight = height - yScale(d.second_dose)
                             return (
-                                <Bar
-                                    key={i}
-                                    x={xScale(x(d))}
-                                    y={height - barHeight - 30}
-                                    width={xScale.bandwidth()}
-                                    height={barHeight}
-                                    fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#9dbbb2'}
-                                />
-
+                                <Group key={i}>
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - barHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={barHeight}
+                                        fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#9dbbb2'}
+                                    />
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - fullyVaxHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={fullyVaxHeight}
+                                        fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#47816e'}
+                                    />
+                                </Group>
                             );
                         })}
                     </Group>
-                    <LinePath
-                        curve={curveBasis}
-                        data={timeSeries}
-                        x={d => xScale(x(d))}
-                        y={d => yScale(d["vaccinatedAvg"]) - 30}
-                        stroke='#427165'
-                        strokeWidth={2}
-                    />
                     {tooltipData &&
                         <Bar
                             x={xScale(x(tooltipData))}
@@ -97,9 +87,9 @@ export function NationalCurve(props) {
                             width={xScale.bandwidth()}
                             height={height - yScale(y(tooltipData))}
                             fill='#7ea297'
+                            opacity='0.6'
                         />
                     }
-
                     <Group>
                         <AxisBottom
                             top={height - 30}
@@ -157,7 +147,8 @@ export function NationalCurve(props) {
                     >
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                            ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส
+                            ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส<br />
+                            ได้รับวัคซีนครบแล้ว {tooltipData['second_dose'].toLocaleString()} คน<br />
                             {tooltipData['missing_data'] &&
                                 <div className='text-danger mt-1 credit'><b>*วันที่ไม่มีรายงานข้อมูล</b></div>
                             }
