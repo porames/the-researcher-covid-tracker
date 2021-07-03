@@ -17,41 +17,30 @@ import { movingAvg } from './util'
 
 function SinopharmCurve(props) {
     var timeSeries = _.filter(data, { manufacturer: 'Sinopharm' })
-    const width = props.width
-    const height = props.height
     const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
-    const xScale = scaleBand({
-        range: [0, width],
-        domain: timeSeriesWithEmptyDates.map(x),
-        padding: 0.07
-    })
-    const yScale = scaleLinear({
-        range: [height, 50],
-        domain: [0, max(data, y)],
-    })
     return (
         <Group>
             <Group>
                 <LinePath
                     curve={curveBasis}
                     data={timeSeriesWithEmptyDates}
-                    x={d => xScale(x(d))}
-                    y={d => yScale(d['vaccinatedAvg']) - 30}
+                    x={d => props.dateScale(x(d))}
+                    y={d => props.yScale(d['vaccinatedAvg']) - 30}
                     stroke='green'
                     strokeWidth={2}
                 />
             </Group>
             <Text
-                x={xScale(x(timeSeriesWithEmptyDates[5]))}
-                y={yScale(y(timeSeriesWithEmptyDates[5])) - 30}
+                x={props.dateScale(x(timeSeriesWithEmptyDates[30]))}
+                y={props.yScale(y(timeSeriesWithEmptyDates[30])) - 30}
                 fill='green'
                 dx={-10}
-                dy={0}
+                dy={-8}
                 width={150}
                 lineHeight={18}
                 textAnchor='end'
@@ -60,14 +49,6 @@ function SinopharmCurve(props) {
             >
                 Sinopharm
             </Text>
-            <LinePath
-                curve={curveBasis}
-                data={timeSeriesWithEmptyDates}
-                x={d => xScale(x(d))}
-                y={d => yScale(d['vaccinatedAvg']) - 30}
-                stroke='green'
-                strokeWidth={2}
-            />
         </Group>
     )
 }
@@ -82,21 +63,12 @@ function AstraZenecaCurve(props) {
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
-    const xScale = scaleBand({
-        range: [0, width],
-        domain: timeSeriesWithEmptyDates.map(x),
-        padding: 0.07
-    })
-    const yScale = scaleLinear({
-        range: [height, 50],
-        domain: [0, max(data, y)],
-    })
     return (
         <Group>
             <Group>
                 <Text
-                    x={xScale(x(timeSeriesWithEmptyDates[88]))}
-                    y={yScale(y(timeSeriesWithEmptyDates[88])) - 30}
+                    x={props.dateScale(x(timeSeriesWithEmptyDates[100]))}
+                    y={props.yScale(y(timeSeriesWithEmptyDates[100])) - 30}
                     fill='#F29F05'
                     dx={-10}
                     dy={0}
@@ -111,20 +83,12 @@ function AstraZenecaCurve(props) {
                 <LinePath
                     curve={curveBasis}
                     data={timeSeriesWithEmptyDates}
-                    x={d => xScale(x(d))}
-                    y={d => yScale(d['vaccinatedAvg']) - 30}
+                    x={d => props.dateScale(x(d))}
+                    y={d => props.yScale(d['vaccinatedAvg']) - 30}
                     stroke='#F29F05'
                     strokeWidth={2}
                 />
             </Group>
-            <LinePath
-                curve={curveBasis}
-                data={timeSeriesWithEmptyDates}
-                x={d => xScale(x(d))}
-                y={d => yScale(d['vaccinatedAvg']) - 30}
-                stroke='#F29F05'
-                strokeWidth={2}
-            />
         </Group>
     )
 }
@@ -139,23 +103,14 @@ function SinovacCurve(props) {
     })
     const x = d => new Date(d['date'])
     const y = d => d['vaccinatedAvg']
-    const xScale = scaleBand({
-        range: [0, width],
-        domain: timeSeriesWithEmptyDates.map(x),
-        padding: 0.07
-    })
-    const yScale = scaleLinear({
-        range: [height, 50],
-        domain: [0, max(data, y)],
-    })
     return (
         <Group>
             <Text
-                x={xScale(x(timeSeriesWithEmptyDates[85]))}
-                y={yScale(y(timeSeriesWithEmptyDates[85])) - 30}
+                x={props.dateScale(x(timeSeriesWithEmptyDates[85]))}
+                y={props.yScale(y(timeSeriesWithEmptyDates[85])) - 30}
                 fill='#ff5722'
                 dx={0}
-                dy={-20}
+                dy={-15}
                 width={150}
                 lineHeight={18}
                 textAnchor='middle'
@@ -167,8 +122,8 @@ function SinovacCurve(props) {
             <LinePath
                 curve={curveBasis}
                 data={timeSeriesWithEmptyDates}
-                x={d => xScale(x(d))}
-                y={d => yScale(d['vaccinatedAvg']) - 30}
+                x={d => props.dateScale(x(d))}
+                y={d => props.yScale(d['vaccinatedAvg']) - 30}
                 stroke='#ff5722'
                 strokeWidth={2}
             />
@@ -184,7 +139,7 @@ function ManufacturerCurve(props) {
     const y = d => d['vaccinatedAvg']
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(data, y)],
+        domain: [0, 250000],
     })
     const dateScale = scaleTime({
         range: [0, width],
@@ -194,9 +149,9 @@ function ManufacturerCurve(props) {
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <AstraZenecaCurve width={width} height={height} />
-                    <SinovacCurve width={width} height={height} />
-                    {/*<SinopharmCurve width={width} height={height} />*/}
+                    <AstraZenecaCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <SinovacCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <SinopharmCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
                     <Group>
                         <AxisLeft
                             scale={yScale}

@@ -9,9 +9,15 @@ import { MarkerArrow } from '@visx/marker'
 import { NationalVaccinationDataProps } from './types'
 import moment from 'moment'
 import 'moment/locale/th'
+import { movingAvg } from './util'
 
 function TrendCurveVaccination(props) {
-    var ts: NationalVaccinationDataProps[] = data.slice(data.length - 14, data.length)
+    //var ts: NationalVaccinationDataProps[] = data.slice(data.length - 14, data.length)
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(data, 'daily_vaccinations', 'rate')
+    avgs.map((avg, i) => {
+        timeSeriesWithEmptyDates[i]['deltaAvg'] = avg
+    })
+    var ts = timeSeriesWithEmptyDates.slice(timeSeriesWithEmptyDates.length - 14, timeSeriesWithEmptyDates.length)
     const width = 50
     const height = 20
     useEffect(() => {
@@ -30,6 +36,7 @@ function TrendCurveVaccination(props) {
         range: [height - 2, 2],
         domain: extent(ts, y)
     })
+
 
     return (
         <svg width={width} height={height}>
