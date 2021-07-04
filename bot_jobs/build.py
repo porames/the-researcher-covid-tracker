@@ -36,7 +36,6 @@ for name in provinces:
         plt.yticks([])
         plt.savefig('../public/infection-graphs-build/' + str(provinces_name.index(name) + 1) + '.svg', bbox_inches=0,
                     transparent=True)
-        print(time.time() - start, name)
         if moving_aves[-14] > 0:
             change = int((moving_aves[-1] - moving_aves[-14]) * 100 / (moving_aves[-14]))
         else:
