@@ -53,7 +53,7 @@ function TrendCurveInfectionRate(props) {
 
     })
     const yScale = scaleLinear({
-        range: [height-2, 2],
+        range: [height - 2, 2],
         domain: extent(ts, y)
     })
 
@@ -100,7 +100,7 @@ function TrendCurveHospitalization(props) {
 
     })
     const yScale = scaleLinear({
-        range: [height-2, 2],
+        range: [height - 2, 2],
         domain: extent(ts, y)
     })
 
@@ -128,8 +128,7 @@ function TrendCurveHospitalization(props) {
 }
 
 function NationalTable(props) {
-    const ts = data['Data']
-
+    const ts = data
     var currentPeriod = 0
     var prevPeriod = 0
     var HcurrentPeriod = 0
@@ -148,10 +147,10 @@ function NationalTable(props) {
     }
     const delta = ((currentPeriod - prevPeriod) / prevPeriod) * 100
     const deltaH = ((HcurrentPeriod - HprevPeriod) / HprevPeriod) * 100
-    useEffect(()=>{
-        props.updatedAt(data['UpdateDate'])
-    },[])
-    
+    useEffect(() => {
+        props.updatedAt(data[data.length - 1]['Date'])
+    }, [])
+
     return (
         <div className='table-responsive'>
             <table className="table table-theme-light mt-4 text-white">
@@ -159,7 +158,7 @@ function NationalTable(props) {
                     <tr>
                         <th scope="col"></th>
                         <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                        <th className='text-end' scope="col">{moment(data['UpdateDate'], 'DD/MM/YYYY hh:mm').format('D MMM')}</th>
+                        <th className='text-end' scope="col">{moment(data[data.length - 1]['Date']).format('D MMM')}</th>
                         <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
                     </tr>
                 </thead>
@@ -169,13 +168,13 @@ function NationalTable(props) {
                         <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
                         <td>
-                        <div className='d-flex justify-content-end'>
-                            <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
-                            <div className='ml-1'>
-                                <TrendCurveInfectionRate data={ts} />
-                            </div>
+                            <div className='d-flex justify-content-end'>
+                                <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
+                                <div className='ml-1'>
+                                    <TrendCurveInfectionRate data={ts} />
+                                </div>
 
-                        </div>
+                            </div>
                         </td>
                     </tr>
 
@@ -184,18 +183,18 @@ function NationalTable(props) {
                         <td></td>
                         <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
                         <td>
-                        <div className='d-flex justify-content-end'>
-                            <div>{deltaH > 0 ? '+' : ''}{parseInt(deltaH).toLocaleString()}%</div>
-                            <div className='ml-1'>
-                                <TrendCurveHospitalization data={ts} />
+                            <div className='d-flex justify-content-end'>
+                                <div>{deltaH > 0 ? '+' : ''}{parseInt(deltaH).toLocaleString()}%</div>
+                                <div className='ml-1'>
+                                    <TrendCurveHospitalization data={ts} />
+                                </div>
                             </div>
-                        </div>
                         </td>
                     </tr>
                     <tr className='text-sec'>
                         <th scope="row">เสียชีวิต</th>
-                        <td>{ts[ts.length - 1]['Deaths']}</td>
-                        <td>{ts[ts.length - 1]['NewDeaths']}</td>
+                        <td>{ts[ts.length - 1]['Deaths'].toLocaleString()}</td>
+                        <td>{ts[ts.length - 1]['NewDeaths'].toLocaleString()}</td>
                         <td></td>
                     </tr>
 

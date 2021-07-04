@@ -1,20 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
+import moment from 'moment'
+import data from './gis/data/national-timeseries.json'
+
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
-import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from './gis/data/national-timeseries.json'
 import { AxisBottom } from '@visx/axis'
-import { Brush } from '@visx/brush'
-import BaseBrush, { BaseBrushState, UpdateBrush } from '@visx/brush/lib/BaseBrush'
-import { Label, Connector, CircleSubject, LineSubject, Annotation } from '@visx/annotation'
+import { Label, Connector, Annotation } from '@visx/annotation'
 
 
 function movingAvg(ts) {
@@ -36,7 +35,8 @@ function movingAvg(ts) {
 }
 
 function NationalCurve(props) {
-    var timeSeries = data['Data']
+    var timeSeries = _.cloneDeep(data)
+
     const width = props.width
     const height = props.height
     const x = d => new Date(d['Date'])
@@ -80,8 +80,8 @@ function NationalCurve(props) {
 
                     <Group>
                         <Annotation
-                            x={xScale(x(timeSeries[290]))}
-                            y={yScale(timeSeries[290]['NewConfirmed']) - 30}
+                            x={xScale(x(timeSeries[132]))}
+                            y={yScale(timeSeries[132]['NewConfirmed']) - 30}
                             dx={-40}
                             dy={0}
                             width={100}
@@ -102,8 +102,8 @@ function NationalCurve(props) {
                             />
                         </Annotation>
                         <Annotation
-                            x={xScale(x(timeSeries[169]))}
-                            y={yScale(timeSeries[169]['movingAvg']) - 30}
+                            x={xScale(x(timeSeries[110]))}
+                            y={yScale(timeSeries[110]['movingAvg']) - 30}
                             dx={0}
                             dy={-40}
                             width={200}
@@ -113,11 +113,9 @@ function NationalCurve(props) {
                             <Label
                                 title='ค่าเฉลี่ย 7 วัน'
                                 fontColor='#e0e0e0'
-                                horizontalAnchor='start'
                                 backgroundFill="transparent"
                                 backgroundPadding={0}
                                 titleFontWeight={600}
-                                labelAnchor='start'
                                 titleFontSize={12}
                             />
                         </Annotation>
@@ -140,15 +138,6 @@ function NationalCurve(props) {
                         })}
                     </Group>
 
-                    <LinePath
-                        curve={curveBasis}
-                        data={timeSeries}
-                        x={d => xScale(x(d))}
-                        y={d => yScale(d['movingAvg']) - 30}
-                        stroke='#cf1111'
-                        strokeWidth={2}
-                    />
-
                     {tooltipData &&
                         <Bar
                             x={xScale(x(tooltipData))}
@@ -158,7 +147,14 @@ function NationalCurve(props) {
                             fill='#ff5e6f'
                         />
                     }
-
+                    <LinePath
+                        curve={curveBasis}
+                        data={timeSeries}
+                        x={d => xScale(x(d))}
+                        y={d => yScale(d['movingAvg']) - 30}
+                        stroke='#cf1111'
+                        strokeWidth={2}
+                    />
                     <Group>
                         <AxisBottom
                             top={height - 30}
@@ -182,8 +178,6 @@ function NationalCurve(props) {
                                     const d = timeSeries[index]
                                     if (d) {
                                         const barHeight = (height - yScale(y(d)) ?? 0)
-
-
                                         showTooltip({
                                             tooltipData: d,
                                             tooltipLeft: x,
@@ -216,8 +210,8 @@ function NationalCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['Date']).format('DD MMM')}</b><br />
-                    ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed'].toLocaleString()} ราย
-                </span>
+                        ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed'].toLocaleString()} ราย
+                    </span>
                 </TooltipWithBounds>
             }
         </div>
