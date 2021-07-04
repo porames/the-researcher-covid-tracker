@@ -58,13 +58,13 @@ export function NationalCurve(props) {
                 <Group>
                     <Group>
                         {timeSeries.map((d, i) => {
-                            const barHeight = height - yScale(y(d))
+                            const barHeight = height - yScale(y(d) - d.second_dose)
                             const fullyVaxHeight = height - yScale(d.second_dose)
                             return (
                                 <Group key={i}>
                                     <Bar
                                         x={xScale(x(d))}
-                                        y={height - barHeight - 30}
+                                        y={height - barHeight - fullyVaxHeight - 30}
                                         width={xScale.bandwidth()}
                                         height={barHeight}
                                         fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#9dbbb2'}
