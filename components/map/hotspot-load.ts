@@ -95,7 +95,6 @@ const loader = (map: mapboxgl.Map) => {
     source: "provinces-label",
     "source-layer": "60c4515b1499452793d179a7",
     minzoom: 5.4,
-    maxzoom: 8,
     layout: {
       "text-field": ["get", "PROV_NAMT"],
       "text-font": ["Kanit"],
@@ -109,27 +108,6 @@ const loader = (map: mapboxgl.Map) => {
       "text-halo-blur": 1,
       "text-halo-color": "#424242",
       "text-opacity": ["interpolate", ["linear"], ["zoom"], 7.8, 1],
-    },
-  });
-  map.addLayer({
-    id: "amphoe-label",
-    type: "symbol",
-    source: "cases",
-    "source-layer": "60c452f21499452793d179a8",
-    minzoom: 8,
-    layout: {
-      "text-field": ["get", "A_NAME_T"],
-      "text-font": ["Kanit"],
-      "text-variable-anchor": ["top", "bottom", "left", "right"],
-      "text-radial-offset": 1,
-      "text-justify": "center",
-      "text-size": 14,
-    },
-    paint: {
-      "text-color": "#ffffff",
-      "text-halo-width": 0.8,
-      "text-halo-blur": 1,
-      "text-halo-color": "#424242",
     },
   });
 };

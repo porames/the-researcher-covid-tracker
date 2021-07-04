@@ -62,8 +62,8 @@ export default function Province(props) {
                         }
                     </tbody>
                 </table>
-                <button onClick={() => setShowAll(!showAll)} className='rounded table-toggle'>{showAll ? 'ย่อข้อมูล' : 'ดูทั้งหมด'}</button>
             </div>
+            <button onClick={() => setShowAll(!showAll)} className='rounded table-toggle'>{showAll ? 'ย่อข้อมูล' : 'ดูทั้งหมด'}</button>
         </div>
     )
 }
