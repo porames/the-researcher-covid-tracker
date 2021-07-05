@@ -1,5 +1,5 @@
 {
-  "update_at": "2021-07-04",
+  "update_at": "2021-07-05",
   "data": [
     {
       "name": "กรุงเทพมหานคร",
@@ -7,11 +7,11 @@
       "population": 7859222,
       "registered_population": 5588222,
       ">60-population": 1108912,
-      "coverage": 0.22511719353391468,
-      "total_doses": 3538492,
-      "total-1st-dose": 2690520,
-      "total-2nd-dose": 847972,
-      ">60-total-doses": 476914
+      "coverage": 0.22782923042509806,
+      "total_doses": 3581121,
+      "total-1st-dose": 2726370,
+      "total-2nd-dose": 854751,
+      ">60-total-doses": 486531
     },
     {
       "name": "สมุทรปราการ",
@@ -19,11 +19,11 @@
       "population": 1954479,
       "registered_population": 1351479,
       ">60-population": 214241,
-      "coverage": 0.1082725882447445,
-      "total_doses": 423233,
-      "total-1st-dose": 342419,
-      "total-2nd-dose": 80814,
-      ">60-total-doses": 57299
+      "coverage": 0.11084002437478223,
+      "total_doses": 433269,
+      "total-1st-dose": 351345,
+      "total-2nd-dose": 81924,
+      ">60-total-doses": 59227
     },
     {
       "name": "นนทบุรี",
@@ -31,11 +31,11 @@
       "population": 1627745,
       "registered_population": 1276745,
       ">60-population": 239510,
-      "coverage": 0.13883839299153122,
-      "total_doses": 451987,
-      "total-1st-dose": 315446,
-      "total-2nd-dose": 136541,
-      ">60-total-doses": 60982
+      "coverage": 0.14026091310371097,
+      "total_doses": 456618,
+      "total-1st-dose": 319479,
+      "total-2nd-dose": 137139,
+      ">60-total-doses": 62298
     },
     {
       "name": "ปทุมธานี",
@@ -43,11 +43,11 @@
       "population": 1545412,
       "registered_population": 1176412,
       ">60-population": 175360,
-      "coverage": 0.07218495779766172,
-      "total_doses": 223111,
-      "total-1st-dose": 164970,
-      "total-2nd-dose": 58141,
-      ">60-total-doses": 45592
+      "coverage": 0.07369458759217606,
+      "total_doses": 227777,
+      "total-1st-dose": 169084,
+      "total-2nd-dose": 58693,
+      ">60-total-doses": 46704
     },
     {
       "name": "พระนครศรีอยุธยา",
@@ -55,11 +55,11 @@
       "population": 819088,
       "registered_population": 819088,
       ">60-population": 155143,
-      "coverage": 0.03539363291856309,
-      "total_doses": 57981,
-      "total-1st-dose": 42277,
-      "total-2nd-dose": 15704,
-      ">60-total-doses": 17031
+      "coverage": 0.036482648994979786,
+      "total_doses": 59765,
+      "total-1st-dose": 43323,
+      "total-2nd-dose": 16442,
+      ">60-total-doses": 17831
     },
     {
       "name": "อ่างทอง",
@@ -67,11 +67,11 @@
       "population": 276584,
       "registered_population": 276584,
       ">60-population": 62315,
-      "coverage": 0.04648858936164059,
-      "total_doses": 25716,
-      "total-1st-dose": 17913,
-      "total-2nd-dose": 7803,
-      ">60-total-doses": 5915
+      "coverage": 0.047085153154195473,
+      "total_doses": 26046,
+      "total-1st-dose": 18158,
+      "total-2nd-dose": 7888,
+      ">60-total-doses": 6073
     },
     {
       "name": "ลพบุรี",
@@ -79,11 +79,11 @@
       "population": 742928,
       "registered_population": 742928,
       ">60-population": 146807,
-      "coverage": 0.03269899640341998,
-      "total_doses": 48586,
-      "total-1st-dose": 34772,
-      "total-2nd-dose": 13814,
-      ">60-total-doses": 13821
+      "coverage": 0.03320779402580062,
+      "total_doses": 49342,
+      "total-1st-dose": 35166,
+      "total-2nd-dose": 14176,
+      ">60-total-doses": 14181
     },
     {
       "name": "สิงห์บุรี",
@@ -91,11 +91,11 @@
       "population": 205898,
       "registered_population": 205898,
       ">60-population": 49921,
-      "coverage": 0.05292183508339081,
-      "total_doses": 21793,
-      "total-1st-dose": 16284,
-      "total-2nd-dose": 5509,
-      ">60-total-doses": 7183
+      "coverage": 0.05405103497848449,
+      "total_doses": 22258,
+      "total-1st-dose": 16672,
+      "total-2nd-dose": 5586,
+      ">60-total-doses": 7487
     },
     {
       "name": "ชัยนาท",
@@ -103,10 +103,10 @@
       "population": 322477,
       "registered_population": 322477,
       ">60-population": 74901,
-      "coverage": 0.03006726061083426,
-      "total_doses": 19392,
-      "total-1st-dose": 14308,
-      "total-2nd-dose": 5084,
+      "coverage": 0.03020680544658999,
+      "total_doses": 19482,
+      "total-1st-dose": 14395,
+      "total-2nd-dose": 5087,
       ">60-total-doses": 5460
     },
     {
@@ -115,11 +115,11 @@
       "population": 643828,
       "registered_population": 643828,
       ">60-population": 112257,
-      "coverage": 0.0496615555707425,
-      "total_doses": 63947,
-      "total-1st-dose": 42324,
-      "total-2nd-dose": 21623,
-      ">60-total-doses": 14230
+      "coverage": 0.05015702951720025,
+      "total_doses": 64585,
+      "total-1st-dose": 42859,
+      "total-2nd-dose": 21726,
+      ">60-total-doses": 14440
     },
     {
       "name": "ชลบุรี",
@@ -127,11 +127,11 @@
       "population": 2077885,
       "registered_population": 1566885,
       ">60-population": 216726,
-      "coverage": 0.073318061394158,
-      "total_doses": 304693,
-      "total-1st-dose": 205291,
-      "total-2nd-dose": 99402,
-      ">60-total-doses": 42652
+      "coverage": 0.07417758923135785,
+      "total_doses": 308265,
+      "total-1st-dose": 205423,
+      "total-2nd-dose": 102842,
+      ">60-total-doses": 44510
     },
     {
       "name": "ระยอง",
@@ -139,11 +139,11 @@
       "population": 975524,
       "registered_population": 741524,
       ">60-population": 99566,
-      "coverage": 0.05117711096805409,
-      "total_doses": 99849,
-      "total-1st-dose": 73203,
-      "total-2nd-dose": 26646,
-      ">60-total-doses": 15562
+      "coverage": 0.05201614721934058,
+      "total_doses": 101486,
+      "total-1st-dose": 74821,
+      "total-2nd-dose": 26665,
+      ">60-total-doses": 16324
     },
     {
       "name": "จันทบุรี",
@@ -151,11 +151,11 @@
       "population": 535559,
       "registered_population": 535559,
       ">60-population": 99809,
-      "coverage": 0.06562302192662246,
-      "total_doses": 70290,
-      "total-1st-dose": 54802,
-      "total-2nd-dose": 15488,
-      ">60-total-doses": 14208
+      "coverage": 0.06684604310636176,
+      "total_doses": 71600,
+      "total-1st-dose": 55938,
+      "total-2nd-dose": 15662,
+      ">60-total-doses": 14466
     },
     {
       "name": "ตราด",
@@ -163,11 +163,11 @@
       "population": 228536,
       "registered_population": 228536,
       ">60-population": 41300,
-      "coverage": 0.05090226485105191,
-      "total_doses": 23266,
-      "total-1st-dose": 17922,
-      "total-2nd-dose": 5344,
-      ">60-total-doses": 4740
+      "coverage": 0.05135733538698498,
+      "total_doses": 23474,
+      "total-1st-dose": 18098,
+      "total-2nd-dose": 5376,
+      ">60-total-doses": 4819
     },
     {
       "name": "ฉะเชิงเทรา",
@@ -175,11 +175,11 @@
       "population": 720718,
       "registered_population": 720718,
       ">60-population": 126675,
-      "coverage": 0.08387399787434198,
-      "total_doses": 120899,
-      "total-1st-dose": 103063,
-      "total-2nd-dose": 17836,
-      ">60-total-doses": 18379
+      "coverage": 0.08619598788985429,
+      "total_doses": 124246,
+      "total-1st-dose": 104956,
+      "total-2nd-dose": 19290,
+      ">60-total-doses": 19215
     },
     {
       "name": "ปราจีนบุรี",
@@ -187,11 +187,11 @@
       "population": 493670,
       "registered_population": 493670,
       ">60-population": 84339,
-      "coverage": 0.04158648489881905,
-      "total_doses": 41060,
-      "total-1st-dose": 31473,
-      "total-2nd-dose": 9587,
-      ">60-total-doses": 11848
+      "coverage": 0.042826179431604106,
+      "total_doses": 42284,
+      "total-1st-dose": 32692,
+      "total-2nd-dose": 9592,
+      ">60-total-doses": 12398
     },
     {
       "name": "นครนายก",
@@ -199,11 +199,11 @@
       "population": 260081,
       "registered_population": 260081,
       ">60-population": 52395,
-      "coverage": 0.07070297330447053,
-      "total_doses": 36777,
-      "total-1st-dose": 26358,
-      "total-2nd-dose": 10419,
-      ">60-total-doses": 9495
+      "coverage": 0.07312721805898932,
+      "total_doses": 38038,
+      "total-1st-dose": 27425,
+      "total-2nd-dose": 10613,
+      ">60-total-doses": 10123
     },
     {
       "name": "สระแก้ว",
@@ -211,11 +211,11 @@
       "population": 560925,
       "registered_population": 560925,
       ">60-population": 86405,
-      "coverage": 0.057391808173998304,
-      "total_doses": 64385,
-      "total-1st-dose": 49770,
-      "total-2nd-dose": 14615,
-      ">60-total-doses": 9299
+      "coverage": 0.059583723314168564,
+      "total_doses": 66844,
+      "total-1st-dose": 51478,
+      "total-2nd-dose": 15366,
+      ">60-total-doses": 10012
     },
     {
       "name": "ราชบุรี",
@@ -223,11 +223,11 @@
       "population": 869313,
       "registered_population": 869313,
       ">60-population": 167016,
-      "coverage": 0.03343732349567992,
-      "total_doses": 58135,
-      "total-1st-dose": 44170,
-      "total-2nd-dose": 13965,
-      ">60-total-doses": 15870
+      "coverage": 0.03438059709218659,
+      "total_doses": 59775,
+      "total-1st-dose": 44961,
+      "total-2nd-dose": 14814,
+      ">60-total-doses": 16359
     },
     {
       "name": "กาญจนบุรี",
@@ -235,11 +235,11 @@
       "population": 891976,
       "registered_population": 891976,
       ">60-population": 137572,
-      "coverage": 0.022570113994098497,
-      "total_doses": 40264,
-      "total-1st-dose": 29427,
-      "total-2nd-dose": 10837,
-      ">60-total-doses": 10049
+      "coverage": 0.02329042485448039,
+      "total_doses": 41549,
+      "total-1st-dose": 30225,
+      "total-2nd-dose": 11324,
+      ">60-total-doses": 10348
     },
     {
       "name": "สุพรรณบุรี",
@@ -247,11 +247,11 @@
       "population": 838628,
       "registered_population": 838628,
       ">60-population": 175302,
-      "coverage": 0.03262352318310383,
-      "total_doses": 54718,
-      "total-1st-dose": 41095,
-      "total-2nd-dose": 13623,
-      ">60-total-doses": 13015
+      "coverage": 0.032810733722222485,
+      "total_doses": 55032,
+      "total-1st-dose": 41406,
+      "total-2nd-dose": 13626,
+      ">60-total-doses": 13081
     },
     {
       "name": "นครปฐม",
@@ -259,11 +259,11 @@
       "population": 1137729,
       "registered_population": 920729,
       ">60-population": 164646,
-      "coverage": 0.04084012976728202,
-      "total_doses": 92930,
-      "total-1st-dose": 69849,
-      "total-2nd-dose": 23081,
-      ">60-total-doses": 14299
+      "coverage": 0.04183509429749967,
+      "total_doses": 95194,
+      "total-1st-dose": 71709,
+      "total-2nd-dose": 23485,
+      ">60-total-doses": 14753
     },
     {
       "name": "สมุทรสาคร",
@@ -271,11 +271,11 @@
       "population": 991199,
       "registered_population": 586199,
       ">60-population": 91464,
-      "coverage": 0.15718639748425897,
-      "total_doses": 311606,
-      "total-1st-dose": 195866,
-      "total-2nd-dose": 115740,
-      ">60-total-doses": 41877
+      "coverage": 0.16036789786914635,
+      "total_doses": 317913,
+      "total-1st-dose": 200491,
+      "total-2nd-dose": 117422,
+      ">60-total-doses": 42521
     },
     {
       "name": "สมุทรสงคราม",
@@ -283,10 +283,10 @@
       "population": 192052,
       "registered_population": 192052,
       ">60-population": 44569,
-      "coverage": 0.06210036865015725,
-      "total_doses": 23853,
+      "coverage": 0.06210557557328224,
+      "total_doses": 23855,
       "total-1st-dose": 16672,
-      "total-2nd-dose": 7181,
+      "total-2nd-dose": 7183,
       ">60-total-doses": 6216
     },
     {
@@ -295,11 +295,11 @@
       "population": 482193,
       "registered_population": 482193,
       ">60-population": 93990,
-      "coverage": 0.09303639828865205,
-      "total_doses": 89723,
-      "total-1st-dose": 70014,
-      "total-2nd-dose": 19709,
-      ">60-total-doses": 15248
+      "coverage": 0.0948043625685151,
+      "total_doses": 91428,
+      "total-1st-dose": 70573,
+      "total-2nd-dose": 20855,
+      ">60-total-doses": 15709
     },
     {
       "name": "ประจวบคีรีขันธ์",
@@ -307,11 +307,11 @@
       "population": 550678,
       "registered_population": 550678,
       ">60-population": 93313,
-      "coverage": 0.06506615481279442,
-      "total_doses": 71661,
-      "total-1st-dose": 48727,
+      "coverage": 0.06567903566149365,
+      "total_doses": 72336,
+      "total-1st-dose": 49402,
       "total-2nd-dose": 22934,
-      ">60-total-doses": 12766
+      ">60-total-doses": 13005
     },
     {
       "name": "เชียงใหม่",
@@ -319,11 +319,11 @@
       "population": 1784370,
       "registered_population": 1784370,
       ">60-population": 349970,
-      "coverage": 0.059077153280989926,
-      "total_doses": 210831,
-      "total-1st-dose": 143371,
-      "total-2nd-dose": 67460,
-      ">60-total-doses": 45409
+      "coverage": 0.0607659846332319,
+      "total_doses": 216858,
+      "total-1st-dose": 146747,
+      "total-2nd-dose": 70111,
+      ">60-total-doses": 47513
     },
     {
       "name": "ลำพูน",
@@ -331,11 +331,11 @@
       "population": 402011,
       "registered_population": 402011,
       ">60-population": 96805,
-      "coverage": 0.031403369559539415,
-      "total_doses": 25249,
-      "total-1st-dose": 18651,
+      "coverage": 0.03161107531883456,
+      "total_doses": 25416,
+      "total-1st-dose": 18818,
       "total-2nd-dose": 6598,
-      ">60-total-doses": 6719
+      ">60-total-doses": 6819
     },
     {
       "name": "ลำปาง",
@@ -343,11 +343,11 @@
       "population": 728964,
       "registered_population": 728964,
       ">60-population": 177899,
-      "coverage": 0.030075559286878363,
-      "total_doses": 43848,
-      "total-1st-dose": 30613,
-      "total-2nd-dose": 13235,
-      ">60-total-doses": 10504
+      "coverage": 0.03040890908192997,
+      "total_doses": 44334,
+      "total-1st-dose": 31098,
+      "total-2nd-dose": 13236,
+      ">60-total-doses": 10758
     },
     {
       "name": "อุตรดิตถ์",
@@ -355,11 +355,11 @@
       "population": 448745,
       "registered_population": 448745,
       ">60-population": 99336,
-      "coverage": 0.032670001894171526,
-      "total_doses": 29321,
-      "total-1st-dose": 21641,
-      "total-2nd-dose": 7680,
-      ">60-total-doses": 7856
+      "coverage": 0.03291178731796455,
+      "total_doses": 29538,
+      "total-1st-dose": 21795,
+      "total-2nd-dose": 7743,
+      ">60-total-doses": 7932
     },
     {
       "name": "แพร่",
@@ -367,11 +367,11 @@
       "population": 437350,
       "registered_population": 437350,
       ">60-population": 104954,
-      "coverage": 0.028492054418657826,
-      "total_doses": 24922,
-      "total-1st-dose": 18707,
-      "total-2nd-dose": 6215,
-      ">60-total-doses": 5100
+      "coverage": 0.02897907854121413,
+      "total_doses": 25348,
+      "total-1st-dose": 19061,
+      "total-2nd-dose": 6287,
+      ">60-total-doses": 5230
     },
     {
       "name": "น่าน",
@@ -379,11 +379,11 @@
       "population": 476727,
       "registered_population": 476727,
       ">60-population": 98389,
-      "coverage": 0.02724095761305737,
-      "total_doses": 25973,
-      "total-1st-dose": 18838,
-      "total-2nd-dose": 7135,
-      ">60-total-doses": 5438
+      "coverage": 0.027733902212377315,
+      "total_doses": 26443,
+      "total-1st-dose": 19304,
+      "total-2nd-dose": 7139,
+      ">60-total-doses": 5633
     },
     {
       "name": "พะเยา",
@@ -391,11 +391,11 @@
       "population": 467356,
       "registered_population": 467356,
       ">60-population": 104517,
-      "coverage": 0.03585382449353384,
-      "total_doses": 33513,
-      "total-1st-dose": 23712,
-      "total-2nd-dose": 9801,
-      ">60-total-doses": 6258
+      "coverage": 0.03632562757298505,
+      "total_doses": 33954,
+      "total-1st-dose": 23806,
+      "total-2nd-dose": 10148,
+      ">60-total-doses": 6409
     },
     {
       "name": "เชียงราย",
@@ -403,11 +403,11 @@
       "population": 1295026,
       "registered_population": 1295026,
       ">60-population": 238087,
-      "coverage": 0.043342373048880875,
-      "total_doses": 112259,
-      "total-1st-dose": 92845,
-      "total-2nd-dose": 19414,
-      ">60-total-doses": 34600
+      "coverage": 0.044469377448792535,
+      "total_doses": 115178,
+      "total-1st-dose": 95504,
+      "total-2nd-dose": 19674,
+      ">60-total-doses": 36250
     },
     {
       "name": "แม่ฮ่องสอน",
@@ -415,11 +415,11 @@
       "population": 284549,
       "registered_population": 284549,
       ">60-population": 34458,
-      "coverage": 0.03325262081398986,
-      "total_doses": 18924,
-      "total-1st-dose": 12736,
-      "total-2nd-dose": 6188,
-      ">60-total-doses": 3286
+      "coverage": 0.033741113129900295,
+      "total_doses": 19202,
+      "total-1st-dose": 12937,
+      "total-2nd-dose": 6265,
+      ">60-total-doses": 3386
     },
     {
       "name": "นครสวรรค์",
@@ -427,11 +427,11 @@
       "population": 1040308,
       "registered_population": 1040308,
       ">60-population": 218041,
-      "coverage": 0.02831036577628933,
-      "total_doses": 58903,
-      "total-1st-dose": 43678,
-      "total-2nd-dose": 15225,
-      ">60-total-doses": 16616
+      "coverage": 0.028592493761462952,
+      "total_doses": 59490,
+      "total-1st-dose": 44219,
+      "total-2nd-dose": 15271,
+      ">60-total-doses": 16925
     },
     {
       "name": "อุทัยธานี",
@@ -439,11 +439,11 @@
       "population": 325868,
       "registered_population": 325868,
       ">60-population": 67296,
-      "coverage": 0.03958351234242086,
-      "total_doses": 25798,
-      "total-1st-dose": 17274,
-      "total-2nd-dose": 8524,
-      ">60-total-doses": 4446
+      "coverage": 0.04088465268145384,
+      "total_doses": 26646,
+      "total-1st-dose": 18033,
+      "total-2nd-dose": 8613,
+      ">60-total-doses": 4808
     },
     {
       "name": "กำแพงเพชร",
@@ -451,11 +451,11 @@
       "population": 714118,
       "registered_population": 714118,
       ">60-population": 131769,
-      "coverage": 0.024797722505244233,
-      "total_doses": 35417,
-      "total-1st-dose": 26341,
-      "total-2nd-dose": 9076,
-      ">60-total-doses": 5870
+      "coverage": 0.025402664545635317,
+      "total_doses": 36281,
+      "total-1st-dose": 26526,
+      "total-2nd-dose": 9755,
+      ">60-total-doses": 6012
     },
     {
       "name": "ตาก",
@@ -463,11 +463,11 @@
       "population": 670265,
       "registered_population": 670265,
       ">60-population": 79826,
-      "coverage": 0.10470783943664073,
-      "total_doses": 140364,
-      "total-1st-dose": 88906,
-      "total-2nd-dose": 51458,
-      ">60-total-doses": 21443
+      "coverage": 0.10498608759222099,
+      "total_doses": 140737,
+      "total-1st-dose": 89061,
+      "total-2nd-dose": 51676,
+      ">60-total-doses": 21470
     },
     {
       "name": "สุโขทัย",
@@ -475,11 +475,11 @@
       "population": 587883,
       "registered_population": 587883,
       ">60-population": 124307,
-      "coverage": 0.0320446415358158,
-      "total_doses": 37677,
-      "total-1st-dose": 28556,
-      "total-2nd-dose": 9121,
-      ">60-total-doses": 11433
+      "coverage": 0.03289004784965716,
+      "total_doses": 38671,
+      "total-1st-dose": 29066,
+      "total-2nd-dose": 9605,
+      ">60-total-doses": 11986
     },
     {
       "name": "พิษณุโลก",
@@ -487,11 +487,11 @@
       "population": 849481,
       "registered_population": 849481,
       ">60-population": 167018,
-      "coverage": 0.03504551602684463,
-      "total_doses": 59541,
-      "total-1st-dose": 46664,
-      "total-2nd-dose": 12877,
-      ">60-total-doses": 18324
+      "coverage": 0.035522866314844005,
+      "total_doses": 60352,
+      "total-1st-dose": 47318,
+      "total-2nd-dose": 13034,
+      ">60-total-doses": 18847
     },
     {
       "name": "พิจิตร",
@@ -499,11 +499,11 @@
       "population": 532310,
       "registered_population": 532310,
       ">60-population": 113617,
-      "coverage": 0.031207379158760873,
-      "total_doses": 33224,
-      "total-1st-dose": 24974,
-      "total-2nd-dose": 8250,
-      ">60-total-doses": 9455
+      "coverage": 0.0313689391519979,
+      "total_doses": 33396,
+      "total-1st-dose": 25057,
+      "total-2nd-dose": 8339,
+      ">60-total-doses": 9507
     },
     {
       "name": "เพชรบูรณ์",
@@ -511,11 +511,11 @@
       "population": 981940,
       "registered_population": 981940,
       ">60-population": 184662,
-      "coverage": 0.03093518952278143,
-      "total_doses": 60753,
-      "total-1st-dose": 44671,
-      "total-2nd-dose": 16082,
-      ">60-total-doses": 12177
+      "coverage": 0.031340509603438094,
+      "total_doses": 61549,
+      "total-1st-dose": 45439,
+      "total-2nd-dose": 16110,
+      ">60-total-doses": 12605
     },
     {
       "name": "นครราชสีมา",
@@ -523,11 +523,11 @@
       "population": 2633207,
       "registered_population": 2633207,
       ">60-population": 473644,
-      "coverage": 0.055702419141374,
-      "total_doses": 293352,
-      "total-1st-dose": 181013,
-      "total-2nd-dose": 112339,
-      ">60-total-doses": 35224
+      "coverage": 0.05624529328685515,
+      "total_doses": 296211,
+      "total-1st-dose": 183806,
+      "total-2nd-dose": 112405,
+      ">60-total-doses": 36560
     },
     {
       "name": "บุรีรัมย์",
@@ -535,11 +535,11 @@
       "population": 1581184,
       "registered_population": 1581184,
       ">60-population": 261669,
-      "coverage": 0.0882066856229256,
-      "total_doses": 278942,
-      "total-1st-dose": 176420,
-      "total-2nd-dose": 102522,
-      ">60-total-doses": 25464
+      "coverage": 0.08864496478588198,
+      "total_doses": 280328,
+      "total-1st-dose": 177505,
+      "total-2nd-dose": 102823,
+      ">60-total-doses": 25667
     },
     {
       "name": "สุรินทร์",
@@ -547,11 +547,11 @@
       "population": 1378221,
       "registered_population": 1378221,
       ">60-population": 233749,
-      "coverage": 0.024691613318908942,
-      "total_doses": 68061,
-      "total-1st-dose": 49814,
-      "total-2nd-dose": 18247,
-      ">60-total-doses": 9859
+      "coverage": 0.025183914626173885,
+      "total_doses": 69418,
+      "total-1st-dose": 50576,
+      "total-2nd-dose": 18842,
+      ">60-total-doses": 10454
     },
     {
       "name": "ศรีสะเกษ",
@@ -559,11 +559,11 @@
       "population": 1458580,
       "registered_population": 1458580,
       ">60-population": 242643,
-      "coverage": 0.024019594400032908,
-      "total_doses": 70069,
-      "total-1st-dose": 51600,
-      "total-2nd-dose": 18469,
-      ">60-total-doses": 16330
+      "coverage": 0.024539620727008462,
+      "total_doses": 71586,
+      "total-1st-dose": 52243,
+      "total-2nd-dose": 19343,
+      ">60-total-doses": 16790
     },
     {
       "name": "อุบลราชธานี",
@@ -571,11 +571,11 @@
       "population": 1866697,
       "registered_population": 1866697,
       ">60-population": 289179,
-      "coverage": 0.027645086481630388,
-      "total_doses": 103210,
-      "total-1st-dose": 78186,
-      "total-2nd-dose": 25024,
-      ">60-total-doses": 18959
+      "coverage": 0.028003205662193702,
+      "total_doses": 104547,
+      "total-1st-dose": 78837,
+      "total-2nd-dose": 25710,
+      ">60-total-doses": 19365
     },
     {
       "name": "ยโสธร",
@@ -583,11 +583,11 @@
       "population": 534500,
       "registered_population": 534500,
       ">60-population": 94795,
-      "coverage": 0.02732553788587465,
-      "total_doses": 29211,
-      "total-1st-dose": 21460,
-      "total-2nd-dose": 7751,
-      ">60-total-doses": 5022
+      "coverage": 0.02743311506080449,
+      "total_doses": 29326,
+      "total-1st-dose": 21573,
+      "total-2nd-dose": 7753,
+      ">60-total-doses": 5097
     },
     {
       "name": "ชัยภูมิ",
@@ -595,11 +595,11 @@
       "population": 1124924,
       "registered_population": 1124924,
       ">60-population": 211898,
-      "coverage": 0.029277533415590744,
-      "total_doses": 65870,
-      "total-1st-dose": 47880,
-      "total-2nd-dose": 17990,
-      ">60-total-doses": 12991
+      "coverage": 0.02976067716574631,
+      "total_doses": 66957,
+      "total-1st-dose": 48074,
+      "total-2nd-dose": 18883,
+      ">60-total-doses": 13203
     },
     {
       "name": "อำนาจเจริญ",
@@ -607,11 +607,11 @@
       "population": 376195,
       "registered_population": 376195,
       ">60-population": 62492,
-      "coverage": 0.039337311766504075,
-      "total_doses": 29597,
-      "total-1st-dose": 23765,
-      "total-2nd-dose": 5832,
-      ">60-total-doses": 6091
+      "coverage": 0.0404391339597815,
+      "total_doses": 30426,
+      "total-1st-dose": 24390,
+      "total-2nd-dose": 6036,
+      ">60-total-doses": 6309
     },
     {
       "name": "บึงกาฬ",
@@ -619,11 +619,11 @@
       "population": 422042,
       "registered_population": 422042,
       ">60-population": 60389,
-      "coverage": 0.030098900109467776,
-      "total_doses": 25406,
-      "total-1st-dose": 18268,
-      "total-2nd-dose": 7138,
-      ">60-total-doses": 4701
+      "coverage": 0.030447206676112806,
+      "total_doses": 25700,
+      "total-1st-dose": 18269,
+      "total-2nd-dose": 7431,
+      ">60-total-doses": 4707
     },
     {
       "name": "หนองบัวลำภู",
@@ -643,11 +643,11 @@
       "population": 1794531,
       "registered_population": 1794531,
       ">60-population": 326053,
-      "coverage": 0.030166934981897778,
-      "total_doses": 108271,
-      "total-1st-dose": 76695,
-      "total-2nd-dose": 31576,
-      ">60-total-doses": 20207
+      "coverage": 0.030602146187499686,
+      "total_doses": 109833,
+      "total-1st-dose": 77920,
+      "total-2nd-dose": 31913,
+      ">60-total-doses": 20472
     },
     {
       "name": "อุดรธานี",
@@ -655,11 +655,11 @@
       "population": 1567983,
       "registered_population": 1567983,
       ">60-population": 245343,
-      "coverage": 0.03200608680068598,
-      "total_doses": 100370,
-      "total-1st-dose": 68265,
-      "total-2nd-dose": 32105,
-      ">60-total-doses": 14415
+      "coverage": 0.032046903569745336,
+      "total_doses": 100498,
+      "total-1st-dose": 68380,
+      "total-2nd-dose": 32118,
+      ">60-total-doses": 14422
     },
     {
       "name": "เลย",
@@ -667,11 +667,11 @@
       "population": 638736,
       "registered_population": 638736,
       ">60-population": 116590,
-      "coverage": 0.029333715337792138,
-      "total_doses": 37473,
-      "total-1st-dose": 27805,
-      "total-2nd-dose": 9668,
-      ">60-total-doses": 6790
+      "coverage": 0.030091461887227274,
+      "total_doses": 38441,
+      "total-1st-dose": 27817,
+      "total-2nd-dose": 10624,
+      ">60-total-doses": 6874
     },
     {
       "name": "หนองคาย",
@@ -679,11 +679,11 @@
       "population": 517435,
       "registered_population": 517435,
       ">60-population": 84533,
-      "coverage": 0.0675389179317209,
-      "total_doses": 69894,
-      "total-1st-dose": 57840,
-      "total-2nd-dose": 12054,
-      ">60-total-doses": 12446
+      "coverage": 0.06863567404601544,
+      "total_doses": 71029,
+      "total-1st-dose": 58633,
+      "total-2nd-dose": 12396,
+      ">60-total-doses": 12627
     },
     {
       "name": "มหาสารคาม",
@@ -691,11 +691,11 @@
       "population": 953660,
       "registered_population": 953660,
       ">60-population": 170986,
-      "coverage": 0.025993540674873646,
-      "total_doses": 49578,
-      "total-1st-dose": 36871,
-      "total-2nd-dose": 12707,
-      ">60-total-doses": 10800
+      "coverage": 0.026420317513579265,
+      "total_doses": 50392,
+      "total-1st-dose": 37540,
+      "total-2nd-dose": 12852,
+      ">60-total-doses": 11084
     },
     {
       "name": "ร้อยเอ็ด",
@@ -703,11 +703,11 @@
       "population": 1298640,
       "registered_population": 1298640,
       ">60-population": 232664,
-      "coverage": 0.026865028029322984,
-      "total_doses": 69776,
-      "total-1st-dose": 48679,
-      "total-2nd-dose": 21097,
-      ">60-total-doses": 10190
+      "coverage": 0.02748413725127826,
+      "total_doses": 71384,
+      "total-1st-dose": 50189,
+      "total-2nd-dose": 21195,
+      ">60-total-doses": 10565
     },
     {
       "name": "กาฬสินธุ์",
@@ -715,11 +715,11 @@
       "population": 977175,
       "registered_population": 977175,
       ">60-population": 164502,
-      "coverage": 0.024219817330570267,
-      "total_doses": 47334,
-      "total-1st-dose": 33521,
-      "total-2nd-dose": 13813,
-      ">60-total-doses": 9397
+      "coverage": 0.024459794816690972,
+      "total_doses": 47803,
+      "total-1st-dose": 33959,
+      "total-2nd-dose": 13844,
+      ">60-total-doses": 9589
     },
     {
       "name": "สกลนคร",
@@ -727,11 +727,11 @@
       "population": 1146936,
       "registered_population": 1146936,
       ">60-population": 171997,
-      "coverage": 0.02679094561509971,
-      "total_doses": 61455,
-      "total-1st-dose": 44785,
-      "total-2nd-dose": 16670,
-      ">60-total-doses": 12641
+      "coverage": 0.028306723304526146,
+      "total_doses": 64932,
+      "total-1st-dose": 44809,
+      "total-2nd-dose": 20123,
+      ">60-total-doses": 12673
     },
     {
       "name": "นครพนม",
@@ -739,11 +739,11 @@
       "population": 717201,
       "registered_population": 717201,
       ">60-population": 109302,
-      "coverage": 0.03186902974201096,
-      "total_doses": 45713,
-      "total-1st-dose": 32316,
-      "total-2nd-dose": 13397,
-      ">60-total-doses": 10430
+      "coverage": 0.03197569440087228,
+      "total_doses": 45866,
+      "total-1st-dose": 32439,
+      "total-2nd-dose": 13427,
+      ">60-total-doses": 10538
     },
     {
       "name": "มุกดาหาร",
@@ -751,11 +751,11 @@
       "population": 350911,
       "registered_population": 350911,
       ">60-population": 52780,
-      "coverage": 0.08431197654106026,
-      "total_doses": 59172,
-      "total-1st-dose": 45898,
-      "total-2nd-dose": 13274,
-      ">60-total-doses": 8872
+      "coverage": 0.08521248977661003,
+      "total_doses": 59804,
+      "total-1st-dose": 46526,
+      "total-2nd-dose": 13278,
+      ">60-total-doses": 8976
     },
     {
       "name": "นครศรีธรรมราช",
@@ -763,11 +763,11 @@
       "population": 1550721,
       "registered_population": 1550721,
       ">60-population": 276533,
-      "coverage": 0.034237622370497336,
-      "total_doses": 106186,
-      "total-1st-dose": 84141,
-      "total-2nd-dose": 22045,
-      ">60-total-doses": 34797
+      "coverage": 0.034877002375024266,
+      "total_doses": 108169,
+      "total-1st-dose": 84445,
+      "total-2nd-dose": 23724,
+      ">60-total-doses": 35016
     },
     {
       "name": "กระบี่",
@@ -775,11 +775,11 @@
       "population": 477770,
       "registered_population": 477770,
       ">60-population": 59700,
-      "coverage": 0.09246080750151747,
-      "total_doses": 88350,
-      "total-1st-dose": 68911,
-      "total-2nd-dose": 19439,
-      ">60-total-doses": 12696
+      "coverage": 0.09315988864935011,
+      "total_doses": 89018,
+      "total-1st-dose": 69576,
+      "total-2nd-dose": 19442,
+      ">60-total-doses": 12793
     },
     {
       "name": "พังงา",
@@ -787,11 +787,11 @@
       "population": 268229,
       "registered_population": 268229,
       ">60-population": 46146,
-      "coverage": 0.15569345596486583,
-      "total_doses": 83523,
-      "total-1st-dose": 67956,
-      "total-2nd-dose": 15567,
-      ">60-total-doses": 20940
+      "coverage": 0.1563496117123801,
+      "total_doses": 83875,
+      "total-1st-dose": 68038,
+      "total-2nd-dose": 15837,
+      ">60-total-doses": 20985
     },
     {
       "name": "ภูเก็ต",
@@ -799,11 +799,11 @@
       "population": 562471,
       "registered_population": 414471,
       ">60-population": 48262,
-      "coverage": 0.6207226683686803,
-      "total_doses": 698277,
-      "total-1st-dose": 386899,
-      "total-2nd-dose": 311378,
-      ">60-total-doses": 44200
+      "coverage": 0.621530710027717,
+      "total_doses": 699186,
+      "total-1st-dose": 387769,
+      "total-2nd-dose": 311417,
+      ">60-total-doses": 44218
     },
     {
       "name": "สุราษฎร์ธานี",
@@ -811,11 +811,11 @@
       "population": 1067726,
       "registered_population": 1067726,
       ">60-population": 164938,
-      "coverage": 0.10958335752805495,
-      "total_doses": 234010,
-      "total-1st-dose": 162984,
-      "total-2nd-dose": 71026,
-      ">60-total-doses": 35377
+      "coverage": 0.11089455534472327,
+      "total_doses": 236810,
+      "total-1st-dose": 165613,
+      "total-2nd-dose": 71197,
+      ">60-total-doses": 36432
     },
     {
       "name": "ระนอง",
@@ -823,11 +823,11 @@
       "population": 194372,
       "registered_population": 194372,
       ">60-population": 28289,
-      "coverage": 0.19965838701047475,
-      "total_doses": 77616,
-      "total-1st-dose": 62746,
-      "total-2nd-dose": 14870,
-      ">60-total-doses": 14038
+      "coverage": 0.20153108472413722,
+      "total_doses": 78344,
+      "total-1st-dose": 63445,
+      "total-2nd-dose": 14899,
+      ">60-total-doses": 14061
     },
     {
       "name": "ชุมพร",
@@ -835,11 +835,11 @@
       "population": 509208,
       "registered_population": 509208,
       ">60-population": 91744,
-      "coverage": 0.036782611427943,
-      "total_doses": 37460,
-      "total-1st-dose": 28848,
-      "total-2nd-dose": 8612,
-      ">60-total-doses": 11691
+      "coverage": 0.03777140186328573,
+      "total_doses": 38467,
+      "total-1st-dose": 29503,
+      "total-2nd-dose": 8964,
+      ">60-total-doses": 12110
     },
     {
       "name": "สงขลา",
@@ -847,11 +847,11 @@
       "population": 1428609,
       "registered_population": 1428609,
       ">60-population": 229680,
-      "coverage": 0.05167824086226532,
-      "total_doses": 147656,
-      "total-1st-dose": 109766,
-      "total-2nd-dose": 37890,
-      ">60-total-doses": 40513
+      "coverage": 0.053260899238350035,
+      "total_doses": 152178,
+      "total-1st-dose": 113536,
+      "total-2nd-dose": 38642,
+      ">60-total-doses": 42610
     },
     {
       "name": "สตูล",
@@ -859,11 +859,11 @@
       "population": 324098,
       "registered_population": 324098,
       ">60-population": 42848,
-      "coverage": 0.05024560472449691,
-      "total_doses": 32569,
-      "total-1st-dose": 21673,
-      "total-2nd-dose": 10896,
-      ">60-total-doses": 4902
+      "coverage": 0.05107097236021203,
+      "total_doses": 33104,
+      "total-1st-dose": 21880,
+      "total-2nd-dose": 11224,
+      ">60-total-doses": 4959
     },
     {
       "name": "ตรัง",
@@ -871,11 +871,11 @@
       "population": 640574,
       "registered_population": 640574,
       ">60-population": 105627,
-      "coverage": 0.037063633553656564,
-      "total_doses": 47484,
-      "total-1st-dose": 36607,
-      "total-2nd-dose": 10877,
-      ">60-total-doses": 11049
+      "coverage": 0.03714949404752613,
+      "total_doses": 47594,
+      "total-1st-dose": 36716,
+      "total-2nd-dose": 10878,
+      ">60-total-doses": 11092
     },
     {
       "name": "พัทลุง",
@@ -883,11 +883,11 @@
       "population": 523077,
       "registered_population": 523077,
       ">60-population": 100108,
-      "coverage": 0.03868742078126165,
-      "total_doses": 40473,
-      "total-1st-dose": 30065,
-      "total-2nd-dose": 10408,
-      ">60-total-doses": 14971
+      "coverage": 0.03927911187071884,
+      "total_doses": 41092,
+      "total-1st-dose": 30394,
+      "total-2nd-dose": 10698,
+      ">60-total-doses": 15319
     },
     {
       "name": "ปัตตานี",
@@ -895,11 +895,11 @@
       "population": 726015,
       "registered_population": 726015,
       ">60-population": 88552,
-      "coverage": 0.03358677162317583,
-      "total_doses": 48769,
-      "total-1st-dose": 36138,
-      "total-2nd-dose": 12631,
-      ">60-total-doses": 7412
+      "coverage": 0.03520588417594678,
+      "total_doses": 51120,
+      "total-1st-dose": 37031,
+      "total-2nd-dose": 14089,
+      ">60-total-doses": 7772
     },
     {
       "name": "ยะลา",
@@ -907,11 +907,11 @@
       "population": 538602,
       "registered_population": 538602,
       ">60-population": 65546,
-      "coverage": 0.03968050619938285,
-      "total_doses": 42744,
-      "total-1st-dose": 30958,
-      "total-2nd-dose": 11786,
-      ">60-total-doses": 7489
+      "coverage": 0.041106419953880605,
+      "total_doses": 44280,
+      "total-1st-dose": 32487,
+      "total-2nd-dose": 11793,
+      ">60-total-doses": 7970
     },
     {
       "name": "นราธิวาส",
@@ -919,11 +919,11 @@
       "population": 804429,
       "registered_population": 804429,
       ">60-population": 94169,
-      "coverage": 0.049947851208745585,
-      "total_doses": 80359,
-      "total-1st-dose": 65141,
-      "total-2nd-dose": 15218,
-      ">60-total-doses": 13422
+      "coverage": 0.05195175708483906,
+      "total_doses": 83583,
+      "total-1st-dose": 68204,
+      "total-2nd-dose": 15379,
+      ">60-total-doses": 13971
     }
   ]
 }
