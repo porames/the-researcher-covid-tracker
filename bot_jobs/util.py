@@ -4,15 +4,20 @@ import pandas as pd
 import numpy as np
 
 
-def get_vaccines(fname):
+def json_load(fname):
     with open(fname, encoding='utf-8') as json_file:
-        json_data = json.load(json_file)
+        return json.load(json_file)
+
+
+def get_population(json_data):
+    return {province["name"]: province["population"] for province in json_data['data']}
+
+
+def get_vaccines(json_data):
     return {province["name"]: round(province["coverage"] * 100, 2) for province in json_data['data']}
 
 
-def get_provinces_name(fname):
-    with open(fname, encoding='utf-8') as json_file:
-        json_data = json.load(json_file)
+def get_provinces_name(json_data):
     return tuple(province["properties"]["PROV_NAMT"] for province in json_data["features"])
 
 
@@ -32,6 +37,5 @@ def get_provinces(data, start):
 
 
 def moving_average(ys, N=7):
-    if len(ys) < N : return []
+    if len(ys) < N: return []
     return np.convolve(np.array(ys), np.ones(N), "valid") / N
-

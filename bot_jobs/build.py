@@ -1,5 +1,7 @@
 from util import *
 
+import json
+import pandas as pd
 import time
 import matplotlib.pyplot as plt
 from pandas.plotting import register_matplotlib_converters
@@ -10,8 +12,10 @@ register_matplotlib_converters()
 data = pd.read_csv('dataset.csv')
 start, end = get_start_end(data)
 provinces = get_provinces(data, start)
-provinces_name = get_provinces_name('../components/gis/geo/th-provinces-centroids.json')
-vaccines = get_vaccines('../components/gis/data/provincial-vaccination-data.json')
+provinces_name = get_provinces_name(json_load('../components/gis/geo/th-provinces-centroids.json'))
+vaccines_data = json_load('../components/gis/data/provincial-vaccination-data.json')
+populations = get_population(vaccines_data)
+vaccines = get_vaccines(vaccines_data)
 
 images = []
 i = 1
@@ -45,15 +49,18 @@ for name in provinces:
             "change": change,
             "total-14days": sum(ys[-14:]),
             "province": name,
-            "vax-coverage": vaccines[name]
+            "vax-coverage": vaccines[name],
+            "population": populations[name],
         })
         i += 1
 
 with open('../components/build_job.json', 'w', encoding='utf-8') as f:
-    data = {'images': images, 'job': {
-        'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
-        'dataset_updated_on': end.strftime("%m/%d/%Y %H:%M")
-    }}
+    data = {'images': images,
+            'job': {
+                'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
+                'dataset_updated_on': end.strftime("%m/%d/%Y %H:%M")
+            },
+            }
     json.dump(data, f)
 
 print('done')
