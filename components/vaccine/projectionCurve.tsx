@@ -14,6 +14,7 @@ import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Text } from '@visx/text'
 import { NationalVaccinationDataProps } from './types'
 import { movingAvg } from './util'
+
 const population = 66186727 * 2 //doses roequired to cover all population (children included)
 
 interface PredictionProps {
@@ -22,6 +23,8 @@ interface PredictionProps {
     estimation: boolean;
     deltaAvg?: number;
     total_doses: number;
+    first_dose?: number;
+    firstDoseAvg?: number;
 }
 
 function generateExtension(ts: PredictionProps[]) {
@@ -52,14 +55,18 @@ function generateExtension(ts: PredictionProps[]) {
 
 function plannedRollout(ts: PredictionProps[]) {
     const startDate = moment(ts[ts.length - 1]['date'])
+    const startDate_120 = moment(ts[ts.length - 1]['date'])
     const goalDate = moment('2021-12-31')
     const eta = goalDate.diff(startDate, 'days')
     const initVaccinated = ts[ts.length - 1]['total_doses']
     const requiredRate = ((50 * 1000 * 1000 * 2) - initVaccinated) / eta
     var planned: PredictionProps[] = []
+    var planned_120: PredictionProps[] = []
     var i = 0
     var predict = 0
+    var predict_120 = 0
     var m50_date = 0
+    var m50_date_120 = 0
 
     while (predict < population) {
         predict = Math.floor(initVaccinated + (requiredRate * i))
@@ -75,6 +82,7 @@ function plannedRollout(ts: PredictionProps[]) {
         })
         i += 1
     }
+    i = 0
     return { planned: planned, m50_date: m50_date, required_rate: requiredRate }
 }
 
@@ -82,6 +90,7 @@ const EstimateCurve = (props) => {
     const { width, height } = props
     let timeSeries: PredictionProps[] = []
     const { moving_aves: vaccinatedAvgs } = movingAvg(data, 'total_doses')
+    const { moving_aves: firstDoseAvgs } = movingAvg(data, 'first_dose')
     const { moving_aves: deltaAvgs } = movingAvg(data, 'daily_vaccinations')
     // not sure if data should be updated?
     data.map((item: NationalVaccinationDataProps, index: number) => {
@@ -89,15 +98,15 @@ const EstimateCurve = (props) => {
             date: item.date,
             estimation: false,
             total_doses: item.total_doses,
+            first_dose: item.first_dose,
             vaccinatedAvg: vaccinatedAvgs[index],
+            firstDoseAvg: firstDoseAvgs[index],
             deltaAvg: deltaAvgs[index]
         })
     })
-
     const generatedData = generateExtension(timeSeries)
     const extension = generatedData.predictions
     const goal = plannedRollout(timeSeries)
-
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
     useEffect(() => {
@@ -127,18 +136,18 @@ const EstimateCurve = (props) => {
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <LinePath
-                        curve={curveBasis}
-                        data={goal['planned']}
-                        x={d => xScale(x(d))}
-                        y={d => yScale(d['vaccinatedAvg']) - 30}
-                        stroke="#ffffff"
-                        strokeWidth={1.4}
-                        strokeDasharray="3,4"
-                    />
                     <Group>
+                        <LinePath
+                            curve={curveBasis}
+                            data={goal['planned']}
+                            x={d => dateScale(x(d))}
+                            y={d => yScale(d['vaccinatedAvg']) - 30}
+                            stroke="#ffffff"
+                            strokeWidth={1.4}
+                            strokeDasharray="3,4"
+                        />
                         <circle
-                            cx={xScale(x(goal['planned'][goal['m50_date']]))}
+                            cx={dateScale(x(goal['planned'][goal['m50_date']]))}
                             cy={yScale(y(goal['planned'][goal['m50_date']])) - 30}
                             r={4}
                             strokeWidth={2}
@@ -146,7 +155,7 @@ const EstimateCurve = (props) => {
                             fill='#242424'
                         />
                         <Text
-                            x={xScale(x(goal['planned'][goal['m50_date']]))}
+                            x={dateScale(x(goal['planned'][goal['m50_date']]))}
                             y={yScale(y(goal['planned'][goal['m50_date']])) - 30}
                             fill='#fff'
                             dx={10}
@@ -161,26 +170,23 @@ const EstimateCurve = (props) => {
                             {`${Math.floor(goal['required_rate']).toLocaleString()} โดส/วัน เพื่อให้ครบ 50 ล้านคน ในสิ้นปี`}
                         </Text>
                     </Group>
-                    <SplitLinePath
-                        segments={dividedData}
-                        x={d => xScale(x(d))}
-                        y={d => yScale(d['vaccinatedAvg']) - 30}
+                    <LinePath
                         curve={curveBasis}
-                        styles={[
-                            { stroke: '#7ea297', strokeWidth: 2 },
-                            { stroke: "#7ea297", strokeWidth: 1.4, strokeDasharray: "3,4" },
-                        ]}
-                    >
-                        {({ segment, styles, index }) =>
-                            <LinePath
-                                data={segment}
-                                x={(d) => d.x || 0}
-                                y={(d) => d.y || 0}
-                                {...styles}
-                            />
-
-                        }
-                    </SplitLinePath>
+                        data={dividedData[0]}
+                        x={d => dateScale(x(d))}
+                        y={d => yScale(d['vaccinatedAvg']) - 30}
+                        stroke="#7ea297"
+                        strokeWidth={2}
+                    />
+                    <LinePath
+                        curve={curveBasis}
+                        data={dividedData[1]}
+                        x={d => dateScale(x(d))}
+                        y={d => yScale(d['vaccinatedAvg']) - 30}
+                        stroke="#7ea297"
+                        strokeWidth={2}
+                        strokeDasharray="3,4"
+                    />
                 </Group>
                 <Group>
                     <GridRows
@@ -232,8 +238,8 @@ const EstimateCurve = (props) => {
 export const Projection = (props) => (
     <div>
         <ParentSize>
-            {({ width, height }) => (
-                <EstimateCurve setEstimation={props.setEstimation} width={width} height={width > 768 ? 350 : 300} />            
+            {({ width }) => (
+                <EstimateCurve setEstimation={props.setEstimation} width={width} height={350} />
             )}
         </ParentSize>
     </div>
