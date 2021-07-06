@@ -17,7 +17,7 @@
   {
     "date": "2021-03-03",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 6817
+    "doses_administered": 6818
   },
   {
     "date": "2021-03-04",
@@ -66,13 +66,13 @@
   },
   {
     "date": "2021-03-12",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 4301
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 11
   },
   {
     "date": "2021-03-12",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 11
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 4301
   },
   {
     "date": "2021-03-13",
@@ -131,13 +131,13 @@
   },
   {
     "date": "2021-03-20",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 2253
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 1935
   },
   {
     "date": "2021-03-20",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 1935
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 2253
   },
   {
     "date": "2021-03-21",
@@ -161,18 +161,13 @@
   },
   {
     "date": "2021-03-23",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 18152
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 1352
   },
   {
     "date": "2021-03-23",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 1351
-  },
-  {
-    "date": "2021-03-24",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 17724
+    "doses_administered": 18152
   },
   {
     "date": "2021-03-24",
@@ -180,14 +175,19 @@
     "doses_administered": 1269
   },
   {
+    "date": "2021-03-24",
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 17725
+  },
+  {
     "date": "2021-03-25",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 11809
+    "doses_administered": 11810
   },
   {
     "date": "2021-03-25",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 2167
+    "doses_administered": 2174
   },
   {
     "date": "2021-03-26",
@@ -211,13 +211,13 @@
   },
   {
     "date": "2021-03-28",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 789
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 1022
   },
   {
     "date": "2021-03-28",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 1022
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 789
   },
   {
     "date": "2021-03-29",
@@ -241,13 +241,13 @@
   },
   {
     "date": "2021-03-31",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 4602
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 5459
   },
   {
     "date": "2021-03-31",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 5459
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 4607
   },
   {
     "date": "2021-04-01",
@@ -257,7 +257,7 @@
   {
     "date": "2021-04-01",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 4906
+    "doses_administered": 4907
   },
   {
     "date": "2021-04-02",
@@ -307,12 +307,12 @@
   {
     "date": "2021-04-06",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 405
+    "doses_administered": 406
   },
   {
     "date": "2021-04-07",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 66175
+    "doses_administered": 66176
   },
   {
     "date": "2021-04-07",
@@ -337,12 +337,12 @@
   {
     "date": "2021-04-09",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 3201
+    "doses_administered": 3202
   },
   {
     "date": "2021-04-10",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 12318
+    "doses_administered": 12320
   },
   {
     "date": "2021-04-10",
@@ -372,7 +372,7 @@
   {
     "date": "2021-04-13",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 48
+    "doses_administered": 50
   },
   {
     "date": "2021-04-13",
@@ -381,23 +381,23 @@
   },
   {
     "date": "2021-04-14",
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 36
+  },
+  {
+    "date": "2021-04-14",
     "manufacturer": "Sinovac Life Sciences",
     "doses_administered": 2094
   },
   {
-    "date": "2021-04-14",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 35
-  },
-  {
     "date": "2021-04-15",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 4635
+    "doses_administered": 4636
   },
   {
     "date": "2021-04-15",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 456
+    "doses_administered": 457
   },
   {
     "date": "2021-04-16",
@@ -407,7 +407,7 @@
   {
     "date": "2021-04-16",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1254
+    "doses_administered": 1256
   },
   {
     "date": "2021-04-17",
@@ -427,7 +427,7 @@
   {
     "date": "2021-04-18",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 11053
+    "doses_administered": 11054
   },
   {
     "date": "2021-04-19",
@@ -437,7 +437,7 @@
   {
     "date": "2021-04-19",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1150
+    "doses_administered": 1152
   },
   {
     "date": "2021-04-20",
@@ -447,7 +447,7 @@
   {
     "date": "2021-04-20",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 611
+    "doses_administered": 612
   },
   {
     "date": "2021-04-21",
@@ -457,7 +457,7 @@
   {
     "date": "2021-04-21",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 129176
+    "doses_administered": 129178
   },
   {
     "date": "2021-04-22",
@@ -467,12 +467,12 @@
   {
     "date": "2021-04-22",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 109129
+    "doses_administered": 109132
   },
   {
     "date": "2021-04-23",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 120377
+    "doses_administered": 120379
   },
   {
     "date": "2021-04-23",
@@ -497,12 +497,12 @@
   {
     "date": "2021-04-26",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 68159
+    "doses_administered": 68161
   },
   {
     "date": "2021-04-26",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 423
+    "doses_administered": 424
   },
   {
     "date": "2021-04-27",
@@ -526,13 +526,13 @@
   },
   {
     "date": "2021-04-29",
-    "manufacturer": "AstraZeneca",
-    "doses_administered": 330
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 67996
   },
   {
     "date": "2021-04-29",
-    "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 67996
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 330
   },
   {
     "date": "2021-04-30",
@@ -582,7 +582,7 @@
   {
     "date": "2021-05-04",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 110
+    "doses_administered": 138
   },
   {
     "date": "2021-05-05",
@@ -592,7 +592,7 @@
   {
     "date": "2021-05-05",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 28343
+    "doses_administered": 28344
   },
   {
     "date": "2021-05-06",
@@ -622,7 +622,7 @@
   {
     "date": "2021-05-08",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 739
+    "doses_administered": 740
   },
   {
     "date": "2021-05-09",
@@ -642,7 +642,7 @@
   {
     "date": "2021-05-10",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 26355
+    "doses_administered": 26356
   },
   {
     "date": "2021-05-11",
@@ -657,7 +657,7 @@
   {
     "date": "2021-05-12",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 128109
+    "doses_administered": 128110
   },
   {
     "date": "2021-05-12",
@@ -667,7 +667,7 @@
   {
     "date": "2021-05-13",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 102055
+    "doses_administered": 102057
   },
   {
     "date": "2021-05-13",
@@ -687,7 +687,7 @@
   {
     "date": "2021-05-15",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 22171
+    "doses_administered": 22172
   },
   {
     "date": "2021-05-15",
@@ -702,7 +702,7 @@
   {
     "date": "2021-05-16",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 17580
+    "doses_administered": 17582
   },
   {
     "date": "2021-05-17",
@@ -717,7 +717,7 @@
   {
     "date": "2021-05-18",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 90492
+    "doses_administered": 90494
   },
   {
     "date": "2021-05-18",
@@ -732,12 +732,12 @@
   {
     "date": "2021-05-19",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 93616
+    "doses_administered": 93622
   },
   {
     "date": "2021-05-20",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 126122
+    "doses_administered": 126126
   },
   {
     "date": "2021-05-20",
@@ -747,12 +747,12 @@
   {
     "date": "2021-05-21",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 173119
+    "doses_administered": 173120
   },
   {
     "date": "2021-05-21",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1296
+    "doses_administered": 1297
   },
   {
     "date": "2021-05-22",
@@ -762,7 +762,7 @@
   {
     "date": "2021-05-22",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 469
+    "doses_administered": 470
   },
   {
     "date": "2021-05-23",
@@ -777,7 +777,7 @@
   {
     "date": "2021-05-24",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 121771
+    "doses_administered": 121773
   },
   {
     "date": "2021-05-24",
@@ -787,7 +787,7 @@
   {
     "date": "2021-05-25",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 434
+    "doses_administered": 440
   },
   {
     "date": "2021-05-25",
@@ -797,7 +797,7 @@
   {
     "date": "2021-05-26",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 65988
+    "doses_administered": 65991
   },
   {
     "date": "2021-05-26",
@@ -807,7 +807,7 @@
   {
     "date": "2021-05-27",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 132637
+    "doses_administered": 133085
   },
   {
     "date": "2021-05-27",
@@ -817,7 +817,7 @@
   {
     "date": "2021-05-28",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 159419
+    "doses_administered": 159590
   },
   {
     "date": "2021-05-28",
@@ -827,17 +827,22 @@
   {
     "date": "2021-05-29",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 58452
+    "doses_administered": 59026
+  },
+  {
+    "date": "2021-05-29",
+    "manufacturer": "Sinopharm",
+    "doses_administered": 1
   },
   {
     "date": "2021-05-29",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1527
+    "doses_administered": 1528
   },
   {
     "date": "2021-05-30",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 46479
+    "doses_administered": 46490
   },
   {
     "date": "2021-05-30",
@@ -852,7 +857,7 @@
   {
     "date": "2021-05-31",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1111
+    "doses_administered": 1115
   },
   {
     "date": "2021-05-31",
@@ -862,22 +867,22 @@
   {
     "date": "2021-05-31",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 81757
+    "doses_administered": 81983
   },
   {
     "date": "2021-06-01",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 86641
+    "doses_administered": 86642
   },
   {
     "date": "2021-06-01",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1245
+    "doses_administered": 1246
   },
   {
     "date": "2021-06-02",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 93716
+    "doses_administered": 93725
   },
   {
     "date": "2021-06-02",
@@ -887,12 +892,12 @@
   {
     "date": "2021-06-02",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 1444
+    "doses_administered": 1446
   },
   {
     "date": "2021-06-03",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 71639
+    "doses_administered": 71644
   },
   {
     "date": "2021-06-03",
@@ -902,7 +907,7 @@
   {
     "date": "2021-06-04",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 162700
+    "doses_administered": 162867
   },
   {
     "date": "2021-06-04",
@@ -917,32 +922,32 @@
   {
     "date": "2021-06-05",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 44061
+    "doses_administered": 44062
   },
   {
     "date": "2021-06-06",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 43408
+    "doses_administered": 43410
   },
   {
     "date": "2021-06-06",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 8302
+    "doses_administered": 8303
   },
   {
     "date": "2021-06-07",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 81661
+    "doses_administered": 81704
   },
   {
     "date": "2021-06-07",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 423722
+    "doses_administered": 423746
   },
   {
     "date": "2021-06-08",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 98220
+    "doses_administered": 98250
   },
   {
     "date": "2021-06-08",
@@ -952,52 +957,52 @@
   {
     "date": "2021-06-08",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 312791
+    "doses_administered": 312800
   },
   {
     "date": "2021-06-09",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 281125
+    "doses_administered": 281132
   },
   {
     "date": "2021-06-09",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 87424
+    "doses_administered": 87489
   },
   {
     "date": "2021-06-10",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 100033
+    "doses_administered": 100059
   },
   {
     "date": "2021-06-10",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 229611
+    "doses_administered": 229615
   },
   {
     "date": "2021-06-11",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 172923
+    "doses_administered": 172932
   },
   {
     "date": "2021-06-11",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 228692
+    "doses_administered": 228698
   },
   {
     "date": "2021-06-12",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 78797
+    "doses_administered": 78801
   },
   {
     "date": "2021-06-12",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 71281
+    "doses_administered": 71283
   },
   {
     "date": "2021-06-13",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 57212
+    "doses_administered": 57215
   },
   {
     "date": "2021-06-13",
@@ -1007,52 +1012,52 @@
   {
     "date": "2021-06-14",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 135113
+    "doses_administered": 135115
   },
   {
     "date": "2021-06-14",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 164734
+    "doses_administered": 164790
   },
   {
     "date": "2021-06-15",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 95160
+    "doses_administered": 95161
   },
   {
     "date": "2021-06-15",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 158328
+    "doses_administered": 158330
   },
   {
     "date": "2021-06-16",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 86368
+    "doses_administered": 86381
   },
   {
     "date": "2021-06-16",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 99442
+    "doses_administered": 99531
   },
   {
     "date": "2021-06-17",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 77839
+    "doses_administered": 77844
   },
   {
     "date": "2021-06-17",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 126935
+    "doses_administered": 126950
   },
   {
     "date": "2021-06-18",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 148740
+    "doses_administered": 148745
   },
   {
     "date": "2021-06-18",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 98069
+    "doses_administered": 98073
   },
   {
     "date": "2021-06-19",
@@ -1062,17 +1067,17 @@
   {
     "date": "2021-06-19",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 62371
+    "doses_administered": 62381
   },
   {
     "date": "2021-06-20",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 48302
+    "doses_administered": 48305
   },
   {
     "date": "2021-06-20",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 36613
+    "doses_administered": 36614
   },
   {
     "date": "2021-06-20",
@@ -1082,27 +1087,27 @@
   {
     "date": "2021-06-21",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 115174
+    "doses_administered": 115180
   },
   {
     "date": "2021-06-21",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 94647
+    "doses_administered": 94675
   },
   {
     "date": "2021-06-22",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 94624
+    "doses_administered": 94626
   },
   {
     "date": "2021-06-22",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 139223
+    "doses_administered": 139274
   },
   {
     "date": "2021-06-23",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 91653
+    "doses_administered": 91666
   },
   {
     "date": "2021-06-23",
@@ -1117,12 +1122,12 @@
   {
     "date": "2021-06-24",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 170784
+    "doses_administered": 170799
   },
   {
     "date": "2021-06-24",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 90288
+    "doses_administered": 90339
   },
   {
     "date": "2021-06-24",
@@ -1137,12 +1142,12 @@
   {
     "date": "2021-06-25",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 119622
+    "doses_administered": 119809
   },
   {
     "date": "2021-06-25",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 173692
+    "doses_administered": 173702
   },
   {
     "date": "2021-06-26",
@@ -1152,131 +1157,146 @@
   {
     "date": "2021-06-26",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 54306
+    "doses_administered": 54308
   },
   {
     "date": "2021-06-26",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 46596
+    "doses_administered": 46597
   },
   {
     "date": "2021-06-27",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 44517
+    "doses_administered": 44519
   },
   {
     "date": "2021-06-27",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 37727
+    "doses_administered": 37731
   },
   {
     "date": "2021-06-27",
     "manufacturer": "Sinopharm",
-    "doses_administered": 3847
+    "doses_administered": 3858
   },
   {
     "date": "2021-06-28",
     "manufacturer": "Sinopharm",
-    "doses_administered": 10849
+    "doses_administered": 11031
   },
   {
     "date": "2021-06-28",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 142727
+    "doses_administered": 142779
   },
   {
     "date": "2021-06-28",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 88731
+    "doses_administered": 88835
   },
   {
     "date": "2021-06-29",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 138970
+    "doses_administered": 139440
   },
   {
     "date": "2021-06-29",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 89615
+    "doses_administered": 89975
   },
   {
     "date": "2021-06-29",
     "manufacturer": "Sinopharm",
-    "doses_administered": 13248
+    "doses_administered": 13493
   },
   {
     "date": "2021-06-30",
     "manufacturer": "Sinopharm",
-    "doses_administered": 17902
+    "doses_administered": 17920
   },
   {
     "date": "2021-06-30",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 82834
+    "doses_administered": 82860
   },
   {
     "date": "2021-06-30",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 159867
+    "doses_administered": 160031
   },
   {
     "date": "2021-07-01",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 63635
+    "doses_administered": 63683
   },
   {
     "date": "2021-07-01",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 220142
+    "doses_administered": 220343
   },
   {
     "date": "2021-07-01",
     "manufacturer": "Sinopharm",
-    "doses_administered": 16969
+    "doses_administered": 17011
   },
   {
     "date": "2021-07-02",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 88183
+    "doses_administered": 88345
   },
   {
     "date": "2021-07-02",
     "manufacturer": "Sinopharm",
-    "doses_administered": 18969
+    "doses_administered": 19775
   },
   {
     "date": "2021-07-02",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 237599
+    "doses_administered": 238011
   },
   {
     "date": "2021-07-03",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 19212
+    "doses_administered": 19563
   },
   {
     "date": "2021-07-03",
     "manufacturer": "Sinopharm",
-    "doses_administered": 17288
+    "doses_administered": 17835
   },
   {
     "date": "2021-07-03",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 67489
+    "doses_administered": 67532
   },
   {
     "date": "2021-07-04",
     "manufacturer": "Sinovac Life Sciences",
-    "doses_administered": 24270
+    "doses_administered": 24376
   },
   {
     "date": "2021-07-04",
     "manufacturer": "Sinopharm",
-    "doses_administered": 12519
+    "doses_administered": 13782
   },
   {
     "date": "2021-07-04",
     "manufacturer": "AstraZeneca",
-    "doses_administered": 43733
+    "doses_administered": 45734
+  },
+  {
+    "date": "2021-07-05",
+    "manufacturer": "Sinovac Life Sciences",
+    "doses_administered": 77841
+  },
+  {
+    "date": "2021-07-05",
+    "manufacturer": "Sinopharm",
+    "doses_administered": 12890
+  },
+  {
+    "date": "2021-07-05",
+    "manufacturer": "AstraZeneca",
+    "doses_administered": 176124
   }
 ]

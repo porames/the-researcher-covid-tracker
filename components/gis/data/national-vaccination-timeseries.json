@@ -963,5 +963,14 @@
         "second_dose": 2949747,
         "total_supply": 12123540,
         "daily_vaccinations": 443714
+    },
+    {
+        "date": "2021-07-04",
+        "total_doses": 10670897,
+        "first_dose": 7721150,
+        "second_dose": 2949747,
+        "total_supply": 12123540,
+        "missing_data": true,
+        "daily_vaccinations": 0
     }
 ]
