@@ -75,12 +75,10 @@ function Graph(props) {
         <svg width={width} height={height}>
             <Group>
                 <MarkerArrow id="marker-arrow-province" fill='#cf1111' refX={2} size={5} />
-                
                 {[recent].map((lineData, i) => {
                     const markerEnd = 'url(#marker-arrow-province)';
                     return (
                         <Group>
-
                             <LinePath
                                 key={i}
                                 curve={curveLinear}

@@ -82,6 +82,8 @@ export default function Home() {
         <div className='container mt-4 mb-4' style={{ maxWidth: 700 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />
+        </div>
+        <div className='container' style={{ maxWidth: 700 }}>
           <div className='row mt-5'>
             <div className='col-12'>
               <hr />
@@ -106,7 +108,6 @@ export default function Home() {
           </div>
           <Footer />
         </div>
-
       </div>
     </>
   )

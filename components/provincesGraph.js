@@ -10,10 +10,10 @@ export default function Province(props) {
     const maxCoverage = _.maxBy(sortedImages, 'vax-coverage')['vax-coverage']
     function parseChange(change) {
         if (change > 0) {
-            return ('+' + parseInt(change) + '%')
+            return ('+' + parseInt(change).toLocaleString() + '%')
         }
         else {
-            return (parseInt(change) + '%')
+            return (parseInt(change).toLocaleString() + '%')
         }
 
     }
@@ -24,9 +24,10 @@ export default function Province(props) {
                     <thead className='text-white'>
                         <tr>
                             <th scope="col">จังหวัด</th>
-                            <th scope="col">เส้นแนวโน้ม 14 วัน</th>
-                            <th scope="col">ผู้ติดเชื้อในรอบ 14 วัน</th>
-                            <th scope="col">ฉีดวัคซีนไปแล้ว</th>
+                            <th scope="col" className="text-end">ผู้ติดเชื้อในรอบ 14 วัน</th>
+                            {/*<th scope="col" className="text-end">ต่อประชากร 100,000 คน</th>*/}
+                            <th scope="col" className="text-end">เส้นแนวโน้ม 14 วัน</th>
+                            <th scope="col" className="text-end">ฉีดวัคซีนไปแล้ว</th>
                         </tr>
                     </thead>
                     <tbody className='text-sec'>
@@ -36,15 +37,18 @@ export default function Province(props) {
                                     return (
                                         <tr key={index}>
                                             <th scope="row">{img['province']}</th>
-                                            <td>
-                                                <div className='d-flex justify-content-center align-items-center'>
+                                            <td className="text-end">{img['total-14days'].toLocaleString()}</td>
+                                            {/*<td className="text-end"></td>*/}
+                                            <td className="text-end">
+                                                <div className='d-flex justify-content-end align-items-end w-100'>
+                                                    <div className='pr-2'>
+                                                        {img['total-14days'] > 10 ? parseChange(img['change']) : 'คงที่'}
+                                                    </div>
                                                     <img height='30px' src={`/infection-graphs-build/${img.name}`} />
-                                                    {img['total-14days'] > 10 ? parseChange(img['change']) : 'คงที่'}
 
                                                 </div>
                                             </td>
-                                            <td>{img['total-14days'].toLocaleString()}</td>
-                                            <td>
+                                            <td className="text-end">
                                                 <div
                                                     style={{
                                                         backgroundColor: scale(img['vax-coverage'] / maxCoverage).hex(),
