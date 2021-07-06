@@ -16,7 +16,9 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
         const latest_date = dataset[dataset.length - 1]['Date']
         if (moment(latest_date) > moment(currentData[currentData.length - 1]['date'])) {
             for (const i in dataset) {
-                if (moment(dataset[i]['Date']) < moment().subtract(1, 'day')) {
+                if (
+                    moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
+                ) {
                     jsonData.push({
                         'date': dataset[i]['Date'],
                         'total_doses': Number(dataset[i]['Vac Given 1 Cum']) + Number(dataset[i]['Vac Given 2 Cum']),
@@ -61,6 +63,14 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                         'total_doses': sortedData[i - 1]['total_doses'],
                         'first_dose': sortedData[i - 1]['first_dose'],
                         'second_dose': sortedData[i - 1]['second_dose'],
+                        'total_supply': sortedData[i - 1]['total_supply'],
+                    }
+                }
+            }
+            for (const i in sortedData) {
+                if (sortedData[i]['total_supply'] === 0 && i > 0) {
+                    sortedData[i] = {
+                        ...sortedData[i],
                         'total_supply': sortedData[i - 1]['total_supply'],
                     }
                 }
