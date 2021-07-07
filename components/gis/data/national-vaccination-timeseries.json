@@ -974,10 +974,11 @@
     },
     {
         "date": "2021-07-05",
-        "total_doses": 11058390,
-        "first_dose": 8022029,
-        "second_dose": 3036361,
+        "total_doses": 10777748,
+        "first_dose": 7804654,
+        "second_dose": 2973094,
         "total_supply": 12650540,
-        "daily_vaccinations": 280642
+        "missing_data": true,
+        "daily_vaccinations": 0
     }
 ]
