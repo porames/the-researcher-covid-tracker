@@ -43,7 +43,7 @@ for name in provinces:
         if moving_aves[-14] > 0:
             change = int((moving_aves[-1] - moving_aves[-14]) * 100 / (moving_aves[-14]))
         else:
-            change = 0
+            change = int((moving_aves[-1] - 0) * 100 / 1)
         images.append({
             "name": str(provinces_name.index(name) + 1) + ".svg",
             "change": change,

@@ -5,19 +5,22 @@ const fs = require('fs')
 const _ = require('lodash')
 const startDate = new Date('2021-03-06')
 const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
+var jsonData = _.cloneDeep(currentData)
 
-var jsonData = []
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         const dataset = parse(body, {
             columns: true,
             skip_empty_lines: true
         })
-        const latest_date = dataset[dataset.length - 1]['Date']
+        const latest_date = dataset[dataset.length - 1]['Date'] //Latest date in the dataset.
+
+        //Check if the local file is already up to date.
         if (moment(latest_date) > moment(currentData[currentData.length - 1]['date'])) {
             for (const i in dataset) {
                 if (
-                    moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
+                    //moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
+                    moment(dataset[i]['date'] > moment(currentData[currentData.length - 1]['date']))
                 ) {
                     jsonData.push({
                         'date': dataset[i]['Date'],
@@ -83,7 +86,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses']
                 }
             }
-            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 4), 'utf-8')
+            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries_test.json', JSON.stringify(sortedData, null, 4), 'utf-8')
         }
         else {
             console.log('New data already existed')
