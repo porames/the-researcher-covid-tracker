@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-08T09:31:35.040692</dc:date>
+    <dc:date>2021-07-08T13:33:18.684677</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -34,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -50.4 
+     <path d="M 115.363636 -53.313074 
 L 115.363636 -39.6 
 L 154.384615 -39.6 
 L 193.405594 -39.6 
@@ -51,47 +50,47 @@ L 583.615385 -39.6
 L 622.636364 -39.6 
 L 622.636364 -316.8 
 L 622.636364 -316.8 
-L 583.615385 -288 
-L 544.594406 -268.8 
-L 505.573427 -235.2 
-L 466.552448 -188.4 
-L 427.531469 -142.8 
-L 388.51049 -112.8 
-L 349.48951 -100.8 
-L 310.468531 -97.2 
-L 271.447552 -78 
-L 232.426573 -63.6 
-L 193.405594 -62.4 
-L 154.384615 -56.4 
-L 115.363636 -50.4 
+L 583.615385 -265.865724 
+L 544.594406 -242.357597 
+L 505.573427 -226.685512 
+L 466.552448 -199.259364 
+L 427.531469 -161.058657 
+L 388.51049 -123.837456 
+L 349.48951 -99.349823 
+L 310.468531 -89.55477 
+L 271.447552 -86.616254 
+L 232.426573 -70.94417 
+L 193.405594 -59.190106 
+L 154.384615 -58.210601 
+L 115.363636 -53.313074 
 z
-" id="m0e10dacf63" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mc0b685d948" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#pa7b4ae82c8)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m0e10dacf63" y="360"/>
+    <g clip-path="url(#pc7213c3413)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mc0b685d948" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#pa7b4ae82c8)" d="M 115.363636 309.6 
-L 154.384615 303.6 
-L 193.405594 297.6 
-L 232.426573 296.4 
-L 271.447552 282 
-L 310.468531 262.8 
-L 349.48951 259.2 
-L 388.51049 247.2 
-L 427.531469 217.2 
-L 466.552448 171.6 
-L 505.573427 124.8 
-L 544.594406 91.2 
-L 583.615385 72 
+    <path clip-path="url(#pc7213c3413)" d="M 115.363636 306.686926 
+L 154.384615 301.789399 
+L 193.405594 300.809894 
+L 232.426573 289.05583 
+L 271.447552 273.383746 
+L 310.468531 270.44523 
+L 349.48951 260.650177 
+L 388.51049 236.162544 
+L 427.531469 198.941343 
+L 466.552448 160.740636 
+L 505.573427 133.314488 
+L 544.594406 117.642403 
+L 583.615385 94.134276 
 L 622.636364 43.2 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pa7b4ae82c8">
+  <clipPath id="pc7213c3413">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
