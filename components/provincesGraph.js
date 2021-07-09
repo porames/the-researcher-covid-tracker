@@ -60,12 +60,18 @@ export default function Province(props) {
                     <thead className='text-white'>
                         <tr>
                             <th scope='col' className='provice-table-header'>จังหวัด</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change")}>เส้นแนวโน้ม 14 วัน</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change-7days")}>เส้นแนวโน้ม 7 วัน</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>ฉีดวัคซีน 1 โดส</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>ฉีดวัคซีนครบ</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน 
+                            { sortData.column === "total-14days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }
+</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน { sortData.column === "cases-per-100k" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change")}>เส้นแนวโน้ม 14 วัน { sortData.column === "change" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change-7days")}>เส้นแนวโน้ม 7 วัน { sortData.column === "change-7days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-1st-dose")}>ฉีดวัคซีน 1 โดส { sortData.column === "vax-1st-dose" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-2nd-dose")}>ฉีดวัคซีนครบ { sortData.column === "vax-2nd-dose" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
                         </tr>
                     </thead>
                     <tbody className='text-sec'>
