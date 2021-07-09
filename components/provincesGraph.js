@@ -64,8 +64,8 @@ export default function Province(props) {
                             <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน</th>
                             <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change")}>เส้นแนวโน้ม 14 วัน</th>
                             <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change-7days")}>เส้นแนวโน้ม 7 วัน</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>วัคซีน +1 โดส</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>ครบ 2 โดส</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>ฉีดวัคซีน 1 โดส</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-coverage")}>ฉีดวัคซีนครบ</th>
                         </tr>
                     </thead>
                     <tbody className='text-sec'>
