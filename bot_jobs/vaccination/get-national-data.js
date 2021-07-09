@@ -14,13 +14,13 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
             skip_empty_lines: true
         })
         const latest_date = dataset[dataset.length - 1]['Date'] //Latest date in the dataset.
-
         //Check if the local file is already up to date.
         if (moment(latest_date) > moment(currentData[currentData.length - 1]['date'])) {
             for (const i in dataset) {
                 if (
                     //moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
-                    moment(dataset[i]['date'] > moment(currentData[currentData.length - 1]['date']))
+                    _.findIndex(currentData, { date: dataset[i]['date'] }) >= 0 &&
+                    dataset[i]['Vac Given 1 Cum'] !== ''
                 ) {
                     jsonData.push({
                         'date': dataset[i]['Date'],
@@ -86,7 +86,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses']
                 }
             }
-            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries_test.json', JSON.stringify(sortedData, null, 4), 'utf-8')
+            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 4), 'utf-8')
         }
         else {
             console.log('New data already existed')

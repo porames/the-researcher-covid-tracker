@@ -76,9 +76,7 @@ export default function Home() {
           <meta property="twitter:image" content="/cover.png" />
         </Head>
         <NationalCurveSection />
-
         <Map />
-
         <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />

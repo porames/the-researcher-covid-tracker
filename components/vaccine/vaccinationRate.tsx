@@ -12,10 +12,10 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveStepAfter } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from '../gis/data/manufacturer-vaccination-data.json'
+import data from '../gis/data/national-vaccination-timeseries.json'
 import { Text } from '@visx/text'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { timeDays } from 'd3';
+import { filter, timeDays } from 'd3';
 
 function movingAvg(ts, id) {
     var moving_aves: number[] = []
@@ -35,38 +35,13 @@ function movingAvg(ts, id) {
     return moving_aves
 }
 
-interface ManufacturerDataProps {
-    date: string;
-    manufacturer: string;
-    doses_administered: number;
-}
-
-interface VaxRateProps {
-    date: string;
-    doses_administered: number;
-}
-
 function Curve(props) {
     const { width, height } = props
-    var vaxRate: VaxRateProps[] = []
-    const dateRange = timeDays(new Date(2021, 3, 1), new Date(data[data.length - 1]["date"]));
-
-    dateRange.map((date, index) => {
-        const supply = _.filter(data, { "date": moment(date).format("YYYY-MM-DD") })
-        var total: number
-        if (supply.length > 1) {
-            total = supply.reduce((a: number, b: ManufacturerDataProps) => (a + b["doses_administered"]), 0)
-        }
-        else {
-            total = supply["doses_administered"]
-        }
-        vaxRate.push({
-            date: String(date),
-            doses_administered: total ? total : 0
-        })
+    var vaxRate = data.filter((items) => {
+        return new Date(items.date) >= new Date('2021-04-01');
     })
     const x = d => new Date(d['date'])
-    const y = d => d["doses_administered"]
+    const y = d => d["daily_vaccinations"]
     const xScale = scaleBand({
         range: [0, width],
         domain: vaxRate.map(x),
@@ -80,7 +55,7 @@ function Curve(props) {
         range: [height, 50],
         domain: [0, props.estimation["required_rate"] > max(vaxRate, y) ? props.estimation["required_rate"] : max(vaxRate, y)],
     })
-    var avgs = movingAvg(vaxRate, "doses_administered")
+    var avgs = movingAvg(vaxRate, "daily_vaccinations")
     avgs.map((avg, i) => {
         vaxRate[i]['moving_avg'] = avg
     })
@@ -172,7 +147,7 @@ function Curve(props) {
                 {props.estimation &&
                     <Group>
                         <Text
-                            x={width - (width < 500 ? 70 : 140)}
+                            x={width - (width < 500 ? 40 : 60)}
                             y={yScale(parseInt(props.estimation["required_rate"])) - 30}
                             fill='#bdbdbd'
                             dx={-10}
@@ -188,7 +163,7 @@ function Curve(props) {
                         </Text>
                         <Line
                             from={{
-                                x: width - (width < 500 ? 70 : 140),
+                                x: width - (width < 500 ? 40 : 60),
                                 y: yScale(parseInt(props.estimation["required_rate"])) - 30
                             }}
                             to={{
@@ -258,7 +233,7 @@ function Curve(props) {
                     >
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                            ฉีดวัคซีนไป {tooltipData['doses_administered'].toLocaleString()} โดส<br />
+                            ฉีดวัคซีนไป {tooltipData['daily_vaccinations'].toLocaleString()} โดส<br />
                             {tooltipData["moving_avg"] ? `ค่าเฉลี่ย 7 วัน ${Math.floor(tooltipData["moving_avg"]).toLocaleString()} โดส` : ""}
                         </span>
                     </TooltipWithBounds>
