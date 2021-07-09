@@ -14,7 +14,7 @@ def get_population(json_data):
 
 
 def get_vaccines(json_data):
-    return {province["name"]: round(province["coverage"] * 100, 2) for province in json_data['data']}
+    return {province["name"]: province for province in json_data['data']}
 
 
 def get_provinces_name(json_data):

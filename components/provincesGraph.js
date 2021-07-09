@@ -5,6 +5,12 @@ import chroma from 'chroma-js'
 const images = build['images']
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
+    const [isDescSort, setIsDescSort] = useState(true)
+    const [sortData, setSortData] = useState({
+        column: 'cases-per-100k',
+        direction: 'desc'
+    })
+
     const [provincesData, setData] = useState(undefined)
     const hotspotScale = chroma.scale(['#fafafa', '#FFFA6C', '#FFB14D', '#FF682D', '#a2322c', '#460c39']).domain([0, 0.01, 0.03, 0.05, 0.1, 1])
     const scale = chroma.scale(['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46'])
@@ -18,6 +24,20 @@ export default function Province(props) {
         }
 
     }
+
+    function sortChange (column) {
+        
+        if(column == sortData.column) {
+            setIsDescSort(!isDescSort)
+        }
+
+        setSortData({
+            column: column,
+            direction: isDescSort ? 'desc' : 'asc'
+        })
+        
+    }
+
     useEffect(() => {
         var data = []
         images.map((province, index) => {
@@ -26,20 +46,32 @@ export default function Province(props) {
                 'cases-per-100k': Math.floor(province['total-14days'] * 100000 / province['population'])
             })
         })
-        data = _.sortBy(data, 'cases-per-100k').reverse()
+        data = _.sortBy(data, sortData.column)
+        if(sortData.direction == 'desc') {
+            data.reverse()
+        }
         setData(data)
-    }, [])
+    }, [sortData])
+
     return (
         <div>
             <div className='table-responsive'>
                 <table className='table'>
                     <thead className='text-white'>
                         <tr>
-                            <th scope='col'>จังหวัด</th>
-                            <th scope='col' className='text-end'>ผู้ติดเชื้อในรอบ 14 วัน</th>
-                            <th scope='col' className='text-end'>ต่อประชากร 100,000 คน</th>
-                            <th scope='col' className='text-end'>เส้นแนวโน้ม 14 วัน</th>
-                            <th scope='col' className='text-end'>ฉีดวัคซีนไปแล้ว</th>
+                            <th scope='col' className='provice-table-header'>จังหวัด</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน 
+                            { sortData.column === "total-14days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }
+</th>
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน { sortData.column === "cases-per-100k" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change")}>เส้นแนวโน้ม 14 วัน { sortData.column === "change" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change-7days")}>เส้นแนวโน้ม 7 วัน { sortData.column === "change-7days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+                            
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-1st-dose")}>ฉีดวัคซีน 1 โดส { sortData.column === "vax-1st-dose" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
+
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-2nd-dose")}>ฉีดวัคซีนครบ { sortData.column === "vax-2nd-dose" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : '' }</th>
                         </tr>
                     </thead>
                     <tbody className='text-sec'>
@@ -71,13 +103,34 @@ export default function Province(props) {
                                                 </div>
                                             </td>
                                             <td className='text-end'>
+                                                <div className='d-flex justify-content-end align-items-end w-100'>
+                                                    <div className='pr-2'>
+                                                        {province['total-7days'] > 10 ? parseChange(province['change-7days']) : 'คงที่'}
+                                                    </div>
+                                                    <img height='30px' src={`/7days-infection-graphs-build/${province.name}`} />
+
+                                                </div>
+                                            </td>
+                                            <td className='text-end'>
                                                 <div
                                                     style={{
-                                                        backgroundColor: scale(province['vax-coverage'] / maxCoverage).hex(),
-                                                        color: (province['vax-coverage'] / maxCoverage > 0.5 ? '#fff' : '#424242')
+                                                        backgroundColor: scale(province['vax-1st-dose'] / maxCoverage).hex(),
+                                                        color: (province['vax-1st-dose'] / maxCoverage > 0.5 ? '#fff' : '#424242')
                                                     }}
+                                                    
                                                     className='badge badge-vaccination-scale'>
-                                                    {province['vax-coverage']}%
+                                                    {province['vax-1st-dose']}%
+                                                </div>
+                                            </td>
+                                            <td className='text-end'>
+                                                <div
+                                                    style={{
+                                                        backgroundColor: scale(province['vax-2nd-dose'] / maxCoverage).hex(),
+                                                        color: (province['vax-2nd-dose'] / maxCoverage > 0.5 ? '#fff' : '#424242')
+                                                    }}
+                                                    
+                                                    className='badge badge-vaccination-scale'>
+                                                    {province['vax-2nd-dose']}%
                                                 </div>
                                             </td>
                                         </tr>
