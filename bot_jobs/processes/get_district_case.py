@@ -9,10 +9,12 @@ df = df.drop(['No.','Notified date','nationality', 'province_of_isolation',
              'sex', 'age', 'risk', 'Unit', 'Unnamed: 11', 'Unnamed: 12', 'Unnamed: 13'], axis=1)
 df["announce_date"] = df["announce_date"].map(lambda date : datetime.strptime(date, "%d/%m/%y")) # Convert day to YYYY-MM-DD
 
+# Filter province
+df = df[df['province_of_onset'] == 'กรุงเทพมหานคร']
 
-# Filter from start date
-start = "2021-06-02"
-end = "2021-06-17"
+# Filter from start date (YYYY-MM-DD)
+start = "2021-05-24"
+end = "2021-05-30"
 df = df[(df['announce_date'] >= start) & (df['announce_date'] <= end)]
 
 
@@ -36,5 +38,6 @@ finished_df = pd.DataFrame(df_filted_by_district.value_counts(sort=True)).rename
 
 
 # Write dataframe as json table
-with open("../../components/gis/data/amphoes-data-14days.json","w+",encoding="utf-8") as fout :
-    finished_df.to_json(fout,orient='table',force_ascii=False)
+#with open("../../components/gis/data/bkk/amphoes-data-"+start+".csv","w+",encoding="utf-8") as fout :
+#    finished_df.to_json(fout,orient='table',force_ascii=False,indent=4)
+finished_df.to_csv("export/amphoes-data-"+start+".csv")

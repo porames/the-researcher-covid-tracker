@@ -11,7 +11,7 @@ var features = geo['features']
 var provinces = []
 
 for (var i = 0; i < features.length; i++) {
-    const queryPopulation =  _.find(census, {"PROV_CODE": features[i]['properties']['PROV_CODE']})
+    const queryPopulation = _.find(census, { "PROV_CODE": features[i]['properties']['PROV_CODE'] })
     province = {}
     province['name'] = features[i]['properties']['PROV_NAMT']
     province['id'] = Number(features[i]['properties']['PROV_CODE'])
@@ -38,7 +38,7 @@ fs.createReadStream('dataset.csv')
         allDates.push(data['announce_date'])
     }).on('end', () => {
         var i = 0
-        var today = allDates[allDates.length-1].split('/')
+        var today = allDates[allDates.length - 1].split('/')
         console.log(today)
         today = moment(new Date(`${today[1]}/${today[0]}/20${today[2]}`))
         const startDate = new Date(today.subtract(13, 'd').startOf('day'))
@@ -96,10 +96,10 @@ fs.createReadStream('dataset.csv')
                 }
                 i = i + 1
             }).on('end', () => {
-                for (const i in provinces){
+                for (const i in provinces) {
                     const province = provinces[i]
-                    province['cases'] =_.countBy(province['cases'])
-                    province['cases-per-100k']=(province['caseCount']*100000 / province['population'])
+                    province['cases'] = _.countBy(province['cases'])
+                    province['cases-per-100k'] = (province['caseCount'] * 100000 / province['population'])
                 }
                 fs.writeFileSync('../components/gis/data/provinces-data-14days.json', JSON.stringify(provinces), 'utf-8')
                 fs.writeFileSync('../components/gis/data/amphoes-data-14days.json', JSON.stringify(amphoes), 'utf-8');
