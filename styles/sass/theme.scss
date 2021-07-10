@@ -1,9 +1,9 @@
 /* create a new purple color */
-$font-family-sans-serif: "Sarabun", sans-serif;
+$font-family-sans-serif: 'Sarabun', sans-serif;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $headings-font-weight: 600;
-$headings-font-family: "Prompt", sans-serif;
+$headings-font-family: 'Prompt', sans-serif;
 $input-btn-padding-y: 0.5rem;
 
 $input-btn-padding-y-sm: 0.35rem;
@@ -22,8 +22,8 @@ $btn-font-weight: 600;
 $font-size-base: 0.95rem;
 
 $theme-colors: (
-    "primary": $mainPurple,
-    "secondary": $mainGreen,
+    'primary': $mainPurple,
+    'secondary': $mainGreen
 );
 
 $border-radius: 4px;
@@ -51,10 +51,6 @@ $border-radius: 4px;
     color: $mainPurple-dark;
 }
 
-.provice-table-header {
-    font-size: 0.7em;
-}
-
 .menu {
     .dropdown-item {
         padding-left: 14px;
@@ -70,7 +66,8 @@ $border-radius: 4px;
     .selected {
         background-color: white !important;
         color: $mainPurple;
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
+            0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     .dropdown-item:hover {
@@ -100,13 +97,14 @@ button:disabled {
     border: none !important;
 }
 
-$link-color: rgba(255, 255, 255, 0.8); 
+$link-color: rgba(255, 255, 255, 0.8);
 $link-hover-color: #fff;
 
-a:hover{
+a:hover {
     transition: 0.25s;
 }
-.table th, .table td {
+.table th,
+.table td {
     vertical-align: middle !important;
 }
-@import "node_modules/bootstrap/scss/bootstrap";
+@import 'node_modules/bootstrap/scss/bootstrap';
