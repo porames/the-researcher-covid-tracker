@@ -69,11 +69,11 @@ export default function Home() {
           <meta property="og:type" content="website" />
           <meta property="og:title" content="รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher" />
           <meta property="og:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
-          <meta property="og:image" content="/cover.png" />
+          <meta property="og:image" content="https://covid-19.researcherth.co/cover.png" />
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:title" content="รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher" />
           <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
-          <meta property="twitter:image" content="/cover.png" />
+          <meta property="twitter:image" content="https://covid-19.researcherth.co/cover.png" />
         </Head>
         <NationalCurveSection />
         <Map />
