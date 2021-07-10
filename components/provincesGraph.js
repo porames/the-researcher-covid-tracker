@@ -60,8 +60,7 @@ export default function Province(props) {
                     <thead className='text-white'>
                         <tr>
                             <th scope='col' className='provice-table-header'>จังหวัด</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน
-                                {sortData.column === "total-14days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}
+                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน {sortData.column === "total-14days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}
                             </th>
                             <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน {sortData.column === "cases-per-100k" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}</th>
 
