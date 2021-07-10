@@ -4,6 +4,10 @@ a {
     font-weight: bold;
 }
 
+.provice-table-header {
+    cursor: pointer;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -224,6 +228,7 @@ hr {
 
 .badge-vaccination-scale {
     font-size: 90% !important;
+    width: 50px;
 }
 
 .no-select {
