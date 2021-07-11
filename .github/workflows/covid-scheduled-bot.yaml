@@ -36,7 +36,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          python build.py
+          python build_province_graph.py
 
       #- name: Build Vaccination graphs in svg using python
       #  working-directory: bot_jobs/vaccination
