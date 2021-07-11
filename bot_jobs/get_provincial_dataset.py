@@ -1,4 +1,3 @@
-from email.utils import encode_rfc2231
 import requests
 import copy
 
