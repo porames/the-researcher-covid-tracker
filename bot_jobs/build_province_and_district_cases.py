@@ -19,14 +19,15 @@ df = pd.read_csv(dataset_path, encoding="utf-8")
 df = df.drop(['No.', 'Notified date', 'nationality', 'province_of_isolation',
               'sex', 'age', 'risk', 'Unit'], axis=1)
 # Convert day to datetime object
-df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.strptime(date, "%d/%m/%Y").date())
+df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.strptime(date, "%d/%m/%Y"))
 
 # Filter from start date
-end = datetime.datetime.now().date()
+end = datetime.datetime.now()
 start = end - datetime.timedelta(days=14)
+start = start.replace(hour=0, minute=0, second=0, microsecond=0)
 df = df[(df['announce_date'] >= start) & (df['announce_date'] <= end)]
-# Convert datetime object to YYYY-MM-DD string 
-df["announce_date"] = df["announce_date"].map(lambda dto: datetime.datetime.strftime(dto, "%Y-%m-%d"))
+# Convert datetime object to ISO string 
+df["announce_date"] = df["announce_date"].map(lambda dto: dto.isoformat())
 
 # Change อำเภอ เมือง -> อำเภอ เมือง + จังหวัด
 mueng_df = df[df.district_of_onset == "เมือง"]
@@ -36,25 +37,29 @@ df.district_of_onset.update(mueng_df.district_of_onset + mueng_df.province_of_on
 json_data = json.load(open(DISTRICT_MAP_PATH, encoding="utf-8"))
 province_names = set()
 district_names = set()
+district_and_province_names = list()
 for feature in json_data['features']:
     province_names.add(feature["properties"]["P_NAME_T"])
     district_names.add(feature["properties"]["A_NAME_T"])
+    district_and_province_names.append((feature["properties"]["P_NAME_T"],feature["properties"]["A_NAME_T"],))
 
 # Filter by district name
 df_filtered_by_district = df[df.district_of_onset.isin(district_names)].drop("announce_date", axis=1)
 # Count values by district
 df_district_case_14days = df_filtered_by_district.value_counts(sort=True).to_frame(name="caseCount")
+district_cases_14days = df_district_case_14days.to_dict()["caseCount"]
 # Create a dict with district data
-district_cases_14days = [
+district_cases_14days_id = [
     {
-        "name": district,
-        "province": province,
-        "caseCount": case_count,
-    } for (district, province), case_count in df_district_case_14days.to_dict()["caseCount"].items()
+        "name": province_district[1],
+        "province": province_district[0],
+        "id": i+1,
+        "caseCount": district_cases_14days[province_district],
+    } for i, province_district in enumerate(district_and_province_names) if province_district in district_cases_14days
 ]
 
 # Write district data to json file
-json_dump(district_cases_14days, district_data_14days_out_path)
+json_dump(district_cases_14days_id, district_data_14days_out_path)
 
 # Filter by province name
 df_filtered_by_province = df[df.province_of_onset.isin(province_names)].drop("district_of_onset", axis=1)
