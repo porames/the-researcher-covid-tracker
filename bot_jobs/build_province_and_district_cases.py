@@ -15,7 +15,7 @@ CENSUS_DATA_PATH = "./th-census-data.json"
 df = pd.read_csv(dataset_path, encoding="utf-8")
 
 # Drop unnecessary column
-df = df.drop(['No.', 'Notified date', 'nationality',
+df = df.drop(['No.', 'Notified date', 'nationality', 'province_of_isolation',
               'sex', 'age', 'risk', 'Unit'], axis=1)
 # Convert day to datetime object
 df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.strptime(date, "%d/%m/%Y").date())
@@ -30,7 +30,6 @@ df["announce_date"] = df["announce_date"].map(lambda dto: datetime.datetime.strf
 # Change อำเภอ เมือง -> อำเภอ เมือง + จังหวัด
 mueng_df = df[df.district_of_onset == "เมือง"]
 df.district_of_onset.update(mueng_df.district_of_onset + mueng_df.province_of_onset)
-df = df.drop('province_of_onset', axis=1)
 
 # Load province and district name in to sets
 json_data = json.load(open(DISTRICT_MAP_PATH, encoding="utf-8"))
@@ -57,10 +56,10 @@ district_cases_14days = [
 json_dump(district_cases_14days, district_data_14days_out_path)
 
 # Filter by province name
-df_filtered_by_province = df[df.province_of_isolation.isin(province_names)].drop("district_of_onset", axis=1)
+df_filtered_by_province = df[df.province_of_onset.isin(province_names)].drop("district_of_onset", axis=1)
 # Count values by provinces by date
 province_cases_each_day = pd.crosstab(df_filtered_by_province.announce_date,
-                                      df_filtered_by_province.province_of_isolation).to_dict()
+                                      df_filtered_by_province.province_of_onset).to_dict()
 # Count values by provinces (for all 14 days)
 province_cases_14days = df_filtered_by_province.drop("announce_date", axis=1).value_counts(sort=True)
 # Get census data
