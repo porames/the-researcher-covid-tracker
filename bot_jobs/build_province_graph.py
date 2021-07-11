@@ -80,13 +80,12 @@ for name in provinces:
         })
         i += 1
 
-with open('../components/build_job.json', 'w', encoding='utf-8') as f:
-    data = {'images': images,
-            'job': {
-                'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
-                'dataset_updated_on': end.strftime("%m/%d/%Y %H:%M")
-            },
-            }
-    json.dump(data, f)
+data = {'images': images,
+        'job': {
+            'ran_on': datetime.date.today().strftime("%m/%d/%Y %H:%M"),
+            'dataset_updated_on': end.strftime("%m/%d/%Y %H:%M")
+        },
+    }
+json_dump(data, '../components/build_job.json')
 
-print('done')
+print('Finished building province graph')
