@@ -7,6 +7,7 @@ district_data_14days_out_path = "../components/gis/data/amphoes-data-14days.json
 province_data_14days_out_path = "../components/gis/data/provinces-data-14days.json"
 dataset_path = "./dataset.csv"
 
+PROVINCE_MAP_PATH = "../components/gis/geo/th-provinces-centroids.json"
 DISTRICT_MAP_PATH = "../components/gis/geo/th-map-amphoes.json"
 CENSUS_DATA_PATH = "./th-census-data.json"
 
@@ -66,11 +67,15 @@ province_cases_14days = df_filtered_by_province.drop("announce_date", axis=1).va
 province_population = {i['province']: i['population'] for i in
                        json.load(open(CENSUS_DATA_PATH, encoding="utf-8"))}
 
+province_id = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_CODE"] for feature in
+               json.load(open(PROVINCE_MAP_PATH, encoding="utf-8"))["features"]}
+
 # Create a dict with all data combined
 province_cases_each_day_with_total = [
     {
         "name": name,
         "cases": cases,
+        "id": int(province_id[name]),
         "caseCount": int(province_cases_14days[name]),
         "cases-per-100k": (int(province_cases_14days[name]) * 10 ** 5) // province_population[name],
     } for name, cases in province_cases_each_day.items()
@@ -78,3 +83,5 @@ province_cases_each_day_with_total = [
 
 # Write province data to json file
 json_dump(province_cases_each_day_with_total, province_data_14days_out_path)
+
+print('Built province and district cases')
