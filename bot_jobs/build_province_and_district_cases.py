@@ -12,7 +12,7 @@ CENSUS_DATA_PATH = "./th-census-data.json"
 
 
 # Load dataset.csv
-df = pd.read_csv(dataset_path, encoding="tis-620")
+df = pd.read_csv(dataset_path, encoding="utf-8")
 
 # Drop unnecessary column
 df = df.drop(['No.', 'Notified date', 'nationality', 'province_of_isolation',

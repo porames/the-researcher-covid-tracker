@@ -1,3 +1,4 @@
+from email.utils import encode_rfc2231
 import requests
 
 # Get data.go.th COVID-19 cases dataset
@@ -6,10 +7,11 @@ url = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/
 path = "./dataset.csv"
 
 req = requests.get(url)
+req.encoding = "tis-620"
 
 if (req.status_code == 200) :
     print("Provincial dataset downloaded")
-    with open(path, "w+") as fout :
+    with open(path, "w+", encoding="utf-8") as fout :
         fout.write(req.text)
     print("Provincial dataset written to", path)
 else :
