@@ -25,7 +25,7 @@ df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.str
 end = datetime.datetime.now()
 start = end - datetime.timedelta(days=14)
 start = start.replace(hour=0, minute=0, second=0, microsecond=0)
-df = df[(df['announce_date'] >= start) & (df['announce_date'] <= end)]
+df = df[(df['announce_date'] > start) & (df['announce_date'] <= end)]
 # Convert datetime object to ISO string 
 df["announce_date"] = df["announce_date"].map(lambda dto: dto.isoformat())
 
