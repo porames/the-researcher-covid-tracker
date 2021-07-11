@@ -47,7 +47,7 @@ fs.createReadStream('dataset.csv')
             .pipe(csv())
             .on('data', (data) => {
                 const row = data
-                var province = row['province_of_isolation']
+                var province = row['province_of_onset']
                 if (province) {
                     var query = _.findIndex(provinces, { 'name': province })
                     if (query >= 0) {

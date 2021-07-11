@@ -46,6 +46,7 @@ const _ = require('lodash');
         var req = await axios.get('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/dataset.csv')
         var dataset = req.data
         dataset = dataset.replace(/ุุ/g, 'ุ')
+        dataset = dataset.replace(/เเ/g, 'แ')
         dataset = dataset.replace(/อ\./g, '')
         dataset = dataset.replace(/\/2020/g, '/20')
         dataset = dataset.replace(/\/2021/g, '/21')
