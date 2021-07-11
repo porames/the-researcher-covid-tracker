@@ -72,13 +72,12 @@ function plannedRollout(ts) {
     const eta = goalDate.diff(startDate, 'days')
     const initVaccinated = ts[ts.length - 1]['total_doses']
     const requiredRate = ((population * 0.7) - initVaccinated) / eta
-    console.log(requiredRate)
     var planned = []
     var i = 0
     var predict = 0
     var p70date = 0
     var allAdults = 0
-    
+
     while (predict < population) {
         predict = parseInt(initVaccinated + (requiredRate * i))
         if (predict < 0.7 * population) {
@@ -114,10 +113,6 @@ const EstimateCurve = (props) => {
     const merged = [...timeSeries, ...extension['prediction']]
 
     const planned = plannedRollout(data)
-    console.log('estimated p70: ',merged[extension['p70date']])
-    console.log('estimated allAdults: ',merged[extension['allAdults']])
-    console.log('planned p70: ',planned['planned'][planned['p70date']])
-    console.log('planned allAdults: ',planned['planned'][planned['allAdults']])
     useEffect(() => {
         props.setEstimation(merged[merged.length - 1])
     }, [])
