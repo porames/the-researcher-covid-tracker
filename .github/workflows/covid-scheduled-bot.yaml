@@ -1,6 +1,8 @@
 name: bot-taks-scheduler
 on:
   schedule:
+    - cron: "0 1 * * *" #01 Hour UTC = 8 Hour GMT+7
+    - cron: "0 3 * * *" #03 Hour UTC = 10 Hour GMT+7
     - cron: "0 6 * * *" #06 Hour UTC = 13 Hour GMT+7
     - cron: "0 12 * * *" #06 Hour UTC = 19 Hour GMT+7
   workflow_dispatch:
@@ -20,7 +22,18 @@ jobs:
         run: npm install
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
-      - name: Get Latest Data From The Government Database
+      - name: Install Python dependencies
+        working-directory: bot_jobs
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Get Provincial Datasets from the Government 
+        working-directory: bot_jobs
+        run: python get_provincial_dataset.py
+      - name: Build Province and District cases
+        working-directory: bot_jobs
+        run: python build_province_and_district_cases.py
+      - name: Get National Data From djay/covidthailand
         working-directory: bot_jobs
         run: node get_data.js
       - name: Get vaccination datasets
@@ -33,14 +46,7 @@ jobs:
         run: node process_data.js
       - name: Build Province Graphs in svg using Python
         working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python build_province_graph.py
-
-      #- name: Build Vaccination graphs in svg using python
-      #  working-directory: bot_jobs/vaccination
-      #  run: python build.py
+        run: python build_province_graph.py
       - name: Commit Changes to Git Repo
         run: |
           git config --global user.name "porames"

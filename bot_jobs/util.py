@@ -9,6 +9,11 @@ def json_load(fname):
         return json.load(json_file)
 
 
+def json_dump(json_data,fname):
+    with open(fname, "w+", encoding="utf-8") as fout:
+        json.dump(json_data, fout, ensure_ascii=False)
+
+
 def get_population(json_data):
     return {province["name"]: province["population"] for province in json_data['data']}
 
