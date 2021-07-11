@@ -7,7 +7,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-11T14:14:25.266927</dc:date>
+    <dc:date>2021-07-11T19:42:19.610369</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -65,14 +65,14 @@ L 193.405594 -66.584071
 L 154.384615 -59.224779 
 L 115.363636 -56.771681 
 z
-" id="m71e1dc4d15" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m09d0336342" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p716708eb2a)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m71e1dc4d15" y="360"/>
+    <g clip-path="url(#p47dff004fa)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m09d0336342" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p716708eb2a)" d="M 115.363636 303.228319 
+    <path clip-path="url(#p47dff004fa)" d="M 115.363636 303.228319 
 L 154.384615 300.775221 
 L 193.405594 293.415929 
 L 232.426573 293.415929 
@@ -91,7 +91,7 @@ L 622.636364 43.2
   </g>
  </g>
  <defs>
-  <clipPath id="p716708eb2a">
+  <clipPath id="p47dff004fa">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
