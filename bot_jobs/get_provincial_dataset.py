@@ -1,5 +1,6 @@
 from email.utils import encode_rfc2231
 import requests
+import copy
 
 # Get data.go.th COVID-19 cases dataset
 print("Downloading Provincial dataset")
@@ -11,8 +12,13 @@ req.encoding = "tis-620"
 
 if (req.status_code == 200) :
     print("Provincial dataset downloaded")
+    # Dataset typo corrections
+    text = req.text.replace("ุุ", "ุ") 
+    text = text.replace("เเ", "แ") 
+    text = text.replace("อ.", "")
+    text = text.replace("กทม", "กรุงเทพมหานคร")
     with open(path, "w+", encoding="utf-8") as fout :
-        fout.write(req.text)
+        fout.write(text)
     print("Provincial dataset written to", path)
 else :
     print("Error occured while getting datasets")
