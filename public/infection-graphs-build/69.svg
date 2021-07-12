@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-11T20:35:21.021854</dc:date>
+    <dc:date>2021-07-12T13:23:24.988010</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.4, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -65,14 +64,14 @@ L 193.405594 -305.583815
 L 154.384615 -263.923699 
 L 115.363636 -238.286705 
 z
-" id="m11c210ac57" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m6ae9e7ad36" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p24662ee91d)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m11c210ac57" y="360"/>
+    <g clip-path="url(#pb5f7b08e53)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m6ae9e7ad36" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p24662ee91d)" d="M 115.363636 121.713295 
+    <path clip-path="url(#pb5f7b08e53)" d="M 115.363636 121.713295 
 L 154.384615 96.076301 
 L 193.405594 54.416185 
 L 232.426573 102.485549 
@@ -91,7 +90,7 @@ L 622.636364 192.215029
   </g>
  </g>
  <defs>
-  <clipPath id="p24662ee91d">
+  <clipPath id="pb5f7b08e53">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
