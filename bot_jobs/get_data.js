@@ -42,7 +42,7 @@ const _ = require('lodash');
         }
         await fs.writeFile('../components/gis/data/national-timeseries.json', JSON.stringify(dataset, null, 2));
         console.log('national dataset downloaded')
-
+        /*
         var req = await axios.get('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/dataset.csv')
         var dataset = req.data
         dataset = dataset.replace(/ุุ/g, 'ุ')
@@ -54,6 +54,7 @@ const _ = require('lodash');
         dataset = dataset.replace(/กทม/g, 'กรุงเทพมหานคร')
         await fs.writeFile('dataset.csv', dataset);
         console.log('provincial dataset downloaded')
+        */
     } catch (e) {
         console.log(e)
     }
