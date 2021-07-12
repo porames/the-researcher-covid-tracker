@@ -17,6 +17,12 @@ function Map() {
   return (
     <div style={{ position: "relative" }}>
       <h2 className='text-center'>แผนที่สถานการณ์วัคซีน</h2>
+      <div className='container' style={{ maxWidth: 720 }}>
+        <div className='alert alert-warning text-center mt-4 mb-5'>
+          รายงานการฉีดวัคซีนรายจังหวัดจากฐานข้อมูล<b>มีความผิดพลาดเกิดขึ้นตั้งแต่วันที่ 7 กรกฎาคมเป็นต้นไป</b> ตัวเลข ณ ปัจจุบันจึงอาจมีความไม่น่าเชื่อถือ ต้องรอการแก้ไขจากหน่วยงานที่เกียวข้อง ขออภัยในความไม่สะดวก
+        </div>
+      </div>
+
       <div className="container mt-4 mb-3 mb-md-0 row mx-auto flex-column-reverse flex-md-row">
         <div
           className="col-md-6 mb-3"
@@ -31,9 +37,8 @@ function Map() {
         <div className="col-md-6 mb-3 d-flex justify-content-center">
           <button
             onClick={() => setMapType("coverage")}
-            className={`btn btn-dark px-3 mr-4 ${
-              mapType == "coverage" && "focus"
-            }`}
+            className={`btn btn-dark px-3 mr-4 ${mapType == "coverage" && "focus"
+              }`}
             style={{
               height: 120,
               width: 200,
@@ -48,9 +53,8 @@ function Map() {
           </button>
           <button
             onClick={() => setMapType("supply")}
-            className={`btn btn-dark px-3 mr-0 ${
-              mapType == "supply" && "focus"
-            }`}
+            className={`btn btn-dark px-3 mr-0 ${mapType == "supply" && "focus"
+              }`}
             style={{
               height: 120,
               width: 200,

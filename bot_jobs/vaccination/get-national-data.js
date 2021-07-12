@@ -19,9 +19,10 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
             for (const i in dataset) {
                 if (
                     //moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
-                    _.findIndex(currentData, { date: dataset[i]['date'] }) >= 0 &&
+                    _.findIndex(currentData, { date: dataset[i]['date'] }) < 0 &&
                     dataset[i]['Vac Given 1 Cum'] !== ''
                 ) {
+                    console.log(dataset[i]['Date'])
                     jsonData.push({
                         'date': dataset[i]['Date'],
                         'total_doses': Number(dataset[i]['Vac Given 1 Cum']) + Number(dataset[i]['Vac Given 2 Cum']),
