@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import vaccination from '../../components/gis/data/provincial-vaccination-data.json';
+import vaccination from '../../components/gis/data/provincial-vaccination-data_2.json';
 import infectionData from '../../components/gis/data/provinces-data-14days.json'
 import chroma from 'chroma-js';
 import _ from 'lodash';
@@ -41,6 +41,9 @@ function VaccinationRace() {
     const svgContainer = useRef(null)
     const d3Container = useRef(null)
     var data = _.cloneDeep(vaccination["data"])
+    data.map((province, index) => {
+        data[index]['coverage'] = province['total_doses'] / (province['population'] * 2)
+    })
     const doses_sum = d3.sum(data, (d) => d["total_doses"])
     const population = d3.sum(data, (d) => d["registered_population"])
     const national_avg = doses_sum / (population * 2)
@@ -50,7 +53,7 @@ function VaccinationRace() {
         const infection = _.find(infectionData, { "id": Number(province.id) })
         data[i]["cases-per-100k"] = infection["cases-per-100k"]
     }
-    let coverageDomain = d3.extent(data.map((d) => +d["coverage"]))
+    let coverageDomain = d3.extent(data.map((d) => d["coverage"]))
     let xScale = d3
         .scaleLinear()
         .domain(coverageDomain)
