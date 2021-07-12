@@ -1,3 +1,4 @@
+// Switched to python backend we no longer do this now.
 const census = require('./th-census-data.json')
 const geo = require('../components/gis/geo/th-provinces-centroids.json')
 const amphoesGeo = require('../components/gis/geo/th-map-amphoes.json')
