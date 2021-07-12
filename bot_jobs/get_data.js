@@ -43,7 +43,6 @@ const _ = require('lodash');
         await fs.writeFile('../components/gis/data/national-timeseries.json', JSON.stringify(dataset, null, 2));
         console.log('national dataset downloaded')
         /*
-        Switched to python backend we no longer do this now.
         var req = await axios.get('https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/dataset.csv')
         var dataset = req.data
         dataset = dataset.replace(/ุุ/g, 'ุ')
@@ -60,3 +59,18 @@ const _ = require('lodash');
         console.log(e)
     }
 })();
+
+//These idiots use XAMPP in production. No longer reliable.
+/*
+axios.get('https://covid19.th-stat.com/json/covid19v2/getTimeline.json')
+.then((response)=>{
+    response=response.data
+    response['Data'] = response['Data'].filter(s=>{
+        return new Date(s['Date']) >= new Date('7/1/2020')
+    })
+    fs.writeFileSync('../components/gis/data/national-timeseries.json', JSON.stringify(response,null,2));
+    console.log('national stats downloaded')
+}).catch((err)=>{
+    console.log(err)
+})
+*/
