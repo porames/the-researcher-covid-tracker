@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-12T19:26:46.187629</dc:date>
+    <dc:date>2021-07-13T12:11:54.529264</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -43,33 +44,33 @@ L 538.090909 -39.6
 L 622.636364 -39.6 
 L 622.636364 -67.32 
 L 622.636364 -67.32 
-L 538.090909 -59.4 
-L 453.545455 -55.44 
-L 369 -51.48 
-L 284.454545 -39.6 
-L 199.909091 -43.56 
+L 538.090909 -67.32 
+L 453.545455 -59.4 
+L 369 -55.44 
+L 284.454545 -51.48 
+L 199.909091 -39.6 
 L 115.363636 -43.56 
 z
-" id="m41084413bc" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m6a71de7315" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p1d37432aeb)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m41084413bc" y="360"/>
+    <g clip-path="url(#pb58a51230c)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m6a71de7315" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p1d37432aeb)" d="M 115.363636 316.44 
-L 199.909091 316.44 
-L 284.454545 320.4 
-L 369 308.52 
-L 453.545455 304.56 
-L 538.090909 300.6 
+    <path clip-path="url(#pb58a51230c)" d="M 115.363636 316.44 
+L 199.909091 320.4 
+L 284.454545 308.52 
+L 369 304.56 
+L 453.545455 300.6 
+L 538.090909 292.68 
 L 622.636364 292.68 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p1d37432aeb">
+  <clipPath id="pb58a51230c">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>

@@ -7,7 +7,7 @@ url = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/
 path = "./dataset.csv"
 
 req = requests.get(url)
-req.encoding = "tis-620"
+req.encoding = "utf-8"
 
 if (req.status_code == 200) :
     print("Provincial dataset downloaded")
