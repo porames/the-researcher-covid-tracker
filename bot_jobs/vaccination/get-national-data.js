@@ -5,8 +5,11 @@ const fs = require('fs')
 const _ = require('lodash')
 const startDate = new Date('2021-03-06')
 const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
+const geo = require('../th-census-age-group.json')
+const estimated_pop = require('../th-census-with-hidden-pop.json')
 var jsonData = _.cloneDeep(currentData)
 
+/*
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         const dataset = parse(body, {
@@ -19,7 +22,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
             for (const i in dataset) {
                 if (
                     //moment(dataset[i]['Date']) < moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).subtract(1, 'day')
-                    _.findIndex(currentData, { date: dataset[i]['date'] }) < 0 &&
+                    _.findIndex(currentData, { date: dataset[i]['Date'] }) < 0 &&
                     dataset[i]['Vac Given 1 Cum'] !== ''
                 ) {
                     console.log(dataset[i]['Date'])
@@ -87,7 +90,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses']
                 }
             }
-            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 4), 'utf-8')
+            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 2), 'utf-8')
         }
         else {
             console.log('New data already existed')
@@ -95,5 +98,37 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
     }
     else {
         console.log('Error', err)
+    }
+})
+*/
+request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.csv', (err, response, body) => {
+    if (!err && response.statusCode == 200) {
+        const dataset = parse(body, {
+            columns: true,
+            skip_empty_lines: true
+        })
+        var latestDate = dataset[dataset.length - 1]['Date']
+        var todayData = _.filter(dataset, { 'Date': latestDate })
+        var vaccinationData = {
+            update_at: latestDate,
+            data: []
+        }
+        if (todayData.length === 77) {
+            for (const i in todayData) {
+                const province = todayData[i]
+                const geoData = _.find(estimated_pop, { "clean-name": province.Province.replace(/\s/g, '').toUpperCase() })
+                vaccinationData.data.push({
+                    name: geoData.province,
+                    id: geoData.PROV_CODE,
+                    population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
+                    registered_population: geoData.population,
+                    total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
+                    "total-1st-dose": Number(province['Vac Given 1 Cum']),
+                    "total-2nd-dose": Number(province['Vac Given 2 Cum'])
+                })
+
+            }
+            fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
+        }
     }
 })

@@ -1,5 +1,5 @@
 import mapboxgl from "maplibre-gl";
-import provincesData from "../gis/data/provincial-vaccination-data.json";
+import provincesData from "../gis/data/provincial-vaccination-data_2.json";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";
@@ -184,7 +184,7 @@ const CoverageMap = () => {
           className="container text-sec mt-3 credit"
           style={{ maxWidth: 810 }}
         >
-          ที่มาข้อมูล: ระบบติดตามการขนส่งวัคซีน มหาวิทยาลัยมหิดล
+          ที่มาข้อมูล: รายงานการฉีดวัคซีน กรมควบคุมโรค กระทรวงสาธารณสุข
           (อัพเดทล่าสุดเมื่อ {moment(provincesData["update_at"]).format("LL")}),
           สถิติประชากรศาสตร์ สำนักงานสถิติแห่งชาติ, รายงานประชากรแฝง
           สำนักงานสถิติแห่งชาติ

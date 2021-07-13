@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
-import provincesData from '../gis/data/provincial-vaccination-data.json'
+import provincesData from '../gis/data/provincial-vaccination-data_2.json'
 import moment from 'moment'
 import { usePopperTooltip } from 'react-popper-tooltip';
 import 'react-popper-tooltip/dist/styles.css';
-import { sum } from 'd3'
+import { sum, mean } from 'd3'
 const InfoTooltip = (props) => {
     const {
         getArrowProps,
@@ -30,27 +30,40 @@ const InfoTooltip = (props) => {
         </div>
     );
 };
+
+interface ProvinceProps {
+    "name": string;
+    "id": string;
+    "population": number;
+    "registered_population": number;
+    "total_doses": number;
+    "total-1st-dose": number;
+    "total-2nd-dose": number;
+    "first_doses_coverage"?: number;
+    "second_doses_coverage"?: number
+}
+
 export default function Province() {
     const [showAll, setShowAll] = useState<boolean>(false)
-    var data = _.cloneDeep(provincesData).data
-    const doses_sum = sum(data, (d) => d["total_doses"])
+    var data: ProvinceProps[] = _.cloneDeep(provincesData)['data']
+    data.map((province, index) => {
+        data[index]['first_doses_coverage'] = province['total-1st-dose'] / province['population']
+        data[index]['second_doses_coverage'] = province['total-2nd-dose'] / province['population']
+    })
     const population = sum(data, (d) => d["registered_population"])
-    const elder_population = sum(data, (d) => d[">60-population"])
-    const elder_doses = sum(data, (d) => d[">60-total-doses"])
-    const national_avg = doses_sum / (population * 2)
-    const elder_avg = elder_doses / (elder_population * 2)
-    data = _.sortBy(data, 'coverage').reverse()
+    const first_doses_sum = sum(data, (d) => d["total-1st-dose"])
+    const second_doses_sum = sum(data, (d) => d["total-2nd-dose"])
+    data = _.sortBy(data, 'first_doses_coverage').reverse()
     data.unshift({
         "name": "ค่าเฉลี่ยทั้งประเทศ",
         "id": "0",
         "population": population,
         "registered_population": population,
-        ">60-population": elder_population,
-        "coverage": national_avg,
-        "total_doses": doses_sum,
-        "total-1st-dose": 0,
-        "total-2nd-dose": 0,
-        ">60-total-doses": elder_doses
+        "total_doses": first_doses_sum + second_doses_sum,
+        "total-1st-dose": first_doses_sum,
+        "total-2nd-dose": second_doses_sum,
+        "first_doses_coverage": first_doses_sum / population,
+        "second_doses_coverage": second_doses_sum / population
     })
 
     return (
@@ -61,8 +74,8 @@ export default function Province() {
                     <thead>
                         <tr>
                             <th scope="col">จังหวัด</th>
-                            <th scope="col">รวมทั้งจังหวัด</th>
-                            <th scope="col">ผู้สูงอายุ</th>
+                            <th scope="col">ได้รับวัคซีนอย่างน้อย 1 โดส</th>
+                            <th scope="col">ได้รับวัคซีนครบแล้ว</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,17 +93,17 @@ export default function Province() {
                                         </td>
                                         <td style={{ width: '30%' }}>
                                             <div className='d-flex align-items-center'>
-                                                <span style={{ direction: 'rtl', width: 50 }}>{(province.total_doses * 100 / (province.population * 2)).toFixed(1)}%</span>
+                                                <span style={{ direction: 'rtl', width: 50 }}>{(province['first_doses_coverage'] * 100).toFixed(1)}%</span>
                                                 <div className='ml-2 doses-progress' style={{ maxWidth: 100 }}>
-                                                    <div className='doses-bar' style={{ width: `${(province.total_doses * 100 / (province.population * 2))}%` }}></div>
+                                                    <div className='doses-bar' style={{ width: `${(province['first_doses_coverage'] * 100)}%` }}></div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td style={{ width: '30%' }}>
                                             <div className='d-flex align-items-center'>
-                                                <span style={{ direction: 'rtl', width: 50 }}>{(province['>60-total-doses'] * 100 / (province['>60-population'] * 2)).toFixed(1)}%</span>
+                                                <span style={{ direction: 'rtl', width: 50 }}>{(province['second_doses_coverage'] * 100).toFixed(1)}%</span>
                                                 <div className='ml-2 doses-progress' style={{ maxWidth: 100 }}>
-                                                    <div className='doses-bar' style={{ width: `${(province['>60-total-doses'] * 100 / (province['>60-population'] * 2))}%` }}></div>
+                                                    <div className='doses-bar' style={{ width: `${(province['second_doses_coverage'] * 100)}%` }}></div>
                                                 </div>
                                             </div>
                                         </td>

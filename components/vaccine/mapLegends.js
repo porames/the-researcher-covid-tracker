@@ -25,10 +25,10 @@ export const SupplyLegend = (props) => {
 }
 
 export const VaxCoverageLegend = (props) => {
-  const palette =['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46']
+  const palette = ['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46']
   return (
     <div className='d-flex flex-column w-100' >
-      <div className='text-left mb-3 text-sec'><b>จำนวนโดสครอบคลุมประชากร</b></div>
+      <div className='text-left mb-3 text-sec'><b>ได้รับวัคซีนอย่างน้อย 1 โดส</b></div>
       <div className='w-100 d-flex flex-row'>
         <div className='d-flex bar-legend' style={{ flex: 4 }}>
           {palette.map((color, i) => {
@@ -39,11 +39,6 @@ export const VaxCoverageLegend = (props) => {
             )
           })}
 
-        </div>
-        <div className='d-flex bar-legend' style={{ flex: 1, justifyContent: 'center' }} >
-          <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-            <div className='level' style={{ backgroundColor: '#fafafa' }} />
-          </div>
         </div>
       </div>
       <div className='w-100 d-flex flex-row'>
@@ -56,13 +51,6 @@ export const VaxCoverageLegend = (props) => {
             )
           })}
 
-        </div>
-        <div className='d-flex bar-label' style={{ flex: 1, justifyContent: 'center' }} >
-          <div className='pl-3 pl-sm-5' style={{ width: '100%', paddingBottom: 5 }}>
-            <div className='text-center'>
-              <small>ข้อมูลไม่พอ</small>
-            </div>
-          </div>
         </div>
       </div>
     </div>
