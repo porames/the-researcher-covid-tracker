@@ -16,16 +16,16 @@ CENSUS_DATA_PATH = "./th-census-data.json"
 df = pd.read_csv(dataset_path, encoding="utf-8")
 
 # Drop unnecessary column
-df = df.drop(['No.', 'Notified date', 'nationality', 'province_of_isolation',
-              'sex', 'age', 'risk', 'Unit'], axis=1)
+df = df.drop(["No.", "Notified date", "nationality", "province_of_isolation",
+              "sex", "age", "risk", "Unit"], axis=1)
 # Convert day to datetime object
 df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.strptime(date, "%d/%m/%Y"))
 
 # Filter from start date
-end = datetime.datetime.now()
+end = df.tail(1)["announce_date"].iloc[0]
 start = end - datetime.timedelta(days=14)
 start = start.replace(hour=0, minute=0, second=0, microsecond=0)
-df = df[(df['announce_date'] >= start) & (df['announce_date'] <= end)]
+df = df[(df['announce_date'] > start) & (df['announce_date'] <= end)]
 # Convert datetime object to ISO string 
 df["announce_date"] = df["announce_date"].map(lambda dto: dto.isoformat())
 
@@ -69,7 +69,7 @@ province_cases_each_day = pd.crosstab(df_filtered_by_province.announce_date,
 # Count values by provinces (for all 14 days)
 province_cases_14days = df_filtered_by_province.drop("announce_date", axis=1).value_counts(sort=True)
 # Get census data
-province_population = {i['province']: i['population'] for i in
+province_population = {i["province"]: i["population"] for i in
                        json.load(open(CENSUS_DATA_PATH, encoding="utf-8"))}
 
 province_id = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_CODE"] for feature in
@@ -89,4 +89,4 @@ province_cases_each_day_with_total = [
 # Write province data to json file
 json_dump(province_cases_each_day_with_total, province_data_14days_out_path)
 
-print('Built province and district cases')
+print("Built province and district cases")
