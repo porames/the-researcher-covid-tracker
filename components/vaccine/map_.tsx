@@ -58,7 +58,7 @@ function Map() {
                         }}
                     >
                         <div className='d-flex h-100 align-items-end text-left'>
-                            <span>การกระจายตามศูนย์ฉีดวัคซีน</span>
+                            <span>การกระจายตามศูนย์ฉีดวัคซีน (Archived)</span>
                         </div>
                     </button>
                 </div>
