@@ -7,10 +7,10 @@ import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
-import { curveBasis } from '@visx/curve'
+import { curveStepAfter } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-const data = require('../../components/gis/data/testing-data.json')
+import data from '../../components/gis/data/testing-data.json'
 import { AxisBottom } from '@visx/axis'
 
 
@@ -99,8 +99,8 @@ function TestingCurve(props) {
                     </Group>
 
                     <LinePath
-                        curve={curveBasis}
-                        data={timeSeries}
+                        curve={curveStepAfter}
+                        data={timeSeries.slice(7, timeSeries.length)}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}
                         stroke='#7a7a7a'
@@ -109,6 +109,7 @@ function TestingCurve(props) {
 
                     {tooltipData &&
                         <Bar
+                            opacity={0.6}
                             x={xScale(x(tooltipData))}
                             y={yScale(y(tooltipData)) - 30}
                             width={xScale.bandwidth()}
@@ -185,7 +186,7 @@ function TestingCurve(props) {
 const Container = () => (
     <ParentSize>
         {({ width, height }) => (
-            <TestingCurve width={width} height={250} />
+            <TestingCurve width={width} height={280} />
         )}
     </ParentSize>
 )

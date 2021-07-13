@@ -34,7 +34,7 @@ class NationalCurveSection extends React.Component {
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
         <h3>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
-        <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Percent Positive) ที่ 5%</p>
+        <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Positive Rate) ที่ 5%</p>
         <TestingGraph />
         <TestingTable />
         <hr />
