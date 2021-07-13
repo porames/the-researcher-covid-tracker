@@ -78,7 +78,7 @@ function TestingCurve(props) {
                                         y={height - barHeight_pos - 30}
                                         width={xScale.bandwidth()}
                                         height={barHeight_pos}
-                                        fill='red'
+                                        fill='#dc3545'
                                     />
                                 </Group>
                             );

@@ -7,6 +7,7 @@ const startDate = new Date('2021-03-06')
 const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
 const geo = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
+const currentProvincesData = require('../../components/gis/data/provincial-vaccination-data_2.json')
 var jsonData = _.cloneDeep(currentData)
 
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
@@ -107,6 +108,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
             skip_empty_lines: true
         })
         var latestDate = dataset[dataset.length - 1]['Date']
+        console.log(latestDate)
         var todayData = _.filter(dataset, { 'Date': latestDate })
         var vaccinationData = {
             update_at: latestDate,
@@ -116,18 +118,47 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
             for (const i in todayData) {
                 const province = todayData[i]
                 const geoData = _.find(estimated_pop, { "clean-name": province.Province.replace(/\s/g, '').toUpperCase() })
-                vaccinationData.data.push({
-                    name: geoData.province,
-                    id: geoData.PROV_CODE,
-                    population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
-                    registered_population: geoData.population,
-                    total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
-                    "total-1st-dose": Number(province['Vac Given 1 Cum']),
-                    "total-2nd-dose": Number(province['Vac Given 2 Cum'])
-                })
-
+                if (Number(province['Vac Given 1 Cum']) > 0 && Number(province['Vac Given 2 Cum']) > 0) {
+                    vaccinationData.data.push({
+                        name: geoData.province,
+                        id: geoData.PROV_CODE,
+                        population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
+                        registered_population: geoData.population,
+                        total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
+                        "total-1st-dose": Number(province['Vac Given 1 Cum']),
+                        "total-2nd-dose": Number(province['Vac Given 2 Cum'])
+                    })
+                }
+                else {
+                    throw new Error('null found')
+                }
             }
             fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
+        }
+        else {
+            const vaccinationData = _.cloneDeep(currentProvincesData)
+            for (const i in todayData) {
+                const province = todayData[i]
+                console.log(province)
+                const geoData = _.find(estimated_pop, { "clean-name": province.Province.replace(/\s/g, '').toUpperCase() })
+                const searchIndex = _.findIndex(vaccinationData.data, { id: String(geoData.PROV_CODE) })
+                if (searchIndex >= 0 && Number(province['Vac Given 1 Cum']) > 0 && Number(province['Vac Given 2 Cum']) > 0) {
+                    vaccinationData.data[searchIndex] = {
+                        name: geoData.province,
+                        id: geoData.PROV_CODE,
+                        population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
+                        registered_population: geoData.population,
+                        total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
+                        "total-1st-dose": Number(province['Vac Given 1 Cum']),
+                        "total-2nd-dose": Number(province['Vac Given 2 Cum'])
+                    }
+                }
+                else {
+                    throw new Error('null found')
+                }
+            }
+            fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
+            console.log('missing provinces')
         }
     }
 })
