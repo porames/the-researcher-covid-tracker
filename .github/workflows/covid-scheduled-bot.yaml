@@ -35,11 +35,14 @@ jobs:
             - name: Get National Data From djay/covidthailand
               working-directory: bot_jobs
               run: node get_data.js
+            - name: Get testing dataset
+              working-directory: bot_jobs
+              run: python get_covid_test_dataset
             - name: Get vaccination datasets
               working-directory: bot_jobs/vaccination
               run: |
                   node get-national-data.js
-                  #node fetch-MOPH-dashboard.js
+              # node fetch-MOPH-dashboard.js
             - name: Build Province Graphs in svg using Python
               working-directory: bot_jobs
               run: python build_province_graph.py
