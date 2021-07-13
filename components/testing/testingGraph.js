@@ -7,10 +7,10 @@ import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
-import { curveBasis } from '@visx/curve'
+import { curveStepAfter } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-const data = require('../../components/gis/data/testing-data.json')
+import data from '../../components/gis/data/testing-data.json'
 import { AxisBottom } from '@visx/axis'
 
 
@@ -76,23 +76,31 @@ function TestingCurve(props) {
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
+                            const barHeight_pos = height - yScale(d['positive'])
                             return (
-                                <Bar
-                                    key={i}
-                                    x={xScale(x(d))}
-                                    y={height - barHeight - 30}
-                                    width={xScale.bandwidth()}
-                                    height={barHeight}
-                                    fill='#cfcfcf'
-                                />
-
+                                <Group key={i}>
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - barHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={barHeight}
+                                        fill='#cfcfcf'
+                                    />
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - barHeight_pos - 30}
+                                        width={xScale.bandwidth()}
+                                        height={barHeight_pos}
+                                        fill='red'
+                                    />
+                                </Group>
                             );
                         })}
                     </Group>
 
                     <LinePath
-                        curve={curveBasis}
-                        data={timeSeries}
+                        curve={curveStepAfter}
+                        data={timeSeries.slice(7, timeSeries.length)}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}
                         stroke='#7a7a7a'
@@ -101,6 +109,7 @@ function TestingCurve(props) {
 
                     {tooltipData &&
                         <Bar
+                            opacity={0.6}
                             x={xScale(x(tooltipData))}
                             y={yScale(y(tooltipData)) - 30}
                             width={xScale.bandwidth()}
@@ -145,7 +154,7 @@ function TestingCurve(props) {
                             onMouseLeave={() => hideTooltip()}
                             x={10}
                             y={0}
-                            width={width - 20}
+                            width={width}
                             height={height - 30}
                             fill="transparent"
                         />
@@ -165,8 +174,9 @@ function TestingCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                    จำนวนการตรวจเชื้อ {Number(tooltipData['tests']).toLocaleString()} ราย
-                </span>
+                        จำนวนการตรวจเชื้อ: {Number(tooltipData['tests']).toLocaleString()} ราย<br />
+                        <span className='text-danger'>Positive Rate: {(Number(tooltipData['positive']) * 100 / Number(tooltipData['tests'])).toFixed(1)}%</span>
+                    </span>
                 </TooltipWithBounds>
             }
         </div>
@@ -176,7 +186,7 @@ function TestingCurve(props) {
 const Container = () => (
     <ParentSize>
         {({ width, height }) => (
-            <TestingCurve width={width} height={300} />
+            <TestingCurve width={width} height={280} />
         )}
     </ParentSize>
 )
