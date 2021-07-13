@@ -9,7 +9,6 @@ const geo = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
 var jsonData = _.cloneDeep(currentData)
 
-/*
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         const dataset = parse(body, {
@@ -100,7 +99,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
         console.log('Error', err)
     }
 })
-*/
+
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
         const dataset = parse(body, {
