@@ -4,6 +4,8 @@ import NationalCurve from '../components/nationalGraph'
 import VaccinePreview from '../components/vaccinePreview'
 import NationalTable from '../components/nationalTable.js'
 import Province from '../components/provincesGraph'
+import TestingGraph from '../components/testing/testingGraph'
+import TestingTable from '../components/testing/testingTable'
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -20,6 +22,7 @@ class NationalCurveSection extends React.Component {
 
   render() {
     return (
+
       <div className='container mb-4' style={{ maxWidth: 810 }}>
         <div className='text-center'>
           <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
@@ -29,6 +32,11 @@ class NationalCurveSection extends React.Component {
         </div>
         <NationalCurve />
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
+        <hr />
+        <h3>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
+        <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Percent Positive) ที่ 5%</p>
+        <TestingGraph />
+        <TestingTable />
         <hr />
         <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
         <Link href='/vaccination'>

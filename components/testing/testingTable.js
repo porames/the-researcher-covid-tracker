@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import data from './gis/data/testing-data.json'
+import data from '../gis/data/testing-data.json'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
@@ -80,7 +80,7 @@ function TestingTable(props) {
     const ts = data
     const [delta, setDelta] = useState()
     const [latestWeek, setLatestWeek] = useState()
-    const [prevWeek, setPrevWeek] = useState()
+    const [latestWeek_pos, setLatestWeek_pos] = useState()
     const [lastUpdate, setLastUpdate] = useState()
     useEffect(() => {
         var currentPeriod = 0
@@ -93,9 +93,9 @@ function TestingTable(props) {
         }
         setDelta(((currentPeriod - prevPeriod) / prevPeriod) * 100)
         const thisWeek = ts.slice(ts.length - 7, ts.length).reduce((a, b) => a + b['tests'], 0)
-        const previousWeek = ts.slice(ts.length - 14, ts.length - 8).reduce((a, b) => a + b['tests'], 0)
+        const thisWeek_pos = ts.slice(ts.length - 7, ts.length).reduce((a, b) => a + b['positive'], 0)
         setLatestWeek(thisWeek)
-        setPrevWeek(previousWeek)
+        setLatestWeek_pos(thisWeek_pos)
         setLastUpdate(ts.pop()['date'])
     }, [])
 
@@ -106,10 +106,6 @@ function TestingTable(props) {
                     <tr>
                         <th scope="col"></th>
                         <th className='text-end' scope="col">
-                            สัปดาห์ที่ผ่านมา<br />
-                            {moment(lastUpdate).subtract(14, 'd').format('D MMM')} - {moment(lastUpdate).subtract(8, 'd').format('D MMM')}
-                        </th>
-                        <th className='text-end' scope="col">
                             สัปดาห์ล่าสุด<br />
                             {moment(lastUpdate).subtract(7, 'd').format('D MMM')} - {moment(lastUpdate).format('D MMM')}
                         </th>
@@ -119,7 +115,6 @@ function TestingTable(props) {
                 <tbody>
                     <tr className='text-sec'>
                         <th scope="row">การตรวจเชื้อ</th>
-                        <td>{Number(prevWeek).toLocaleString()}</td>
                         <td>{Number(latestWeek).toLocaleString()}</td>
                         <td>
                             <div className='d-flex justify-content-end'>
@@ -128,6 +123,12 @@ function TestingTable(props) {
                                     <TrendCurveTestingRate data={ts} />
                                 </div>
                             </div>
+                        </td>
+                    </tr>
+                    <tr className='text-danger'>
+                        <th scope="row">Positive Rate</th>
+                        <td>{(latestWeek_pos * 100 / latestWeek).toFixed(1)}%</td>
+                        <td>
                         </td>
                     </tr>
 

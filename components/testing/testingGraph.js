@@ -76,16 +76,24 @@ function TestingCurve(props) {
                     <Group>
                         {timeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
+                            const barHeight_pos = height - yScale(d['positive'])
                             return (
-                                <Bar
-                                    key={i}
-                                    x={xScale(x(d))}
-                                    y={height - barHeight - 30}
-                                    width={xScale.bandwidth()}
-                                    height={barHeight}
-                                    fill='#cfcfcf'
-                                />
-
+                                <Group key={i}>
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - barHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={barHeight}
+                                        fill='#cfcfcf'
+                                    />
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - barHeight_pos - 30}
+                                        width={xScale.bandwidth()}
+                                        height={barHeight_pos}
+                                        fill='red'
+                                    />
+                                </Group>
                             );
                         })}
                     </Group>
@@ -145,7 +153,7 @@ function TestingCurve(props) {
                             onMouseLeave={() => hideTooltip()}
                             x={10}
                             y={0}
-                            width={width - 20}
+                            width={width}
                             height={height - 30}
                             fill="transparent"
                         />
@@ -165,8 +173,9 @@ function TestingCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                    จำนวนการตรวจเชื้อ {Number(tooltipData['tests']).toLocaleString()} ราย
-                </span>
+                        จำนวนการตรวจเชื้อ: {Number(tooltipData['tests']).toLocaleString()} ราย<br />
+                        <span className='text-danger'>Positive Rate: {(Number(tooltipData['positive']) * 100 / Number(tooltipData['tests'])).toFixed(1)}%</span>
+                    </span>
                 </TooltipWithBounds>
             }
         </div>
@@ -176,7 +185,7 @@ function TestingCurve(props) {
 const Container = () => (
     <ParentSize>
         {({ width, height }) => (
-            <TestingCurve width={width} height={300} />
+            <TestingCurve width={width} height={250} />
         )}
     </ParentSize>
 )
