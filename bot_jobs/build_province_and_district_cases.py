@@ -35,34 +35,38 @@ df.district_of_onset.update(mueng_df.district_of_onset + mueng_df.province_of_on
 
 # Load province and district name in to sets
 json_data = json.load(open(DISTRICT_MAP_PATH, encoding="utf-8"))
-province_names = set()
-district_names = set()
-district_and_province_names = list()
-for feature in json_data['features']:
-    province_names.add(feature["properties"]["P_NAME_T"])
-    district_names.add(feature["properties"]["A_NAME_T"])
-    district_and_province_names.append((feature["properties"]["P_NAME_T"],feature["properties"]["A_NAME_T"],))
+district_and_province_names = pd.DataFrame(i["properties"] for i in json_data['features'])[["fid","P_NAME_T", "A_NAME_T"]]
+district_and_province_names = district_and_province_names.rename(columns={"fid": "id", "P_NAME_T": "province", "A_NAME_T": "district"})
+province_names = district_and_province_names["province"]
+district_names = district_and_province_names["district"]
 
 # Filter by district name
-df_filtered_by_district = df[df.district_of_onset.isin(district_names)].drop("announce_date", axis=1)
-# Count values by district
-df_district_case_14days = df_filtered_by_district.value_counts(sort=True).to_frame(name="caseCount")
-district_cases_14days = df_district_case_14days.to_dict()["caseCount"]
-# Create a dict with district data
-district_cases_14days_id = [
-    {
-        "name": province_district[1],
-        "province": province_district[0],
-        "id": i+1,
-        "caseCount": district_cases_14days[province_district],
-    } for i, province_district in enumerate(district_and_province_names) if province_district in district_cases_14days
-]
+df_no_date = df.drop("announce_date", axis=1).rename(columns={"province_of_onset": "province", "district_of_onset": "district"})
 
-# Write district data to json file
-json_dump(district_cases_14days_id, district_data_14days_out_path)
+df_filtered_by_district = df_no_date[df_no_date.district.isin(district_names)]
+# Count values by district
+df_district_case_14days = df_filtered_by_district.value_counts(sort=True).to_frame(name="caseCount").reset_index()
+df_district_case_14days = df_district_case_14days.rename(columns={"province_of_onset": "province", "district_of_onset": "district"})
+
+# Merge only valid district and province pair
+df_district_case_14days_with_id = district_and_province_names.merge(df_district_case_14days, how='left', on=['province', 'district'])
+df_district_case_14days_with_id = df_district_case_14days_with_id.rename(columns={"district": "name"})
+df_district_case_14days_with_id = df_district_case_14days_with_id.fillna(0)
+df_district_case_14days_with_id["caseCount"] = df_district_case_14days_with_id["caseCount"].astype(int)
+
+# Write df to json
+df_district_case_14days_with_id.to_json(district_data_14days_out_path, orient="records", indent=2, force_ascii=False)    
 
 # Filter by province name
-df_filtered_by_province = df[df.province_of_onset.isin(province_names)].drop("district_of_onset", axis=1)
+df_no_district = df.drop("district_of_onset", axis=1)
+df_filtered_by_province = df_no_district[df_no_district.province_of_onset.isin(province_names)]
+
+# Print invalid Province name
+df_invalid_province = df_no_district[~df_no_district.province_of_onset.isin(province_names)]
+df_invalid_province = df_invalid_province.fillna(0)
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+    print(df_invalid_province[df_invalid_province.province_of_onset != 0])
+
 # Count values by provinces by date
 province_cases_each_day = pd.crosstab(df_filtered_by_province.announce_date,
                                       df_filtered_by_province.province_of_onset).to_dict()
