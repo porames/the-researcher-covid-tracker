@@ -37,7 +37,7 @@ def get_provinces(data, start):
     data_ymd = data.copy()
     data_ymd["announce_date"] = data_ymd["announce_date"].map(
         lambda date: datetime.datetime.strptime(date.strip(), "%d/%m/%Y"))
-    data_filtered = data_ymd[data_ymd["announce_date"] > start]
+    data_filtered = data_ymd[data_ymd["announce_date"] >= start]
     return pd.crosstab(data_filtered.announce_date, data_filtered.province_of_onset).to_dict()
 
 
