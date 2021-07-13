@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Created with matplotlib (https://matplotlib.org/) -->
 <svg height="360pt" version="1.1" viewBox="0 0 720 360" width="720pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <metadata>
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-13T12:28:26.864950</dc:date>
+    <dc:date>2021-07-13T13:32:05.032712</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.3.2, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -34,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -270.341899 
+     <path d="M 115.363636 -245.564246 
 L 115.363636 -39.6 
 L 154.384615 -39.6 
 L 193.405594 -39.6 
@@ -49,49 +48,49 @@ L 505.573427 -39.6
 L 544.594406 -39.6 
 L 583.615385 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -316.8 
-L 622.636364 -316.8 
-L 583.615385 -264.147486 
-L 544.594406 -234.724022 
-L 505.573427 -236.272626 
-L 466.552448 -225.432402 
-L 427.531469 -205.300559 
-L 388.51049 -223.883799 
-L 349.48951 -225.432402 
-L 310.468531 -202.203352 
-L 271.447552 -200.654749 
-L 232.426573 -205.300559 
-L 193.405594 -261.050279 
-L 154.384615 -245.564246 
-L 115.363636 -270.341899 
+L 622.636364 -315.251397 
+L 622.636364 -315.251397 
+L 583.615385 -316.8 
+L 544.594406 -264.147486 
+L 505.573427 -234.724022 
+L 466.552448 -236.272626 
+L 427.531469 -225.432402 
+L 388.51049 -205.300559 
+L 349.48951 -223.883799 
+L 310.468531 -225.432402 
+L 271.447552 -202.203352 
+L 232.426573 -200.654749 
+L 193.405594 -205.300559 
+L 154.384615 -261.050279 
+L 115.363636 -245.564246 
 z
-" id="m09615a48cd" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m8baf417c82" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p0967f8c435)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m09615a48cd" y="360"/>
+    <g clip-path="url(#pac8e052001)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m8baf417c82" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p0967f8c435)" d="M 115.363636 89.658101 
-L 154.384615 114.435754 
-L 193.405594 98.949721 
-L 232.426573 154.699441 
-L 271.447552 159.345251 
-L 310.468531 157.796648 
-L 349.48951 134.567598 
-L 388.51049 136.116201 
-L 427.531469 154.699441 
-L 466.552448 134.567598 
-L 505.573427 123.727374 
-L 544.594406 125.275978 
-L 583.615385 95.852514 
-L 622.636364 43.2 
+    <path clip-path="url(#pac8e052001)" d="M 115.363636 114.435754 
+L 154.384615 98.949721 
+L 193.405594 154.699441 
+L 232.426573 159.345251 
+L 271.447552 157.796648 
+L 310.468531 134.567598 
+L 349.48951 136.116201 
+L 388.51049 154.699441 
+L 427.531469 134.567598 
+L 466.552448 123.727374 
+L 505.573427 125.275978 
+L 544.594406 95.852514 
+L 583.615385 43.2 
+L 622.636364 44.748603 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p0967f8c435">
+  <clipPath id="pac8e052001">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
