@@ -12,36 +12,23 @@ import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../../components/gis/data/testing-data.json'
 import { AxisBottom } from '@visx/axis'
+import { movingAvg } from '../vaccine/util'
 
-
-function movingAvg(ts) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i]['tests'])
-    }
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
+var timeSeries = _.cloneDeep(data)
 
 function TestingCurve(props) {
-    var timeSeries = data
+
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
     const y = d => d['tests']
-    const avgs = movingAvg(timeSeries)
+
+    const { moving_aves: avgs } = movingAvg(timeSeries, 'tests')
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
+
+    //console.log(timeSeries)
     const xScale = scaleBand({
         range: [0, width],
         domain: timeSeries.map(x),
@@ -98,15 +85,6 @@ function TestingCurve(props) {
                         })}
                     </Group>
 
-                    <LinePath
-                        curve={curveStepAfter}
-                        data={timeSeries.slice(7, timeSeries.length)}
-                        x={d => xScale(x(d))}
-                        y={d => yScale(d['movingAvg']) - 30}
-                        stroke='#7a7a7a'
-                        strokeWidth={2}
-                    />
-
                     {tooltipData &&
                         <Bar
                             opacity={0.6}
@@ -117,7 +95,14 @@ function TestingCurve(props) {
                             fill='#999999'
                         />
                     }
-
+                    <LinePath
+                        curve={curveStepAfter}
+                        data={timeSeries.slice(7, timeSeries.length)}
+                        x={d => xScale(x(d))}
+                        y={d => yScale(d['movingAvg']) - 30}
+                        stroke='#7a7a7a'
+                        strokeWidth={2}
+                    />
                     <Group>
                         <AxisBottom
                             top={height - 30}
@@ -183,12 +168,15 @@ function TestingCurve(props) {
     )
 }
 
-const Container = () => (
-    <ParentSize>
-        {({ width, height }) => (
-            <TestingCurve width={width} height={280} />
-        )}
-    </ParentSize>
-)
+const Container = () => {
+    return (
+        <ParentSize>
+            {({ width, height }) => (
+                <TestingCurve width={width} height={280} />
+            )}
+        </ParentSize>
+    )
+}
+
 
 export default Container
