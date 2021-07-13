@@ -14,10 +14,10 @@ import data from '../../components/gis/data/testing-data.json'
 import { AxisBottom } from '@visx/axis'
 import { movingAvg } from '../vaccine/util'
 
-var timeSeries = _.cloneDeep(data)
+
 
 function TestingCurve(props) {
-
+    var timeSeries = _.cloneDeep(data)
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])

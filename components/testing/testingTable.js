@@ -8,7 +8,7 @@ import { Group } from '@visx/group'
 import { MarkerArrow } from '@visx/marker'
 import moment from 'moment'
 import 'moment/locale/th'
-
+import _ from 'lodash'
 function movingAvg(ts) {
     var moving_aves = []
     var ys = []
@@ -77,7 +77,7 @@ function TrendCurveTestingRate(props) {
 
 
 function TestingTable(props) {
-    const ts = data
+    const ts = _.cloneDeep(data)
     const [delta, setDelta] = useState()
     const [latestWeek, setLatestWeek] = useState()
     const [latestWeek_pos, setLatestWeek_pos] = useState()
