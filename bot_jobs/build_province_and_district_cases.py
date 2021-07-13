@@ -50,6 +50,7 @@ df_district_case_14days = df_district_case_14days.rename(columns={"province_of_o
 
 # Merge only valid district and province pair
 df_district_case_14days_with_id = district_and_province_names.merge(df_district_case_14days, how='left', on=['province', 'district'])
+df_district_case_14days_with_id = df_district_case_14days_with_id.rename(columns={"district": "name"})
 df_district_case_14days_with_id = df_district_case_14days_with_id.fillna(0)
 df_district_case_14days_with_id["caseCount"] = df_district_case_14days_with_id["caseCount"].astype(int)
 
