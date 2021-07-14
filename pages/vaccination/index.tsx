@@ -29,8 +29,10 @@ const MetaHead = () => (
         gtag('js', new Date());
         gtag('config', 'G-V6Q0C8MG7Q');`}} />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher" />
     <meta property="og:image" content="https://covid-19.researcherth.co/cover-vaccination.png" />
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="รายงานการฉีดวัคซีน COVID-19 ประเทศไทย - The Researcher" />
     <meta property="twitter:image" content="https://covid-19.researcherth.co/cover-vaccination.png" />
   </Head>
 )
