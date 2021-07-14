@@ -28,10 +28,10 @@ export default function Countdown() {
         gtag('config', 'G-V6Q0C8MG7Q');`}} />
                 <meta property="og:title" content="นับถอยหลังเปิดประเทศ 120 วัน - The Researcher" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://covid-19.researcherth.co/cover-vaccination.png" />
+                <meta property="og:image" content="https://covid-19.researcherth.co/cover-120days.png" />
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:title" content="นับถอยหลังเปิดประเทศ 120 วัน - The Researcher" />
-                <meta property="twitter:image" content="https://covid-19.researcherth.co/cover-vaccination.png" />
+                <meta property="twitter:image" content="https://covid-19.researcherth.co/cover-120days.png" />
             </Head>
             <NavHead />
             <div className='dark-theme py-5'>
