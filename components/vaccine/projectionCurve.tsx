@@ -165,7 +165,6 @@ const EstimateCurve = (props) => {
                             fontFamily="Sarabun"
                             fontWeight="bold"
                             fontSize={12}
-
                         >
                             {`${Math.floor(goal['required_rate']).toLocaleString()} โดส/วัน เพื่อให้ครบ 50 ล้านคน ในสิ้นปี`}
                         </Text>
@@ -217,7 +216,7 @@ const EstimateCurve = (props) => {
                         tickLength={0}
                     />
                     <AxisBottom
-                        numTicks={3}
+                        numTicks={5}
                         top={height - 30}
                         scale={dateScale}
                         tickFormat={d => moment(String(d)).format('MMM YY')}
