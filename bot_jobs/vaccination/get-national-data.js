@@ -155,7 +155,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
                         }
                     }
                     else {
-                        throw 'null found'
+                        throw 'null found :('
                     }
                 }
                 fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
