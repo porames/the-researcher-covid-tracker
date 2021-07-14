@@ -114,7 +114,7 @@ export default function Vaccine() {
         </div>
         <Map />
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5'>การฉีดวัคซีนรายจังหวัดแยกตามอายุ</h2>
+          <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนรายจังหวัด</h2>
           <Province />
         </div>
         <VaccinationRace />
