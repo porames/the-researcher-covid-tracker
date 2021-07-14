@@ -11,7 +11,7 @@ def json_load(fname):
 
 def json_dump(json_data,fname):
     with open(fname, "w+", encoding="utf-8") as fout:
-        json.dump(json_data, fout, ensure_ascii=False)
+        json.dump(json_data, fout, ensure_ascii=False, indent=2)
 
 
 def get_population(json_data):
