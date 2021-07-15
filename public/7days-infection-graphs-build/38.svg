@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-15T13:25:17.322528</dc:date>
+    <dc:date>2021-07-15T19:30:14.623600</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -130.68 
+     <path d="M 115.363636 -118.8 
 L 115.363636 -39.6 
 L 199.909091 -39.6 
 L 284.454545 -39.6 
@@ -44,24 +44,24 @@ L 622.636364 -39.6
 L 622.636364 -142.56 
 L 622.636364 -142.56 
 L 538.090909 -142.56 
-L 453.545455 -134.64 
-L 369 -150.48 
+L 453.545455 -142.56 
+L 369 -134.64 
 L 284.454545 -150.48 
-L 199.909091 -118.8 
-L 115.363636 -130.68 
+L 199.909091 -150.48 
+L 115.363636 -118.8 
 z
-" id="m534d6205c8" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m064c9c4456" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#pd34ff791d9)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m534d6205c8" y="360"/>
+    <g clip-path="url(#pdb243fdfb3)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m064c9c4456" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#pd34ff791d9)" d="M 115.363636 229.32 
-L 199.909091 241.2 
+    <path clip-path="url(#pdb243fdfb3)" d="M 115.363636 241.2 
+L 199.909091 209.52 
 L 284.454545 209.52 
-L 369 209.52 
-L 453.545455 225.36 
+L 369 225.36 
+L 453.545455 217.44 
 L 538.090909 217.44 
 L 622.636364 217.44 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
@@ -69,7 +69,7 @@ L 622.636364 217.44
   </g>
  </g>
  <defs>
-  <clipPath id="pd34ff791d9">
+  <clipPath id="pdb243fdfb3">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>

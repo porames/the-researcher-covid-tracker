@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-15T13:25:18.526688</dc:date>
+    <dc:date>2021-07-15T19:30:16.036671</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -188.838486 
+     <path d="M 115.363636 -207.418378 
 L 115.363636 -39.6 
 L 199.909091 -39.6 
 L 284.454545 -39.6 
@@ -41,35 +41,35 @@ L 369 -39.6
 L 453.545455 -39.6 
 L 538.090909 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -311.106162 
-L 622.636364 -311.106162 
-L 538.090909 -309.907459 
-L 453.545455 -316.8 
-L 369 -294.923676 
-L 284.454545 -235.587892 
-L 199.909091 -207.418378 
-L 115.363636 -188.838486 
+L 622.636364 -312.904216 
+L 622.636364 -312.904216 
+L 538.090909 -311.106162 
+L 453.545455 -309.907459 
+L 369 -316.8 
+L 284.454545 -294.923676 
+L 199.909091 -235.587892 
+L 115.363636 -207.418378 
 z
-" id="ma46bd14d16" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m0c2b693c01" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p4952ba4aae)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#ma46bd14d16" y="360"/>
+    <g clip-path="url(#p11c2add68d)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m0c2b693c01" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p4952ba4aae)" d="M 115.363636 171.161514 
-L 199.909091 152.581622 
-L 284.454545 124.412108 
-L 369 65.076324 
-L 453.545455 43.2 
-L 538.090909 50.092541 
-L 622.636364 48.893838 
+    <path clip-path="url(#p11c2add68d)" d="M 115.363636 152.581622 
+L 199.909091 124.412108 
+L 284.454545 65.076324 
+L 369 43.2 
+L 453.545455 50.092541 
+L 538.090909 48.893838 
+L 622.636364 47.095784 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p4952ba4aae">
+  <clipPath id="p11c2add68d">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
