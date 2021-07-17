@@ -73,7 +73,7 @@ const InfoBox = (props) => {
                     ).toLocaleString()} คน`}
                 </div>
                 <div>
-                  ข้อมูลเมื่อ {moment(provincesData["update_at"]).fromNow()}
+                  ข้อมูลเมื่อ {moment().diff(moment(provincesData["update_at"]), 'days')} วันก่อน
                 </div>
               </div>
             </div>
