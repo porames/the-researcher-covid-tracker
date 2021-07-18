@@ -50,15 +50,20 @@ def search_manufacturer(report):
     if ('Sinovac' not in items or items['Sinovac'] < 5000000):
         return False
     else:
-        return(items)
+        return items
 
-
-url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/07/10/2021"
+df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
+if len(df)>0:
+    latest_date = pd.to_datetime(df.iloc[-1]['date'])
+else:
+    latest_date = pd.to_datetime("2021-07-01")
+url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/0" + str(latest_date.month) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
-day = 0
-manufacturer_timeseries = []
-for row in soup.find_all("td", text=re.compile('สไลด์นำเสนอ')):
+day = latest_date.day
+manufacturer_timeseries = df
+rows = soup.find_all("td", text=re.compile('สไลด์นำเสนอ'))
+for row in rows[latest_date.day:len(rows)]:
     tr = row.parent
     report_url = tr.find("a").get("href")
     print('--'+tr.text.strip()+'--')
@@ -70,10 +75,11 @@ for row in soup.find_all("td", text=re.compile('สไลด์นำเสน�
             data["date"] = "2021-07-0"+str(day+1)
         else:
             data["date"] = "2021-07-"+str(day+1)
-        manufacturer_timeseries.append(data)
+        data["date"] = pd.to_datetime(data["date"])
+        manufacturer_timeseries = manufacturer_timeseries.append(data,ignore_index=True)
     day += 1
 
-manufacturer_data = pd.DataFrame(manufacturer_timeseries)
-manufacturer_data.to_json("tmp/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
+manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
+manufacturer_timeseries.to_json("tmp/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
 print('saved!')
 
