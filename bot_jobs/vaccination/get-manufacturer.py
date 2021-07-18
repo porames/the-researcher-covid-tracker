@@ -11,15 +11,13 @@ def parse_report_by_url(url):
     file.write(response.content)
     file.close()
 
-    inputpdf = PdfFileReader(open("daily_slides.pdf", "rb"))
+    inputpdf = PdfFileReader(open("tmp/daily_slides.pdf", "rb"))
     output = PdfFileWriter()
     output.addPage(inputpdf.getPage(2))
-    with open("manufacturer_table.pdf", "wb") as outputStream:
+    with open("tmp/manufacturer_table.pdf", "wb") as outputStream:
         output.write(outputStream)
 
-    parsed_pdf = parser.from_file("manufacturer_table.pdf")
-    data = parsed_pdf["content"]
-    with pdfplumber.open("manufacturer_table.pdf") as pdf:
+    with pdfplumber.open("tmp/manufacturer_table.pdf") as pdf:
         first_page = pdf.pages[0]
 
         text = first_page.extract_text()
