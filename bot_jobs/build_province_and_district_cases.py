@@ -19,7 +19,7 @@ df = pd.read_csv(dataset_path, encoding="utf-8")
 df = df.drop(["No.", "Notified date", "nationality", "province_of_isolation",
               "sex", "age", "risk", "Unit"], axis=1)
 # Convert day to datetime object
-df["announce_date"] = df["announce_date"].map(lambda date: datetime.datetime.strptime(date, "%d/%m/%Y"))
+df["announce_date"] = pd.to_datetime(df["announce_date"], format="%d/%m/%Y")
 
 # Filter from start date
 end = df.tail(1)["announce_date"].iloc[0]
@@ -27,7 +27,7 @@ start = end - datetime.timedelta(days=14)
 start = start.replace(hour=0, minute=0, second=0, microsecond=0)
 df = df[(df['announce_date'] > start) & (df['announce_date'] <= end)]
 # Convert datetime object to ISO string 
-df["announce_date"] = df["announce_date"].map(lambda dto: dto.isoformat())
+df["announce_date"] = df["announce_date"].apply(lambda dto: dto.isoformat())
 
 # Change อำเภอ เมือง -> อำเภอ เมือง + จังหวัด
 mueng_df = df[df.district_of_onset == "เมือง"]
@@ -65,7 +65,10 @@ df_filtered_by_province = df_no_district[df_no_district.province_of_onset.isin(p
 df_invalid_province = df_no_district[~df_no_district.province_of_onset.isin(province_names)]
 df_invalid_province = df_invalid_province.fillna(0)
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-    print(df_invalid_province[df_invalid_province.province_of_onset != 0])
+    df_wrong_name = df_invalid_province[df_invalid_province.province_of_onset != 0]
+    print(df_wrong_name)
+    print(df_wrong_name.info())
+
 
 # Count values by provinces by date
 province_cases_each_day = pd.crosstab(df_filtered_by_province.announce_date,

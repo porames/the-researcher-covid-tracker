@@ -15,12 +15,17 @@ if (req.status_code == 200) :
     # Dataset typo corrections
     start = time.time()
     text = req.text.replace("ุุ", "ุ") 
+    text = text.replace("่่", "่")
+    text = text.replace("้้","้")
+    text = text.replace("็็","็")
+    text = text.replace("ิิ", "ิ")
     text = text.replace("เเ", "แ") 
     text = text.replace("อ.", "")
     text = text.replace("จ.", "")
     text = text.replace("กทม", "กรุงเทพมหานคร")
     text = text.replace("กำแพงเพฃร", "กำแพงเพชร")
     text = text.replace("ลพบรี", "ลพบุรี")
+    text = text.replace("พระนครศรีอยุทธยา", "พระนครศรีอยุธยา")
     with open(path, "w+", encoding="utf-8") as fout :
         fout.write(text)
     print("Provincial dataset written to", path+",", "Took:", time.time()-start, "seconds")
