@@ -59,12 +59,12 @@ def calculate_rate(df):
     loop_date = first_date
     df['date'] = pd.to_datetime(df['date'])
     while (loop_date <= last_date):
-        loop_date = loop_date + pd.DateOffset(1)
         date_data = df[df['date'] == loop_date]
         if (len(date_data) == 0):
             previous_data = df[(pd.to_datetime(df['date']) == loop_date-pd.DateOffset(1))]
             previous_data['date'] = loop_date
             df=df.append(previous_data,ignore_index=True)    
+        loop_date = loop_date + pd.DateOffset(1)
     df=df.sort_values(by=['date']).reset_index(drop=True)
     old_df = df[df['date']<'2021-07-02']
     new_df = df[df['date']>='2021-07-02']
