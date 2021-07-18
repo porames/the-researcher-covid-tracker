@@ -68,7 +68,7 @@ export default function Province() {
 
     return (
         <div>
-            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(provincesData.update_at).format('LL')}</div>
+            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อเย็นวันที่ {moment(provincesData.update_at).format('LL')}</div>
             <div className='table-responsive'>
                 <table className="table text-white w-100" style={{ minWidth: 400 }}>
                     <thead>
