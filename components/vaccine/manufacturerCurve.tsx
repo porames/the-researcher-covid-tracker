@@ -10,14 +10,14 @@ import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize } from '@visx/responsive'
-import data from '../gis/data/manufacturer-vaccination-data.json'
+import manufacturer_data from '../gis/data/vaccine-manufacturer-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { ManufacturerDataProps } from './types'
 import { movingAvg } from './util'
 
 function SinopharmCurve(props) {
-    var timeSeries = _.filter(data, { manufacturer: 'Sinopharm' })
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
+    var timeSeries = _.cloneDeep(manufacturer_data)
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinopharm_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
@@ -36,8 +36,8 @@ function SinopharmCurve(props) {
                 />
             </Group>
             <Text
-                x={props.dateScale(x(timeSeriesWithEmptyDates[30]))}
-                y={props.yScale(y(timeSeriesWithEmptyDates[30])) - 30}
+                x={props.dateScale(x(timeSeriesWithEmptyDates[120]))}
+                y={props.yScale(y(timeSeriesWithEmptyDates[120])) - 30}
                 fill='green'
                 dx={-10}
                 dy={-8}
@@ -54,10 +54,10 @@ function SinopharmCurve(props) {
 }
 
 function AstraZenecaCurve(props) {
-    var timeSeries = _.filter(data, { manufacturer: 'AstraZeneca' })
+    var timeSeries = _.cloneDeep(manufacturer_data)
     const width = props.width
     const height = props.height
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'AstraZeneca_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
@@ -67,8 +67,8 @@ function AstraZenecaCurve(props) {
         <Group>
             <Group>
                 <Text
-                    x={props.dateScale(x(timeSeriesWithEmptyDates[100]))}
-                    y={props.yScale(y(timeSeriesWithEmptyDates[100])) - 30}
+                    x={props.dateScale(x(timeSeriesWithEmptyDates[102]))}
+                    y={props.yScale(y(timeSeriesWithEmptyDates[102])) - 30}
                     fill='#F29F05'
                     dx={-10}
                     dy={0}
@@ -94,10 +94,11 @@ function AstraZenecaCurve(props) {
 }
 
 function SinovacCurve(props) {
-    var timeSeries = _.filter(data, { manufacturer: 'Sinovac Life Sciences' })
+    //var timeSeries = _.filter(data, { manufacturer: 'Sinovac Life Sciences' })
+    var timeSeries = _.cloneDeep(manufacturer_data)
     const width = props.width
     const height = props.height
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'doses_administered', 'rate')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinovac_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
@@ -132,11 +133,11 @@ function SinovacCurve(props) {
 }
 
 function ManufacturerCurve(props) {
-    var timeSeries: ManufacturerDataProps[] = _.cloneDeep(data)
+    var timeSeries = _.cloneDeep(manufacturer_data)
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['vaccinatedAvg']
+    //const y = d => d['vaccinatedAvg']
     const yScale = scaleLinear({
         range: [height, 50],
         domain: [0, 250000],

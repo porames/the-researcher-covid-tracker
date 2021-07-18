@@ -46,17 +46,40 @@ def search_manufacturer(report):
     for i in range(len(doses)):
         items.append((manufacturers[i], doses[i]))
     items = dict(items)
-
+    
+    #Huge brain test case
     if ('Sinovac' not in items or items['Sinovac'] < 5000000):
         return False
     else:
         return items
 
+def calculate_rate(df):
+    first_date = pd.to_datetime('2021-07-02')
+    last_date = pd.to_datetime(df.iloc[-1]['date'])
+    loop_date = first_date
+    df['date'] = pd.to_datetime(df['date'])
+    while (loop_date <= last_date):
+        loop_date = loop_date + pd.DateOffset(1)
+        date_data = df[df['date'] == loop_date]
+        if (len(date_data) == 0):
+            previous_data = df[(pd.to_datetime(df['date']) == loop_date-pd.DateOffset(1))]
+            previous_data['date'] = loop_date
+            df=df.append(previous_data,ignore_index=True)    
+    df=df.sort_values(by=['date']).reset_index(drop=True)
+    old_df = df[df['date']<'2021-07-02']
+    new_df = df[df['date']>='2021-07-02']
+    new_df['AstraZeneca_rate'] = new_df['AstraZeneca'].diff()
+    new_df['Sinopharm_rate'] = new_df['Sinopharm'].diff()
+    new_df['Sinovac_rate'] = new_df['Sinovac'].diff()
+    new_df = new_df.fillna(0)
+    
+    return old_df.append(new_df, ignore_index=True)
+
 df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
 if len(df)>0:
     latest_date = pd.to_datetime(df.iloc[-1]['date'])
 else:
-    latest_date = pd.to_datetime("2021-07-01")
+    latest_date = pd.to_datetime("2021-07-02")
 url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/0" + str(latest_date.month) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
@@ -79,7 +102,12 @@ for row in rows[latest_date.day:len(rows)]:
         manufacturer_timeseries = manufacturer_timeseries.append(data,ignore_index=True)
     day += 1
 
+manufacturer_timeseries = calculate_rate(manufacturer_timeseries)
 manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
+
 manufacturer_timeseries.to_json("tmp/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
+
+
+
 print('saved!')
 
