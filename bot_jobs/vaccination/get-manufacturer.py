@@ -1,30 +1,41 @@
 from PyPDF2 import PdfFileWriter, PdfFileReader
 import requests
 from bs4 import BeautifulSoup
-from tika import parser
+import pdfplumber
 import re
 import pandas as pd
 
 def parse_report_by_url(url):
     response = requests.get(url)
-    file = open("tmp/daily_slides.pdf", "wb")
+    file = open("daily_slides.pdf", "wb")
     file.write(response.content)
     file.close()
 
-    inputpdf = PdfFileReader(open("tmp/daily_slides.pdf", "rb"))
+    inputpdf = PdfFileReader(open("daily_slides.pdf", "rb"))
     output = PdfFileWriter()
     output.addPage(inputpdf.getPage(2))
-    with open("tmp/manufacturer_table.pdf", "wb") as outputStream:
+    with open("manufacturer_table.pdf", "wb") as outputStream:
         output.write(outputStream)
 
-    parsed_pdf = parser.from_file("tmp/manufacturer_table.pdf")
+    parsed_pdf = parser.from_file("manufacturer_table.pdf")
     data = parsed_pdf["content"]
-    lines = data.split("\n")
-    toReturn = []
-    for line in lines:
-        if(line.strip() != ''):
-            toReturn.append(line.strip())
-    return toReturn
+    with pdfplumber.open("manufacturer_table.pdf") as pdf:
+        first_page = pdf.pages[0]
+
+        text = first_page.extract_text()
+
+        while text.find('  ') != -1:
+          print(text.find('  '))
+          text = text.replace('  ', ' ')
+
+        text = text.replace(' ,', '')
+        text = text.replace(', ', '')
+        text = text.replace(',', '')
+
+        lines = text.split('\n')
+
+
+    return lines
 
 def search_manufacturer(report):
     found = False
@@ -32,25 +43,28 @@ def search_manufacturer(report):
     items = []
     manufacturers = []
     doses = []
+    print('searching')
     for line in report:
         if (found):
-            shift += 1
-        if (found == True and (shift > 3 and shift < 7)):
-            dose = line
-            doses.append(int(dose.replace(',', '')))
-        elif (found == True and (shift <= 3)):
-            manufacturer = (line.split(' ราย')[0])
-            manufacturers.append(manufacturer)
-        if (line.find('จ าแนกตามบ') >= 0):
+            line_items = line.split(' ')
+            print(line_items)
+            if line_items[2] == 'ราย':
+              dose = line_items[1]
+              doses.append(int(dose))
+              
+              manufacturer = line_items[0]
+              manufacturers.append(manufacturer)
+            else:
+              print('break')
+              break
+        if (line.find('แนกตามบ') >= 0):
             found = True
+
     for i in range(len(doses)):
         items.append((manufacturers[i], doses[i]))
     items = dict(items)
-
-    if ('Sinovac' not in items or items['Sinovac'] < 5000000):
-        return False
-    else:
-        return items
+    
+    return(items)
 
 df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
 if len(df)>0:
