@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-18T13:24:24.110321</dc:date>
+    <dc:date>2021-07-18T19:29:53.207184</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -225.665753 
+     <path d="M 115.363636 -217.953488 
 L 115.363636 -39.6 
 L 199.909091 -39.6 
 L 284.454545 -39.6 
@@ -43,33 +43,33 @@ L 538.090909 -39.6
 L 622.636364 -39.6 
 L 622.636364 -316.8 
 L 622.636364 -316.8 
-L 538.090909 -294.77589 
-L 453.545455 -275.030137 
-L 369 -258.322192 
-L 284.454545 -248.449315 
-L 199.909091 -228.703562 
-L 115.363636 -225.665753 
+L 538.090909 -301.04186 
+L 453.545455 -280.269767 
+L 369 -261.646512 
+L 284.454545 -245.888372 
+L 199.909091 -236.576744 
+L 115.363636 -217.953488 
 z
-" id="m537d99981c" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m8e1437fd77" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p4aa4d2aa6e)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m537d99981c" y="360"/>
+    <g clip-path="url(#p27785729d9)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m8e1437fd77" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p4aa4d2aa6e)" d="M 115.363636 134.334247 
-L 199.909091 131.296438 
-L 284.454545 111.550685 
-L 369 101.677808 
-L 453.545455 84.969863 
-L 538.090909 65.22411 
+    <path clip-path="url(#p27785729d9)" d="M 115.363636 142.046512 
+L 199.909091 123.423256 
+L 284.454545 114.111628 
+L 369 98.353488 
+L 453.545455 79.730233 
+L 538.090909 58.95814 
 L 622.636364 43.2 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p4aa4d2aa6e">
+  <clipPath id="p27785729d9">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
