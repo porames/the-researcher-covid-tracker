@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import difflib
 
 
 def json_load(fname):
@@ -27,3 +28,9 @@ def get_provinces_name(json_data):
 def moving_average(ys, N=7):
     if len(ys) < N: return []
     return np.convolve(np.array(ys), np.ones(N), "valid") / N
+
+
+def find_similar_word(word : str, template_word : set) -> str :
+    tmp = difflib.get_close_matches(word, template_word)
+    if len(tmp) == 0 : return word
+    else : return tmp[0]

@@ -1,8 +1,11 @@
-from util import json_dump
+import time
+from util import find_similar_word, json_dump
 import pandas as pd
 import json
 import datetime
-import sys
+import re
+
+URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/confirmed-cases.csv"
 
 district_data_14days_out_path = "../components/gis/data/amphoes-data-14days.json"
 province_data_14days_out_path = "../components/gis/data/provinces-data-14days.json"
@@ -14,14 +17,41 @@ DISTRICT_MAP_PATH = "../components/gis/geo/th-map-amphoes.json"
 CENSUS_DATA_PATH = "./th-census-data.json"
 
 
-# Load dataset.csv
-df = pd.read_csv(dataset_path, encoding="utf-8")
+PROVINCE_IDS = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_CODE"] for feature in
+               json.load(open(PROVINCE_MAP_PATH, encoding="utf-8"))["features"]}
+PROVINCE_NAMES = set(PROVINCE_IDS.keys())
 
-# Drop unnecessary column
+# Load dataset.csv
+start = time.time()
+df = pd.read_csv(URL, encoding="utf-8") # Load from URL
+print(time.time()-start)
+
+#df = pd.read_csv("dataset.csv", encoding="utf-8") # Load from file
+
+# Drop unused (By the site) column
 df = df.drop(["No.", "Notified date", "nationality", "province_of_isolation",
               "sex", "age", "risk", "Unit"], axis=1)
 # Convert day to datetime object
 df["announce_date"] = pd.to_datetime(df["announce_date"], format="%d/%m/%Y")
+
+# Remove data with unknown province
+df = df.fillna(0)
+df = df[df["province_of_onset"] != 0]
+
+# Correct province name typo
+df_invalid = df[(~df["province_of_onset"].isin(PROVINCE_NAMES))]
+# Regex for some special cases
+regex_ay = re.compile(r"^(อยุธยา|อยุธนา)$")
+df_invalid["province_of_onset"].replace(regex_ay, "พระนครศรีอยุธยา", inplace=True)
+# Replace by finding most similar province
+df_invalid_correted = df_invalid["province_of_onset"].apply(lambda pro : find_similar_word(pro, PROVINCE_NAMES))
+df.update(df_invalid_correted)
+
+# Print uncorretable province
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+    df_uncorreted = df[~df["province_of_onset"].isin(PROVINCE_NAMES)]
+    print(df_uncorreted)
+    print(df_uncorreted.info())
 
 # Filter from start date
 end = df.tail(1)["announce_date"].iloc[0]
@@ -68,11 +98,6 @@ df_filtered_by_province = df_no_district[df_no_district.province_of_onset.isin(p
 # Print invalid Province name
 df_invalid_province = df_no_district[~df_no_district.province_of_onset.isin(province_names)]
 df_invalid_province = df_invalid_province.fillna(0)
-with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-    df_wrong_name = df_invalid_province[df_invalid_province.province_of_onset != 0]
-    print(df_wrong_name)
-    print(df_wrong_name.info())
-
 
 # Count values by provinces by date (count 21 days cases as well)
 province_cases_each_day = pd.crosstab(df_filtered_by_province.announce_date,
@@ -84,8 +109,6 @@ province_cases_14days = df_filtered_by_province_14days.drop("announce_date", axi
 province_population = {i["province"]: i["population"] for i in
                        json.load(open(CENSUS_DATA_PATH, encoding="utf-8"))}
 
-province_id = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_CODE"] for feature in
-               json.load(open(PROVINCE_MAP_PATH, encoding="utf-8"))["features"]}
 
 # Create a dict with all data combined
 province_cases_each_day_with_total = []
@@ -96,7 +119,7 @@ for name, cases in province_cases_each_day.items():
             "name": name,
             "cases": {dto.isoformat(): caseCount for dto, caseCount in cases.items()
                       if dto > (end - datetime.timedelta(days=14))},
-            "id": int(province_id[name]),
+            "id": int(PROVINCE_IDS[name]),
             "caseCount": int(province_cases_14days[name]),
             "cases-per-100k": (int(province_cases_14days[name]) * 10 ** 5) // province_population[name],
         }
