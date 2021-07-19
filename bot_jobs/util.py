@@ -1,6 +1,4 @@
-import datetime
 import json
-import pandas as pd
 import numpy as np
 
 
@@ -24,20 +22,6 @@ def get_vaccines(json_data):
 
 def get_provinces_name(json_data):
     return tuple(province["properties"]["PROV_NAMT"] for province in json_data["features"])
-
-
-def get_start_end(data):
-    start = datetime.datetime.strptime("2020-12-15", "%Y-%m-%d")
-    date = data.tail(1)['announce_date'].iloc[0].strip()
-    end = datetime.datetime.strptime(date, "%d/%m/%Y")
-    return start, end
-
-
-def get_provinces(data, start):
-    data_ymd = data.copy()
-    data_ymd["announce_date"] = pd.to_datetime(data_ymd["announce_date"], format="%d/%m/%Y")
-    data_filtered = data_ymd[data_ymd["announce_date"] > start]
-    return pd.crosstab(data_filtered.announce_date, data_filtered.province_of_onset).to_dict()
 
 
 def moving_average(ys, N=7):

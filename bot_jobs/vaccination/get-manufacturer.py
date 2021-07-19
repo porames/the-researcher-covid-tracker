@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from tika import parser
 import re
 import pandas as pd
+import datetime
+
 
 def parse_report_by_url(url):
     response = requests.get(url)
@@ -25,6 +27,7 @@ def parse_report_by_url(url):
         if(line.strip() != ''):
             toReturn.append(line.strip())
     return toReturn
+
 
 def search_manufacturer(report):
     found = False
@@ -72,7 +75,6 @@ def calculate_rate(df):
     new_df['Sinopharm_rate'] = new_df['Sinopharm'].diff()
     new_df['Sinovac_rate'] = new_df['Sinovac'].diff()
     new_df = new_df.fillna(0)
-    
     return old_df.append(new_df, ignore_index=True)
 
 df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
@@ -83,7 +85,6 @@ else:
 url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/0" + str(latest_date.month) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
-day = latest_date.day
 manufacturer_timeseries = df
 rows = soup.find_all("td", text=re.compile('สไลด์นำเสนอ'))
 for row in rows[latest_date.day:len(rows)]:
@@ -93,14 +94,10 @@ for row in rows[latest_date.day:len(rows)]:
     print(report_url)
     report = parse_report_by_url(report_url)
     data = search_manufacturer(report)
-    if(data != False):
-        if(day+1 < 10):
-            data["date"] = "2021-07-0"+str(day+1)
-        else:
-            data["date"] = "2021-07-"+str(day+1)
-        data["date"] = pd.to_datetime(data["date"])
+    latest_date += datetime.timedelta(days=1)
+    if data != False :
+        data["date"] = latest_date
         manufacturer_timeseries = manufacturer_timeseries.append(data,ignore_index=True)
-    day += 1
 
 manufacturer_timeseries = calculate_rate(manufacturer_timeseries)
 manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
@@ -108,6 +105,4 @@ manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
 manufacturer_timeseries.to_json("tmp/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
 
 
-
 print('saved!')
-
