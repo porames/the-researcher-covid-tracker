@@ -77,7 +77,7 @@ def calculate_rate(df):
     new_df = new_df.fillna(0)
     return old_df.append(new_df, ignore_index=True)
 
-df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
+df = pd.read_json("../../components/gis/data/vaccine-manufacturer-timeseries.json")
 if len(df)>0:
     latest_date = pd.to_datetime(df.iloc[-1]['date'])
 else:
@@ -102,7 +102,7 @@ for row in rows[latest_date.day:len(rows)]:
 manufacturer_timeseries = calculate_rate(manufacturer_timeseries)
 manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
 
-manufacturer_timeseries.to_json("tmp/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
+manufacturer_timeseries.to_json("../../components/gis/data/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
 
 
 print('saved!')
