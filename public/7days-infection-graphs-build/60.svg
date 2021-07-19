@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-18T13:24:22.715984</dc:date>
+    <dc:date>2021-07-18T19:29:51.659802</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -33,7 +33,7 @@ z
    <g id="matplotlib.axis_2"/>
    <g id="PolyCollection_1">
     <defs>
-     <path d="M 115.363636 -260.794286 
+     <path d="M 115.363636 -272.907102 
 L 115.363636 -39.6 
 L 199.909091 -39.6 
 L 284.454545 -39.6 
@@ -43,33 +43,33 @@ L 538.090909 -39.6
 L 622.636364 -39.6 
 L 622.636364 -316.8 
 L 622.636364 -316.8 
-L 538.090909 -312.627857 
-L 453.545455 -304.707857 
-L 369 -296.434286 
-L 284.454545 -288.09 
-L 199.909091 -276.775714 
-L 115.363636 -260.794286 
+L 538.090909 -312.278545 
+L 453.545455 -308.174454 
+L 369 -300.383639 
+L 284.454545 -292.245019 
+L 199.909091 -284.036838 
+L 115.363636 -272.907102 
 z
-" id="m57c4f3f9db" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="m174b8ca61b" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p6c1dfa8a77)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m57c4f3f9db" y="360"/>
+    <g clip-path="url(#pd9e3fefea8)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m174b8ca61b" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p6c1dfa8a77)" d="M 115.363636 99.205714 
-L 199.909091 83.224286 
-L 284.454545 71.91 
-L 369 63.565714 
-L 453.545455 55.292143 
-L 538.090909 47.372143 
+    <path clip-path="url(#pd9e3fefea8)" d="M 115.363636 87.092898 
+L 199.909091 75.963162 
+L 284.454545 67.754981 
+L 369 59.616361 
+L 453.545455 51.825546 
+L 538.090909 47.721455 
 L 622.636364 43.2 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p6c1dfa8a77">
+  <clipPath id="pd9e3fefea8">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
