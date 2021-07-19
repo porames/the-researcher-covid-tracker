@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-19T19:31:18.316782</dc:date>
+    <dc:date>2021-07-19T21:24:28.303729</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -48,9 +48,9 @@ L 505.573427 -39.6
 L 544.594406 -39.6 
 L 583.615385 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -255.406711 
-L 622.636364 -255.406711 
-L 583.615385 -285.173154 
+L 622.636364 -272.150336 
+L 622.636364 -272.150336 
+L 583.615385 -301.916779 
 L 544.594406 -316.8 
 L 505.573427 -298.195973 
 L 466.552448 -279.591946 
@@ -64,14 +64,14 @@ L 193.405594 -71.226846
 L 154.384615 -61.924832 
 L 115.363636 -63.785235 
 z
-" id="m0db73b22b1" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mc745aec97b" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p47815019f4)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m0db73b22b1" y="360"/>
+    <g clip-path="url(#p6a62cf3932)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mc745aec97b" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p47815019f4)" d="M 115.363636 296.214765 
+    <path clip-path="url(#p6a62cf3932)" d="M 115.363636 296.214765 
 L 154.384615 298.075168 
 L 193.405594 288.773154 
 L 232.426573 286.912752 
@@ -83,14 +83,14 @@ L 427.531469 110.174497
 L 466.552448 80.408054 
 L 505.573427 61.804027 
 L 544.594406 43.2 
-L 583.615385 74.826846 
-L 622.636364 104.593289 
+L 583.615385 58.083221 
+L 622.636364 87.849664 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p47815019f4">
+  <clipPath id="p6a62cf3932">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
