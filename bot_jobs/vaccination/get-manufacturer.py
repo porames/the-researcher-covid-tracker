@@ -75,7 +75,6 @@ def calculate_rate(df):
     new_df['Sinopharm_rate'] = new_df['Sinopharm'].diff()
     new_df['Sinovac_rate'] = new_df['Sinovac'].diff()
     new_df = new_df.fillna(0)
-    
     return old_df.append(new_df, ignore_index=True)
 
 df = pd.read_json("tmp/vaccine-manufacturer-timeseries.json")
