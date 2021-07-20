@@ -39,6 +39,7 @@ jobs:
               working-directory: bot_jobs/vaccination
               run: |
                   node get-national-data.js
+                  python get-manufacturer-data.py
               # node fetch-MOPH-dashboard.js
             - name: Build Province Graphs in svg using Python
               working-directory: bot_jobs
