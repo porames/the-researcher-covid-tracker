@@ -88,7 +88,8 @@ function Curve(props) {
                                     y={height - barHeight - 30}
                                     width={xScale.bandwidth()}
                                     height={barHeight}
-                                    fill={'#9dbbb2'}
+                                    fill={'#427165'}
+                                    opacity={0.6}
                                 />
 
                             );
@@ -102,6 +103,7 @@ function Curve(props) {
                                 width={xScale.bandwidth()}
                                 height={height - yScale(y(tooltipData))}
                                 fill='#7ea297'
+                                opacity={0.7}
                             />
                         }
                         <LinePath
@@ -109,14 +111,14 @@ function Curve(props) {
                             data={vaxRate.slice(7, vaxRate.length)}
                             x={d => xScale(x(d))}
                             y={d => (yScale(d["moving_avg"]) - 30)}
-                            stroke='#427165'
-                            strokeWidth={2}
+                            stroke='#9dbbb2'
+                            strokeWidth={2.4}
                         />
                         <circle
                             cx={xScale(x(vaxRate[vaxRate.length - 1]))}
                             cy={yScale(vaxRate[vaxRate.length - 1]["moving_avg"]) - 33}
                             r={4}
-                            fill='#427165'
+                            fill='#9dbbb2'
                         />
                     </Group>
                     <Bar
