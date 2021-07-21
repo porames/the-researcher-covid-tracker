@@ -5,7 +5,7 @@ const fs = require('fs')
 const _ = require('lodash')
 const startDate = new Date('2021-03-06')
 const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
-const geo = require('../th-census-age-group.json')
+const age_pop = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
 const currentProvincesData = require('../../components/gis/data/provincial-vaccination-data_2.json')
 var jsonData = _.cloneDeep(currentData)
@@ -118,16 +118,24 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
             if (todayData.length === 77) {
                 for (const i in todayData) {
                     const province = todayData[i]
-                    const geoData = _.find(estimated_pop, { "clean-name": province.Province.replace(/\s/g, '').toUpperCase() })
+                    const geoData = _.find(estimated_pop, { 'clean-name': province.Province.replace(/\s/g, '').toUpperCase() })
                     if (Number(province['Vac Given 1 Cum']) > 0 && Number(province['Vac Given 2 Cum']) > 0) {
+                        const populationByAge = _.find(age_pop, { PROV_CODE: geoData['PROV_CODE'] })
                         vaccinationData.data.push({
                             name: geoData.province,
                             id: geoData.PROV_CODE,
                             population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
                             registered_population: geoData.population,
+
                             total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
-                            "total-1st-dose": Number(province['Vac Given 1 Cum']),
-                            "total-2nd-dose": Number(province['Vac Given 2 Cum'])
+                            'total-1st-dose': Number(province['Vac Given 1 Cum']),
+                            'total-2nd-dose': Number(province['Vac Given 2 Cum']),
+                            'AstraZeneca-supply': Number(province['Vac Allocated AstraZeneca']),
+                            'Sinovac-supply': Number(province['Vac Allocated Sinovac']),
+                            'total-supply': Number(province['Vac Allocated Sinovac']) + Number(province['Vac Allocated AstraZeneca']),
+                            'over-60-1st-dose': Number(province['Vac Group Over 60 1 Cum']),
+                            'over-60-2nd-dose': Number(province['Vac Group Over 60 2 Cum']),
+                            'over-60-population': populationByAge['>60']
                         })
                         fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
                     }
@@ -141,17 +149,24 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
                 const vaccinationData = _.cloneDeep(currentProvincesData)
                 for (const i in todayData) {
                     const province = todayData[i]
-                    const geoData = _.find(estimated_pop, { "clean-name": province.Province.replace(/\s/g, '').toUpperCase() })
+                    const geoData = _.find(estimated_pop, { 'clean-name': province.Province.replace(/\s/g, '').toUpperCase() })
                     const searchIndex = _.findIndex(vaccinationData.data, { id: String(geoData.PROV_CODE) })
                     if (searchIndex >= 0 && Number(province['Vac Given 1 Cum']) > 0 && Number(province['Vac Given 2 Cum']) > 0) {
+                        const populationByAge = _.find(age_pop, { PROV_CODE: geoData['PROV_CODE'] })
                         vaccinationData.data[searchIndex] = {
                             name: geoData.province,
                             id: geoData.PROV_CODE,
                             population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
                             registered_population: geoData.population,
                             total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
-                            "total-1st-dose": Number(province['Vac Given 1 Cum']),
-                            "total-2nd-dose": Number(province['Vac Given 2 Cum'])
+                            'total-1st-dose': Number(province['Vac Given 1 Cum']),
+                            'total-2nd-dose': Number(province['Vac Given 2 Cum']),
+                            'AstraZeneca-supply': Number(province['Vac Allocated AstraZeneca']),
+                            'Sinovac-supply': Number(province['Vac Allocated Sinovac']),
+                            'total-supply': Number(province['Vac Allocated Sinovac']) + Number(province['Vac Allocated AstraZeneca']),
+                            'over-60-1st-dose': Number(province['Vac Group Over 60 1 Cum']),
+                            'over-60-2nd-dose': Number(province['Vac Group Over 60 2 Cum']),
+                            'over-60-population': populationByAge['>60']
                         }
                     }
                     else {

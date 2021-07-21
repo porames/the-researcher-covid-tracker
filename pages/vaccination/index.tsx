@@ -10,6 +10,7 @@ import NationalBars from '../../components/vaccine/nationalBars'
 import Manufacturer from '../../components/vaccine/manufacturerCurve'
 import VaccinationRace from '../../components/vaccine/vaccinationRace'
 import VaccinationRate from '../../components/vaccine/vaccinationRate'
+import SupplyTable from '../../components/vaccine/supplyTable'
 import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import Link from 'next/link'
@@ -114,10 +115,13 @@ export default function Vaccine() {
         </div>
         <Map />
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนรายจังหวัด</h2>
+          <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
           <Province />
         </div>
         <VaccinationRace />
+        <div className='container mt-5 mb-4' style={{ maxWidth: 800 }}>
+          <SupplyTable />
+        </div>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
           <div className='row mt-5'>
             <div className='col-12'>

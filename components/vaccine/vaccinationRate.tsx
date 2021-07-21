@@ -89,7 +89,7 @@ function Curve(props) {
                                     width={xScale.bandwidth()}
                                     height={barHeight}
                                     fill={'#427165'}
-                                    opacity={0.6}
+                                    opacity={0.67}
                                 />
 
                             );
@@ -112,7 +112,7 @@ function Curve(props) {
                             x={d => xScale(x(d))}
                             y={d => (yScale(d["moving_avg"]) - 30)}
                             stroke='#9dbbb2'
-                            strokeWidth={2.4}
+                            strokeWidth={2}
                         />
                         <circle
                             cx={xScale(x(vaxRate[vaxRate.length - 1]))}

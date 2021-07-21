@@ -24,11 +24,12 @@ export declare interface ProvincialVaccinationDataProps {
         "id": string;
         "population": number;
         "registered_population": number;
-        ">60-population": number;
+        "over-60-population": number;
         "coverage": number;
         "total_doses": number;
         "total-1st-dose": number;
         "total-2nd-dose": number;
-        ">60-total-doses": number;
+        "over-60-1st-dose": number;
+        "over-60-2nd-dose": number;
     }[]
 }
