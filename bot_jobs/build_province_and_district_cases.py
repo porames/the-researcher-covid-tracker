@@ -5,7 +5,8 @@ import json
 import datetime
 import re
 
-URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/confirmed-cases.csv"
+XLS_URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/67d43695-8626-45ad-9094-dabc374925ab/download/confirmed-cases.xlsx"
+CSV_URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/confirmed-cases.csv"
 
 district_data_14days_out_path = "../components/gis/data/amphoes-data-14days.json"
 province_data_14days_out_path = "../components/gis/data/provinces-data-14days.json"
@@ -21,10 +22,17 @@ PROVINCE_IDS = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_C
                json.load(open(PROVINCE_MAP_PATH, encoding="utf-8"))["features"]}
 PROVINCE_NAMES = set(PROVINCE_IDS.keys())
 
-# Load dataset.csv
-print("Downloading Provincial Dataset")
-start = time.time()
-df = pd.read_csv(URL, encoding="utf-8") # Load from URL
+# Load confirmed_cases.(xlsx||csv)
+try :
+    print("Downloading Provincial Dataset")
+    start = time.time()
+    df = pd.read_excel(XLS_URL)
+except Exception as e:
+    print(e)
+    print("Error whilst downloding excel Took:", time.time()-start)
+    print("Try downloading csv instead.")
+    start = time.time()
+    df = pd.read_csv(CSV_URL, encoding="utf-8")
 print("Downloaded Provincial Dataset took:", time.time()-start, "seconds")
 
 #df = pd.read_csv("dataset.csv", encoding="utf-8") # Load from file
