@@ -22,9 +22,10 @@ PROVINCE_IDS = {feature["properties"]["PROV_NAMT"]:feature["properties"]["PROV_C
 PROVINCE_NAMES = set(PROVINCE_IDS.keys())
 
 # Load dataset.csv
+print("Downloading Provincial Dataset")
 start = time.time()
 df = pd.read_csv(URL, encoding="utf-8") # Load from URL
-print(time.time()-start)
+print("Downloaded Provincial Dataset took:", time.time()-start, "seconds")
 
 #df = pd.read_csv("dataset.csv", encoding="utf-8") # Load from file
 
@@ -33,6 +34,7 @@ df = df.drop(["No.", "Notified date", "nationality", "province_of_isolation",
               "sex", "age", "risk", "Unit"], axis=1)
 # Convert day to datetime object
 df["announce_date"] = pd.to_datetime(df["announce_date"], format="%d/%m/%Y")
+print(df.info())
 
 # Remove data with unknown province
 df = df.fillna(0)
@@ -43,6 +45,8 @@ df_invalid = df[(~df["province_of_onset"].isin(PROVINCE_NAMES))]
 # Regex for some special cases
 regex_ay = re.compile(r"^(อยุธยา|อยุธนา)$")
 df_invalid["province_of_onset"].replace(regex_ay, "พระนครศรีอยุธยา", inplace=True)
+regex_bkk = re.compile(r"^(กทม|กทม.)$")
+df_invalid["province_of_onset"].replace(regex_bkk, "กรุงเทพมหานคร", inplace=True)
 # Replace by finding most similar province
 df_invalid_correted = df_invalid["province_of_onset"].apply(lambda pro : find_similar_word(pro, PROVINCE_NAMES))
 df.update(df_invalid_correted)
