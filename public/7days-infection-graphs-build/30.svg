@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-20T10:48:39.288064</dc:date>
+    <dc:date>2021-07-20T19:36:11.566760</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -41,35 +41,35 @@ L 369 -39.6
 L 453.545455 -39.6 
 L 538.090909 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -107.967713 
-L 622.636364 -107.967713 
-L 538.090909 -136.557848 
-L 453.545455 -170.120179 
-L 369 -190.008969 
-L 284.454545 -212.383857 
-L 199.909091 -288.209865 
+L 622.636364 -79.794 
+L 622.636364 -79.794 
+L 538.090909 -115.83 
+L 453.545455 -147.708 
+L 369 -185.13 
+L 284.454545 -207.306 
+L 199.909091 -232.254 
 L 115.363636 -316.8 
 z
-" id="m07cae04afa" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mec57674c9e" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#pef4bdc1a80)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m07cae04afa" y="360"/>
+    <g clip-path="url(#p4b0600ae30)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mec57674c9e" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#pef4bdc1a80)" d="M 115.363636 43.2 
-L 199.909091 71.790135 
-L 284.454545 147.616143 
-L 369 169.991031 
-L 453.545455 189.879821 
-L 538.090909 223.442152 
-L 622.636364 252.032287 
+    <path clip-path="url(#p4b0600ae30)" d="M 115.363636 43.2 
+L 199.909091 127.746 
+L 284.454545 152.694 
+L 369 174.87 
+L 453.545455 212.292 
+L 538.090909 244.17 
+L 622.636364 280.206 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pef4bdc1a80">
+  <clipPath id="p4b0600ae30">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
