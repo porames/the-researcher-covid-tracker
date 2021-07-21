@@ -280,7 +280,7 @@ class CasesMap extends React.Component {
                         <div className='infoBox-container d-md-block d-none' style={{ top: this.state.infoBoxPosition.y + 15, left: this.state.infoBoxPosition.x }}>
                             <div className='infoBox rounded shadow-sm'>
                                 <span>
-                                    <b>อ.{this.state.hoveredData['name']}, {this.state.hoveredData['province']}</b></span><br />
+                                    <b>{this.state.hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{this.state.hoveredData['name']}, {this.state.hoveredData['province']}</b></span><br />
                                 <span>ผู้ติดเชื้อในรอบ 14 วัน <b className='text-danger'>{this.state.hoveredData.caseCount.toLocaleString()} ราย</b></span>
                             </div>
                         </div>
@@ -289,7 +289,7 @@ class CasesMap extends React.Component {
                         <div className='infoBox-container d-md-none d-block'>
                             <div className='infoBox rounded shadow-sm'>
                                 <span>
-                                    <b>อ.{this.state.hoveredData['name']}, {this.state.hoveredData['province']}</b></span><br />
+                                    <b>{this.state.hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{this.state.hoveredData['name']}, {this.state.hoveredData['province']}</b></span><br />
                                 <span>ผู้ติดเชื้อในรอบ 14 วัน <b className='text-danger'>{this.state.hoveredData.caseCount.toLocaleString()} ราย</b></span>
                             </div>
                         </div>
