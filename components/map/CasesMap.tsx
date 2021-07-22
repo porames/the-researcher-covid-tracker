@@ -114,7 +114,7 @@ const CasesMap = () => {
           <div className="infoBox rounded shadow-sm">
             <span>
               <b>
-                อ.{hoveredData["name"]}, {hoveredData["province"]}
+              {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
               </b>
             </span>
             <br />
@@ -132,7 +132,7 @@ const CasesMap = () => {
           <div className="infoBox rounded shadow-sm">
             <span>
               <b>
-                อ.{hoveredData["name"]}, {hoveredData["province"]}
+              {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
               </b>
             </span>
             <br />
