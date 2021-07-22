@@ -41,6 +41,7 @@ function VaccinationRace() {
     const svgContainer = useRef(null)
     const d3Container = useRef(null)
     var data = _.cloneDeep(vaccination["data"])
+    data = data.filter(province => province.id !== '0')
     data.map((province, index) => {
         data[index]['coverage'] = province['total_doses'] / (province['population'] * 2)
     })
@@ -49,9 +50,11 @@ function VaccinationRace() {
     const national_avg = doses_sum / (population * 2)
     var height = 400;
     for (const i in data) {
-        const province = data[i]
-        const infection = _.find(infectionData, { "id": Number(province.id) })
-        data[i]["cases-per-100k"] = infection["cases-per-100k"]
+        if (data[i]['id'] !== '0') {
+            const province = data[i]
+            const infection = _.find(infectionData, { "id": Number(province.id) })
+            data[i]["cases-per-100k"] = infection["cases-per-100k"]
+        }
     }
     let coverageDomain = d3.extent(data.map((d) => d["coverage"]))
     let xScale = d3

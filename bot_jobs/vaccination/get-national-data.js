@@ -1,14 +1,15 @@
 const request = require('request')
 const parse = require('csv-parse/lib/sync')
 const moment = require('moment')
+const { sum, mean } = require('d3')
 const fs = require('fs')
 const _ = require('lodash')
 const startDate = new Date('2021-03-06')
-const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
 const age_pop = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
+
 const currentProvincesData = require('../../components/gis/data/provincial-vaccination-data_2.json')
-var jsonData = _.cloneDeep(currentData)
+const currentData = require('../../components/gis/data/national-vaccination-timeseries.json')
 
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.csv', (err, response, body) => {
     if (!err && response.statusCode == 200) {
@@ -16,6 +17,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
             columns: true,
             skip_empty_lines: true
         })
+        var jsonData = _.cloneDeep(currentData)
         const latest_date = dataset[dataset.length - 1]['Date'] //Latest date in the dataset.
         //Check if the local file is already up to date.
         if (moment(latest_date) > moment(currentData[currentData.length - 1]['date'])) {
@@ -31,7 +33,9 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                         'total_doses': Number(dataset[i]['Vac Given 1 Cum']) + Number(dataset[i]['Vac Given 2 Cum']),
                         'first_dose': Number(dataset[i]['Vac Given 1 Cum']),
                         'second_dose': Number(dataset[i]['Vac Given 2 Cum']),
-                        'total_supply': Number(dataset[i]['Vac Delivered Cum'])
+                        'Sinovac-supply': Number(dataset[i]['Vac Allocated Sinovac']),
+                        'AstraZeneca-supply': Number(dataset[i]['Vac Allocated AstraZeneca']),
+                        'total_supply': Number(dataset[i]['Vac Allocated AstraZeneca']) + Number(dataset[i]['Vac Allocated Sinovac'])
                     })
                 }
             }
@@ -90,7 +94,7 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
                     sortedData[i]['daily_vaccinations'] = sortedData[i]['total_doses']
                 }
             }
-            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 2), 'utf-8')
+            fs.writeFileSync('../../components/gis/data/national-vaccination-timeseries.json', JSON.stringify(sortedData, null, 4), 'utf-8')
         }
         else {
             console.log('New data already existed')
@@ -100,6 +104,34 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vac_timeline.
         console.log('Error', err)
     }
 })
+
+function calculate_national_avg(vaccinationData) {
+    var data = vaccinationData.data
+    const population = sum(data, (d) => d["registered_population"])
+    const first_doses_sum = sum(data, (d) => d["total-1st-dose"])
+    const second_doses_sum = sum(data, (d) => d["total-2nd-dose"])
+    const over_60_1st_dose_sum = sum(data, (d) => d["over-60-1st-dose"])
+    const over_60_2nd_dose_sum = sum(data, (d) => d["over-60-2nd-dose"])
+    const over_60_population = sum(data, (d) => d["over-60-population"])
+    const supply_sum = sum(data, (d) => d["total-supply"])
+    vaccinationData.data.push({
+        "name": "ค่าเฉลี่ยทั้งประเทศ",
+        "id": "0",
+        "population": population,
+        "registered_population": population,
+        "over-60-population": over_60_population,
+        "total_doses": first_doses_sum + second_doses_sum,
+        "total-1st-dose": first_doses_sum,
+        "total-2nd-dose": second_doses_sum,
+        "1st-dose-coverage": first_doses_sum / population,
+        "2nd-dose-coverage": second_doses_sum / population,
+        "over-60-1st-dose": over_60_1st_dose_sum,
+        "over-60-2nd-dose": over_60_2nd_dose_sum,
+        "over-60-1st-dose-coverage": over_60_1st_dose_sum / over_60_population,
+        "total-supply": supply_sum
+    })
+    return vaccinationData
+}
 
 request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.csv', (err, response, body) => {
     try {
@@ -126,7 +158,6 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
                             id: geoData.PROV_CODE,
                             population: geoData.estimated_living_population ? geoData.estimated_living_population : geoData.population,
                             registered_population: geoData.population,
-
                             total_doses: Number(province['Vac Given 1 Cum']) + Number(province['Vac Given 2 Cum']),
                             'total-1st-dose': Number(province['Vac Given 1 Cum']),
                             'total-2nd-dose': Number(province['Vac Given 2 Cum']),
@@ -137,13 +168,13 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
                             'over-60-2nd-dose': Number(province['Vac Group Over 60 2 Cum']),
                             'over-60-population': populationByAge['>60']
                         })
-                        fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
                     }
                     else {
                         throw 'null found'
                     }
                 }
-
+                calculate_national_avg(vaccinationData)
+                fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 4), 'utf-8')
             }
             else {
                 const vaccinationData = _.cloneDeep(currentProvincesData)
@@ -168,12 +199,14 @@ request('https://raw.githubusercontent.com/wiki/djay/covidthailand/vaccinations.
                             'over-60-2nd-dose': Number(province['Vac Group Over 60 2 Cum']),
                             'over-60-population': populationByAge['>60']
                         }
+
                     }
                     else {
                         throw 'null found :('
                     }
                 }
-                fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 2), 'utf-8')
+                calculate_national_avg(vaccinationData)
+                fs.writeFileSync('../../components/gis/data/provincial-vaccination-data_2.json', JSON.stringify(vaccinationData, null, 4), 'utf-8')
                 console.log('missing provinces')
             }
         }

@@ -18,19 +18,7 @@ interface ProvinceProps {
 export default function SupplyTable() {
     const [showAll, setShowAll] = useState<boolean>(false)
     var data: ProvinceProps[] = _.cloneDeep(provincesData)['data']
-    const population = sum(data, (d) => d["registered_population"])
-    const supplyCum = sum(data, (d) => d["total-supply"])
-    const dosesCum = sum(data, (d) => d["total_doses"])
     data = _.sortBy(data, 'total-supply').reverse()
-    data.unshift({
-        "name": "ทั่วประเทศ",
-        "id": "0",
-        "population": population,
-        "registered_population": population,
-        "total-supply": supplyCum,
-        "total_doses": dosesCum,
-
-    })
 
     return (
         <div>

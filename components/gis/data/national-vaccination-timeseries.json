@@ -1,1103 +1,1107 @@
 [
-  {
-    "date": "2021-03-06",
-    "total_doses": 27497,
-    "first_dose": 27497,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 27497
-  },
-  {
-    "date": "2021-03-07",
-    "total_doses": 27497,
-    "first_dose": 27497,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-03-08",
-    "total_doses": 29900,
-    "first_dose": 29900,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 2403
-  },
-  {
-    "date": "2021-03-09",
-    "total_doses": 33621,
-    "first_dose": 33621,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 3721
-  },
-  {
-    "date": "2021-03-10",
-    "total_doses": 36797,
-    "first_dose": 36797,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 3176
-  },
-  {
-    "date": "2021-03-11",
-    "total_doses": 40140,
-    "first_dose": 40140,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 3343
-  },
-  {
-    "date": "2021-03-12",
-    "total_doses": 44409,
-    "first_dose": 44409,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 4269
-  },
-  {
-    "date": "2021-03-13",
-    "total_doses": 44963,
-    "first_dose": 44963,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 554
-  },
-  {
-    "date": "2021-03-14",
-    "total_doses": 46598,
-    "first_dose": 46598,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 1635
-  },
-  {
-    "date": "2021-03-15",
-    "total_doses": 50388,
-    "first_dose": 50388,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 3790
-  },
-  {
-    "date": "2021-03-16",
-    "total_doses": 53842,
-    "first_dose": 53842,
-    "second_dose": 0,
-    "total_supply": 0,
-    "daily_vaccinations": 3454
-  },
-  {
-    "date": "2021-03-17",
-    "total_doses": 58024,
-    "first_dose": 58024,
-    "second_dose": 0,
-    "total_supply": 171440,
-    "daily_vaccinations": 4182
-  },
-  {
-    "date": "2021-03-18",
-    "total_doses": 62941,
-    "first_dose": 62941,
-    "second_dose": 0,
-    "total_supply": 171440,
-    "daily_vaccinations": 4917
-  },
-  {
-    "date": "2021-03-19",
-    "total_doses": 67223,
-    "first_dose": 67223,
-    "second_dose": 0,
-    "total_supply": 201080,
-    "daily_vaccinations": 4282
-  },
-  {
-    "date": "2021-03-20",
-    "total_doses": 69927,
-    "first_dose": 69927,
-    "second_dose": 0,
-    "total_supply": 201080,
-    "daily_vaccinations": 2704
-  },
-  {
-    "date": "2021-03-21",
-    "total_doses": 73517,
-    "first_dose": 73517,
-    "second_dose": 0,
-    "total_supply": 201080,
-    "daily_vaccinations": 3590
-  },
-  {
-    "date": "2021-03-22",
-    "total_doses": 85241,
-    "first_dose": 82812,
-    "second_dose": 2429,
-    "total_supply": 202680,
-    "daily_vaccinations": 11724
-  },
-  {
-    "date": "2021-03-23",
-    "total_doses": 85241,
-    "first_dose": 82812,
-    "second_dose": 2429,
-    "total_supply": 202680,
-    "missing_data": true,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-03-24",
-    "total_doses": 120601,
-    "first_dose": 109153,
-    "second_dose": 11448,
-    "total_supply": 202680,
-    "daily_vaccinations": 35360
-  },
-  {
-    "date": "2021-03-25",
-    "total_doses": 136190,
-    "first_dose": 121392,
-    "second_dose": 14798,
-    "total_supply": 238800,
-    "daily_vaccinations": 15589
-  },
-  {
-    "date": "2021-03-26",
-    "total_doses": 148905,
-    "first_dose": 129509,
-    "second_dose": 19396,
-    "total_supply": 256000,
-    "daily_vaccinations": 12715
-  },
-  {
-    "date": "2021-03-27",
-    "total_doses": 150107,
-    "first_dose": 130187,
-    "second_dose": 19920,
-    "total_supply": 256000,
-    "daily_vaccinations": 1202
-  },
-  {
-    "date": "2021-03-28",
-    "total_doses": 154293,
-    "first_dose": 133110,
-    "second_dose": 21183,
-    "total_supply": 256000,
-    "daily_vaccinations": 4186
-  },
-  {
-    "date": "2021-03-29",
-    "total_doses": 166358,
-    "first_dose": 141081,
-    "second_dose": 25277,
-    "total_supply": 289700,
-    "daily_vaccinations": 12065
-  },
-  {
-    "date": "2021-03-30",
-    "total_doses": 180477,
-    "first_dose": 151413,
-    "second_dose": 29064,
-    "total_supply": 290500,
-    "daily_vaccinations": 14119
-  },
-  {
-    "date": "2021-03-31",
-    "total_doses": 191745,
-    "first_dose": 158497,
-    "second_dose": 33248,
-    "total_supply": 376500,
-    "daily_vaccinations": 11268
-  },
-  {
-    "date": "2021-04-01",
-    "total_doses": 202151,
-    "first_dose": 165975,
-    "second_dose": 36176,
-    "total_supply": 445820,
-    "daily_vaccinations": 10406
-  },
-  {
-    "date": "2021-04-02",
-    "total_doses": 231882,
-    "first_dose": 189666,
-    "second_dose": 42216,
-    "total_supply": 866940,
-    "daily_vaccinations": 29731
-  },
-  {
-    "date": "2021-04-03",
-    "total_doses": 244254,
-    "first_dose": 201864,
-    "second_dose": 42390,
-    "total_supply": 905700,
-    "daily_vaccinations": 12372
-  },
-  {
-    "date": "2021-04-04",
-    "total_doses": 257484,
-    "first_dose": 213948,
-    "second_dose": 43536,
-    "total_supply": 905700,
-    "daily_vaccinations": 13230
-  },
-  {
-    "date": "2021-04-05",
-    "total_doses": 294881,
-    "first_dose": 247850,
-    "second_dose": 47031,
-    "total_supply": 981380,
-    "daily_vaccinations": 37397
-  },
-  {
-    "date": "2021-04-06",
-    "total_doses": 323989,
-    "first_dose": 274354,
-    "second_dose": 49635,
-    "total_supply": 981380,
-    "daily_vaccinations": 29108
-  },
-  {
-    "date": "2021-04-07",
-    "total_doses": 391752,
-    "first_dose": 336808,
-    "second_dose": 54944,
-    "total_supply": 981380,
-    "daily_vaccinations": 67763
-  },
-  {
-    "date": "2021-04-08",
-    "total_doses": 466374,
-    "first_dose": 405911,
-    "second_dose": 60463,
-    "total_supply": 1016940,
-    "daily_vaccinations": 74622
-  },
-  {
-    "date": "2021-04-09",
-    "total_doses": 537380,
-    "first_dose": 470301,
-    "second_dose": 67079,
-    "total_supply": 1047660,
-    "daily_vaccinations": 71006
-  },
-  {
-    "date": "2021-04-10",
-    "total_doses": 555396,
-    "first_dose": 485957,
-    "second_dose": 69439,
-    "total_supply": 1048460,
-    "daily_vaccinations": 18016
-  },
-  {
-    "date": "2021-04-11",
-    "total_doses": 570052,
-    "first_dose": 498791,
-    "second_dose": 71261,
-    "total_supply": 1048460,
-    "daily_vaccinations": 14656
-  },
-  {
-    "date": "2021-04-12",
-    "total_doses": 578532,
-    "first_dose": 505215,
-    "second_dose": 73317,
-    "total_supply": 1049460,
-    "daily_vaccinations": 8480
-  },
-  {
-    "date": "2021-04-13",
-    "total_doses": 579305,
-    "first_dose": 505744,
-    "second_dose": 73561,
-    "total_supply": 1049460,
-    "daily_vaccinations": 773
-  },
-  {
-    "date": "2021-04-14",
-    "total_doses": 579305,
-    "first_dose": 505744,
-    "second_dose": 73561,
-    "total_supply": 1049460,
-    "missing_data": true,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-04-15",
-    "total_doses": 586032,
-    "first_dose": 510456,
-    "second_dose": 75576,
-    "total_supply": 1049460,
-    "daily_vaccinations": 6727
-  },
-  {
-    "date": "2021-04-16",
-    "total_doses": 605259,
-    "first_dose": 523830,
-    "second_dose": 81429,
-    "total_supply": 1069980,
-    "daily_vaccinations": 19227
-  },
-  {
-    "date": "2021-04-17",
-    "total_doses": 608521,
-    "first_dose": 526706,
-    "second_dose": 81815,
-    "total_supply": 1156060,
-    "daily_vaccinations": 3262
-  },
-  {
-    "date": "2021-04-18",
-    "total_doses": 618583,
-    "first_dose": 535925,
-    "second_dose": 82658,
-    "total_supply": 1200020,
-    "daily_vaccinations": 10062
-  },
-  {
-    "date": "2021-04-19",
-    "total_doses": 666210,
-    "first_dose": 571825,
-    "second_dose": 94385,
-    "total_supply": 1618540,
-    "daily_vaccinations": 47627
-  },
-  {
-    "date": "2021-04-20",
-    "total_doses": 712610,
-    "first_dose": 604947,
-    "second_dose": 107663,
-    "total_supply": 1960860,
-    "daily_vaccinations": 46400
-  },
-  {
-    "date": "2021-04-21",
-    "total_doses": 864840,
-    "first_dose": 746617,
-    "second_dose": 118223,
-    "total_supply": 2035940,
-    "daily_vaccinations": 152230
-  },
-  {
-    "date": "2021-04-22",
-    "total_doses": 964825,
-    "first_dose": 834082,
-    "second_dose": 130743,
-    "total_supply": 2036220,
-    "daily_vaccinations": 99985
-  },
-  {
-    "date": "2021-04-23",
-    "total_doses": 1095445,
-    "first_dose": 934449,
-    "second_dose": 160996,
-    "total_supply": 2043220,
-    "daily_vaccinations": 130620
-  },
-  {
-    "date": "2021-04-24",
-    "total_doses": 1124153,
-    "first_dose": 949124,
-    "second_dose": 175029,
-    "total_supply": 2077780,
-    "daily_vaccinations": 28708
-  },
-  {
-    "date": "2021-04-25",
-    "total_doses": 1149666,
-    "first_dose": 972204,
-    "second_dose": 177462,
-    "total_supply": 2077780,
-    "daily_vaccinations": 25513
-  },
-  {
-    "date": "2021-04-26",
-    "total_doses": 1227032,
-    "first_dose": 1012388,
-    "second_dose": 214644,
-    "total_supply": 2077780,
-    "daily_vaccinations": 77366
-  },
-  {
-    "date": "2021-04-27",
-    "total_doses": 1279713,
-    "first_dose": 1038960,
-    "second_dose": 240753,
-    "total_supply": 2078660,
-    "daily_vaccinations": 52681
-  },
-  {
-    "date": "2021-04-28",
-    "total_doses": 1344646,
-    "first_dose": 1059721,
-    "second_dose": 284925,
-    "total_supply": 2078660,
-    "daily_vaccinations": 64933
-  },
-  {
-    "date": "2021-04-29",
-    "total_doses": 1411614,
-    "first_dose": 1075756,
-    "second_dose": 335858,
-    "total_supply": 2078660,
-    "daily_vaccinations": 66968
-  },
-  {
-    "date": "2021-04-30",
-    "total_doses": 1477078,
-    "first_dose": 1095230,
-    "second_dose": 381848,
-    "total_supply": 2078660,
-    "daily_vaccinations": 65464
-  },
-  {
-    "date": "2021-05-01",
-    "total_doses": 1484565,
-    "first_dose": 1097862,
-    "second_dose": 386703,
-    "total_supply": 2078660,
-    "daily_vaccinations": 7487
-  },
-  {
-    "date": "2021-05-02",
-    "total_doses": 1486907,
-    "first_dose": 1099460,
-    "second_dose": 387447,
-    "total_supply": 2078660,
-    "daily_vaccinations": 2342
-  },
-  {
-    "date": "2021-05-03",
-    "total_doses": 1498617,
-    "first_dose": 1106071,
-    "second_dose": 392546,
-    "total_supply": 2154500,
-    "daily_vaccinations": 11710
-  },
-  {
-    "date": "2021-05-04",
-    "total_doses": 1568207,
-    "first_dose": 1145696,
-    "second_dose": 422511,
-    "total_supply": 2213380,
-    "daily_vaccinations": 69590
-  },
-  {
-    "date": "2021-05-05",
-    "total_doses": 1601833,
-    "first_dose": 1167719,
-    "second_dose": 434114,
-    "total_supply": 2447220,
-    "daily_vaccinations": 33626
-  },
-  {
-    "date": "2021-05-06",
-    "total_doses": 1651782,
-    "first_dose": 1201258,
-    "second_dose": 450524,
-    "total_supply": 2494860,
-    "daily_vaccinations": 49949
-  },
-  {
-    "date": "2021-05-07",
-    "total_doses": 1730488,
-    "first_dose": 1262703,
-    "second_dose": 467785,
-    "total_supply": 2529860,
-    "daily_vaccinations": 78706
-  },
-  {
-    "date": "2021-05-08",
-    "total_doses": 1743720,
-    "first_dose": 1273666,
-    "second_dose": 470054,
-    "total_supply": 2529860,
-    "daily_vaccinations": 13232
-  },
-  {
-    "date": "2021-05-09",
-    "total_doses": 1809894,
-    "first_dose": 1296440,
-    "second_dose": 513454,
-    "total_supply": 2579260,
-    "daily_vaccinations": 66174
-  },
-  {
-    "date": "2021-05-10",
-    "total_doses": 1898454,
-    "first_dose": 1365992,
-    "second_dose": 532462,
-    "total_supply": 2579260,
-    "daily_vaccinations": 88560
-  },
-  {
-    "date": "2021-05-11",
-    "total_doses": 1935565,
-    "first_dose": 1372013,
-    "second_dose": 563552,
-    "total_supply": 2579260,
-    "daily_vaccinations": 37111
-  },
-  {
-    "date": "2021-05-12",
-    "total_doses": 2040363,
-    "first_dose": 1395130,
-    "second_dose": 645233,
-    "total_supply": 2589780,
-    "daily_vaccinations": 104798
-  },
-  {
-    "date": "2021-05-13",
-    "total_doses": 2125032,
-    "first_dose": 1416732,
-    "second_dose": 708300,
-    "total_supply": 2589780,
-    "daily_vaccinations": 84669
-  },
-  {
-    "date": "2021-05-14",
-    "total_doses": 2242150,
-    "first_dose": 1462762,
-    "second_dose": 779388,
-    "total_supply": 2709740,
-    "daily_vaccinations": 117118
-  },
-  {
-    "date": "2021-05-15",
-    "total_doses": 2242150,
-    "first_dose": 1462762,
-    "second_dose": 779388,
-    "total_supply": 2809380,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-05-16",
-    "total_doses": 2264308,
-    "first_dose": 1482702,
-    "second_dose": 781606,
-    "total_supply": 2809380,
-    "daily_vaccinations": 22158
-  },
-  {
-    "date": "2021-05-17",
-    "total_doses": 2340995,
-    "first_dose": 1521034,
-    "second_dose": 819961,
-    "total_supply": 3038980,
-    "daily_vaccinations": 76687
-  },
-  {
-    "date": "2021-05-18",
-    "total_doses": 2445645,
-    "first_dose": 1585773,
-    "second_dose": 859872,
-    "total_supply": 3120580,
-    "daily_vaccinations": 104650
-  },
-  {
-    "date": "2021-05-19",
-    "total_doses": 2540116,
-    "first_dose": 1647871,
-    "second_dose": 892245,
-    "total_supply": 3281460,
-    "daily_vaccinations": 94471
-  },
-  {
-    "date": "2021-05-20",
-    "total_doses": 2648256,
-    "first_dose": 1726431,
-    "second_dose": 921825,
-    "total_supply": 3554980,
-    "daily_vaccinations": 108140
-  },
-  {
-    "date": "2021-05-21",
-    "total_doses": 2811549,
-    "first_dose": 1849393,
-    "second_dose": 962156,
-    "total_supply": 3695700,
-    "daily_vaccinations": 163293
-  },
-  {
-    "date": "2021-05-22",
-    "total_doses": 2865091,
-    "first_dose": 1898332,
-    "second_dose": 966759,
-    "total_supply": 3791700,
-    "daily_vaccinations": 53542
-  },
-  {
-    "date": "2021-05-23",
-    "total_doses": 2910664,
-    "first_dose": 1941565,
-    "second_dose": 969099,
-    "total_supply": 3846300,
-    "daily_vaccinations": 45573
-  },
-  {
-    "date": "2021-05-24",
-    "total_doses": 3024313,
-    "first_dose": 2044123,
-    "second_dose": 980190,
-    "total_supply": 3990100,
-    "daily_vaccinations": 113649
-  },
-  {
-    "date": "2021-05-25",
-    "total_doses": 3147227,
-    "first_dose": 2157609,
-    "second_dose": 989618,
-    "total_supply": 4054300,
-    "daily_vaccinations": 122914
-  },
-  {
-    "date": "2021-05-26",
-    "total_doses": 3208882,
-    "first_dose": 2214721,
-    "second_dose": 994161,
-    "total_supply": 4054300,
-    "daily_vaccinations": 61655
-  },
-  {
-    "date": "2021-05-27",
-    "total_doses": 3347050,
-    "first_dose": 2319304,
-    "second_dose": 1027746,
-    "total_supply": 4096300,
-    "daily_vaccinations": 138168
-  },
-  {
-    "date": "2021-05-28",
-    "total_doses": 3504125,
-    "first_dose": 2415903,
-    "second_dose": 1088222,
-    "total_supply": 4172300,
-    "daily_vaccinations": 157075
-  },
-  {
-    "date": "2021-05-29",
-    "total_doses": 3548330,
-    "first_dose": 2453807,
-    "second_dose": 1094523,
-    "total_supply": 4227340,
-    "daily_vaccinations": 44205
-  },
-  {
-    "date": "2021-05-30",
-    "total_doses": 3609882,
-    "first_dose": 2498929,
-    "second_dose": 1110953,
-    "total_supply": 4234940,
-    "daily_vaccinations": 61552
-  },
-  {
-    "date": "2021-05-31",
-    "total_doses": 3664859,
-    "first_dose": 2539491,
-    "second_dose": 1125368,
-    "total_supply": 4515700,
-    "daily_vaccinations": 54977
-  },
-  {
-    "date": "2021-06-01",
-    "total_doses": 3753718,
-    "first_dose": 2591372,
-    "second_dose": 1162346,
-    "total_supply": 4667900,
-    "daily_vaccinations": 88859
-  },
-  {
-    "date": "2021-06-02",
-    "total_doses": 3959356,
-    "first_dose": 2738289,
-    "second_dose": 1221067,
-    "total_supply": 4997580,
-    "daily_vaccinations": 205638
-  },
-  {
-    "date": "2021-06-03",
-    "total_doses": 3961589,
-    "first_dose": 2727759,
-    "second_dose": 1233830,
-    "total_supply": 5578940,
-    "daily_vaccinations": 2233
-  },
-  {
-    "date": "2021-06-04",
-    "total_doses": 4142944,
-    "first_dose": 2818676,
-    "second_dose": 1324268,
-    "total_supply": 5684300,
-    "daily_vaccinations": 181355
-  },
-  {
-    "date": "2021-06-05",
-    "total_doses": 4190503,
-    "first_dose": 2845287,
-    "second_dose": 1345216,
-    "total_supply": 6831300,
-    "daily_vaccinations": 47559
-  },
-  {
-    "date": "2021-06-06",
-    "total_doses": 4218094,
-    "first_dose": 2855041,
-    "second_dose": 1363053,
-    "total_supply": 7180500,
-    "daily_vaccinations": 27591
-  },
-  {
-    "date": "2021-06-07",
-    "total_doses": 4634941,
-    "first_dose": 3243913,
-    "second_dose": 1391028,
-    "total_supply": 7581140,
-    "daily_vaccinations": 416847
-  },
-  {
-    "date": "2021-06-08",
-    "total_doses": 5107069,
-    "first_dose": 3672372,
-    "second_dose": 1434697,
-    "total_supply": 7634740,
-    "daily_vaccinations": 472128
-  },
-  {
-    "date": "2021-06-09",
-    "total_doses": 5107069,
-    "first_dose": 3672372,
-    "second_dose": 1434697,
-    "total_supply": 7634740,
-    "missing_data": true,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-06-10",
-    "total_doses": 5667058,
-    "first_dose": 4143444,
-    "second_dose": 1523614,
-    "total_supply": 8098540,
-    "daily_vaccinations": 559989
-  },
-  {
-    "date": "2021-06-11",
-    "total_doses": 5975520,
-    "first_dose": 4362685,
-    "second_dose": 1612835,
-    "total_supply": 8394500,
-    "daily_vaccinations": 308462
-  },
-  {
-    "date": "2021-06-12",
-    "total_doses": 6081242,
-    "first_dose": 4456786,
-    "second_dose": 1624456,
-    "total_supply": 8512700,
-    "daily_vaccinations": 105722
-  },
-  {
-    "date": "2021-06-13",
-    "total_doses": 6188124,
-    "first_dose": 4531914,
-    "second_dose": 1656210,
-    "total_supply": 8512700,
-    "daily_vaccinations": 106882
-  },
-  {
-    "date": "2021-06-14",
-    "total_doses": 6511184,
-    "first_dose": 4762063,
-    "second_dose": 1749121,
-    "total_supply": 8516500,
-    "daily_vaccinations": 323060
-  },
-  {
-    "date": "2021-06-15",
-    "total_doses": 6780816,
-    "first_dose": 4948227,
-    "second_dose": 1832589,
-    "total_supply": 8566900,
-    "daily_vaccinations": 269632
-  },
-  {
-    "date": "2021-06-16",
-    "total_doses": 7003783,
-    "first_dose": 5114755,
-    "second_dose": 1889028,
-    "total_supply": 8616100,
-    "daily_vaccinations": 222967
-  },
-  {
-    "date": "2021-06-17",
-    "total_doses": 7219668,
-    "first_dose": 5252531,
-    "second_dose": 1967137,
-    "total_supply": 8874100,
-    "daily_vaccinations": 215885
-  },
-  {
-    "date": "2021-06-18",
-    "total_doses": 7483083,
-    "first_dose": 5434119,
-    "second_dose": 2048964,
-    "total_supply": 9198500,
-    "daily_vaccinations": 263415
-  },
-  {
-    "date": "2021-06-19",
-    "total_doses": 7587178,
-    "first_dose": 5486092,
-    "second_dose": 2101086,
-    "total_supply": 9992600,
-    "daily_vaccinations": 104095
-  },
-  {
-    "date": "2021-06-20",
-    "total_doses": 7587178,
-    "first_dose": 5486092,
-    "second_dose": 2101086,
-    "total_supply": 9992600,
-    "missing_data": true,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-06-21",
-    "total_doses": 7906696,
-    "first_dose": 5678848,
-    "second_dose": 2227848,
-    "total_supply": 10404800,
-    "daily_vaccinations": 319518
-  },
-  {
-    "date": "2021-06-22",
-    "total_doses": 8148335,
-    "first_dose": 5844521,
-    "second_dose": 2303814,
-    "total_supply": 10690960,
-    "daily_vaccinations": 241639
-  },
-  {
-    "date": "2021-06-23",
-    "total_doses": 8400320,
-    "first_dose": 6017424,
-    "second_dose": 2382896,
-    "total_supply": 10690960,
-    "daily_vaccinations": 251985
-  },
-  {
-    "date": "2021-06-24",
-    "total_doses": 8657423,
-    "first_dose": 6206353,
-    "second_dose": 2451070,
-    "total_supply": 10936600,
-    "daily_vaccinations": 257103
-  },
-  {
-    "date": "2021-06-25",
-    "total_doses": 8981478,
-    "first_dose": 6435308,
-    "second_dose": 2546170,
-    "total_supply": 11284200,
-    "daily_vaccinations": 324055
-  },
-  {
-    "date": "2021-06-26",
-    "total_doses": 9055141,
-    "first_dose": 6475826,
-    "second_dose": 2579315,
-    "total_supply": 11417980,
-    "daily_vaccinations": 73663
-  },
-  {
-    "date": "2021-06-27",
-    "total_doses": 9147513,
-    "first_dose": 6537851,
-    "second_dose": 2609662,
-    "total_supply": 11420680,
-    "daily_vaccinations": 92372
-  },
-  {
-    "date": "2021-06-28",
-    "total_doses": 9416432,
-    "first_dose": 6721038,
-    "second_dose": 2695394,
-    "total_supply": 12111700,
-    "daily_vaccinations": 268919
-  },
-  {
-    "date": "2021-06-29",
-    "total_doses": 9672706,
-    "first_dose": 6910169,
-    "second_dose": 2762537,
-    "total_supply": 12111700,
-    "daily_vaccinations": 256274
-  },
-  {
-    "date": "2021-06-30",
-    "total_doses": 9927698,
-    "first_dose": 7110854,
-    "second_dose": 2816844,
-    "total_supply": 12113500,
-    "daily_vaccinations": 254992
-  },
-  {
-    "date": "2021-07-01",
-    "total_doses": 10227183,
-    "first_dose": 7364585,
-    "second_dose": 2862598,
-    "total_supply": 12263500,
-    "daily_vaccinations": 299485
-  },
-  {
-    "date": "2021-07-02",
-    "total_doses": 10227183,
-    "first_dose": 7364585,
-    "second_dose": 2862598,
-    "total_supply": 12263500,
-    "missing_data": true,
-    "daily_vaccinations": 0
-  },
-  {
-    "date": "2021-07-03",
-    "total_doses": 10670897,
-    "first_dose": 7721150,
-    "second_dose": 2949747,
-    "total_supply": 12650540,
-    "daily_vaccinations": 443714
-  },
-  {
-    "date": "2021-07-04",
-    "total_doses": 10777748,
-    "first_dose": 7804654,
-    "second_dose": 2973094,
-    "total_supply": 12650540,
-    "daily_vaccinations": 106851
-  },
-  {
-    "date": "2021-07-05",
-    "total_doses": 11058390,
-    "first_dose": 8022029,
-    "second_dose": 3036361,
-    "total_supply": 12650540,
-    "daily_vaccinations": 280642
-  },
-  {
-    "date": "2021-07-06",
-    "total_doses": 11328043,
-    "first_dose": 8245297,
-    "second_dose": 3082746,
-    "total_supply": 12650540,
-    "daily_vaccinations": 269653
-  },
-  {
-    "date": "2021-07-07",
-    "total_doses": 11619618,
-    "first_dose": 8494230,
-    "second_dose": 3125388,
-    "total_supply": 12650540,
-    "daily_vaccinations": 291575
-  },
-  {
-    "date": "2021-07-08",
-    "total_doses": 11975996,
-    "first_dose": 8800155,
-    "second_dose": 3175841,
-    "total_supply": 12650540,
-    "daily_vaccinations": 356378
-  },
-  {
-    "date": "2021-07-09",
-    "total_doses": 12375904,
-    "first_dose": 9130526,
-    "second_dose": 3245378,
-    "total_supply": 14550900,
-    "daily_vaccinations": 399908
-  },
-  {
-    "date": "2021-07-10",
-    "total_doses": 12469188,
-    "first_dose": 9213598,
-    "second_dose": 3255590,
-    "total_supply": 14600900,
-    "daily_vaccinations": 93284
-  },
-  {
-    "date": "2021-07-11",
-    "total_doses": 12569213,
-    "first_dose": 9301407,
-    "second_dose": 3267806,
-    "total_supply": 14650900,
-    "daily_vaccinations": 100025
-  },
-  {
-    "date": "2021-07-12",
-    "total_doses": 12908193,
-    "first_dose": 9598949,
-    "second_dose": 3309244,
-    "total_supply": 14650900,
-    "daily_vaccinations": 338980
-  },
-  {
-    "date": "2021-07-13",
-    "total_doses": 13230681,
-    "first_dose": 9888124,
-    "second_dose": 3342557,
-    "total_supply": 14650900,
-    "daily_vaccinations": 322488
-  },
-  {
-    "date": "2021-07-14",
-    "total_doses": 13533717,
-    "first_dose": 10149677,
-    "second_dose": 3384040,
-    "total_supply": 14650900,
-    "daily_vaccinations": 303036
-  },
-  {
-    "date": "2021-07-15",
-    "total_doses": 13822785,
-    "first_dose": 10424355,
-    "second_dose": 3398430,
-    "total_supply": 15650900,
-    "daily_vaccinations": 289068
-  },
-  {
-    "date": "2021-07-16",
-    "total_doses": 14130489,
-    "first_dose": 10697578,
-    "second_dose": 3432911,
-    "total_supply": 15650900,
-    "daily_vaccinations": 307704
-  },
-  {
-    "date": "2021-07-17",
-    "total_doses": 14223762,
-    "first_dose": 10780432,
-    "second_dose": 3443330,
-    "total_supply": 15650900,
-    "daily_vaccinations": 93273
-  },
-  {
-    "date": "2021-07-18",
-    "total_doses": 14298596,
-    "first_dose": 10850099,
-    "second_dose": 3448497,
-    "total_supply": 15650900,
-    "daily_vaccinations": 74834
-  },
-  {
-    "date": "2021-07-19",
-    "total_doses": 14547244,
-    "first_dose": 11067518,
-    "second_dose": 3479726,
-    "total_supply": 15650900,
-    "daily_vaccinations": 248648
-  },
-  {
-    "date": "2021-07-20",
-    "total_doses": 14805120,
-    "first_dose": 11292579,
-    "second_dose": 3512541,
-    "total_supply": 15650900,
-    "daily_vaccinations": 257876
-  }
+    {
+        "date": "2021-03-06",
+        "total_doses": 27497,
+        "first_dose": 27497,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 27497
+    },
+    {
+        "date": "2021-03-07",
+        "total_doses": 27497,
+        "first_dose": 27497,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-03-08",
+        "total_doses": 29900,
+        "first_dose": 29900,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 2403
+    },
+    {
+        "date": "2021-03-09",
+        "total_doses": 33621,
+        "first_dose": 33621,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 3721
+    },
+    {
+        "date": "2021-03-10",
+        "total_doses": 36797,
+        "first_dose": 36797,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 3176
+    },
+    {
+        "date": "2021-03-11",
+        "total_doses": 40140,
+        "first_dose": 40140,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 3343
+    },
+    {
+        "date": "2021-03-12",
+        "total_doses": 44409,
+        "first_dose": 44409,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 4269
+    },
+    {
+        "date": "2021-03-13",
+        "total_doses": 44963,
+        "first_dose": 44963,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 554
+    },
+    {
+        "date": "2021-03-14",
+        "total_doses": 46598,
+        "first_dose": 46598,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 1635
+    },
+    {
+        "date": "2021-03-15",
+        "total_doses": 50388,
+        "first_dose": 50388,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 3790
+    },
+    {
+        "date": "2021-03-16",
+        "total_doses": 53842,
+        "first_dose": 53842,
+        "second_dose": 0,
+        "total_supply": 0,
+        "daily_vaccinations": 3454
+    },
+    {
+        "date": "2021-03-17",
+        "total_doses": 58024,
+        "first_dose": 58024,
+        "second_dose": 0,
+        "total_supply": 171440,
+        "daily_vaccinations": 4182
+    },
+    {
+        "date": "2021-03-18",
+        "total_doses": 62941,
+        "first_dose": 62941,
+        "second_dose": 0,
+        "total_supply": 171440,
+        "daily_vaccinations": 4917
+    },
+    {
+        "date": "2021-03-19",
+        "total_doses": 67223,
+        "first_dose": 67223,
+        "second_dose": 0,
+        "total_supply": 201080,
+        "daily_vaccinations": 4282
+    },
+    {
+        "date": "2021-03-20",
+        "total_doses": 69927,
+        "first_dose": 69927,
+        "second_dose": 0,
+        "total_supply": 201080,
+        "daily_vaccinations": 2704
+    },
+    {
+        "date": "2021-03-21",
+        "total_doses": 73517,
+        "first_dose": 73517,
+        "second_dose": 0,
+        "total_supply": 201080,
+        "daily_vaccinations": 3590
+    },
+    {
+        "date": "2021-03-22",
+        "total_doses": 85241,
+        "first_dose": 82812,
+        "second_dose": 2429,
+        "total_supply": 202680,
+        "daily_vaccinations": 11724
+    },
+    {
+        "date": "2021-03-23",
+        "total_doses": 85241,
+        "first_dose": 82812,
+        "second_dose": 2429,
+        "total_supply": 202680,
+        "missing_data": true,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-03-24",
+        "total_doses": 120601,
+        "first_dose": 109153,
+        "second_dose": 11448,
+        "total_supply": 202680,
+        "daily_vaccinations": 35360
+    },
+    {
+        "date": "2021-03-25",
+        "total_doses": 136190,
+        "first_dose": 121392,
+        "second_dose": 14798,
+        "total_supply": 238800,
+        "daily_vaccinations": 15589
+    },
+    {
+        "date": "2021-03-26",
+        "total_doses": 148905,
+        "first_dose": 129509,
+        "second_dose": 19396,
+        "total_supply": 256000,
+        "daily_vaccinations": 12715
+    },
+    {
+        "date": "2021-03-27",
+        "total_doses": 150107,
+        "first_dose": 130187,
+        "second_dose": 19920,
+        "total_supply": 256000,
+        "daily_vaccinations": 1202
+    },
+    {
+        "date": "2021-03-28",
+        "total_doses": 154293,
+        "first_dose": 133110,
+        "second_dose": 21183,
+        "total_supply": 256000,
+        "daily_vaccinations": 4186
+    },
+    {
+        "date": "2021-03-29",
+        "total_doses": 166358,
+        "first_dose": 141081,
+        "second_dose": 25277,
+        "total_supply": 289700,
+        "daily_vaccinations": 12065
+    },
+    {
+        "date": "2021-03-30",
+        "total_doses": 180477,
+        "first_dose": 151413,
+        "second_dose": 29064,
+        "total_supply": 290500,
+        "daily_vaccinations": 14119
+    },
+    {
+        "date": "2021-03-31",
+        "total_doses": 191745,
+        "first_dose": 158497,
+        "second_dose": 33248,
+        "total_supply": 376500,
+        "daily_vaccinations": 11268
+    },
+    {
+        "date": "2021-04-01",
+        "total_doses": 202151,
+        "first_dose": 165975,
+        "second_dose": 36176,
+        "total_supply": 445820,
+        "daily_vaccinations": 10406
+    },
+    {
+        "date": "2021-04-02",
+        "total_doses": 231882,
+        "first_dose": 189666,
+        "second_dose": 42216,
+        "total_supply": 866940,
+        "daily_vaccinations": 29731
+    },
+    {
+        "date": "2021-04-03",
+        "total_doses": 244254,
+        "first_dose": 201864,
+        "second_dose": 42390,
+        "total_supply": 905700,
+        "daily_vaccinations": 12372
+    },
+    {
+        "date": "2021-04-04",
+        "total_doses": 257484,
+        "first_dose": 213948,
+        "second_dose": 43536,
+        "total_supply": 905700,
+        "daily_vaccinations": 13230
+    },
+    {
+        "date": "2021-04-05",
+        "total_doses": 294881,
+        "first_dose": 247850,
+        "second_dose": 47031,
+        "total_supply": 981380,
+        "daily_vaccinations": 37397
+    },
+    {
+        "date": "2021-04-06",
+        "total_doses": 323989,
+        "first_dose": 274354,
+        "second_dose": 49635,
+        "total_supply": 981380,
+        "daily_vaccinations": 29108
+    },
+    {
+        "date": "2021-04-07",
+        "total_doses": 391752,
+        "first_dose": 336808,
+        "second_dose": 54944,
+        "total_supply": 981380,
+        "daily_vaccinations": 67763
+    },
+    {
+        "date": "2021-04-08",
+        "total_doses": 466374,
+        "first_dose": 405911,
+        "second_dose": 60463,
+        "total_supply": 1016940,
+        "daily_vaccinations": 74622
+    },
+    {
+        "date": "2021-04-09",
+        "total_doses": 537380,
+        "first_dose": 470301,
+        "second_dose": 67079,
+        "total_supply": 1047660,
+        "daily_vaccinations": 71006
+    },
+    {
+        "date": "2021-04-10",
+        "total_doses": 555396,
+        "first_dose": 485957,
+        "second_dose": 69439,
+        "total_supply": 1048460,
+        "daily_vaccinations": 18016
+    },
+    {
+        "date": "2021-04-11",
+        "total_doses": 570052,
+        "first_dose": 498791,
+        "second_dose": 71261,
+        "total_supply": 1048460,
+        "daily_vaccinations": 14656
+    },
+    {
+        "date": "2021-04-12",
+        "total_doses": 578532,
+        "first_dose": 505215,
+        "second_dose": 73317,
+        "total_supply": 1049460,
+        "daily_vaccinations": 8480
+    },
+    {
+        "date": "2021-04-13",
+        "total_doses": 579305,
+        "first_dose": 505744,
+        "second_dose": 73561,
+        "total_supply": 1049460,
+        "daily_vaccinations": 773
+    },
+    {
+        "date": "2021-04-14",
+        "total_doses": 579305,
+        "first_dose": 505744,
+        "second_dose": 73561,
+        "total_supply": 1049460,
+        "missing_data": true,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-04-15",
+        "total_doses": 586032,
+        "first_dose": 510456,
+        "second_dose": 75576,
+        "total_supply": 1049460,
+        "daily_vaccinations": 6727
+    },
+    {
+        "date": "2021-04-16",
+        "total_doses": 605259,
+        "first_dose": 523830,
+        "second_dose": 81429,
+        "total_supply": 1069980,
+        "daily_vaccinations": 19227
+    },
+    {
+        "date": "2021-04-17",
+        "total_doses": 608521,
+        "first_dose": 526706,
+        "second_dose": 81815,
+        "total_supply": 1156060,
+        "daily_vaccinations": 3262
+    },
+    {
+        "date": "2021-04-18",
+        "total_doses": 618583,
+        "first_dose": 535925,
+        "second_dose": 82658,
+        "total_supply": 1200020,
+        "daily_vaccinations": 10062
+    },
+    {
+        "date": "2021-04-19",
+        "total_doses": 666210,
+        "first_dose": 571825,
+        "second_dose": 94385,
+        "total_supply": 1618540,
+        "daily_vaccinations": 47627
+    },
+    {
+        "date": "2021-04-20",
+        "total_doses": 712610,
+        "first_dose": 604947,
+        "second_dose": 107663,
+        "total_supply": 1960860,
+        "daily_vaccinations": 46400
+    },
+    {
+        "date": "2021-04-21",
+        "total_doses": 864840,
+        "first_dose": 746617,
+        "second_dose": 118223,
+        "total_supply": 2035940,
+        "daily_vaccinations": 152230
+    },
+    {
+        "date": "2021-04-22",
+        "total_doses": 964825,
+        "first_dose": 834082,
+        "second_dose": 130743,
+        "total_supply": 2036220,
+        "daily_vaccinations": 99985
+    },
+    {
+        "date": "2021-04-23",
+        "total_doses": 1095445,
+        "first_dose": 934449,
+        "second_dose": 160996,
+        "total_supply": 2043220,
+        "daily_vaccinations": 130620
+    },
+    {
+        "date": "2021-04-24",
+        "total_doses": 1124153,
+        "first_dose": 949124,
+        "second_dose": 175029,
+        "total_supply": 2077780,
+        "daily_vaccinations": 28708
+    },
+    {
+        "date": "2021-04-25",
+        "total_doses": 1149666,
+        "first_dose": 972204,
+        "second_dose": 177462,
+        "total_supply": 2077780,
+        "daily_vaccinations": 25513
+    },
+    {
+        "date": "2021-04-26",
+        "total_doses": 1227032,
+        "first_dose": 1012388,
+        "second_dose": 214644,
+        "total_supply": 2077780,
+        "daily_vaccinations": 77366
+    },
+    {
+        "date": "2021-04-27",
+        "total_doses": 1279713,
+        "first_dose": 1038960,
+        "second_dose": 240753,
+        "total_supply": 2078660,
+        "daily_vaccinations": 52681
+    },
+    {
+        "date": "2021-04-28",
+        "total_doses": 1344646,
+        "first_dose": 1059721,
+        "second_dose": 284925,
+        "total_supply": 2078660,
+        "daily_vaccinations": 64933
+    },
+    {
+        "date": "2021-04-29",
+        "total_doses": 1411614,
+        "first_dose": 1075756,
+        "second_dose": 335858,
+        "total_supply": 2078660,
+        "daily_vaccinations": 66968
+    },
+    {
+        "date": "2021-04-30",
+        "total_doses": 1477078,
+        "first_dose": 1095230,
+        "second_dose": 381848,
+        "total_supply": 2078660,
+        "daily_vaccinations": 65464
+    },
+    {
+        "date": "2021-05-01",
+        "total_doses": 1484565,
+        "first_dose": 1097862,
+        "second_dose": 386703,
+        "total_supply": 2078660,
+        "daily_vaccinations": 7487
+    },
+    {
+        "date": "2021-05-02",
+        "total_doses": 1486907,
+        "first_dose": 1099460,
+        "second_dose": 387447,
+        "total_supply": 2078660,
+        "daily_vaccinations": 2342
+    },
+    {
+        "date": "2021-05-03",
+        "total_doses": 1498617,
+        "first_dose": 1106071,
+        "second_dose": 392546,
+        "total_supply": 2154500,
+        "daily_vaccinations": 11710
+    },
+    {
+        "date": "2021-05-04",
+        "total_doses": 1568207,
+        "first_dose": 1145696,
+        "second_dose": 422511,
+        "total_supply": 2213380,
+        "daily_vaccinations": 69590
+    },
+    {
+        "date": "2021-05-05",
+        "total_doses": 1601833,
+        "first_dose": 1167719,
+        "second_dose": 434114,
+        "total_supply": 2447220,
+        "daily_vaccinations": 33626
+    },
+    {
+        "date": "2021-05-06",
+        "total_doses": 1651782,
+        "first_dose": 1201258,
+        "second_dose": 450524,
+        "total_supply": 2494860,
+        "daily_vaccinations": 49949
+    },
+    {
+        "date": "2021-05-07",
+        "total_doses": 1730488,
+        "first_dose": 1262703,
+        "second_dose": 467785,
+        "total_supply": 2529860,
+        "daily_vaccinations": 78706
+    },
+    {
+        "date": "2021-05-08",
+        "total_doses": 1743720,
+        "first_dose": 1273666,
+        "second_dose": 470054,
+        "total_supply": 2529860,
+        "daily_vaccinations": 13232
+    },
+    {
+        "date": "2021-05-09",
+        "total_doses": 1809894,
+        "first_dose": 1296440,
+        "second_dose": 513454,
+        "total_supply": 2579260,
+        "daily_vaccinations": 66174
+    },
+    {
+        "date": "2021-05-10",
+        "total_doses": 1898454,
+        "first_dose": 1365992,
+        "second_dose": 532462,
+        "total_supply": 2579260,
+        "daily_vaccinations": 88560
+    },
+    {
+        "date": "2021-05-11",
+        "total_doses": 1935565,
+        "first_dose": 1372013,
+        "second_dose": 563552,
+        "total_supply": 2579260,
+        "daily_vaccinations": 37111
+    },
+    {
+        "date": "2021-05-12",
+        "total_doses": 2040363,
+        "first_dose": 1395130,
+        "second_dose": 645233,
+        "total_supply": 2589780,
+        "daily_vaccinations": 104798
+    },
+    {
+        "date": "2021-05-13",
+        "total_doses": 2125032,
+        "first_dose": 1416732,
+        "second_dose": 708300,
+        "total_supply": 2589780,
+        "daily_vaccinations": 84669
+    },
+    {
+        "date": "2021-05-14",
+        "total_doses": 2242150,
+        "first_dose": 1462762,
+        "second_dose": 779388,
+        "total_supply": 2709740,
+        "daily_vaccinations": 117118
+    },
+    {
+        "date": "2021-05-15",
+        "total_doses": 2242150,
+        "first_dose": 1462762,
+        "second_dose": 779388,
+        "total_supply": 2809380,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-05-16",
+        "total_doses": 2264308,
+        "first_dose": 1482702,
+        "second_dose": 781606,
+        "total_supply": 2809380,
+        "daily_vaccinations": 22158
+    },
+    {
+        "date": "2021-05-17",
+        "total_doses": 2340995,
+        "first_dose": 1521034,
+        "second_dose": 819961,
+        "total_supply": 3038980,
+        "daily_vaccinations": 76687
+    },
+    {
+        "date": "2021-05-18",
+        "total_doses": 2445645,
+        "first_dose": 1585773,
+        "second_dose": 859872,
+        "total_supply": 3120580,
+        "daily_vaccinations": 104650
+    },
+    {
+        "date": "2021-05-19",
+        "total_doses": 2540116,
+        "first_dose": 1647871,
+        "second_dose": 892245,
+        "total_supply": 3281460,
+        "daily_vaccinations": 94471
+    },
+    {
+        "date": "2021-05-20",
+        "total_doses": 2648256,
+        "first_dose": 1726431,
+        "second_dose": 921825,
+        "total_supply": 3554980,
+        "daily_vaccinations": 108140
+    },
+    {
+        "date": "2021-05-21",
+        "total_doses": 2811549,
+        "first_dose": 1849393,
+        "second_dose": 962156,
+        "total_supply": 3695700,
+        "daily_vaccinations": 163293
+    },
+    {
+        "date": "2021-05-22",
+        "total_doses": 2865091,
+        "first_dose": 1898332,
+        "second_dose": 966759,
+        "total_supply": 3791700,
+        "daily_vaccinations": 53542
+    },
+    {
+        "date": "2021-05-23",
+        "total_doses": 2910664,
+        "first_dose": 1941565,
+        "second_dose": 969099,
+        "total_supply": 3846300,
+        "daily_vaccinations": 45573
+    },
+    {
+        "date": "2021-05-24",
+        "total_doses": 3024313,
+        "first_dose": 2044123,
+        "second_dose": 980190,
+        "total_supply": 3990100,
+        "daily_vaccinations": 113649
+    },
+    {
+        "date": "2021-05-25",
+        "total_doses": 3147227,
+        "first_dose": 2157609,
+        "second_dose": 989618,
+        "total_supply": 4054300,
+        "daily_vaccinations": 122914
+    },
+    {
+        "date": "2021-05-26",
+        "total_doses": 3208882,
+        "first_dose": 2214721,
+        "second_dose": 994161,
+        "total_supply": 4054300,
+        "daily_vaccinations": 61655
+    },
+    {
+        "date": "2021-05-27",
+        "total_doses": 3347050,
+        "first_dose": 2319304,
+        "second_dose": 1027746,
+        "total_supply": 4096300,
+        "daily_vaccinations": 138168
+    },
+    {
+        "date": "2021-05-28",
+        "total_doses": 3504125,
+        "first_dose": 2415903,
+        "second_dose": 1088222,
+        "total_supply": 4172300,
+        "daily_vaccinations": 157075
+    },
+    {
+        "date": "2021-05-29",
+        "total_doses": 3548330,
+        "first_dose": 2453807,
+        "second_dose": 1094523,
+        "total_supply": 4227340,
+        "daily_vaccinations": 44205
+    },
+    {
+        "date": "2021-05-30",
+        "total_doses": 3609882,
+        "first_dose": 2498929,
+        "second_dose": 1110953,
+        "total_supply": 4234940,
+        "daily_vaccinations": 61552
+    },
+    {
+        "date": "2021-05-31",
+        "total_doses": 3664859,
+        "first_dose": 2539491,
+        "second_dose": 1125368,
+        "total_supply": 4515700,
+        "daily_vaccinations": 54977
+    },
+    {
+        "date": "2021-06-01",
+        "total_doses": 3753718,
+        "first_dose": 2591372,
+        "second_dose": 1162346,
+        "total_supply": 4667900,
+        "daily_vaccinations": 88859
+    },
+    {
+        "date": "2021-06-02",
+        "total_doses": 3959356,
+        "first_dose": 2738289,
+        "second_dose": 1221067,
+        "total_supply": 4997580,
+        "daily_vaccinations": 205638
+    },
+    {
+        "date": "2021-06-03",
+        "total_doses": 3961589,
+        "first_dose": 2727759,
+        "second_dose": 1233830,
+        "total_supply": 5578940,
+        "daily_vaccinations": 2233
+    },
+    {
+        "date": "2021-06-04",
+        "total_doses": 4142944,
+        "first_dose": 2818676,
+        "second_dose": 1324268,
+        "total_supply": 5684300,
+        "daily_vaccinations": 181355
+    },
+    {
+        "date": "2021-06-05",
+        "total_doses": 4190503,
+        "first_dose": 2845287,
+        "second_dose": 1345216,
+        "total_supply": 6831300,
+        "daily_vaccinations": 47559
+    },
+    {
+        "date": "2021-06-06",
+        "total_doses": 4218094,
+        "first_dose": 2855041,
+        "second_dose": 1363053,
+        "total_supply": 7180500,
+        "daily_vaccinations": 27591
+    },
+    {
+        "date": "2021-06-07",
+        "total_doses": 4634941,
+        "first_dose": 3243913,
+        "second_dose": 1391028,
+        "total_supply": 7581140,
+        "daily_vaccinations": 416847
+    },
+    {
+        "date": "2021-06-08",
+        "total_doses": 5107069,
+        "first_dose": 3672372,
+        "second_dose": 1434697,
+        "total_supply": 7634740,
+        "daily_vaccinations": 472128
+    },
+    {
+        "date": "2021-06-09",
+        "total_doses": 5107069,
+        "first_dose": 3672372,
+        "second_dose": 1434697,
+        "total_supply": 7634740,
+        "missing_data": true,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-06-10",
+        "total_doses": 5667058,
+        "first_dose": 4143444,
+        "second_dose": 1523614,
+        "total_supply": 8098540,
+        "daily_vaccinations": 559989
+    },
+    {
+        "date": "2021-06-11",
+        "total_doses": 5975520,
+        "first_dose": 4362685,
+        "second_dose": 1612835,
+        "total_supply": 8394500,
+        "daily_vaccinations": 308462
+    },
+    {
+        "date": "2021-06-12",
+        "total_doses": 6081242,
+        "first_dose": 4456786,
+        "second_dose": 1624456,
+        "total_supply": 8512700,
+        "daily_vaccinations": 105722
+    },
+    {
+        "date": "2021-06-13",
+        "total_doses": 6188124,
+        "first_dose": 4531914,
+        "second_dose": 1656210,
+        "total_supply": 8512700,
+        "daily_vaccinations": 106882
+    },
+    {
+        "date": "2021-06-14",
+        "total_doses": 6511184,
+        "first_dose": 4762063,
+        "second_dose": 1749121,
+        "total_supply": 8516500,
+        "daily_vaccinations": 323060
+    },
+    {
+        "date": "2021-06-15",
+        "total_doses": 6780816,
+        "first_dose": 4948227,
+        "second_dose": 1832589,
+        "total_supply": 8566900,
+        "daily_vaccinations": 269632
+    },
+    {
+        "date": "2021-06-16",
+        "total_doses": 7003783,
+        "first_dose": 5114755,
+        "second_dose": 1889028,
+        "total_supply": 8616100,
+        "daily_vaccinations": 222967
+    },
+    {
+        "date": "2021-06-17",
+        "total_doses": 7219668,
+        "first_dose": 5252531,
+        "second_dose": 1967137,
+        "total_supply": 8874100,
+        "daily_vaccinations": 215885
+    },
+    {
+        "date": "2021-06-18",
+        "total_doses": 7483083,
+        "first_dose": 5434119,
+        "second_dose": 2048964,
+        "total_supply": 9198500,
+        "daily_vaccinations": 263415
+    },
+    {
+        "date": "2021-06-19",
+        "total_doses": 7587178,
+        "first_dose": 5486092,
+        "second_dose": 2101086,
+        "total_supply": 9992600,
+        "daily_vaccinations": 104095
+    },
+    {
+        "date": "2021-06-20",
+        "total_doses": 7587178,
+        "first_dose": 5486092,
+        "second_dose": 2101086,
+        "total_supply": 9992600,
+        "missing_data": true,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-06-21",
+        "total_doses": 7906696,
+        "first_dose": 5678848,
+        "second_dose": 2227848,
+        "total_supply": 10404800,
+        "daily_vaccinations": 319518
+    },
+    {
+        "date": "2021-06-22",
+        "total_doses": 8148335,
+        "first_dose": 5844521,
+        "second_dose": 2303814,
+        "total_supply": 10690960,
+        "daily_vaccinations": 241639
+    },
+    {
+        "date": "2021-06-23",
+        "total_doses": 8400320,
+        "first_dose": 6017424,
+        "second_dose": 2382896,
+        "total_supply": 10690960,
+        "daily_vaccinations": 251985
+    },
+    {
+        "date": "2021-06-24",
+        "total_doses": 8657423,
+        "first_dose": 6206353,
+        "second_dose": 2451070,
+        "total_supply": 10936600,
+        "daily_vaccinations": 257103
+    },
+    {
+        "date": "2021-06-25",
+        "total_doses": 8981478,
+        "first_dose": 6435308,
+        "second_dose": 2546170,
+        "total_supply": 11284200,
+        "daily_vaccinations": 324055
+    },
+    {
+        "date": "2021-06-26",
+        "total_doses": 9055141,
+        "first_dose": 6475826,
+        "second_dose": 2579315,
+        "total_supply": 11417980,
+        "daily_vaccinations": 73663
+    },
+    {
+        "date": "2021-06-27",
+        "total_doses": 9147513,
+        "first_dose": 6537851,
+        "second_dose": 2609662,
+        "total_supply": 11420680,
+        "daily_vaccinations": 92372
+    },
+    {
+        "date": "2021-06-28",
+        "total_doses": 9416432,
+        "first_dose": 6721038,
+        "second_dose": 2695394,
+        "total_supply": 12111700,
+        "daily_vaccinations": 268919
+    },
+    {
+        "date": "2021-06-29",
+        "total_doses": 9672706,
+        "first_dose": 6910169,
+        "second_dose": 2762537,
+        "total_supply": 12111700,
+        "daily_vaccinations": 256274
+    },
+    {
+        "date": "2021-06-30",
+        "total_doses": 9927698,
+        "first_dose": 7110854,
+        "second_dose": 2816844,
+        "total_supply": 12113500,
+        "daily_vaccinations": 254992
+    },
+    {
+        "date": "2021-07-01",
+        "total_doses": 10227183,
+        "first_dose": 7364585,
+        "second_dose": 2862598,
+        "total_supply": 12263500,
+        "daily_vaccinations": 299485
+    },
+    {
+        "date": "2021-07-02",
+        "total_doses": 10227183,
+        "first_dose": 7364585,
+        "second_dose": 2862598,
+        "total_supply": 12263500,
+        "missing_data": true,
+        "daily_vaccinations": 0
+    },
+    {
+        "date": "2021-07-03",
+        "total_doses": 10670897,
+        "first_dose": 7721150,
+        "second_dose": 2949747,
+        "total_supply": 12650540,
+        "daily_vaccinations": 443714
+    },
+    {
+        "date": "2021-07-04",
+        "total_doses": 10777748,
+        "first_dose": 7804654,
+        "second_dose": 2973094,
+        "total_supply": 12650540,
+        "daily_vaccinations": 106851
+    },
+    {
+        "date": "2021-07-05",
+        "total_doses": 11058390,
+        "first_dose": 8022029,
+        "second_dose": 3036361,
+        "total_supply": 12650540,
+        "daily_vaccinations": 280642
+    },
+    {
+        "date": "2021-07-06",
+        "total_doses": 11328043,
+        "first_dose": 8245297,
+        "second_dose": 3082746,
+        "total_supply": 12650540,
+        "daily_vaccinations": 269653
+    },
+    {
+        "date": "2021-07-07",
+        "total_doses": 11619618,
+        "first_dose": 8494230,
+        "second_dose": 3125388,
+        "total_supply": 12650540,
+        "daily_vaccinations": 291575
+    },
+    {
+        "date": "2021-07-08",
+        "total_doses": 11975996,
+        "first_dose": 8800155,
+        "second_dose": 3175841,
+        "total_supply": 12650540,
+        "daily_vaccinations": 356378
+    },
+    {
+        "date": "2021-07-09",
+        "total_doses": 12375904,
+        "first_dose": 9130526,
+        "second_dose": 3245378,
+        "total_supply": 14550900,
+        "daily_vaccinations": 399908
+    },
+    {
+        "date": "2021-07-10",
+        "total_doses": 12469188,
+        "first_dose": 9213598,
+        "second_dose": 3255590,
+        "total_supply": 14600900,
+        "daily_vaccinations": 93284
+    },
+    {
+        "date": "2021-07-11",
+        "total_doses": 12569213,
+        "first_dose": 9301407,
+        "second_dose": 3267806,
+        "total_supply": 14650900,
+        "daily_vaccinations": 100025
+    },
+    {
+        "date": "2021-07-12",
+        "total_doses": 12908193,
+        "first_dose": 9598949,
+        "second_dose": 3309244,
+        "total_supply": 14650900,
+        "daily_vaccinations": 338980
+    },
+    {
+        "date": "2021-07-13",
+        "total_doses": 13230681,
+        "first_dose": 9888124,
+        "second_dose": 3342557,
+        "total_supply": 14650900,
+        "daily_vaccinations": 322488
+    },
+    {
+        "date": "2021-07-14",
+        "total_doses": 13533717,
+        "first_dose": 10149677,
+        "second_dose": 3384040,
+        "total_supply": 14650900,
+        "daily_vaccinations": 303036
+    },
+    {
+        "date": "2021-07-15",
+        "total_doses": 13822785,
+        "first_dose": 10424355,
+        "second_dose": 3398430,
+        "total_supply": 15650900,
+        "daily_vaccinations": 289068
+    },
+    {
+        "date": "2021-07-16",
+        "total_doses": 14130489,
+        "first_dose": 10697578,
+        "second_dose": 3432911,
+        "total_supply": 15650900,
+        "daily_vaccinations": 307704
+    },
+    {
+        "date": "2021-07-17",
+        "total_doses": 14223762,
+        "first_dose": 10780432,
+        "second_dose": 3443330,
+        "total_supply": 15650900,
+        "daily_vaccinations": 93273
+    },
+    {
+        "date": "2021-07-18",
+        "total_doses": 14298596,
+        "first_dose": 10850099,
+        "second_dose": 3448497,
+        "total_supply": 15650900,
+        "daily_vaccinations": 74834
+    },
+    {
+        "date": "2021-07-19",
+        "total_doses": 14547244,
+        "first_dose": 11067518,
+        "second_dose": 3479726,
+        "Sinovac-supply": 9276528,
+        "AstraZeneca-supply": 6868790,
+        "total_supply": 16145318,
+        "daily_vaccinations": 248648
+    },
+    {
+        "date": "2021-07-20",
+        "total_doses": 14805120,
+        "first_dose": 11292579,
+        "second_dose": 3512541,
+        "Sinovac-supply": 9282028,
+        "AstraZeneca-supply": 6906160,
+        "total_supply": 16188188,
+        "daily_vaccinations": 257876
+    }
 ]

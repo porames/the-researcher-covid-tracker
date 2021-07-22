@@ -71,7 +71,8 @@ function TestingCurve(props) {
                                         y={height - barHeight - 30}
                                         width={xScale.bandwidth()}
                                         height={barHeight}
-                                        fill='#cfcfcf'
+                                        fill='#7a7a7a'
+                                        opacity={0.67}
                                     />
                                     <Bar
                                         x={xScale(x(d))}
@@ -100,7 +101,7 @@ function TestingCurve(props) {
                         data={timeSeries.slice(7, timeSeries.length)}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}
-                        stroke='#7a7a7a'
+                        stroke='#cfcfcf'
                         strokeWidth={2}
                     />
                     <Group>
