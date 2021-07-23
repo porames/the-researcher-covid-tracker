@@ -31,7 +31,7 @@ const Badge = (props) => (
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='text-end provice-table-header'
+        className='provice-table-header'
         style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
         {props.text}
