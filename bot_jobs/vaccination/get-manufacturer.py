@@ -29,22 +29,29 @@ def parse_report_by_url(url):
     return lines
 
 def search_manufacturer(report):
+    '''
+    Search through the report for the line with จำแนกตามบริษัท
+    and extract data from the following three lines.
+    Returns a dict of { manufacturer: doses } 
+    '''
     items = []
-    #Huge brain search. Any better suggestion?
-    q = [i for i, item in enumerate(report) if re.search('จาแนกตามบ', item.replace(" ", ""))]
-    if(len(q)==0):
+    # Huge brain search. Any better suggestion?
+    matching_lines_indices = [i for i, item in enumerate(report) if re.search('จาแนกตามบ', item.replace(" ", ""))]
+    if len(matching_lines_indices) == 0:
         return False
-    q = q[0]
-    for data in report[q+1:q+4]:
+    # Index of the first line that matches the regex
+    first_matching_line_index = matching_lines_indices[0]
+    vaccines_by_manufacturer = {}
+    # For the following 3 lines
+    for data in report[first_matching_line_index+1:first_matching_line_index+4]:
         data = data.replace(" ราย","")
         data = data.split(" ")
-        items.append((data[0], int(data[1])))
-    items = dict(items)
-    #Huge brain test case
-    if ('Sinovac' not in items or items['Sinovac'] < 5000000):
+        vaccines_by_manufacturer[data[0]] = int(data[1])
+    # Huge brain test case
+    if 'Sinovac' not in vaccines_by_manufacturer or vaccines_by_manufacturer['Sinovac'] < 5000000:
         return False
     else:
-        return items
+        return vaccines_by_manufacturer
 
 def calculate_rate(df):
     first_date = pd.to_datetime('2021-07-02')
