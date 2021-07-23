@@ -47,39 +47,28 @@ def search_manufacturer(report):
         data = data.replace(" ราย","")
         data = data.split(" ")
         vaccines_by_manufacturer[data[0]] = int(data[1])
-    # Huge brain test case
-    if 'Sinovac' not in vaccines_by_manufacturer or vaccines_by_manufacturer['Sinovac'] < 5000000:
-        return False
-    else:
-        return vaccines_by_manufacturer
+    return vaccines_by_manufacturer
 
 def calculate_rate(df):
-    first_date = pd.to_datetime('2021-07-02')
-    last_date = pd.to_datetime(df.iloc[-1]['date'])
-    loop_date = first_date
     df['date'] = pd.to_datetime(df['date'])
-    while (loop_date <= last_date):
-        date_data = df[df['date'] == loop_date]
-        if (len(date_data) == 0):
-            previous_data = df[(pd.to_datetime(df['date']) == loop_date-pd.DateOffset(1))]
-            previous_data['date'] = loop_date
-            df=df.append(previous_data,ignore_index=True)    
-        loop_date = loop_date + pd.DateOffset(1)
-    df=df.sort_values(by=['date']).reset_index(drop=True)
-    old_df = df[df['date']<'2021-07-02']
-    new_df = df[df['date']>='2021-07-02']
-    new_df['AstraZeneca_rate'] = new_df['AstraZeneca'].diff()
-    new_df['Sinopharm_rate'] = new_df['Sinopharm'].diff()
-    new_df['Sinovac_rate'] = new_df['Sinovac'].diff()
+    df.set_index('date', inplace=True)
+    df = df.asfreq(freq='D')
+    df.reset_index(inplace=True)
+    df.fillna(method='ffill', inplace=True)
+    old_df = df[df['date']<'2021-07-02'].copy()
+    new_df = df[df['date']>='2021-07-02'].copy()
+    new_df.loc[:, 'AstraZeneca_rate'] = new_df.loc[:, 'AstraZeneca'].diff()
+    new_df.loc[:, 'Sinopharm_rate'] = new_df.loc[:, 'Sinopharm'].diff()
+    new_df.loc[:, 'Sinovac_rate'] = new_df.loc[:, 'Sinovac'].diff()
     new_df = new_df.fillna(0)
     return old_df.append(new_df, ignore_index=True)
 
 df = pd.read_json("../../components/gis/data/vaccine-manufacturer-timeseries.json")
-if len(df)>0:
+if len(df) > 0:
     latest_date = pd.to_datetime(df.iloc[-1]['date'])
 else:
     latest_date = pd.to_datetime("2021-07-02")
-url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/0" + str(latest_date.month) + "/10/2021"
+url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/" + str(latest_date.month).zfill(2) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
 manufacturer_timeseries = df
@@ -92,12 +81,12 @@ for row in rows[latest_date.day:len(rows)]:
     report = parse_report_by_url(report_url)
     data = search_manufacturer(report)
     latest_date += datetime.timedelta(days=1)
-    if data != False :
+    if data != False:
         data["date"] = latest_date
         manufacturer_timeseries = manufacturer_timeseries.append(data,ignore_index=True)
 
 manufacturer_timeseries = calculate_rate(manufacturer_timeseries)
-manufacturer_timeseries['date']=manufacturer_timeseries['date'].astype(str)
+manufacturer_timeseries['date'] = manufacturer_timeseries['date'].astype(str)
 
 manufacturer_timeseries.to_json("../../components/gis/data/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
 
