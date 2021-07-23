@@ -3,6 +3,16 @@ import build from './build_job.json'
 import _ from 'lodash'
 import chroma from 'chroma-js'
 const images = build['images']
+
+const TableHeader = (props) => (
+    <th
+        scope='col'
+        className='text-end provice-table-header'
+        onClick={() => props.sortChange(props.colId)}>
+        {props.text} {props.sortData.column === props.colId ? <img height='13px' src={`/${props.sortData.direction}-caret.svg`} /> : ''}
+    </th>
+)
+
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     const [isDescSort, setIsDescSort] = useState(true)
@@ -26,16 +36,13 @@ export default function Province(props) {
     }
 
     function sortChange(column) {
-
         if (column == sortData.column) {
             setIsDescSort(!isDescSort)
         }
-
         setSortData({
             column: column,
             direction: isDescSort ? 'desc' : 'asc'
         })
-
     }
 
     useEffect(() => {
@@ -60,13 +67,30 @@ export default function Province(props) {
                     <thead className='text-white'>
                         <tr>
                             <th scope='col' className='provice-table-header'>จังหวัด</th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("total-14days")}>ผู้ติดเชื้อในรอบ 14 วัน {sortData.column === "total-14days" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}
-                            </th>
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("cases-per-100k")}>ต่อประชากร 100,000 คน {sortData.column === "cases-per-100k" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}</th>
-
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("change")}>เส้นแนวโน้ม 14 วัน {sortData.column === "change" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}</th>
-
-                            <th scope='col' className='text-end provice-table-header' onClick={() => sortChange("vax-2nd-dose")}>ฉีดวัคซีนครบ {sortData.column === "vax-2nd-dose" ? <img height='13px' src={`/${sortData.direction}-caret.svg`} /> : ''}</th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='total-14days'
+                                text='ผู้ติดเชื้อในรอบ 14 วัน'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='cases-per-100k'
+                                text='ต่อประชากร 100,000 คน'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='change'
+                                text='เส้นแนวโน้ม 14 วัน'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='vax-2nd-dose'
+                                text='ฉีดวัคซีนครบแล้ว'
+                            />
                         </tr>
                     </thead>
                     <tbody className='text-sec'>

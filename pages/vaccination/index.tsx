@@ -114,12 +114,18 @@ export default function Vaccine() {
           <hr />
         </div>
         <Map />
+        <div className="container my-5">
+          <hr />
+        </div>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
           <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
           <Province />
         </div>
+        <div className="container my-5">
+          <hr />
+        </div>
         <VaccinationRace />
-        <div className='container mt-5 mb-4' style={{ maxWidth: 800 }}>
+        <div className='container mt-5 mb-4'>
           <SupplyTable />
         </div>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>

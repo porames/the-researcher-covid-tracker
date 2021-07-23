@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
-import provincesData from '../gis/data/provincial-vaccination-data_2.json'
+import chroma from 'chroma-js'
+import dataset from '../gis/data/provincial-vaccination-data_2.json'
 import moment from 'moment'
 import { usePopperTooltip } from 'react-popper-tooltip';
-import { sum, mean } from 'd3'
 
 interface ProvinceProps {
     "name": string;
@@ -15,29 +15,125 @@ interface ProvinceProps {
     "total-2nd-dose"?: number;
     "total-supply"?: number;
 }
+
+const Badge = (props) => (
+    <div
+        style={{
+            backgroundColor: props.vaccinatedScale(props.coverage).hex(),
+            color: (props.coverage > 0.5 ? 'white' : 'black'),
+            width: 45
+        }}
+        className='badge badge-vaccination-scale' >
+        {Math.floor(props.coverage * 100).toLocaleString()} %
+    </div>
+)
+
+const TableHeader = (props) => (
+    <th
+        scope='col'
+        className='provice-table-header'
+        onClick={() => props.sortChange(props.colId)}>
+        <span style={{ whiteSpace: 'nowrap' }}>
+            {props.text} {props.sortData.column === props.colId ? <img height='13px' src={`/${props.sortData.direction}-caret.svg`} /> : ''}
+        </span>
+    </th>
+)
+
 export default function SupplyTable() {
     const [showAll, setShowAll] = useState<boolean>(false)
-    var data: ProvinceProps[] = _.cloneDeep(provincesData)['data']
-    data = _.sortBy(data, 'total-supply').reverse()
+    const [isDescSort, setIsDescSort] = useState(true)
+    const [sortData, setSortData] = useState({
+        column: 'total-supply',
+        direction: 'desc'
+    })
+    var data: ProvinceProps[] = _.cloneDeep(dataset)['data']
+    data.map((province, index) => {
+        data[index]['1st-dose-coverage'] = province['total-1st-dose'] / province.population
+        data[index]['2nd-dose-coverage'] = province['total-2nd-dose'] / province.population
+    })
+    console.log(data)
+    const [provincesData, setData] = useState(undefined)
+    function sortChange(column) {
+        if (column == sortData.column) {
+            setIsDescSort(!isDescSort)
+        }
+        setSortData({
+            column: column,
+            direction: isDescSort ? 'desc' : 'asc'
+        })
+    }
 
+    useEffect(() => {
+        data = _.sortBy(data, sortData.column)
+        if (sortData.direction == 'desc') {
+            data.reverse()
+        }
+        setData(data)
+    }, [sortData])
+    const vaccinatedScale = chroma.scale(['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46'])
+    const nationalAvg = _.find(data, { id: '0' })
     return (
         <div>
             <h5 className='text-center'>ตารางแสดงข้อมูลการจัดสรรวัคซีนในแต่ละจังหวัดและร้อยละวัคซีนที่ใช้ไป</h5>
             <div className='table-responsive mt-3'>
-                <table className="table text-white w-100" style={{ minWidth: 400 }}>
+                <table className="table text-white w-100" style={{ minWidth: 400, fontSize: '90%' }}>
                     <thead>
                         <tr>
-                            <th scope="col">จังหวัด</th>
-                            <th scope="col">จำนวนวัคซีนที่ได้รับ</th>
-                            <th scope="col">จำนวนวัคซีนที่ฉีดแล้ว</th>
-                            <th scope="col">ใช้ไปร้อยละ</th>
+                            <th style={{ minWidth: 150 }} scope="col">จังหวัด</th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='total-supply'
+                                text='จำนวนวัคซีนที่ได้รับ'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='total_doses'
+                                text='จำนวนวัคซีนที่ฉีดแล้ว'
+                            />
+                            <th style={{ minWidth: 110 }} scope="col">ใช้ไปร้อยละ</th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='1st-dose-coverage'
+                                text='ได้วัคซีนอย่างน้อย 1 โดส'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='2nd-dose-coverage'
+                                text='ได้วัคซีนครบ'
+                            />
+
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((province, index) => {
-                            if (index < (showAll ? data.length : 10)) {
+                        <tr className='text-white' style={{ backgroundColor: "#333" }}>
+                            <td>
+                                <b>{nationalAvg.name}</b>
+                            </td>
+                            <td>
+                                {nationalAvg['total-supply'].toLocaleString()}
+                            </td>
+                            <td>
+                                {nationalAvg['total_doses'].toLocaleString()}
+                            </td>
+                            <td>
+                                {Math.floor(nationalAvg['total_doses'] * 100 / nationalAvg['total-supply'])}%
+                            </td>
+                            <td>
+                                <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['1st-dose-coverage']}></Badge>
+                            </td>
+                            <td>
+                                <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['2nd-dose-coverage']}></Badge>
+                            </td>
+                        </tr>
+                        {provincesData && provincesData.map((province, index) => {
+
+                            if (index < (showAll ? provincesData.length : 10) && province.id !== '0') {
                                 return (
-                                    <tr key={index} className={index == 0 ? 'text-white' : 'text-sec'} style={{ backgroundColor: index == 0 ? "#333" : "inherit" }}>
+                                    <tr key={index} className='text-sec'>
                                         <td>
                                             <b>{province.name}</b>
                                         </td>
@@ -47,8 +143,15 @@ export default function SupplyTable() {
                                         <td>
                                             {province['total_doses'].toLocaleString()}
                                         </td>
+
                                         <td>
                                             {Math.floor(province['total_doses'] * 100 / province['total-supply'])}%
+                                        </td>
+                                        <td>
+                                            <Badge vaccinatedScale={vaccinatedScale} coverage={province['1st-dose-coverage']}></Badge>
+                                        </td>
+                                        <td>
+                                            <Badge vaccinatedScale={vaccinatedScale} coverage={province['2nd-dose-coverage']}></Badge>
                                         </td>
                                     </tr>
                                 )
