@@ -6,6 +6,8 @@ import re
 import pandas as pd
 import datetime
 
+START_DATE = "2021-07-02"
+
 def parse_report_by_url(url):
     response = requests.get(url)
     file = open("tmp/daily_slides.pdf", "wb")
@@ -29,11 +31,11 @@ def parse_report_by_url(url):
     return lines
 
 def search_manufacturer(report):
-    '''
+    """
     Search through the report for the line with จำแนกตามบริษัท
     and extract data from the following three lines.
     Returns a dict of { manufacturer: doses } 
-    '''
+    """
     items = []
     # Huge brain search. Any better suggestion?
     matching_lines_indices = [i for i, item in enumerate(report) if re.search('จาแนกตามบ', item.replace(" ", ""))]
@@ -50,13 +52,20 @@ def search_manufacturer(report):
     return vaccines_by_manufacturer
 
 def calculate_rate(df):
+    """
+    Calculate rate of vaccination based on differences
+    of cumulative sums of vaccines
+    """
     df['date'] = pd.to_datetime(df['date'])
+    # Fill empty dates with previous values
     df.set_index('date', inplace=True)
     df = df.asfreq(freq='D')
     df.reset_index(inplace=True)
     df.fillna(method='ffill', inplace=True)
-    old_df = df[df['date']<'2021-07-02'].copy()
-    new_df = df[df['date']>='2021-07-02'].copy()
+    # Separate between old data and new ones
+    old_df = df[df['date'] < START_DATE].copy()
+    new_df = df[df['date'] >= START_DATE].copy()
+    # Calculate rate of vaccination based on diff
     new_df.loc[:, 'AstraZeneca_rate'] = new_df.loc[:, 'AstraZeneca'].diff()
     new_df.loc[:, 'Sinopharm_rate'] = new_df.loc[:, 'Sinopharm'].diff()
     new_df.loc[:, 'Sinovac_rate'] = new_df.loc[:, 'Sinovac'].diff()
@@ -67,7 +76,7 @@ df = pd.read_json("../../components/gis/data/vaccine-manufacturer-timeseries.jso
 if len(df) > 0:
     latest_date = pd.to_datetime(df.iloc[-1]['date'])
 else:
-    latest_date = pd.to_datetime("2021-07-02")
+    latest_date = pd.to_datetime(START_DATE)
 url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/" + str(latest_date.month).zfill(2) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
@@ -89,6 +98,5 @@ manufacturer_timeseries = calculate_rate(manufacturer_timeseries)
 manufacturer_timeseries['date'] = manufacturer_timeseries['date'].astype(str)
 
 manufacturer_timeseries.to_json("../../components/gis/data/vaccine-manufacturer-timeseries.json",orient="records",indent=2)
-
 
 print('saved!')
