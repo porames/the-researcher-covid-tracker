@@ -241,13 +241,14 @@ hr {
 }
 
 .table-toggle {
-    min-width: 170px;
+    min-width: 150px;
     padding: 0.8em;
     text-align: center;
     border: none;
     background-color: #3c3c3c;
     color: white;
     font-weight: bold;
+    font-size: 90%;
 }
 .logo {
     opacity: 1 !important;
@@ -339,4 +340,8 @@ hr {
     .grid path {
         stroke-width: 0;
     }
+}
+
+.material-icons {
+    vertical-align: middle;
 }

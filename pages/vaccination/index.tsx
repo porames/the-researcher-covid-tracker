@@ -143,9 +143,12 @@ export default function Vaccine() {
             <div className='col-md-6 d-flex align-items-center'>
               <Link href='/'>
                 <a>
-                  <h5 className='mb-0 d-flex align-items-center'>ติดตามสถานการณ์การระบาด COVID-19 <img src='chevron_right_white_24dp.svg' /></h5>
+                  <h5 className='mb-0 d-flex align-items-center mr-2'>
+                    ติดตามสถานการณ์การระบาด COVID-19
+                  </h5>
                 </a>
               </Link>
+              <span className="material-icons">chevron_right</span>
             </div>
             <div className='col-12'>
               <hr />

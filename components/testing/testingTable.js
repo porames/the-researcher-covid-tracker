@@ -101,7 +101,7 @@ function TestingTable(props) {
 
     return (
         <div className='table-responsive'>
-            <table className="table table-theme-light mt-4 text-white">
+            <table className="table table-theme-light text-white">
                 <thead>
                     <tr>
                         <th scope="col"></th>

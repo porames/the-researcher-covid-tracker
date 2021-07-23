@@ -171,11 +171,14 @@ function TestingCurve(props) {
 
 const Container = () => {
     return (
-        <ParentSize>
-            {({ width, height }) => (
-                <TestingCurve width={width} height={280} />
-            )}
-        </ParentSize>
+        <div>
+            <ParentSize>
+                {({ width, height }) => (
+                    <TestingCurve width={width} height={280} />
+                )}
+            </ParentSize>
+            <p className='credit text-sec'>ที่มาข้อมูล: กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข ตัวเลขการตรวจรายวันหมายถึงจำนวนตัวอย่างที่ได้รับการตรวจ RT-PCR จากห้องปฏิบัติการของรัฐบาลและเอกชน ข้อมูลอัพเดทรายสัปดาห์</p>
+        </div>
     )
 }
 

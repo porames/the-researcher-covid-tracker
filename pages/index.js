@@ -33,7 +33,7 @@ class NationalCurveSection extends React.Component {
         <NationalCurve />
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
-        <h3>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
+        <h3 className='mt-4'>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
         <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Positive Rate) ไม่เกิน 5%</p>
         <TestingGraph />
         <TestingTable />
@@ -64,14 +64,6 @@ export default function Home() {
       <div className='dark-theme py-5'>
         <Head>
           <title>รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher</title>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
-          <script dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-V6Q0C8MG7Q');`}} />
           <meta name="title" content="รายงานสถานการณ์โรค COVID-19 ในประเทศไทย - The Researcher" />
           <meta name="description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
           <meta property="og:type" content="website" />
@@ -102,11 +94,14 @@ export default function Home() {
               </Link>
             </div>
             <div className='col-md-6 d-flex align-items-center'>
-              <Link href='/vaccination'>
+              <Link href='/'>
                 <a>
-                  <h5 className='mb-0 d-flex align-items-center'>ติดตามความคืบหน้าการฉีดวัคซีน <img src='chevron_right_white_24dp.svg' /></h5>
+                  <h5 className='mb-0 d-flex align-items-center mr-2'>
+                    ติดตามความคืบหน้าการฉีดวัคซีน
+                  </h5>
                 </a>
               </Link>
+              <span className="material-icons">chevron_right</span>
             </div>
             <div className='col-12'>
               <hr />

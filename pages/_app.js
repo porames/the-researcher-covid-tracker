@@ -25,6 +25,15 @@ function MyApp({ Component, pageProps }) {
         <meta name="msapplication-square150x150logo" content="/icons/mstile-150x150.png" />
         <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
         <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_gAnalytics}`}></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-V6Q0C8MG7Q');`}} />
       </Head>
       <Component {...pageProps} />
     </>

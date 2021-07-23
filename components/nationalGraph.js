@@ -102,8 +102,8 @@ function NationalCurve(props) {
                             />
                         </Annotation>
                         <Annotation
-                            x={xScale(x(timeSeries[110]))}
-                            y={yScale(timeSeries[110]['movingAvg']) - 30}
+                            x={xScale(x(timeSeries[30]))}
+                            y={yScale(timeSeries[30]['movingAvg']) - 30}
                             dx={0}
                             dy={-40}
                             width={200}

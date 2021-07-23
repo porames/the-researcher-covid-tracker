@@ -31,27 +31,26 @@ const Badge = (props) => (
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='provice-table-header'
+        className='text-end provice-table-header'
+        style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
-        <span style={{ whiteSpace: 'nowrap' }}>
-            {props.text} {props.sortData.column === props.colId ? <img height='13px' src={`/${props.sortData.direction}-caret.svg`} /> : ''}
-        </span>
+        {props.text}
+        {props.sortData.column === props.colId ?
+            <span className="material-icons">{`arrow_drop_${props.sortData.direction}`}</span> : ''}
     </th>
 )
-
 export default function SupplyTable() {
     const [showAll, setShowAll] = useState<boolean>(false)
     const [isDescSort, setIsDescSort] = useState(true)
     const [sortData, setSortData] = useState({
         column: 'total-supply',
-        direction: 'desc'
+        direction: 'down'
     })
     var data: ProvinceProps[] = _.cloneDeep(dataset)['data']
     data.map((province, index) => {
         data[index]['1st-dose-coverage'] = province['total-1st-dose'] / province.population
         data[index]['2nd-dose-coverage'] = province['total-2nd-dose'] / province.population
     })
-    console.log(data)
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {
         if (column == sortData.column) {
@@ -59,13 +58,13 @@ export default function SupplyTable() {
         }
         setSortData({
             column: column,
-            direction: isDescSort ? 'desc' : 'asc'
+            direction: isDescSort ? 'down' : 'up'
         })
     }
 
     useEffect(() => {
         data = _.sortBy(data, sortData.column)
-        if (sortData.direction == 'desc') {
+        if (sortData.direction == 'down') {
             data.reverse()
         }
         setData(data)

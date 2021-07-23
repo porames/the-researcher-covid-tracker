@@ -8,8 +8,11 @@ const TableHeader = (props) => (
     <th
         scope='col'
         className='text-end provice-table-header'
+        style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
-        {props.text} {props.sortData.column === props.colId ? <img height='13px' src={`/${props.sortData.direction}-caret.svg`} /> : ''}
+        {props.text}
+        {props.sortData.column === props.colId ?
+            <span className="material-icons">{`arrow_drop_${props.sortData.direction}`}</span> : ''}
     </th>
 )
 
@@ -18,7 +21,7 @@ export default function Province(props) {
     const [isDescSort, setIsDescSort] = useState(true)
     const [sortData, setSortData] = useState({
         column: 'cases-per-100k',
-        direction: 'desc'
+        direction: 'down'
     })
 
     const [provincesData, setData] = useState(undefined)
@@ -41,7 +44,7 @@ export default function Province(props) {
         }
         setSortData({
             column: column,
-            direction: isDescSort ? 'desc' : 'asc'
+            direction: isDescSort ? 'down' : 'up'
         })
     }
 
@@ -54,7 +57,7 @@ export default function Province(props) {
             })
         })
         data = _.sortBy(data, sortData.column)
-        if (sortData.direction == 'desc') {
+        if (sortData.direction == 'down') {
             data.reverse()
         }
         setData(data)
@@ -63,7 +66,7 @@ export default function Province(props) {
     return (
         <div>
             <div className='table-responsive'>
-                <table className='table'>
+                <table className='table' style={{ fontSize: '90%' }}>
                     <thead className='text-white'>
                         <tr>
                             <th scope='col' className='provice-table-header'>จังหวัด</th>
