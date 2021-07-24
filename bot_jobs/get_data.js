@@ -1,5 +1,4 @@
 
-const request = require('request');
 const axios = require('axios');
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs').promises;
