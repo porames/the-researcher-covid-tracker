@@ -78,7 +78,7 @@ function Graph(props) {
                 {[recent].map((lineData, i) => {
                     const markerEnd = 'url(#marker-arrow-province)';
                     return (
-                        <Group>
+                        <Group key={i}>
                             <LinePath
                                 key={i}
                                 curve={curveLinear}
