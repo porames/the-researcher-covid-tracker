@@ -32,6 +32,9 @@ jobs:
             - name: Get National Data From djay/covidthailand
               working-directory: bot_jobs
               run: python get_national_data.py
+            - name: Get and Build Province deaths
+              working-directory: bot_jobs
+              run: python build_province_deaths.py
             - name: Get testing dataset
               working-directory: bot_jobs
               run: python get_covid_test_dataset.py
