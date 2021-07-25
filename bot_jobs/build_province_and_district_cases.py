@@ -33,15 +33,13 @@ except Exception as e:
     print("Try downloading csv instead.")
     start = time.time()
     df = pd.read_csv(CSV_URL, encoding="utf-8")
+    # Convert to datatime object
+    df["announce_date"] = pd.to_datetime(df["announce_date"], format="%d/%m/%Y")
 print("Downloaded Provincial Dataset took:", time.time()-start, "seconds")
-
-#df = pd.read_csv("dataset.csv", encoding="utf-8") # Load from file
 
 # Drop unused (By the site) column
 df = df.drop(["No.", "Notified date", "nationality", "province_of_isolation",
               "sex", "age", "risk", "Unit"], axis=1)
-# Convert day to datetime object
-df["announce_date"] = pd.to_datetime(df["announce_date"], format="%d/%m/%Y")
 print(df.info())
 
 # Remove data with unknown province
