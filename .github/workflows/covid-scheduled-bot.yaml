@@ -31,7 +31,7 @@ jobs:
               run: python build_province_and_district_cases.py
             - name: Get National Data From djay/covidthailand
               working-directory: bot_jobs
-              run: node get_data.js
+              run: python get_national_data.py
             - name: Get testing dataset
               working-directory: bot_jobs
               run: python get_covid_test_dataset.py
