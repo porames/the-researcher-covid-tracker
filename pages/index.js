@@ -94,7 +94,7 @@ export default function Home() {
               </Link>
             </div>
             <div className='col-md-6 d-flex align-items-center'>
-              <Link href='/'>
+              <Link href='/vaccination'>
                 <a>
                   <h5 className='mb-0 d-flex align-items-center mr-2'>
                     ติดตามความคืบหน้าการฉีดวัคซีน
