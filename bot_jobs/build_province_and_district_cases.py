@@ -1,5 +1,6 @@
 import time
 from util import find_similar_word, json_dump
+import build_province_deaths
 import pandas as pd
 import json
 import datetime
@@ -7,6 +8,7 @@ import re
 
 XLS_URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/67d43695-8626-45ad-9094-dabc374925ab/download/confirmed-cases.xlsx"
 CSV_URL = "https://data.go.th/dataset/8a956917-436d-4afd-a2d4-59e4dd8e906e/resource/be19a8ad-ab48-4081-b04a-8035b5b2b8d6/download/confirmed-cases.csv"
+DEATHS_URL = "https://github.com/djay/covidthailand/wiki/cases_by_province.csv"
 
 district_data_14days_out_path = "../components/gis/data/amphoes-data-14days.json"
 province_data_14days_out_path = "../components/gis/data/provinces-data-14days.json"
@@ -119,11 +121,21 @@ province_cases_14days = df_filtered_by_province_14days.drop("announce_date", axi
 province_population = {i["province"]: i["population"] for i in
                        json.load(open(CENSUS_DATA_PATH, encoding="utf-8"))}
 
+# Deaths by province
+print("Downloading Deaths Dataset")
+start = time.time()
+df_deaths = pd.read_csv(DEATHS_URL)
+print("Downloaded Deaths Dataset took:", time.time()-start, "seconds")
+
+province_deaths_each_day = build_province_deaths.get_province_deaths(deaths_df=df_deaths).to_dict()
+province_deaths_each_day_21days = build_province_deaths.get_province_deaths(deaths_df=df_deaths, days=21).to_dict()
 
 # Create a dict with all data combined
 province_cases_each_day_with_total = []
 province_cases_each_day_21days = []
 for name, cases in province_cases_each_day.items():
+    deaths_by_date = province_deaths_each_day[name]
+    deaths_count = sum(deaths_by_date.values())
     province_cases_each_day_with_total.append(
         {
             "name": name,
@@ -131,13 +143,17 @@ for name, cases in province_cases_each_day.items():
                       if dto > (end - datetime.timedelta(days=14))},
             "id": int(PROVINCE_IDS[name]),
             "caseCount": int(province_cases_14days[name]),
-            "cases-per-100k": (int(province_cases_14days[name]) * 10 ** 5) // province_population[name],
+            "cases-per-100k": (int(province_cases_14days[name]) * 100000) // province_population[name],
+            "deaths": deaths_by_date,
+            "deathsCount": deaths_count,
+            "deaths-per-100k" : round(deaths_count * 100000 / province_population[name], 2),
         }
     )
     province_cases_each_day_21days.append(
         {
             "name": name,
             "cases": {dto.isoformat(): caseCount for dto, caseCount in cases.items()},
+            "deaths" : province_deaths_each_day_21days[name],
         }
     )
 
