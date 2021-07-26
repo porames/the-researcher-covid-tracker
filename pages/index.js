@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Map from '../components/map_'
-import NationalCurve from '../components/nationalGraph'
+import InfectionCurve from '../components/infectionCurve'
+import DeathsCurve from '../components/deathsCurve'
+import HospitalizedCurve from '../components/hospitalizedCurve'
 import VaccinePreview from '../components/vaccinePreview'
 import NationalTable from '../components/nationalTable.js'
 import Province from '../components/provincesGraph'
@@ -30,7 +32,21 @@ class NationalCurveSection extends React.Component {
             <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate).format('LL')}</small>
           }
         </div>
-        <NationalCurve />
+        <hr className='my-4' />
+        <div className='row'>
+          <div className='col-12 mb-3'>
+            <h4 className='mb-0'>ผู้ติดเชื้อใหม่รายวัน</h4>
+            <InfectionCurve />
+          </div>
+          <div className='col-6'>
+            <h6 className='mb-0'>รักษาตัวในโรงพยาบาล</h6>
+            <HospitalizedCurve />
+          </div>
+          <div className='col-6'>
+            <h6 className='mb-0'>ผู้เสียชีวิตรายวัน</h6>
+            <DeathsCurve />
+          </div>
+        </div>
         <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
         <hr />
         <h3 className='mt-4'>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
