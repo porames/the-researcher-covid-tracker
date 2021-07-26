@@ -28,7 +28,6 @@ PROVINCE_NAMES = set(PROVINCE_IDS.keys())
 try :
     print("Downloading Provincial Dataset")
     start = time.time()
-    raise NotImplementedError
     df = pd.read_excel(XLS_URL)
 except Exception as e:
     print(e)
