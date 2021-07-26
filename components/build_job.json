@@ -2,777 +2,854 @@
   "images": [
     {
       "name": "65.svg",
-      "change": -86,
-      "total-14days": 87,
+      "change": -84,
+      "total-14days": 79,
       "province": "กระบี่",
       "vax-coverage": 9.61,
       "vax-1st-dose": 14.87,
       "vax-2nd-dose": 4.35,
-      "population": 477770
+      "population": 477770,
+      "deaths-total-14days": 2
     },
     {
       "name": "1.svg",
-      "change": 27,
-      "total-14days": 38347,
+      "change": 23,
+      "total-14days": 38976,
       "province": "กรุงเทพมหานคร",
       "vax-coverage": 23.7,
       "vax-1st-dose": 36.36,
       "vax-2nd-dose": 11.03,
-      "population": 7859222
+      "population": 7859222,
+      "deaths-total-14days": 667
     },
     {
       "name": "57.svg",
-      "change": 292,
-      "total-14days": 1118,
+      "change": 339,
+      "total-14days": 1225,
       "province": "กาญจนบุรี",
       "vax-coverage": 2.44,
       "vax-1st-dose": 3.55,
       "vax-2nd-dose": 1.33,
-      "population": 891976
+      "population": 891976,
+      "deaths-total-14days": 6
     },
     {
       "name": "35.svg",
-      "change": 313,
-      "total-14days": 1278,
+      "change": 270,
+      "total-14days": 1370,
       "province": "กาฬสินธุ์",
       "vax-coverage": 2.51,
       "vax-1st-dose": 3.58,
       "vax-2nd-dose": 1.44,
-      "population": 977175
+      "population": 977175,
+      "deaths-total-14days": 5
     },
     {
       "name": "50.svg",
-      "change": 152,
-      "total-14days": 1047,
+      "change": 149,
+      "total-14days": 1131,
       "province": "กำแพงเพชร",
       "vax-coverage": 2.78,
       "vax-1st-dose": 4.05,
       "vax-2nd-dose": 1.51,
-      "population": 714118
+      "population": 714118,
+      "deaths-total-14days": 11
     },
     {
       "name": "29.svg",
-      "change": 613,
-      "total-14days": 2154,
+      "change": 517,
+      "total-14days": 2162,
       "province": "ขอนแก่น",
       "vax-coverage": 3.13,
       "vax-1st-dose": 4.45,
       "vax-2nd-dose": 1.8,
-      "population": 1794531
+      "population": 1794531,
+      "deaths-total-14days": 2
     },
     {
       "name": "13.svg",
-      "change": 182,
-      "total-14days": 515,
+      "change": 194,
+      "total-14days": 573,
       "province": "จันทบุรี",
       "vax-coverage": 7.32,
       "vax-1st-dose": 11.57,
       "vax-2nd-dose": 3.07,
-      "population": 535559
+      "population": 535559,
+      "deaths-total-14days": 1
     },
     {
       "name": "15.svg",
-      "change": 134,
-      "total-14days": 3963,
+      "change": 142,
+      "total-14days": 4180,
       "province": "ฉะเชิงเทรา",
       "vax-coverage": 9.28,
       "vax-1st-dose": 15.71,
       "vax-2nd-dose": 2.85,
-      "population": 720718
+      "population": 720718,
+      "deaths-total-14days": 12
     },
     {
       "name": "11.svg",
-      "change": 105,
-      "total-14days": 8402,
+      "change": 98,
+      "total-14days": 8889,
       "province": "ชลบุรี",
       "vax-coverage": 7.62,
       "vax-1st-dose": 10.12,
       "vax-2nd-dose": 5.12,
-      "population": 2077885
+      "population": 2077885,
+      "deaths-total-14days": 17
     },
     {
       "name": "9.svg",
-      "change": 38,
-      "total-14days": 270,
+      "change": 26,
+      "total-14days": 282,
       "province": "ชัยนาท",
       "vax-coverage": 3.07,
       "vax-1st-dose": 4.56,
       "vax-2nd-dose": 1.58,
-      "population": 322477
+      "population": 322477,
+      "deaths-total-14days": 1
     },
     {
       "name": "25.svg",
-      "change": -94,
-      "total-14days": 216,
+      "change": -95,
+      "total-14days": 176,
       "province": "ชัยภูมิ",
       "vax-coverage": 3.06,
       "vax-1st-dose": 4.34,
       "vax-2nd-dose": 1.78,
-      "population": 1124924
+      "population": 1124924,
+      "deaths-total-14days": 8
     },
     {
       "name": "70.svg",
-      "change": 232,
-      "total-14days": 343,
+      "change": 250,
+      "total-14days": 371,
       "province": "ชุมพร",
       "vax-coverage": 4.03,
       "vax-1st-dose": 6.17,
       "vax-2nd-dose": 1.89,
-      "population": 509208
+      "population": 509208,
+      "deaths-total-14days": 2
     },
     {
       "name": "73.svg",
-      "change": 391,
-      "total-14days": 386,
+      "change": 388,
+      "total-14days": 417,
       "province": "ตรัง",
       "vax-coverage": 3.94,
       "vax-1st-dose": 5.95,
       "vax-2nd-dose": 1.94,
-      "population": 640574
+      "population": 640574,
+      "deaths-total-14days": 2
     },
     {
       "name": "14.svg",
-      "change": 50,
-      "total-14days": 345,
+      "change": 68,
+      "total-14days": 376,
       "province": "ตราด",
       "vax-coverage": 5.37,
       "vax-1st-dose": 8.08,
       "vax-2nd-dose": 2.65,
-      "population": 228536
+      "population": 228536,
+      "deaths-total-14days": 9
     },
     {
       "name": "51.svg",
-      "change": 266,
-      "total-14days": 1750,
+      "change": 238,
+      "total-14days": 1874,
       "province": "ตาก",
       "vax-coverage": 10.66,
       "vax-1st-dose": 13.53,
       "vax-2nd-dose": 7.79,
-      "population": 670265
+      "population": 670265,
+      "deaths-total-14days": 11
     },
     {
       "name": "17.svg",
-      "change": 146,
-      "total-14days": 1175,
+      "change": 105,
+      "total-14days": 1163,
       "province": "นครนายก",
       "vax-coverage": 7.63,
       "vax-1st-dose": 11.06,
       "vax-2nd-dose": 4.21,
-      "population": 260081
+      "population": 260081,
+      "deaths-total-14days": 15
     },
     {
       "name": "59.svg",
-      "change": 41,
-      "total-14days": 4778,
+      "change": 44,
+      "total-14days": 4867,
       "province": "นครปฐม",
       "vax-coverage": 4.73,
       "vax-1st-dose": 7.34,
       "vax-2nd-dose": 2.12,
-      "population": 1137729
+      "population": 1137729,
+      "deaths-total-14days": 42
     },
     {
       "name": "37.svg",
-      "change": 4,
-      "total-14days": 315,
+      "change": 27,
+      "total-14days": 340,
       "province": "นครพนม",
       "vax-coverage": 3.21,
       "vax-1st-dose": 4.53,
       "vax-2nd-dose": 1.88,
-      "population": 717201
+      "population": 717201,
+      "deaths-total-14days": 4
     },
     {
       "name": "19.svg",
-      "change": -31,
-      "total-14days": 212,
+      "change": -75,
+      "total-14days": 211,
       "province": "นครราชสีมา",
       "vax-coverage": 5.86,
       "vax-1st-dose": 7.28,
       "vax-2nd-dose": 4.44,
-      "population": 2633207
+      "population": 2633207,
+      "deaths-total-14days": 18
     },
     {
       "name": "64.svg",
-      "change": 236,
-      "total-14days": 573,
+      "change": 336,
+      "total-14days": 795,
       "province": "นครศรีธรรมราช",
       "vax-coverage": 3.65,
       "vax-1st-dose": 5.65,
       "vax-2nd-dose": 1.64,
-      "population": 1550721
+      "population": 1550721,
+      "deaths-total-14days": 5
     },
     {
       "name": "48.svg",
-      "change": 164,
-      "total-14days": 1414,
+      "change": 144,
+      "total-14days": 1445,
       "province": "นครสวรรค์",
       "vax-coverage": 2.99,
       "vax-1st-dose": 4.42,
       "vax-2nd-dose": 1.56,
-      "population": 1040308
+      "population": 1040308,
+      "deaths-total-14days": 21
     },
     {
       "name": "3.svg",
-      "change": 58,
-      "total-14days": 6184,
+      "change": 48,
+      "total-14days": 6488,
       "province": "นนทบุรี",
       "vax-coverage": 14.44,
       "vax-1st-dose": 20.35,
       "vax-2nd-dose": 8.53,
-      "population": 1627745
+      "population": 1627745,
+      "deaths-total-14days": 20
     },
     {
       "name": "77.svg",
-      "change": 75,
-      "total-14days": 2023,
+      "change": 54,
+      "total-14days": 2133,
       "province": "นราธิวาส",
       "vax-coverage": 5.5,
       "vax-1st-dose": 8.88,
       "vax-2nd-dose": 2.13,
-      "population": 804429
+      "population": 804429,
+      "deaths-total-14days": 29
     },
     {
       "name": "44.svg",
-      "change": 165,
-      "total-14days": 351,
+      "change": 120,
+      "total-14days": 352,
       "province": "น่าน",
       "vax-coverage": 3.08,
       "vax-1st-dose": 4.58,
       "vax-2nd-dose": 1.58,
-      "population": 476727
+      "population": 476727,
+      "deaths-total-14days": 0
     },
     {
       "name": "27.svg",
-      "change": -16,
-      "total-14days": 25,
+      "change": -33,
+      "total-14days": 24,
       "province": "บึงกาฬ",
       "vax-coverage": 3.18,
       "vax-1st-dose": 4.59,
       "vax-2nd-dose": 1.77,
-      "population": 422042
+      "population": 422042,
+      "deaths-total-14days": 0
     },
     {
       "name": "20.svg",
-      "change": -67,
-      "total-14days": 188,
+      "change": -88,
+      "total-14days": 180,
       "province": "บุรีรัมย์",
       "vax-coverage": 9.48,
       "vax-1st-dose": 12.35,
       "vax-2nd-dose": 6.6,
-      "population": 1581184
+      "population": 1581184,
+      "deaths-total-14days": 1
     },
     {
       "name": "4.svg",
-      "change": 9,
-      "total-14days": 6774,
+      "change": 6,
+      "total-14days": 6728,
       "province": "ปทุมธานี",
       "vax-coverage": 7.85,
       "vax-1st-dose": 11.78,
       "vax-2nd-dose": 3.92,
-      "population": 1545412
+      "population": 1545412,
+      "deaths-total-14days": 74
     },
     {
       "name": "63.svg",
-      "change": -70,
-      "total-14days": 334,
+      "change": -77,
+      "total-14days": 264,
       "province": "ประจวบคีรีขันธ์",
       "vax-coverage": 6.8,
       "vax-1st-dose": 9.44,
       "vax-2nd-dose": 4.16,
-      "population": 550678
+      "population": 550678,
+      "deaths-total-14days": 4
     },
     {
       "name": "16.svg",
-      "change": 62,
-      "total-14days": 1230,
+      "change": 59,
+      "total-14days": 1243,
       "province": "ปราจีนบุรี",
       "vax-coverage": 4.75,
       "vax-1st-dose": 7.49,
       "vax-2nd-dose": 2.0,
-      "population": 493670
+      "population": 493670,
+      "deaths-total-14days": 8
     },
     {
       "name": "75.svg",
-      "change": 27,
-      "total-14days": 3237,
+      "change": 31,
+      "total-14days": 3171,
       "province": "ปัตตานี",
       "vax-coverage": 3.95,
       "vax-1st-dose": 5.57,
       "vax-2nd-dose": 2.33,
-      "population": 726015
+      "population": 726015,
+      "deaths-total-14days": 41
     },
     {
       "name": "5.svg",
-      "change": 178,
-      "total-14days": 3326,
+      "change": 153,
+      "total-14days": 3533,
       "province": "พระนครศรีอยุธยา",
       "vax-coverage": 3.92,
       "vax-1st-dose": 5.68,
       "vax-2nd-dose": 2.16,
-      "population": 819088
+      "population": 819088,
+      "deaths-total-14days": 13
     },
     {
       "name": "45.svg",
-      "change": 146,
-      "total-14days": 296,
+      "change": 127,
+      "total-14days": 308,
       "province": "พะเยา",
       "vax-coverage": 3.66,
       "vax-1st-dose": 5.15,
       "vax-2nd-dose": 2.17,
-      "population": 467356
+      "population": 467356,
+      "deaths-total-14days": 0
     },
     {
       "name": "66.svg",
-      "change": 119,
-      "total-14days": 105,
+      "change": 62,
+      "total-14days": 123,
       "province": "พังงา",
       "vax-coverage": 16.03,
       "vax-1st-dose": 25.7,
       "vax-2nd-dose": 6.35,
-      "population": 268229
+      "population": 268229,
+      "deaths-total-14days": 0
     },
     {
       "name": "74.svg",
-      "change": 693,
-      "total-14days": 548,
+      "change": 601,
+      "total-14days": 598,
       "province": "พัทลุง",
       "vax-coverage": 4.04,
       "vax-1st-dose": 5.99,
       "vax-2nd-dose": 2.1,
-      "population": 523077
+      "population": 523077,
+      "deaths-total-14days": 0
     },
     {
       "name": "54.svg",
-      "change": 110,
-      "total-14days": 600,
+      "change": 126,
+      "total-14days": 644,
       "province": "พิจิตร",
       "vax-coverage": 3.18,
       "vax-1st-dose": 4.76,
       "vax-2nd-dose": 1.59,
-      "population": 532310
+      "population": 532310,
+      "deaths-total-14days": 1
     },
     {
       "name": "53.svg",
-      "change": 59,
-      "total-14days": 604,
+      "change": 57,
+      "total-14days": 637,
       "province": "พิษณุโลก",
       "vax-coverage": 3.72,
       "vax-1st-dose": 5.83,
       "vax-2nd-dose": 1.6,
-      "population": 849481
+      "population": 849481,
+      "deaths-total-14days": 2
     },
     {
       "name": "67.svg",
-      "change": 104,
-      "total-14days": 138,
+      "change": 118,
+      "total-14days": 130,
       "province": "ภูเก็ต",
       "vax-coverage": 62.41,
       "vax-1st-dose": 69.43,
       "vax-2nd-dose": 55.39,
-      "population": 562471
+      "population": 562471,
+      "deaths-total-14days": 2
     },
     {
       "name": "33.svg",
-      "change": 162,
-      "total-14days": 1430,
+      "change": 160,
+      "total-14days": 1547,
       "province": "มหาสารคาม",
       "vax-coverage": 2.76,
       "vax-1st-dose": 4.08,
       "vax-2nd-dose": 1.44,
-      "population": 953660
+      "population": 953660,
+      "deaths-total-14days": 1
     },
     {
       "name": "38.svg",
-      "change": -33,
-      "total-14days": 32,
+      "change": -42,
+      "total-14days": 28,
       "province": "มุกดาหาร",
       "vax-coverage": 8.84,
       "vax-1st-dose": 13.86,
       "vax-2nd-dose": 3.82,
-      "population": 350911
+      "population": 350911,
+      "deaths-total-14days": 1
     },
     {
       "name": "76.svg",
-      "change": 10,
-      "total-14days": 2518,
+      "change": 3,
+      "total-14days": 2437,
       "province": "ยะลา",
       "vax-coverage": 4.58,
       "vax-1st-dose": 6.95,
       "vax-2nd-dose": 2.2,
-      "population": 538602
+      "population": 538602,
+      "deaths-total-14days": 20
     },
     {
       "name": "24.svg",
-      "change": 45,
-      "total-14days": 49,
+      "change": 31,
+      "total-14days": 52,
       "province": "ยโสธร",
       "vax-coverage": 2.76,
       "vax-1st-dose": 4.07,
       "vax-2nd-dose": 1.45,
-      "population": 534500
+      "population": 534500,
+      "deaths-total-14days": 2
     },
     {
       "name": "69.svg",
-      "change": 360,
-      "total-14days": 498,
+      "change": 438,
+      "total-14days": 567,
       "province": "ระนอง",
       "vax-coverage": 20.65,
       "vax-1st-dose": 33.3,
       "vax-2nd-dose": 7.99,
-      "population": 194372
+      "population": 194372,
+      "deaths-total-14days": 3
     },
     {
       "name": "12.svg",
-      "change": 276,
-      "total-14days": 2720,
+      "change": 318,
+      "total-14days": 3033,
       "province": "ระยอง",
       "vax-coverage": 5.59,
       "vax-1st-dose": 8.31,
       "vax-2nd-dose": 2.87,
-      "population": 975524
+      "population": 975524,
+      "deaths-total-14days": 6
     },
     {
       "name": "56.svg",
-      "change": 121,
-      "total-14days": 1894,
+      "change": 118,
+      "total-14days": 1905,
       "province": "ราชบุรี",
       "vax-coverage": 3.66,
       "vax-1st-dose": 5.48,
       "vax-2nd-dose": 1.84,
-      "population": 869313
+      "population": 869313,
+      "deaths-total-14days": 7
     },
     {
       "name": "34.svg",
-      "change": 180,
-      "total-14days": 1488,
+      "change": 182,
+      "total-14days": 1628,
       "province": "ร้อยเอ็ด",
       "vax-coverage": 2.83,
       "vax-1st-dose": 3.99,
       "vax-2nd-dose": 1.67,
-      "population": 1298640
+      "population": 1298640,
+      "deaths-total-14days": 11
     },
     {
       "name": "7.svg",
-      "change": -12,
-      "total-14days": 1492,
+      "change": -14,
+      "total-14days": 1588,
       "province": "ลพบุรี",
       "vax-coverage": 3.49,
       "vax-1st-dose": 4.97,
       "vax-2nd-dose": 2.02,
-      "population": 742928
+      "population": 742928,
+      "deaths-total-14days": 0
     },
     {
       "name": "41.svg",
-      "change": 30,
-      "total-14days": 375,
+      "change": 27,
+      "total-14days": 394,
       "province": "ลำปาง",
       "vax-coverage": 3.23,
       "vax-1st-dose": 4.54,
       "vax-2nd-dose": 1.93,
-      "population": 728964
+      "population": 728964,
+      "deaths-total-14days": 0
     },
     {
       "name": "40.svg",
-      "change": 309,
-      "total-14days": 134,
+      "change": 269,
+      "total-14days": 144,
       "province": "ลำพูน",
       "vax-coverage": 3.28,
       "vax-1st-dose": 4.91,
       "vax-2nd-dose": 1.64,
-      "population": 402011
+      "population": 402011,
+      "deaths-total-14days": 0
     },
     {
       "name": "22.svg",
-      "change": -50,
-      "total-14days": 164,
+      "change": -42,
+      "total-14days": 146,
       "province": "ศรีสะเกษ",
       "vax-coverage": 2.6,
       "vax-1st-dose": 3.76,
       "vax-2nd-dose": 1.44,
-      "population": 1458580
+      "population": 1458580,
+      "deaths-total-14days": 7
     },
     {
       "name": "36.svg",
-      "change": 118,
-      "total-14days": 489,
+      "change": 83,
+      "total-14days": 485,
       "province": "สกลนคร",
       "vax-coverage": 2.89,
       "vax-1st-dose": 3.94,
       "vax-2nd-dose": 1.85,
-      "population": 1146936
+      "population": 1146936,
+      "deaths-total-14days": 1
     },
     {
       "name": "71.svg",
-      "change": -2,
-      "total-14days": 2617,
+      "change": -3,
+      "total-14days": 2618,
       "province": "สงขลา",
       "vax-coverage": 5.74,
       "vax-1st-dose": 8.61,
       "vax-2nd-dose": 2.86,
-      "population": 1428609
+      "population": 1428609,
+      "deaths-total-14days": 24
     },
     {
       "name": "72.svg",
-      "change": 112,
-      "total-14days": 241,
+      "change": 128,
+      "total-14days": 237,
       "province": "สตูล",
       "vax-coverage": 5.21,
       "vax-1st-dose": 6.89,
       "vax-2nd-dose": 3.52,
-      "population": 324098
+      "population": 324098,
+      "deaths-total-14days": 1
     },
     {
       "name": "2.svg",
       "change": 81,
-      "total-14days": 11791,
+      "total-14days": 12286,
       "province": "สมุทรปราการ",
       "vax-coverage": 11.77,
       "vax-1st-dose": 19.2,
       "vax-2nd-dose": 4.34,
-      "population": 1954479
+      "population": 1954479,
+      "deaths-total-14days": 65
     },
     {
       "name": "61.svg",
-      "change": 131,
-      "total-14days": 489,
+      "change": 144,
+      "total-14days": 528,
       "province": "สมุทรสงคราม",
       "vax-coverage": 6.41,
       "vax-1st-dose": 9.06,
       "vax-2nd-dose": 3.76,
-      "population": 192052
+      "population": 192052,
+      "deaths-total-14days": 4
     },
     {
       "name": "60.svg",
-      "change": 75,
-      "total-14days": 9885,
+      "change": 76,
+      "total-14days": 10306,
       "province": "สมุทรสาคร",
       "vax-coverage": 16.77,
       "vax-1st-dose": 21.4,
       "vax-2nd-dose": 12.15,
-      "population": 991199
+      "population": 991199,
+      "deaths-total-14days": 41
     },
     {
       "name": "10.svg",
-      "change": 67,
-      "total-14days": 2344,
+      "change": 49,
+      "total-14days": 2455,
       "province": "สระบุรี",
       "vax-coverage": 5.27,
       "vax-1st-dose": 7.05,
       "vax-2nd-dose": 3.48,
-      "population": 643828
+      "population": 643828,
+      "deaths-total-14days": 2
     },
     {
       "name": "18.svg",
-      "change": 66,
-      "total-14days": 453,
+      "change": 28,
+      "total-14days": 444,
       "province": "สระแก้ว",
       "vax-coverage": 6.47,
       "vax-1st-dose": 10.07,
       "vax-2nd-dose": 2.86,
-      "population": 560925
+      "population": 560925,
+      "deaths-total-14days": 7
     },
     {
       "name": "8.svg",
-      "change": 38,
-      "total-14days": 232,
+      "change": 43,
+      "total-14days": 230,
       "province": "สิงห์บุรี",
       "vax-coverage": 5.7,
       "vax-1st-dose": 8.55,
       "vax-2nd-dose": 2.86,
-      "population": 205898
+      "population": 205898,
+      "deaths-total-14days": 4
     },
     {
       "name": "58.svg",
-      "change": 186,
-      "total-14days": 1792,
+      "change": 189,
+      "total-14days": 1893,
       "province": "สุพรรณบุรี",
       "vax-coverage": 3.47,
       "vax-1st-dose": 5.26,
       "vax-2nd-dose": 1.67,
-      "population": 838628
+      "population": 838628,
+      "deaths-total-14days": 11
     },
     {
       "name": "68.svg",
-      "change": 107,
-      "total-14days": 540,
+      "change": 75,
+      "total-14days": 560,
       "province": "สุราษฎร์ธานี",
       "vax-coverage": 11.46,
       "vax-1st-dose": 15.91,
       "vax-2nd-dose": 7.01,
-      "population": 1067726
+      "population": 1067726,
+      "deaths-total-14days": 6
     },
     {
       "name": "21.svg",
-      "change": -74,
-      "total-14days": 164,
+      "change": -90,
+      "total-14days": 156,
       "province": "สุรินทร์",
       "vax-coverage": 2.62,
       "vax-1st-dose": 3.79,
       "vax-2nd-dose": 1.46,
-      "population": 1378221
+      "population": 1378221,
+      "deaths-total-14days": 2
     },
     {
       "name": "52.svg",
-      "change": 192,
-      "total-14days": 841,
+      "change": 170,
+      "total-14days": 898,
       "province": "สุโขทัย",
       "vax-coverage": 3.44,
       "vax-1st-dose": 5.13,
       "vax-2nd-dose": 1.74,
-      "population": 587883
+      "population": 587883,
+      "deaths-total-14days": 5
     },
     {
       "name": "32.svg",
-      "change": 125,
-      "total-14days": 200,
+      "change": 141,
+      "total-14days": 245,
       "province": "หนองคาย",
       "vax-coverage": 7.37,
       "vax-1st-dose": 12.08,
       "vax-2nd-dose": 2.65,
-      "population": 517435
+      "population": 517435,
+      "deaths-total-14days": 2
     },
     {
       "name": "28.svg",
-      "change": 0,
-      "total-14days": 169,
+      "change": -8,
+      "total-14days": 158,
       "province": "หนองบัวลำภู",
       "vax-coverage": 2.72,
       "vax-1st-dose": 4.09,
       "vax-2nd-dose": 1.35,
-      "population": 509470
+      "population": 509470,
+      "deaths-total-14days": 0
     },
     {
       "name": "26.svg",
-      "change": 108,
-      "total-14days": 36,
+      "change": 66,
+      "total-14days": 35,
       "province": "อำนาจเจริญ",
       "vax-coverage": 4.41,
       "vax-1st-dose": 7.18,
       "vax-2nd-dose": 1.63,
-      "population": 376195
+      "population": 376195,
+      "deaths-total-14days": 2
     },
     {
       "name": "30.svg",
       "change": -92,
-      "total-14days": 94,
+      "total-14days": 71,
       "province": "อุดรธานี",
       "vax-coverage": 3.24,
       "vax-1st-dose": 4.42,
       "vax-2nd-dose": 2.05,
-      "population": 1567983
+      "population": 1567983,
+      "deaths-total-14days": 11
     },
     {
       "name": "42.svg",
-      "change": 469,
-      "total-14days": 670,
+      "change": 333,
+      "total-14days": 684,
       "province": "อุตรดิตถ์",
       "vax-coverage": 3.46,
       "vax-1st-dose": 5.15,
       "vax-2nd-dose": 1.77,
-      "population": 448745
+      "population": 448745,
+      "deaths-total-14days": 3
     },
     {
       "name": "49.svg",
-      "change": 110,
-      "total-14days": 432,
+      "change": 126,
+      "total-14days": 444,
       "province": "อุทัยธานี",
       "vax-coverage": 4.3,
       "vax-1st-dose": 5.93,
       "vax-2nd-dose": 2.67,
-      "population": 325868
+      "population": 325868,
+      "deaths-total-14days": 1
     },
     {
       "name": "23.svg",
-      "change": 89,
-      "total-14days": 251,
+      "change": 0,
+      "total-14days": 259,
       "province": "อุบลราชธานี",
       "vax-coverage": 2.93,
       "vax-1st-dose": 4.39,
       "vax-2nd-dose": 1.47,
-      "population": 1866697
+      "population": 1866697,
+      "deaths-total-14days": 16
     },
     {
       "name": "6.svg",
-      "change": 84,
-      "total-14days": 1057,
+      "change": 78,
+      "total-14days": 1127,
       "province": "อ่างทอง",
       "vax-coverage": 4.79,
       "vax-1st-dose": 6.71,
       "vax-2nd-dose": 2.88,
-      "population": 276584
+      "population": 276584,
+      "deaths-total-14days": 4
     },
     {
       "name": "46.svg",
-      "change": -33,
-      "total-14days": 133,
+      "change": -32,
+      "total-14days": 126,
       "province": "เชียงราย",
       "vax-coverage": 4.75,
       "vax-1st-dose": 7.91,
       "vax-2nd-dose": 1.59,
-      "population": 1295026
+      "population": 1295026,
+      "deaths-total-14days": 7
     },
     {
       "name": "39.svg",
-      "change": 97,
-      "total-14days": 663,
+      "change": 108,
+      "total-14days": 737,
       "province": "เชียงใหม่",
       "vax-coverage": 6.53,
       "vax-1st-dose": 8.95,
       "vax-2nd-dose": 4.11,
-      "population": 1784370
+      "population": 1784370,
+      "deaths-total-14days": 4
     },
     {
       "name": "62.svg",
-      "change": 90,
-      "total-14days": 1524,
+      "change": 68,
+      "total-14days": 1555,
       "province": "เพชรบุรี",
       "vax-coverage": 9.9,
       "vax-1st-dose": 15.02,
       "vax-2nd-dose": 4.79,
-      "population": 482193
+      "population": 482193,
+      "deaths-total-14days": 13
     },
     {
       "name": "55.svg",
-      "change": 91,
-      "total-14days": 865,
+      "change": 100,
+      "total-14days": 963,
       "province": "เพชรบูรณ์",
       "vax-coverage": 3.21,
       "vax-1st-dose": 4.78,
       "vax-2nd-dose": 1.64,
-      "population": 981940
+      "population": 981940,
+      "deaths-total-14days": 0
     },
     {
       "name": "31.svg",
-      "change": 132,
-      "total-14days": 322,
+      "change": 148,
+      "total-14days": 364,
       "province": "เลย",
       "vax-coverage": 3.05,
       "vax-1st-dose": 4.42,
       "vax-2nd-dose": 1.67,
-      "population": 638736
+      "population": 638736,
+      "deaths-total-14days": 3
     },
     {
       "name": "43.svg",
-      "change": 47,
-      "total-14days": 235,
+      "change": 86,
+      "total-14days": 254,
       "province": "แพร่",
       "vax-coverage": 3.05,
       "vax-1st-dose": 4.59,
       "vax-2nd-dose": 1.51,
-      "population": 437350
+      "population": 437350,
+      "deaths-total-14days": 1
     },
     {
       "name": "47.svg",
-      "change": 71,
-      "total-14days": 25,
+      "change": 50,
+      "total-14days": 26,
       "province": "แม่ฮ่องสอน",
       "vax-coverage": 3.45,
       "vax-1st-dose": 4.64,
       "vax-2nd-dose": 2.25,
-      "population": 284549
+      "population": 284549,
+      "deaths-total-14days": 0
     }
   ],
   "job": {
     "ran_on": "07/26/2021 00:00",
-    "dataset_updated_on": "07/25/2021 00:00"
+    "dataset_updated_on": "07/26/2021 00:00"
   }
 }
