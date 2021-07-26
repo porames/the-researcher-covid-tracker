@@ -3,7 +3,6 @@ import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
 import data from './gis/data/national-timeseries.json'
-
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import { localPoint } from '@visx/event'
@@ -12,55 +11,33 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import { AxisBottom } from '@visx/axis'
+import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Label, Connector, Annotation } from '@visx/annotation'
+import { movingAvg } from './vaccine/util'
 
-
-function movingAvg(ts) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i]['NewConfirmed'])
-    }
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
-
-function NationalCurve(props) {
+function HospitalizedCurve(props) {
     var timeSeries = _.cloneDeep(data)
-
     const width = props.width
     const height = props.height
-    const x = d => new Date(d['Date'])
-    const y = d => d['NewConfirmed']
-    const avgs = movingAvg(timeSeries)
+    const x = d => new Date(d['date'])
+    const y = d => d['Hospitalized']
+    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'Hospitalized', 'rate')
     avgs.map((avg, i) => {
-        timeSeries[i]['movingAvg'] = avg
+        calculatedTimeSeries[i]['movingAvg'] = avg
     })
-
     const xScale = scaleBand({
         range: [0, width],
-        domain: timeSeries.map(x),
+        domain: calculatedTimeSeries.map(x),
         padding: 0.07
     })
     const dateScale = scaleTime({
         range: [0, width],
-        domain: extent(timeSeries, x),
-        padding: 0.07
+        domain: extent(calculatedTimeSeries, x),
     })
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(timeSeries, y)],
+        domain: [0, max(calculatedTimeSeries, y)],
     })
-
     const {
         showTooltip,
         hideTooltip,
@@ -72,57 +49,13 @@ function NationalCurve(props) {
         tooltipOpen: true,
         tooltipData: null,
     });
-    const bisectDate = bisector(d => new Date(d['Date'])).left;
+    const bisectDate = bisector(d => new Date(d['date'])).left;
     return (
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-
                     <Group>
-                        <Annotation
-                            x={xScale(x(timeSeries[132]))}
-                            y={yScale(timeSeries[132]['NewConfirmed']) - 30}
-                            dx={-40}
-                            dy={0}
-                            width={100}
-                            height={200}
-                        >
-                            <Connector stroke='#e0e0e0' type='line' />
-                            <Label
-                                className='text-center'
-                                title='ผู้ป่วยใหม่รายวัน'
-                                fontColor='#e0e0e0'
-                                horizontalAnchor='end'
-                                backgroundFill="transparent"
-                                backgroundPadding={0}
-                                titleFontWeight={600}
-                                labelAnchor='middle'
-                                width={90}
-                                titleFontSize={12}
-                            />
-                        </Annotation>
-                        <Annotation
-                            x={xScale(x(timeSeries[30]))}
-                            y={yScale(timeSeries[30]['movingAvg']) - 30}
-                            dx={0}
-                            dy={-40}
-                            width={200}
-                            height={200}
-                        >
-                            <Connector stroke='#e0e0e0' type='line' />
-                            <Label
-                                title='ค่าเฉลี่ย 7 วัน'
-                                fontColor='#e0e0e0'
-                                backgroundFill="transparent"
-                                backgroundPadding={0}
-                                titleFontWeight={600}
-                                titleFontSize={12}
-                            />
-                        </Annotation>
-                    </Group>
-
-                    <Group>
-                        {timeSeries.map((d, i) => {
+                        {calculatedTimeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
                             return (
                                 <Bar
@@ -131,7 +64,7 @@ function NationalCurve(props) {
                                     y={height - barHeight - 30}
                                     width={xScale.bandwidth()}
                                     height={barHeight}
-                                    fill='#fa9ba4'
+                                    fill='#616161'
                                 />
 
                             );
@@ -144,38 +77,25 @@ function NationalCurve(props) {
                             y={yScale(y(tooltipData)) - 30}
                             width={xScale.bandwidth()}
                             height={height - yScale(y(tooltipData))}
-                            fill='#ff5e6f'
+                            fill='#8e8e8e'
                         />
                     }
                     <LinePath
                         curve={curveBasis}
-                        data={timeSeries}
+                        data={calculatedTimeSeries}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}
-                        stroke='#cf1111'
+                        stroke='#9e9e9e'
                         strokeWidth={2}
                     />
                     <Group>
-                        <AxisBottom
-                            top={height - 30}
-                            scale={dateScale}
-                            tickFormat={d => moment(d).format('MMM')}
-                            numTicks={width < 500 ? 6 : 12}
-                            tickStroke='#bfbfbf'
-                            stroke='#bfbfbf'
-                            tickLabelProps={() => ({
-                                fill: '#bfbfbf',
-                                fontSize: 11,
-                                textAnchor: 'start'
-                            })}
-                        />
                         <Bar
                             onMouseMove={(e) => {
                                 const x = localPoint(e)['x']
                                 if (x) {
                                     const x0 = dateScale.invert(x)
-                                    const index = bisectDate(timeSeries, x0, 1)
-                                    const d = timeSeries[index]
+                                    const index = bisectDate(calculatedTimeSeries, x0, 1)
+                                    const d = calculatedTimeSeries[index]
                                     if (d) {
                                         const barHeight = (height - yScale(y(d)) ?? 0)
                                         showTooltip({
@@ -196,7 +116,6 @@ function NationalCurve(props) {
                     </Group>
                 </Group>
             </svg>
-
             {tooltipData &&
                 <TooltipWithBounds
                     top={tooltipTop}
@@ -209,8 +128,8 @@ function NationalCurve(props) {
                     }}
                 >
                     <span>
-                        <b>{moment(tooltipData['Date']).format('DD MMM')}</b><br />
-                        ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed'].toLocaleString()} ราย
+                        <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
+                        จำนวนผู้ป่วยในโรงพยาบาล {tooltipData['Hospitalized'].toLocaleString()} ราย
                     </span>
                 </TooltipWithBounds>
             }
@@ -218,10 +137,11 @@ function NationalCurve(props) {
     )
 }
 
+
 const Container = () => (
     <ParentSize>
         {({ width, height }) => (
-            <NationalCurve width={width} height={300} />
+            <HospitalizedCurve width={width} height={200} />
         )}
     </ParentSize>
 )

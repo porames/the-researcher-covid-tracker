@@ -13,14 +13,14 @@ df = df[["Date", "Hospitalized", "Cases", "Deaths"]]
 df["Hospitalized"].ffill(inplace=True)
 df.fillna(0, inplace=True)
 df[["Hospitalized", "Cases", "Deaths"]] = df[["Hospitalized", "Cases", "Deaths"]].astype(int)
-df = df.rename(columns={"Cases": "NewConfirmed", "Deaths": "NewDeaths"})
+df = df.rename(columns={"Cases": "NewConfirmed", "Deaths": "NewDeaths", "Date": "date"})
 
 # Calculate cumulative sum for each day
 df["Deaths"] = df["NewDeaths"].cumsum()
 df["Confirmed"] = df["NewConfirmed"].cumsum()
 
 # Filter data from start date
-df = df[df["Date"] >= START_DATE]
+df = df[df["date"] >= START_DATE]
 
 # Write data to json
 df.to_json("../components/gis/data/national-timeseries.json", orient="records", indent=2)

@@ -9,37 +9,19 @@ import { MarkerArrow } from '@visx/marker'
 import moment from 'moment'
 import 'moment/locale/th'
 import _ from 'lodash'
-function movingAvg(ts) {
-    var moving_aves = []
-    var ys = []
-    for (var i = 0; i < ts.length; i++) {
-        ys.push(ts[i]['tests'])
-    }
+import { movingAvg } from '../vaccine/util'
 
-    for (var i = 0; i < ys.length; i++) {
-        if (i >= 7) {
-            const cosum = ys.slice(i - 7, i)
-            moving_aves.push(cosum.reduce((a, b) => a + b, 0) / 7)
-        }
-        else {
-            moving_aves.push(0)
-        }
-    }
-    return moving_aves
-}
-
-function TrendCurveTestingRate(props) {
+function TrendCurve(props) {
     var ts = props.data
     ts = ts.slice(ts.length - 30, ts.length)
     const width = 50
     const height = 20
-    var avgs = movingAvg(ts)
-    avgs = avgs.slice(avgs.length - 14, avgs.length)
+    const { moving_aves: avgs } = movingAvg(ts, props.id, 'rate')
+    var latestAvgs = avgs.slice(avgs.length - 14, avgs.length)
     ts = ts.slice(ts.length - 14, ts.length)
-    avgs.map((avg, i) => {
+    latestAvgs.map((avg, i) => {
         ts[i]['movingAvg'] = avg
     })
-
     const x = d => new Date(d['date']);
     const y = d => d['movingAvg'];
     const xScale = scaleTime({
@@ -51,34 +33,34 @@ function TrendCurveTestingRate(props) {
         range: [height - 2, 2],
         domain: extent(ts, y)
     })
-
+    const delta = (latestAvgs[latestAvgs.length - 1] - latestAvgs[0]) * 100 / latestAvgs[0]
     return (
-        <svg width={width} height={height}>
-            <Group>
-                <MarkerArrow id="marker-arrow-testing" fill={'#cfd8dc'} refX={2} size={4} />
-                {[ts].map((lineData, i) => {
-                    return (
+        <div className='d-flex justify-content-end'>
+            <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
+            <div className='ml-1'>
+                <svg width={width} height={height}>
+                    <Group>
+                        <MarkerArrow id={`marker-arrow-${props.id}`} fill={props.fill} refX={2} size={4} />
                         <LinePath
-                            key={i}
                             curve={curveBasis}
-                            data={lineData}
+                            data={ts}
                             x={d => xScale(x(d))}
                             y={d => yScale(y(d))}
-                            stroke='#cfd8dc'
+                            stroke={props.fill}
                             strokeWidth={2}
-                            markerEnd='url(#marker-arrow-testing)'
+                            markerEnd={`url(#marker-arrow-${props.id})`}
                         />
-                    )
-                })}
-            </Group>
-        </svg>
+                    </Group>
+                </svg>
+            </div>
+        </div>
     )
 }
 
 
+
 function TestingTable(props) {
     const ts = _.cloneDeep(data)
-    const [delta, setDelta] = useState()
     const [latestWeek, setLatestWeek] = useState()
     const [latestWeek_pos, setLatestWeek_pos] = useState()
     const [lastUpdate, setLastUpdate] = useState()
@@ -91,12 +73,11 @@ function TestingTable(props) {
         for (var i = (ts.length - 1) - 7; i >= (ts.length - 8) - 7; i--) {
             prevPeriod += ts[i]['tests']
         }
-        setDelta(((currentPeriod - prevPeriod) / prevPeriod) * 100)
         const thisWeek = ts.slice(ts.length - 7, ts.length).reduce((a, b) => a + b['tests'], 0)
         const thisWeek_pos = ts.slice(ts.length - 7, ts.length).reduce((a, b) => a + b['positive'], 0)
         setLatestWeek(thisWeek)
         setLatestWeek_pos(thisWeek_pos)
-        setLastUpdate(ts.pop()['date'])
+        setLastUpdate(ts[ts.length - 1]['date'])
     }, [])
 
     return (
@@ -117,12 +98,7 @@ function TestingTable(props) {
                         <th scope="row">การตรวจเชื้อ</th>
                         <td>{Number(latestWeek).toLocaleString()}</td>
                         <td>
-                            <div className='d-flex justify-content-end'>
-                                <div>{delta > 0 ? '+' : ''}{parseInt(delta)}%</div>
-                                <div className='ml-1'>
-                                    <TrendCurveTestingRate data={ts} />
-                                </div>
-                            </div>
+                            <TrendCurve data={ts} id='tests' fill='#e0e0e0' />
                         </td>
                     </tr>
                     <tr className='text-danger'>
