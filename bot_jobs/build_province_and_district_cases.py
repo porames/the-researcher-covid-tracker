@@ -28,6 +28,7 @@ PROVINCE_NAMES = set(PROVINCE_IDS.keys())
 try :
     print("Downloading Provincial Dataset")
     start = time.time()
+    raise NotImplementedError
     df = pd.read_excel(XLS_URL)
 except Exception as e:
     print(e)
@@ -121,7 +122,14 @@ province_cases_14days = df_filtered_by_province_14days.drop("announce_date", axi
 province_population = {i["province"]: i["population"] for i in
                        json.load(open(CENSUS_DATA_PATH, encoding="utf-8"))}
 
-province_deaths_each_day = build_province_deaths.get_province_deaths(deaths_url=DEATHS_URL).to_dict()
+# Deaths by province
+print("Downloading Deaths Dataset")
+start = time.time()
+df_deaths = pd.read_csv(DEATHS_URL)
+print("Downloaded Deaths Dataset took:", time.time()-start, "seconds")
+
+province_deaths_each_day = build_province_deaths.get_province_deaths(deaths_df=df_deaths).to_dict()
+province_deaths_each_day_21days = build_province_deaths.get_province_deaths(deaths_df=df_deaths, days=21).to_dict()
 
 # Create a dict with all data combined
 province_cases_each_day_with_total = []
@@ -139,13 +147,14 @@ for name, cases in province_cases_each_day.items():
             "cases-per-100k": (int(province_cases_14days[name]) * 100000) // province_population[name],
             "deaths": deaths_by_date,
             "deathsCount": deaths_count,
-            "deaths-per-100k" : round(deaths_count * 100000 / province_population[name], 2)
+            "deaths-per-100k" : round(deaths_count * 100000 / province_population[name], 2),
         }
     )
     province_cases_each_day_21days.append(
         {
             "name": name,
             "cases": {dto.isoformat(): caseCount for dto, caseCount in cases.items()},
+            "deaths" : province_deaths_each_day_21days[name],
         }
     )
 
