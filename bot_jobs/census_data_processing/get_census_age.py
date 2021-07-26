@@ -46,4 +46,5 @@ for i in id_to_name:
     combined_province_census = combined_province_census.append(filter_by_age_group(i))
 
 combined_province_census = combined_province_census.reset_index()
+combined_province_census = combined_province_census.rename(columns={"index":"province"})
 combined_province_census.to_json(CENSUS_AGE_GROUP_OUT_PATH ,force_ascii=False, orient="records", indent=2)
