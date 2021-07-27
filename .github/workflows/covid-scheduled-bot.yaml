@@ -32,9 +32,9 @@ jobs:
             - name: Get National Data From djay/covidthailand
               working-directory: bot_jobs
               run: python get_national_data.py
-            - name: Get testing dataset
-              working-directory: bot_jobs
-              run: python get_covid_test_dataset.py
+            #- name: Get testing dataset
+            #  working-directory: bot_jobs
+            #  run: python get_covid_test_dataset.py
             - name: Get vaccination datasets
               working-directory: bot_jobs/vaccination
               run: |
