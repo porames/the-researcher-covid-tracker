@@ -11,6 +11,54 @@ import moment from 'moment'
 import 'moment/locale/th'
 import { movingAvg } from './util'
 
+
+function TrendCurve(props) {
+    var ts: NationalVaccinationDataProps[] = props.data
+    ts = ts.slice(ts.length - 30, ts.length)
+    const width = 50
+    const height = 20
+    const { moving_aves: avgs } = movingAvg(ts, props.id, 'rate')
+    var latestAvgs = avgs.slice(avgs.length - 14, avgs.length)
+    ts = ts.slice(ts.length - 14, ts.length)
+    latestAvgs.map((avg, i) => {
+        ts[i]['movingAvg'] = avg
+    })
+    const x = d => new Date(d['date']);
+    const y = d => d['movingAvg'];
+    const xScale = scaleTime({
+        range: [5, width - 5],
+        domain: extent(ts, x)
+
+    })
+    const yScale = scaleLinear({
+        range: [height - 2, 2],
+        domain: extent(ts, y)
+    })
+    const delta = (latestAvgs[latestAvgs.length - 1] - latestAvgs[0]) * 100 / latestAvgs[0]
+    return (
+        <div className='d-flex justify-content-end'>
+            <div style={{ color: props.fill }}>{delta > 0 ? '+' : ''}{Math.round(delta)}%</div>
+            <div className='ml-1'>
+                <svg width={width} height={height}>
+                    <Group>
+                        <MarkerArrow id={`marker-arrow-${props.id}`} fill={props.fill} refX={2} size={4} />
+                        <LinePath
+                            curve={curveBasis}
+                            data={ts}
+                            x={d => xScale(x(d))}
+                            y={d => yScale(y(d))}
+                            stroke={props.fill}
+                            strokeWidth={2}
+                            markerEnd={`url(#marker-arrow-${props.id})`}
+                        />
+                    </Group>
+                </svg>
+            </div>
+        </div>
+    )
+}
+
+
 function TrendCurveVaccination(props) {
     //var ts: NationalVaccinationDataProps[] = data.slice(data.length - 14, data.length)
     const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(data, 'daily_vaccinations', 'rate')
@@ -77,10 +125,7 @@ function NationalTable(props) {
                         <td>{data[data.length - 1]['daily_vaccinations'].toLocaleString()}</td>
                         <td >
                             <div className='d-flex justify-content-end'>
-                                <div style={{ color: '#60897e' }}>{delta > 0 ? "+" : ""}{delta} %</div>
-                                <div className='ml-1'>
-                                    <TrendCurveVaccination setDelta={setDelta} />
-                                </div>
+                                <TrendCurve setDelta={setDelta} data={data} id='daily_vaccinations' fill='#60897e' />
                             </div>
                         </td>
                     </tr>

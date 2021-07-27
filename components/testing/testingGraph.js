@@ -7,7 +7,7 @@ import moment from 'moment'
 import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
-import { curveStepAfter } from '@visx/curve'
+import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import data from '../../components/gis/data/testing-data.json'
@@ -97,7 +97,7 @@ function TestingCurve(props) {
                         />
                     }
                     <LinePath
-                        curve={curveStepAfter}
+                        curve={curveBasis}
                         data={timeSeries.slice(7, timeSeries.length)}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}

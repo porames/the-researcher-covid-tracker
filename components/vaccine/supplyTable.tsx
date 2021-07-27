@@ -21,10 +21,10 @@ const Badge = (props) => (
         style={{
             backgroundColor: props.vaccinatedScale(props.coverage).hex(),
             color: (props.coverage > 0.5 ? 'white' : 'black'),
-            width: 45
+            width: 50
         }}
         className='badge badge-vaccination-scale' >
-        {Math.floor(props.coverage * 100).toLocaleString()} %
+        {(props.coverage * 100).toFixed(1)}%
     </div>
 )
 
@@ -119,7 +119,7 @@ export default function SupplyTable() {
                                 {nationalAvg['total_doses'].toLocaleString()}
                             </td>
                             <td>
-                                {Math.floor(nationalAvg['total_doses'] * 100 / nationalAvg['total-supply'])}%
+                                {Math.round(nationalAvg['total_doses'] * 100 / nationalAvg['total-supply'])}%
                             </td>
                             <td>
                                 <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['1st-dose-coverage']}></Badge>
@@ -144,7 +144,7 @@ export default function SupplyTable() {
                                         </td>
 
                                         <td>
-                                            {Math.floor(province['total_doses'] * 100 / province['total-supply'])}%
+                                            {Math.round(province['total_doses'] * 100 / province['total-supply'])}%
                                         </td>
                                         <td>
                                             <Badge vaccinatedScale={vaccinatedScale} coverage={province['1st-dose-coverage']}></Badge>

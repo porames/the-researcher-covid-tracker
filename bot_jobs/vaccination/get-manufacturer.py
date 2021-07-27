@@ -6,6 +6,7 @@ import re
 import pandas as pd
 import datetime
 
+
 START_DATE = "2021-07-02"
 
 def parse_report_by_url(url):

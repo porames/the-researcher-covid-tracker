@@ -57,8 +57,6 @@ function TrendCurve(props) {
     )
 }
 
-
-
 function TestingTable(props) {
     const ts = _.cloneDeep(data)
     const [latestWeek, setLatestWeek] = useState()
