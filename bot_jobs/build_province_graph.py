@@ -46,6 +46,7 @@ for province in data:
         "vax-1st-dose": round((vaccines[name]['total-1st-dose'] / vaccines[name]['population']) * 100, 2),
         "vax-2nd-dose": round((vaccines[name]['total-2nd-dose'] / vaccines[name]['population']) * 100, 2),
         "population": populations[name],
+        "deaths-total-14days": sum(tuple(province["deaths"].values())[-14:])
     })
     i += 1
 
