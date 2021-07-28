@@ -90,10 +90,11 @@ a {
     }
     tbody {
         tr {
-            border-color: #343434;
             td {
                 text-align: end;
+                border-top: 1px solid #525252;
             }
+            border-bottom: 0px;
         }
     }
 }
@@ -241,6 +242,7 @@ hr {
 }
 
 .table-toggle {
+    width: auto;
     min-width: 150px;
     padding: 0.8em;
     text-align: center;
@@ -341,7 +343,50 @@ hr {
         stroke-width: 0;
     }
 }
+.sort-table-th {
+    position: relative;
+    text-align: end;
+    p {
+        margin: 0px;
+    }
+    .up:after {
+        font-family: 'Material Icons';
+        content: '\e5c7';
+        font-size: 22px;
+        position: absolute;
+        right: -7px;
+    }
+    .down:after {
+        font-family: 'Material Icons';
+        content: '\e5c5';
+        font-size: 22px;
+        position: absolute;
+        right: -7px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .nav-links {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 1fr;
+        button {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+@media only screen and (min-width: 768px) {
+    .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+    }
+    button {
+        width: 100%;
+        height: 100%;
+    }
+}
 
-.material-icons {
-    vertical-align: middle;
+.col-spacing {
+    border-right: 8px solid #242424;
 }

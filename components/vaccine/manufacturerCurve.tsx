@@ -206,7 +206,7 @@ const Manufacturer = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <ManufacturerCurve width={width} height={300} />
+                <ManufacturerCurve width={width} height={350} />
             )}
         </ParentSize>
     </div>
