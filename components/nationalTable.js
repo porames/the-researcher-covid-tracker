@@ -75,7 +75,7 @@ function NationalTable(props) {
                 </thead>
                 <tbody>
                     <tr className='text-danger'>
-                        <th scope="row">ผู้ติดเชื้อ</th>
+                        <td className='text-left' scope="row">ผู้ติดเชื้อ</td>
                         <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
                         <td>
@@ -84,7 +84,7 @@ function NationalTable(props) {
                     </tr>
 
                     <tr className='text-sec'>
-                        <th scope="row">รักษาตัวในโรงพยาบาล</th>
+                        <td className='text-left' scope="row">รักษาตัวในโรงพยาบาล</td>
                         <td></td>
                         <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
                         <td>
@@ -92,7 +92,7 @@ function NationalTable(props) {
                         </td>
                     </tr>
                     <tr className='text-sec'>
-                        <th scope="row">เสียชีวิต</th>
+                        <td className='text-left' scope="row">เสียชีวิต</td>
                         <td>{ts[ts.length - 1]['Deaths'].toLocaleString()}</td>
                         <td>{ts[ts.length - 1]['NewDeaths'].toLocaleString()}</td>
                         <td>

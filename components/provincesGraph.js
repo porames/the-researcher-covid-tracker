@@ -7,8 +7,7 @@ const images = build['images']
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='provice-table-header sort-table-th'
-        style={{ whiteSpace: 'nowrap' }}
+        className={`provice-table-header sort-table-th ${props.spacing && 'col-spacing'}`}
         onClick={() => props.sortChange(props.colId)}>
         <span className={`${props.sortData.column === props.colId ? props.sortData.direction : ''}`}>
             {props.text}
@@ -66,7 +65,7 @@ export default function Province(props) {
     return (
         <div>
             <div className='table-responsive-md'>
-                <table className='table' style={{ fontSize: '90%' }}>
+                <table className='table table-theme-light' style={{ fontSize: '90%' }}>
                     <thead className='text-white'>
                         <tr>
                             <th scope='col' className='provice-table-header'>จังหวัด</th>
@@ -81,6 +80,7 @@ export default function Province(props) {
                                 sortData={sortData}
                                 colId='cases-per-100k'
                                 text='ต่อประชากร 100,000 คน'
+                                spacing={true}
                             />
                             <TableHeader
                                 sortChange={sortChange}
@@ -102,9 +102,11 @@ export default function Province(props) {
                                 if (index < (showAll ? provincesData.length : 10)) {
                                     return (
                                         <tr key={index}>
-                                            <th scope='row'>{province['province']}</th>
-                                            <td className='text-end'>{province['total-14days'].toLocaleString()}</td>
-                                            <td className='text-end'>
+                                            <td scope='row' className='text-left'>
+                                                <b>{province['province']}</b>
+                                            </td>
+                                            <td>{province['total-14days'].toLocaleString()}</td>
+                                            <td className='col-spacing'>
                                                 <div
                                                     style={{
                                                         backgroundColor: hotspotScale(province['cases-per-100k'] / 1000).hex(),
@@ -114,7 +116,7 @@ export default function Province(props) {
                                                     {province['cases-per-100k'].toLocaleString()}
                                                 </div>
                                             </td>
-                                            <td className='text-end'>
+                                            <td>
                                                 <div className='d-flex justify-content-end align-items-end w-100'>
                                                     <div className='pr-2'>
                                                         {province['total-14days'] > 10 ? parseChange(province['change']) : 'คงที่'}
@@ -123,7 +125,7 @@ export default function Province(props) {
 
                                                 </div>
                                             </td>
-                                            <td className='text-end'>
+                                            <td >
                                                 <div
                                                     style={{
                                                         backgroundColor: scale(province['vax-2nd-dose'] / maxCoverage).hex(),

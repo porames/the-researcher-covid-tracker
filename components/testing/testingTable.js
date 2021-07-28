@@ -93,14 +93,14 @@ function TestingTable(props) {
                 </thead>
                 <tbody>
                     <tr className='text-sec'>
-                        <th scope="row">การตรวจเชื้อ</th>
+                        <td className='text-left' scope="row">การตรวจเชื้อ</td>
                         <td>{Number(latestWeek).toLocaleString()}</td>
                         <td>
                             <TrendCurve data={ts} id='tests' fill='#e0e0e0' />
                         </td>
                     </tr>
                     <tr className='text-danger'>
-                        <th scope="row">Positive Rate</th>
+                        <td className='text-left' scope="row">Positive Rate</td>
                         <td>{(latestWeek_pos * 100 / latestWeek).toFixed(1)}%</td>
                         <td>
                         </td>
