@@ -7,7 +7,7 @@ import chroma from 'chroma-js'
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='provice-table-header sort-table-th'
+        className={`provice-table-header sort-table-th ${props.spacing && 'col-spacing'}`}
         style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
         <span className={`${props.sortData.column === props.colId ? props.sortData.direction : ''}`}>
@@ -53,6 +53,10 @@ function ManufacturerTable(props) {
     })
     var data = _.cloneDeep(dataset)['data']
     data = data.filter(province => province.id !== '0')
+    data.map((province, index) => {
+        data[index]['AstraZeneca-share'] = data[index]['AstraZeneca-supply'] * 100 / data[index]['total-supply']
+        data[index]['Sinovac-share'] = data[index]['Sinovac-supply'] * 100 / data[index]['total-supply']
+    })
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {
         if (column == sortData.column) {
@@ -74,10 +78,10 @@ function ManufacturerTable(props) {
     return (
         <div>
             <div className='mt-3 table-responsive-md'>
-                <table className="table text-white w-100 position-relative" style={{ fontSize: '90%' }}>
+                <table className="table table-theme-light text-white w-100 position-relative" style={{ fontSize: '90%' }}>
                     <thead>
                         <tr>
-                            <th style={{ minWidth: 150 }} scope="col">จังหวัด</th>
+                            <th className='text-left' style={{ minWidth: 150 }} scope="col">จังหวัด</th>
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
@@ -90,14 +94,25 @@ function ManufacturerTable(props) {
                                 colId='AstraZeneca-supply'
                                 text='AstraZeneca'
                             />
-                            <th></th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='AstraZeneca-share'
+                                text='ร้อยละ'
+                                spacing={true}
+                            />
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='Sinovac-supply'
                                 text='Sinovac'
                             />
-                            <th></th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='Sinovac-share'
+                                text='ร้อยละ'
+                            />
                         </tr>
                     </thead>
                     <tbody>
@@ -105,23 +120,23 @@ function ManufacturerTable(props) {
                             if (index < (showAll ? provincesData.length : 10) && province.id !== '0') {
                                 return (
                                     <tr key={index} className='text-sec'>
-                                        <td>
+                                        <td className='text-left'>
                                             <b>{province.name}</b>
                                         </td>
-                                        <td className='text-end'>
+                                        <td className='col-spacing'>
                                             {province['total-supply'].toLocaleString()}
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             {province['AstraZeneca-supply'].toLocaleString()}
                                         </td>
-                                        <td className='text-end'>
-                                            <AzBadge percentage={province['AstraZeneca-supply'] * 100 / province['total-supply']} />
+                                        <td className='col-spacing'>
+                                            <AzBadge percentage={province['AstraZeneca-share']} />
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             {province['Sinovac-supply'].toLocaleString()}
                                         </td>
-                                        <td className='text-end'>
-                                            <SvBadge percentage={province['Sinovac-supply'] * 100 / province['total-supply']} />
+                                        <td>
+                                            <SvBadge percentage={province['Sinovac-share']} />
                                         </td>
                                     </tr>
                                 )

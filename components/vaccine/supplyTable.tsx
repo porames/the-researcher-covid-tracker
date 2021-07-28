@@ -49,6 +49,7 @@ export default function SupplyTable() {
     data.map((province, index) => {
         data[index]['1st-dose-coverage'] = province['total-1st-dose'] / province.population
         data[index]['2nd-dose-coverage'] = province['total-2nd-dose'] / province.population
+        data[index]['doses-used'] = province['total_doses'] * 100 / province['total-supply']
     })
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {
@@ -73,11 +74,11 @@ export default function SupplyTable() {
     return (
         <div>
             <h5 className='text-center'>ตารางแสดงข้อมูลการจัดสรรวัคซีนในแต่ละจังหวัดและร้อยละวัคซีนที่ใช้ไป</h5>
-            <div className='mt-3 table-responsive-md'>
-                <table className="table text-white w-100" style={{ minWidth: 400, fontSize: '90%' }}>
+            <div className='mt-3 table-responsive-xl'>
+                <table className="table text-white table-theme-light w-100" style={{ minWidth: 400, fontSize: '90%' }}>
                     <thead>
                         <tr>
-                            <th style={{ minWidth: 150 }} scope="col">จังหวัด</th>
+                            <th className='text-left' style={{ minWidth: 150 }} scope="col">จังหวัด</th>
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
@@ -90,7 +91,12 @@ export default function SupplyTable() {
                                 colId='total_doses'
                                 text='จำนวนวัคซีนที่ฉีดแล้ว'
                             />
-                            <th className='text-end' style={{ minWidth: 110 }} scope="col">ใช้ไปร้อยละ</th>
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='doses-used'
+                                text='ใช้ไปร้อยละ'
+                            />
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
@@ -108,22 +114,22 @@ export default function SupplyTable() {
                     </thead>
                     <tbody>
                         <tr className='text-white' style={{ backgroundColor: "#333" }}>
-                            <td>
+                            <td className='text-left'>
                                 <b>{nationalAvg.name}</b>
                             </td>
-                            <td className='text-end'>
+                            <td>
                                 {nationalAvg['total-supply'].toLocaleString()}
                             </td>
-                            <td className='text-end'>
+                            <td>
                                 {nationalAvg['total_doses'].toLocaleString()}
                             </td>
-                            <td className='text-end'>
+                            <td>
                                 {Math.round(nationalAvg['total_doses'] * 100 / nationalAvg['total-supply'])}%
                             </td>
-                            <td className='text-end'>
+                            <td>
                                 <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['1st-dose-coverage']}></Badge>
                             </td>
-                            <td className='text-end'>
+                            <td>
                                 <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['2nd-dose-coverage']}></Badge>
                             </td>
                         </tr>
@@ -132,23 +138,23 @@ export default function SupplyTable() {
                             if (index < (showAll ? provincesData.length : 10) && province.id !== '0') {
                                 return (
                                     <tr key={index} className='text-sec'>
-                                        <td>
+                                        <td className='text-left'>
                                             <b>{province.name}</b>
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             {province['total-supply'].toLocaleString()}
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             {province['total_doses'].toLocaleString()}
                                         </td>
 
-                                        <td className='text-end'>
+                                        <td>
                                             {Math.round(province['total_doses'] * 100 / province['total-supply'])}%
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             <Badge vaccinatedScale={vaccinatedScale} coverage={province['1st-dose-coverage']}></Badge>
                                         </td>
-                                        <td className='text-end'>
+                                        <td>
                                             <Badge vaccinatedScale={vaccinatedScale} coverage={province['2nd-dose-coverage']}></Badge>
                                         </td>
                                     </tr>
