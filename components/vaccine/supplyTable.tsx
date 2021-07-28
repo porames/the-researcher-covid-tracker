@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import chroma from 'chroma-js'
 import dataset from '../gis/data/provincial-vaccination-data_2.json'
-import moment from 'moment'
-import { usePopperTooltip } from 'react-popper-tooltip';
 
 interface ProvinceProps {
     "name": string;
@@ -31,14 +29,15 @@ const Badge = (props) => (
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='provice-table-header'
+        className='provice-table-header sort-table-th'
         style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
-        {props.text}
-        {props.sortData.column === props.colId ?
-            <span className="material-icons">{`arrow_drop_${props.sortData.direction}`}</span> : ''}
+        <span className={`${props.sortData.column === props.colId ? props.sortData.direction : ''}`}>
+            {props.text}
+        </span>
     </th>
 )
+
 export default function SupplyTable() {
     const [showAll, setShowAll] = useState<boolean>(false)
     const [isDescSort, setIsDescSort] = useState(true)
@@ -74,7 +73,7 @@ export default function SupplyTable() {
     return (
         <div>
             <h5 className='text-center'>ตารางแสดงข้อมูลการจัดสรรวัคซีนในแต่ละจังหวัดและร้อยละวัคซีนที่ใช้ไป</h5>
-            <div className='table-responsive mt-3'>
+            <div className='mt-3 table-responsive-md'>
                 <table className="table text-white w-100" style={{ minWidth: 400, fontSize: '90%' }}>
                     <thead>
                         <tr>
@@ -91,7 +90,7 @@ export default function SupplyTable() {
                                 colId='total_doses'
                                 text='จำนวนวัคซีนที่ฉีดแล้ว'
                             />
-                            <th style={{ minWidth: 110 }} scope="col">ใช้ไปร้อยละ</th>
+                            <th className='text-end' style={{ minWidth: 110 }} scope="col">ใช้ไปร้อยละ</th>
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
@@ -112,19 +111,19 @@ export default function SupplyTable() {
                             <td>
                                 <b>{nationalAvg.name}</b>
                             </td>
-                            <td>
+                            <td className='text-end'>
                                 {nationalAvg['total-supply'].toLocaleString()}
                             </td>
-                            <td>
+                            <td className='text-end'>
                                 {nationalAvg['total_doses'].toLocaleString()}
                             </td>
-                            <td>
+                            <td className='text-end'>
                                 {Math.round(nationalAvg['total_doses'] * 100 / nationalAvg['total-supply'])}%
                             </td>
-                            <td>
+                            <td className='text-end'>
                                 <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['1st-dose-coverage']}></Badge>
                             </td>
-                            <td>
+                            <td className='text-end'>
                                 <Badge vaccinatedScale={vaccinatedScale} coverage={nationalAvg['2nd-dose-coverage']}></Badge>
                             </td>
                         </tr>
@@ -136,20 +135,20 @@ export default function SupplyTable() {
                                         <td>
                                             <b>{province.name}</b>
                                         </td>
-                                        <td>
+                                        <td className='text-end'>
                                             {province['total-supply'].toLocaleString()}
                                         </td>
-                                        <td>
+                                        <td className='text-end'>
                                             {province['total_doses'].toLocaleString()}
                                         </td>
 
-                                        <td>
+                                        <td className='text-end'>
                                             {Math.round(province['total_doses'] * 100 / province['total-supply'])}%
                                         </td>
-                                        <td>
+                                        <td className='text-end'>
                                             <Badge vaccinatedScale={vaccinatedScale} coverage={province['1st-dose-coverage']}></Badge>
                                         </td>
-                                        <td>
+                                        <td className='text-end'>
                                             <Badge vaccinatedScale={vaccinatedScale} coverage={province['2nd-dose-coverage']}></Badge>
                                         </td>
                                     </tr>

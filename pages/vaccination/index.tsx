@@ -7,7 +7,7 @@ import { National } from '../../components/vaccine/nationalCurve'
 import { Projection } from '../../components/vaccine/projectionCurve'
 import NationalTable from '../../components/vaccine/nationalTable'
 import NationalBars from '../../components/vaccine/nationalBars'
-import Manufacturer from '../../components/vaccine/manufacturerCurve'
+import Manufacturer from '../../components/vaccine/manufacturer'
 import VaccinationRace from '../../components/vaccine/vaccinationRace'
 import VaccinationRate from '../../components/vaccine/vaccinationRate'
 import SupplyTable from '../../components/vaccine/supplyTable'
@@ -79,6 +79,7 @@ interface EstimationProps {
   required_rate: number;
 }
 
+
 const DetailGraphs = (props) => {
   const [estimation, setEstimation] = useState<EstimationProps>(undefined)
   const [todayRate, setTodayRate] = useState(undefined)
@@ -92,11 +93,6 @@ const DetailGraphs = (props) => {
         <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
         <Projection setEstimation={setEstimation} />
         <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
-      </div>
-      <div className='my-4'>
-        <h2 className='mb-1'>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>
-        <p className='text-muted mb-3'>เส้นแสดงจำนวนค่าเฉลี่ย 7 วันของวัคซีนยี่ห้อต่าง ๆ ที่ฉีดทั่วประเทศ</p>
-        <Manufacturer />
       </div>
     </div>
   )
@@ -121,6 +117,10 @@ export default function Vaccine() {
           <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
           <Province />
         </div>
+        <div className="container my-5">
+          <hr />
+        </div>
+        <Manufacturer />
         <div className="container my-5">
           <hr />
         </div>

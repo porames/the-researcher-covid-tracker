@@ -341,7 +341,24 @@ hr {
         stroke-width: 0;
     }
 }
-
-.material-icons {
-    vertical-align: middle;
+.sort-table-th {
+    position: relative;
+    text-align: end;
+    p {
+        margin: 0px;
+    }
+    .up:after {
+        font-family: 'Material Icons';
+        content: '\e5c7';
+        font-size: 22px;
+        position: absolute;
+        right: -7px;
+    }
+    .down:after {
+        font-family: 'Material Icons';
+        content: '\e5c5';
+        font-size: 22px;
+        position: absolute;
+        right: -7px;
+    }
 }
