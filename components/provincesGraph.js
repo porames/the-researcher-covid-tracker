@@ -7,12 +7,12 @@ const images = build['images']
 const TableHeader = (props) => (
     <th
         scope='col'
-        className='text-end provice-table-header'
+        className='provice-table-header sort-table-th'
         style={{ whiteSpace: 'nowrap' }}
         onClick={() => props.sortChange(props.colId)}>
-        {props.text}
-        {props.sortData.column === props.colId ?
-            <span className="material-icons">{`arrow_drop_${props.sortData.direction}`}</span> : ''}
+        <span className={`${props.sortData.column === props.colId ? props.sortData.direction : ''}`}>
+            {props.text}
+        </span>
     </th>
 )
 
@@ -65,7 +65,7 @@ export default function Province(props) {
 
     return (
         <div>
-            <div className='table-responsive'>
+            <div className='table-responsive-md'>
                 <table className='table' style={{ fontSize: '90%' }}>
                     <thead className='text-white'>
                         <tr>

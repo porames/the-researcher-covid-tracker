@@ -13,9 +13,13 @@ import VaccinationRate from '../../components/vaccine/vaccinationRate'
 import SupplyTable from '../../components/vaccine/supplyTable'
 import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
+import * as Scroll from 'react-scroll'
 import Link from 'next/link'
 import moment from 'moment'
 import 'moment/locale/th'
+
+const Element = Scroll.Element
+const ScrollLink = Scroll.Link
 
 const MetaHead = () => (
   <Head>
@@ -69,6 +73,28 @@ const Overview = () => {
           <hr />
         </div>
       </div>
+      <div className='mt-3 mb-5 d-flex justify-content-center align-tiems-center flex-md-row flex-column'>
+        <h6 className='mb-md-0 mb-3 mr-3 align-self-center'>
+          ข้ามไปยัง:
+        </h6>
+        <div className='nav-links'>
+          <ScrollLink to="vaccination-rates" smooth={true} duration={500} hash={true} offset={-50} >
+            <button className='btn btn-dark'>อัตราการฉีดวัคซีน</button>
+          </ScrollLink>
+          <ScrollLink to="map" smooth={true} duration={500} hash={true} offset={-50} >
+            <button className='btn btn-dark'>แผนที่วัคซีน</button>
+          </ScrollLink>
+          <ScrollLink to="by-ages" smooth={true} duration={500} hash={true} offset={-50} >
+            <button className='btn btn-dark'>กลุ่มเป้าหมาย</button>
+          </ScrollLink>
+          <ScrollLink to="manufacturer" smooth={true} duration={500} hash={true} offset={-50} >
+            <button className='btn btn-dark'>การจัดสรรวัคซีนรายยี่ห้อ</button>
+          </ScrollLink>
+          <ScrollLink to="allocation" smooth={true} duration={500} hash={true} offset={-50} >
+            <button className='btn btn-dark'>การกระจายวัคซีน</button>
+          </ScrollLink>
+        </div>
+      </div>
     </div>
   )
 }
@@ -84,17 +110,19 @@ const DetailGraphs = (props) => {
   const [estimation, setEstimation] = useState<EstimationProps>(undefined)
   const [todayRate, setTodayRate] = useState(undefined)
   return (
-    <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
-      <div className='my-4'>
-        <h2 className='mb-3'>เรากำลังฉีดวัคซีนฉีดได้เร็วแค่ไหน ?</h2>
-        <VaccinationRate setTodayRate={setTodayRate} estimation={estimation} />
+    <Element name='vaccination-rates'>
+      <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
+        <div className='my-4'>
+          <h2 className='mb-3'>เรากำลังฉีดวัคซีนฉีดได้เร็วแค่ไหน ?</h2>
+          <VaccinationRate setTodayRate={setTodayRate} estimation={estimation} />
+        </div>
+        <div className='my-4'>
+          <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
+          <Projection setEstimation={setEstimation} />
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
+        </div>
       </div>
-      <div className='my-4'>
-        <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
-        <Projection setEstimation={setEstimation} />
-        <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
-      </div>
-    </div>
+    </Element>
   )
 }
 
@@ -109,25 +137,33 @@ export default function Vaccine() {
         <div className="container my-5">
           <hr />
         </div>
-        <Map />
+        <Element name='map'>
+          <Map />
+        </Element>
         <div className="container my-5">
           <hr />
         </div>
-        <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
-          <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
-          <Province />
-        </div>
+        <Element name='by-ages'>
+          <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
+            <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
+            <Province />
+          </div>
+        </Element>
         <div className="container my-5">
           <hr />
         </div>
-        <Manufacturer />
+        <Element name='manufacturer'>
+          <Manufacturer />
+        </Element>
         <div className="container my-5">
           <hr />
         </div>
-        <VaccinationRace />
-        <div className='container mt-5 mb-4'>
-          <SupplyTable />
-        </div>
+        <Element name='allocation'>
+          <VaccinationRace />
+          <div className='container mt-5 mb-4'>
+            <SupplyTable />
+          </div>
+        </Element>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
           <div className='row mt-5'>
             <div className='col-12'>

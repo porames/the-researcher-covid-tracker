@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ManufacturerCurve from './manufacturerCurve'
 import dataset from '../gis/data/provincial-vaccination-data_2.json'
 import _ from 'lodash'
+import chroma from 'chroma-js'
 
 const TableHeader = (props) => (
     <th
@@ -14,6 +15,34 @@ const TableHeader = (props) => (
         </span>
     </th>
 )
+
+const AzBadge = (props) => {
+    const scale = chroma.scale(['#FFFFFF', '#F29F05'])
+    return (
+        <div
+            style={{
+                backgroundColor: scale(props.percentage / 100).hex(),
+                color: 'black'
+            }}
+            className='ml-2 badge' >
+            {Math.round(props.percentage).toLocaleString()}%
+        </div>
+    )
+}
+
+const SvBadge = (props) => {
+    const scale = chroma.scale(['#FFFFFF', '#ff5722'])
+    return (
+        <div
+            style={{
+                backgroundColor: scale(props.percentage / 100).hex(),
+                color: 'black'
+            }}
+            className='ml-2 badge' >
+            {Math.round(props.percentage).toLocaleString()}%
+        </div>
+    )
+}
 
 function ManufacturerTable(props) {
     const [showAll, setShowAll] = useState<boolean>(false)
@@ -61,12 +90,14 @@ function ManufacturerTable(props) {
                                 colId='AstraZeneca-supply'
                                 text='AstraZeneca'
                             />
+                            <th></th>
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='Sinovac-supply'
                                 text='Sinovac'
                             />
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +115,13 @@ function ManufacturerTable(props) {
                                             {province['AstraZeneca-supply'].toLocaleString()}
                                         </td>
                                         <td className='text-end'>
+                                            <AzBadge percentage={province['AstraZeneca-supply'] * 100 / province['total-supply']} />
+                                        </td>
+                                        <td className='text-end'>
                                             {province['Sinovac-supply'].toLocaleString()}
+                                        </td>
+                                        <td className='text-end'>
+                                            <SvBadge percentage={province['Sinovac-supply'] * 100 / province['total-supply']} />
                                         </td>
                                     </tr>
                                 )
