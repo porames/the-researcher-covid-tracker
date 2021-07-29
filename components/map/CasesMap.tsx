@@ -1,6 +1,5 @@
 import mapboxgl from "maplibre-gl";
 import amphoesData from "../gis/data/amphoes-data-14days.json";
-import Graph from "../provinceCurve";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";
@@ -22,13 +21,8 @@ const CasesMap = () => {
     () => [
       createCallbackWithLayer("cases-heat", (map: mapboxgl.Map, e) => {
         if (e.features[0]) {
-          var centroid_x = e.features[0].properties["centroid"]
-            .split(":")[1]
-            .split(",")[0];
-          var centroid_y = e.features[0].properties["centroid"]
-            .split(":")[1]
-            .split(",")[1]
-            .split(")")[0];
+          var centroid_x = e.features[0].properties["cen_lat"]
+          var centroid_y = e.features[0].properties["cen_long"]
           map.flyTo({ center: [centroid_x, centroid_y], zoom: 10 });
         }
       }),
@@ -44,7 +38,7 @@ const CasesMap = () => {
           map.setFeatureState(
             {
               source: "amphoes",
-              sourceLayer: "60c452f21499452793d179a8",
+              sourceLayer: "61020bbaceacf1b5ea305dff",
               id: linkedWindow.hoveredStateId,
             },
             { hover: false }
@@ -64,32 +58,32 @@ const CasesMap = () => {
             map.setFeatureState(
               {
                 source: "amphoes",
-                sourceLayer: "60c452f21499452793d179a8",
+                sourceLayer: "61020bbaceacf1b5ea305dff",
                 id: linkedWindow.hoveredStateId,
               },
               { hover: false }
             );
           }
-          linkedWindow.hoveredStateId = e.features[0].properties.fid_;
+          linkedWindow.hoveredStateId = e.features[0].properties.fid;
           map.setFeatureState(
             {
               source: "amphoes",
-              sourceLayer: "60c452f21499452793d179a8",
-              id: e.features[0].properties.fid_,
+              sourceLayer: "61020bbaceacf1b5ea305dff",
+              id: e.features[0].properties.fid,
             },
             { hover: true }
           );
 
           if (!hoveredData) {
             const data = _.find(amphoesData, {
-              id: Number(e.features[0].properties["fid_"]),
+              id: Number(e.features[0].properties["fid"]),
             });
             setHoveredData(data);
           } else if (
-            hoveredData["id"] !== Number(e.features[0].properties["fid_"])
+            hoveredData["id"] !== Number(e.features[0].properties["fid"])
           ) {
             const data = _.find(amphoesData, {
-              id: Number(e.features[0].properties["fid_"]),
+              id: Number(e.features[0].properties["fid"]),
             });
             setHoveredData(data);
           }
@@ -114,7 +108,7 @@ const CasesMap = () => {
           <div className="infoBox rounded shadow-sm">
             <span>
               <b>
-              {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
+                {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
               </b>
             </span>
             <br />
@@ -132,7 +126,7 @@ const CasesMap = () => {
           <div className="infoBox rounded shadow-sm">
             <span>
               <b>
-              {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
+                {hoveredData['province'] === 'กรุงเทพมหานคร' ? 'เขต' : 'อ.'}{hoveredData["name"]}, {hoveredData["province"]}
               </b>
             </span>
             <br />
