@@ -13,17 +13,17 @@ const loader = (map: mapboxgl.Map) => {
     url: "https://v2k.vallarismaps.com/core/tiles/60c4515b1499452793d179a7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
   });
   map.addSource("amphoes", {
-    promoteId: { "60c452f21499452793d179a8": "fid_" },
+    promoteId: { "61020bbaceacf1b5ea305dff": "fid" },
     type: "vector",
-    url: "https://v2k.vallarismaps.com/core/tiles/60c452f21499452793d179a8?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
+    url: "https://v2k.vallarismaps.com/core/tiles/61020bbaceacf1b5ea305dff?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
   });
-  map.addSource("amphoe", {
+  map.addSource("amphoe-shape", {
     type: "vector",
     url: "https://v2k.vallarismaps.com/core/tiles/60c42abbf718be41ee8b64f7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
   });
   var matchExpression: (string | number | string[])[] = [
     "match",
-    ["get", "fid_"],
+    ["get", "fid"],
   ];
   amphoesData.forEach((row) => {
     matchExpression.push(row["id"], row["caseCount"]);
@@ -60,7 +60,7 @@ const loader = (map: mapboxgl.Map) => {
     id: "cases-heat",
     type: "circle",
     source: "amphoes",
-    "source-layer": "60c452f21499452793d179a8",
+    "source-layer": "61020bbaceacf1b5ea305dff",
     paint: {
       "circle-radius": [
         "interpolate",
@@ -113,7 +113,7 @@ const loader = (map: mapboxgl.Map) => {
   map.addLayer({
     id: "amphoe-outline",
     type: "line",
-    source: "amphoe",
+    source: "amphoe-shape",
     "source-layer": "60c42abbf718be41ee8b64f7",
     paint: {
       "line-color": [
@@ -152,10 +152,10 @@ const loader = (map: mapboxgl.Map) => {
     id: "amphoe-label",
     type: "symbol",
     source: "amphoes",
-    "source-layer": "60c452f21499452793d179a8",
+    "source-layer": "61020bbaceacf1b5ea305dff",
     minzoom: 8,
     layout: {
-      "text-field": ["get", "A_NAME_T"],
+      "text-field": ["get", "a_name_t"],
       "text-font": ["Kanit"],
       "text-variable-anchor": ["top", "bottom", "left", "right"],
       "text-radial-offset": 1,
