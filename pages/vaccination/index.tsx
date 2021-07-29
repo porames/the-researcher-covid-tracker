@@ -78,9 +78,6 @@ const Overview = () => {
           ข้ามไปยัง:
         </h6>
         <div className='nav-links'>
-          <ScrollLink to="vaccination-rates" smooth={true} duration={500} hash={true} offset={-50} >
-            <button className='btn btn-dark'>อัตราการฉีดวัคซีน</button>
-          </ScrollLink>
           <ScrollLink to="map" smooth={true} duration={500} hash={true} offset={-50} >
             <button className='btn btn-dark'>แผนที่วัคซีน</button>
           </ScrollLink>
