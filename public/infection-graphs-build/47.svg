@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-07-30T19:31:35.138984</dc:date>
+    <dc:date>2021-07-31T09:04:20.395532</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -48,10 +48,10 @@ L 505.573427 -39.6
 L 544.594406 -39.6 
 L 583.615385 -39.6 
 L 622.636364 -39.6 
-L 622.636364 -83.16 
-L 622.636364 -83.16 
-L 583.615385 -91.08 
-L 544.594406 -106.92 
+L 622.636364 -71.28 
+L 622.636364 -71.28 
+L 583.615385 -79.2 
+L 544.594406 -95.04 
 L 505.573427 -87.12 
 L 466.552448 -87.12 
 L 427.531469 -87.12 
@@ -64,14 +64,14 @@ L 193.405594 -95.04
 L 154.384615 -91.08 
 L 115.363636 -95.04 
 z
-" id="m297d18d513" style="stroke:#dc3545;stroke-opacity:0.3;"/>
+" id="mc86e2f6490" style="stroke:#dc3545;stroke-opacity:0.3;"/>
     </defs>
-    <g clip-path="url(#p857c3d5cb1)">
-     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#m297d18d513" y="360"/>
+    <g clip-path="url(#p588d3fd223)">
+     <use style="fill:#dc3545;fill-opacity:0.3;stroke:#dc3545;stroke-opacity:0.3;" x="0" xlink:href="#mc86e2f6490" y="360"/>
     </g>
    </g>
    <g id="line2d_1">
-    <path clip-path="url(#p857c3d5cb1)" d="M 115.363636 264.96 
+    <path clip-path="url(#p588d3fd223)" d="M 115.363636 264.96 
 L 154.384615 268.92 
 L 193.405594 264.96 
 L 232.426573 268.92 
@@ -82,15 +82,15 @@ L 388.51049 284.76
 L 427.531469 272.88 
 L 466.552448 272.88 
 L 505.573427 272.88 
-L 544.594406 253.08 
-L 583.615385 268.92 
-L 622.636364 276.84 
+L 544.594406 264.96 
+L 583.615385 280.8 
+L 622.636364 288.72 
 " style="fill:none;stroke:#dc3545;stroke-linecap:square;stroke-width:25;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p857c3d5cb1">
+  <clipPath id="p588d3fd223">
    <rect height="277.2" width="558" x="90" y="43.2"/>
   </clipPath>
  </defs>
