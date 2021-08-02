@@ -45,7 +45,7 @@ jobs:
         with:
           name: provincial-vaccination-data
           path: |
-            *components/gis/data/provincial-vaccination-data.json
+            *components/gis/data/provincial-vaccination-data_2.json
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
