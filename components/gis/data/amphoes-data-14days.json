@@ -3,37 +3,37 @@
     "id":1,
     "province":"สกลนคร",
     "name":"อากาศอำนวย",
-    "caseCount":31
+    "caseCount":48
   },
   {
     "id":2,
     "province":"สมุทรสงคราม",
     "name":"อัมพวา",
-    "caseCount":185
+    "caseCount":204
   },
   {
     "id":3,
     "province":"กระบี่",
     "name":"อ่าวลึก",
-    "caseCount":4
+    "caseCount":3
   },
   {
     "id":4,
     "province":"สระแก้ว",
     "name":"อรัญประเทศ",
-    "caseCount":432
+    "caseCount":474
   },
   {
     "id":5,
     "province":"ร้อยเอ็ด",
     "name":"อาจสามารถ",
-    "caseCount":125
+    "caseCount":149
   },
   {
     "id":6,
     "province":"นราธิวาส",
     "name":"บาเจาะ",
-    "caseCount":111
+    "caseCount":112
   },
   {
     "id":7,
@@ -45,13 +45,13 @@
     "id":8,
     "province":"ชลบุรี",
     "name":"บ้านบึง",
-    "caseCount":956
+    "caseCount":1028
   },
   {
     "id":9,
     "province":"ระยอง",
     "name":"บ้านฉาง",
-    "caseCount":580
+    "caseCount":558
   },
   {
     "id":10,
@@ -63,19 +63,19 @@
     "id":11,
     "province":"สุโขทัย",
     "name":"บ้านด่านลานหอย",
-    "caseCount":94
+    "caseCount":113
   },
   {
     "id":12,
     "province":"อุดรธานี",
     "name":"บ้านดุง",
-    "caseCount":4
+    "caseCount":5
   },
   {
     "id":13,
     "province":"ขอนแก่น",
     "name":"บ้านฝาง",
-    "caseCount":29
+    "caseCount":31
   },
   {
     "id":14,
@@ -87,19 +87,19 @@
     "id":15,
     "province":"ลำพูน",
     "name":"บ้านโฮ่ง",
-    "caseCount":30
+    "caseCount":29
   },
   {
     "id":16,
     "province":"ราชบุรี",
     "name":"บ้านคา",
-    "caseCount":45
+    "caseCount":47
   },
   {
     "id":17,
     "province":"ระยอง",
     "name":"บ้านค่าย",
-    "caseCount":192
+    "caseCount":177
   },
   {
     "id":18,
@@ -123,13 +123,13 @@
     "id":21,
     "province":"เพชรบุรี",
     "name":"บ้านแหลม",
-    "caseCount":171
+    "caseCount":174
   },
   {
     "id":22,
     "province":"เพชรบุรี",
     "name":"บ้านลาด",
-    "caseCount":191
+    "caseCount":186
   },
   {
     "id":23,
@@ -153,25 +153,25 @@
     "id":26,
     "province":"ลพบุรี",
     "name":"บ้านหมี่",
-    "caseCount":189
+    "caseCount":169
   },
   {
     "id":27,
     "province":"สระบุรี",
     "name":"บ้านหมอ",
-    "caseCount":83
+    "caseCount":85
   },
   {
     "id":28,
     "province":"สกลนคร",
     "name":"บ้านม่วง",
-    "caseCount":34
+    "caseCount":49
   },
   {
     "id":29,
     "province":"นครนายก",
     "name":"บ้านนา",
-    "caseCount":481
+    "caseCount":436
   },
   {
     "id":30,
@@ -183,37 +183,37 @@
     "id":31,
     "province":"สุราษฎร์ธานี",
     "name":"บ้านนาสาร",
-    "caseCount":20
+    "caseCount":29
   },
   {
     "id":32,
     "province":"นครพนม",
     "name":"บ้านแพง",
-    "caseCount":23
+    "caseCount":32
   },
   {
     "id":33,
     "province":"สมุทรสาคร",
     "name":"บ้านแพ้ว",
-    "caseCount":185
+    "caseCount":162
   },
   {
     "id":34,
     "province":"ขอนแก่น",
     "name":"บ้านไผ่",
-    "caseCount":44
+    "caseCount":45
   },
   {
     "id":35,
     "province":"ฉะเชิงเทรา",
     "name":"บ้านโพธิ์",
-    "caseCount":591
+    "caseCount":620
   },
   {
     "id":36,
     "province":"พระนครศรีอยุธยา",
     "name":"บ้านแพรก",
-    "caseCount":21
+    "caseCount":24
   },
   {
     "id":37,
@@ -225,31 +225,31 @@
     "id":38,
     "province":"ราชบุรี",
     "name":"บ้านโป่ง",
-    "caseCount":298
+    "caseCount":353
   },
   {
     "id":39,
     "province":"อุทัยธานี",
     "name":"บ้านไร่",
-    "caseCount":98
+    "caseCount":120
   },
   {
     "id":40,
     "province":"ปราจีนบุรี",
     "name":"บ้านสร้าง",
-    "caseCount":204
+    "caseCount":182
   },
   {
     "id":41,
     "province":"สุราษฎร์ธานี",
     "name":"บ้านตาขุน",
-    "caseCount":1
+    "caseCount":3
   },
   {
     "id":42,
     "province":"ตาก",
     "name":"บ้านตาก",
-    "caseCount":60
+    "caseCount":64
   },
   {
     "id":43,
@@ -267,43 +267,43 @@
     "id":45,
     "province":"พระนครศรีอยุธยา",
     "name":"บางบาล",
-    "caseCount":93
+    "caseCount":102
   },
   {
     "id":46,
     "province":"สมุทรปราการ",
     "name":"บางบ่อ",
-    "caseCount":340
+    "caseCount":355
   },
   {
     "id":47,
     "province":"กรุงเทพมหานคร",
     "name":"บางบอน",
-    "caseCount":1658
+    "caseCount":1636
   },
   {
     "id":48,
     "province":"นนทบุรี",
     "name":"บางบัวทอง",
-    "caseCount":1300
+    "caseCount":1341
   },
   {
     "id":49,
     "province":"พัทลุง",
     "name":"บางแก้ว",
-    "caseCount":34
+    "caseCount":32
   },
   {
     "id":50,
     "province":"กรุงเทพมหานคร",
     "name":"บางกะปิ",
-    "caseCount":996
+    "caseCount":903
   },
   {
     "id":51,
     "province":"กรุงเทพมหานคร",
     "name":"บางแค",
-    "caseCount":1383
+    "caseCount":1417
   },
   {
     "id":52,
@@ -315,217 +315,217 @@
     "id":53,
     "province":"กรุงเทพมหานคร",
     "name":"บางเขน",
-    "caseCount":430
+    "caseCount":441
   },
   {
     "id":54,
     "province":"ฉะเชิงเทรา",
     "name":"บางคล้า",
-    "caseCount":365
+    "caseCount":342
   },
   {
     "id":55,
     "province":"กรุงเทพมหานคร",
     "name":"บางคอแหลม",
-    "caseCount":938
+    "caseCount":1014
   },
   {
     "id":56,
     "province":"สมุทรสงคราม",
     "name":"บางคนที",
-    "caseCount":77
+    "caseCount":72
   },
   {
     "id":57,
     "province":"กรุงเทพมหานคร",
     "name":"บางขุนเทียน",
-    "caseCount":2174
+    "caseCount":2163
   },
   {
     "id":58,
     "province":"สงขลา",
     "name":"บางกล่ำ",
-    "caseCount":57
+    "caseCount":60
   },
   {
     "id":59,
     "province":"พิษณุโลก",
     "name":"บางกระทุ่ม",
-    "caseCount":60
+    "caseCount":61
   },
   {
     "id":60,
     "province":"นนทบุรี",
     "name":"บางกรวย",
-    "caseCount":612
+    "caseCount":625
   },
   {
     "id":61,
     "province":"ชลบุรี",
     "name":"บางละมุง",
-    "caseCount":2662
+    "caseCount":2765
   },
   {
     "id":62,
     "province":"นครปฐม",
     "name":"บางเลน",
-    "caseCount":499
+    "caseCount":575
   },
   {
     "id":63,
     "province":"พิจิตร",
     "name":"บางมูลนาก",
-    "caseCount":60
+    "caseCount":56
   },
   {
     "id":64,
     "province":"กรุงเทพมหานคร",
     "name":"บางนา",
-    "caseCount":611
+    "caseCount":601
   },
   {
     "id":65,
     "province":"ฉะเชิงเทรา",
     "name":"บางน้ำเปรี้ยว",
-    "caseCount":770
+    "caseCount":760
   },
   {
     "id":66,
     "province":"พระนครศรีอยุธยา",
     "name":"บางปะอิน",
-    "caseCount":989
+    "caseCount":947
   },
   {
     "id":67,
     "province":"พระนครศรีอยุธยา",
     "name":"บางปะหัน",
-    "caseCount":180
+    "caseCount":172
   },
   {
     "id":68,
     "province":"ฉะเชิงเทรา",
     "name":"บางปะกง",
-    "caseCount":887
+    "caseCount":885
   },
   {
     "id":69,
     "province":"ราชบุรี",
     "name":"บางแพ",
-    "caseCount":66
+    "caseCount":61
   },
   {
     "id":70,
     "province":"กรุงเทพมหานคร",
     "name":"บางพลัด",
-    "caseCount":367
+    "caseCount":355
   },
   {
     "id":71,
     "province":"สมุทรปราการ",
     "name":"บางพลี",
-    "caseCount":3225
+    "caseCount":3185
   },
   {
     "id":72,
     "province":"สุพรรณบุรี",
     "name":"บางปลาม้า",
-    "caseCount":223
+    "caseCount":242
   },
   {
     "id":73,
     "province":"สิงห์บุรี",
     "name":"บางระจัน",
-    "caseCount":47
+    "caseCount":50
   },
   {
     "id":74,
     "province":"กรุงเทพมหานคร",
     "name":"บางรัก",
-    "caseCount":199
+    "caseCount":207
   },
   {
     "id":75,
     "province":"พิษณุโลก",
     "name":"บางระกำ",
-    "caseCount":58
+    "caseCount":78
   },
   {
     "id":76,
     "province":"พระนครศรีอยุธยา",
     "name":"บางไทร",
-    "caseCount":102
+    "caseCount":84
   },
   {
     "id":77,
     "province":"พระนครศรีอยุธยา",
     "name":"บางซ้าย",
-    "caseCount":92
+    "caseCount":90
   },
   {
     "id":78,
     "province":"สมุทรปราการ",
     "name":"บางเสาธง",
-    "caseCount":533
+    "caseCount":535
   },
   {
     "id":79,
     "province":"ประจวบคีรีขันธ์",
     "name":"บางสะพาน",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":80,
     "province":"ประจวบคีรีขันธ์",
     "name":"บางสะพานน้อย",
-    "caseCount":21
+    "caseCount":17
   },
   {
     "id":81,
     "province":"กรุงเทพมหานคร",
     "name":"บางซื่อ",
-    "caseCount":475
+    "caseCount":453
   },
   {
     "id":82,
     "province":"นนทบุรี",
     "name":"บางใหญ่",
-    "caseCount":842
+    "caseCount":901
   },
   {
     "id":83,
     "province":"กรุงเทพมหานคร",
     "name":"บางกอกน้อย",
-    "caseCount":405
+    "caseCount":414
   },
   {
     "id":84,
     "province":"กรุงเทพมหานคร",
     "name":"บางกอกใหญ่",
-    "caseCount":338
+    "caseCount":314
   },
   {
     "id":85,
     "province":"ยะลา",
     "name":"บันนังสตา",
-    "caseCount":519
+    "caseCount":525
   },
   {
     "id":86,
     "province":"นครสวรรค์",
     "name":"บรรพตพิสัย",
-    "caseCount":94
+    "caseCount":109
   },
   {
     "id":87,
     "province":"ศรีสะเกษ",
     "name":"เบญจลักษ์",
-    "caseCount":5
+    "caseCount":2
   },
   {
     "id":88,
     "province":"ยะลา",
     "name":"เบตง",
-    "caseCount":73
+    "caseCount":81
   },
   {
     "id":89,
@@ -549,7 +549,7 @@
     "id":92,
     "province":"ชลบุรี",
     "name":"บ่อทอง",
-    "caseCount":156
+    "caseCount":152
   },
   {
     "id":93,
@@ -567,7 +567,7 @@
     "id":95,
     "province":"นครราชสีมา",
     "name":"บัวใหญ่",
-    "caseCount":4
+    "caseCount":3
   },
   {
     "id":96,
@@ -591,25 +591,25 @@
     "id":99,
     "province":"กรุงเทพมหานคร",
     "name":"บึงกุ่ม",
-    "caseCount":506
+    "caseCount":473
   },
   {
     "id":100,
     "province":"พิจิตร",
     "name":"บึงนาราง",
-    "caseCount":70
+    "caseCount":90
   },
   {
     "id":101,
     "province":"เพชรบูรณ์",
     "name":"บึงสามพัน",
-    "caseCount":41
+    "caseCount":37
   },
   {
     "id":102,
     "province":"กำแพงเพชร",
     "name":"บึงสามัคคี",
-    "caseCount":48
+    "caseCount":49
   },
   {
     "id":103,
@@ -621,13 +621,13 @@
     "id":104,
     "province":"อุบลราชธานี",
     "name":"บุณฑริก",
-    "caseCount":4
+    "caseCount":5
   },
   {
     "id":105,
     "province":"เพชรบุรี",
     "name":"ชะอำ",
-    "caseCount":593
+    "caseCount":627
   },
   {
     "id":106,
@@ -639,13 +639,13 @@
     "id":107,
     "province":"ลำปาง",
     "name":"แจ้ห่ม",
-    "caseCount":51
+    "caseCount":48
   },
   {
     "id":108,
     "province":"ลพบุรี",
     "name":"ชัยบาดาล",
-    "caseCount":154
+    "caseCount":194
   },
   {
     "id":109,
@@ -669,13 +669,13 @@
     "id":112,
     "province":"สุราษฎร์ธานี",
     "name":"ไชยา",
-    "caseCount":9
+    "caseCount":11
   },
   {
     "id":113,
     "province":"อ่างทอง",
     "name":"ไชโย",
-    "caseCount":69
+    "caseCount":85
   },
   {
     "id":114,
@@ -687,7 +687,7 @@
     "id":115,
     "province":"สระบุรี",
     "name":"เฉลิมพระเกียรติ",
-    "caseCount":159
+    "caseCount":158
   },
   {
     "id":116,
@@ -723,25 +723,25 @@
     "id":121,
     "province":"สงขลา",
     "name":"จะนะ",
-    "caseCount":321
+    "caseCount":318
   },
   {
     "id":122,
     "province":"นราธิวาส",
     "name":"จะแนะ",
-    "caseCount":108
+    "caseCount":104
   },
   {
     "id":123,
     "province":"นครศรีธรรมราช",
     "name":"ช้างกลาง",
-    "caseCount":11
+    "caseCount":12
   },
   {
     "id":124,
     "province":"ร้อยเอ็ด",
     "name":"จังหาร",
-    "caseCount":113
+    "caseCount":137
   },
   {
     "id":125,
@@ -753,13 +753,13 @@
     "id":126,
     "province":"สกลนคร",
     "name":"เจริญศิลป์",
-    "caseCount":52
+    "caseCount":60
   },
   {
     "id":127,
     "province":"พิษณุโลก",
     "name":"ชาติตระการ",
-    "caseCount":64
+    "caseCount":73
   },
   {
     "id":128,
@@ -771,13 +771,13 @@
     "id":129,
     "province":"กรุงเทพมหานคร",
     "name":"จตุจักร",
-    "caseCount":697
+    "caseCount":710
   },
   {
     "id":130,
     "province":"ร้อยเอ็ด",
     "name":"จตุรพักตรพิมาน",
-    "caseCount":113
+    "caseCount":112
   },
   {
     "id":131,
@@ -789,25 +789,25 @@
     "id":132,
     "province":"นครศรีธรรมราช",
     "name":"เชียรใหญ่",
-    "caseCount":7
+    "caseCount":6
   },
   {
     "id":133,
     "province":"เชียงใหม่",
     "name":"เชียงดาว",
-    "caseCount":50
+    "caseCount":49
   },
   {
     "id":134,
     "province":"พะเยา",
     "name":"เชียงคำ",
-    "caseCount":72
+    "caseCount":67
   },
   {
     "id":135,
     "province":"เลย",
     "name":"เชียงคาน",
-    "caseCount":37
+    "caseCount":45
   },
   {
     "id":136,
@@ -819,7 +819,7 @@
     "id":137,
     "province":"ร้อยเอ็ด",
     "name":"เชียงขวัญ",
-    "caseCount":20
+    "caseCount":21
   },
   {
     "id":138,
@@ -849,7 +849,7 @@
     "id":142,
     "province":"นราธิวาส",
     "name":"เจาะไอร้อง",
-    "caseCount":156
+    "caseCount":167
   },
   {
     "id":143,
@@ -873,19 +873,19 @@
     "id":146,
     "province":"กรุงเทพมหานคร",
     "name":"จอมทอง",
-    "caseCount":1291
+    "caseCount":1110
   },
   {
     "id":147,
     "province":"เชียงใหม่",
     "name":"จอมทอง",
-    "caseCount":108
+    "caseCount":89
   },
   {
     "id":148,
     "province":"เพชรบูรณ์",
     "name":"ชนแดน",
-    "caseCount":127
+    "caseCount":124
   },
   {
     "id":149,
@@ -909,7 +909,7 @@
     "id":152,
     "province":"ขอนแก่น",
     "name":"ชุมแพ",
-    "caseCount":90
+    "caseCount":91
   },
   {
     "id":153,
@@ -921,13 +921,13 @@
     "id":154,
     "province":"นครสวรรค์",
     "name":"ชุมแสง",
-    "caseCount":89
+    "caseCount":82
   },
   {
     "id":155,
     "province":"นครสวรรค์",
     "name":"ชุมตาบง",
-    "caseCount":68
+    "caseCount":61
   },
   {
     "id":156,
@@ -939,19 +939,19 @@
     "id":157,
     "province":"พะเยา",
     "name":"จุน",
-    "caseCount":47
+    "caseCount":45
   },
   {
     "id":158,
     "province":"ราชบุรี",
     "name":"ดำเนินสะดวก",
-    "caseCount":196
+    "caseCount":205
   },
   {
     "id":159,
     "province":"สุพรรณบุรี",
     "name":"ด่านช้าง",
-    "caseCount":104
+    "caseCount":107
   },
   {
     "id":160,
@@ -963,7 +963,7 @@
     "id":161,
     "province":"กาญจนบุรี",
     "name":"ด่านมะขามเตี้ย",
-    "caseCount":58
+    "caseCount":57
   },
   {
     "id":162,
@@ -975,25 +975,25 @@
     "id":163,
     "province":"แพร่",
     "name":"เด่นชัย",
-    "caseCount":21
+    "caseCount":15
   },
   {
     "id":164,
     "province":"อุบลราชธานี",
     "name":"เดชอุดม",
-    "caseCount":24
+    "caseCount":23
   },
   {
     "id":165,
     "province":"กรุงเทพมหานคร",
     "name":"ดินแดง",
-    "caseCount":1330
+    "caseCount":1338
   },
   {
     "id":166,
     "province":"สุพรรณบุรี",
     "name":"เดิมบางนางบวช",
-    "caseCount":91
+    "caseCount":89
   },
   {
     "id":167,
@@ -1011,7 +1011,7 @@
     "id":169,
     "province":"เชียงใหม่",
     "name":"ดอยสะเก็ด",
-    "caseCount":15
+    "caseCount":14
   },
   {
     "id":170,
@@ -1023,55 +1023,55 @@
     "id":171,
     "province":"พะเยา",
     "name":"ดอกคำใต้",
-    "caseCount":43
+    "caseCount":37
   },
   {
     "id":172,
     "province":"กาฬสินธุ์",
     "name":"ดอนจาน",
-    "caseCount":64
+    "caseCount":80
   },
   {
     "id":173,
     "province":"สุพรรณบุรี",
     "name":"ดอนเจดีย์",
-    "caseCount":70
+    "caseCount":73
   },
   {
     "id":174,
     "province":"อุบลราชธานี",
     "name":"ดอนมดแดง",
-    "caseCount":12
+    "caseCount":10
   },
   {
     "id":175,
     "province":"กรุงเทพมหานคร",
     "name":"ดอนเมือง",
-    "caseCount":543
+    "caseCount":641
   },
   {
     "id":176,
     "province":"สระบุรี",
     "name":"ดอนพุด",
-    "caseCount":42
+    "caseCount":47
   },
   {
     "id":177,
     "province":"สุราษฎร์ธานี",
     "name":"ดอนสัก",
-    "caseCount":9
+    "caseCount":10
   },
   {
     "id":178,
     "province":"มุกดาหาร",
     "name":"ดอนตาล",
-    "caseCount":17
+    "caseCount":16
   },
   {
     "id":179,
     "province":"นครปฐม",
     "name":"ดอนตูม",
-    "caseCount":267
+    "caseCount":262
   },
   {
     "id":180,
@@ -1089,31 +1089,31 @@
     "id":182,
     "province":"กรุงเทพมหานคร",
     "name":"ดุสิต",
-    "caseCount":480
+    "caseCount":482
   },
   {
     "id":183,
     "province":"เลย",
     "name":"เอราวัณ",
-    "caseCount":38
+    "caseCount":41
   },
   {
     "id":184,
     "province":"อุตรดิตถ์",
     "name":"ฟากท่า",
-    "caseCount":27
+    "caseCount":32
   },
   {
     "id":185,
     "province":"เชียงใหม่",
     "name":"ฝาง",
-    "caseCount":30
+    "caseCount":28
   },
   {
     "id":186,
     "province":"หนองคาย",
     "name":"เฝ้าไร่",
-    "caseCount":79
+    "caseCount":90
   },
   {
     "id":187,
@@ -1131,7 +1131,7 @@
     "id":189,
     "province":"เชียงใหม่",
     "name":"หางดง",
-    "caseCount":154
+    "caseCount":150
   },
   {
     "id":190,
@@ -1143,13 +1143,13 @@
     "id":191,
     "province":"ตรัง",
     "name":"หาดสำราญ",
-    "caseCount":43
+    "caseCount":39
   },
   {
     "id":192,
     "province":"สงขลา",
     "name":"หาดใหญ่",
-    "caseCount":947
+    "caseCount":982
   },
   {
     "id":193,
@@ -1161,13 +1161,13 @@
     "id":194,
     "province":"ประจวบคีรีขันธ์",
     "name":"หัวหิน",
-    "caseCount":167
+    "caseCount":256
   },
   {
     "id":195,
     "province":"นครศรีธรรมราช",
     "name":"หัวไทร",
-    "caseCount":29
+    "caseCount":30
   },
   {
     "id":196,
@@ -1179,37 +1179,37 @@
     "id":197,
     "province":"อุทัยธานี",
     "name":"ห้วยคต",
-    "caseCount":77
+    "caseCount":84
   },
   {
     "id":198,
     "province":"กรุงเทพมหานคร",
     "name":"ห้วยขวาง",
-    "caseCount":922
+    "caseCount":911
   },
   {
     "id":199,
     "province":"กาญจนบุรี",
     "name":"ห้วยกระเจา",
-    "caseCount":18
+    "caseCount":27
   },
   {
     "id":200,
     "province":"กาฬสินธุ์",
     "name":"ห้วยเม็ก",
-    "caseCount":110
+    "caseCount":130
   },
   {
     "id":201,
     "province":"กาฬสินธุ์",
     "name":"ห้วยผึ้ง",
-    "caseCount":48
+    "caseCount":50
   },
   {
     "id":202,
     "province":"บุรีรัมย์",
     "name":"ห้วยราช",
-    "caseCount":5
+    "caseCount":3
   },
   {
     "id":203,
@@ -1221,31 +1221,31 @@
     "id":204,
     "province":"ศรีสะเกษ",
     "name":"ห้วยทับทัน",
-    "caseCount":37
+    "caseCount":41
   },
   {
     "id":205,
     "province":"ตรัง",
     "name":"ห้วยยอด",
-    "caseCount":46
+    "caseCount":47
   },
   {
     "id":206,
     "province":"สิงห์บุรี",
     "name":"อินทร์บุรี",
-    "caseCount":49
+    "caseCount":54
   },
   {
     "id":207,
     "province":"ยะลา",
     "name":"กาบัง",
-    "caseCount":48
+    "caseCount":45
   },
   {
     "id":208,
     "province":"ปราจีนบุรี",
     "name":"กบินทร์บุรี",
-    "caseCount":223
+    "caseCount":254
   },
   {
     "id":209,
@@ -1257,25 +1257,25 @@
     "id":210,
     "province":"จันทบุรี",
     "name":"แก่งหางแมว",
-    "caseCount":21
+    "caseCount":22
   },
   {
     "id":211,
     "province":"สระบุรี",
     "name":"แก่งคอย",
-    "caseCount":410
+    "caseCount":442
   },
   {
     "id":212,
     "province":"ชัยภูมิ",
     "name":"แก้งคร้อ",
-    "caseCount":11
+    "caseCount":5
   },
   {
     "id":213,
     "province":"เพชรบุรี",
     "name":"แก่งกระจาน",
-    "caseCount":110
+    "caseCount":113
   },
   {
     "id":214,
@@ -1287,19 +1287,19 @@
     "id":215,
     "province":"กาฬสินธุ์",
     "name":"กมลาไสย",
-    "caseCount":89
+    "caseCount":90
   },
   {
     "id":216,
     "province":"นครปฐม",
     "name":"กำแพงแสน",
-    "caseCount":354
+    "caseCount":436
   },
   {
     "id":217,
     "province":"สุราษฎร์ธานี",
     "name":"กาญจนดิษฐ์",
-    "caseCount":24
+    "caseCount":28
   },
   {
     "id":218,
@@ -1311,13 +1311,13 @@
     "id":219,
     "province":"ศรีสะเกษ",
     "name":"กันทรลักษ์",
-    "caseCount":52
+    "caseCount":53
   },
   {
     "id":220,
     "province":"ศรีสะเกษ",
     "name":"กันทรารมย์",
-    "caseCount":11
+    "caseCount":10
   },
   {
     "id":221,
@@ -1329,7 +1329,7 @@
     "id":222,
     "province":"นครสวรรค์",
     "name":"เก้าเลี้ยว",
-    "caseCount":77
+    "caseCount":88
   },
   {
     "id":223,
@@ -1353,25 +1353,25 @@
     "id":226,
     "province":"พังงา",
     "name":"กะปง",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":227,
     "province":"ชัยภูมิ",
     "name":"เกษตรสมบูรณ์",
-    "caseCount":10
+    "caseCount":6
   },
   {
     "id":228,
     "province":"ร้อยเอ็ด",
     "name":"เกษตรวิสัย",
-    "caseCount":260
+    "caseCount":281
   },
   {
     "id":229,
     "province":"ภูเก็ต",
     "name":"กะทู้",
-    "caseCount":29
+    "caseCount":35
   },
   {
     "id":230,
@@ -1383,7 +1383,7 @@
     "id":231,
     "province":"สิงห์บุรี",
     "name":"ค่ายบางระจัน",
-    "caseCount":70
+    "caseCount":75
   },
   {
     "id":232,
@@ -1395,7 +1395,7 @@
     "id":233,
     "province":"กาฬสินธุ์",
     "name":"คำม่วง",
-    "caseCount":77
+    "caseCount":83
   },
   {
     "id":234,
@@ -1407,7 +1407,7 @@
     "id":235,
     "province":"สกลนคร",
     "name":"คำตากล้า",
-    "caseCount":49
+    "caseCount":52
   },
   {
     "id":236,
@@ -1425,7 +1425,7 @@
     "id":238,
     "province":"กรุงเทพมหานคร",
     "name":"คันนายาว",
-    "caseCount":244
+    "caseCount":249
   },
   {
     "id":239,
@@ -1437,43 +1437,43 @@
     "id":240,
     "province":"กำแพงเพชร",
     "name":"ขาณุวรลักษบุรี",
-    "caseCount":199
+    "caseCount":210
   },
   {
     "id":241,
     "province":"พัทลุง",
     "name":"เขาชัยสน",
-    "caseCount":104
+    "caseCount":103
   },
   {
     "id":242,
     "province":"สระแก้ว",
     "name":"เขาฉกรรจ์",
-    "caseCount":41
+    "caseCount":40
   },
   {
     "id":243,
     "province":"ระยอง",
     "name":"เขาชะเมา",
-    "caseCount":27
+    "caseCount":29
   },
   {
     "id":244,
     "province":"จันทบุรี",
     "name":"เขาคิชฌกูฏ",
-    "caseCount":31
+    "caseCount":30
   },
   {
     "id":245,
     "province":"เพชรบูรณ์",
     "name":"เขาค้อ",
-    "caseCount":60
+    "caseCount":64
   },
   {
     "id":246,
     "province":"กระบี่",
     "name":"เขาพนม",
-    "caseCount":28
+    "caseCount":30
   },
   {
     "id":247,
@@ -1491,13 +1491,13 @@
     "id":249,
     "province":"กาฬสินธุ์",
     "name":"เขาวง",
-    "caseCount":54
+    "caseCount":68
   },
   {
     "id":250,
     "province":"เพชรบุรี",
     "name":"เขาย้อย",
-    "caseCount":184
+    "caseCount":189
   },
   {
     "id":251,
@@ -1509,67 +1509,67 @@
     "id":252,
     "province":"สุราษฎร์ธานี",
     "name":"เคียนซา",
-    "caseCount":37
+    "caseCount":39
   },
   {
     "id":253,
     "province":"สุโขทัย",
     "name":"คีรีมาศ",
-    "caseCount":158
+    "caseCount":173
   },
   {
     "id":254,
     "province":"สุราษฎร์ธานี",
     "name":"คีรีรัฐนิคม",
-    "caseCount":14
+    "caseCount":17
   },
   {
     "id":255,
     "province":"สระแก้ว",
     "name":"คลองหาด",
-    "caseCount":20
+    "caseCount":28
   },
   {
     "id":256,
     "province":"สงขลา",
     "name":"คลองหอยโข่ง",
-    "caseCount":22
+    "caseCount":23
   },
   {
     "id":257,
     "province":"กำแพงเพชร",
     "name":"คลองขลุง",
-    "caseCount":130
+    "caseCount":132
   },
   {
     "id":258,
     "province":"ฉะเชิงเทรา",
     "name":"คลองเขื่อน",
-    "caseCount":81
+    "caseCount":78
   },
   {
     "id":259,
     "province":"กำแพงเพชร",
     "name":"คลองลาน",
-    "caseCount":127
+    "caseCount":137
   },
   {
     "id":260,
     "province":"ปทุมธานี",
     "name":"คลองหลวง",
-    "caseCount":2147
+    "caseCount":2233
   },
   {
     "id":261,
     "province":"กรุงเทพมหานคร",
     "name":"คลองสามวา",
-    "caseCount":754
+    "caseCount":775
   },
   {
     "id":262,
     "province":"กรุงเทพมหานคร",
     "name":"คลองสาน",
-    "caseCount":863
+    "caseCount":847
   },
   {
     "id":263,
@@ -1581,7 +1581,7 @@
     "id":264,
     "province":"กรุงเทพมหานคร",
     "name":"คลองเตย",
-    "caseCount":1279
+    "caseCount":1264
   },
   {
     "id":265,
@@ -1593,7 +1593,7 @@
     "id":266,
     "province":"จันทบุรี",
     "name":"ขลุง",
-    "caseCount":60
+    "caseCount":59
   },
   {
     "id":267,
@@ -1605,13 +1605,13 @@
     "id":268,
     "province":"ลพบุรี",
     "name":"โคกเจริญ",
-    "caseCount":81
+    "caseCount":82
   },
   {
     "id":269,
     "province":"ปัตตานี",
     "name":"โคกโพธิ์",
-    "caseCount":115
+    "caseCount":100
   },
   {
     "id":270,
@@ -1623,7 +1623,7 @@
     "id":271,
     "province":"ลพบุรี",
     "name":"โคกสำโรง",
-    "caseCount":361
+    "caseCount":308
   },
   {
     "id":272,
@@ -1635,7 +1635,7 @@
     "id":273,
     "province":"สระแก้ว",
     "name":"โคกสูง",
-    "caseCount":38
+    "caseCount":39
   },
   {
     "id":274,
@@ -1653,7 +1653,7 @@
     "id":276,
     "province":"ชัยภูมิ",
     "name":"คอนสวรรค์",
-    "caseCount":2
+    "caseCount":0
   },
   {
     "id":277,
@@ -1665,13 +1665,13 @@
     "id":278,
     "province":"กาฬสินธุ์",
     "name":"ฆ้องชัย",
-    "caseCount":44
+    "caseCount":58
   },
   {
     "id":279,
     "province":"อุบลราชธานี",
     "name":"โขงเจียม",
-    "caseCount":3
+    "caseCount":2
   },
   {
     "id":280,
@@ -1683,31 +1683,31 @@
     "id":281,
     "province":"สตูล",
     "name":"ควนโดน",
-    "caseCount":3
+    "caseCount":4
   },
   {
     "id":282,
     "province":"สตูล",
     "name":"ควนกาหลง",
-    "caseCount":38
+    "caseCount":35
   },
   {
     "id":283,
     "province":"พัทลุง",
     "name":"ควนขนุน",
-    "caseCount":29
+    "caseCount":28
   },
   {
     "id":284,
     "province":"สงขลา",
     "name":"ควนเนียง",
-    "caseCount":13
+    "caseCount":18
   },
   {
     "id":285,
     "province":"อุบลราชธานี",
     "name":"เขื่องใน",
-    "caseCount":16
+    "caseCount":15
   },
   {
     "id":286,
@@ -1719,7 +1719,7 @@
     "id":287,
     "province":"ศรีสะเกษ",
     "name":"ขุนหาญ",
-    "caseCount":3
+    "caseCount":4
   },
   {
     "id":288,
@@ -1731,7 +1731,7 @@
     "id":289,
     "province":"แม่ฮ่องสอน",
     "name":"ขุนยวม",
-    "caseCount":1
+    "caseCount":0
   },
   {
     "id":290,
@@ -1749,19 +1749,19 @@
     "id":292,
     "province":"ระยอง",
     "name":"แกลง",
-    "caseCount":453
+    "caseCount":489
   },
   {
     "id":293,
     "province":"ชลบุรี",
     "name":"เกาะจันทร์",
-    "caseCount":76
+    "caseCount":90
   },
   {
     "id":294,
     "province":"ตราด",
     "name":"เกาะช้าง",
-    "caseCount":6
+    "caseCount":3
   },
   {
     "id":295,
@@ -1773,25 +1773,25 @@
     "id":296,
     "province":"ตราด",
     "name":"เกาะกูด",
-    "caseCount":4
+    "caseCount":3
   },
   {
     "id":297,
     "province":"กระบี่",
     "name":"เกาะลันตา",
-    "caseCount":2
+    "caseCount":3
   },
   {
     "id":298,
     "province":"สุราษฎร์ธานี",
     "name":"เกาะพะงัน",
-    "caseCount":4
+    "caseCount":5
   },
   {
     "id":299,
     "province":"สุราษฎร์ธานี",
     "name":"เกาะสมุย",
-    "caseCount":38
+    "caseCount":43
   },
   {
     "id":300,
@@ -1809,19 +1809,19 @@
     "id":302,
     "province":"สุโขทัย",
     "name":"กงไกรลาศ",
-    "caseCount":92
+    "caseCount":106
   },
   {
     "id":303,
     "province":"พัทลุง",
     "name":"กงหรา",
-    "caseCount":287
+    "caseCount":307
   },
   {
     "id":304,
     "province":"กำแพงเพชร",
     "name":"โกสัมพีนคร",
-    "caseCount":66
+    "caseCount":72
   },
   {
     "id":305,
@@ -1833,13 +1833,13 @@
     "id":306,
     "province":"ระนอง",
     "name":"กระบุรี",
-    "caseCount":80
+    "caseCount":81
   },
   {
     "id":307,
     "province":"ขอนแก่น",
     "name":"กระนวน",
-    "caseCount":58
+    "caseCount":66
   },
   {
     "id":308,
@@ -1857,19 +1857,19 @@
     "id":310,
     "province":"สมุทรสาคร",
     "name":"กระทุ่มแบน",
-    "caseCount":4242
+    "caseCount":4274
   },
   {
     "id":311,
     "province":"นครสวรรค์",
     "name":"โกรกพระ",
-    "caseCount":80
+    "caseCount":84
   },
   {
     "id":312,
     "province":"ยะลา",
     "name":"กรงปินัง",
-    "caseCount":113
+    "caseCount":102
   },
   {
     "id":313,
@@ -1881,13 +1881,13 @@
     "id":314,
     "province":"กาฬสินธุ์",
     "name":"กุฉินารายณ์",
-    "caseCount":147
+    "caseCount":167
   },
   {
     "id":315,
     "province":"ประจวบคีรีขันธ์",
     "name":"กุยบุรี",
-    "caseCount":34
+    "caseCount":43
   },
   {
     "id":316,
@@ -1899,7 +1899,7 @@
     "id":317,
     "province":"สกลนคร",
     "name":"กุสุมาลย์",
-    "caseCount":43
+    "caseCount":54
   },
   {
     "id":318,
@@ -1917,7 +1917,7 @@
     "id":320,
     "province":"ยโสธร",
     "name":"กุดชุม",
-    "caseCount":22
+    "caseCount":21
   },
   {
     "id":321,
@@ -1947,13 +1947,13 @@
     "id":325,
     "province":"ตราด",
     "name":"แหลมงอบ",
-    "caseCount":56
+    "caseCount":46
   },
   {
     "id":326,
     "province":"จันทบุรี",
     "name":"แหลมสิงห์",
-    "caseCount":8
+    "caseCount":10
   },
   {
     "id":327,
@@ -1965,13 +1965,13 @@
     "id":328,
     "province":"กรุงเทพมหานคร",
     "name":"หลักสี่",
-    "caseCount":400
+    "caseCount":484
   },
   {
     "id":329,
     "province":"ปทุมธานี",
     "name":"ลำลูกกา",
-    "caseCount":1649
+    "caseCount":1722
   },
   {
     "id":330,
@@ -1983,7 +1983,7 @@
     "id":331,
     "province":"ลพบุรี",
     "name":"ลำสนธิ",
-    "caseCount":40
+    "caseCount":42
   },
   {
     "id":332,
@@ -1995,7 +1995,7 @@
     "id":333,
     "province":"กระบี่",
     "name":"ลำทับ",
-    "caseCount":3
+    "caseCount":5
   },
   {
     "id":334,
@@ -2013,13 +2013,13 @@
     "id":336,
     "province":"กำแพงเพชร",
     "name":"ลานกระบือ",
-    "caseCount":104
+    "caseCount":102
   },
   {
     "id":337,
     "province":"อุทัยธานี",
     "name":"ลานสัก",
-    "caseCount":75
+    "caseCount":111
   },
   {
     "id":338,
@@ -2031,13 +2031,13 @@
     "id":339,
     "province":"ชุมพร",
     "name":"หลังสวน",
-    "caseCount":94
+    "caseCount":95
   },
   {
     "id":340,
     "province":"กาญจนบุรี",
     "name":"เลาขวัญ",
-    "caseCount":29
+    "caseCount":31
   },
   {
     "id":341,
@@ -2049,43 +2049,43 @@
     "id":342,
     "province":"อุตรดิตถ์",
     "name":"ลับแล",
-    "caseCount":68
+    "caseCount":70
   },
   {
     "id":343,
     "province":"พระนครศรีอยุธยา",
     "name":"ลาดบัวหลวง",
-    "caseCount":89
+    "caseCount":111
   },
   {
     "id":344,
     "province":"กรุงเทพมหานคร",
     "name":"ลาดกระบัง",
-    "caseCount":1760
+    "caseCount":1783
   },
   {
     "id":345,
     "province":"ปทุมธานี",
     "name":"ลาดหลุมแก้ว",
-    "caseCount":742
+    "caseCount":610
   },
   {
     "id":346,
     "province":"กรุงเทพมหานคร",
     "name":"ลาดพร้าว",
-    "caseCount":346
+    "caseCount":335
   },
   {
     "id":347,
     "province":"นครสวรรค์",
     "name":"ลาดยาว",
-    "caseCount":93
+    "caseCount":99
   },
   {
     "id":348,
     "province":"ลำพูน",
     "name":"ลี้",
-    "caseCount":63
+    "caseCount":60
   },
   {
     "id":349,
@@ -2097,19 +2097,19 @@
     "id":350,
     "province":"เพชรบูรณ์",
     "name":"หล่มเก่า",
-    "caseCount":79
+    "caseCount":73
   },
   {
     "id":351,
     "province":"เพชรบูรณ์",
     "name":"หล่มสัก",
-    "caseCount":106
+    "caseCount":99
   },
   {
     "id":352,
     "province":"แพร่",
     "name":"ลอง",
-    "caseCount":60
+    "caseCount":59
   },
   {
     "id":353,
@@ -2121,7 +2121,7 @@
     "id":354,
     "province":"เชียงใหม่",
     "name":"แม่อาย",
-    "caseCount":23
+    "caseCount":22
   },
   {
     "id":355,
@@ -2133,7 +2133,7 @@
     "id":356,
     "province":"พะเยา",
     "name":"แม่ใจ",
-    "caseCount":35
+    "caseCount":31
   },
   {
     "id":357,
@@ -2163,19 +2163,19 @@
     "id":361,
     "province":"ปัตตานี",
     "name":"แม่ลาน",
-    "caseCount":90
+    "caseCount":59
   },
   {
     "id":362,
     "province":"เชียงราย",
     "name":"แม่ลาว",
-    "caseCount":8
+    "caseCount":7
   },
   {
     "id":363,
     "province":"ลำปาง",
     "name":"แม่เมาะ",
-    "caseCount":12
+    "caseCount":11
   },
   {
     "id":364,
@@ -2193,25 +2193,25 @@
     "id":366,
     "province":"นครสวรรค์",
     "name":"แม่เปิน",
-    "caseCount":41
+    "caseCount":42
   },
   {
     "id":367,
     "province":"ตาก",
     "name":"แม่ระมาด",
-    "caseCount":25
+    "caseCount":22
   },
   {
     "id":368,
     "province":"เชียงใหม่",
     "name":"แม่ริม",
-    "caseCount":44
+    "caseCount":42
   },
   {
     "id":369,
     "province":"เชียงราย",
     "name":"แม่สาย",
-    "caseCount":19
+    "caseCount":17
   },
   {
     "id":370,
@@ -2223,7 +2223,7 @@
     "id":371,
     "province":"ตาก",
     "name":"แม่สอด",
-    "caseCount":1454
+    "caseCount":1474
   },
   {
     "id":372,
@@ -2241,7 +2241,7 @@
     "id":374,
     "province":"ลำปาง",
     "name":"แม่ทะ",
-    "caseCount":30
+    "caseCount":28
   },
   {
     "id":375,
@@ -2259,7 +2259,7 @@
     "id":377,
     "province":"นครสวรรค์",
     "name":"แม่วงก์",
-    "caseCount":96
+    "caseCount":111
   },
   {
     "id":378,
@@ -2271,19 +2271,19 @@
     "id":379,
     "province":"พระนครศรีอยุธยา",
     "name":"มหาราช",
-    "caseCount":75
+    "caseCount":96
   },
   {
     "id":380,
     "province":"ปัตตานี",
     "name":"ไม้แก่น",
-    "caseCount":20
+    "caseCount":32
   },
   {
     "id":381,
     "province":"จันทบุรี",
     "name":"มะขาม",
-    "caseCount":47
+    "caseCount":49
   },
   {
     "id":382,
@@ -2307,13 +2307,13 @@
     "id":385,
     "province":"ปัตตานี",
     "name":"มายอ",
-    "caseCount":209
+    "caseCount":231
   },
   {
     "id":386,
     "province":"กรุงเทพมหานคร",
     "name":"มีนบุรี",
-    "caseCount":974
+    "caseCount":1014
   },
   {
     "id":387,
@@ -2325,13 +2325,13 @@
     "id":388,
     "province":"สระบุรี",
     "name":"มวกเหล็ก",
-    "caseCount":66
+    "caseCount":62
   },
   {
     "id":389,
     "province":"อุบลราชธานี",
     "name":"ม่วงสามสิบ",
-    "caseCount":2
+    "caseCount":1
   },
   {
     "id":390,
@@ -2343,7 +2343,7 @@
     "id":391,
     "province":"อ่างทอง",
     "name":"เมืองอ่างทอง",
-    "caseCount":522
+    "caseCount":544
   },
   {
     "id":392,
@@ -2361,19 +2361,19 @@
     "id":394,
     "province":"ฉะเชิงเทรา",
     "name":"เมืองฉะเชิงเทรา",
-    "caseCount":759
+    "caseCount":762
   },
   {
     "id":395,
     "province":"ชัยนาท",
     "name":"เมืองชัยนาท",
-    "caseCount":69
+    "caseCount":79
   },
   {
     "id":396,
     "province":"ชัยภูมิ",
     "name":"เมืองชัยภูมิ",
-    "caseCount":2
+    "caseCount":3
   },
   {
     "id":397,
@@ -2391,79 +2391,79 @@
     "id":399,
     "province":"เชียงใหม่",
     "name":"เมืองเชียงใหม่",
-    "caseCount":91
+    "caseCount":86
   },
   {
     "id":400,
     "province":"เชียงราย",
     "name":"เมืองเชียงราย",
-    "caseCount":36
+    "caseCount":32
   },
   {
     "id":401,
     "province":"ชลบุรี",
     "name":"เมืองชลบุรี",
-    "caseCount":2128
+    "caseCount":2310
   },
   {
     "id":402,
     "province":"ชุมพร",
     "name":"เมืองชุมพร",
-    "caseCount":180
+    "caseCount":177
   },
   {
     "id":403,
     "province":"กาฬสินธุ์",
     "name":"เมืองกาฬสินธุ์",
-    "caseCount":129
+    "caseCount":163
   },
   {
     "id":404,
     "province":"กำแพงเพชร",
     "name":"เมืองกำแพงเพชร",
-    "caseCount":291
+    "caseCount":312
   },
   {
     "id":405,
     "province":"กาญจนบุรี",
     "name":"เมืองกาญจนบุรี",
-    "caseCount":345
+    "caseCount":385
   },
   {
     "id":406,
     "province":"ขอนแก่น",
     "name":"เมืองขอนแก่น",
-    "caseCount":250
+    "caseCount":266
   },
   {
     "id":407,
     "province":"กระบี่",
     "name":"เมืองกระบี่",
-    "caseCount":11
+    "caseCount":14
   },
   {
     "id":408,
     "province":"ลำปาง",
     "name":"เมืองลำปาง",
-    "caseCount":124
+    "caseCount":118
   },
   {
     "id":409,
     "province":"ลำพูน",
     "name":"เมืองลำพูน",
-    "caseCount":52
+    "caseCount":48
   },
   {
     "id":410,
     "province":"เลย",
     "name":"เมืองเลย",
-    "caseCount":50
+    "caseCount":56
   },
   {
     "id":411,
     "province":"ลพบุรี",
     "name":"เมืองลพบุรี",
-    "caseCount":767
+    "caseCount":788
   },
   {
     "id":412,
@@ -2487,19 +2487,19 @@
     "id":415,
     "province":"นครนายก",
     "name":"เมืองนครนายก",
-    "caseCount":345
+    "caseCount":344
   },
   {
     "id":416,
     "province":"นครปฐม",
     "name":"เมืองนครปฐม",
-    "caseCount":719
+    "caseCount":904
   },
   {
     "id":417,
     "province":"นครพนม",
     "name":"เมืองนครพนม",
-    "caseCount":142
+    "caseCount":152
   },
   {
     "id":418,
@@ -2511,7 +2511,7 @@
     "id":419,
     "province":"นครสวรรค์",
     "name":"เมืองนครสวรรค์",
-    "caseCount":395
+    "caseCount":423
   },
   {
     "id":420,
@@ -2529,25 +2529,25 @@
     "id":422,
     "province":"นราธิวาส",
     "name":"เมืองนราธิวาส",
-    "caseCount":434
+    "caseCount":503
   },
   {
     "id":423,
     "province":"หนองบัวลำภู",
     "name":"เมืองหนองบัวลำภู",
-    "caseCount":67
+    "caseCount":92
   },
   {
     "id":424,
     "province":"หนองคาย",
     "name":"เมืองหนองคาย",
-    "caseCount":79
+    "caseCount":92
   },
   {
     "id":425,
     "province":"นนทบุรี",
     "name":"เมืองนนทบุรี",
-    "caseCount":1662
+    "caseCount":1762
   },
   {
     "id":426,
@@ -2559,73 +2559,73 @@
     "id":427,
     "province":"ปทุมธานี",
     "name":"เมืองปทุมธานี",
-    "caseCount":555
+    "caseCount":607
   },
   {
     "id":428,
     "province":"ปัตตานี",
     "name":"เมืองปัตตานี",
-    "caseCount":1014
+    "caseCount":980
   },
   {
     "id":429,
     "province":"พังงา",
     "name":"เมืองพังงา",
-    "caseCount":11
+    "caseCount":10
   },
   {
     "id":430,
     "province":"พัทลุง",
     "name":"เมืองพัทลุง",
-    "caseCount":138
+    "caseCount":142
   },
   {
     "id":431,
     "province":"พะเยา",
     "name":"เมืองพะเยา",
-    "caseCount":68
+    "caseCount":64
   },
   {
     "id":432,
     "province":"เพชรบูรณ์",
     "name":"เมืองเพชรบูรณ์",
-    "caseCount":199
+    "caseCount":189
   },
   {
     "id":433,
     "province":"เพชรบุรี",
     "name":"เมืองเพชรบุรี",
-    "caseCount":209
+    "caseCount":210
   },
   {
     "id":434,
     "province":"พิจิตร",
     "name":"เมืองพิจิตร",
-    "caseCount":106
+    "caseCount":110
   },
   {
     "id":435,
     "province":"พิษณุโลก",
     "name":"เมืองพิษณุโลก",
-    "caseCount":121
+    "caseCount":113
   },
   {
     "id":436,
     "province":"แพร่",
     "name":"เมืองแพร่",
-    "caseCount":49
+    "caseCount":48
   },
   {
     "id":437,
     "province":"ภูเก็ต",
     "name":"เมืองภูเก็ต",
-    "caseCount":137
+    "caseCount":149
   },
   {
     "id":438,
     "province":"ปราจีนบุรี",
     "name":"เมืองปราจีนบุรี",
-    "caseCount":437
+    "caseCount":441
   },
   {
     "id":439,
@@ -2637,19 +2637,19 @@
     "id":440,
     "province":"ระนอง",
     "name":"เมืองระนอง",
-    "caseCount":662
+    "caseCount":692
   },
   {
     "id":441,
     "province":"ราชบุรี",
     "name":"เมืองราชบุรี",
-    "caseCount":998
+    "caseCount":948
   },
   {
     "id":442,
     "province":"ระยอง",
     "name":"เมืองระยอง",
-    "caseCount":824
+    "caseCount":836
   },
   {
     "id":443,
@@ -2661,43 +2661,43 @@
     "id":444,
     "province":"สระแก้ว",
     "name":"เมืองสระแก้ว",
-    "caseCount":80
+    "caseCount":73
   },
   {
     "id":445,
     "province":"สกลนคร",
     "name":"เมืองสกลนคร",
-    "caseCount":70
+    "caseCount":86
   },
   {
     "id":446,
     "province":"สมุทรปราการ",
     "name":"เมืองสมุทรปราการ",
-    "caseCount":4748
+    "caseCount":5000
   },
   {
     "id":447,
     "province":"สมุทรสาคร",
     "name":"เมืองสมุทรสาคร",
-    "caseCount":6965
+    "caseCount":7477
   },
   {
     "id":448,
     "province":"สมุทรสงคราม",
     "name":"เมืองสมุทรสงคราม",
-    "caseCount":497
+    "caseCount":539
   },
   {
     "id":449,
     "province":"สระบุรี",
     "name":"เมืองสระบุรี",
-    "caseCount":1107
+    "caseCount":1062
   },
   {
     "id":450,
     "province":"สตูล",
     "name":"เมืองสตูล",
-    "caseCount":80
+    "caseCount":84
   },
   {
     "id":451,
@@ -2709,31 +2709,31 @@
     "id":452,
     "province":"สิงห์บุรี",
     "name":"เมืองสิงห์บุรี",
-    "caseCount":84
+    "caseCount":82
   },
   {
     "id":453,
     "province":"สงขลา",
     "name":"เมืองสงขลา",
-    "caseCount":438
+    "caseCount":469
   },
   {
     "id":454,
     "province":"ร้อยเอ็ด",
     "name":"เมืองสรวง",
-    "caseCount":59
+    "caseCount":61
   },
   {
     "id":455,
     "province":"สุโขทัย",
     "name":"เมืองสุโขทัย",
-    "caseCount":125
+    "caseCount":131
   },
   {
     "id":456,
     "province":"สุพรรณบุรี",
     "name":"เมืองสุพรรณบุรี",
-    "caseCount":297
+    "caseCount":296
   },
   {
     "id":457,
@@ -2751,25 +2751,25 @@
     "id":459,
     "province":"ตาก",
     "name":"เมืองตาก",
-    "caseCount":48
+    "caseCount":44
   },
   {
     "id":460,
     "province":"ตรัง",
     "name":"เมืองตรัง",
-    "caseCount":82
+    "caseCount":93
   },
   {
     "id":461,
     "province":"ตราด",
     "name":"เมืองตราด",
-    "caseCount":213
+    "caseCount":212
   },
   {
     "id":462,
     "province":"อุบลราชธานี",
     "name":"เมืองอุบลราชธานี",
-    "caseCount":40
+    "caseCount":52
   },
   {
     "id":463,
@@ -2781,19 +2781,19 @@
     "id":464,
     "province":"อุทัยธานี",
     "name":"เมืองอุทัยธานี",
-    "caseCount":85
+    "caseCount":84
   },
   {
     "id":465,
     "province":"อุตรดิตถ์",
     "name":"เมืองอุตรดิตถ์",
-    "caseCount":220
+    "caseCount":234
   },
   {
     "id":466,
     "province":"ยะลา",
     "name":"เมืองยะลา",
-    "caseCount":843
+    "caseCount":839
   },
   {
     "id":467,
@@ -2805,13 +2805,13 @@
     "id":468,
     "province":"ยโสธร",
     "name":"เมืองยโสธร",
-    "caseCount":7
+    "caseCount":5
   },
   {
     "id":469,
     "province":"นครศรีธรรมราช",
     "name":"นาบอน",
-    "caseCount":11
+    "caseCount":12
   },
   {
     "id":470,
@@ -2829,13 +2829,13 @@
     "id":472,
     "province":"ปราจีนบุรี",
     "name":"นาดี",
-    "caseCount":57
+    "caseCount":61
   },
   {
     "id":473,
     "province":"เลย",
     "name":"นาด้วง",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":474,
@@ -2853,31 +2853,31 @@
     "id":476,
     "province":"นครพนม",
     "name":"นาแก",
-    "caseCount":79
+    "caseCount":98
   },
   {
     "id":477,
     "province":"กาฬสินธุ์",
     "name":"นาคู",
-    "caseCount":45
+    "caseCount":60
   },
   {
     "id":478,
     "province":"หนองบัวลำภู",
     "name":"นากลาง",
-    "caseCount":120
+    "caseCount":130
   },
   {
     "id":479,
     "province":"สงขลา",
     "name":"นาหม่อม",
-    "caseCount":106
+    "caseCount":117
   },
   {
     "id":480,
     "province":"กาฬสินธุ์",
     "name":"นามน",
-    "caseCount":73
+    "caseCount":78
   },
   {
     "id":481,
@@ -2901,25 +2901,25 @@
     "id":484,
     "province":"อุบลราชธานี",
     "name":"นาตาล",
-    "caseCount":2
+    "caseCount":3
   },
   {
     "id":485,
     "province":"สงขลา",
     "name":"นาทวี",
-    "caseCount":54
+    "caseCount":60
   },
   {
     "id":486,
     "province":"นครพนม",
     "name":"นาทม",
-    "caseCount":27
+    "caseCount":30
   },
   {
     "id":487,
     "province":"นครพนม",
     "name":"นาหว้า",
-    "caseCount":50
+    "caseCount":65
   },
   {
     "id":488,
@@ -2931,7 +2931,7 @@
     "id":489,
     "province":"จันทบุรี",
     "name":"นายายอาม",
-    "caseCount":39
+    "caseCount":32
   },
   {
     "id":490,
@@ -2943,7 +2943,7 @@
     "id":491,
     "province":"ตรัง",
     "name":"นาโยง",
-    "caseCount":21
+    "caseCount":25
   },
   {
     "id":492,
@@ -2955,13 +2955,13 @@
     "id":493,
     "province":"นครปฐม",
     "name":"นครชัยศรี",
-    "caseCount":660
+    "caseCount":692
   },
   {
     "id":494,
     "province":"พระนครศรีอยุธยา",
     "name":"นครหลวง",
-    "caseCount":209
+    "caseCount":228
   },
   {
     "id":495,
@@ -2973,7 +2973,7 @@
     "id":496,
     "province":"อุบลราชธานี",
     "name":"น้ำขุ่น",
-    "caseCount":19
+    "caseCount":18
   },
   {
     "id":497,
@@ -2985,19 +2985,19 @@
     "id":498,
     "province":"เพชรบูรณ์",
     "name":"น้ำหนาว",
-    "caseCount":28
+    "caseCount":31
   },
   {
     "id":499,
     "province":"อุตรดิตถ์",
     "name":"น้ำปาด",
-    "caseCount":83
+    "caseCount":86
   },
   {
     "id":500,
     "province":"ขอนแก่น",
     "name":"น้ำพอง",
-    "caseCount":39
+    "caseCount":44
   },
   {
     "id":501,
@@ -3015,13 +3015,13 @@
     "id":503,
     "province":"บุรีรัมย์",
     "name":"นางรอง",
-    "caseCount":3
+    "caseCount":4
   },
   {
     "id":504,
     "province":"ลำปาง",
     "name":"งาว",
-    "caseCount":48
+    "caseCount":43
   },
   {
     "id":505,
@@ -3033,25 +3033,25 @@
     "id":506,
     "province":"สกลนคร",
     "name":"นิคมน้ำอูน",
-    "caseCount":12
+    "caseCount":13
   },
   {
     "id":507,
     "province":"ระยอง",
     "name":"นิคมพัฒนา",
-    "caseCount":488
+    "caseCount":503
   },
   {
     "id":508,
     "province":"ชัยนาท",
     "name":"เนินขาม",
-    "caseCount":35
+    "caseCount":31
   },
   {
     "id":509,
     "province":"พิษณุโลก",
     "name":"เนินมะปราง",
-    "caseCount":82
+    "caseCount":79
   },
   {
     "id":510,
@@ -3075,7 +3075,7 @@
     "id":513,
     "province":"ศรีสะเกษ",
     "name":"โนนคูณ",
-    "caseCount":13
+    "caseCount":11
   },
   {
     "id":514,
@@ -3093,19 +3093,19 @@
     "id":516,
     "province":"หนองบัวลำภู",
     "name":"โนนสัง",
-    "caseCount":67
+    "caseCount":81
   },
   {
     "id":517,
     "province":"ขอนแก่น",
     "name":"โนนศิลา",
-    "caseCount":27
+    "caseCount":30
   },
   {
     "id":518,
     "province":"นครราชสีมา",
     "name":"โนนสูง",
-    "caseCount":3
+    "caseCount":4
   },
   {
     "id":519,
@@ -3123,13 +3123,13 @@
     "id":521,
     "province":"นครสวรรค์",
     "name":"หนองบัว",
-    "caseCount":153
+    "caseCount":158
   },
   {
     "id":522,
     "province":"ชัยภูมิ",
     "name":"หนองบัวแดง",
-    "caseCount":5
+    "caseCount":4
   },
   {
     "id":523,
@@ -3141,31 +3141,31 @@
     "id":524,
     "province":"นครราชสีมา",
     "name":"หนองบุญมาก",
-    "caseCount":13
+    "caseCount":0
   },
   {
     "id":525,
     "province":"อุทัยธานี",
     "name":"หนองฉาง",
-    "caseCount":62
+    "caseCount":59
   },
   {
     "id":526,
     "province":"ปัตตานี",
     "name":"หนองจิก",
-    "caseCount":372
+    "caseCount":328
   },
   {
     "id":527,
     "province":"กรุงเทพมหานคร",
     "name":"หนองจอก",
-    "caseCount":1194
+    "caseCount":1205
   },
   {
     "id":528,
     "province":"สระบุรี",
     "name":"หนองโดน",
-    "caseCount":45
+    "caseCount":69
   },
   {
     "id":529,
@@ -3183,7 +3183,7 @@
     "id":531,
     "province":"เลย",
     "name":"หนองหิน",
-    "caseCount":16
+    "caseCount":19
   },
   {
     "id":532,
@@ -3195,19 +3195,19 @@
     "id":533,
     "province":"สระบุรี",
     "name":"หนองแค",
-    "caseCount":538
+    "caseCount":503
   },
   {
     "id":534,
     "province":"กรุงเทพมหานคร",
     "name":"หนองแขม",
-    "caseCount":893
+    "caseCount":933
   },
   {
     "id":535,
     "province":"อุทัยธานี",
     "name":"หนองขาหย่าง",
-    "caseCount":21
+    "caseCount":22
   },
   {
     "id":536,
@@ -3219,13 +3219,13 @@
     "id":537,
     "province":"กาฬสินธุ์",
     "name":"หนองกุงศรี",
-    "caseCount":113
+    "caseCount":117
   },
   {
     "id":538,
     "province":"ชัยนาท",
     "name":"หนองมะโมง",
-    "caseCount":27
+    "caseCount":29
   },
   {
     "id":539,
@@ -3237,7 +3237,7 @@
     "id":540,
     "province":"แพร่",
     "name":"หนองม่วงไข่",
-    "caseCount":8
+    "caseCount":7
   },
   {
     "id":541,
@@ -3249,31 +3249,31 @@
     "id":542,
     "province":"เพชรบูรณ์",
     "name":"หนองไผ่",
-    "caseCount":137
+    "caseCount":127
   },
   {
     "id":543,
     "province":"ร้อยเอ็ด",
     "name":"หนองพอก",
-    "caseCount":100
+    "caseCount":102
   },
   {
     "id":544,
     "province":"กาญจนบุรี",
     "name":"หนองปรือ",
-    "caseCount":42
+    "caseCount":44
   },
   {
     "id":545,
     "province":"ขอนแก่น",
     "name":"หนองเรือ",
-    "caseCount":41
+    "caseCount":43
   },
   {
     "id":546,
     "province":"สระบุรี",
     "name":"หนองแซง",
-    "caseCount":43
+    "caseCount":47
   },
   {
     "id":547,
@@ -3285,13 +3285,13 @@
     "id":548,
     "province":"ขอนแก่น",
     "name":"หนองสองห้อง",
-    "caseCount":96
+    "caseCount":113
   },
   {
     "id":549,
     "province":"ปทุมธานี",
     "name":"หนองเสือ",
-    "caseCount":316
+    "caseCount":370
   },
   {
     "id":550,
@@ -3309,13 +3309,13 @@
     "id":552,
     "province":"เพชรบุรี",
     "name":"หนองหญ้าปล้อง",
-    "caseCount":51
+    "caseCount":48
   },
   {
     "id":553,
     "province":"สุพรรณบุรี",
     "name":"หนองหญ้าไซ",
-    "caseCount":149
+    "caseCount":155
   },
   {
     "id":554,
@@ -3327,7 +3327,7 @@
     "id":555,
     "province":"นครศรีธรรมราช",
     "name":"นบพิตำ",
-    "caseCount":9
+    "caseCount":6
   },
   {
     "id":556,
@@ -3339,31 +3339,31 @@
     "id":557,
     "province":"เชียงใหม่",
     "name":"อมก๋อย",
-    "caseCount":15
+    "caseCount":14
   },
   {
     "id":558,
     "province":"นครนายก",
     "name":"องครักษ์",
-    "caseCount":657
+    "caseCount":641
   },
   {
     "id":559,
     "province":"พัทลุง",
     "name":"ป่าบอน",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":560,
     "province":"เชียงราย",
     "name":"ป่าแดด",
-    "caseCount":0
+    "caseCount":1
   },
   {
     "id":561,
     "province":"อ่างทอง",
     "name":"ป่าโมก",
-    "caseCount":171
+    "caseCount":203
   },
   {
     "id":562,
@@ -3375,7 +3375,7 @@
     "id":563,
     "province":"ลำพูน",
     "name":"ป่าซาง",
-    "caseCount":21
+    "caseCount":19
   },
   {
     "id":564,
@@ -3393,13 +3393,13 @@
     "id":566,
     "province":"เลย",
     "name":"ปากชม",
-    "caseCount":24
+    "caseCount":25
   },
   {
     "id":567,
     "province":"นครราชสีมา",
     "name":"ปากช่อง",
-    "caseCount":6
+    "caseCount":9
   },
   {
     "id":568,
@@ -3411,13 +3411,13 @@
     "id":569,
     "province":"นนทบุรี",
     "name":"ปากเกร็ด",
-    "caseCount":1525
+    "caseCount":1574
   },
   {
     "id":570,
     "province":"นครศรีธรรมราช",
     "name":"ปากพนัง",
-    "caseCount":18
+    "caseCount":21
   },
   {
     "id":571,
@@ -3429,13 +3429,13 @@
     "id":572,
     "province":"นครนายก",
     "name":"ปากพลี",
-    "caseCount":55
+    "caseCount":51
   },
   {
     "id":573,
     "province":"ราชบุรี",
     "name":"ปากท่อ",
-    "caseCount":146
+    "caseCount":136
   },
   {
     "id":574,
@@ -3453,13 +3453,13 @@
     "id":576,
     "province":"ตรัง",
     "name":"ปะเหลียน",
-    "caseCount":48
+    "caseCount":58
   },
   {
     "id":577,
     "province":"ปัตตานี",
     "name":"ปะนาเระ",
-    "caseCount":216
+    "caseCount":226
   },
   {
     "id":578,
@@ -3471,13 +3471,13 @@
     "id":579,
     "province":"กำแพงเพชร",
     "name":"ปางศิลาทอง",
-    "caseCount":70
+    "caseCount":76
   },
   {
     "id":580,
     "province":"ชุมพร",
     "name":"ปะทิว",
-    "caseCount":45
+    "caseCount":44
   },
   {
     "id":581,
@@ -3495,31 +3495,31 @@
     "id":583,
     "province":"กรุงเทพมหานคร",
     "name":"ปทุมวัน",
-    "caseCount":617
+    "caseCount":621
   },
   {
     "id":584,
     "province":"เลย",
     "name":"ผาขาว",
-    "caseCount":43
+    "caseCount":54
   },
   {
     "id":585,
     "province":"พระนครศรีอยุธยา",
     "name":"ภาชี",
-    "caseCount":105
+    "caseCount":93
   },
   {
     "id":586,
     "province":"นครสวรรค์",
     "name":"ไพศาลี",
-    "caseCount":155
+    "caseCount":169
   },
   {
     "id":587,
     "province":"พระนครศรีอยุธยา",
     "name":"ผักไห่",
-    "caseCount":148
+    "caseCount":154
   },
   {
     "id":588,
@@ -3537,7 +3537,7 @@
     "id":590,
     "province":"ชลบุรี",
     "name":"พานทอง",
-    "caseCount":532
+    "caseCount":574
   },
   {
     "id":591,
@@ -3549,19 +3549,19 @@
     "id":592,
     "province":"ชลบุรี",
     "name":"พนัสนิคม",
-    "caseCount":627
+    "caseCount":693
   },
   {
     "id":593,
     "province":"สกลนคร",
     "name":"พังโคน",
-    "caseCount":12
+    "caseCount":25
   },
   {
     "id":594,
     "province":"สกลนคร",
     "name":"พรรณานิคม",
-    "caseCount":39
+    "caseCount":40
   },
   {
     "id":595,
@@ -3579,37 +3579,37 @@
     "id":597,
     "province":"ร้อยเอ็ด",
     "name":"พนมไพร",
-    "caseCount":146
+    "caseCount":172
   },
   {
     "id":598,
     "province":"ฉะเชิงเทรา",
     "name":"พนมสารคาม",
-    "caseCount":405
+    "caseCount":429
   },
   {
     "id":599,
     "province":"กาญจนบุรี",
     "name":"พนมทวน",
-    "caseCount":49
+    "caseCount":55
   },
   {
     "id":600,
     "province":"กรุงเทพมหานคร",
     "name":"ภาษีเจริญ",
-    "caseCount":975
+    "caseCount":981
   },
   {
     "id":601,
     "province":"ชุมพร",
     "name":"พะโต๊ะ",
-    "caseCount":18
+    "caseCount":20
   },
   {
     "id":602,
     "province":"ลพบุรี",
     "name":"พัฒนานิคม",
-    "caseCount":219
+    "caseCount":151
   },
   {
     "id":603,
@@ -3621,7 +3621,7 @@
     "id":604,
     "province":"กรุงเทพมหานคร",
     "name":"พญาไท",
-    "caseCount":577
+    "caseCount":575
   },
   {
     "id":605,
@@ -3639,7 +3639,7 @@
     "id":607,
     "province":"นครสวรรค์",
     "name":"พยุหะคีรี",
-    "caseCount":107
+    "caseCount":106
   },
   {
     "id":608,
@@ -3663,7 +3663,7 @@
     "id":611,
     "province":"อุตรดิตถ์",
     "name":"พิชัย",
-    "caseCount":178
+    "caseCount":187
   },
   {
     "id":612,
@@ -3675,7 +3675,7 @@
     "id":613,
     "province":"นครศรีธรรมราช",
     "name":"พิปูน",
-    "caseCount":13
+    "caseCount":11
   },
   {
     "id":614,
@@ -3687,13 +3687,13 @@
     "id":615,
     "province":"ร้อยเอ็ด",
     "name":"โพธิ์ชัย",
-    "caseCount":107
+    "caseCount":126
   },
   {
     "id":616,
     "province":"พิจิตร",
     "name":"โพธิ์ประทับช้าง",
-    "caseCount":26
+    "caseCount":38
   },
   {
     "id":617,
@@ -3711,25 +3711,25 @@
     "id":619,
     "province":"หนองคาย",
     "name":"โพธิ์ตาก",
-    "caseCount":5
+    "caseCount":6
   },
   {
     "id":620,
     "province":"พิจิตร",
     "name":"โพทะเล",
-    "caseCount":72
+    "caseCount":80
   },
   {
     "id":621,
     "province":"อ่างทอง",
     "name":"โพธิ์ทอง",
-    "caseCount":292
+    "caseCount":312
   },
   {
     "id":622,
     "province":"ขอนแก่น",
     "name":"พล",
-    "caseCount":97
+    "caseCount":121
   },
   {
     "id":623,
@@ -3741,7 +3741,7 @@
     "id":624,
     "province":"สกลนคร",
     "name":"โพนนาแก้ว",
-    "caseCount":20
+    "caseCount":28
   },
   {
     "id":625,
@@ -3753,73 +3753,73 @@
     "id":626,
     "province":"ร้อยเอ็ด",
     "name":"โพนทราย",
-    "caseCount":98
+    "caseCount":104
   },
   {
     "id":627,
     "province":"นครพนม",
     "name":"โพนสวรรค์",
-    "caseCount":77
+    "caseCount":93
   },
   {
     "id":628,
     "province":"ร้อยเอ็ด",
     "name":"โพนทอง",
-    "caseCount":227
+    "caseCount":261
   },
   {
     "id":629,
     "province":"ตาก",
     "name":"พบพระ",
-    "caseCount":346
+    "caseCount":364
   },
   {
     "id":630,
     "province":"ราชบุรี",
     "name":"โพธาราม",
-    "caseCount":280
+    "caseCount":276
   },
   {
     "id":631,
     "province":"กรุงเทพมหานคร",
     "name":"พระโขนง",
-    "caseCount":511
+    "caseCount":508
   },
   {
     "id":632,
     "province":"กรุงเทพมหานคร",
     "name":"พระนคร",
-    "caseCount":314
+    "caseCount":311
   },
   {
     "id":633,
     "province":"พระนครศรีอยุธยา",
     "name":"พระนครศรีอยุธยา",
-    "caseCount":399
+    "caseCount":388
   },
   {
     "id":634,
     "province":"นครศรีธรรมราช",
     "name":"พระพรหม",
-    "caseCount":26
+    "caseCount":32
   },
   {
     "id":635,
     "province":"สระบุรี",
     "name":"พระพุทธบาท",
-    "caseCount":114
+    "caseCount":113
   },
   {
     "id":636,
     "province":"สมุทรปราการ",
     "name":"พระประแดง",
-    "caseCount":2323
+    "caseCount":2408
   },
   {
     "id":637,
     "province":"สมุทรปราการ",
     "name":"พระสมุทรเจดีย์",
-    "caseCount":803
+    "caseCount":1046
   },
   {
     "id":638,
@@ -3837,13 +3837,13 @@
     "id":640,
     "province":"ศรีสะเกษ",
     "name":"ไพรบึง",
-    "caseCount":13
+    "caseCount":14
   },
   {
     "id":641,
     "province":"กำแพงเพชร",
     "name":"พรานกระต่าย",
-    "caseCount":116
+    "caseCount":156
   },
   {
     "id":642,
@@ -3855,13 +3855,13 @@
     "id":643,
     "province":"สุราษฎร์ธานี",
     "name":"พระแสง",
-    "caseCount":94
+    "caseCount":99
   },
   {
     "id":644,
     "province":"สิงห์บุรี",
     "name":"พรหมบุรี",
-    "caseCount":55
+    "caseCount":63
   },
   {
     "id":645,
@@ -3873,7 +3873,7 @@
     "id":646,
     "province":"พิษณุโลก",
     "name":"พรหมพิราม",
-    "caseCount":109
+    "caseCount":106
   },
   {
     "id":647,
@@ -3885,19 +3885,19 @@
     "id":648,
     "province":"ชัยภูมิ",
     "name":"ภูเขียว",
-    "caseCount":9
+    "caseCount":3
   },
   {
     "id":649,
     "province":"เลย",
     "name":"ภูกระดึง",
-    "caseCount":32
+    "caseCount":38
   },
   {
     "id":650,
     "province":"เลย",
     "name":"ภูหลวง",
-    "caseCount":64
+    "caseCount":65
   },
   {
     "id":651,
@@ -3909,7 +3909,7 @@
     "id":652,
     "province":"สกลนคร",
     "name":"ภูพาน",
-    "caseCount":13
+    "caseCount":16
   },
   {
     "id":653,
@@ -3921,19 +3921,19 @@
     "id":654,
     "province":"เลย",
     "name":"ภูเรือ",
-    "caseCount":15
+    "caseCount":18
   },
   {
     "id":655,
     "province":"พะเยา",
     "name":"ภูซาง",
-    "caseCount":26
+    "caseCount":25
   },
   {
     "id":656,
     "province":"ศรีสะเกษ",
     "name":"ภูสิงห์",
-    "caseCount":8
+    "caseCount":19
   },
   {
     "id":657,
@@ -3945,7 +3945,7 @@
     "id":658,
     "province":"สุราษฎร์ธานี",
     "name":"พุนพิน",
-    "caseCount":150
+    "caseCount":153
   },
   {
     "id":659,
@@ -3957,31 +3957,31 @@
     "id":660,
     "province":"นครปฐม",
     "name":"พุทธมณฑล",
-    "caseCount":371
+    "caseCount":406
   },
   {
     "id":661,
     "province":"นครพนม",
     "name":"ปลาปาก",
-    "caseCount":40
+    "caseCount":46
   },
   {
     "id":662,
     "province":"ฉะเชิงเทรา",
     "name":"แปลงยาว",
-    "caseCount":649
+    "caseCount":631
   },
   {
     "id":663,
     "province":"กระบี่",
     "name":"ปลายพระยา",
-    "caseCount":3
+    "caseCount":4
   },
   {
     "id":664,
     "province":"ระยอง",
     "name":"ปลวกแดง",
-    "caseCount":1814
+    "caseCount":1932
   },
   {
     "id":665,
@@ -3999,7 +3999,7 @@
     "id":667,
     "province":"จันทบุรี",
     "name":"โป่งน้ำร้อน",
-    "caseCount":123
+    "caseCount":143
   },
   {
     "id":668,
@@ -4011,7 +4011,7 @@
     "id":669,
     "province":"ปราจีนบุรี",
     "name":"ประจันตคาม",
-    "caseCount":135
+    "caseCount":130
   },
   {
     "id":670,
@@ -4023,13 +4023,13 @@
     "id":671,
     "province":"ประจวบคีรีขันธ์",
     "name":"ปราณบุรี",
-    "caseCount":50
+    "caseCount":49
   },
   {
     "id":672,
     "province":"ศรีสะเกษ",
     "name":"ปรางค์กู่",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":673,
@@ -4047,7 +4047,7 @@
     "id":675,
     "province":"กรุงเทพมหานคร",
     "name":"ประเวศ",
-    "caseCount":1001
+    "caseCount":1077
   },
   {
     "id":676,
@@ -4065,49 +4065,49 @@
     "id":678,
     "province":"นราธิวาส",
     "name":"ระแงะ",
-    "caseCount":282
+    "caseCount":273
   },
   {
     "id":679,
     "province":"ยะลา",
     "name":"รามัน",
-    "caseCount":270
+    "caseCount":264
   },
   {
     "id":680,
     "province":"สงขลา",
     "name":"ระโนด",
-    "caseCount":11
+    "caseCount":9
   },
   {
     "id":681,
     "province":"ศรีสะเกษ",
     "name":"ราษีไศล",
-    "caseCount":37
+    "caseCount":38
   },
   {
     "id":682,
     "province":"กรุงเทพมหานคร",
     "name":"ราษฎร์บูรณะ",
-    "caseCount":1154
+    "caseCount":1016
   },
   {
     "id":683,
     "province":"ฉะเชิงเทรา",
     "name":"ราชสาส์น",
-    "caseCount":255
+    "caseCount":267
   },
   {
     "id":684,
     "province":"กรุงเทพมหานคร",
     "name":"ราชเทวี",
-    "caseCount":748
+    "caseCount":741
   },
   {
     "id":685,
     "province":"ตรัง",
     "name":"รัษฎา",
-    "caseCount":9
+    "caseCount":10
   },
   {
     "id":686,
@@ -4119,79 +4119,79 @@
     "id":687,
     "province":"หนองคาย",
     "name":"รัตนวาปี",
-    "caseCount":17
+    "caseCount":30
   },
   {
     "id":688,
     "province":"สงขลา",
     "name":"รัตภูมิ",
-    "caseCount":113
+    "caseCount":133
   },
   {
     "id":689,
     "province":"นครพนม",
     "name":"เรณูนคร",
-    "caseCount":27
+    "caseCount":31
   },
   {
     "id":690,
     "province":"นครศรีธรรมราช",
     "name":"ร่อนพิบูลย์",
-    "caseCount":105
+    "caseCount":101
   },
   {
     "id":691,
     "province":"กาฬสินธุ์",
     "name":"ร่องคำ",
-    "caseCount":59
+    "caseCount":68
   },
   {
     "id":692,
     "province":"แพร่",
     "name":"ร้องกวาง",
-    "caseCount":36
+    "caseCount":34
   },
   {
     "id":693,
     "province":"นราธิวาส",
     "name":"รือเสาะ",
-    "caseCount":147
+    "caseCount":134
   },
   {
     "id":694,
     "province":"ลพบุรี",
     "name":"สระโบสถ์",
-    "caseCount":214
+    "caseCount":213
   },
   {
     "id":695,
     "province":"สงขลา",
     "name":"สะบ้าย้อย",
-    "caseCount":218
+    "caseCount":232
   },
   {
     "id":696,
     "province":"สงขลา",
     "name":"สะเดา",
-    "caseCount":212
+    "caseCount":237
   },
   {
     "id":697,
     "province":"กาฬสินธุ์",
     "name":"สหัสขันธ์",
-    "caseCount":100
+    "caseCount":102
   },
   {
     "id":698,
     "province":"ปัตตานี",
     "name":"สายบุรี",
-    "caseCount":214
+    "caseCount":193
   },
   {
     "id":699,
     "province":"กรุงเทพมหานคร",
     "name":"สายไหม",
-    "caseCount":669
+    "caseCount":649
   },
   {
     "id":700,
@@ -4203,91 +4203,91 @@
     "id":701,
     "province":"กำแพงเพชร",
     "name":"ไทรงาม",
-    "caseCount":105
+    "caseCount":107
   },
   {
     "id":702,
     "province":"นนทบุรี",
     "name":"ไทรน้อย",
-    "caseCount":944
+    "caseCount":971
   },
   {
     "id":703,
     "province":"กำแพงเพชร",
     "name":"ทรายทองวัฒนา",
-    "caseCount":55
+    "caseCount":54
   },
   {
     "id":704,
     "province":"กาญจนบุรี",
     "name":"ไทรโยค",
-    "caseCount":43
+    "caseCount":55
   },
   {
     "id":705,
     "province":"พิจิตร",
     "name":"สากเหล็ก",
-    "caseCount":52
+    "caseCount":50
   },
   {
     "id":706,
     "province":"หนองคาย",
     "name":"สระใคร",
-    "caseCount":24
+    "caseCount":29
   },
   {
     "id":707,
     "province":"กาฬสินธุ์",
     "name":"สามชัย",
-    "caseCount":56
+    "caseCount":61
   },
   {
     "id":708,
     "province":"สุพรรณบุรี",
     "name":"สามชุก",
-    "caseCount":51
+    "caseCount":49
   },
   {
     "id":709,
     "province":"ปทุมธานี",
     "name":"สามโคก",
-    "caseCount":598
+    "caseCount":646
   },
   {
     "id":710,
     "province":"พิจิตร",
     "name":"สามง่าม",
-    "caseCount":31
+    "caseCount":42
   },
   {
     "id":711,
     "province":"ตาก",
     "name":"สามเงา",
-    "caseCount":24
+    "caseCount":22
   },
   {
     "id":712,
     "province":"นครปฐม",
     "name":"สามพราน",
-    "caseCount":3157
+    "caseCount":3159
   },
   {
     "id":713,
     "province":"ประจวบคีรีขันธ์",
     "name":"สามร้อยยอด",
-    "caseCount":22
+    "caseCount":19
   },
   {
     "id":714,
     "province":"ขอนแก่น",
     "name":"ซำสูง",
-    "caseCount":32
+    "caseCount":33
   },
   {
     "id":715,
     "province":"อ่างทอง",
     "name":"สามโก้",
-    "caseCount":89
+    "caseCount":94
   },
   {
     "id":716,
@@ -4299,7 +4299,7 @@
     "id":717,
     "province":"กรุงเทพมหานคร",
     "name":"สัมพันธวงศ์",
-    "caseCount":255
+    "caseCount":256
   },
   {
     "id":718,
@@ -4311,7 +4311,7 @@
     "id":719,
     "province":"สุรินทร์",
     "name":"สำโรงทาบ",
-    "caseCount":2
+    "caseCount":3
   },
   {
     "id":720,
@@ -4329,19 +4329,19 @@
     "id":722,
     "province":"เชียงใหม่",
     "name":"สันทราย",
-    "caseCount":40
+    "caseCount":36
   },
   {
     "id":723,
     "province":"ฉะเชิงเทรา",
     "name":"สนามชัยเขต",
-    "caseCount":183
+    "caseCount":176
   },
   {
     "id":724,
     "province":"อุดรธานี",
     "name":"สร้างคอม",
-    "caseCount":1
+    "caseCount":2
   },
   {
     "id":725,
@@ -4353,19 +4353,19 @@
     "id":726,
     "province":"กาญจนบุรี",
     "name":"สังขละบุรี",
-    "caseCount":42
+    "caseCount":43
   },
   {
     "id":727,
     "province":"หนองคาย",
     "name":"สังคม",
-    "caseCount":8
+    "caseCount":12
   },
   {
     "id":728,
     "province":"ชัยนาท",
     "name":"สรรคบุรี",
-    "caseCount":90
+    "caseCount":97
   },
   {
     "id":729,
@@ -4383,25 +4383,25 @@
     "id":731,
     "province":"สระบุรี",
     "name":"เสาไห้",
-    "caseCount":147
+    "caseCount":135
   },
   {
     "id":732,
     "province":"ชัยภูมิ",
     "name":"ซับใหญ่",
-    "caseCount":1
+    "caseCount":0
   },
   {
     "id":733,
     "province":"กรุงเทพมหานคร",
     "name":"สะพานสูง",
-    "caseCount":327
+    "caseCount":316
   },
   {
     "id":734,
     "province":"ชัยนาท",
     "name":"สรรพยา",
-    "caseCount":42
+    "caseCount":47
   },
   {
     "id":735,
@@ -4413,19 +4413,19 @@
     "id":736,
     "province":"สงขลา",
     "name":"สทิงพระ",
-    "caseCount":25
+    "caseCount":27
   },
   {
     "id":737,
     "province":"กรุงเทพมหานคร",
     "name":"สาทร",
-    "caseCount":635
+    "caseCount":664
   },
   {
     "id":738,
     "province":"ชลบุรี",
     "name":"สัตหีบ",
-    "caseCount":297
+    "caseCount":268
   },
   {
     "id":739,
@@ -4437,37 +4437,37 @@
     "id":740,
     "province":"อ่างทอง",
     "name":"แสวงหา",
-    "caseCount":78
+    "caseCount":85
   },
   {
     "id":741,
     "province":"อุทัยธานี",
     "name":"สว่างอารมณ์",
-    "caseCount":74
+    "caseCount":81
   },
   {
     "id":742,
     "province":"สกลนคร",
     "name":"สว่างแดนดิน",
-    "caseCount":102
+    "caseCount":115
   },
   {
     "id":743,
     "province":"อุบลราชธานี",
     "name":"สว่างวีระวงศ์",
-    "caseCount":5
+    "caseCount":4
   },
   {
     "id":744,
     "province":"สุโขทัย",
     "name":"สวรรคโลก",
-    "caseCount":46
+    "caseCount":54
   },
   {
     "id":745,
     "province":"ชุมพร",
     "name":"สวี",
-    "caseCount":30
+    "caseCount":31
   },
   {
     "id":746,
@@ -4479,13 +4479,13 @@
     "id":747,
     "province":"ร้อยเอ็ด",
     "name":"เสลภูมิ",
-    "caseCount":176
+    "caseCount":188
   },
   {
     "id":748,
     "province":"พระนครศรีอยุธยา",
     "name":"เสนา",
-    "caseCount":102
+    "caseCount":85
   },
   {
     "id":749,
@@ -4503,7 +4503,7 @@
     "id":751,
     "province":"หนองบัวลำภู",
     "name":"ศรีบุญเรือง",
-    "caseCount":21
+    "caseCount":22
   },
   {
     "id":752,
@@ -4515,19 +4515,19 @@
     "id":753,
     "province":"ขอนแก่น",
     "name":"สีชมพู",
-    "caseCount":103
+    "caseCount":126
   },
   {
     "id":754,
     "province":"ปราจีนบุรี",
     "name":"ศรีมหาโพธิ",
-    "caseCount":248
+    "caseCount":274
   },
   {
     "id":755,
     "province":"ปราจีนบุรี",
     "name":"ศรีมโหสถ",
-    "caseCount":101
+    "caseCount":104
   },
   {
     "id":756,
@@ -4539,7 +4539,7 @@
     "id":757,
     "province":"สุโขทัย",
     "name":"ศรีนคร",
-    "caseCount":43
+    "caseCount":47
   },
   {
     "id":758,
@@ -4551,13 +4551,13 @@
     "id":759,
     "province":"สุพรรณบุรี",
     "name":"ศรีประจันต์",
-    "caseCount":117
+    "caseCount":120
   },
   {
     "id":760,
     "province":"ชลบุรี",
     "name":"ศรีราชา",
-    "caseCount":3257
+    "caseCount":3270
   },
   {
     "id":761,
@@ -4569,19 +4569,19 @@
     "id":762,
     "province":"นราธิวาส",
     "name":"ศรีสาคร",
-    "caseCount":91
+    "caseCount":88
   },
   {
     "id":763,
     "province":"สุโขทัย",
     "name":"ศรีสำโรง",
-    "caseCount":160
+    "caseCount":176
   },
   {
     "id":764,
     "province":"สุโขทัย",
     "name":"ศรีสัชนาลัย",
-    "caseCount":94
+    "caseCount":107
   },
   {
     "id":765,
@@ -4593,13 +4593,13 @@
     "id":766,
     "province":"ร้อยเอ็ด",
     "name":"ศรีสมเด็จ",
-    "caseCount":40
+    "caseCount":47
   },
   {
     "id":767,
     "province":"นครพนม",
     "name":"ศรีสงคราม",
-    "caseCount":62
+    "caseCount":70
   },
   {
     "id":768,
@@ -4611,7 +4611,7 @@
     "id":769,
     "province":"เพชรบูรณ์",
     "name":"ศรีเทพ",
-    "caseCount":108
+    "caseCount":105
   },
   {
     "id":770,
@@ -4623,7 +4623,7 @@
     "id":771,
     "province":"นครศรีธรรมราช",
     "name":"สิชล",
-    "caseCount":7
+    "caseCount":6
   },
   {
     "id":772,
@@ -4635,7 +4635,7 @@
     "id":773,
     "province":"ตรัง",
     "name":"สิเกา",
-    "caseCount":9
+    "caseCount":10
   },
   {
     "id":774,
@@ -4659,7 +4659,7 @@
     "id":777,
     "province":"สงขลา",
     "name":"สิงหนคร",
-    "caseCount":375
+    "caseCount":367
   },
   {
     "id":778,
@@ -4683,31 +4683,31 @@
     "id":781,
     "province":"นครราชสีมา",
     "name":"เสิงสาง",
-    "caseCount":26
+    "caseCount":5
   },
   {
     "id":782,
     "province":"จันทบุรี",
     "name":"สอยดาว",
-    "caseCount":31
+    "caseCount":40
   },
   {
     "id":783,
     "province":"กาฬสินธุ์",
     "name":"สมเด็จ",
-    "caseCount":104
+    "caseCount":108
   },
   {
     "id":784,
     "province":"แพร่",
     "name":"สอง",
-    "caseCount":28
+    "caseCount":25
   },
   {
     "id":785,
     "province":"สกลนคร",
     "name":"ส่องดาว",
-    "caseCount":32
+    "caseCount":37
   },
   {
     "id":786,
@@ -4719,7 +4719,7 @@
     "id":787,
     "province":"สุพรรณบุรี",
     "name":"สองพี่น้อง",
-    "caseCount":943
+    "caseCount":1014
   },
   {
     "id":788,
@@ -4737,31 +4737,31 @@
     "id":790,
     "province":"พัทลุง",
     "name":"ศรีนครินทร์",
-    "caseCount":18
+    "caseCount":19
   },
   {
     "id":791,
     "province":"นราธิวาส",
     "name":"สุไหงโก-ลก",
-    "caseCount":140
+    "caseCount":138
   },
   {
     "id":792,
     "province":"นราธิวาส",
     "name":"สุไหงปาดี",
-    "caseCount":118
+    "caseCount":112
   },
   {
     "id":793,
     "province":"กรุงเทพมหานคร",
     "name":"สวนหลวง",
-    "caseCount":800
+    "caseCount":807
   },
   {
     "id":794,
     "province":"ราชบุรี",
     "name":"สวนผึ้ง",
-    "caseCount":67
+    "caseCount":76
   },
   {
     "id":795,
@@ -4779,49 +4779,49 @@
     "id":797,
     "province":"แพร่",
     "name":"สูงเม่น",
-    "caseCount":42
+    "caseCount":35
   },
   {
     "id":798,
     "province":"นครราชสีมา",
     "name":"สูงเนิน",
-    "caseCount":1
+    "caseCount":0
   },
   {
     "id":799,
     "province":"หนองบัวลำภู",
     "name":"สุวรรณคูหา",
-    "caseCount":59
+    "caseCount":64
   },
   {
     "id":800,
     "province":"ร้อยเอ็ด",
     "name":"สุวรรณภูมิ",
-    "caseCount":227
+    "caseCount":236
   },
   {
     "id":801,
     "province":"สระแก้ว",
     "name":"ตาพระยา",
-    "caseCount":17
+    "caseCount":19
   },
   {
     "id":802,
     "province":"นราธิวาส",
     "name":"ตากใบ",
-    "caseCount":235
+    "caseCount":233
   },
   {
     "id":803,
     "province":"นครสวรรค์",
     "name":"ตากฟ้า",
-    "caseCount":33
+    "caseCount":42
   },
   {
     "id":804,
     "province":"นครสวรรค์",
     "name":"ตาคลี",
-    "caseCount":161
+    "caseCount":176
   },
   {
     "id":805,
@@ -4833,19 +4833,19 @@
     "id":806,
     "province":"พังงา",
     "name":"ตะกั่วทุ่ง",
-    "caseCount":28
+    "caseCount":27
   },
   {
     "id":807,
     "province":"กรุงเทพมหานคร",
     "name":"ตลิ่งชัน",
-    "caseCount":379
+    "caseCount":349
   },
   {
     "id":808,
     "province":"พัทลุง",
     "name":"ตะโหมด",
-    "caseCount":54
+    "caseCount":64
   },
   {
     "id":809,
@@ -4857,49 +4857,49 @@
     "id":810,
     "province":"สกลนคร",
     "name":"เต่างอย",
-    "caseCount":18
+    "caseCount":27
   },
   {
     "id":811,
     "province":"พิจิตร",
     "name":"ทับคล้อ",
-    "caseCount":55
+    "caseCount":67
   },
   {
     "id":812,
     "province":"พิจิตร",
     "name":"ตะพานหิน",
-    "caseCount":90
+    "caseCount":113
   },
   {
     "id":813,
     "province":"หนองคาย",
     "name":"ท่าบ่อ",
-    "caseCount":59
+    "caseCount":80
   },
   {
     "id":814,
     "province":"สุราษฎร์ธานี",
     "name":"ท่าชนะ",
-    "caseCount":11
+    "caseCount":12
   },
   {
     "id":815,
     "province":"สุราษฎร์ธานี",
     "name":"ท่าฉาง",
-    "caseCount":26
+    "caseCount":14
   },
   {
     "id":816,
     "province":"สิงห์บุรี",
     "name":"ท่าช้าง",
-    "caseCount":43
+    "caseCount":40
   },
   {
     "id":817,
     "province":"กาฬสินธุ์",
     "name":"ท่าคันโท",
-    "caseCount":46
+    "caseCount":58
   },
   {
     "id":818,
@@ -4911,7 +4911,7 @@
     "id":819,
     "province":"ลพบุรี",
     "name":"ท่าหลวง",
-    "caseCount":44
+    "caseCount":107
   },
   {
     "id":820,
@@ -4923,61 +4923,61 @@
     "id":821,
     "province":"กาญจนบุรี",
     "name":"ท่ามะกา",
-    "caseCount":1123
+    "caseCount":1165
   },
   {
     "id":822,
     "province":"กาญจนบุรี",
     "name":"ท่าม่วง",
-    "caseCount":162
+    "caseCount":156
   },
   {
     "id":823,
     "province":"สตูล",
     "name":"ท่าแพ",
-    "caseCount":10
+    "caseCount":16
   },
   {
     "id":824,
     "province":"อุตรดิตถ์",
     "name":"ท่าปลา",
-    "caseCount":121
+    "caseCount":116
   },
   {
     "id":825,
     "province":"พระนครศรีอยุธยา",
     "name":"ท่าเรือ",
-    "caseCount":175
+    "caseCount":180
   },
   {
     "id":826,
     "province":"ชุมพร",
     "name":"ท่าแซะ",
-    "caseCount":56
+    "caseCount":43
   },
   {
     "id":827,
     "province":"นครศรีธรรมราช",
     "name":"ท่าศาลา",
-    "caseCount":213
+    "caseCount":215
   },
   {
     "id":828,
     "province":"ตาก",
     "name":"ท่าสองยาง",
-    "caseCount":138
+    "caseCount":147
   },
   {
     "id":829,
     "province":"ฉะเชิงเทรา",
     "name":"ท่าตะเกียบ",
-    "caseCount":52
+    "caseCount":55
   },
   {
     "id":830,
     "province":"นครสวรรค์",
     "name":"ท่าตะโก",
-    "caseCount":195
+    "caseCount":217
   },
   {
     "id":831,
@@ -4989,7 +4989,7 @@
     "id":832,
     "province":"นครพนม",
     "name":"ท่าอุเทน",
-    "caseCount":43
+    "caseCount":48
   },
   {
     "id":833,
@@ -5001,13 +5001,13 @@
     "id":834,
     "province":"ลพบุรี",
     "name":"ท่าวุ้ง",
-    "caseCount":164
+    "caseCount":166
   },
   {
     "id":835,
     "province":"เพชรบุรี",
     "name":"ท่ายาง",
-    "caseCount":245
+    "caseCount":250
   },
   {
     "id":836,
@@ -5019,31 +5019,31 @@
     "id":837,
     "province":"พังงา",
     "name":"ท้ายเหมือง",
-    "caseCount":78
+    "caseCount":77
   },
   {
     "id":838,
     "province":"ภูเก็ต",
     "name":"ถลาง",
-    "caseCount":47
+    "caseCount":58
   },
   {
     "id":839,
     "province":"นครศรีธรรมราช",
     "name":"ถ้ำพรรณรา",
-    "caseCount":4
+    "caseCount":5
   },
   {
     "id":840,
     "province":"ยะลา",
     "name":"ธารโต",
-    "caseCount":283
+    "caseCount":274
   },
   {
     "id":841,
     "province":"ปทุมธานี",
     "name":"ธัญบุรี",
-    "caseCount":1205
+    "caseCount":1256
   },
   {
     "id":842,
@@ -5055,19 +5055,19 @@
     "id":843,
     "province":"ประจวบคีรีขันธ์",
     "name":"ทับสะแก",
-    "caseCount":21
+    "caseCount":23
   },
   {
     "id":844,
     "province":"อุทัยธานี",
     "name":"ทัพทัน",
-    "caseCount":61
+    "caseCount":63
   },
   {
     "id":845,
     "province":"นครพนม",
     "name":"ธาตุพนม",
-    "caseCount":48
+    "caseCount":60
   },
   {
     "id":846,
@@ -5079,31 +5079,31 @@
     "id":847,
     "province":"กรุงเทพมหานคร",
     "name":"ทวีวัฒนา",
-    "caseCount":341
+    "caseCount":336
   },
   {
     "id":848,
     "province":"ชัยภูมิ",
     "name":"เทพสถิต",
-    "caseCount":4
+    "caseCount":3
   },
   {
     "id":849,
     "province":"สงขลา",
     "name":"เทพา",
-    "caseCount":118
+    "caseCount":116
   },
   {
     "id":850,
     "province":"นครราชสีมา",
     "name":"เทพารักษ์",
-    "caseCount":0
+    "caseCount":1
   },
   {
     "id":851,
     "province":"ลำปาง",
     "name":"เถิน",
-    "caseCount":58
+    "caseCount":51
   },
   {
     "id":852,
@@ -5115,7 +5115,7 @@
     "id":853,
     "province":"กรุงเทพมหานคร",
     "name":"ธนบุรี",
-    "caseCount":1236
+    "caseCount":1257
   },
   {
     "id":854,
@@ -5127,7 +5127,7 @@
     "id":855,
     "province":"อุตรดิตถ์",
     "name":"ทองแสนขัน",
-    "caseCount":59
+    "caseCount":64
   },
   {
     "id":856,
@@ -5157,31 +5157,31 @@
     "id":860,
     "province":"กรุงเทพมหานคร",
     "name":"ทุ่งครุ",
-    "caseCount":1412
+    "caseCount":1404
   },
   {
     "id":861,
     "province":"สุโขทัย",
     "name":"ทุ่งเสลี่ยม",
-    "caseCount":68
+    "caseCount":82
   },
   {
     "id":862,
     "province":"อุบลราชธานี",
     "name":"ทุ่งศรีอุดม",
-    "caseCount":11
+    "caseCount":9
   },
   {
     "id":863,
     "province":"นครศรีธรรมราช",
     "name":"ทุ่งสง",
-    "caseCount":44
+    "caseCount":49
   },
   {
     "id":864,
     "province":"ชุมพร",
     "name":"ทุ่งตะโก",
-    "caseCount":32
+    "caseCount":37
   },
   {
     "id":865,
@@ -5199,25 +5199,25 @@
     "id":867,
     "province":"ปัตตานี",
     "name":"ทุ่งยางแดง",
-    "caseCount":53
+    "caseCount":44
   },
   {
     "id":868,
     "province":"อุบลราชธานี",
     "name":"ตระการพืชผล",
-    "caseCount":9
+    "caseCount":7
   },
   {
     "id":869,
     "province":"อุตรดิตถ์",
     "name":"ตรอน",
-    "caseCount":64
+    "caseCount":63
   },
   {
     "id":870,
     "province":"สุพรรณบุรี",
     "name":"อู่ทอง",
-    "caseCount":297
+    "caseCount":307
   },
   {
     "id":871,
@@ -5229,13 +5229,13 @@
     "id":872,
     "province":"ตาก",
     "name":"อุ้มผาง",
-    "caseCount":14
+    "caseCount":16
   },
   {
     "id":873,
     "province":"พระนครศรีอยุธยา",
     "name":"อุทัย",
-    "caseCount":265
+    "caseCount":290
   },
   {
     "id":874,
@@ -5247,7 +5247,7 @@
     "id":875,
     "province":"กรุงเทพมหานคร",
     "name":"วัฒนา",
-    "caseCount":580
+    "caseCount":577
   },
   {
     "id":876,
@@ -5259,13 +5259,13 @@
     "id":877,
     "province":"พิจิตร",
     "name":"วชิรบารมี",
-    "caseCount":35
+    "caseCount":42
   },
   {
     "id":878,
     "province":"นราธิวาส",
     "name":"แว้ง",
-    "caseCount":199
+    "caseCount":219
   },
   {
     "id":879,
@@ -5289,67 +5289,67 @@
     "id":882,
     "province":"ระยอง",
     "name":"วังจันทร์",
-    "caseCount":41
+    "caseCount":43
   },
   {
     "id":883,
     "province":"ตาก",
     "name":"วังเจ้า",
-    "caseCount":51
+    "caseCount":57
   },
   {
     "id":884,
     "province":"แพร่",
     "name":"วังชิ้น",
-    "caseCount":28
+    "caseCount":23
   },
   {
     "id":885,
     "province":"ศรีสะเกษ",
     "name":"วังหิน",
-    "caseCount":5
+    "caseCount":7
   },
   {
     "id":886,
     "province":"สระบุรี",
     "name":"วังม่วง",
-    "caseCount":11
+    "caseCount":9
   },
   {
     "id":887,
     "province":"นครราชสีมา",
     "name":"วังน้ำเขียว",
-    "caseCount":0
+    "caseCount":1
   },
   {
     "id":888,
     "province":"สระแก้ว",
     "name":"วังน้ำเย็น",
-    "caseCount":20
+    "caseCount":24
   },
   {
     "id":889,
     "province":"พระนครศรีอยุธยา",
     "name":"วังน้อย",
-    "caseCount":1105
+    "caseCount":1040
   },
   {
     "id":890,
     "province":"ลำปาง",
     "name":"วังเหนือ",
-    "caseCount":39
+    "caseCount":35
   },
   {
     "id":891,
     "province":"เพชรบูรณ์",
     "name":"วังโป่ง",
-    "caseCount":25
+    "caseCount":30
   },
   {
     "id":892,
     "province":"พิจิตร",
     "name":"วังทรายพูน",
-    "caseCount":38
+    "caseCount":49
   },
   {
     "id":893,
@@ -5361,31 +5361,31 @@
     "id":894,
     "province":"เลย",
     "name":"วังสะพุง",
-    "caseCount":98
+    "caseCount":123
   },
   {
     "id":895,
     "province":"สระแก้ว",
     "name":"วังสมบูรณ์",
-    "caseCount":13
+    "caseCount":16
   },
   {
     "id":896,
     "province":"พิษณุโลก",
     "name":"วังทอง",
-    "caseCount":112
+    "caseCount":110
   },
   {
     "id":897,
     "province":"กรุงเทพมหานคร",
     "name":"วังทองหลาง",
-    "caseCount":853
+    "caseCount":789
   },
   {
     "id":898,
     "province":"ตรัง",
     "name":"วังวิเศษ",
-    "caseCount":53
+    "caseCount":54
   },
   {
     "id":899,
@@ -5397,7 +5397,7 @@
     "id":900,
     "province":"สกลนคร",
     "name":"วานรนิวาส",
-    "caseCount":49
+    "caseCount":85
   },
   {
     "id":901,
@@ -5409,37 +5409,37 @@
     "id":902,
     "province":"อุบลราชธานี",
     "name":"วารินชำราบ",
-    "caseCount":7
+    "caseCount":13
   },
   {
     "id":903,
     "province":"สกลนคร",
     "name":"วาริชภูมิ",
-    "caseCount":14
+    "caseCount":22
   },
   {
     "id":904,
     "province":"พิษณุโลก",
     "name":"วัดโบสถ์",
-    "caseCount":19
+    "caseCount":18
   },
   {
     "id":905,
     "province":"ราชบุรี",
     "name":"วัดเพลง",
-    "caseCount":2
+    "caseCount":1
   },
   {
     "id":906,
     "province":"ชัยนาท",
     "name":"วัดสิงห์",
-    "caseCount":31
+    "caseCount":38
   },
   {
     "id":907,
     "province":"สระแก้ว",
     "name":"วัฒนานคร",
-    "caseCount":36
+    "caseCount":35
   },
   {
     "id":908,
@@ -5481,13 +5481,13 @@
     "id":914,
     "province":"เชียงราย",
     "name":"เวียงป่าเป้า",
-    "caseCount":8
+    "caseCount":3
   },
   {
     "id":915,
     "province":"สุราษฎร์ธานี",
     "name":"เวียงสระ",
-    "caseCount":33
+    "caseCount":34
   },
   {
     "id":916,
@@ -5499,37 +5499,37 @@
     "id":917,
     "province":"เพชรบูรณ์",
     "name":"วิเชียรบุรี",
-    "caseCount":97
+    "caseCount":121
   },
   {
     "id":918,
     "province":"สระบุรี",
     "name":"วิหารแดง",
-    "caseCount":193
+    "caseCount":173
   },
   {
     "id":919,
     "province":"อ่างทอง",
     "name":"วิเศษชัยชาญ",
-    "caseCount":214
+    "caseCount":213
   },
   {
     "id":920,
     "province":"ยะลา",
     "name":"ยะหา",
-    "caseCount":311
+    "caseCount":321
   },
   {
     "id":921,
     "province":"กรุงเทพมหานคร",
     "name":"ยานนาวา",
-    "caseCount":965
+    "caseCount":1059
   },
   {
     "id":922,
     "province":"ตรัง",
     "name":"ย่านตาขาว",
-    "caseCount":25
+    "caseCount":22
   },
   {
     "id":923,
@@ -5547,24 +5547,24 @@
     "id":925,
     "province":"กาฬสินธุ์",
     "name":"ยางตลาด",
-    "caseCount":165
+    "caseCount":194
   },
   {
     "id":926,
     "province":"ปัตตานี",
     "name":"ยะรัง",
-    "caseCount":340
+    "caseCount":422
   },
   {
     "id":927,
     "province":"ปัตตานี",
     "name":"ยะหริ่ง",
-    "caseCount":369
+    "caseCount":377
   },
   {
     "id":928,
     "province":"นราธิวาส",
     "name":"ยี่งอ",
-    "caseCount":155
+    "caseCount":172
   }
 ]

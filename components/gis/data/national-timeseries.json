@@ -1697,10 +1697,18 @@
   },
   {
     "date":"2021-08-01",
-    "Hospitalized":200510,
+    "Hospitalized":205002,
     "NewConfirmed":18027,
     "NewDeaths":133,
     "Deaths":4980,
     "Confirmed":615365
+  },
+  {
+    "date":"2021-08-02",
+    "Hospitalized":205002,
+    "NewConfirmed":17970,
+    "NewDeaths":178,
+    "Deaths":5158,
+    "Confirmed":633335
   }
 ]
