@@ -36,16 +36,12 @@ jobs:
         run: |
           node get-national-data.js
           python get-manufacturer.py
-      - name: Upload artifact
+      - name: Upload Vaccination Data
         uses: actions/upload-artifact@v2
         with:
-          name: vaccine-manufacturer-timeseries
-      #- name: Upload Vaccination Data
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: provincial-vaccination-data
-      #    path: |
-      #      *components/gis/data/provincial-vaccination-data_2.json
+          name: provincial-vaccination-data
+          path: |
+            *components/gis/data/provincial-vaccination-data_2.json
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
