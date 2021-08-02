@@ -36,12 +36,12 @@ jobs:
         run: |
           node get-national-data.js
           python get-manufacturer.py
-      - name: Upload artifacts
-        uses: actions/upload-artifacts@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: vaccine-manufacturer-timeseries
-      - name: Upload artifacts
-        uses: actions/upload-artifacts@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: vaccination-data
           path: |
@@ -64,8 +64,8 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Upload artifacts
-        uses: actions/upload-artifacts@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: national-cases-data
           path: |
@@ -92,8 +92,8 @@ jobs:
       - name: Get Provincial Datasets and Build Province and District cases
         working-directory: bot_jobs
         run: python build_province_and_district_cases.py
-      - name: Upload artifacts
-        uses: actions/upload-artifacts@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: provincial-cases-data
           path: |
@@ -118,8 +118,8 @@ jobs:
       - name: Get testing dataset
         working-directory: bot_jobs
         run: python get_covid_test_dataset.py
-      - name: Upload artifacts
-        uses: actions/upload-artifacts@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
           name: testing-data
           path: |
@@ -131,19 +131,19 @@ jobs:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
       - name: Download Vaccination Data
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: vaccination-data
       - name: Download National Cases Data
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: national-cases-data
       - name: Download Provincial Cases Data
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: provincial-cases-data
       - name: Download Testing Data
-        uses: actions/download-artifacts@v2
+        uses: actions/download-artifact@v2
         with:
           name: testing-data
       - name: Setup Python Environment
