@@ -68,7 +68,8 @@ jobs:
         uses: actions/upload-artifacts@v2
         with:
           name: national-cases-data
-          path: *components/gis/data/national-timeseries.json
+          path: |
+            *components/gis/data/national-timeseries.json
   get-provincial-cases-data:
     runs-on: ubuntu-latest
     steps:
@@ -95,7 +96,8 @@ jobs:
         uses: actions/upload-artifacts@v2
         with:
           name: provincial-cases-data
-          path: *components/gis/data/*-data-*.json
+          path: |
+            *components/gis/data/*-data-*.json
   get-testing-data:
     runs-on: ubuntu-latest
     steps:
@@ -120,9 +122,10 @@ jobs:
         uses: actions/upload-artifacts@v2
         with:
           name: testing-data
-          path: *components/gis/data/testing-data.json
+          path: |
+            *components/gis/data/testing-data.json
   build-province-graph-and-commit:
-    needs: get-vaccination-data,get-provincial-data,get-national-cases-data,get-testing-data
+    needs: [get-vaccination-data, get-provincial-cases-data, get-national-cases-data, get-testing-data]
     runs-on: ubuntu-latest
     steps:
       - name: Check Repo
