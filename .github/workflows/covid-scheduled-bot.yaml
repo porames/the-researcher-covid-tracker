@@ -43,9 +43,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: vaccination-data
+          name: provincial-vaccination-data
           path: |
             *components/gis/data/provincial-vaccination-data.json
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: vaccine-manufacturer-timeseries
+          path: |
             *components/gis/data/vaccine-manufacturer-timeseries.json
   get-national-cases-data:
     runs-on: ubuntu-latest
@@ -130,10 +135,14 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
-      - name: Download Vaccination Data
+      - name: Download Provincial Vaccination Data
         uses: actions/download-artifact@v2
         with:
-          name: vaccination-data
+          name: provincial-vaccination-data
+      - name: Download Vaccine Manufacturer Timeseries
+        uses: actions/download-artifact@v2
+        with:
+          name: vaccine-manufacturer-timeseries
       - name: Download National Cases Data
         uses: actions/download-artifact@v2
         with:
