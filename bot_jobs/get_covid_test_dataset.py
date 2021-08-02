@@ -2,10 +2,10 @@ import pandas as pd
 import datetime
 
 # Get data.go.th COVID-19 test dataset
-# url = "https://data.go.th/dataset/9f6d900f-f648-451f-8df4-89c676fce1c4/resource/0092046c-db85-4608-b519-ce8af099315e/download/testing_data.csv"
-LOCAL_PATH = "testing_data/covid-19-testing-data.csv"
+url = "https://data.go.th/dataset/9f6d900f-f648-451f-8df4-89c676fce1c4/resource/0092046c-db85-4608-b519-ce8af099315e/download/testing_data.csv"
+#LOCAL_PATH = "testing_data/covid-19-testing-data.csv"
 # Download and read excel as df
-df = pd.read_csv(LOCAL_PATH)
+df = pd.read_csv(url)
 
 # Select a specific column
 df = df[['Date','positive','Total Testing']]
