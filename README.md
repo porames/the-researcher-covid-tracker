@@ -4,6 +4,8 @@
 ![bot-taks-scheduler](https://github.com/porames/the-researcher-covid-bot/workflows/bot-taks-scheduler/badge.svg)  
 ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. และ 19.00 น. [Github Actions](https://github.com/porames/the-researcher-covid-bot/blob/master/.github/workflows/covid-scheduled-bot.yaml)  
 
+> ### เพื่อความสะดวกในการดูแลโค้ด เราจะทำการย้ายที่เก็บข้อมูลไปที่ [The Researcher COVID Data](https://github.com/porames/the-researcher-covid-data)
+
 ตัวเว็บไซต์พัฒนาโดย JavaScript + NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [d3](https://d3js.org), [visx](https://github.com/airbnb/visx/) และ [Matplotlib](https://matplotlib.org), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com)
 ตัวประมวลผลข้อมูลใช้ NodeJS และ Python
 
