@@ -14,65 +14,68 @@ import 'moment/locale/th'
 import Link from 'next/link'
 import NavHead from '../components/navHead'
 import Footer from '../components/footer'
-class NationalCurveSection extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      updatedDate: undefined
-    }
-  }
+import { getNationalStats, getDistrictData, getProvinceData } from '../components/getData'
 
-  render() {
-    return (
-
-      <div className='container mb-4' style={{ maxWidth: 810 }}>
-        <div className='text-center'>
-          <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
-          {this.state.updatedDate &&
-            <small style={{ opacity: 0.6 }}>อัพเดท {moment(this.state.updatedDate).format('LL')}</small>
-          }
-        </div>
-        <hr className='my-4' />
-        <div className='row'>
-          <div className='col-12 mb-3'>
-            <h4 className='mb-0'>ผู้ติดเชื้อใหม่รายวัน</h4>
-            <InfectionCurve />
-          </div>
-          <div className='col-6'>
-            <h6 className='mb-0'>รักษาตัวในโรงพยาบาล</h6>
-            <HospitalizedCurve />
-          </div>
-          <div className='col-6'>
-            <h6 className='mb-0'>ผู้เสียชีวิตรายวัน</h6>
-            <DeathsCurve />
-          </div>
-        </div>
-        <NationalTable updatedAt={(date) => this.setState({ updatedDate: date })} />
-        <hr />
-        <h3 className='mt-4'>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
-        <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Positive Rate) ไม่เกิน 5%</p>
-        <TestingGraph />
-        <TestingTable />
-        <hr />
-        <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
-        <Link href='/vaccination'>
-          <a className='d-flex align-items-center'>
-            ติดตามการฉีดวัคซีน <img src='/chevron_right_white_24dp.svg' />
-          </a>
-        </Link>
-        <VaccinePreview />
-        <div className='my-4 text-center alert alert-black text-white'>
-          เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
-          ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
-        </div>
-        <h2 className='text-center mt-5 mb-4'>แผนที่การระบาด</h2>
+const NationalCurveSection = (props) => {
+  const [updatedDate, setUpdatedDate] = useState(undefined)
+  return (
+    <div className='container mb-4' style={{ maxWidth: 810 }}>
+      <div className='text-center'>
+        <h1>สถานการณ์โรค COVID-19 ในประเทศไทย</h1>
+        {updatedDate &&
+          <small style={{ opacity: 0.6 }}>อัพเดท {moment(updatedDate).format('LL')}</small>
+        }
       </div>
-    )
+      <hr className='my-4' />
+      <div className='row'>
+        <div className='col-12 mb-3'>
+          <h4 className='mb-0'>ผู้ติดเชื้อใหม่รายวัน</h4>
+          <InfectionCurve />
+        </div>
+        <div className='col-6'>
+          <h6 className='mb-0'>รักษาตัวในโรงพยาบาล</h6>
+          <HospitalizedCurve />
+        </div>
+        <div className='col-6'>
+          <h6 className='mb-0'>ผู้เสียชีวิตรายวัน</h6>
+          <DeathsCurve />
+        </div>
+      </div>
+      <NationalTable national_stats={props.national_stats} updatedAt={setUpdatedDate} />
+      <hr />
+      <h3 className='mt-4'>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
+      <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Positive Rate) ไม่เกิน 5%</p>
+      <TestingGraph />
+      <TestingTable />
+      <hr />
+      <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
+      <Link href='/vaccination'>
+        <a className='d-flex align-items-center'>
+          ติดตามการฉีดวัคซีน <img src='/chevron_right_white_24dp.svg' />
+        </a>
+      </Link>
+      <VaccinePreview />
+      <div className='my-4 text-center alert alert-black text-white'>
+        เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
+        ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
+      </div>
+      <h2 className='text-center mt-5 mb-4'>แผนที่การระบาด</h2>
+    </div>
+  )
+}
+
+
+export async function getStaticProps() {
+  return {
+    props: {
+      national_stats: await getNationalStats(),
+      province_data: await getProvinceData(),
+      district_data: await getDistrictData()
+    }
   }
 }
 
-export default function Home() {
-
+export default function Home(props) {
   return (
     <>
       <NavHead />
@@ -91,8 +94,8 @@ export default function Home() {
           <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
           <meta property="twitter:image" content="https://covid-19.researcherth.co/cover.png" />
         </Head>
-        <NationalCurveSection />
-        <Map />
+        <NationalCurveSection national_stats={props.national_stats} />
+        <Map province_data={props.province_data} district_data={props.district_data} />
         <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province />

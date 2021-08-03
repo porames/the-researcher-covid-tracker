@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
+import axios from 'axios'
 
 type TsProps = {
     [key: string]: any;
@@ -63,4 +64,10 @@ export function movingAvg(ts: TsProps[], id: string, type?: 'rate' | 'cum') {
         }
     }
     return { moving_aves, timeSeries: ts };
+}
+
+
+export async function getVaccineData() {
+    var req = await axios.get('https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data/vaccination/1st-dose-provincial-vaccination.json')
+    return req.data
 }

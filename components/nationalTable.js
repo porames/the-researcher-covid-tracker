@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import data from './gis/data/national-timeseries.json'
+//import data from './gis/data/national-timeseries.json'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
@@ -8,6 +8,7 @@ import { Group } from '@visx/group'
 import { MarkerArrow } from '@visx/marker'
 import moment from 'moment'
 import { movingAvg } from './vaccine/util'
+
 import 'moment/locale/th'
 
 function TrendCurve(props) {
@@ -56,28 +57,32 @@ function TrendCurve(props) {
     )
 }
 
-function NationalTable(props) {
-    const ts = data
-    useEffect(() => {
-        props.updatedAt(data[data.length - 1]['date'])
-    }, [])
 
+
+
+
+export default function NationalTable(props) {
+    const ts = props.national_stats
+    useEffect(() => {
+        props.updatedAt(ts[ts.length - 1]['date'])
+    }, [])
     return (
         <div className='table-responsive'>
+
             <table className="table table-theme-light mt-2 text-white">
                 <thead>
                     <tr>
                         <th scope="col"></th>
                         <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                        <th className='text-end' scope="col">{moment(data[data.length - 1]['Date']).format('D MMM')}</th>
+                        <th className='text-end' scope="col">{ts && moment(ts[ts.length - 1]['Date']).format('D MMM')}</th>
                         <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr className='text-danger'>
                         <td className='text-left' scope="row">ผู้ติดเชื้อ</td>
-                        <td>{ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
-                        <td>{ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
                         <td>
                             <TrendCurve data={ts} id='NewConfirmed' fill='#cf1111' />
                         </td>
@@ -86,15 +91,15 @@ function NationalTable(props) {
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">รักษาตัวในโรงพยาบาล</td>
                         <td></td>
-                        <td>{ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
                         <td>
                             <TrendCurve data={ts} id='Hospitalized' fill='#e0e0e0' />
                         </td>
                     </tr>
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">เสียชีวิต</td>
-                        <td>{ts[ts.length - 1]['Deaths'].toLocaleString()}</td>
-                        <td>{ts[ts.length - 1]['NewDeaths'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['Deaths'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['NewDeaths'].toLocaleString()}</td>
                         <td>
                             <TrendCurve data={ts} id='NewDeaths' fill='#e0e0e0' />
                         </td>
@@ -102,7 +107,10 @@ function NationalTable(props) {
 
                 </tbody>
             </table>
+
         </div>
+
     )
+
+
 }
-export default NationalTable
