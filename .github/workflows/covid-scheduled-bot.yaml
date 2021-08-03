@@ -17,6 +17,11 @@ jobs:
         uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: 'Asia/Bangkok'
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('package-lock.json') }}
       - name: Install Node.js dependencies
         run: npm install
       - name: Setup Python Environment
@@ -36,17 +41,12 @@ jobs:
         run: |
           node get-national-data.js
           python get-manufacturer.py
-      - name: Upload Vaccination Data
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: provincial-vaccination-data
           path: |
             *components/gis/data/provincial-vaccination-data_2.json
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: vaccine-manufacturer-timeseries
-          path: |
             *components/gis/data/vaccine-manufacturer-timeseries.json
   get-national-cases-data:
     runs-on: ubuntu-latest
