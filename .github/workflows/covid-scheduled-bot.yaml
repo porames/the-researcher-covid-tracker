@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.4
       - name: Set TimeZone
         uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: 'Asia/Bangkok'
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
@@ -53,6 +53,10 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
+      - name: Set TimeZone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'Asia/Bangkok'
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Cache Python Environment
@@ -76,8 +80,10 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
+      - name: Set TimeZone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'Asia/Bangkok'
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Cache Python Environment
@@ -104,6 +110,10 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
+      - name: Set TimeZone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'Asia/Bangkok'
       - name: Setup Python Environment
         uses: actions/setup-python@v2.2.1
       - name: Cache Python Environment
@@ -131,6 +141,10 @@ jobs:
     steps:
       - name: Check Repo
         uses: actions/checkout@v2.3.4
+      - name: Set TimeZone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: 'Asia/Bangkok'
       - name: Download Provincial Vaccination Data
         uses: actions/download-artifact@v2
         with:
