@@ -44,7 +44,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: provincial-vaccination-data
+          name: vaccination-data
           path: |
             *components/gis/data/provincial-vaccination-data_2.json
             *components/gis/data/vaccine-manufacturer-timeseries.json
@@ -134,11 +134,7 @@ jobs:
       - name: Download Provincial Vaccination Data
         uses: actions/download-artifact@v2
         with:
-          name: provincial-vaccination-data
-      - name: Download Vaccine Manufacturer Timeseries
-        uses: actions/download-artifact@v2
-        with:
-          name: vaccine-manufacturer-timeseries
+          name: vaccination-data
       - name: Download National Cases Data
         uses: actions/download-artifact@v2
         with:
