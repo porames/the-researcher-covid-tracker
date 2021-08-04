@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
       - name: Install Python dependencies
         working-directory: bot_jobs
         run: |
@@ -63,14 +63,16 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
       - name: Install Python dependencies
         working-directory: bot_jobs
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
+      - name: Get national data from djay/covidthailand
+        working-directory: bot_jobs
+        run: python get_national_data.py
+      - name: Upload artifact uses: actions/upload-artifact@v2
         with:
           name: national-cases-data
           path: |
@@ -90,7 +92,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
       - name: Install Python dependencies
         working-directory: bot_jobs
         run: |
@@ -120,7 +122,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
       - name: Install Python dependencies
         working-directory: bot_jobs
         run: |
@@ -167,7 +169,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
       - name: Install Python dependencies
         working-directory: bot_jobs
         run: |
