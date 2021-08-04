@@ -1,185 +1,194 @@
 name: bot-taks-scheduler
 on:
-  schedule:
-      - cron: '0 1 * * *' #01 Hour UTC = 8 Hour GMT+7
-      - cron: '0 6 * * *' #06 Hour UTC = 13 Hour GMT+7
-      - cron: '0 12 * * *' #06 Hour UTC = 19 Hour GMT+7
-  workflow_dispatch:
+    schedule:
+        - cron: '0 1 * * *' #01 Hour UTC = 8 Hour GMT+7
+        - cron: '0 6 * * *' #06 Hour UTC = 13 Hour GMT+7
+        - cron: '0 12 * * *' #06 Hour UTC = 19 Hour GMT+7
+    workflow_dispatch:
 jobs:
-  get-vaccination-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Repo
-        uses: actions/checkout@v2.3.4
-      - name: Set TimeZone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Bangkok'
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.4
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('package-lock.json') }}
-      - name: Install Node.js dependencies
-        run: npm install
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
-      - name: Cache Python Environment
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
-      - name: Install Python dependencies
-        working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Get vaccination datasets
-        working-directory: bot_jobs/vaccination
-        run: |
-          node get-national-data.js
-          python get-manufacturer.py
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: vaccination-data
-          path: |
-            *components/gis/data/provincial-vaccination-data_2.json
-            *components/gis/data/vaccine-manufacturer-timeseries.json
-  get-national-cases-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Repo
-        uses: actions/checkout@v2.3.4
-      - name: Set TimeZone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Bangkok'
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
-      - name: Cache Python Environment
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
-      - name: Install Python dependencies
-        working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: national-cases-data
-          path: |
-            *components/gis/data/national-timeseries.json
-  get-provincial-cases-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Repo
-        uses: actions/checkout@v2.3.4
-      - name: Set TimeZone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Bangkok'
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
-      - name: Cache Python Environment
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
-      - name: Install Python dependencies
-        working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Get Provincial Datasets and Build Province and District cases
-        working-directory: bot_jobs
-        run: python build_province_and_district_cases.py
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: provincial-cases-data
-          path: |
-            *components/gis/data/*-data-*.json
-  get-testing-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Repo
-        uses: actions/checkout@v2.3.4
-      - name: Set TimeZone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Bangkok'
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
-      - name: Cache Python Environment
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
-      - name: Install Python dependencies
-        working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Get testing dataset
-        working-directory: bot_jobs
-        run: python get_covid_test_dataset.py
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: testing-data
-          path: |
-            *components/gis/data/testing-data.json
-  build-province-graph-and-commit:
-    needs: [get-vaccination-data, get-provincial-cases-data, get-national-cases-data, get-testing-data]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Repo
-        uses: actions/checkout@v2.3.4
-      - name: Set TimeZone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Bangkok'
-      - name: Download Provincial Vaccination Data
-        uses: actions/download-artifact@v2
-        with:
-          name: vaccination-data
-      - name: Download National Cases Data
-        uses: actions/download-artifact@v2
-        with:
-          name: national-cases-data
-      - name: Download Provincial Cases Data
-        uses: actions/download-artifact@v2
-        with:
-          name: provincial-cases-data
-      - name: Download Testing Data
-        uses: actions/download-artifact@v2
-        with:
-          name: testing-data
-      - name: Setup Python Environment
-        uses: actions/setup-python@v2.2.1
-      - name: Cache Python Environment
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('bots_jobs/requirements.txt') }}
-      - name: Install Python dependencies
-        working-directory: bot_jobs
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Build Province Graphs in svg using Python
-        working-directory: bot_jobs
-        run: python build_province_graph.py
-      - name: Commit Changes to Git Repo
-        run: |
-          git config --global user.name "porames"
-          git config --global user.email "porames@users.noreply.github.com"
-          git add -A
-          git commit -m "[Bot 🤖] build data from today's dataset $(date)"
-          git push
+    get-vaccination-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v2.3.4
+            - name: Set TimeZone
+              uses: szenius/set-timezone@v1.0
+              with:
+                  timezoneLinux: 'Asia/Bangkok'
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v2.1.4
+            - name: Cache node_modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: node_modules-${{ hashFiles('package-lock.json') }}
+            - name: Install Node.js dependencies
+              run: npm install
+            - name: Setup Python Environment
+              uses: actions/setup-python@v2.2.1
+            - name: Cache Python Environment
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.pythonLocation }}
+                  key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
+            - name: Install Python dependencies
+              working-directory: bot_jobs
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+            - name: Get vaccination datasets
+              working-directory: bot_jobs/vaccination
+              run: |
+                  node get-national-data.js
+                  python get-manufacturer.py
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: vaccination-data
+                  path: |
+                      *components/gis/data/provincial-vaccination-data_2.json
+                      *components/gis/data/vaccine-manufacturer-timeseries.json
+    get-national-cases-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v2.3.4
+            - name: Set TimeZone
+              uses: szenius/set-timezone@v1.0
+              with:
+                  timezoneLinux: 'Asia/Bangkok'
+            - name: Setup Python Environment
+              uses: actions/setup-python@v2.2.1
+            - name: Cache Python Environment
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.pythonLocation }}
+                  key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
+            - name: Install Python dependencies
+              working-directory: bot_jobs
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+            - name: Get national data from djay/covidthailand
+              working-directory: bot_jobs
+              run: python get_national_data.py
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: national-cases-data
+                  path: |
+                      *components/gis/data/national-timeseries.json
+    get-provincial-cases-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v2.3.4
+            - name: Set TimeZone
+              uses: szenius/set-timezone@v1.0
+              with:
+                  timezoneLinux: 'Asia/Bangkok'
+            - name: Setup Python Environment
+              uses: actions/setup-python@v2.2.1
+            - name: Cache Python Environment
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.pythonLocation }}
+                  key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
+            - name: Install Python dependencies
+              working-directory: bot_jobs
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+            - name: Get Provincial Datasets and Build Province and District cases
+              working-directory: bot_jobs
+              run: python build_province_and_district_cases.py
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: provincial-cases-data
+                  path: |
+                      *components/gis/data/*-data-*.json
+    get-testing-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v2.3.4
+            - name: Set TimeZone
+              uses: szenius/set-timezone@v1.0
+              with:
+                  timezoneLinux: 'Asia/Bangkok'
+            - name: Setup Python Environment
+              uses: actions/setup-python@v2.2.1
+            - name: Cache Python Environment
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.pythonLocation }}
+                  key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
+            - name: Install Python dependencies
+              working-directory: bot_jobs
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+            - name: Get testing dataset
+              working-directory: bot_jobs
+              run: python get_covid_test_dataset.py
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: testing-data
+                  path: |
+                      *components/gis/data/testing-data.json
+    build-province-graph-and-commit:
+        needs:
+            [
+                get-vaccination-data,
+                get-provincial-cases-data,
+                get-national-cases-data,
+                get-testing-data
+            ]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check Repo
+              uses: actions/checkout@v2.3.4
+            - name: Set TimeZone
+              uses: szenius/set-timezone@v1.0
+              with:
+                  timezoneLinux: 'Asia/Bangkok'
+            - name: Download Provincial Vaccination Data
+              uses: actions/download-artifact@v2
+              with:
+                  name: vaccination-data
+            - name: Download National Cases Data
+              uses: actions/download-artifact@v2
+              with:
+                  name: national-cases-data
+            - name: Download Provincial Cases Data
+              uses: actions/download-artifact@v2
+              with:
+                  name: provincial-cases-data
+            - name: Download Testing Data
+              uses: actions/download-artifact@v2
+              with:
+                  name: testing-data
+            - name: Setup Python Environment
+              uses: actions/setup-python@v2.2.1
+            - name: Cache Python Environment
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.pythonLocation }}
+                  key: ${{ env.pythonLocation }}-${{ hashFiles('bot_jobs/requirements.txt') }}
+            - name: Install Python dependencies
+              working-directory: bot_jobs
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+            - name: Build Province Graphs in svg using Python
+              working-directory: bot_jobs
+              run: python build_province_graph.py
+            - name: Commit Changes to Git Repo
+              run: |
+                  git config --global user.name "porames"
+                  git config --global user.email "porames@users.noreply.github.com"
+                  git add -A
+                  git commit -m "[Bot 🤖] build data from today's dataset $(date)"
+                  git push
