@@ -15,6 +15,8 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
+import { getVaccineStats } from '../../components/getData'
+import { VaccinationTimeseries } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
 
@@ -42,29 +44,19 @@ const MetaHead = () => (
   </Head>
 )
 
-interface NationalDataProps {
-  date: string;
-  total_doses: number;
-  first_dose: number;
-  second_dose: number;
-  sinovac_supply: number;
-  astrazeneca_supply: number;
-  total_supply: number;
-  daily_vaccinations: number;
-  missing_data?: boolean;
-}
 
-const Overview = () => {
+
+const Overview = (props) => {
   const [updateDate, setUpdateDate] = useState<string>(undefined)
-  const [todayData, setTodayData] = useState<NationalDataProps>(undefined)
+  const [todayData, setTodayData] = useState<VaccinationTimeseries>(undefined)
   return (
     <div className='container text-center mb-4'>
       <h1>ความคืบหน้าการฉีดวัคซีน COVID-19 ในประเทศไทย</h1>
       <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).add(1, "day").format('LL')}</span>
       <div className='row mt-4' >
         <div className='col-md-8'>
-          <National setTodayData={setTodayData} setUpdateDate={setUpdateDate} />
-          <NationalTable updateDate={updateDate} />
+          <National vaccination_timeseries={props.vaccination_timeseries} setTodayData={setTodayData} setUpdateDate={setUpdateDate} />
+          <NationalTable vaccination_timeseries={props.vaccination_timeseries} updateDate={updateDate} />
         </div>
         <div className='col-md-4 '>
           <NationalBars todayData={todayData} />
@@ -111,11 +103,11 @@ const DetailGraphs = (props) => {
       <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
         <div className='my-4'>
           <h2 className='mb-3'>เรากำลังฉีดวัคซีนฉีดได้เร็วแค่ไหน ?</h2>
-          <VaccinationRate setTodayRate={setTodayRate} estimation={estimation} />
+          <VaccinationRate vaccination_timeseries={props.vaccination_timeseries} setTodayRate={setTodayRate} estimation={estimation} />
         </div>
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
-          <Projection setEstimation={setEstimation} />
+          <Projection vaccination_timeseries={props.vaccination_timeseries} setEstimation={setEstimation} />
           <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
         </div>
       </div>
@@ -123,14 +115,24 @@ const DetailGraphs = (props) => {
   )
 }
 
-export default function Vaccine() {
+
+
+export async function getStaticProps() {
+  return {
+    props: {
+      vaccination_timeseries: await getVaccineStats()
+    }
+  }
+}
+
+export default function Vaccine(props: { vaccination_timeseries: VaccinationTimeseries[] }) {
   return (
     <>
       <NavHead />
       <MetaHead />
       <div className='dark-theme py-5'>
-        <Overview />
-        <DetailGraphs />
+        <Overview vaccination_timeseries={props.vaccination_timeseries} />
+        <DetailGraphs vaccination_timeseries={props.vaccination_timeseries} />
         <div className="container my-5">
           <hr />
         </div>

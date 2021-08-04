@@ -12,7 +12,7 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveStepAfter } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from '../gis/data/national-vaccination-timeseries.json'
+//import data from '../gis/data/national-vaccination-timeseries.json'
 import { Text } from '@visx/text'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { filter, timeDays } from 'd3';
@@ -37,6 +37,7 @@ function movingAvg(ts, id) {
 
 function Curve(props) {
     const { width, height } = props
+    const data = props.vaccination_timeseries
     var vaxRate = data.filter((items) => {
         return new Date(items.date) >= new Date('2021-04-01');
     })
@@ -261,7 +262,7 @@ const VaccinationRate = (props) => {
                 <div>
                     <ParentSize>
                         {({ width, height }) => (
-                            <Curve setTodayRate={setTodayRate} estimation={props.estimation} width={width} height={350} />
+                            <Curve vaccination_timeseries={props.vaccination_timeseries} setTodayRate={setTodayRate} estimation={props.estimation} width={width} height={350} />
                         )}
                     </ParentSize>
                     {todayRate &&

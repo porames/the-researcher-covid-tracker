@@ -14,7 +14,7 @@ import 'moment/locale/th'
 import Link from 'next/link'
 import NavHead from '../components/navHead'
 import Footer from '../components/footer'
-import { getNationalStats, getDistrictData, getProvinceData } from '../components/getData'
+import { getNationalStats, getDistrictData, getProvinceData, getVaccineStats } from '../components/getData'
 
 const NationalCurveSection = (props) => {
   const [updatedDate, setUpdatedDate] = useState(undefined)
@@ -54,7 +54,7 @@ const NationalCurveSection = (props) => {
           ติดตามการฉีดวัคซีน <img src='/chevron_right_white_24dp.svg' />
         </a>
       </Link>
-      <VaccinePreview />
+      <VaccinePreview vaccination_timeseries={props.vaccination_timeseries} />
       <div className='my-4 text-center alert alert-black text-white'>
         เนื่องจากข้อมูลที่ได้รับรายงานยังมีความไม่สมบูรณ์ จึงอาจมีความคลาดเคลื่อนของตัวเลขจำนวนผู้ป่วยรายจังหวัด
         ท่านสามารถช่วยรายงานปัญหาหรือส่งข้อเสนอแนะได้ทาง <a href='https://github.com/porames/the-researcher-covid-bot'>Github</a>
@@ -70,7 +70,8 @@ export async function getStaticProps() {
     props: {
       national_stats: await getNationalStats(),
       province_data: await getProvinceData(),
-      district_data: await getDistrictData()
+      district_data: await getDistrictData(),
+      vaccination_timeseries: await getVaccineStats()
     }
   }
 }
@@ -94,7 +95,7 @@ export default function Home(props) {
           <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
           <meta property="twitter:image" content="https://covid-19.researcherth.co/cover.png" />
         </Head>
-        <NationalCurveSection national_stats={props.national_stats} />
+        <NationalCurveSection national_stats={props.national_stats} vaccination_timeseries={props.vaccination_timeseries} />
         <Map province_data={props.province_data} district_data={props.district_data} />
         <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>

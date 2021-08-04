@@ -8,13 +8,14 @@ const VaccinePreview = (props) => {
 
     return (
         <div className='row mt-4' >
-            <div className='col-md-8' style={{minHeight: 200}}>
+            <div className='col-md-8' style={{ minHeight: 200 }}>
                 <ParentSize>
                     {({ width, height }) => {
-                        if(width >0 && height >0)
-                        return(
-                        <NationalCurve setTodayData={setTodayData} setUpdateDate={setUpdateDate} width={width} height={height} />
-                    )}}
+                        if (width > 0 && height > 0)
+                            return (
+                                <NationalCurve vaccination_timeseries={props.vaccination_timeseries} setTodayData={setTodayData} setUpdateDate={setUpdateDate} width={width} height={height} />
+                            )
+                    }}
                 </ParentSize>
             </div>
             <div className='col-md-4 '>

@@ -1,13 +1,12 @@
-export declare interface NationalVaccinationDataProps {
+export declare interface VaccinationTimeseries {
     date: string;
     total_doses: number;
     first_dose: number;
     second_dose: number;
-    sinovac_supply?: number;
-    astrazeneca_supply?: number;
-    total_supply?: number;
+    third_dose: number | null;
     daily_vaccinations?: number;
     missing_data?: boolean;
+    data_anomaly?: string;
     deltaAvg?: number;
 }
 

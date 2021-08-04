@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { NationalVaccinationDataProps } from './types'
+import { VaccinationTimeseries } from './types'
 
 interface NationalBarsProps {
-    todayData: NationalVaccinationDataProps,
+    todayData: VaccinationTimeseries,
     hideSupply?: boolean
 }
 
@@ -12,11 +12,7 @@ const NationalBars = ({
 }: React.PropsWithChildren<NationalBarsProps>) => {
     const population = 66186727
     const [remainingSupply, setRemainingSupply] = useState<number>(0)
-    useEffect(() => {
-        if (todayData) {
-            setRemainingSupply((100 - (todayData.total_doses * 100 / todayData.total_supply)))
-        }
-    }, [todayData])
+
 
     return (
         <>
@@ -59,7 +55,7 @@ const NationalBars = ({
                                 </div>
                             </div>
                             <div className='w-100 text-left mt-1'>
-                                <span className='small text-muted'>คงเหลือ {(todayData.total_supply - todayData.total_doses).toLocaleString()}​/{todayData.total_supply.toLocaleString()} โดส</span>
+                                <span className='small text-muted'>คงเหลือ  โดส</span>
                             </div>
                         </>
                     }
