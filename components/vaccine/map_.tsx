@@ -1,16 +1,26 @@
 import React, { useMemo, useState } from 'react';
-import provincesData from '../gis/data/provincial-vaccination-data_2.json';
+import populationData from '../gis/data/th-census-with-hidden-pop.json';
 import _ from 'lodash';
 import { VaxCoverageLegend, SupplyLegend } from './mapLegends';
 import CoverageMap from '../map/CoverageMap';
 import SupplyMap from '../map/SupplyMap';
 
-function Map() {
+function Map(props: { province_vaccination }) {
     const [mapType, setMapType] = useState('coverage');
+    const provincesData = props.province_vaccination
+
     const maxCoverage = useMemo(() => {
         const coverages = [];
-        provincesData['data'].forEach((row) => {
-            coverages.push(row['total-1st-dose'] / row['population']);
+        provincesData['data'].forEach((province) => {
+            const provincePopulation = _.find(populationData, { province: province['province'] })
+            var coverage
+            if (provincePopulation['estimated_living_population']) {
+                coverage = province['1st_dose']['total_doses'] / provincePopulation['estimated_living_population']
+            }
+            else {
+                coverage = province['1st_dose']['total_doses'] / provincePopulation['population']
+            }
+            if (coverage >= 0) coverages.push(coverage);
         });
         return Math.max(...coverages);
     }, []);
@@ -22,9 +32,7 @@ function Map() {
                     className='col-md-6 mb-3'
                     style={{ display: 'flex', alignItems: 'flex-end' }}
                 >
-                    {mapType === 'coverage' && (
-                        <VaxCoverageLegend maxCoverage={maxCoverage} />
-                    )}
+                    {mapType === 'coverage' && <VaxCoverageLegend maxCoverage={maxCoverage} />}
                     {mapType === 'supply' && <SupplyLegend />}
                 </div>
 
@@ -63,7 +71,7 @@ function Map() {
                     </button>
                 </div>
             </div>
-            {mapType === 'coverage' && <CoverageMap />}
+            {mapType === 'coverage' && <CoverageMap province_vaccination={props.province_vaccination} />}
             {mapType === 'supply' && <SupplyMap />}
         </div>
     );

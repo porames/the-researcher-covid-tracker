@@ -10,13 +10,14 @@ export declare interface VaccinationTimeseries {
     deltaAvg?: number;
 }
 
+
 export declare interface ManufacturerDataProps {
     "date": string,
     "manufacturer": string,
     "doses_administered": number
 }
 
-export declare interface ProvincialVaccinationDataProps {
+export declare interface ProvincelVaccination {
     update_date: string;
     data: {
         "province": string,

@@ -1,6 +1,7 @@
-import _ from 'lodash';
-import moment from 'moment';
+import _ from 'lodash'
+import moment from 'moment'
 import axios from 'axios'
+import populationData from '../gis/data/th-census-with-hidden-pop.json'
 
 type TsProps = {
     [key: string]: any;
@@ -67,7 +68,22 @@ export function movingAvg(ts: TsProps[], id: string, type?: 'rate' | 'cum') {
 }
 
 
-export async function getVaccineData() {
-    var req = await axios.get('https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data/vaccination/1st-dose-provincial-vaccination.json')
-    return req.data
+
+export function calculate_coverage(data) {
+    data['data'].forEach((province, index) => {
+        const provincePopulation = _.find(populationData, { province: province['province'] })
+        var population
+        if (provincePopulation['estimated_living_population']) {
+            population = provincePopulation['estimated_living_population']
+        }
+        else {
+            population = provincePopulation['population']
+        }
+        data['data'][index]['id'] = provincePopulation["PROV_CODE"]
+        data['data'][index]['1st_dose_coverage'] = province['1st_dose']['total_doses'] / population
+        data['data'][index]['2nd_dose_coverage'] = province['2nd_dose']['total_doses'] / population
+        data['data'][index]['3rd_dose_coverage'] = province['3rd_dose']['total_doses'] / population
+        data['data'][index]['over_60_1st_dose_coverage'] = province['1st_dose']['total_doses'] / population
+    });
+    return data
 }

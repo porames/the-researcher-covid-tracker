@@ -1,7 +1,6 @@
-import provincesData from "../gis/data/provincial-vaccination-data_2.json";
 import mapboxgl from "maplibre-gl";
 
-const loader = (map: mapboxgl.Map) => {
+const loader = (map: mapboxgl.Map, provincesData) => {
     console.log("Map Loaded");
     map.addSource("provinces", {
         type: "vector",
@@ -20,14 +19,13 @@ const loader = (map: mapboxgl.Map) => {
         "match",
         ["get", "PROV_CODE"],
     ];
-    provincesData["data"].forEach((row) => {
-        const coverage = row["total-1st-dose"] / row["population"]
-        provinceMatch.push(String(row["id"]), coverage);
-        coverages.push(coverage);
+    provincesData["data"].forEach((row, index) => {
+        //const coverage = row["total-1st-dose"] / row["population"]
+        provinceMatch.push(row["id"], row['1st_dose_coverage']);
+        if (row['1st_dose_coverage'] >= 0) coverages.push(row['1st_dose_coverage']);
     });
     const maxCoverage = Math.max(...coverages);
     provinceMatch.push(0);
-
     map.addLayer({
         id: "province-fills",
         type: "fill",

@@ -15,8 +15,8 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats } from '../../components/getData'
-import { VaccinationTimeseries } from '../../components/vaccine/types'
+import { getVaccineStats, getProvinceVaccination } from '../../components/getData'
+import { VaccinationTimeseries, ProvincelVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
 
@@ -120,12 +120,13 @@ const DetailGraphs = (props) => {
 export async function getStaticProps() {
   return {
     props: {
-      vaccination_timeseries: await getVaccineStats()
+      vaccination_timeseries: await getVaccineStats(),
+      province_vaccination: await getProvinceVaccination()
     }
   }
 }
 
-export default function Vaccine(props: { vaccination_timeseries: VaccinationTimeseries[] }) {
+export default function Vaccine(props: { vaccination_timeseries: VaccinationTimeseries[], province_vaccination: ProvincelVaccination }) {
   return (
     <>
       <NavHead />
@@ -137,7 +138,7 @@ export default function Vaccine(props: { vaccination_timeseries: VaccinationTime
           <hr />
         </div>
         <Element name='map'>
-          <Map />
+          <Map province_vaccination={props.province_vaccination} />
         </Element>
         <div className="container my-5">
           <hr />
@@ -145,7 +146,7 @@ export default function Vaccine(props: { vaccination_timeseries: VaccinationTime
         <Element name='by-ages'>
           <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
             <h2 className='text-center mt-5'>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
-            <Province />
+            <Province province_vaccination={props.province_vaccination} />
           </div>
         </Element>
         <div className="container my-5">

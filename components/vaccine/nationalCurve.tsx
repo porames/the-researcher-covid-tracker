@@ -66,31 +66,41 @@ export function NationalCurve(props) {
                     />
                     <Group>
                         {timeSeries.map((d, i) => {
-                            const barHeight = height - yScale(y(d) - d.second_dose)
-                            const fullyVaxHeight = height - yScale(d.second_dose)
+                            const firstDoseHeight = height - yScale(y(d) - d.second_dose)
+                            const secondDoseHeight = height - yScale(d.second_dose)
+
                             return (
                                 <Group key={i}>
                                     <Bar
                                         x={xScale(x(d))}
-                                        y={height - barHeight - fullyVaxHeight - 30}
+                                        y={height - firstDoseHeight - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
-                                        height={barHeight}
+                                        height={firstDoseHeight}
                                         fill={timeSeries[i]['daily_vaccinations'] == 0 ? '#bdd5cd' : '#9dbbb2'}
                                     />
                                     <Bar
                                         x={xScale(x(d))}
-                                        y={height - fullyVaxHeight - 30}
+                                        y={height - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
-                                        height={fullyVaxHeight}
+                                        height={secondDoseHeight}
                                         fill={timeSeries[i]['daily_vaccinations'] == 0 ? '#bdd5cd' : '#47816e'}
                                     />
+                                    {d.third_dose &&
+                                        <Bar
+                                            x={xScale(x(d))}
+                                            y={yScale(d.third_dose) - 30}
+                                            width={xScale.bandwidth()}
+                                            height={height - yScale(d.third_dose)}
+                                            fill={"#3b5a52"}
+                                        />
+                                    }
                                     {(timeSeries[i]['data_anomaly'] || timeSeries[i]['daily_vaccinations'] == 0) &&
                                         <Bar
                                             fill="url('#anomaly_pattern')"
                                             x={xScale(x(d))}
-                                            y={height - barHeight - fullyVaxHeight - 30}
+                                            y={height - firstDoseHeight - secondDoseHeight - 30}
                                             width={xScale.bandwidth()}
-                                            height={barHeight + fullyVaxHeight}
+                                            height={firstDoseHeight + secondDoseHeight}
                                         />
                                     }
                                 </Group>
