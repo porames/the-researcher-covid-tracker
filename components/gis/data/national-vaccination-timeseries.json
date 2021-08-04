@@ -1203,5 +1203,35 @@
         "AstraZeneca-supply": 8485450,
         "total_supply": 18796157,
         "daily_vaccinations": 480155
+    },
+    {
+        "date": "2021-07-31",
+        "total_doses": 17685974,
+        "first_dose": 13802916,
+        "second_dose": 3883058,
+        "Sinovac-supply": 10340707,
+        "AstraZeneca-supply": 8529050,
+        "total_supply": 18869757,
+        "daily_vaccinations": 194342
+    },
+    {
+        "date": "2021-08-01",
+        "total_doses": 17866526,
+        "first_dose": 13955087,
+        "second_dose": 3911439,
+        "Sinovac-supply": 10340707,
+        "AstraZeneca-supply": 8529050,
+        "total_supply": 18869757,
+        "daily_vaccinations": 180552
+    },
+    {
+        "date": "2021-08-02",
+        "total_doses": 18198825,
+        "first_dose": 14207477,
+        "second_dose": 3991348,
+        "Sinovac-supply": 10375207,
+        "AstraZeneca-supply": 8607720,
+        "total_supply": 18982927,
+        "daily_vaccinations": 332299
     }
 ]
