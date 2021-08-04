@@ -21,6 +21,11 @@ export async function getVaccineStats() {
     return req.data
 }
 
+export async function getProvinceVaccination() {
+    var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccination.json`)
+    return req.data
+}
+
 /*
 export async function getVaccineSupply() {
     var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccine-supply.json`)

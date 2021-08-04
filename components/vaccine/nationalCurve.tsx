@@ -60,7 +60,7 @@ export function NationalCurve(props) {
                         id="anomaly_pattern"
                         height={5}
                         width={5}
-                        stroke={'black'}
+                        stroke={'#ffd600'}
                         strokeWidth={1}
                         orientation={['diagonal']}
                     />

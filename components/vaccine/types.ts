@@ -17,18 +17,56 @@ export declare interface ManufacturerDataProps {
 }
 
 export declare interface ProvincialVaccinationDataProps {
-    update_at: string;
+    update_date: string;
     data: {
-        "name": string;
-        "id": string;
-        "population": number;
-        "registered_population": number;
-        "over-60-population": number;
-        "coverage": number;
-        "total_doses": number;
-        "total-1st-dose": number;
-        "total-2nd-dose": number;
-        "over-60-1st-dose": number;
-        "over-60-2nd-dose": number;
+        "province": string,
+        "1st_dose": {
+            "AstraZeneca": number,
+            "Johnson & Johnson": number,
+            "Sinopharm": number,
+            "Sinovac": number,
+            "total_doses": number,
+            ">80": number,
+            "61-80": number,
+            "41-60": number,
+            "21-40": number,
+            "18-20": number
+        },
+        "2nd_dose": {
+            "AstraZeneca": number,
+            "Johnson & Johnson": number,
+            "Sinopharm": number,
+            "Sinovac": number,
+            "total_doses": number,
+            ">80": number,
+            "61-80": number,
+            "41-60": number,
+            "21-40": number,
+            "18-20": number
+        },
+        "3rd_dose": {
+            "AstraZeneca": number,
+            "Johnson & Johnson": number,
+            "Sinopharm": number,
+            "Sinovac": number,
+            "total_doses": number,
+            ">80": number,
+            "61-80": number,
+            "41-60": number,
+            "21-40": number,
+            "18-20": number
+        },
+        "all_dose": {
+            "AstraZeneca": number,
+            "Johnson & Johnson": number,
+            "Sinopharm": number,
+            "Sinovac": number,
+            "total_doses": number,
+            ">80": number,
+            "61-80": number,
+            "41-60": number,
+            "21-40": number,
+            "18-20": number
+        }
     }[]
 }
