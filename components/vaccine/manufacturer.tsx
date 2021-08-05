@@ -95,7 +95,7 @@ function ManufacturerTable(props) {
 
     return (
         <div>
-            <div className='mt-3 table-responsive-md'>
+            <div className='mt-3 table-responsive'>
                 <table className="table table-theme-light text-white w-100 position-relative" style={{ fontSize: '90%' }}>
                     <thead>
                         <tr>

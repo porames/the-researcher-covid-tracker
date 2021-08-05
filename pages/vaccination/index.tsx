@@ -52,7 +52,7 @@ const Overview = (props) => {
   return (
     <div className='container text-center mb-4'>
       <h1>ความคืบหน้าการฉีดวัคซีน COVID-19 ในประเทศไทย</h1>
-      <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).add(1, "day").format('LL')}</span>
+      <span className='text-muted small'>อัพเดทเมื่อ {updateDate && moment(updateDate).format('LL')}</span>
       <div className='row mt-4' >
         <div className='col-md-8'>
           <National vaccination_timeseries={props.vaccination_timeseries} setTodayData={setTodayData} setUpdateDate={setUpdateDate} />

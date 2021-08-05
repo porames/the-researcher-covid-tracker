@@ -82,12 +82,6 @@ function NationalTable(props) {
                             </div>
                         </td>
                     </tr>
-                    <tr className='text-sec'>
-                        <td className='text-left'>จำนวนวัคซีนคงเหลือ</td>
-                        <td></td>
-                        <td>{(data[data.length - 1]['total_supply'] - data[data.length - 1]['total_doses']).toLocaleString()}</td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
