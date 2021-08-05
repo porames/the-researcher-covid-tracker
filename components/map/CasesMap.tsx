@@ -1,12 +1,21 @@
 import mapboxgl from "maplibre-gl";
-import amphoesData from "../gis/data/amphoes-data-14days.json";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";
 import _ from "lodash";
 import onLoadHandler from "./cases-load";
 
-const CasesMap = () => {
+type CasesMapProps = {
+  district_data: {
+    "id": number,
+    "province": string,
+    "name": string,
+    "caseCount": number
+  }[]
+}
+
+
+const CasesMap = (props: CasesMapProps) => {
   const [hoveredData, setHoveredData] = useState<any>();
   const [infoBoxPosition, setInfoBoxPosition] =
     useState<{ x: number; y: number }>();
@@ -17,6 +26,7 @@ const CasesMap = () => {
     (window as MapWindow).hoveredStateId = 0;
     setLinkedWindow(window as MapWindow);
   }, []);
+  const amphoesData = props.district_data
   const onClicks = useMemo(
     () => [
       createCallbackWithLayer("cases-heat", (map: mapboxgl.Map, e) => {
@@ -94,7 +104,7 @@ const CasesMap = () => {
   );
   return (
     <BaseMap
-      onLoad={onLoadHandler}
+      onLoad={(map) => onLoadHandler(map, amphoesData)}
       onMove={[]}
       onClick={onClicks}
       onMousemove={onMousemoves}

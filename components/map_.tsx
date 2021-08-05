@@ -5,7 +5,7 @@ import CasesMap from "./map/CasesMap";
 import { HotspotLegend, CasesLegend } from "./mapLegends";
 import build_data from './build_job.json'
 import moment from "moment";
-function Map() {
+function Map(props) {
   const [mapType, setMapType] = useState("hotspot");
   return (
     <div style={{ position: "relative" }}>
@@ -51,8 +51,8 @@ function Map() {
           </button>
         </div>
       </div>
-      {mapType === "hotspot" && <HotspotMap />}
-      {mapType === "cases" && <CasesMap />}
+      {mapType === "hotspot" && <HotspotMap province_data={props.province_data} />}
+      {mapType === "cases" && <CasesMap district_data={props.district_data} />}
       <div className="container text-sec mt-3 credit" style={{ maxWidth: 810 }}>
         ที่มาข้อมูล: รายงาน COVID-19 ประจำวัน ข้อมูลประจำประเทศไทย
         จากกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์

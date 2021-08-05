@@ -74,25 +74,18 @@ function Graph(props) {
     return (
         <svg width={width} height={height}>
             <Group>
-                <MarkerArrow id="marker-arrow-province" fill='#cf1111' refX={2} size={5} />
-                {[recent].map((lineData, i) => {
-                    const markerEnd = 'url(#marker-arrow-province)';
-                    return (
-                        <Group key={i}>
-                            <LinePath
-                                key={i}
-                                curve={curveLinear}
-                                data={lineData}
-                                x={d => xScale(new Date(d.date)) ?? 0}
-                                y={d => yScale(d['movingAvg']) ?? 0}
-                                stroke='#cf1111'
-                                strokeWidth={2}
-                                shapeRendering="geometricPrecision"
-                                markerEnd={markerEnd}
-                            />
-                        </Group>
-                    );
-                })}
+                <MarkerArrow id={`marker-arrow-province-${props.index}`} fill='#cf1111' refX={2} size={5} />
+                <LinePath
+                    curve={curveLinear}
+                    data={recent}
+                    x={d => xScale(new Date(d.date)) ?? 0}
+                    y={d => yScale(d['movingAvg']) ?? 0}
+                    stroke='#cf1111'
+                    strokeWidth={2}
+                    shapeRendering="geometricPrecision"
+                    markerEnd={`url(#marker-arrow-province-${props.index})`}
+
+                />
             </Group>
         </svg>
     );

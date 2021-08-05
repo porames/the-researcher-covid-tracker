@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
-import _ from 'lodash'
+import _, { times } from 'lodash'
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import moment from 'moment'
@@ -11,12 +11,12 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from '../gis/data/national-vaccination-timeseries.json'
+import { PatternLines } from '@visx/pattern';
 import { AxisBottom } from '@visx/axis'
 import { movingAvg } from './util'
 
 export function NationalCurve(props) {
-    var timeSeries = data
+    var timeSeries = props.vaccination_timeseries
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
@@ -24,7 +24,7 @@ export function NationalCurve(props) {
     useEffect(() => {
         props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
         props.setTodayData(timeSeries[timeSeries.length - 1])
-    }, [])
+    }, [timeSeries])
     const xScale = scaleBand({
         range: [0, width],
         domain: timeSeries.map(x),
@@ -36,7 +36,7 @@ export function NationalCurve(props) {
     })
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(timeSeries, y)]
+        domain: [0, Number(max(timeSeries, y))]
     })
 
     const {
@@ -56,26 +56,53 @@ export function NationalCurve(props) {
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
+                    <PatternLines
+                        id="anomaly_pattern"
+                        height={5}
+                        width={5}
+                        stroke={'white'}
+                        strokeWidth={1}
+                        orientation={['diagonal']}
+                    />
                     <Group>
                         {timeSeries.map((d, i) => {
-                            const barHeight = height - yScale(y(d) - d.second_dose)
-                            const fullyVaxHeight = height - yScale(d.second_dose)
+                            const firstDoseHeight = height - yScale(y(d) - d.second_dose)
+                            const secondDoseHeight = height - yScale(d.second_dose)
+
                             return (
                                 <Group key={i}>
                                     <Bar
                                         x={xScale(x(d))}
-                                        y={height - barHeight - fullyVaxHeight - 30}
+                                        y={height - firstDoseHeight - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
-                                        height={barHeight}
-                                        fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#9dbbb2'}
+                                        height={firstDoseHeight}
+                                        fill={'#9dbbb2'}
                                     />
                                     <Bar
                                         x={xScale(x(d))}
-                                        y={height - fullyVaxHeight - 30}
+                                        y={height - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
-                                        height={fullyVaxHeight}
-                                        fill={timeSeries[i]['missing_data'] ? '#bdd5cd' : '#47816e'}
+                                        height={secondDoseHeight}
+                                        fill={'#47816e'}
                                     />
+                                    {d.third_dose &&
+                                        <Bar
+                                            x={xScale(x(d))}
+                                            y={yScale(d.third_dose) - 30}
+                                            width={xScale.bandwidth()}
+                                            height={height - yScale(d.third_dose)}
+                                            fill={"#3b5a52"}
+                                        />
+                                    }
+                                    {(timeSeries[i]['data_anomaly'] || timeSeries[i]['daily_vaccinations'] == 0) &&
+                                        <Bar
+                                            fill="url('#anomaly_pattern')"
+                                            x={xScale(x(d))}
+                                            y={height - firstDoseHeight - secondDoseHeight - 30}
+                                            width={xScale.bandwidth()}
+                                            height={firstDoseHeight + secondDoseHeight}
+                                        />
+                                    }
                                 </Group>
                             );
                         })}
@@ -143,14 +170,18 @@ export function NationalCurve(props) {
                             minWidth: 160,
                             textAlign: 'start',
                             padding: 12,
+                            maxWidth: 250
                         }}
                     >
                         <span>
                             <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
                             ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส<br />
                             ได้รับวัคซีนครบแล้ว {tooltipData['second_dose'].toLocaleString()} คน<br />
-                            {tooltipData['missing_data'] &&
+                            {tooltipData['daily_vaccinations'] == 0 &&
                                 <div className='text-danger mt-1 credit'><b>*วันที่ไม่มีรายงานข้อมูล</b></div>
+                            }
+                            {tooltipData['data_anomaly'] !== 0 &&
+                                <div className='text-danger mt-1 credit'><b>*{tooltipData['data_anomaly']}</b></div>
                             }
                         </span>
                     </TooltipWithBounds>
@@ -165,7 +196,7 @@ export const National = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <NationalCurve setTodayData={props.setTodayData} setUpdateDate={props.setUpdateDate} width={width} height={300} />
+                <NationalCurve vaccination_timeseries={props.vaccination_timeseries} setTodayData={props.setTodayData} setUpdateDate={props.setUpdateDate} width={width} height={300} />
             )}
         </ParentSize>
     </div>

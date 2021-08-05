@@ -1366,5 +1366,50 @@
     "AstraZeneca":7694686.0,
     "Sinopharm":890159.0,
     "Sinovac":8426632.0
+  },
+  {
+    "date":"2021-07-31",
+    "Sinovac_rate":273171.0,
+    "AstraZeneca_rate":305393.0,
+    "Sinopharm_rate":95933.0,
+    "AstraZeneca":8000079.0,
+    "Sinopharm":986092.0,
+    "Sinovac":8699803.0
+  },
+  {
+    "date":"2021-08-01",
+    "Sinovac_rate":33832.0,
+    "AstraZeneca_rate":82035.0,
+    "Sinopharm_rate":64685.0,
+    "AstraZeneca":8082114.0,
+    "Sinopharm":1050777.0,
+    "Sinovac":8733635.0
+  },
+  {
+    "date":"2021-08-02",
+    "Sinovac_rate":128193.0,
+    "AstraZeneca_rate":146007.0,
+    "Sinopharm_rate":58099.0,
+    "AstraZeneca":8228121.0,
+    "Sinopharm":1108876.0,
+    "Sinovac":8861828.0
+  },
+  {
+    "date":"2021-08-03",
+    "Sinovac_rate":167687.0,
+    "AstraZeneca_rate":127202.0,
+    "Sinopharm_rate":84382.0,
+    "AstraZeneca":8355323.0,
+    "Sinopharm":1193258.0,
+    "Sinovac":9029515.0
+  },
+  {
+    "date":"2021-08-04",
+    "Sinovac_rate":-381949.0,
+    "AstraZeneca_rate":-456668.0,
+    "Sinopharm_rate":-247847.0,
+    "AstraZeneca":7898655.0,
+    "Sinopharm":945411.0,
+    "Sinovac":8647566.0
   }
 ]

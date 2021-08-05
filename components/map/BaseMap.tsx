@@ -52,7 +52,6 @@ const LoadingScreen = (props) => (
 
 const TableLayout = (props) => {
     const { visibleFeatures, page, mapContainer, map, children, setPage, loaded } = props
-    console.log(visibleFeatures)
     return (
         <div className="container-fluid w-100">
 

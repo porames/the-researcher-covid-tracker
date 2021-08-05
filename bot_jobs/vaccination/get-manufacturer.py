@@ -78,7 +78,8 @@ if len(df) > 0:
     latest_date = pd.to_datetime(df.iloc[-1]['date'])
 else:
     latest_date = pd.to_datetime(START_DATE)
-url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/" + str(latest_date.month).zfill(2) + "/10/2021"
+print(latest_date)
+url = "https://ddc.moph.go.th/vaccine-covid19/diaryPresentMonth/" + str((latest_date + pd.DateOffset(1)).month).zfill(2) + "/10/2021"
 req = requests.get(url)
 soup = BeautifulSoup(req.content, 'html.parser')
 manufacturer_timeseries = df

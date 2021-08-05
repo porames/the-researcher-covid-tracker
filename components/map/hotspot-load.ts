@@ -1,6 +1,19 @@
-import provincesData from "../gis/data/provinces-data-14days.json";
+type ProvincesDataProps = {
+  "name": string,
+  "cases": {
+    [key: string]: number
+  }[],
+  "id": number,
+  "caseCount": number,
+  "cases-per-100k": number,
+  "deaths": {
+    [key: string]: number
+  },
+  "deathsCount": number
+  "deaths-per-100k": number
+}
 
-const loader = (map: mapboxgl.Map) => {
+const loader = (map: mapboxgl.Map, provincesData: ProvincesDataProps[]) => {
   // Add a geojson point source.
   // Heatmap layers also work with a vector tile source.
   map.addSource("provinces", {

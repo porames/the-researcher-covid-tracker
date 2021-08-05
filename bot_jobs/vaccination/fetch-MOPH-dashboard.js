@@ -1,3 +1,5 @@
+//Goodbye cold-chain dashboard. We'll miss you 😭
+
 const geo = require('../th-census-age-group.json')
 const estimated_pop = require('../th-census-with-hidden-pop.json')
 const axios = require('axios')

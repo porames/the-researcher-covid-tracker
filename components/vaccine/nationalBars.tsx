@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from 'react'
-import { NationalVaccinationDataProps } from './types'
+import { VaccinationTimeseries } from './types'
 
 interface NationalBarsProps {
-    todayData: NationalVaccinationDataProps,
-    hideSupply?: boolean
+    todayData: VaccinationTimeseries,
+    hideSupply?: boolean,
+    hideBooster?: boolean,
 }
 
 const NationalBars = ({
     todayData,
-    hideSupply = false
+    hideSupply = true,
+    hideBooster = false
 }: React.PropsWithChildren<NationalBarsProps>) => {
     const population = 66186727
     const [remainingSupply, setRemainingSupply] = useState<number>(0)
-    useEffect(() => {
-        if (todayData) {
-            setRemainingSupply((100 - (todayData.total_doses * 100 / todayData.total_supply)))
-        }
-    }, [todayData])
+
 
     return (
         <>
             {todayData && (
                 <div className='d-flex flex-column align-items-start'>
+                    {!hideBooster &&
+                        <div className='w-100 text-left'>
+                            <b>ได้รับวัคซีนกระตุ้น (เข็ม 3)</b>
+                            <h1 className='mt-1 vaccine-theme'>
+                                {(todayData['third_dose'] * 100 / population).toFixed(1)}%
+                            </h1>
+                            <div className='doses-progress'>
+                                <div className='doses-bar' style={{ width: `${(todayData.third_dose * 100 / population)}%` }}></div>
+                            </div>
+                            <div className='w-100 text-left mt-1'>
+                                <span className='small text-muted'>คิดเป็น {(todayData.third_dose.toLocaleString())} คน</span>
+                            </div>
+                            <hr className='w-100' />
+                        </div>
+
+                    }
                     <div className='mb-4 w-100 text-left'>
-                        <b>ได้รับวัคซีนครบแล้ว</b>
+                        <b>ได้รับวัคซีนอย่างน้อย 2 เข็ม</b>
                         <h1 className='mt-1 vaccine-theme'>
                             {(todayData['second_dose'] * 100 / population).toFixed(1)}%
                         </h1>
@@ -35,7 +49,7 @@ const NationalBars = ({
                         </div>
                     </div>
                     <div className='w-100 text-left'>
-                        <b>ได้รับวัคซีนอย่างน้อย 1 โดส</b>
+                        <b>ได้รับวัคซีนอย่างน้อย 1 เข็ม</b>
                         <h1 className='mt-1 vaccine-theme'>
                             {(todayData.first_dose * 100 / population).toFixed(1)}%
                         </h1>
@@ -59,7 +73,7 @@ const NationalBars = ({
                                 </div>
                             </div>
                             <div className='w-100 text-left mt-1'>
-                                <span className='small text-muted'>คงเหลือ {(todayData.total_supply - todayData.total_doses).toLocaleString()}​/{todayData.total_supply.toLocaleString()} โดส</span>
+                                <span className='small text-muted'>คงเหลือ  โดส</span>
                             </div>
                         </>
                     }

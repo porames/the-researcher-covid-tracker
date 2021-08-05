@@ -1,7 +1,13 @@
 import mapboxgl from "maplibre-gl";
-import amphoesData from "../gis/data/amphoes-data-14days.json";
 
-const loader = (map: mapboxgl.Map) => {
+type AmphoesData = {
+  "id": number,
+  "province": string,
+  "name": string,
+  "caseCount": number
+}
+
+const loader = (map: mapboxgl.Map, amphoesData: AmphoesData[]) => {
   // Add a geojson point source.
   // Heatmap layers also work with a vector tile source.
   map.addSource("provinces", {

@@ -99,11 +99,9 @@ const EstimateCurve = (props) => {
         props.setLatestData(timeSeries[timeSeries.length - 1])
     }, [])
     const extension = generateExtension(timeSeries)
-    console.log(extension)
     const dividedData = [timeSeries, extension['prediction']]
     const merged = [...timeSeries, ...extension['prediction']]
     const planned = plannedRollout(data)
-    console.log(planned)
     useEffect(() => {
         props.setEstimation(merged[merged.length - 1])
     }, [])

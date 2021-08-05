@@ -27,8 +27,6 @@ function TestingCurve(props) {
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
-
-    //console.log(timeSeries)
     const xScale = scaleBand({
         range: [0, width],
         domain: timeSeries.map(x),

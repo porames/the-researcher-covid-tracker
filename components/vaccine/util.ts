@@ -1,5 +1,8 @@
-import _ from 'lodash';
-import moment from 'moment';
+import _ from 'lodash'
+import moment from 'moment'
+import axios from 'axios'
+import populationData from '../gis/data/th-census-with-hidden-pop.json'
+import AgeGroupData from '../gis/data/th-census-age-group.json'
 
 type TsProps = {
     [key: string]: any;
@@ -63,4 +66,28 @@ export function movingAvg(ts: TsProps[], id: string, type?: 'rate' | 'cum') {
         }
     }
     return { moving_aves, timeSeries: ts };
+}
+
+
+
+export function calculate_coverage(data) {
+    data['data'].forEach((province, index) => {
+        const provincePopulation = _.find(populationData, { province: province['province'] })
+        const provinceAgeData = _.find(AgeGroupData, { province: province['province'] })
+        var population
+        if (provincePopulation['estimated_living_population']) {
+            population = provincePopulation['estimated_living_population']
+            data['data'][index]['hidden_pop'] = provincePopulation['estimated_living_population'] - provincePopulation['population']
+        }
+        else {
+            population = provincePopulation['population']
+        }
+        data['data'][index]['id'] = provincePopulation["PROV_CODE"]
+        data['data'][index]['1st_dose_coverage'] = province['total_1st_dose'] / population
+        data['data'][index]['2nd_dose_coverage'] = province['total_2nd_dose'] / population
+        data['data'][index]['3rd_dose_coverage'] = province['total_3rd_dose'] / population
+        data['data'][index]['over_60_1st_dose_coverage'] = province['over_60_1st_dose'] / provinceAgeData[">60"]
+
+    });
+    return data
 }

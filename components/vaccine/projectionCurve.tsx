@@ -9,10 +9,9 @@ import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize } from '@visx/responsive'
-import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Text } from '@visx/text'
-import { NationalVaccinationDataProps } from './types'
+import { VaccinationTimeseries } from './types'
 import { movingAvg } from './util'
 
 const population = 66186727 * 2 //doses roequired to cover all population (children included)
@@ -24,6 +23,7 @@ interface PredictionProps {
     deltaAvg?: number;
     total_doses: number;
     first_dose?: number;
+    third_dose?: number;
     firstDoseAvg?: number;
 }
 
@@ -61,12 +61,9 @@ function plannedRollout(ts: PredictionProps[]) {
     const initVaccinated = ts[ts.length - 1]['total_doses']
     const requiredRate = ((50 * 1000 * 1000 * 2) - initVaccinated) / eta
     var planned: PredictionProps[] = []
-    var planned_120: PredictionProps[] = []
     var i = 0
     var predict = 0
-    var predict_120 = 0
     var m50_date = 0
-    var m50_date_120 = 0
 
     while (predict < population) {
         predict = Math.floor(initVaccinated + (requiredRate * i))
@@ -89,11 +86,13 @@ function plannedRollout(ts: PredictionProps[]) {
 const EstimateCurve = (props) => {
     const { width, height } = props
     let timeSeries: PredictionProps[] = []
-    const { moving_aves: vaccinatedAvgs } = movingAvg(data, 'total_doses')
-    const { moving_aves: firstDoseAvgs } = movingAvg(data, 'first_dose')
-    const { moving_aves: deltaAvgs } = movingAvg(data, 'daily_vaccinations')
+    const data = props.vaccination_timeseries
+    const { moving_aves: vaccinatedAvgs } = movingAvg(data, 'total_doses', 'cum')
+    const { moving_aves: firstDoseAvgs } = movingAvg(data, 'first_dose', 'cum')
+    const { moving_aves: deltaAvgs } = movingAvg(data, 'daily_vaccinations', 'cum')
     // not sure if data should be updated?
-    data.map((item: NationalVaccinationDataProps, index: number) => {
+
+    data.map((item: VaccinationTimeseries, index: number) => {
         timeSeries.push({
             date: item.date,
             estimation: false,
@@ -173,7 +172,7 @@ const EstimateCurve = (props) => {
                         curve={curveBasis}
                         data={dividedData[0]}
                         x={d => dateScale(x(d))}
-                        y={d => yScale(d['vaccinatedAvg']) - 30}
+                        y={d => yScale(d['total_doses']) - 30}
                         stroke="#7ea297"
                         strokeWidth={2}
                     />
@@ -238,7 +237,7 @@ export const Projection = (props) => (
     <div>
         <ParentSize>
             {({ width }) => (
-                <EstimateCurve setEstimation={props.setEstimation} width={width} height={350} />
+                <EstimateCurve vaccination_timeseries={props.vaccination_timeseries} setEstimation={props.setEstimation} width={width} height={350} />
             )}
         </ParentSize>
     </div>
