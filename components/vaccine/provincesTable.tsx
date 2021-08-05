@@ -3,9 +3,8 @@ import _ from 'lodash'
 import moment from 'moment'
 import { usePopperTooltip } from 'react-popper-tooltip';
 import 'react-popper-tooltip/dist/styles.css';
-import { ProvincelVaccination } from './types'
+import { ProvinceVaccination } from './types'
 import { sum, mean } from 'd3'
-import { calculate_coverage } from './util';
 const InfoTooltip = (props) => {
     const {
         getArrowProps,
@@ -25,7 +24,7 @@ const InfoTooltip = (props) => {
                     {...getTooltipProps({ className: 'tooltip-container p-2' })}
                 >
                     <div {...getArrowProps({ className: 'tooltip-arrow' })} />
-                    มีประชากรแฝงประมาณ {props.excessPop.toLocaleString()} คน
+                    มีประชากรแฝงประมาณ {props.hidden_pop.toLocaleString()} คน
                 </div>
             )}
         </div>
@@ -34,11 +33,9 @@ const InfoTooltip = (props) => {
 
 
 
-export default function Province(props: { province_vaccination: ProvincelVaccination }) {
+export default function Province(props: { province_vaccination: ProvinceVaccination }) {
     const [showAll, setShowAll] = useState<boolean>(false)
-    var data = calculate_coverage(props.province_vaccination)
-    data = data['data']
-
+    var data = props.province_vaccination.data
     data = data.filter(province => province.id !== '0')
     data = _.sortBy(data, '1st_dose_coverage').reverse()
 
@@ -62,6 +59,9 @@ export default function Province(props: { province_vaccination: ProvincelVaccina
                                         <td>
                                             <div className='d-flex align-items-center'>
                                                 <b>{province['province']}</b>
+                                                {province['hidden_pop'] &&
+                                                    <InfoTooltip hidden_pop={province['hidden_pop']} />
+                                                }
                                             </div>
                                         </td>
                                         <td style={{ width: '30%' }}>

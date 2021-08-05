@@ -103,7 +103,6 @@ const EstimateCurve = (props) => {
             deltaAvg: deltaAvgs[index]
         })
     })
-    console.log(timeSeries)
     const generatedData = generateExtension(timeSeries)
     const extension = generatedData.predictions
     const goal = plannedRollout(timeSeries)

@@ -2,6 +2,7 @@ import mapboxgl from "maplibre-gl";
 
 const loader = (map: mapboxgl.Map, provincesData) => {
     console.log("Map Loaded");
+    console.log(provincesData)
     map.addSource("provinces", {
         type: "vector",
         url: "https://v2k.vallarismaps.com/core/tiles/60c4fbfcceacf1b5ea19ae9a?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",

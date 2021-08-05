@@ -60,7 +60,7 @@ export function NationalCurve(props) {
                         id="anomaly_pattern"
                         height={5}
                         width={5}
-                        stroke={'#ffd600'}
+                        stroke={'white'}
                         strokeWidth={1}
                         orientation={['diagonal']}
                     />
@@ -76,14 +76,14 @@ export function NationalCurve(props) {
                                         y={height - firstDoseHeight - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
                                         height={firstDoseHeight}
-                                        fill={timeSeries[i]['daily_vaccinations'] == 0 ? '#bdd5cd' : '#9dbbb2'}
+                                        fill={'#9dbbb2'}
                                     />
                                     <Bar
                                         x={xScale(x(d))}
                                         y={height - secondDoseHeight - 30}
                                         width={xScale.bandwidth()}
                                         height={secondDoseHeight}
-                                        fill={timeSeries[i]['daily_vaccinations'] == 0 ? '#bdd5cd' : '#47816e'}
+                                        fill={'#47816e'}
                                     />
                                     {d.third_dose &&
                                         <Bar

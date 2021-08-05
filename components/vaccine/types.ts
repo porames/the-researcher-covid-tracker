@@ -17,9 +17,10 @@ export declare interface ManufacturerDataProps {
     "doses_administered": number
 }
 
-export declare interface ProvincelVaccination {
+export declare interface ProvinceVaccination {
     update_date: string;
     data: {
+        "id": string;
         "province": string,
         "1st_dose": {
             "AstraZeneca": number,

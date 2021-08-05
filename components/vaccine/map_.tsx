@@ -12,15 +12,7 @@ function Map(props: { province_vaccination }) {
     const maxCoverage = useMemo(() => {
         const coverages = [];
         provincesData['data'].forEach((province) => {
-            const provincePopulation = _.find(populationData, { province: province['province'] })
-            var coverage
-            if (provincePopulation['estimated_living_population']) {
-                coverage = province['1st_dose']['total_doses'] / provincePopulation['estimated_living_population']
-            }
-            else {
-                coverage = province['1st_dose']['total_doses'] / provincePopulation['population']
-            }
-            if (coverage >= 0) coverages.push(coverage);
+            coverages.push(province['1st_dose_coverage'])
         });
         return Math.max(...coverages);
     }, []);

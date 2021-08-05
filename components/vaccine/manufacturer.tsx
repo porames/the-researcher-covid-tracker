@@ -43,19 +43,37 @@ const SvBadge = (props) => {
         </div>
     )
 }
+const ShareBadge = (props) => {
+    const scale = chroma.scale(['#FFFFFF', props.fill])
+    return (
+        <div
+            style={{
+                backgroundColor: scale(props.percentage / 100).hex(),
+                color: 'black'
+            }}
+            className='ml-2 badge' >
+            {Math.round(props.percentage).toLocaleString()}%
+        </div>
+    )
+}
+
 
 function ManufacturerTable(props) {
     const [showAll, setShowAll] = useState<boolean>(false)
     const [isDescSort, setIsDescSort] = useState(true)
     const [sortData, setSortData] = useState({
-        column: 'total-supply',
+        column: 'all_dose.total_doses',
         direction: 'down'
     })
-    var data = _.cloneDeep(dataset)['data']
-    data = data.filter(province => province.id !== '0')
+    var data = props.province_vaccine_manufacturer["data"]
+    //data = data.filter(province => province.id !== '0')
     data.map((province, index) => {
-        data[index]['AstraZeneca-share'] = data[index]['AstraZeneca-supply'] * 100 / data[index]['total-supply']
-        data[index]['Sinovac-share'] = data[index]['Sinovac-supply'] * 100 / data[index]['total-supply']
+        data[index]["JnJ"] = province["Johnson & Johnson"]
+        data[index]["Sinovac-share"] = province["Sinovac"] / province["total_doses"]
+        data[index]["AstraZeneca-share"] = province["AstraZeneca"] / province["total_doses"]
+        data[index]["Pfizer-share"] = province["Pfizer"] / province["total_doses"]
+        data[index]["Sinopharm-share"] = province["Sinopharm"] / province["total_doses"]
+        data[index]["JnJ-share"] = province["JnJ"] / province["total_doses"]
     })
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {
@@ -68,7 +86,7 @@ function ManufacturerTable(props) {
         })
     }
     useEffect(() => {
-        data = _.sortBy(data, sortData.column)
+        data = _.orderBy(data, sortData.column)
         if (sortData.direction == 'down') {
             data.reverse()
         }
@@ -85,13 +103,13 @@ function ManufacturerTable(props) {
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='total-supply'
-                                text='จำนวนวัคซีนที่ได้รับ'
+                                colId='total_doses'
+                                text='จำนวนวัคซีนที่ฉีด'
                             />
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='AstraZeneca-supply'
+                                colId='AstraZeneca'
                                 text='AstraZeneca'
                             />
                             <TableHeader
@@ -104,13 +122,52 @@ function ManufacturerTable(props) {
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='Sinovac-supply'
+                                colId='Sinovac'
                                 text='Sinovac'
                             />
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='Sinovac-share'
+                                text='ร้อยละ'
+                                spacing={true}
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='Pfizer'
+                                text='Pfizer'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='Pfizer-share'
+                                text='ร้อยละ'
+                                spacing={true}
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='Sinopharm'
+                                text='Sinopharm'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='Sinopharm-share'
+                                text='ร้อยละ'
+                                spacing={true}
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='JnJ'
+                                text='J&J'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='JnJ-share'
                                 text='ร้อยละ'
                             />
                         </tr>
@@ -121,23 +178,44 @@ function ManufacturerTable(props) {
                                 return (
                                     <tr key={index} className='text-sec'>
                                         <td className='text-left'>
-                                            <b>{province.name}</b>
+                                            <b>{province.province}</b>
                                         </td>
                                         <td className='col-spacing'>
-                                            {province['total-supply'].toLocaleString()}
+                                            {province['total_doses'].toLocaleString()}
                                         </td>
                                         <td>
-                                            {province['AstraZeneca-supply'].toLocaleString()}
+                                            {province['AstraZeneca'].toLocaleString()}
                                         </td>
                                         <td className='col-spacing'>
-                                            <AzBadge percentage={province['AstraZeneca-share']} />
+                                            <ShareBadge fill="#F29F05" percentage={province['AstraZeneca'] * 100 / province['total_doses']} />
                                         </td>
                                         <td>
-                                            {province['Sinovac-supply'].toLocaleString()}
+                                            {province['Sinovac'].toLocaleString()}
+                                        </td>
+                                        <td className='col-spacing'>
+                                            <ShareBadge fill="ff5722" percentage={province['Sinovac'] * 100 / province['total_doses']} />
+                                        </td>
+
+                                        <td>
+                                            {province['Pfizer'].toLocaleString()}
+                                        </td>
+                                        <td className='col-spacing'>
+                                            <ShareBadge fill="#0070BF" percentage={province['Pfizer'] * 100 / province['total_doses']} />
                                         </td>
                                         <td>
-                                            <SvBadge percentage={province['Sinovac-share']} />
+                                            {province['Sinopharm'].toLocaleString()}
                                         </td>
+                                        <td className='col-spacing'>
+                                            <ShareBadge fill="green" percentage={province['Sinopharm'] * 100 / province['total_doses']} />
+                                        </td>
+
+                                        <td>
+                                            {province['Johnson & Johnson'].toLocaleString()}
+                                        </td>
+                                        <td>
+                                            <ShareBadge fill="#D71500" percentage={province['Johnson & Johnson'] * 100 / province['total_doses']} />
+                                        </td>
+
                                     </tr>
                                 )
                             }
@@ -153,15 +231,18 @@ function ManufacturerTable(props) {
 
 export default function Manufacturer(props) {
     return (
-        <div className='container' style={{ maxWidth: 700 }}>
-            <div className='text-center'>
-                <h2>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>
-                <p className='text-muted mb-3'>เส้นแสดงจำนวนค่าเฉลี่ย 7 วันของวัคซีนยี่ห้อต่าง ๆ ที่ฉีดทั่วประเทศ</p>
+        <div>
+            <div className='container' style={{ maxWidth: 700 }}>
+                <div className='text-center'>
+                    <h2>จำนวนวัคซีนที่ฉีดแยกตามผู้ผลิต</h2>
+                    <p className='text-muted mb-3'>เส้นแสดงจำนวนค่าเฉลี่ย 7 วันของวัคซีนยี่ห้อต่าง ๆ ที่ฉีดทั่วประเทศ</p>
+                </div>
+                <ManufacturerCurve manufacturer_timeseries={props.manufacturer_timeseries} />
             </div>
-            <ManufacturerCurve />
-            <ManufacturerTable />
+            <div className="container">
+                <ManufacturerTable province_vaccine_manufacturer={props.province_vaccine_manufacturer} />
+            </div>
         </div>
-
     )
 
 }

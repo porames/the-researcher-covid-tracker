@@ -15,8 +15,8 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats, getProvinceVaccination } from '../../components/getData'
-import { VaccinationTimeseries, ProvincelVaccination } from '../../components/vaccine/types'
+import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer } from '../../components/getData'
+import { VaccinationTimeseries, ProvinceVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
 
@@ -121,12 +121,21 @@ export async function getStaticProps() {
   return {
     props: {
       vaccination_timeseries: await getVaccineStats(),
-      province_vaccination: await getProvinceVaccination()
+      province_vaccination: await getProvinceVaccination(),
+      manufacturer_timeseries: await getVaccineManufacturer(),
+      province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer()
     }
   }
 }
 
-export default function Vaccine(props: { vaccination_timeseries: VaccinationTimeseries[], province_vaccination: ProvincelVaccination }) {
+type VaccinePageProps = {
+  vaccination_timeseries: VaccinationTimeseries[],
+  province_vaccination: ProvinceVaccination,
+  manufacturer_timeseries: any,
+  province_vaccine_manufacturer: any
+}
+
+export default function Vaccine(props: VaccinePageProps) {
   return (
     <>
       <NavHead />
@@ -153,7 +162,10 @@ export default function Vaccine(props: { vaccination_timeseries: VaccinationTime
           <hr />
         </div>
         <Element name='manufacturer'>
-          <Manufacturer />
+          <Manufacturer
+            manufacturer_timeseries={props.manufacturer_timeseries}
+            province_vaccine_manufacturer={props.province_vaccine_manufacturer}
+          />
         </Element>
         <div className="container my-5">
           <hr />

@@ -10,13 +10,12 @@ import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize } from '@visx/responsive'
-import manufacturer_data from '../gis/data/vaccine-manufacturer-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { ManufacturerDataProps } from './types'
 import { movingAvg } from './util'
 
 function SinopharmCurve(props) {
-    var timeSeries = _.cloneDeep(manufacturer_data)
+    var timeSeries = props.manufacturer_timeseries
     const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinopharm_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
@@ -54,9 +53,7 @@ function SinopharmCurve(props) {
 }
 
 function AstraZenecaCurve(props) {
-    var timeSeries = _.cloneDeep(manufacturer_data)
-    const width = props.width
-    const height = props.height
+    var timeSeries = props.manufacturer_timeseries
     const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'AstraZeneca_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
@@ -94,10 +91,7 @@ function AstraZenecaCurve(props) {
 }
 
 function SinovacCurve(props) {
-    //var timeSeries = _.filter(data, { manufacturer: 'Sinovac Life Sciences' })
-    var timeSeries = _.cloneDeep(manufacturer_data)
-    const width = props.width
-    const height = props.height
+    var timeSeries = props.manufacturer_timeseries
     const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinovac_rate', 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
@@ -133,7 +127,7 @@ function SinovacCurve(props) {
 }
 
 function ManufacturerCurve(props) {
-    var timeSeries = _.cloneDeep(manufacturer_data)
+    var timeSeries = props.manufacturer_timeseries
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
@@ -150,9 +144,9 @@ function ManufacturerCurve(props) {
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <AstraZenecaCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
-                    <SinovacCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
-                    <SinopharmCurve dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <AstraZenecaCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <SinovacCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <SinopharmCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
                     <Group>
                         <AxisLeft
                             scale={yScale}
@@ -206,7 +200,7 @@ const Manufacturer = (props) => (
     <div>
         <ParentSize>
             {({ width, height }) => (
-                <ManufacturerCurve width={width} height={350} />
+                <ManufacturerCurve manufacturer_timeseries={props.manufacturer_timeseries} width={width} height={350} />
             )}
         </ParentSize>
     </div>

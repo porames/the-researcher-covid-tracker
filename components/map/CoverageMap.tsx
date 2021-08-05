@@ -6,7 +6,7 @@ import { createCallbackWithLayer, MapWindow } from "./util";
 import _ from "lodash";
 import onLoadHandler from "./coverage-load";
 import moment from "moment";
-import { calculate_coverage } from "../vaccine/util";
+
 
 const InfoBox = (props) => {
 	return (
@@ -80,7 +80,7 @@ const InfoBox = (props) => {
 										).toLocaleString()} คน`}
 								</div>
 								<div>
-									ข้อมูลเมื่อ {/*{moment().diff(moment(provincesData["update_date"]), 'days')} วันก่อน*/}
+									ข้อมูลเมื่อ {moment(props["update_date"]).fromNow()}
 								</div>
 							</div>
 						</div>
@@ -103,7 +103,7 @@ const CoverageMap = (props) => {
 		(window as MapWindow).hoveredStateId = 0;
 		setLinkedWindow(window as MapWindow);
 	}, []);
-	const provincesData = calculate_coverage(props.province_vaccination)
+	const provincesData = props.province_vaccination
 	const onClicks = useMemo(
 		() => [
 			createCallbackWithLayer("province-fills", (map: mapboxgl.Map, e) => {
@@ -208,12 +208,12 @@ const CoverageMap = (props) => {
 						left: infoBoxPosition.x,
 					}}
 				>
-					<InfoBox hoveredData={hoveredData} />
+					<InfoBox hoveredData={hoveredData} update_date={provincesData["update_date"]} />
 				</div>
 			)}
 			{hoveredData && (
 				<div className="infoBox-container d-md-none d-block">
-					<InfoBox hoveredData={hoveredData} />
+					<InfoBox hoveredData={hoveredData} update_date={provincesData["update_date"]} />
 				</div>
 			)}
 		</BaseMap>
