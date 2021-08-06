@@ -12,7 +12,6 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveStepAfter } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-//import data from '../gis/data/national-vaccination-timeseries.json'
 import { Text } from '@visx/text'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { filter, timeDays } from 'd3';

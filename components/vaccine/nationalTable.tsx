@@ -12,7 +12,6 @@ import 'moment/locale/th'
 import { movingAvg } from './util'
 import { usePopperTooltip } from 'react-popper-tooltip';
 import 'react-popper-tooltip/dist/styles.css';
-import supplyData from '../../components/gis/data/provincial-vaccination-data_2.json'
 
 const InfoTooltip = (props) => {
     const {

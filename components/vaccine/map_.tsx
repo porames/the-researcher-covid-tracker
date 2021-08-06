@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import populationData from '../gis/data/th-census-with-hidden-pop.json';
 import _ from 'lodash';
 import { VaxCoverageLegend, SupplyLegend } from './mapLegends';
 import CoverageMap from '../map/CoverageMap';

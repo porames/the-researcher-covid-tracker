@@ -15,7 +15,7 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetVacTimeline, GetProvinceVacAllocation } from '../../components/getData'
+import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetVacTimeline, GetProvinceVacAllocation, getProvinceGraphs } from '../../components/getData'
 import { VaccinationTimeseries, ProvinceVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -130,7 +130,8 @@ export async function getStaticProps() {
       manufacturer_timeseries: await getVaccineManufacturer(),
       province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer(),
       vac_timeline: await GetVacTimeline(),
-      province_allocation: await GetProvinceVacAllocation()
+      province_allocation: await GetProvinceVacAllocation(),
+      province_graphs: await getProvinceGraphs(),
     }
   }
 }
@@ -142,7 +143,7 @@ type VaccinePageProps = {
   province_vaccine_manufacturer: any,
   vac_timeline: any,
   province_allocation: any,
-
+  province_graphs: any
 }
 
 export default function Vaccine(props: VaccinePageProps) {
@@ -185,7 +186,7 @@ export default function Vaccine(props: VaccinePageProps) {
           <hr />
         </div>
         <Element name='allocation'>
-          <VaccinationRace />
+          <VaccinationRace province_data={props.province_graphs.dataset} />
           <div className='container mt-5 mb-4'>
             <SupplyTable
               setDosesRemaining={setDosesRemaining}

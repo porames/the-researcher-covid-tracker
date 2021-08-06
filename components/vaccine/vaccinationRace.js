@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import vaccination from '../../components/gis/data/provincial-vaccination-data_2.json';
-import infectionData from '../../components/gis/data/provinces-data-14days.json'
 import chroma from 'chroma-js';
 import _ from 'lodash';
 import * as d3 from 'd3';
@@ -35,27 +33,21 @@ const Legend = () => {
     )
 }
 
-function VaccinationRace() {
+function VaccinationRace(props) {
     const [toolTipData, setToolTipData] = useState()
     const [mousePosition, setMousePosition] = useState({ x: null, y: null })
     const svgContainer = useRef(null)
     const d3Container = useRef(null)
-    var data = _.cloneDeep(vaccination["data"])
-    data = data.filter(province => province.id !== '0')
+    var data = props.province_data
     data.map((province, index) => {
-        data[index]['coverage'] = province['total_doses'] / (province['population'] * 2)
+        data[index]['coverage'] = ((province['vax_1st_dose_coverage'] + province['vax_2nd_dose_coverage']) / 200)
+        data[index]['total_doses'] = Math.floor((province['vax_1st_dose_coverage'] * province['population'] / 100) + (province['vax_2nd_dose_coverage'] * province['population'] / 100))
+        data[index]['cases_per_100k'] = province['total_14days'] * 100000 / province['population']
     })
-    const doses_sum = d3.sum(data, (d) => d["total_doses"])
-    const population = d3.sum(data, (d) => d["registered_population"])
+    const doses_sum = d3.sum(data, d => d['total_doses'])
+    const population = d3.sum(data, d => d['population'])
     const national_avg = doses_sum / (population * 2)
     var height = 400;
-    for (const i in data) {
-        if (data[i]['id'] !== '0') {
-            const province = data[i]
-            const infection = _.find(infectionData, { "id": Number(province.id) })
-            data[i]["cases-per-100k"] = infection["cases-per-100k"]
-        }
-    }
     let coverageDomain = d3.extent(data.map((d) => d["coverage"]))
     let xScale = d3
         .scaleLinear()
@@ -118,8 +110,8 @@ function VaccinationRace() {
             .attr("r", (d) => size(d["total_doses"]))
             .attr("cx", (d) => xScale(d["coverage"]))
             .attr("cy", height / 2)
-            .attr("fill", (d) => color(d["cases-per-100k"]))
-            .attr("stroke-width", (d) => color(d["cases-per-100k"]))
+            .attr("fill", (d) => color(d["cases_per_100k"]))
+            .attr("stroke-width", (d) => color(d["cases_per_100k"]))
             .style("opacity", 0.9)
             .on("mousemove", (d) => {
                 setToolTipData(d)
@@ -190,7 +182,7 @@ function VaccinationRace() {
             <div className="w-100 mt-5" ref={svgContainer} style={{ position: "relative" }}>
                 {toolTipData &&
                     <div className="bg-white text-dark p-3 shadow rounded" style={{ position: "absolute", top: (mousePosition.y + 15), left: (mousePosition.x + 15) }}>
-                        <b>{toolTipData["name"]}</b><br />
+                        <b>{toolTipData["province"]}</b><br />
                         วัคซีนครอบคลุมประชากร {(toolTipData["coverage"] * 100).toFixed(1)}%<br />
                         ฉีดวัคซีนไป {toolTipData["total_doses"].toLocaleString()} โดส
                     </div>

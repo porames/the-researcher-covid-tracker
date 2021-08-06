@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import ManufacturerCurve from './manufacturerCurve'
-import dataset from '../gis/data/provincial-vaccination-data_2.json'
 import _ from 'lodash'
 import chroma from 'chroma-js'
 
