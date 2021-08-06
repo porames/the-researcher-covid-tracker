@@ -114,12 +114,12 @@ function NationalTable(props) {
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">
                             <div className='d-flex align-items-center'>
-                                จำนวนวัคซีน AZN, SVA ที่จัดส่งลงพื้นที่ <InfoTooltip />
+                                จำนวนวัคซีน AZN, SVA ที่คงเหลือในพื้นที่ <InfoTooltip />
                             </div>
                         </td>
                         <td></td>
                         <td>
-                            {(Number(props.vac_timeline["Vac Allocated Sinovac"]) + Number(props.vac_timeline["Vac Allocated AstraZeneca"])).toLocaleString()}
+                            {props.dosesRemaining.toLocaleString()}
                         </td>
                         <td>
                         </td>

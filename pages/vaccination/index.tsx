@@ -57,6 +57,7 @@ const Overview = (props) => {
         <div className='col-md-8'>
           <National vaccination_timeseries={props.vaccination_timeseries} setTodayData={setTodayData} setUpdateDate={setUpdateDate} />
           <NationalTable
+            dosesRemaining={props.dosesRemaining}
             vaccination_timeseries={props.vaccination_timeseries}
             updateDate={updateDate}
             vac_timeline={props.vac_timeline}
@@ -140,16 +141,19 @@ type VaccinePageProps = {
   manufacturer_timeseries: any,
   province_vaccine_manufacturer: any,
   vac_timeline: any,
-  province_allocation: any
+  province_allocation: any,
+
 }
 
 export default function Vaccine(props: VaccinePageProps) {
+  const [dosesRemaining, setDosesRemaining] = useState<number>(undefined)
   return (
     <>
       <NavHead />
       <MetaHead />
       <div className='dark-theme py-5'>
         <Overview
+          dosesRemaining={dosesRemaining}
           vac_timeline={props.vac_timeline}
           vaccination_timeseries={props.vaccination_timeseries} />
         <DetailGraphs vaccination_timeseries={props.vaccination_timeseries} />
@@ -184,6 +188,7 @@ export default function Vaccine(props: VaccinePageProps) {
           <VaccinationRace />
           <div className='container mt-5 mb-4'>
             <SupplyTable
+              setDosesRemaining={setDosesRemaining}
               province_allocation={props.province_allocation}
               province_vaccine_manufacturer={props.province_vaccine_manufacturer}
               province_vaccination={props.province_vaccination}

@@ -67,7 +67,7 @@ export default function SupplyTable(props) {
     national_sum['total_1st_dose'] = sum(allocation_data, d => d['total_1st_dose'])
     national_sum['total_2nd_dose'] = sum(allocation_data, d => d['total_2nd_dose'])
     national_sum['total_population'] = sum(allocation_data, d => d['population'])
-
+    props.setDosesRemaining(national_sum['reported_supply'] - national_sum['reported_doses_used'])
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {
         if (column == sortData.column) {
@@ -86,7 +86,6 @@ export default function SupplyTable(props) {
         }
         setData(allocation_data)
     }, [sortData])
-
 
     return (
         <div>
