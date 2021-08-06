@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
-import data from './gis/data/national-timeseries.json'
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import { localPoint } from '@visx/event'
@@ -16,12 +15,12 @@ import { Label, Connector, Annotation } from '@visx/annotation'
 import { movingAvg } from './vaccine/util'
 
 function HospitalizedCurve(props) {
-    var timeSeries = _.cloneDeep(data)
+    var timeSeries = props.national_stats
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['Hospitalized']
-    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'Hospitalized', 'rate')
+    const y = d => d['hospitalized']
+    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'hospitalized', 'rate')
     avgs.map((avg, i) => {
         calculatedTimeSeries[i]['movingAvg'] = avg
     })
@@ -129,7 +128,7 @@ function HospitalizedCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                        จำนวนผู้ป่วยในโรงพยาบาล {tooltipData['Hospitalized'].toLocaleString()} ราย
+                        จำนวนผู้ป่วยในโรงพยาบาล {tooltipData['hospitalized'].toLocaleString()} ราย
                     </span>
                 </TooltipWithBounds>
             }
@@ -138,10 +137,10 @@ function HospitalizedCurve(props) {
 }
 
 
-const Container = () => (
+const Container = (props) => (
     <ParentSize>
         {({ width, height }) => (
-            <HospitalizedCurve width={width} height={200} />
+            <HospitalizedCurve national_stats={props.national_stats} width={width} height={200} />
         )}
     </ParentSize>
 )

@@ -30,15 +30,15 @@ const NationalCurveSection = (props) => {
       <div className='row'>
         <div className='col-12 mb-3'>
           <h4 className='mb-0'>ผู้ติดเชื้อใหม่รายวัน</h4>
-          <InfectionCurve />
+          <InfectionCurve national_stats={props.national_stats} />
         </div>
         <div className='col-6'>
           <h6 className='mb-0'>รักษาตัวในโรงพยาบาล</h6>
-          <HospitalizedCurve />
+          <HospitalizedCurve national_stats={props.national_stats} />
         </div>
         <div className='col-6'>
           <h6 className='mb-0'>ผู้เสียชีวิตรายวัน</h6>
-          <DeathsCurve />
+          <DeathsCurve national_stats={props.national_stats} />
         </div>
       </div>
       <NationalTable national_stats={props.national_stats} updatedAt={setUpdatedDate} />

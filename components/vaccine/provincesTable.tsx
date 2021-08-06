@@ -55,7 +55,7 @@ export default function Province(props: { province_vaccination: ProvinceVaccinat
                         {data.map((province, index) => {
                             if (index < (showAll ? data.length : 10)) {
                                 return (
-                                    <tr key={index} className={index == 0 ? 'text-white' : 'text-sec'} style={{ backgroundColor: index == 0 ? "#333" : "inherit" }}>
+                                    <tr key={index} >
                                         <td>
                                             <div className='d-flex align-items-center'>
                                                 <b>{province['province']}</b>
