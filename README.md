@@ -2,7 +2,7 @@
 ระบบติดตามและรายงานข้อมูลการระบาดและการฉีดวัคซีน COVID-19 ในประเทศไทย  
 
 ![bot-tasks-scheduler](https://github.com/porames/the-researcher-covid-data/workflows/bot-tasks-scheduler/badge.svg)  
-ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. และ 19.00 น. [Github Actions](https://github.com/porames/the-researcher-covid-bot/blob/master/.github/workflows/covid-scheduled-bot.yaml)  
+ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. และ 19.00 น. [Github Actions](https://github.com/porames/the-researcher-covid-data/blob/master/.github/workflows/main.yml)  
 
 > ### เพื่อความสะดวกในการดูแลโค้ด เราจะทำการย้ายที่เก็บข้อมูลไปที่ [The Researcher COVID Data](https://github.com/porames/the-researcher-covid-data)
 
