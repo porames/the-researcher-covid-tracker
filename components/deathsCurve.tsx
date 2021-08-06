@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
-import data from './gis/data/national-timeseries.json'
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import { localPoint } from '@visx/event'
@@ -14,12 +13,12 @@ import { ParentSize, withParentSize } from '@visx/responsive'
 import { movingAvg } from './vaccine/util'
 
 function DeathsCurve(props) {
-    var timeSeries = _.cloneDeep(data)
+    var timeSeries = props.national_stats
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['NewDeaths']
-    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'NewDeaths', 'rate')
+    const y = d => d['new_deaths']
+    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'new_deaths', 'rate')
     avgs.map((avg, i) => {
         calculatedTimeSeries[i]['movingAvg'] = avg
     })
@@ -127,7 +126,7 @@ function DeathsCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                        ผู้เสียชีวิตรายวัน {tooltipData['NewDeaths'].toLocaleString()} ราย
+                        ผู้เสียชีวิตรายวัน {tooltipData['new_deaths'].toLocaleString()} ราย
                     </span>
                 </TooltipWithBounds>
             }
@@ -136,10 +135,10 @@ function DeathsCurve(props) {
 }
 
 
-const Container = () => (
+const Container = (props) => (
     <ParentSize>
         {({ width, height }) => (
-            <DeathsCurve width={width} height={200} />
+            <DeathsCurve national_stats={props.national_stats} width={width} height={200} />
         )}
     </ParentSize>
 )

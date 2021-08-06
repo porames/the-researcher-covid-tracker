@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
-import data from './gis/data/national-timeseries.json'
 import { Group } from '@visx/group'
 import { Bar } from '@visx/shape'
 import { localPoint } from '@visx/event'
@@ -16,12 +15,12 @@ import { Label, Connector, Annotation } from '@visx/annotation'
 import { movingAvg } from './vaccine/util'
 
 function NationalCurve(props) {
-    var timeSeries = _.cloneDeep(data)
+    var timeSeries = props.national_stats
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
-    const y = d => d['NewConfirmed']
-    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'NewConfirmed', 'rate')
+    const y = d => d['new_cases']
+    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'new_cases', 'rate')
     avgs.map((avg, i) => {
         calculatedTimeSeries[i]['movingAvg'] = avg
     })
@@ -59,7 +58,7 @@ function NationalCurve(props) {
                     <Group>
                         <Annotation
                             x={xScale(x(calculatedTimeSeries[132]))}
-                            y={yScale(calculatedTimeSeries[132]['NewConfirmed']) - 30}
+                            y={yScale(calculatedTimeSeries[132]['new_cases']) - 30}
                             dx={-40}
                             dy={0}
                             width={100}
@@ -188,7 +187,7 @@ function NationalCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                        ผู้ติดเชื้อใหม่ {tooltipData['NewConfirmed'].toLocaleString()} ราย
+                        ผู้ติดเชื้อใหม่ {tooltipData['new_cases'].toLocaleString()} ราย
                     </span>
                 </TooltipWithBounds>
             }
@@ -196,10 +195,10 @@ function NationalCurve(props) {
     )
 }
 
-const Container = () => (
+const Container = (props) => (
     <ParentSize>
         {({ width, height }) => (
-            <NationalCurve width={width} height={300} />
+            <NationalCurve national_stats={props.national_stats} width={width} height={300} />
         )}
     </ParentSize>
 )

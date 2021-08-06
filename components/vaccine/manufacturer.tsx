@@ -62,7 +62,7 @@ function ManufacturerTable(props) {
     const [showAll, setShowAll] = useState<boolean>(false)
     const [isDescSort, setIsDescSort] = useState(true)
     const [sortData, setSortData] = useState({
-        column: 'all_dose.total_doses',
+        column: 'total_doses',
         direction: 'down'
     })
     var data = props.province_vaccine_manufacturer["data"]

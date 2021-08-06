@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-//import data from './gis/data/national-timeseries.json'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
@@ -74,34 +73,34 @@ export default function NationalTable(props) {
                     <tr>
                         <th scope="col"></th>
                         <th className='text-end' scope="col">ตั้งแต่เริ่มระบาด</th>
-                        <th className='text-end' scope="col">{ts && moment(ts[ts.length - 1]['Date']).format('D MMM')}</th>
+                        <th className='text-end' scope="col">{ts && moment(ts[ts.length - 1]['date']).format('D MMM')}</th>
                         <th className='text-end' scope="col">แนวโน้ม 14 วัน</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr className='text-danger'>
                         <td className='text-left' scope="row">ผู้ติดเชื้อ</td>
-                        <td>{ts && ts[ts.length - 1]['Confirmed'].toLocaleString()}</td>
-                        <td>{ts && ts[ts.length - 1]['NewConfirmed'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['cumulative_cases'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['new_cases'].toLocaleString()}</td>
                         <td>
-                            <TrendCurve data={ts} id='NewConfirmed' fill='#cf1111' />
+                            <TrendCurve data={ts} id='new_cases' fill='#cf1111' />
                         </td>
                     </tr>
 
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">รักษาตัวในโรงพยาบาล</td>
                         <td></td>
-                        <td>{ts && ts[ts.length - 1]['Hospitalized'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['hospitalized'].toLocaleString()}</td>
                         <td>
-                            <TrendCurve data={ts} id='Hospitalized' fill='#e0e0e0' />
+                            <TrendCurve data={ts} id='hospitalized' fill='#e0e0e0' />
                         </td>
                     </tr>
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">เสียชีวิต</td>
-                        <td>{ts && ts[ts.length - 1]['Deaths'].toLocaleString()}</td>
-                        <td>{ts && ts[ts.length - 1]['NewDeaths'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['cumulative_deaths'].toLocaleString()}</td>
+                        <td>{ts && ts[ts.length - 1]['new_deaths'].toLocaleString()}</td>
                         <td>
-                            <TrendCurve data={ts} id='NewDeaths' fill='#e0e0e0' />
+                            <TrendCurve data={ts} id='new_deaths' fill='#e0e0e0' />
                         </td>
                     </tr>
 

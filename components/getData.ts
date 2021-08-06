@@ -1,10 +1,17 @@
 import axios from 'axios'
+import _ from 'lodash'
 import { calculate_coverage } from './vaccine/util'
 
 const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data"
+const STORAGE_PATH_2 = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping"
+
 export async function getNationalStats() {
-    var req = await axios.get(`${STORAGE_PATH}/cases/national-timeseries.json`)
-    return req.data
+    var req = await axios.get(`${STORAGE_PATH_2}/dataset/national-timeseries.json`)
+    var dataset = req.data
+    dataset = dataset.filter(data => {
+        return new Date(data.date) >= new Date("01/01/2021")
+    })
+    return dataset
 }
 
 export async function getProvinceData() {
