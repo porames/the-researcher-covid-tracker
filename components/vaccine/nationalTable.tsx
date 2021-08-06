@@ -119,7 +119,7 @@ function NationalTable(props) {
                         </td>
                         <td></td>
                         <td>
-                            {props.dosesRemaining.toLocaleString()}
+                            {props.dosesRemaining && props.dosesRemaining.toLocaleString()}
                         </td>
                         <td>
                         </td>
