@@ -180,7 +180,7 @@ export function NationalCurve(props) {
                             {tooltipData['daily_vaccinations'] == 0 &&
                                 <div className='text-danger mt-1 credit'><b>*วันที่ไม่มีรายงานข้อมูล</b></div>
                             }
-                            {tooltipData['data_anomaly'] !== 0 &&
+                            {tooltipData['data_anomaly'] !== 0 && tooltipData['data_anomaly'] &&
                                 <div className='text-danger mt-1 credit'><b>*{tooltipData['data_anomaly']}</b></div>
                             }
                         </span>

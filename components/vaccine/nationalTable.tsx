@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import _ from 'lodash'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
@@ -9,7 +10,35 @@ import { VaccinationTimeseries } from './types'
 import moment from 'moment'
 import 'moment/locale/th'
 import { movingAvg } from './util'
+import { usePopperTooltip } from 'react-popper-tooltip';
+import 'react-popper-tooltip/dist/styles.css';
+import supplyData from '../../components/gis/data/provincial-vaccination-data_2.json'
 
+const InfoTooltip = (props) => {
+    const {
+        getArrowProps,
+        getTooltipProps,
+        setTooltipRef,
+        setTriggerRef,
+        visible,
+    } = usePopperTooltip()
+    return (
+        <div className='ml-2'>
+            <button className='p-0 btn btn-icon d-flex align-items-center' type="button" ref={setTriggerRef}>
+                <img style={{ opacity: 0.8 }} src='/info_white_24dp.svg' height={16} width={16} />
+            </button>
+            {visible && (
+                <div
+                    ref={setTooltipRef}
+                    {...getTooltipProps({ className: 'tooltip-container p-2' })}
+                >
+                    <div {...getArrowProps({ className: 'tooltip-arrow' })} />
+                    ติดตามได้เฉพาะวัคซีนหลักของรัฐบาล (AstraZeneca, Sinovac)
+                </div>
+            )}
+        </div>
+    );
+};
 
 function TrendCurve(props) {
     var ts: VaccinationTimeseries[] = props.data
@@ -80,6 +109,19 @@ function NationalTable(props) {
                             <div className='d-flex justify-content-end'>
                                 <TrendCurve setDelta={setDelta} data={data} id='daily_vaccinations' fill='#60897e' />
                             </div>
+                        </td>
+                    </tr>
+                    <tr className='text-sec'>
+                        <td className='text-left' scope="row">
+                            <div className='d-flex align-items-center'>
+                                จำนวนวัคซีน AZN, SVA ที่จัดส่งลงพื้นที่ <InfoTooltip />
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            {(19645167).toLocaleString()}
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </tbody>
