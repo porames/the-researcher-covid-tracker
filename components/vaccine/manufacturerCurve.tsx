@@ -14,85 +14,9 @@ import { AxisBottom, AxisLeft } from '@visx/axis'
 import { ManufacturerDataProps } from './types'
 import { movingAvg } from './util'
 
-function SinopharmCurve(props) {
+function ManufacturerLine(props) {
     var timeSeries = props.manufacturer_timeseries
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinopharm_rate', 'rate')
-    avgs.map((avg, i) => {
-        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
-    })
-    const x = d => new Date(d['date'])
-    const y = d => d['vaccinatedAvg']
-    return (
-        <Group>
-            <Group>
-                <LinePath
-                    curve={curveBasis}
-                    data={timeSeriesWithEmptyDates}
-                    x={d => props.dateScale(x(d))}
-                    y={d => props.yScale(d['vaccinatedAvg']) - 30}
-                    stroke='green'
-                    strokeWidth={2}
-                />
-            </Group>
-            <Text
-                x={props.dateScale(x(timeSeriesWithEmptyDates[120]))}
-                y={props.yScale(y(timeSeriesWithEmptyDates[120])) - 30}
-                fill='green'
-                dx={-10}
-                dy={-8}
-                width={150}
-                lineHeight={18}
-                textAnchor='end'
-                fontFamily='Prompt'
-                fontSize={12}
-            >
-                Sinopharm
-            </Text>
-        </Group>
-    )
-}
-
-function AstraZenecaCurve(props) {
-    var timeSeries = props.manufacturer_timeseries
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'AstraZeneca_rate', 'rate')
-    avgs.map((avg, i) => {
-        timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
-    })
-    const x = d => new Date(d['date'])
-    const y = d => d['vaccinatedAvg']
-    return (
-        <Group>
-            <Group>
-                <Text
-                    x={props.dateScale(x(timeSeriesWithEmptyDates[102]))}
-                    y={props.yScale(y(timeSeriesWithEmptyDates[102])) - 30}
-                    fill='#F29F05'
-                    dx={-10}
-                    dy={0}
-                    width={150}
-                    lineHeight={18}
-                    textAnchor='end'
-                    fontFamily='Prompt'
-                    fontSize={12}
-                >
-                    AstraZeneca
-                </Text>
-                <LinePath
-                    curve={curveBasis}
-                    data={timeSeriesWithEmptyDates}
-                    x={d => props.dateScale(x(d))}
-                    y={d => props.yScale(d['vaccinatedAvg']) - 30}
-                    stroke='#F29F05'
-                    strokeWidth={2}
-                />
-            </Group>
-        </Group>
-    )
-}
-
-function SinovacCurve(props) {
-    var timeSeries = props.manufacturer_timeseries
-    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, 'Sinovac_rate', 'rate')
+    const { moving_aves: avgs, timeSeries: timeSeriesWithEmptyDates } = movingAvg(timeSeries, props.id, 'rate')
     avgs.map((avg, i) => {
         timeSeriesWithEmptyDates[i]['vaccinatedAvg'] = avg
     })
@@ -101,25 +25,25 @@ function SinovacCurve(props) {
     return (
         <Group>
             <Text
-                x={props.dateScale(x(timeSeriesWithEmptyDates[85]))}
-                y={props.yScale(y(timeSeriesWithEmptyDates[85])) - 30}
-                fill='#ff5722'
-                dx={0}
-                dy={-15}
+                x={props.dateScale(x(timeSeriesWithEmptyDates[props.label_loc]))}
+                y={props.yScale(y(timeSeriesWithEmptyDates[props.label_loc])) - 30}
+                fill={props.color}
+                dx={props.dx ? props.dx : 0}
+                dy={props.dy ? props.dy : -10}
                 width={150}
                 lineHeight={18}
-                textAnchor='middle'
+                textAnchor={props.textAnchor ? props.textAnchor : "middle"}
                 fontFamily='Prompt'
                 fontSize={12}
             >
-                Sinovac
+                {props.name}
             </Text>
             <LinePath
                 curve={curveBasis}
                 data={timeSeriesWithEmptyDates}
                 x={d => props.dateScale(x(d))}
                 y={d => props.yScale(d['vaccinatedAvg']) - 30}
-                stroke='#ff5722'
+                stroke={props.color}
                 strokeWidth={2}
             />
         </Group>
@@ -144,9 +68,46 @@ function ManufacturerCurve(props) {
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <AstraZenecaCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
-                    <SinovacCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
-                    <SinopharmCurve manufacturer_timeseries={timeSeries} dateScale={dateScale} yScale={yScale} width={width} height={height} />
+                    <ManufacturerLine
+                        manufacturer_timeseries={timeSeries}
+                        dateScale={dateScale}
+                        yScale={yScale}
+                        name='AstraZeneca'
+                        id='AstraZeneca_rate'
+                        textAnchor="end"
+                        color='#F29F05'
+                        label_loc={102}
+                        dx={-10}
+                    />
+                    <ManufacturerLine
+                        manufacturer_timeseries={timeSeries}
+                        dateScale={dateScale}
+                        yScale={yScale}
+                        name='Sinovac'
+                        dy={-15}
+                        id='Sinovac_rate'
+                        color='#ff5722'
+                        label_loc={85}
+                    />
+                    <ManufacturerLine
+                        manufacturer_timeseries={timeSeries}
+                        dateScale={dateScale}
+                        yScale={yScale}
+                        name='Sinopharm'
+                        id='Sinopharm_rate'
+                        color='green'
+                        label_loc={120}
+                        textAnchor="end"
+                    />
+                    <ManufacturerLine
+                        manufacturer_timeseries={timeSeries}
+                        dateScale={dateScale}
+                        yScale={yScale}
+                        name='Pfizer'
+                        id='Pfizer_rate'
+                        color='#00AFF0'
+                        label_loc={150}
+                    />
                     <Group>
                         <AxisLeft
                             scale={yScale}
