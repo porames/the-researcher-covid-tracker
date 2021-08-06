@@ -1411,5 +1411,23 @@
     "AstraZeneca":7898655.0,
     "Sinopharm":945411.0,
     "Sinovac":8647566.0
+  },
+  {
+    "date":"2021-08-05",
+    "Sinovac_rate":578083.0,
+    "AstraZeneca_rate":581165.0,
+    "Sinopharm_rate":310823.0,
+    "AstraZeneca":8479820.0,
+    "Sinopharm":1256234.0,
+    "Sinovac":9225649.0
+  },
+  {
+    "date":"2021-08-06",
+    "Sinovac_rate":-578083.0,
+    "AstraZeneca_rate":-581165.0,
+    "Sinopharm_rate":-310823.0,
+    "AstraZeneca":7898655.0,
+    "Sinopharm":945411.0,
+    "Sinovac":8647566.0
   }
 ]
