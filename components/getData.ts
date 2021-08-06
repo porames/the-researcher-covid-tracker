@@ -25,7 +25,7 @@ export async function getVaccineStats() {
 export async function getProvinceVaccination() {
     var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccination.json`)
     const data = calculate_coverage(req.data)
-    
+
     return data
 }
 
@@ -38,9 +38,9 @@ export async function getProvinceVaccinationByManufacturer() {
     var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccination-by-manufacturer.json`)
     return req.data
 }
-/*
-export async function getVaccineSupply() {
-    var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccine-supply.json`)
+
+export async function getProvinceGraphs() {
+    var req = await axios.get(`${STORAGE_PATH}/cases/build_job.json`)
     return req.data
 }
 
@@ -48,4 +48,12 @@ export async function getTestingData() {
     var req = await axios.get(`${STORAGE_PATH}/cases/testing-data.json`)
     return req.data
 }
+
+/*
+export async function getVaccineSupply() {
+    var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccine-supply.json`)
+    return req.data
+}
+
+
 */

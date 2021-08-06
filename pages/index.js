@@ -14,7 +14,7 @@ import 'moment/locale/th'
 import Link from 'next/link'
 import NavHead from '../components/navHead'
 import Footer from '../components/footer'
-import { getNationalStats, getDistrictData, getProvinceData, getVaccineStats } from '../components/getData'
+import { getNationalStats, getDistrictData, getProvinceData, getVaccineStats, getTestingData, getProvinceGraphs } from '../components/getData'
 
 const NationalCurveSection = (props) => {
   const [updatedDate, setUpdatedDate] = useState(undefined)
@@ -70,6 +70,7 @@ export async function getStaticProps() {
     props: {
       national_stats: await getNationalStats(),
       province_data: await getProvinceData(),
+      province_graphs: await getProvinceGraphs(),
       district_data: await getDistrictData(),
       vaccination_timeseries: await getVaccineStats()
     }

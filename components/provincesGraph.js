@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import build from './build_job.json'
 import _ from 'lodash'
 import chroma from 'chroma-js'
-const images = build['images']
+
 
 const TableHeader = (props) => (
     <th
@@ -18,15 +17,17 @@ const TableHeader = (props) => (
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     const [isDescSort, setIsDescSort] = useState(true)
+    console.log(props.province_graphs)
+    const provinceGraphs = props.province_graphs['dataset']
     const [sortData, setSortData] = useState({
-        column: 'cases-per-100k',
+        column: 'cases_per_100k',
         direction: 'down'
     })
 
     const [provincesData, setData] = useState(undefined)
     const hotspotScale = chroma.scale(['#fafafa', '#FFFA6C', '#FFB14D', '#FF682D', '#a2322c', '#460c39']).domain([0, 0.01, 0.03, 0.05, 0.1, 1])
     const scale = chroma.scale(['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46'])
-    const maxCoverage = _.maxBy(images, 'vax-coverage')['vax-coverage']
+    const maxCoverage = _.maxBy(provinceGraphs, 'vax_1st_dose_coverage')['vax_1st_dose_coverage']
     function parseChange(change) {
         if (change > 0) {
             return ('+' + parseInt(change).toLocaleString() + '%')
@@ -49,10 +50,10 @@ export default function Province(props) {
 
     useEffect(() => {
         var data = []
-        images.map((province, index) => {
+        provincesData.map((province, index) => {
             data.push({
                 ...province,
-                'cases-per-100k': Math.floor(province['total-14days'] * 100000 / province['population'])
+                'cases_per_100k': Math.floor(province['total_14days'] * 100000 / province['population'])
             })
         })
         data = _.sortBy(data, sortData.column)
@@ -72,13 +73,13 @@ export default function Province(props) {
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='total-14days'
+                                colId='total_14days'
                                 text='ผู้ติดเชื้อในรอบ 14 วัน'
                             />
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='cases-per-100k'
+                                colId='cases_per_100k'
                                 text='ต่อประชากร 100,000 คน'
                                 spacing={true}
                             />
@@ -91,7 +92,7 @@ export default function Province(props) {
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
-                                colId='vax-2nd-dose'
+                                colId='vax_2nd_dose_coverage'
                                 text='ฉีดวัคซีนครบแล้ว'
                             />
                         </tr>
@@ -109,31 +110,31 @@ export default function Province(props) {
                                             <td className='col-spacing'>
                                                 <div
                                                     style={{
-                                                        backgroundColor: hotspotScale(province['cases-per-100k'] / 1000).hex(),
-                                                        color: (province['cases-per-100k'] > 40 ? 'white' : 'black')
+                                                        backgroundColor: hotspotScale(province['cases_per_100k'] / 1000).hex(),
+                                                        color: (province['cases_per_100k'] > 40 ? 'white' : 'black')
                                                     }}
                                                     className='badge badge-vaccination-scale' >
-                                                    {province['cases-per-100k'].toLocaleString()}
+                                                    {province['cases_per_100k'].toLocaleString()}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div className='d-flex justify-content-end align-items-end w-100'>
                                                     <div className='pr-2'>
-                                                        {province['total-14days'] > 10 ? parseChange(province['change']) : 'คงที่'}
+                                                        {parseChange(province['change'])}
                                                     </div>
-                                                    <img height='30px' src={`/infection-graphs-build/${province.name}`} />
+                                                    <img height='30px' src={`/infection-graphs-build/${province.graph_path}`} />
 
                                                 </div>
                                             </td>
                                             <td >
                                                 <div
                                                     style={{
-                                                        backgroundColor: scale(province['vax-2nd-dose'] / maxCoverage).hex(),
-                                                        color: (province['vax-2nd-dose'] / maxCoverage > 0.5 ? '#fff' : '#424242')
+                                                        backgroundColor: scale(province['vax_2nd_dose_coverage'] / maxCoverage).hex(),
+                                                        color: (province['vax_2nd_dose_coverage'] / maxCoverage > 0.5 ? '#fff' : '#424242')
                                                     }}
 
                                                     className='badge badge-vaccination-scale'>
-                                                    {Number(province['vax-2nd-dose']).toFixed(1)}%
+                                                    {Number(province['vax_2nd_dose_coverage']).toFixed(1)}%
                                                 </div>
                                             </td>
                                         </tr>
