@@ -1,9 +1,40 @@
 import axios from 'axios'
 import _ from 'lodash'
 import { calculate_coverage } from './vaccine/util'
+import provincesData from './gis/data/th-census-with-hidden-pop.json'
+import Papa from 'papaparse'
 
 const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data"
 const STORAGE_PATH_2 = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping"
+const STORAGE_DJAY = "https://raw.githubusercontent.com/wiki/djay/covidthailand/"
+
+export async function GetVacTimeline() {
+    var req = await axios.get(`${STORAGE_DJAY}/vac_timeline.csv`)
+    const dataset = Papa.parse(req.data, {
+        header: true,
+        skipEmptyLines: true
+    }).data
+    const latest_data = dataset[dataset.length - 1]
+    return latest_data
+}
+
+export async function GetProvinceVacAllocation() {
+    var req = await axios.get(`${STORAGE_DJAY}/vaccinations.csv`)
+    const dataset = Papa.parse(req.data, {
+        header: true,
+        skipEmptyLines: true
+    }).data
+    const latest_date = dataset[dataset.length - 1]["Date"]
+    const latest_data = _.filter(dataset, { "Date": latest_date })
+    latest_data.map((province, index) => {
+        const geoData = _.find(provincesData, { 'clean-name': province.Province.replace(/\s/g, '').toUpperCase() })
+        latest_data[index]["province_name_th"] = geoData["province"]
+        latest_data[index]["population"] = geoData["estimated_living_population"] ? geoData["estimated_living_population"] : geoData["population"]
+    })
+
+    return latest_data
+
+}
 
 export async function getNationalStats() {
     var req = await axios.get(`${STORAGE_PATH_2}/dataset/national-timeseries.json`)

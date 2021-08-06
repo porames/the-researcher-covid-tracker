@@ -17,7 +17,6 @@ const TableHeader = (props) => (
 export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     const [isDescSort, setIsDescSort] = useState(true)
-    console.log(props.province_graphs)
     const provinceGraphs = props.province_graphs['dataset']
     const [sortData, setSortData] = useState({
         column: 'cases_per_100k',
@@ -50,7 +49,7 @@ export default function Province(props) {
 
     useEffect(() => {
         var data = []
-        provincesData.map((province, index) => {
+        provinceGraphs.map((province, index) => {
             data.push({
                 ...province,
                 'cases_per_100k': Math.floor(province['total_14days'] * 100000 / province['population'])
@@ -60,9 +59,10 @@ export default function Province(props) {
         if (sortData.direction == 'down') {
             data.reverse()
         }
+        console.log(data)
         setData(data)
     }, [sortData])
-
+    const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data/cases/infection-graphs-build"
     return (
         <div>
             <div className='table-responsive-md'>
@@ -106,7 +106,7 @@ export default function Province(props) {
                                             <td scope='row' className='text-left'>
                                                 <b>{province['province']}</b>
                                             </td>
-                                            <td>{province['total-14days'].toLocaleString()}</td>
+                                            <td>{province['total_14days'].toLocaleString()}</td>
                                             <td className='col-spacing'>
                                                 <div
                                                     style={{
@@ -122,8 +122,7 @@ export default function Province(props) {
                                                     <div className='pr-2'>
                                                         {parseChange(province['change'])}
                                                     </div>
-                                                    <img height='30px' src={`/infection-graphs-build/${province.graph_path}`} />
-
+                                                    <img height='30px' src={`${STORAGE_PATH}/${province.graph_path}`} />
                                                 </div>
                                             </td>
                                             <td >

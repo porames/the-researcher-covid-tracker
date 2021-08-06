@@ -119,7 +119,7 @@ function NationalTable(props) {
                         </td>
                         <td></td>
                         <td>
-                            {(19645167).toLocaleString()}
+                            {(Number(props.vac_timeline["Vac Allocated Sinovac"]) + Number(props.vac_timeline["Vac Allocated AstraZeneca"])).toLocaleString()}
                         </td>
                         <td>
                         </td>

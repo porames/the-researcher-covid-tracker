@@ -15,7 +15,7 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer } from '../../components/getData'
+import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetVacTimeline, GetProvinceVacAllocation } from '../../components/getData'
 import { VaccinationTimeseries, ProvinceVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -56,7 +56,11 @@ const Overview = (props) => {
       <div className='row mt-4' >
         <div className='col-md-8'>
           <National vaccination_timeseries={props.vaccination_timeseries} setTodayData={setTodayData} setUpdateDate={setUpdateDate} />
-          <NationalTable vaccination_timeseries={props.vaccination_timeseries} updateDate={updateDate} />
+          <NationalTable
+            vaccination_timeseries={props.vaccination_timeseries}
+            updateDate={updateDate}
+            vac_timeline={props.vac_timeline}
+          />
         </div>
         <div className='col-md-4 '>
           <NationalBars todayData={todayData} />
@@ -123,7 +127,9 @@ export async function getStaticProps() {
       vaccination_timeseries: await getVaccineStats(),
       province_vaccination: await getProvinceVaccination(),
       manufacturer_timeseries: await getVaccineManufacturer(),
-      province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer()
+      province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer(),
+      vac_timeline: await GetVacTimeline(),
+      province_allocation: await GetProvinceVacAllocation()
     }
   }
 }
@@ -132,7 +138,9 @@ type VaccinePageProps = {
   vaccination_timeseries: VaccinationTimeseries[],
   province_vaccination: ProvinceVaccination,
   manufacturer_timeseries: any,
-  province_vaccine_manufacturer: any
+  province_vaccine_manufacturer: any,
+  vac_timeline: any,
+  province_allocation: any
 }
 
 export default function Vaccine(props: VaccinePageProps) {
@@ -141,7 +149,9 @@ export default function Vaccine(props: VaccinePageProps) {
       <NavHead />
       <MetaHead />
       <div className='dark-theme py-5'>
-        <Overview vaccination_timeseries={props.vaccination_timeseries} />
+        <Overview
+          vac_timeline={props.vac_timeline}
+          vaccination_timeseries={props.vaccination_timeseries} />
         <DetailGraphs vaccination_timeseries={props.vaccination_timeseries} />
         <div className="container my-5">
           <hr />
@@ -173,7 +183,11 @@ export default function Vaccine(props: VaccinePageProps) {
         <Element name='allocation'>
           <VaccinationRace />
           <div className='container mt-5 mb-4'>
-            <SupplyTable />
+            <SupplyTable
+              province_allocation={props.province_allocation}
+              province_vaccine_manufacturer={props.province_vaccine_manufacturer}
+              province_vaccination={props.province_vaccination}
+            />
           </div>
         </Element>
         <div className='container mt-4 mb-4' style={{ maxWidth: 800 }}>
