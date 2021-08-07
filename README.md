@@ -4,8 +4,7 @@
 ![bot-tasks-scheduler](https://github.com/porames/the-researcher-covid-data/workflows/bot-tasks-scheduler/badge.svg)  
 ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. และ 19.00 น. [Github Actions](https://github.com/porames/the-researcher-covid-data/blob/master/.github/workflows/main.yml)  
 
-ตัวเว็บไซต์พัฒนาโดย JavaScript + NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [d3](https://d3js.org), [visx](https://github.com/airbnb/visx/) และ [Matplotlib](https://matplotlib.org), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com)
-ตัวประมวลผลข้อมูลใช้ NodeJS และ Python
+ตัวเว็บไซต์พัฒนาโดย JavaScript + NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [d3](https://d3js.org), [visx](https://github.com/airbnb/visx/) และ [Matplotlib](https://matplotlib.org), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com), [ตัวประมวลผลข้อมูล](https://github.com/porames/the-researcher-covid-data)ใช้ Python
 
 ### การดาวน์โหลดข้อมูล
 ข้อมูลสามารถดาวน์โหลดได้ที่ [The Researcher COVID Data](https://github.com/porames/the-researcher-covid-data)
@@ -16,7 +15,7 @@
 - **ร้อยละความครอบคลุมวัคซีนรายจังหวัด** = `จำนวนโดสที่ฉีดในจังหวัด/(2*จำนวนประชากร) * 100%`
 
 ### ที่มาข้อมูล
-- ข้อมูลจำนวนผู้ป่วยรายวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://ddc.moph.go.th/covid19-dashboard/) ประมวลผลโดยคุร [Noppakorn](https://github.com/noppakorn/ddc-dashboard-scraping)
+- ข้อมูลจำนวนผู้ป่วยรายวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://ddc.moph.go.th/covid19-dashboard/) ประมวลผลโดยคุณ [Noppakorn](https://github.com/noppakorn/ddc-dashboard-scraping)
 - ข้อมูลตำแหน่งที่พบผู้ป่วยประจำวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://data.go.th/dataset/covid-19-daily)
 - ข้อมูลการตรวจเชื้อรายวันจาก [กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข](http://data.go.th/dataset/covid-19-testing-data)
 - ข้อมูลการฉีดวัคซีนจาก [หมอพร้อม](https://dashboard-vaccine.moph.go.th/dashboard.html)
