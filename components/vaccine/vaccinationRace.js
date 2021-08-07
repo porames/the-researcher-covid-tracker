@@ -41,10 +41,9 @@ function VaccinationRace(props) {
     var data = props.province_data
     data.map((province, index) => {
         data[index]['coverage'] = ((province['vax_1st_dose_coverage'] + province['vax_2nd_dose_coverage']) / 200)
-        data[index]['total_doses'] = Math.floor((province['vax_1st_dose_coverage'] * province['population'] / 100) + (province['vax_2nd_dose_coverage'] * province['population'] / 100))
         data[index]['cases_per_100k'] = province['total_14days'] * 100000 / province['population']
     })
-    const doses_sum = d3.sum(data, d => d['total_doses'])
+    const doses_sum = d3.sum(data, d => d['total_vaccine_doses'])
     const population = d3.sum(data, d => d['population'])
     const national_avg = doses_sum / (population * 2)
     var height = 400;
@@ -52,7 +51,7 @@ function VaccinationRace(props) {
     let xScale = d3
         .scaleLinear()
         .domain(coverageDomain)
-    let vaccinationSizeDomain = d3.extent(data.map((d) => d["total_doses"]));
+    let vaccinationSizeDomain = d3.extent(data.map((d) => d["total_vaccine_doses"]));
     let size = d3
         .scaleLinear()
         .domain(vaccinationSizeDomain)
@@ -107,7 +106,7 @@ function VaccinationRace(props) {
             .append("circle")
             .attr("class", "circ")
             .attr("stroke", "#999")
-            .attr("r", (d) => size(d["total_doses"]))
+            .attr("r", (d) => size(d["total_vaccine_doses"]))
             .attr("cx", (d) => xScale(d["coverage"]))
             .attr("cy", height / 2)
             .attr("fill", (d) => color(d["cases_per_100k"]))
@@ -140,7 +139,7 @@ function VaccinationRace(props) {
             }).strength(1))
             .force("y", d3.forceY(height / 2).strength(0.5))
             .force("collide", d3.forceCollide((d) => {
-                return size(d["total_doses"]);
+                return size(d["total_vaccine_doses"]);
             }))
             .alphaDecay(0.1)
             .alpha(0.5)
@@ -184,7 +183,7 @@ function VaccinationRace(props) {
                     <div className="bg-white text-dark p-3 shadow rounded" style={{ position: "absolute", top: (mousePosition.y + 15), left: (mousePosition.x + 15) }}>
                         <b>{toolTipData["province"]}</b><br />
                         วัคซีนครอบคลุมประชากร {(toolTipData["coverage"] * 100).toFixed(1)}%<br />
-                        ฉีดวัคซีนไป {toolTipData["total_doses"].toLocaleString()} โดส
+                        ฉีดวัคซีนไป {toolTipData["total_vaccine_doses"].toLocaleString()} โดส
                     </div>
                 }
                 <svg ref={d3Container} />

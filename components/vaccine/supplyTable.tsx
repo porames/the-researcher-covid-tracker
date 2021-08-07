@@ -48,6 +48,7 @@ export default function SupplyTable(props) {
     var vaccination_by_manufacturer = props.province_vaccine_manufacturer.data
     var province_vaccination = props.province_vaccination.data
     var allocation_data = props.province_allocation
+
     allocation_data.map((province, index) => {
         const mf_data = _.find(vaccination_by_manufacturer, { 'province': province['province_name_th'] })
         const vaccination_data = _.find(province_vaccination, { 'province': province['province_name_th'] })
@@ -66,7 +67,8 @@ export default function SupplyTable(props) {
     national_sum['reported_doses_used'] = sum(allocation_data, d => d['reported_doses_used'])
     national_sum['total_1st_dose'] = sum(allocation_data, d => d['total_1st_dose'])
     national_sum['total_2nd_dose'] = sum(allocation_data, d => d['total_2nd_dose'])
-    national_sum['total_population'] = sum(allocation_data, d => d['population'])
+    national_sum['total_population'] = 66186727
+
     props.setDosesRemaining(national_sum['reported_supply'] - national_sum['reported_doses_used'])
     const [provincesData, setData] = useState(undefined)
     function sortChange(column) {

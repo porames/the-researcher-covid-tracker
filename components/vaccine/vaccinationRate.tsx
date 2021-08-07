@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { extent, max, bisector } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
-import { GridRows, GridColumns } from '@visx/grid'
+import { GridRows } from '@visx/grid'
 import { Bar, Line } from '@visx/shape'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -10,11 +10,10 @@ import { localPoint } from '@visx/event'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/tooltip'
 import { curveStepAfter } from '@visx/curve'
-import { LinePath, SplitLinePath } from '@visx/shape'
-import { ParentSize, withParentSize } from '@visx/responsive'
+import { LinePath } from '@visx/shape'
+import { ParentSize } from '@visx/responsive'
 import { Text } from '@visx/text'
 import { AxisBottom, AxisLeft } from '@visx/axis'
-import { filter, timeDays } from 'd3';
 
 function movingAvg(ts, id) {
     var moving_aves: number[] = []
@@ -234,7 +233,7 @@ function Curve(props) {
                         }}
                     >
                         <span>
-                            <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
+                            <b>{moment(tooltipData['date']).format('DD MMM')}</b> {moment(tooltipData['date']).isSame(new Date(), "day") && <span className='badge badge-danger'>Live</span>}<br />
                             ฉีดวัคซีนไป {tooltipData['daily_vaccinations'].toLocaleString()} โดส<br />
                             {tooltipData["moving_avg"] ? `ค่าเฉลี่ย 7 วัน ${Math.floor(tooltipData["moving_avg"]).toLocaleString()} โดส` : ""}
                         </span>

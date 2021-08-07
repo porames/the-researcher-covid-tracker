@@ -174,7 +174,7 @@ export function NationalCurve(props) {
                         }}
                     >
                         <span>
-                            <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
+                            <b>{moment(tooltipData['date']).format('DD MMM')}</b> {moment(tooltipData['date']).isSame(new Date(), "day") && <span className='badge badge-danger'>Live</span>} <br />
                             ฉีดวัคซีนสะสม {tooltipData['total_doses'].toLocaleString()} โดส<br />
                             ได้รับวัคซีนครบแล้ว {tooltipData['second_dose'].toLocaleString()} คน<br />
                             {tooltipData['daily_vaccinations'] == 0 &&
