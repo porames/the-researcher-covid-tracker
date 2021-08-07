@@ -16,8 +16,8 @@
 - **ร้อยละความครอบคลุมวัคซีนรายจังหวัด** = `จำนวนโดสที่ฉีดในจังหวัด/(2*จำนวนประชากร) * 100%`
 
 ### ที่มาข้อมูล
+- ข้อมูลจำนวนผู้ป่วยรายวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://ddc.moph.go.th/covid19-dashboard/) ประมวลผลโดยคุร [Noppakorn](https://github.com/noppakorn/ddc-dashboard-scraping)
 - ข้อมูลตำแหน่งที่พบผู้ป่วยประจำวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://data.go.th/dataset/covid-19-daily)
-- ข้อมูลจำนวนผู้ป่วยรายวันจาก [ทำเนียบรัฐบาล](https://www.thaigov.go.th/news/contents/details/29299) ประมวลผลโดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
 - ข้อมูลการตรวจเชื้อรายวันจาก [กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข](http://data.go.th/dataset/covid-19-testing-data)
 - ข้อมูลจำนวนการฉีดวัคซีนรายวันจาก [รายงานการฉีดวัคซีนประจำวัน กรมควบคุมโรค กระทรวงสาธารณสุข]() ประมวลผลจาก PDF โดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
 - ข้อมูลการฉีดวัคซีนจาก [หมอพร้อม](https://dashboard-vaccine.moph.go.th/dashboard.html)
