@@ -102,7 +102,7 @@ export default function Home(props) {
           vaccination_timeseries={props.vaccination_timeseries}
           testing_data={props.testing_data}
         />
-        <Map province_data={props.province_data} district_data={props.district_data} />
+        <Map build_data={props.province_graphs.job} province_data={props.province_data} district_data={props.district_data} />
         <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province province_graphs={props.province_graphs} />

@@ -3,7 +3,6 @@ import _ from "lodash";
 import HotspotMap from "./map/HotspotMap";
 import CasesMap from "./map/CasesMap";
 import { HotspotLegend, CasesLegend } from "./mapLegends";
-import build_data from './build_job.json'
 import moment from "moment";
 function Map(props) {
   const [mapType, setMapType] = useState("hotspot");
@@ -56,7 +55,7 @@ function Map(props) {
       <div className="container text-sec mt-3 credit" style={{ maxWidth: 810 }}>
         ที่มาข้อมูล: รายงาน COVID-19 ประจำวัน ข้อมูลประจำประเทศไทย
         จากกรมควบคุมโรค กระทรวงสาธารณสุข, สถิติประชากรศาสตร์
-        สำนักงานสถิติแห่งชาติ (อัพเดทล่าสุดเมื่อ {moment(build_data['job']['dataset_updated_on']).format('LL')})
+        สำนักงานสถิติแห่งชาติ (อัพเดทล่าสุดเมื่อ {moment(props.build_data.dataset_updated_on).format('LL')})
       </div>
     </div>
   );
