@@ -19,7 +19,7 @@
 - ข้อมูลจำนวนผู้ป่วยรายวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://ddc.moph.go.th/covid19-dashboard/) ประมวลผลโดยคุร [Noppakorn](https://github.com/noppakorn/ddc-dashboard-scraping)
 - ข้อมูลตำแหน่งที่พบผู้ป่วยประจำวันจาก [กรมควบคุมโรค กระทรวงสาธารณสุข](https://data.go.th/dataset/covid-19-daily)
 - ข้อมูลการตรวจเชื้อรายวันจาก [กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข](http://data.go.th/dataset/covid-19-testing-data)
-- ข้อมูลจำนวนการฉีดวัคซีนรายวันจาก [รายงานการฉีดวัคซีนประจำวัน กรมควบคุมโรค กระทรวงสาธารณสุข]() ประมวลผลจาก PDF โดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
 - ข้อมูลการฉีดวัคซีนจาก [หมอพร้อม](https://dashboard-vaccine.moph.go.th/dashboard.html)
+- ข้อมูลจำนวนการฉีดวัคซีนรายวันจาก [รายงานการฉีดวัคซีนประจำวัน กรมควบคุมโรค กระทรวงสาธารณสุข](https://ddc.moph.go.th/vaccine-covid19/diaryReport) ประมวลผลจาก PDF โดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
 - ข้อมูลการฉีดวัคซีนรายจังหวัดและรายศูนย์ให้บริการฉีดวัคซีนจาก [ระบบติดตามตรวจสอบย้อนกลับโซ่ความเย็นวัคซีนโควิด-19](https://datastudio.google.com/u/0/reporting/731713b6-a3c4-4766-ab9d-a6502a4e7dd6/page/JMn3B) มหาวิทยาลัยมหิดล (โดนสั่งปิดไปแล้ว)
 - จำนวนประชากรแต่ละจังหวัดแยกตามกลุ่มอายุ อ้างอิงจาก[สถิติประชากรศาสตร์](http://statbbi.nso.go.th/staticreport/page/sector/th/01.aspx) สำนักงานสถิติแห่งชาติ รายงานสำรวจล่าสุดเมื่อปี พ.ศ. 2563
