@@ -10,7 +10,7 @@
 ตัวประมวลผลข้อมูลใช้ NodeJS และ Python
 
 ### การดาวน์โหลดข้อมูล
-ข้อมูลสามารถดาวน์โหลดได้ที่ https://github.com/porames/the-researcher-covid-data
+ข้อมูลสามารถดาวน์โหลดได้ที่ [The Researcher COVID Data](https://github.com/porames/the-researcher-covid-data)
 
 ### หลักการประมวลผลข้อมูล
 - **ค่าเฉลี่ยช่วง 7 วัน (7-day Moving Average)** คือค่าเฉลี่ยของข้อมูลในช่วงเวลาหนึ่งย้อนหลังไปอีก  6 วัน ทำให้เห็นแนวโน้มของการเปลี่ยนแปลงข้อมูลมีความแปรปรวน
@@ -22,5 +22,6 @@
 - ข้อมูลจำนวนผู้ป่วยรายวันจาก [ทำเนียบรัฐบาล](https://www.thaigov.go.th/news/contents/details/29299) ประมวลผลโดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
 - ข้อมูลการตรวจเชื้อรายวันจาก [กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข](http://data.go.th/dataset/covid-19-testing-data)
 - ข้อมูลจำนวนการฉีดวัคซีนรายวันจาก [รายงานการฉีดวัคซีนประจำวัน กรมควบคุมโรค กระทรวงสาธารณสุข]() ประมวลผลจาก PDF โดยคุณ [Dylan Jay](https://github.com/djay/covidthailand)
+- ข้อมูลการฉีดวัคซีนจาก [หมอพร้อม](https://dashboard-vaccine.moph.go.th/dashboard.html)
 - ข้อมูลการฉีดวัคซีนรายจังหวัดและรายศูนย์ให้บริการฉีดวัคซีนจาก [ระบบติดตามตรวจสอบย้อนกลับโซ่ความเย็นวัคซีนโควิด-19](https://datastudio.google.com/u/0/reporting/731713b6-a3c4-4766-ab9d-a6502a4e7dd6/page/JMn3B) มหาวิทยาลัยมหิดล (โดนสั่งปิดไปแล้ว)
 - จำนวนประชากรแต่ละจังหวัดแยกตามกลุ่มอายุ อ้างอิงจาก[สถิติประชากรศาสตร์](http://statbbi.nso.go.th/staticreport/page/sector/th/01.aspx) สำนักงานสถิติแห่งชาติ รายงานสำรวจล่าสุดเมื่อปี พ.ศ. 2563
