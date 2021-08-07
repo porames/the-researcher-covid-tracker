@@ -45,8 +45,8 @@ const NationalCurveSection = (props) => {
       <hr />
       <h3 className='mt-4'>เราตรวจเชื้อเพียงพอหรือยัง ?</h3>
       <p>มหาวิทยาลัย John Hopkins แนะนำว่าการตรวจเชื้อที่เพียงพอควรมีค่าร้อยละการเจอผลเป็นบวกต่อตัวอย่าง (Positive Rate) ไม่เกิน 5%</p>
-      <TestingGraph />
-      <TestingTable />
+      <TestingGraph testing_data={props.testing_data} />
+      <TestingTable testing_data={props.testing_data} />
       <hr />
       <h3 className='mt-4'>ความคืบหน้าการฉีดวัคซีน</h3>
       <Link href='/vaccination'>
@@ -72,7 +72,8 @@ export async function getStaticProps() {
       province_data: await getProvinceData(),
       province_graphs: await getProvinceGraphs(),
       district_data: await getDistrictData(),
-      vaccination_timeseries: await getVaccineStats()
+      vaccination_timeseries: await getVaccineStats(),
+      testing_data: await getTestingData()
     }
   }
 }
@@ -96,7 +97,11 @@ export default function Home(props) {
           <meta property="twitter:description" content="สถานการณ์โรค COVID-19 ในประเทศไทย แผนที่ตำแหน่งการระบาดและแนวโน้มสถานการณ์รายจังหวัด" />
           <meta property="twitter:image" content="https://covid-19.researcherth.co/cover.png" />
         </Head>
-        <NationalCurveSection national_stats={props.national_stats} vaccination_timeseries={props.vaccination_timeseries} />
+        <NationalCurveSection
+          national_stats={props.national_stats}
+          vaccination_timeseries={props.vaccination_timeseries}
+          testing_data={props.testing_data}
+        />
         <Map province_data={props.province_data} district_data={props.district_data} />
         <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>

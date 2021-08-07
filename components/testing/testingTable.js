@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import data from '../gis/data/testing-data.json'
 import { extent } from 'd3-array'
 import { scaleLinear, scaleBand, scaleTime } from '@visx/scale'
 import { curveBasis } from '@visx/curve'
@@ -58,7 +57,7 @@ function TrendCurve(props) {
 }
 
 function TestingTable(props) {
-    const ts = _.cloneDeep(data)
+    const ts = props.testing_data
     const [latestWeek, setLatestWeek] = useState()
     const [latestWeek_pos, setLatestWeek_pos] = useState()
     const [lastUpdate, setLastUpdate] = useState()

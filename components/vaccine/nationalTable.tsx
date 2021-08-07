@@ -20,11 +20,13 @@ const InfoTooltip = (props) => {
         setTooltipRef,
         setTriggerRef,
         visible,
-    } = usePopperTooltip()
+    } = usePopperTooltip({
+        placement: 'right'
+    })
     return (
-        <div className='ml-2'>
-            <button className='p-0 btn btn-icon d-flex align-items-center' type="button" ref={setTriggerRef}>
-                <img style={{ opacity: 0.8 }} src='/info_white_24dp.svg' height={16} width={16} />
+        <span>
+            <button className='p-0 btn btn-icon w-auto' type="button" ref={setTriggerRef}>
+                <span className='material-icons text-sec' style={{ fontSize: 18 }}>info</span>
             </button>
             {visible && (
                 <div
@@ -35,7 +37,7 @@ const InfoTooltip = (props) => {
                     ติดตามได้เฉพาะวัคซีนหลักของรัฐบาล (AstraZeneca, Sinovac)
                 </div>
             )}
-        </div>
+        </span>
     );
 };
 
@@ -112,7 +114,7 @@ function NationalTable(props) {
                     </tr>
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">
-                            <div className='d-flex align-items-center'>
+                            <div>
                                 จำนวนวัคซีน AZN, SVA ที่คงเหลือในพื้นที่ <InfoTooltip />
                             </div>
                         </td>

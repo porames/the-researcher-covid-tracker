@@ -12,7 +12,6 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath, SplitLinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from '../gis/data/national-vaccination-timeseries.json'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { movingAvg } from './util'
 
@@ -90,8 +89,8 @@ function plannedRollout(ts) {
 
 const EstimateCurve = (props) => {
     const { width, height } = props
-    const timeSeries = _.cloneDeep(data)
-    const { moving_aves: avgs } = movingAvg(data, 'first_dose')
+    const timeSeries = props.vaccination_data
+    const { moving_aves: avgs } = movingAvg(props.vaccination_data, 'first_dose', 'cum')
     avgs.map((avg, i) => {
         timeSeries[i]['vaccinatedAvg'] = avg
     })
@@ -101,7 +100,7 @@ const EstimateCurve = (props) => {
     const extension = generateExtension(timeSeries)
     const dividedData = [timeSeries, extension['prediction']]
     const merged = [...timeSeries, ...extension['prediction']]
-    const planned = plannedRollout(data)
+    const planned = plannedRollout(props.vaccination_data)
     useEffect(() => {
         props.setEstimation(merged[merged.length - 1])
     }, [])
@@ -145,11 +144,12 @@ const EstimateCurve = (props) => {
                         x={xScale(x(planned['planned'][planned['m50date']]))}
                         y={yScale(y(planned['planned'][planned['m50date']])) - 30}
                         fill='#fff'
-                        dx={10}
-                        dy={10}
+                        dx={-20}
+                        dy={-10}
                         width={150}
                         lineHeight={18}
                         fontFamily="Sarabun"
+                        textAnchor="end"
                         fontWeight="bold"
                         fontSize={12}
                     >
@@ -280,7 +280,7 @@ export default function Projection(props) {
 
         <ParentSize>
             {({ width, height }) => (
-                <EstimateCurve setLatestData={props.setLatestData} setEstimation={setEstimation} width={width} height={500} />
+                <EstimateCurve vaccination_data={props.vaccination_data} setLatestData={props.setLatestData} setEstimation={setEstimation} width={width} height={500} />
             )}
         </ParentSize>
 

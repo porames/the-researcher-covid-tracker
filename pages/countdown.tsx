@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import NavHead from '../components/navHead'
 import Footer from '../components/footer'
+import { getVaccineStats } from '../components/getData'
 type LatestDataProps = {
     date: string;
     first_dose: number;
@@ -12,7 +13,15 @@ type LatestDataProps = {
     [key: string]: any;
 }
 
-export default function Countdown() {
+export async function getStaticProps() {
+    return {
+        props: {
+            vaccination_data: await getVaccineStats(),
+        }
+    }
+}
+
+export default function Countdown(props) {
     const [latestData, setLatestData] = useState<LatestDataProps>()
     return (
         <>
@@ -48,7 +57,7 @@ export default function Countdown() {
                             }
                         </h3>
                     </div>
-                    <CountdownCurve setLatestData={setLatestData} />
+                    <CountdownCurve vaccination_data={props.vaccination_data} setLatestData={setLatestData} />
                     <hr className='mt-5' />
                     <div className='py-4'>
                         <h5 className='text-center'>แชร์เว็บไซต์นี้</h5>

@@ -10,20 +10,20 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import data from '../../components/gis/data/testing-data.json'
+
 import { AxisBottom } from '@visx/axis'
 import { movingAvg } from '../vaccine/util'
 
 
 
 function TestingCurve(props) {
-    var timeSeries = _.cloneDeep(data)
+    var timeSeries = props.testing_data
     const width = props.width
     const height = props.height
     const x = d => new Date(d['date'])
     const y = d => d['tests']
 
-    const { moving_aves: avgs } = movingAvg(timeSeries, 'tests')
+    const { moving_aves: avgs } = movingAvg(timeSeries, 'tests', 'rate')
     avgs.map((avg, i) => {
         timeSeries[i]['movingAvg'] = avg
     })
@@ -167,12 +167,12 @@ function TestingCurve(props) {
     )
 }
 
-const Container = () => {
+const Container = (props) => {
     return (
         <div>
             <ParentSize>
                 {({ width, height }) => (
-                    <TestingCurve width={width} height={280} />
+                    <TestingCurve testing_data={props.testing_data} width={width} height={280} />
                 )}
             </ParentSize>
             <p className='credit text-sec'>ที่มาข้อมูล: กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข ตัวเลขการตรวจรายวันหมายถึงจำนวนตัวอย่างที่ได้รับการตรวจ RT-PCR จากห้องปฏิบัติการของรัฐบาลและเอกชน ข้อมูลอัพเดทรายสัปดาห์</p>
