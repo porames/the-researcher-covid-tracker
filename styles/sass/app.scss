@@ -391,3 +391,11 @@ hr {
 .col-spacing {
     border-right: 8px solid #242424;
 }
+
+.manufacturers_bar {
+    transition: 200ms;
+}
+.manufacturers_bar:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}

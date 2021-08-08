@@ -92,6 +92,12 @@ export default function Province(props) {
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
+                                colId='deaths_total_14days'
+                                text='ผู้เสียขีวิตในรอบ 14 วัน'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
                                 colId='vax_2nd_dose_coverage'
                                 text='ฉีดวัคซีนครบแล้ว'
                             />
@@ -107,7 +113,7 @@ export default function Province(props) {
                                                 <b>{province['province']}</b>
                                             </td>
                                             <td>{province['total_14days'].toLocaleString()}</td>
-                                            <td className='col-spacing'>
+                                            <td >
                                                 <div
                                                     style={{
                                                         backgroundColor: hotspotScale(province['cases_per_100k'] / 1000).hex(),
@@ -117,7 +123,7 @@ export default function Province(props) {
                                                     {province['cases_per_100k'].toLocaleString()}
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td className='col-spacing'>
                                                 <div className='d-flex justify-content-end align-items-end w-100'>
                                                     <div className='pr-2'>
                                                         {parseChange(province['change'])}
@@ -125,7 +131,10 @@ export default function Province(props) {
                                                     <img height='30px' src={`${STORAGE_PATH}/${province.graph_path}`} />
                                                 </div>
                                             </td>
-                                            <td >
+                                            <td className='text-end col-spacing'>
+                                                {province['deaths_total_14days'].toLocaleString()}
+                                            </td>
+                                            <td className='text-end'>
                                                 <div
                                                     style={{
                                                         backgroundColor: scale(province['vax_2nd_dose_coverage'] / maxCoverage).hex(),

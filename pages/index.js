@@ -103,7 +103,7 @@ export default function Home(props) {
           testing_data={props.testing_data}
         />
         <Map build_data={props.province_graphs.job} province_data={props.province_data} district_data={props.district_data} />
-        <div className='container mt-4 mb-4' style={{ maxWidth: 810 }}>
+        <div className='container mt-4 mb-4' style={{ maxWidth: 900 }}>
           <h2 className='text-center mt-5 mb-4'>สถานการณ์รายจังหวัด</h2>
           <Province province_graphs={props.province_graphs} />
         </div>
