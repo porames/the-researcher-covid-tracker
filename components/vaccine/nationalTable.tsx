@@ -34,7 +34,7 @@ const InfoTooltip = (props) => {
                     {...getTooltipProps({ className: 'tooltip-container p-2' })}
                 >
                     <div {...getArrowProps({ className: 'tooltip-arrow' })} />
-                    ติดตามได้เฉพาะวัคซีนหลักของรัฐบาล (AstraZeneca, Sinovac)
+                    ติดตามได้เฉพาะวัคซีนหลักของรัฐบาล (AstraZeneca, Sinovac และ Pfizer)
                 </div>
             )}
         </span>
@@ -115,7 +115,7 @@ function NationalTable(props) {
                     <tr className='text-sec'>
                         <td className='text-left' scope="row">
                             <div>
-                                จำนวนวัคซีน AZN, SVA ที่คงเหลือในพื้นที่ <InfoTooltip />
+                                จำนวนวัคซีน AZN, SVA, PFE ที่คงเหลือในพื้นที่ <InfoTooltip />
                             </div>
                         </td>
                         <td></td>

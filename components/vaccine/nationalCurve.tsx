@@ -13,7 +13,7 @@ import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
 import { PatternLines } from '@visx/pattern';
 import { AxisBottom } from '@visx/axis'
-import { movingAvg } from './util'
+
 
 export function NationalCurve(props) {
     var timeSeries = props.vaccination_timeseries

@@ -7,7 +7,7 @@ import { scaleTime, scaleLinear, scaleBand } from '@visx/scale'
 import { MarkerArrow } from '@visx/marker'
 import { curveLinear } from '@visx/curve'
 import { Bar, LinePath, AreaClosed } from '@visx/shape'
-
+import { movingAvg_ } from './vaccine/util'
 
 function movingAvg(ts) {
     ts = ts.reverse()
@@ -30,6 +30,7 @@ function movingAvg(ts) {
 }
 
 function Graph(props) {
+
     var f = props.data
     var keys = Object.keys(f)
     const today = moment()

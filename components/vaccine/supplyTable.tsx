@@ -48,19 +48,21 @@ export default function SupplyTable(props) {
     var vaccination_by_manufacturer = props.province_vaccine_manufacturer.data
     var province_vaccination = props.province_vaccination.data
     var allocation_data = props.province_allocation
-
     allocation_data.map((province, index) => {
-        const mf_data = _.find(vaccination_by_manufacturer, { 'province': province['province_name_th'] })
-        const vaccination_data = _.find(province_vaccination, { 'province': province['province_name_th'] })
-        const reported_supply = Number(province['Vac Allocated AstraZeneca']) + Number(province['Vac Allocated Sinovac'])
-        const reported_doses_used = mf_data["Sinovac"] + mf_data["AstraZeneca"]
-        allocation_data[index]['reported_supply'] = reported_supply
-        allocation_data[index]['reported_doses_used'] = reported_doses_used
-        allocation_data[index]['reported_doses_used_percentage'] = reported_doses_used / reported_supply
-        allocation_data[index]['total_1st_dose'] = vaccination_data['total_1st_dose']
-        allocation_data[index]['total_2nd_dose'] = vaccination_data['total_2nd_dose']
-        allocation_data[index]['1st_dose_coverage'] = vaccination_data['total_1st_dose'] / province['population']
-        allocation_data[index]['2nd_dose_coverage'] = vaccination_data['total_2nd_dose'] / province['population']
+        const mf_data = _.find(vaccination_by_manufacturer, { 'province': province['province'] })
+        const vaccination_data = _.find(province_vaccination, { 'province': province['province'] })
+        const reported_supply = Number(province['delivered_total'])
+        if (mf_data) {
+
+            const reported_doses_used = mf_data["Sinovac"] + mf_data["AstraZeneca"] + mf_data["Pfizer"]
+            allocation_data[index]['reported_supply'] = reported_supply
+            allocation_data[index]['reported_doses_used'] = reported_doses_used
+            allocation_data[index]['reported_doses_used_percentage'] = reported_doses_used / reported_supply
+            allocation_data[index]['total_1st_dose'] = vaccination_data['total_1st_dose']
+            allocation_data[index]['total_2nd_dose'] = vaccination_data['total_2nd_dose']
+            allocation_data[index]['1st_dose_coverage'] = vaccination_data['total_1st_dose'] / province['population']
+            allocation_data[index]['2nd_dose_coverage'] = vaccination_data['total_2nd_dose'] / province['population']
+        }
     })
     var national_sum = {}
     national_sum['reported_supply'] = sum(allocation_data, d => d['reported_supply'])
@@ -92,7 +94,7 @@ export default function SupplyTable(props) {
     return (
         <div>
             <h5 className='text-center'>ตารางแสดงข้อมูลการจัดสรรวัคซีนในแต่ละจังหวัดและร้อยละวัคซีนที่ใช้ไป</h5>
-            <p className='text-center text-sec'>ข้อมูลการจัดส่งวัคซีนและวัคซีนคงเหลือมีรายงานเฉพาะข้อมูลวัคซีนหลักของรัฐบาล (Sinovac และ AstraZeneca) ยังไม่รวมวัคซีนทางเลือกจากผู้ผลิตอื่น</p>
+            <p className='text-center text-sec'>ข้อมูลการจัดส่งวัคซีนและวัคซีนคงเหลือมีรายงานเฉพาะข้อมูลวัคซีนหลักของรัฐบาล (Sinovac, AstraZeneca และ Pfizer) ยังไม่รวมวัคซีนทางเลือกจากผู้ผลิตอื่น</p>
             <div className='mt-4 table-responsive-xl'>
                 <table className="table text-white table-theme-light w-100" style={{ minWidth: 400, fontSize: '90%' }}>
                     <thead>
@@ -137,10 +139,10 @@ export default function SupplyTable(props) {
                                 <b>ทั้งประเทศ</b>
                             </td>
                             <td>
-                                {national_sum['reported_supply'].toLocaleString()}
+                                {national_sum['reported_supply']?.toLocaleString()}
                             </td>
                             <td>
-                                {national_sum['reported_doses_used'].toLocaleString()}
+                                {national_sum['reported_doses_used']?.toLocaleString()}
                             </td>
                             <td>
                                 {Math.floor(national_sum['reported_doses_used'] * 100 / national_sum['reported_supply'])}%
@@ -157,13 +159,13 @@ export default function SupplyTable(props) {
                                 return (
                                     <tr key={index} className='text-sec'>
                                         <td className='text-left'>
-                                            <b>{province["province_name_th"]}</b>
+                                            <b>{province.province}</b>
                                         </td>
                                         <td>
-                                            {province['reported_supply'].toLocaleString()}
+                                            {province['reported_supply']?.toLocaleString()}
                                         </td>
                                         <td>
-                                            {province['reported_doses_used'].toLocaleString()}
+                                            {province['reported_doses_used']?.toLocaleString()}
                                         </td>
                                         <td>
                                             {Math.floor(province['reported_doses_used'] * 100 / province['reported_supply'])}%

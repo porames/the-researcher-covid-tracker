@@ -19,21 +19,8 @@ export async function GetVacTimeline() {
 }
 
 export async function GetProvinceVacAllocation() {
-    var req = await axios.get(`${STORAGE_DJAY}/vaccinations.csv`)
-    const dataset = Papa.parse(req.data, {
-        header: true,
-        skipEmptyLines: true
-    }).data
-    const latest_date = dataset[dataset.length - 1]["Date"]
-    const latest_data = _.filter(dataset, { "Date": latest_date })
-    latest_data.map((province, index) => {
-        const geoData = _.find(provincesData, { 'clean-name': province.Province.replace(/\s/g, '').toUpperCase() })
-        latest_data[index]["province_name_th"] = geoData["province"]
-        latest_data[index]["population"] = geoData["estimated_living_population"] ? geoData["estimated_living_population"] : geoData["population"]
-    })
-
-    return latest_data
-
+    var req = await axios.get(`${STORAGE_PATH}/vaccination/vaccine-delivery.json`)
+    return req.data
 }
 
 export async function getNationalStats() {

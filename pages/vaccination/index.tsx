@@ -60,7 +60,6 @@ const Overview = (props) => {
             dosesRemaining={props.dosesRemaining}
             vaccination_timeseries={props.vaccination_timeseries}
             updateDate={updateDate}
-            vac_timeline={props.vac_timeline}
           />
         </div>
         <div className='col-md-4 '>
@@ -141,7 +140,6 @@ type VaccinePageProps = {
   province_vaccination: ProvinceVaccination,
   manufacturer_timeseries: any,
   province_vaccine_manufacturer: any,
-  vac_timeline: any,
   province_allocation: any,
   province_graphs: any
 }
@@ -155,7 +153,7 @@ export default function Vaccine(props: VaccinePageProps) {
       <div className='dark-theme py-5'>
         <Overview
           dosesRemaining={dosesRemaining}
-          vac_timeline={props.vac_timeline}
+          province_allocation={props.province_allocation}
           vaccination_timeseries={props.vaccination_timeseries} />
         <DetailGraphs vaccination_timeseries={props.vaccination_timeseries} />
         <div className="container my-5">
