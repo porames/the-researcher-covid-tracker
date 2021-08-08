@@ -41,7 +41,7 @@ export default function Province(props: { province_vaccination: ProvinceVaccinat
 
     return (
         <div>
-            <div className='text-center text-muted mb-4 small'>ข้อมูลเมื่อ {moment(props.province_vaccination.update_date).format('LL')}</div>
+            <p className='text-center text-sec'>ตัวเลขแสดงร้อยละจำนวนผู้ที่ได้รับวัคซีนอย่างน้อย 1 เข็มต่อกลุ่มประชากร</p>
             <div className='table-responsive'>
                 <table className="table text-white w-100 table-theme-light" style={{ minWidth: 400, fontSize: '90%' }}>
                     <thead>
