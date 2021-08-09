@@ -15,7 +15,7 @@ import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetVacTimeline, GetProvinceVacAllocation, getProvinceGraphs } from '../../components/getData'
+import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetProvinceVacAllocation, getProvinceGraphs } from '../../components/getData'
 import { VaccinationTimeseries, ProvinceVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -128,7 +128,6 @@ export async function getStaticProps() {
       province_vaccination: await getProvinceVaccination(),
       manufacturer_timeseries: await getVaccineManufacturer(),
       province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer(),
-      vac_timeline: await GetVacTimeline(),
       province_allocation: await GetProvinceVacAllocation(),
       province_graphs: await getProvinceGraphs(),
     }

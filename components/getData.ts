@@ -6,21 +6,10 @@ import Papa from 'papaparse'
 
 const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data"
 const STORAGE_PATH_2 = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping"
-const STORAGE_DJAY = "https://raw.githubusercontent.com/wiki/djay/covidthailand/"
-
-export async function GetVacTimeline() {
-    var req = await axios.get(`${STORAGE_DJAY}/vac_timeline.csv`)
-    const dataset = Papa.parse(req.data, {
-        header: true,
-        skipEmptyLines: true
-    }).data
-    const latest_data = dataset[dataset.length - 1]
-    return latest_data
-}
 
 export async function GetProvinceVacAllocation() {
     var req = await axios.get(`${STORAGE_PATH}/vaccination/vaccine-delivery.json`)
-    return req.data
+    return req.data.data
 }
 
 export async function getNationalStats() {
