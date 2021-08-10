@@ -7,7 +7,9 @@ const TableHeader = (props) => (
     <th
         scope='col'
         className={`provice-table-header sort-table-th ${props.spacing && 'col-spacing'}`}
-        onClick={() => props.sortChange(props.colId)}>
+        style={{ minWidth: 80 }}
+        onClick={() => props.sortChange(props.colId)}
+    >
         <span className={`${props.sortData.column === props.colId ? props.sortData.direction : ''}`}>
             {props.text}
         </span>
@@ -18,6 +20,9 @@ export default function Province(props) {
     const [showAll, setShowAll] = useState(false)
     const [isDescSort, setIsDescSort] = useState(true)
     const provinceGraphs = props.province_graphs['dataset']
+    provinceGraphs.map((province, index) => {
+        provinceGraphs[index]['deaths_per_100k'] = province['deaths_total_14days'] * 100000 / province['population']
+    })
     const [sortData, setSortData] = useState({
         column: 'cases_per_100k',
         direction: 'down'
@@ -25,6 +30,7 @@ export default function Province(props) {
 
     const [provincesData, setData] = useState(undefined)
     const hotspotScale = chroma.scale(['#fafafa', '#FFFA6C', '#FFB14D', '#FF682D', '#a2322c', '#460c39']).domain([0, 0.01, 0.03, 0.05, 0.1, 1])
+    const deathsScale = chroma.scale(['#fafafa', '#424242']).domain([0, 10])
     const scale = chroma.scale(['#e6f7f1', '#b0cec3', '#7ba797', '#47816e', '#005c46'])
     const maxCoverage = _.maxBy(provinceGraphs, 'vax_1st_dose_coverage')['vax_1st_dose_coverage']
     function parseChange(change) {
@@ -81,7 +87,6 @@ export default function Province(props) {
                                 sortData={sortData}
                                 colId='cases_per_100k'
                                 text='ต่อประชากร 100,000 คน'
-                                spacing={true}
                             />
                             <TableHeader
                                 sortChange={sortChange}
@@ -94,6 +99,12 @@ export default function Province(props) {
                                 sortData={sortData}
                                 colId='deaths_total_14days'
                                 text='ผู้เสียขีวิตในรอบ 14 วัน'
+                            />
+                            <TableHeader
+                                sortChange={sortChange}
+                                sortData={sortData}
+                                colId='deaths_per_100k'
+                                text='ต่อประชากร 100,000 คน'
                             />
                             <TableHeader
                                 sortChange={sortChange}
@@ -131,8 +142,19 @@ export default function Province(props) {
                                                     <img height='30px' src={`${STORAGE_PATH}/${province.graph_path}`} />
                                                 </div>
                                             </td>
-                                            <td className='text-end col-spacing'>
+                                            <td className='text-end'>
                                                 {province['deaths_total_14days'].toLocaleString()}
+                                            </td>
+                                            <td className='text-end col-spacing'>
+                                                <div
+                                                    style={{
+                                                        backgroundColor: deathsScale(province['deaths_total_14days'] * 100000 / province['population']).hex(),
+                                                        color: ((province['deaths_total_14days'] * 100000 / province['population']) >= 5 ? '#fff' : '#424242'),
+                                                    }}
+                                                    className='badge badge-vaccination-scale'>
+                                                    {(province['deaths_total_14days'] * 100000 / province['population']).toFixed(1)}
+                                                </div>
+
                                             </td>
                                             <td className='text-end'>
                                                 <div
