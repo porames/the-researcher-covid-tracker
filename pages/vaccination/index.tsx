@@ -11,11 +11,12 @@ import Manufacturer from '../../components/vaccine/manufacturer'
 import VaccinationRace from '../../components/vaccine/vaccinationRace'
 import VaccinationRate from '../../components/vaccine/vaccinationRate'
 import SupplyTable from '../../components/vaccine/supplyTable'
+import VaccinationByAge from '../../components/vaccine/vaccinationByAge'
 import Footer from '../../components/footer'
 import NavHead from '../../components/navHead'
 import * as Scroll from 'react-scroll'
 import Link from 'next/link'
-import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetProvinceVacAllocation, getProvinceGraphs } from '../../components/getData'
+import { getVaccineStats, getProvinceVaccination, getVaccineManufacturer, getProvinceVaccinationByManufacturer, GetProvinceVacAllocation, getProvinceGraphs, GetVacAgeGroup } from '../../components/getData'
 import { VaccinationTimeseries, ProvinceVaccination } from '../../components/vaccine/types'
 import moment from 'moment'
 import 'moment/locale/th'
@@ -130,6 +131,7 @@ export async function getStaticProps() {
       province_vaccine_manufacturer: await getProvinceVaccinationByManufacturer(),
       province_allocation: await GetProvinceVacAllocation(),
       province_graphs: await getProvinceGraphs(),
+      vaccination_by_age: await GetVacAgeGroup()
     }
   }
 }
@@ -140,7 +142,8 @@ type VaccinePageProps = {
   manufacturer_timeseries: any,
   province_vaccine_manufacturer: any,
   province_allocation: any,
-  province_graphs: any
+  province_graphs: any,
+  vaccination_by_age: any
 }
 
 export default function Vaccine(props: VaccinePageProps) {
@@ -154,7 +157,14 @@ export default function Vaccine(props: VaccinePageProps) {
           dosesRemaining={dosesRemaining}
           province_allocation={props.province_allocation}
           vaccination_timeseries={props.vaccination_timeseries} />
-        <DetailGraphs vaccination_timeseries={props.vaccination_timeseries} />
+        <VaccinationByAge
+          vaccination_by_age={props.vaccination_by_age}
+          vaccination_timeseries={props.vaccination_timeseries}
+        />
+        <DetailGraphs
+          vaccination_timeseries={props.vaccination_timeseries}
+        />
+
         <div className="container my-5">
           <hr />
         </div>

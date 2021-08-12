@@ -113,6 +113,19 @@ function NationalTable(props) {
                         </td>
                     </tr>
                     <tr className='text-sec'>
+                        <td className='text-left' scope="row">ได้รับวัคซีนอย่างน้อย 1 เข็ม</td>
+                        <td>{data[data.length - 1]['first_dose'].toLocaleString()}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr className='text-sec'>
+                        <td className='text-left' scope="row">ได้รับวัคซีนครบ 2 เข็ม</td>
+                        <td>{data[data.length - 1]['second_dose'].toLocaleString()}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {/*
+                    <tr className='text-sec'>
                         <td className='text-left' scope="row">
                             <div>
                                 จำนวนวัคซีน AZN, SVA, PFE ที่คงเหลือในพื้นที่ <InfoTooltip />
@@ -125,6 +138,7 @@ function NationalTable(props) {
                         <td>
                         </td>
                     </tr>
+                    */}
                 </tbody>
             </table>
         </div>

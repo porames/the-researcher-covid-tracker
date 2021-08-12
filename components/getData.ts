@@ -7,6 +7,12 @@ import Papa from 'papaparse'
 const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data"
 const STORAGE_PATH_2 = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping"
 
+export async function GetVacAgeGroup() {
+    var req = await axios.get(`${STORAGE_PATH}/vaccination/vaccination-by-age-group.json`)
+    return req.data
+}
+
+
 export async function GetProvinceVacAllocation() {
     var req = await axios.get(`${STORAGE_PATH}/vaccination/vaccine-delivery.json`)
     return req.data.data
@@ -62,12 +68,3 @@ export async function getTestingData() {
     var req = await axios.get(`${STORAGE_PATH}/cases/testing-data.json`)
     return req.data
 }
-
-/*
-export async function getVaccineSupply() {
-    var req = await axios.get(`${STORAGE_PATH}/vaccination/provincial-vaccine-supply.json`)
-    return req.data
-}
-
-
-*/
