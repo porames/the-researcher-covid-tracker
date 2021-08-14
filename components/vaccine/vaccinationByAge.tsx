@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import populationData from '../gis/data/national-population-age-group.json'
-import { number } from 'prop-types'
 
 type AgeGroupVaccination = {
     "update_date": string,
@@ -30,7 +29,7 @@ type AgeGroupVaccination = {
 
 const ProgressBar = (props) => (
     <div className='d-flex align-items-center justify-content-between'>
-        <div style={{ width: 50, textAlign: 'end', marginRight: 15 }}>
+        <div style={{ width: 50, textAlign: 'end', marginRight: 10 }}>
             <b>{Math.round(props.percentage)}%</b>
         </div>
         <div className='doses-progress'>
@@ -47,12 +46,12 @@ export default function VaccinationByAge(props) {
         <div className='mx-auto text-center container' style={{ maxWidth: 700 }}>
             <h2>ความคืบหน้าการฉีดวัคซีนตามช่วงอายุ</h2>
             <div className='table-responsive'>
-                <table className="table table-theme-light mt-2 text-white text-left">
+                <table className="table table-theme-light mt-2 text-white text-left" style={{ fontSize: "90%" }}>
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col" style={{ width: '39%' }}>ได้รับวัคซีนอย่างน้อย 1 เข็ม</th>
-                            <th scope="col" style={{ width: '39%' }}>ได้รับวัคซีนครบ 2 เข็ม</th>
+                            <th scope="col" style={{ width: '39%', minWidth: 120 }}>ได้รับวัคซีนอย่างน้อย 1 เข็ม</th>
+                            <th scope="col" style={{ width: '39%', minWidth: 120 }}>ได้รับวัคซีนครบ 2 เข็ม</th>
                         </tr>
                     </thead>
                     <tbody>
