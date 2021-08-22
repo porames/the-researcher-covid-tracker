@@ -1,5 +1,4 @@
 import mapboxgl from "maplibre-gl";
-
 import React, { useEffect, useMemo, useState } from "react";
 import BaseMap from "./BaseMap";
 import { createCallbackWithLayer, MapWindow } from "./util";
@@ -72,12 +71,11 @@ const InfoBox = (props) => {
 							</div>
 							<div className="col-12 text-muted mt-2">
 								<div className="font-weight-bold">
-									{props.hoveredData["population"] >
-										props.hoveredData["registered_population"] &&
+									{props.hoveredData["population_data"]["hidden_pop"] > 1000 &&
 										`มีประชากรแฝงประมาณ ${(
-											props.hoveredData["population"] -
-											props.hoveredData["registered_population"]
-										).toLocaleString()} คน`}
+											Math.round(props.hoveredData["population_data"]["hidden_pop"] / 1000) * 1000
+										).toLocaleString()} คน`
+									}
 								</div>
 								<div>
 									ข้อมูลเมื่อ {moment(props["update_date"]).fromNow()}

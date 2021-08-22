@@ -2,7 +2,6 @@ import mapboxgl from "maplibre-gl";
 
 const loader = (map: mapboxgl.Map, provincesData) => {
     console.log("Map Loaded");
-    console.log(provincesData)
     map.addSource("provinces", {
         type: "vector",
         url: "https://v2k.vallarismaps.com/core/tiles/60c4fbfcceacf1b5ea19ae9a?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
@@ -22,7 +21,7 @@ const loader = (map: mapboxgl.Map, provincesData) => {
     ];
     provincesData["data"].forEach((row, index) => {
         //const coverage = row["total-1st-dose"] / row["population"]
-        provinceMatch.push(row["id"], row['1st_dose_coverage']);
+        provinceMatch.push(String(row["id"]), row['1st_dose_coverage']);
         if (row['1st_dose_coverage'] >= 0) coverages.push(row['1st_dose_coverage']);
     });
     const maxCoverage = Math.max(...coverages);
@@ -41,10 +40,6 @@ const loader = (map: mapboxgl.Map, provincesData) => {
                 provinceMatch,
                 0,
                 "#fafafa",
-                2 / 100,
-                "#fafafa",
-                2.1 / 100,
-                "#e6f7f1",
                 maxCoverage * 0.3,
                 "#b0cec3",
                 maxCoverage * 0.5,

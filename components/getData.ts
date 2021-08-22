@@ -1,8 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
 import { calculate_coverage } from './vaccine/util'
-import provincesData from './gis/data/th-census-with-hidden-pop.json'
-import Papa from 'papaparse'
 
 const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data"
 const STORAGE_PATH_2 = "https://raw.githubusercontent.com/wiki/noppakorn/ddc-dashboard-scraping"
