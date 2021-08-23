@@ -10,8 +10,7 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
-import { AxisBottom, AxisLeft } from '@visx/axis'
-import { Label, Connector, Annotation } from '@visx/annotation'
+import { Text } from '@visx/text'
 import { movingAvg } from './vaccine/util'
 
 function HospitalizedCurve(props) {
@@ -52,8 +51,17 @@ function HospitalizedCurve(props) {
     return (
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
+
                 <Group>
                     <Group>
+                        <Text
+                            y={20}
+                            fill="white"
+                            fontFamily="Prompt"
+                            fontWeight="bold"
+                        >
+                            รักษาตัวในโรงพยาบาล
+                        </Text>
                         {calculatedTimeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
                             return (
@@ -140,7 +148,7 @@ function HospitalizedCurve(props) {
 const Container = (props) => (
     <ParentSize>
         {({ width, height }) => (
-            <HospitalizedCurve national_stats={props.national_stats} width={width} height={200} />
+            <HospitalizedCurve national_stats={props.national_stats} width={width} height={width > 250 ? 200 : 150} />
         )}
     </ParentSize>
 )

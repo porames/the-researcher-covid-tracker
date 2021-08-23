@@ -73,7 +73,6 @@ export default function Province(props: { province_vaccination: ProvinceVaccinat
         if (sortData.direction == 'down') {
             data.reverse()
         }
-        console.log(data)
         setData(data)
     }, [sortData])
     return (

@@ -65,7 +65,6 @@ export default function Province(props) {
         if (sortData.direction == 'down') {
             data.reverse()
         }
-        console.log(data)
         setData(data)
     }, [sortData])
     const STORAGE_PATH = "https://raw.githubusercontent.com/wiki/porames/the-researcher-covid-data/cases/infection-graphs-build"

@@ -33,11 +33,9 @@ const NationalCurveSection = (props) => {
           <InfectionCurve national_stats={props.national_stats} />
         </div>
         <div className='col-6'>
-          <h6 className='mb-0'>รักษาตัวในโรงพยาบาล</h6>
           <HospitalizedCurve national_stats={props.national_stats} />
         </div>
         <div className='col-6'>
-          <h6 className='mb-0'>ผู้เสียชีวิตรายวัน</h6>
           <DeathsCurve national_stats={props.national_stats} />
         </div>
       </div>

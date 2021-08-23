@@ -10,6 +10,7 @@ import { useTooltip, Tooltip, defaultStyles, TooltipWithBounds } from '@visx/too
 import { curveBasis } from '@visx/curve'
 import { LinePath } from '@visx/shape'
 import { ParentSize, withParentSize } from '@visx/responsive'
+import { Text } from '@visx/text'
 import { movingAvg } from './vaccine/util'
 
 function DeathsCurve(props) {
@@ -51,6 +52,14 @@ function DeathsCurve(props) {
         <div className='no-select' style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
+                    <Text
+                        y={20}
+                        fill="white"
+                        fontFamily="Prompt"
+                        fontWeight="bold"
+                    >
+                        เสียชีวิต
+                    </Text>
                     <Group>
                         {calculatedTimeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
@@ -138,7 +147,7 @@ function DeathsCurve(props) {
 const Container = (props) => (
     <ParentSize>
         {({ width, height }) => (
-            <DeathsCurve national_stats={props.national_stats} width={width} height={200} />
+            <DeathsCurve national_stats={props.national_stats} width={width} height={width > 250 ? 200 : 150} />
         )}
     </ParentSize>
 )

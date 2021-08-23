@@ -100,16 +100,27 @@ function NationalCurve(props) {
 
                     <Group>
                         {calculatedTimeSeries.map((d, i) => {
-                            const barHeight = height - yScale(y(d))
+                            const pcrHeight = height - yScale(y(d))
+                            const atkHeight = height - yScale(d["new_atk_cases"])
                             return (
-                                <Bar
-                                    key={i}
-                                    x={xScale(x(d))}
-                                    y={height - barHeight - 30}
-                                    width={xScale.bandwidth()}
-                                    height={barHeight}
-                                    fill='#fa9ba4'
-                                />
+                                <Group key={i}>
+
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - pcrHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={pcrHeight}
+                                        fill='#fa9ba4'
+                                    />
+                                    <Bar
+                                        x={xScale(x(d))}
+                                        y={height - atkHeight - pcrHeight - 30}
+                                        width={xScale.bandwidth()}
+                                        height={atkHeight}
+                                        opacity={0.6}
+                                        fill='red'
+                                    />
+                                </Group>
 
                             );
                         })}
@@ -187,7 +198,8 @@ function NationalCurve(props) {
                 >
                     <span>
                         <b>{moment(tooltipData['date']).format('DD MMM')}</b><br />
-                        ผู้ติดเชื้อใหม่ {tooltipData['new_cases'].toLocaleString()} ราย
+                        ผู้ติดยืนยัน {tooltipData['new_cases'].toLocaleString()} ราย<br />
+                        รายงานติดเชื้อจาก ATK {tooltipData['new_atk_cases'] ? tooltipData['new_atk_cases'].toLocaleString() : 0} ราย
                     </span>
                 </TooltipWithBounds>
             }

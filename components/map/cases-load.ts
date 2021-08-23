@@ -37,8 +37,6 @@ const loader = (map: mapboxgl.Map, amphoesData: AmphoesData[]) => {
 		}
 	});
 	matchExpression.push(0);
-	console.log(matchExpression)
-
 	map.addLayer({
 		id: "province-fills",
 		type: "fill",
