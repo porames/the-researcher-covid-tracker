@@ -264,7 +264,7 @@ const VaccinationRate = (props) => {
                         )}
                     </ParentSize>
                     {todayRate &&
-                        <div>ค่าเฉลี่ย 7 วันอยู่ที่ {Math.ceil(todayRate["moving_avg"]).toLocaleString()} โดส/วัน ซึ่งต่ำกว่าความเร็วเป้าหมายเพื่อให้ครบประชากร 50 ล้านคน (100 ล้านโดส) ภายในสิ้นปีอยู่ {percentage} %</div>
+                        <div>ค่าเฉลี่ย 7 วันอยู่ที่ {Math.ceil(todayRate["moving_avg"]).toLocaleString()} โดส/วัน ซึ่ง{percentage > 0 ? "ช้า" : "เร็ว"}กว่าความเร็วเป้าหมายเพื่อให้ครบประชากร 50 ล้านคน (100 ล้านโดส) ภายในสิ้นปีอยู่ {Math.abs(percentage)} %</div>
                     }
                 </div>
             }
