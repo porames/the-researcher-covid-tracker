@@ -54,11 +54,11 @@ function ManufacturerCurve(props) {
     var timeSeries = props.manufacturer_timeseries
     const width = props.width
     const height = props.height
+    const { moving_aves: avgs } = movingAvg(timeSeries, "AstraZeneca_rate", 'rate')
     const x = d => new Date(d['date'])
-    //const y = d => d['vaccinatedAvg']
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, 250000],
+        domain: [0, Math.max(...avgs)],
     })
     const dateScale = scaleTime({
         range: [0, width],

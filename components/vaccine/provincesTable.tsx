@@ -87,14 +87,14 @@ export default function Province(props: { province_vaccination: ProvinceVaccinat
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='1st_dose_coverage'
-                                text='ประชากรได้รับวัคซีนแล้ว'
+                                text='ประชากรได้รับวัคซีนเข็มแรก'
                             />
 
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='over_60_1st_dose_coverage'
-                                text='ผู้สูงอายุได้รับวัคซีนแล้ว'
+                                text='ผู้สูงอายุได้รับวัคซีนเข็มแรก'
                             />
                         </tr>
                     </thead>
@@ -113,17 +113,21 @@ export default function Province(props: { province_vaccination: ProvinceVaccinat
                                         </td>
                                         <td style={{ width: "30%" }}>
                                             <div className="d-flex align-items-center justify-content-end">
-                                                <span style={{ direction: "rtl", width: 50 }}>{(province["1st_dose_coverage"] * 100).toFixed(1)}%</span>
+                                                <span style={{ direction: "rtl", width: 50 }}>
+                                                    {(province["1st_dose_coverage"] * 100) < 100 ? (province["1st_dose_coverage"] * 100).toFixed(1) : 100}%
+                                                </span>
                                                 <div className="ml-2 doses-progress" style={{ maxWidth: 100 }}>
-                                                    <div className="doses-bar" style={{ width: `${(province["1st_dose_coverage"] * 100)}%` }}></div>
+                                                    <div className="doses-bar" style={{ width: `${(province["1st_dose_coverage"] * 100) < 100 ? (province["1st_dose_coverage"] * 100) : 100}%` }}></div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td style={{ width: "30%" }}>
                                             <div className="d-flex align-items-center justify-content-end">
-                                                <span style={{ direction: "rtl", width: 50 }}>{(province["over_60_1st_dose_coverage"] * 100).toFixed(1)}%</span>
+                                                <span style={{ direction: "rtl", width: 50 }}>
+                                                    {(province["over_60_1st_dose_coverage"] * 100) < 100 ? (province["over_60_1st_dose_coverage"] * 100).toFixed(1) : 100}%
+                                                </span>
                                                 <div className="ml-2 doses-progress" style={{ maxWidth: 100 }}>
-                                                    <div className="doses-bar" style={{ width: `${(province["over_60_1st_dose_coverage"] * 100)}%` }}></div>
+                                                    <div className="doses-bar" style={{ width: `${(province["over_60_1st_dose_coverage"] * 100) < 100 ? (province["over_60_1st_dose_coverage"] * 100) : 100}%` }}></div>
                                                 </div>
                                             </div>
                                         </td>

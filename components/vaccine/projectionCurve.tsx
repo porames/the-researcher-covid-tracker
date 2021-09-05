@@ -108,6 +108,7 @@ const EstimateCurve = (props) => {
     const goal = plannedRollout(timeSeries)
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
+    console.log(generatedData)
     useEffect(() => {
         props.setEstimation({
             m50_date: generatedData.m50_date,
@@ -135,39 +136,6 @@ const EstimateCurve = (props) => {
         <div style={{ position: 'relative' }}>
             <svg width={width} height={height}>
                 <Group>
-                    <Group>
-                        <LinePath
-                            curve={curveBasis}
-                            data={goal['planned']}
-                            x={d => dateScale(x(d))}
-                            y={d => yScale(d['vaccinatedAvg']) - 30}
-                            stroke="#ffffff"
-                            strokeWidth={1.4}
-                            strokeDasharray="3,4"
-                        />
-                        <circle
-                            cx={dateScale(x(goal['planned'][goal['m50_date']]))}
-                            cy={yScale(y(goal['planned'][goal['m50_date']])) - 30}
-                            r={4}
-                            strokeWidth={2}
-                            stroke='#ffffff'
-                            fill='#242424'
-                        />
-                        <Text
-                            x={dateScale(x(goal['planned'][goal['m50_date']]))}
-                            y={yScale(y(goal['planned'][goal['m50_date']])) - 30}
-                            fill='#fff'
-                            dx={10}
-                            dy={10}
-                            width={150}
-                            lineHeight={18}
-                            fontFamily="Sarabun"
-                            fontWeight="bold"
-                            fontSize={12}
-                        >
-                            {`${Math.floor(goal['required_rate']).toLocaleString()} โดส/วัน เพื่อให้ครบ 50 ล้านคน ในสิ้นปี`}
-                        </Text>
-                    </Group>
                     <LinePath
                         curve={curveBasis}
                         data={dividedData[0]}
@@ -185,6 +153,32 @@ const EstimateCurve = (props) => {
                         strokeWidth={2}
                         strokeDasharray="3,4"
                     />
+                    <Group>
+                        <circle
+                            cx={dateScale(x(generatedData['predictions'][generatedData['m50_date']]))}
+                            cy={yScale(y(generatedData['predictions'][generatedData['m50_date']])) - 30}
+                            //cy={yScale(y(goal['planned'][goal['m50_date']])) - 30}
+                            r={4}
+                            strokeWidth={2}
+                            stroke='#7ea297'
+                            fill='#242424'
+                        />
+
+                        <Text
+                            x={dateScale(x(generatedData['predictions'][generatedData['m50_date']]))}
+                            y={yScale(y(generatedData['predictions'][generatedData['m50_date']])) - 30}
+                            dy={-20}
+                            fill='#7ea297'
+                            width={180}
+                            lineHeight={18}
+                            fontFamily="Sarabun"
+                            fontWeight="bold"
+                            textAnchor="middle"
+                            fontSize={14}
+                        >
+                            {moment().add(generatedData["m50_date"], "days").format("D MMM")}
+                        </Text>
+                    </Group>
                 </Group>
                 <Group>
                     <GridRows
@@ -196,7 +190,7 @@ const EstimateCurve = (props) => {
                         stroke={"#fff"}
                         strokeOpacity={0.3}
                         pointerEvents="none"
-                        numTicks={4}
+                        numTicks={5}
                     />
                 </Group>
                 <Group>
@@ -208,14 +202,14 @@ const EstimateCurve = (props) => {
                             textAnchor: "start",
                             opacity: 0.7
                         })}
-                        tickFormat={d => (`${Math.floor(Number(d) * 100 / population)}%`)}
-                        numTicks={4}
+                        tickFormat={d => d > 0 ? `${(Number(d) / 1000000)} ล้านโดส` : ""}
+                        numTicks={5}
                         top={-35}
                         left={0}
                         tickLength={0}
                     />
                     <AxisBottom
-                        numTicks={5}
+                        numTicks={7}
                         top={height - 30}
                         scale={dateScale}
                         tickFormat={d => moment(String(d)).format('MMM YY')}

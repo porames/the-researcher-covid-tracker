@@ -206,7 +206,7 @@ function Curve(props) {
                         tickLength={0}
                     />
                     <AxisBottom
-                        numTicks={3}
+                        numTicks={8}
                         top={height - 30}
                         scale={dateScale}
                         tickFormat={d => moment(String(d)).format('MMM')}
