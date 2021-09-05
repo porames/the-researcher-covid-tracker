@@ -113,7 +113,7 @@ const DetailGraphs = (props) => {
         <div className='my-4'>
           <h2 className='mb-3'>เมื่อไรจะฉีดวัคซีนครบ ?</h2>
           <Projection vaccination_timeseries={props.vaccination_timeseries} setEstimation={setEstimation} />
-          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน คาดว่าประชากร 70% ในประเทศไทยจะได้รับวัคซีนในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
+          <p className='mt-3'>ด้วยความเร็วการฉีดวัคซีนเฉลี่ย 7 วัน จะฉีดวัคซีนครบ 100 ล้านโดสในอีก {estimation && Math.ceil((estimation['m50_date'] / 30))} เดือน</p>
         </div>
       </div>
     </Element>
