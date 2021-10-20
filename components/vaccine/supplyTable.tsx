@@ -100,23 +100,12 @@ export default function SupplyTable(props) {
                     <thead>
                         <tr>
                             <th className='text-left' style={{ minWidth: 150 }} scope="col">จังหวัด</th>
-                            <TableHeader
-                                sortChange={sortChange}
-                                sortData={sortData}
-                                colId='reported_supply'
-                                text='จำนวนวัคซีนที่ได้รับ'
-                            />
+
                             <TableHeader
                                 sortChange={sortChange}
                                 sortData={sortData}
                                 colId='reported_doses_used'
                                 text='จำนวนวัคซีนที่ฉีดแล้ว'
-                            />
-                            <TableHeader
-                                sortChange={sortChange}
-                                sortData={sortData}
-                                colId='reported_doses_used_percentage'
-                                text='ใช้ไปร้อยละ'
                             />
                             <TableHeader
                                 sortChange={sortChange}
@@ -138,15 +127,11 @@ export default function SupplyTable(props) {
                             <td className='text-left'>
                                 <b>ทั้งประเทศ</b>
                             </td>
-                            <td>
-                                {national_sum['reported_supply']?.toLocaleString()}
-                            </td>
+
                             <td>
                                 {national_sum['reported_doses_used']?.toLocaleString()}
                             </td>
-                            <td>
-                                {Math.floor(national_sum['reported_doses_used'] * 100 / national_sum['reported_supply'])}%
-                            </td>
+
                             <td>
                                 <Badge coverage={national_sum['total_1st_dose'] / national_sum['total_population']} />
                             </td>
@@ -162,13 +147,7 @@ export default function SupplyTable(props) {
                                             <b>{province.province}</b>
                                         </td>
                                         <td>
-                                            {province['reported_supply']?.toLocaleString()}
-                                        </td>
-                                        <td>
                                             {province['reported_doses_used']?.toLocaleString()}
-                                        </td>
-                                        <td>
-                                            {Math.floor(province['reported_doses_used'] * 100 / province['reported_supply'])}%
                                         </td>
                                         <td>
                                             <Badge coverage={province['1st_dose_coverage']} />

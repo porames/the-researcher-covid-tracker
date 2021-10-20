@@ -43,7 +43,7 @@ export const VaxCoverageLegend = (props) => {
       </div>
       <div className='w-100 d-flex flex-row'>
         <div className='d-flex bar-label' style={{ flex: 4 }}>
-          {[`${parseInt(props.maxCoverage * 20)}%`, `${parseInt(props.maxCoverage * 40)}%`, `${parseInt(props.maxCoverage * 60)}%`, `${parseInt(props.maxCoverage * 80)}%`, `${parseInt(props.maxCoverage * 100)}%`].map((label, i) => {
+          {[`${parseInt(1 * 20)}%`, `${parseInt(1 * 40)}%`, `${parseInt(1 * 60)}%`, `${parseInt(1 * 80)}%`, `${parseInt(1 * 100)}%`].map((label, i) => {
             return (
               <div key={i} className='label'>
                 <small>{label}</small>

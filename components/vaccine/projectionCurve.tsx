@@ -108,7 +108,6 @@ const EstimateCurve = (props) => {
     const goal = plannedRollout(timeSeries)
     const dividedData = [timeSeries, extension]
     const merged = [...timeSeries, ...extension]
-    console.log(generatedData)
     useEffect(() => {
         props.setEstimation({
             m50_date: generatedData.m50_date,
