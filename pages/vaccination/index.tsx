@@ -101,6 +101,9 @@ interface EstimationProps {
 
 
 const DetailGraphs = (props) => {
+	// This is not relevant anymore since we've already vaccinated 1e8 ppl.
+	// -- Plum, 25 Dec 2021 04:09 GMT+1
+	return <></>
   const [estimation, setEstimation] = useState<EstimationProps>(undefined)
   const [todayRate, setTodayRate] = useState(undefined)
   return (
@@ -187,7 +190,7 @@ export default function Vaccine(props: VaccinePageProps) {
           <Manufacturer
             manufacturer_timeseries={props.manufacturer_timeseries}
             province_vaccine_manufacturer={props.province_vaccine_manufacturer}
-          />
+					/>
         </Element>
         <div className="container my-5">
           <hr />
