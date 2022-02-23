@@ -37,7 +37,7 @@ function NationalCurve(props) {
     })
     const yScale = scaleLinear({
         range: [height, 50],
-        domain: [0, max(calculatedTimeSeries, y)],
+        domain: [0, max(calculatedTimeSeries, d => d['new_cases'] + d['new_atk_cases'])],
     })
     const {
         showTooltip,
