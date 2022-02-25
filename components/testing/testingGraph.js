@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import { Group } from '@visx/group'
@@ -17,30 +17,35 @@ import { movingAvg } from '../vaccine/util'
 
 
 function TestingCurve(props) {
-    var timeSeries = props.testing_data
+    const timeSeries = props.testing_data
     const width = props.width
     const height = props.height
-    const x = d => new Date(d['date'])
-    const y = d => d['tests']
-
-    const { moving_aves: avgs } = movingAvg(timeSeries, 'tests', 'rate')
-    avgs.map((avg, i) => {
-        timeSeries[i]['movingAvg'] = avg
-    })
-    const xScale = scaleBand({
+    const x = useCallback(d => new Date(d['date']), [])
+    const y = useCallback(d => d['tests'], [])
+    const calculatedTimeSeries = useMemo(
+      () => {
+        const { moving_aves: avgs, timeSeries: innerTimeSeries } = movingAvg([...timeSeries], 'new_deaths', 'rate')
+        avgs.forEach((avg, i) => {
+          innerTimeSeries[i]['movingAvg'] = avg
+        })
+        return innerTimeSeries
+      },
+      [timeSeries]
+    )
+    const xScale = useMemo(() => scaleBand({
         range: [0, width],
-        domain: timeSeries.map(x),
+        domain: calculatedTimeSeries.map(x),
         padding: 0.07
-    })
-    const dateScale = scaleTime({
+    }), [width, calculatedTimeSeries, x])
+    const dateScale = useMemo(() => scaleTime({
         range: [0, width],
-        domain: extent(timeSeries, x),
+        domain: extent(calculatedTimeSeries, x),
         padding: 0.07
-    })
-    const yScale = scaleLinear({
+    }), [width, calculatedTimeSeries, x])
+    const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
-        domain: [0, max(timeSeries, y)],
-    })
+        domain: [0, max(calculatedTimeSeries, y)],
+    }), [height, calculatedTimeSeries, y])
 
     const {
         showTooltip,
@@ -59,7 +64,7 @@ function TestingCurve(props) {
             <svg width={width} height={height}>
                 <Group>
                     <Group>
-                        {timeSeries.map((d, i) => {
+                        {useMemo(() => calculatedTimeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
                             const barHeight_pos = height - yScale(d['positive'])
                             return (
@@ -81,7 +86,7 @@ function TestingCurve(props) {
                                     />
                                 </Group>
                             );
-                        })}
+                        }), [calculatedTimeSeries, height, xScale, x, yScale, y])}
                     </Group>
 
                     {tooltipData &&
@@ -96,7 +101,7 @@ function TestingCurve(props) {
                     }
                     <LinePath
                         curve={curveBasis}
-                        data={timeSeries.slice(7, timeSeries.length)}
+                        data={calculatedTimeSeries.slice(7, calculatedTimeSeries.length)}
                         x={d => xScale(x(d))}
                         y={d => yScale(d['movingAvg']) - 30}
                         stroke='#cfcfcf'
@@ -121,8 +126,8 @@ function TestingCurve(props) {
                                 const x = localPoint(e)['x']
                                 if (x) {
                                     const x0 = dateScale.invert(x)
-                                    const index = bisectDate(timeSeries, x0, 1)
-                                    const d = timeSeries[index]
+                                    const index = bisectDate(calculatedTimeSeries, x0, 1)
+                                    const d = calculatedTimeSeries[index]
                                     if (d) {
                                         const barHeight = (height - yScale(y(d)) ?? 0)
 
@@ -171,9 +176,9 @@ const Container = (props) => {
     return (
         <div>
             <ParentSize>
-                {({ width, height }) => (
+                {useCallback(({ width, height }) => (
                     <TestingCurve testing_data={props.testing_data} width={width} height={280} />
-                )}
+                ), [])}
             </ParentSize>
             <p className='credit text-sec'>ที่มาข้อมูล: กรมวิทยาศาสตร์การแพทย์ กระทรวงสาธารณสุข ตัวเลขการตรวจรายวันหมายถึงจำนวนตัวอย่างที่ได้รับการตรวจ RT-PCR จากห้องปฏิบัติการของรัฐบาลและเอกชน ข้อมูลอัพเดทรายสัปดาห์</p>
         </div>
