@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _, { times } from 'lodash'
 import { Group } from '@visx/group'
@@ -16,28 +16,28 @@ import { AxisBottom } from '@visx/axis'
 
 
 export function NationalCurve(props) {
-    var timeSeries = props.vaccination_timeseries
+    const timeSeries = props.vaccination_timeseries
     const width = props.width
     const height = props.height
-    const x = d => new Date(d['date'])
-    const y = d => d['total_doses']
+    const x = useCallback(d => new Date(d['date']), [])
+    const y = useCallback(d => d['total_doses'], [])
     useEffect(() => {
         props.setUpdateDate(timeSeries[timeSeries.length - 1]['date'])
         props.setTodayData(timeSeries[timeSeries.length - 1])
     }, [timeSeries])
-    const xScale = scaleBand({
+    const xScale = useMemo(() => scaleBand({
         range: [0, width],
         domain: timeSeries.map(x),
         padding: 0.07
-    })
-    const dateScale = scaleTime({
+    }), [width, timeSeries, x])
+    const dateScale = useMemo(() => scaleTime({
         range: [0, width],
         domain: extent(timeSeries, x)
-    })
-    const yScale = scaleLinear({
+    }), [width, timeSeries, x])
+    const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
         domain: [0, Number(max(timeSeries, y))]
-    })
+    }), [height, timeSeries, y])
 
     const {
         showTooltip,
@@ -65,7 +65,7 @@ export function NationalCurve(props) {
                         orientation={['diagonal']}
                     />
                     <Group>
-                        {timeSeries.map((d, i) => {
+                        {useMemo(() => timeSeries.map((d, i) => {
                             const firstDoseHeight = height - yScale(y(d) - d.second_dose)
                             const secondDoseHeight = height - yScale(d.second_dose)
 
@@ -105,7 +105,7 @@ export function NationalCurve(props) {
                                     }
                                 </Group>
                             );
-                        })}
+                        }), [timeSeries, height, xScale, x, yScale, y])}
                     </Group>
                     {tooltipData &&
                         <Bar

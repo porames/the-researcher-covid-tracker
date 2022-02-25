@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
@@ -17,25 +17,31 @@ function DeathsCurve(props) {
     var timeSeries = props.national_stats
     const width = props.width
     const height = props.height
-    const x = d => new Date(d['date'])
-    const y = d => d['new_deaths']
-    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'new_deaths', 'rate')
-    avgs.map((avg, i) => {
-        calculatedTimeSeries[i]['movingAvg'] = avg
-    })
-    const xScale = scaleBand({
+    const x = useCallback(d => new Date(d['date']), [])
+    const y = useCallback(d => d['new_deaths'], [])
+    const calculatedTimeSeries = useMemo(
+      () => {
+        const { moving_aves: avgs, timeSeries: innerTimeSeries } = movingAvg([...timeSeries], 'new_deaths', 'rate')
+        avgs.forEach((avg, i) => {
+          innerTimeSeries[i]['movingAvg'] = avg
+        })
+        return innerTimeSeries
+      },
+      [timeSeries]
+    )
+    const xScale = useMemo(() => scaleBand({
         range: [0, width],
         domain: calculatedTimeSeries.map(x),
         padding: 0.07
-    })
-    const dateScale = scaleTime({
+    }), [width, calculatedTimeSeries, x])
+    const dateScale = useMemo(() => scaleTime({
         range: [0, width],
         domain: extent(calculatedTimeSeries, x),
-    })
-    const yScale = scaleLinear({
+    }), [width, calculatedTimeSeries, x])
+    const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
         domain: [0, max(calculatedTimeSeries, y)],
-    })
+    }), [height, calculatedTimeSeries, y])
     const {
         showTooltip,
         hideTooltip,
@@ -61,7 +67,7 @@ function DeathsCurve(props) {
                         เสียชีวิต
                     </Text>
                     <Group>
-                        {calculatedTimeSeries.map((d, i) => {
+                        {useMemo(() => calculatedTimeSeries.map((d, i) => {
                             const barHeight = height - yScale(y(d))
                             return (
                                 <Bar
@@ -74,7 +80,7 @@ function DeathsCurve(props) {
                                 />
 
                             );
-                        })}
+                        }), [calculatedTimeSeries, height, yScale, y, xScale, x])}
                     </Group>
                     <LinePath
                         curve={curveBasis}
@@ -146,9 +152,9 @@ function DeathsCurve(props) {
 
 const Container = (props) => (
     <ParentSize>
-        {({ width, height }) => (
+        {useCallback(({ width, height }) => (
             <DeathsCurve national_stats={props.national_stats} width={width} height={width > 250 ? 200 : 150} />
-        )}
+        ), [])}
     </ParentSize>
 )
 

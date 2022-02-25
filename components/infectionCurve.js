@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback, useMemo } from 'react';
 import { extent, max, bisector, min } from 'd3-array'
 import _ from 'lodash'
 import moment from 'moment'
@@ -15,30 +15,36 @@ import { Label, Connector, Annotation } from '@visx/annotation'
 import { movingAvg } from './vaccine/util'
 
 function NationalCurve(props) {
-    var timeSeries = props.national_stats
+    console.log('rerendered')
+    const timeSeries = props.national_stats
     const width = props.width
     const height = props.height
-    const x = d => new Date(d['date'])
-    const y = d => d['new_cases']
-    const { moving_aves: avgs, timeSeries: calculatedTimeSeries } = movingAvg(timeSeries, 'new_cases', 'rate')
-    avgs.map((avg, i) => {
-        calculatedTimeSeries[i]['movingAvg'] = avg
-    })
-
-    const xScale = scaleBand({
+    const x = useCallback(d => new Date(d['date']), [])
+    const y = useCallback(d => d['new_cases'], [])
+    const calculatedTimeSeries = useMemo(
+      () => {
+        const { moving_aves: avgs, timeSeries: innerTimeSeries } = movingAvg([...timeSeries], 'new_cases', 'rate')
+        avgs.forEach((avg, i) => {
+          innerTimeSeries[i]['movingAvg'] = avg
+        })
+        return innerTimeSeries
+      },
+      [timeSeries]
+    )
+    const xScale = useMemo(() => scaleBand({
         range: [0, width],
         domain: calculatedTimeSeries.map(x),
         padding: 0.07
-    })
-    const dateScale = scaleTime({
+    }), [width, calculatedTimeSeries, x])
+    const dateScale = useMemo(() => scaleTime({
         range: [0, width],
         domain: extent(calculatedTimeSeries, x),
         padding: 0.07
-    })
-    const yScale = scaleLinear({
+    }), [width, calculatedTimeSeries, x])
+    const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
         domain: [0, max(calculatedTimeSeries, d => d['new_cases'] + d['new_atk_cases'])],
-    })
+    }), [height, calculatedTimeSeries])
     const {
         showTooltip,
         hideTooltip,
@@ -99,7 +105,7 @@ function NationalCurve(props) {
                     </Group>
 
                     <Group>
-                        {calculatedTimeSeries.map((d, i) => {
+                        {useMemo(() => calculatedTimeSeries.map((d, i) => {
                             const pcrHeight = height - yScale(y(d))
                             const atkHeight = height - yScale(d["new_atk_cases"])
                             return (
@@ -123,7 +129,7 @@ function NationalCurve(props) {
                                 </Group>
 
                             );
-                        })}
+                        }), [calculatedTimeSeries, xScale, x, yScale, y, height])}
                     </Group>
 
                     {tooltipData &&
@@ -207,12 +213,11 @@ function NationalCurve(props) {
     )
 }
 
-const Container = (props) => (
+const Container = (props) => 
     <ParentSize>
-        {({ width, height }) => (
+        {useCallback(({ width, height }) => (
             <NationalCurve national_stats={props.national_stats} width={width} height={300} />
-        )}
+        ), [])}
     </ParentSize>
-)
 
 export default Container
