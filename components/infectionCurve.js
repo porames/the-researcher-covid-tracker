@@ -31,17 +31,17 @@ function NationalCurve(props) {
       },
       [timeSeries]
     )
-    const xScale = useCallback(scaleBand({
+    const xScale = useMemo(() => scaleBand({
         range: [0, width],
         domain: calculatedTimeSeries.map(x),
         padding: 0.07
     }), [width, calculatedTimeSeries, x])
-    const dateScale = useCallback(scaleTime({
+    const dateScale = useMemo(() => scaleTime({
         range: [0, width],
         domain: extent(calculatedTimeSeries, x),
         padding: 0.07
     }), [width, calculatedTimeSeries, x])
-    const yScale = useCallback(scaleLinear({
+    const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
         domain: [0, max(calculatedTimeSeries, y)],
     }), [height, calculatedTimeSeries, y])
