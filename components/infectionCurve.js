@@ -43,8 +43,8 @@ function NationalCurve(props) {
     }), [width, calculatedTimeSeries, x])
     const yScale = useMemo(() => scaleLinear({
         range: [height, 50],
-        domain: [0, max(calculatedTimeSeries, y)],
-    }), [height, calculatedTimeSeries, y])
+        domain: [0, max(calculatedTimeSeries, d => d['new_cases'] + d['new_atk_cases'])],
+    }), [height, calculatedTimeSeries])
     const {
         showTooltip,
         hideTooltip,
