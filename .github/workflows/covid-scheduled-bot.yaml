@@ -4,6 +4,7 @@ on:
         - cron: '30 1 * * *' #01:30 Hour UTC = 08:30 Hour GMT+7
         - cron: '30 6 * * *' #06:30 Hour UTC = 13:30 Hour GMT+7
         - cron: '30 12 * * *' #12:30 Hour UTC = 19:30 Hour GMT+7
+        - cron: '30 17 * * *' #17:30 Hour UTC = 00:30 Hour GMT+7
     workflow_dispatch:
 jobs:
     vercel-build-schedule:
