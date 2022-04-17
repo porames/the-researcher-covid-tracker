@@ -1,7 +1,9 @@
 ## รายงานข้อมูล COVID-19 ในประเทศไทย  
 ระบบติดตามและรายงานข้อมูลการระบาดและการฉีดวัคซีน COVID-19 ในประเทศไทย  
 
-![bot-tasks-scheduler](https://github.com/porames/the-researcher-covid-data/workflows/bot-tasks-scheduler/badge.svg)  
+[![build-cases](https://github.com/porames/the-researcher-covid-data/actions/workflows/build_cases.yaml/badge.svg)](https://github.com/porames/the-researcher-covid-data/actions/workflows/build_cases.yaml)
+[![get-moh-prompt](https://github.com/porames/the-researcher-covid-data/actions/workflows/get_moh_prompt.yaml/badge.svg)](https://github.com/porames/the-researcher-covid-data/actions/workflows/get_moh_prompt.yaml)
+
 ระบบตรวจสอบข้อมูลใหม่ทุกวัน เวลา 13:00 น. และ 19.00 น. [Github Actions](https://github.com/porames/the-researcher-covid-data/blob/master/.github/workflows/main.yml)  
 
 ตัวเว็บไซต์พัฒนาโดย JavaScript + NextJS, แสดงผลข้อมูลในรูปแบบกราฟโดยใช้ [d3](https://d3js.org), [visx](https://github.com/airbnb/visx/) และ [Matplotlib](https://matplotlib.org), แสดงผลข้อมูลในรูปแบบแผนที่โดยใช้ [Mapbox](https://mapbox.com), [ตัวประมวลผลข้อมูล](https://github.com/porames/the-researcher-covid-data)ใช้ Python
