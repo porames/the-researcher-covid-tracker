@@ -15,7 +15,6 @@ import { Label, Connector, Annotation } from '@visx/annotation'
 import { movingAvg } from './vaccine/util'
 
 function NationalCurve(props) {
-    console.log('rerendered')
     const timeSeries = props.national_stats
     const width = props.width
     const height = props.height
