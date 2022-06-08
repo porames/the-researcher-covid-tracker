@@ -44,11 +44,11 @@ class CasesMap extends React.Component {
             // Heatmap layers also work with a vector tile source.
             this.map.addSource('provinces', {
                 type: 'vector',
-                url: 'https://cloud.vallarismaps.com/core/api/tiles/1.0-beta/tiles/62a0263f4b9d77edc9058807?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c42bdb1499452793d179a3?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('provinces-label', {
                 type: 'vector',
-                url: 'https://cloud.vallarismaps.com/core/api/tiles/1.0-beta/tiles/62a0272e4b9d77edc9059119?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo'
+                url: 'https://v2k.vallarismaps.com/core/tiles/60c4515b1499452793d179a7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6'
             })
             this.map.addSource('amphoes', {
                 promoteId: {"60c452f21499452793d179a8": "fid_"},
@@ -69,7 +69,7 @@ class CasesMap extends React.Component {
                 'id': 'province-fills',
                 'type': 'fill',
                 'source': 'provinces',
-                'source-layer': '62a0263f4b9d77edc9058807',
+                'source-layer': '60c42bdb1499452793d179a3',
                 'layout': {},
                 'paint': {
                     'fill-opacity': 0.4,
@@ -80,7 +80,7 @@ class CasesMap extends React.Component {
                 'id': 'provinces-outline',
                 'type': 'line',
                 'source': 'provinces',
-                'source-layer': '62a0263f4b9d77edc9058807',
+                'source-layer': '60c42bdb1499452793d179a3',
                 'paint': {
                     'line-color': [
                         'case',
@@ -153,7 +153,7 @@ class CasesMap extends React.Component {
                 "id": "provinces-label",
                 "type": "symbol",
                 "source": "provinces-label",
-                "source-layer": "62a0272e4b9d77edc9059119",
+                "source-layer": "60c4515b1499452793d179a7",
                 "minzoom": 6,
                 "maxzoom":8,
                 "layout": {

@@ -124,7 +124,7 @@ const CoverageMap = (props) => {
 					map.setFeatureState(
 						{
 							source: "provinces",
-							sourceLayer: "62a0263f4b9d77edc9058807",
+							sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 							id: linkedWindow.hoveredStateId,
 						},
 						{ hover: false }
@@ -146,7 +146,7 @@ const CoverageMap = (props) => {
 					map.setFeatureState(
 						{
 							source: "provinces",
-							sourceLayer: "62a0263f4b9d77edc9058807",
+							sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 							id: linkedWindow.hoveredStateId,
 						},
 						{ hover: false }
@@ -156,7 +156,7 @@ const CoverageMap = (props) => {
 				map.setFeatureState(
 					{
 						source: "provinces",
-						sourceLayer: "62a0263f4b9d77edc9058807",
+						sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 						id: linkedWindow.hoveredStateId,
 					},
 					{ hover: true }

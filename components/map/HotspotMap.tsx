@@ -71,15 +71,14 @@ const HotspotMap = (props: HotSpotMapProps) => {
 	const onClicks = useMemo(
 		() => [
 			createCallbackWithLayer("province-fills", (map: mapboxgl.Map, e) => {
-				console.log(e.features[0].properties["centroid"])
-				// var centroid_x = e.features[0].properties["centroid"]
-				// 	.split(":")[1]
-				// 	.split(",")[0];
-				// var centroid_y = e.features[0].properties["centroid"]
-				// 	.split(":")[1]
-				// 	.split(",")[1]
-				// 	.split(")")[0];
-				map.flyTo({ center: [1, 1], zoom: 7 });
+				var centroid_x = e.features[0].properties["centroid"]
+					.split(":")[1]
+					.split(",")[0];
+				var centroid_y = e.features[0].properties["centroid"]
+					.split(":")[1]
+					.split(",")[1]
+					.split(")")[0];
+				map.flyTo({ center: [centroid_x, centroid_y], zoom: 7 });
 			}),
 		],
 		[]
@@ -92,7 +91,7 @@ const HotspotMap = (props: HotSpotMapProps) => {
 					map.setFeatureState(
 						{
 							source: "provinces",
-							sourceLayer: "62a0263f4b9d77edc9058807",
+							sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 							id: linkedWindow.hoveredStateId,
 						},
 						{ hover: false }
@@ -112,7 +111,7 @@ const HotspotMap = (props: HotSpotMapProps) => {
 					map.setFeatureState(
 						{
 							source: "provinces",
-							sourceLayer: "62a0263f4b9d77edc9058807",
+							sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 							id: linkedWindow.hoveredStateId,
 						},
 						{ hover: false }
@@ -122,7 +121,7 @@ const HotspotMap = (props: HotSpotMapProps) => {
 				map.setFeatureState(
 					{
 						source: "provinces",
-						sourceLayer: "62a0263f4b9d77edc9058807",
+						sourceLayer: "60c4fbfcceacf1b5ea19ae9a",
 						id: e.features[0].id,
 					},
 					{ hover: true }
