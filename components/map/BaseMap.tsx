@@ -189,8 +189,8 @@ const BaseMap = ({
         const currentMap = new mapboxgl.Map({
             container: mapContainer.current,
             style: useTable
-                ? "https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c9f2a0c92e6b76b6c22875?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6"
-                : "https://v2k.vallarismaps.com/core/api/1.0-beta/styles/60c50d5df718be41ee8b7785?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
+                ? "https://cloud.vallarismaps.com/core/api/styles/1.0-beta/styles/62a01bf84b9d77edc9f19ac0?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo"
+                : "https://cloud.vallarismaps.com/core/api/styles/1.0-beta/styles/62a021ce4b9d77edc905607f?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo",
             center: [lng, lat],
             zoom: zoom,
             maxBounds: [

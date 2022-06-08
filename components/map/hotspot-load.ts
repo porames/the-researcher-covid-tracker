@@ -18,11 +18,11 @@ const loader = (map: mapboxgl.Map, provincesData: ProvincesDataProps[]) => {
   // Heatmap layers also work with a vector tile source.
   map.addSource("provinces", {
     type: "vector",
-    url: "https://v2k.vallarismaps.com/core/tiles/60c4fbfcceacf1b5ea19ae9a?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
+    url: "https://cloud.vallarismaps.com/core/api/tiles/1.0-beta/tiles/62a0263f4b9d77edc9058807?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo",
   });
   map.addSource("provinces-label", {
     type: "vector",
-    url: "https://v2k.vallarismaps.com/core/tiles/60c4515b1499452793d179a7?api_key=RWWcffYDhbnw2IV40S3FTqwsQJkeWg6vV3qdkA1QqOGhdSfmAtu0iGEmPxobPru6",
+    url: "https://cloud.vallarismaps.com/core/api/tiles/1.0-beta/tiles/62a0272e4b9d77edc9059119?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo",
   });
   map.addSource("cases", {
     type: "vector",
@@ -46,7 +46,7 @@ const loader = (map: mapboxgl.Map, provincesData: ProvincesDataProps[]) => {
     id: "province-fills",
     type: "fill",
     source: "provinces",
-    "source-layer": "60c4fbfcceacf1b5ea19ae9a",
+    "source-layer": "62a0263f4b9d77edc9058807",
     layout: {},
     paint: {
       "fill-opacity": 0.6,
@@ -75,7 +75,7 @@ const loader = (map: mapboxgl.Map, provincesData: ProvincesDataProps[]) => {
     id: "provinces-outline",
     type: "line",
     source: "provinces",
-    "source-layer": "60c4fbfcceacf1b5ea19ae9a",
+    "source-layer": "62a0263f4b9d77edc9058807",
     paint: {
       "line-color": [
         "case",
@@ -106,7 +106,7 @@ const loader = (map: mapboxgl.Map, provincesData: ProvincesDataProps[]) => {
     id: "provinces-label",
     type: "symbol",
     source: "provinces-label",
-    "source-layer": "60c4515b1499452793d179a7",
+    "source-layer": "62a0272e4b9d77edc9059119",
     minzoom: 5.4,
     layout: {
       "text-field": ["get", "PROV_NAMT"],

@@ -55,6 +55,7 @@
     "devDependencies": {
         "@types/d3": "^6.7.3",
         "@types/node": "^15.12.2",
+        "@types/react": "17.0.1",
         "sass": "^1.34.1",
         "trim-newlines": "^3.0.1",
         "typescript": "^4.3.4"
