@@ -190,7 +190,7 @@ const BaseMap = ({
             container: mapContainer.current,
             style: useTable
                 ? "https://cloud.vallarismaps.com/core/api/styles/1.0-beta/styles/62a01bf84b9d77edc9f19ac0?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo"
-                : "https://cloud.vallarismaps.com/core/api/styles/1.0-beta/styles/62a021ce4b9d77edc905607f?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo",
+                : "https://cloud.vallarismaps.com/core/api/styles/1.0-beta/styles/62a01bf84b9d77edc9f19ac0?api_key=WVOCQ4dt4ACpbjyFgrL86qJ89Afzx6indQOI38Wkckz5PNuOeG1bgZ9TyDLK2Rvo",
             center: [lng, lat],
             zoom: zoom,
             maxBounds: [
